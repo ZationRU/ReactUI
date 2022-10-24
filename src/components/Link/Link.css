@@ -1,0 +1,10 @@
+.Link {
+    color: var(--colorPrimary);
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.Link:active {
+    opacity: 0.7;
+}

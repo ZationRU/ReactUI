@@ -1,0 +1,10 @@
+.Card {
+    --iconColor: var(--colorOnSurface);
+
+    border-radius: var(--zui-containers-round);
+    background: var(--colorSurface);
+    color: var(--colorOnSurface);
+    overflow: auto;
+
+    margin: 2px;
+}

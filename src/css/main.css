@@ -1,0 +1,32 @@
+:root {
+    --zui-containers-round: 12px;
+    --zui-adaptive-list-columns: 2;
+
+    --zui-spinner-rotare-duration: 700ms;
+    --zui-spinner-small-size: 24px;
+    --zui-spinner-medium-size: 36px;
+    --zui-spinner-regular-size: 46px;
+    --zui-spinner-large-size: 56px;
+
+    --zui-panel-spinner-size: 76px;
+    --zui-panel-spinner-min-height: 60vh;
+
+    --zui-div-padding: 8px;
+
+    --zui-tabs-left-padding: 10px;
+    --zui-tabs-item-padding: 10px 10px 0 10px;
+    --zui-tabs-item-title-font-weight: 450;
+    --zui-tabs-item-title-font-size: 0.9em;
+    --zui-tabs-item-title-bottom-margin: 15px;
+    --zui-tabs-item-indicator-height: 0.08em;
+    --zui-tabs-item-indicator-width: 90%;
+
+    --zui-host-bottom-height: 80px;
+
+    --zui-text-input-label-padding: 4px;
+    --zui-text-input-label-start: 12px;
+}
+
+body {
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}

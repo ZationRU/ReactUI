@@ -1,0 +1,14 @@
+.AdaptiveList {
+    display: grid;
+    grid-template-columns: repeat(var(--zui-adaptive-list-columns), 1fr);
+    grid-auto-flow: dense;
+    overflow: auto;
+    height: 100%;
+}
+
+@media (max-width: 1000px) {
+    .AdaptiveList {
+        display: flex;
+        flex-direction: column;
+    }
+}

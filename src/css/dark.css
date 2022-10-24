@@ -1,0 +1,25 @@
+:root[theme="dark"] {
+    --colorPrimary: #66DD8C;
+    --colorOnPrimary: #00391A;
+    --colorPrimaryContainer: #005228;
+    --colorOnPrimaryContainer: #83FBA6;
+    --colorSecondary: #B7CCB8;
+    --colorOnSecondary: #223526;
+    --colorSecondaryContainer: #005228;
+    --colorOnSecondaryContainer: #F3F3F3;
+    --colorBackground: #191C19;
+    --colorOnBackground: #E2E3DE;
+    --colorSurface: #1C1E1C;
+    --colorOnSurface: #E2E3DE;
+    --colorSurfaceVariant: #3e493e;
+    --colorOutline: #697268;
+
+    --grayColor: #cbcbcb;
+    --spectatorColor: #ffffff1f;
+
+    --colorNegative: #f13636;
+    --colorOnNegative: #f5f5f5;
+
+    --rippleColor: #ffffff10;
+    --navigationColor: #1D2925;
+}

@@ -1,0 +1,41 @@
+.MiniCell {
+    display: flex;
+    flex-direction: row;
+    padding: 12px 5px;
+    color: var(--grayColor);
+}
+
+.MiniCell > * {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.MiniCell-before {
+    margin: 0;
+    padding-right: 10px;
+    text-align: start;
+
+    width: 20px;
+    height: 20px;
+}
+
+.MiniCell-before > svg {
+    width: 100%;
+    height: 100%;
+}
+
+.MiniCell-Title {
+    display: flex;
+    flex-direction: row;
+
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.MiniCell-Selectable {
+    cursor: pointer;
+}
+
+.MiniCell-Selectable:active {
+    background: var(--rippleColor);
+}

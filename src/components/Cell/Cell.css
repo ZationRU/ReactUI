@@ -1,0 +1,50 @@
+.Cell {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+
+    color: var(--colorOnSurface);
+}
+
+.Cell > * {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.Cell-before {
+    margin: 0;
+    padding-right: 15px;
+    text-align: start;
+}
+
+.Cell-Title {}
+
+.Cell-Title-Container {
+    display: flex;
+    flex-direction: row;
+
+    font-weight: 500;
+    font-size: 1.0em;
+}
+
+.Cell-Title-Description {
+    margin-left: 5px;
+}
+
+.Cell-Description {
+    margin-top: 3px;
+    font-weight: 375;
+    font-size: 0.9em;
+    color: var(--grayColor);
+}
+
+.Cell-Selectable {
+    cursor: pointer;
+}
+
+.Cell-inner {
+    flex: 1;
+}

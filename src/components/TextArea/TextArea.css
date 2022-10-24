@@ -1,0 +1,24 @@
+.TextArea {
+    font-size: 1em;
+}
+
+.TextArea-Inner {
+    background: transparent;
+    outline: none;
+    resize: none;
+    border: none;
+
+    font-size: inherit;
+    font-family: inherit;
+
+    color: currentColor;
+    padding: 0;
+    width: 100%;
+
+    min-height: 60px;
+}
+
+.TextArea-Placeholder {
+    position: absolute;
+    color: var(--grayColor);
+}

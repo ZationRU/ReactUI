@@ -1,0 +1,18 @@
+.AppRoot, body {
+    --iconColor: var(--colorOnBackground);
+
+    background: var(--colorBackground);
+    color: var(--colorOnBackground);
+    min-height: 100vh;
+    min-width: 100%;
+    line-height: 100%;
+    word-break: break-word;
+
+    -webkit-tap-highlight-color: transparent;
+
+    font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+svg {
+    display: block;
+}

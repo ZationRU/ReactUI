@@ -1,0 +1,80 @@
+.Button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 16px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+
+    min-height: 35px;
+}
+
+.Button-Before {
+    display: flex;
+}
+
+.Button-Before > svg {
+    margin: auto auto auto 5px;
+    width: 18px;
+    height: 18px;
+}
+
+.Button-Text {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+
+.Button--accent {
+    --colorAppearance: var(--colorPrimary);
+    --colorOnAppearance: var(--colorOnPrimary);
+}
+
+.Button--negative {
+    --colorAppearance: var(--colorNegative);
+    --colorOnAppearance: var(--colorOnNegative);
+}
+
+.Button--positive {
+    --colorAppearance: var(--colorSuccess);
+    --colorOnAppearance: var(--colorOnPrimary);
+}
+
+.Button--primary {
+    background: var(--colorAppearance);
+    color: var(--colorOnAppearance);
+
+    --rippleColor: rgba(255, 255, 255, 0.3);
+}
+
+.Button--secondary {
+    background: var(--colorSurface);
+    color: var(--colorAppearance);
+}
+
+.Button--tertiary {
+    background: transparent;
+    box-shadow: none;
+    color: var(--colorAppearance);
+}
+
+.Button--outline {
+    background: transparent;
+    box-shadow: none;
+    border: 1px var(--colorAppearance) solid;
+    color: var(--colorAppearance);
+}
+
+.Button--stretched {
+    width: 100%;
+}
+
+.Button--stretched > .Button-Text {
+    margin: auto;
+}

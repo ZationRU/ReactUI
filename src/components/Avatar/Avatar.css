@@ -1,0 +1,39 @@
+.Avatar {
+    border-radius: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: var(--colorSurface);
+    display: flex;
+}
+
+.Avatar > svg {
+    height: 50%;
+    width: 50%;
+    margin: auto;
+}
+
+.Avatar-mini {
+    height: 28px;
+    width: 28px;
+}
+
+.Avatar-small {
+    height: 42px;
+    width: 42px;
+}
+
+.Avatar-medium {
+    height: 64px;
+    width: 64px;
+}
+
+.Avatar-big {
+    height: 128px;
+    width: 128px;
+}
+
+.Avatar > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

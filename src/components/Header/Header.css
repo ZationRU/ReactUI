@@ -1,0 +1,63 @@
+.Header {
+    display: flex;
+    flex-direction: row;
+
+    margin-left: 15px;
+
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.Header-Before {
+    margin: auto 10px auto auto;
+    display: flex;
+}
+
+.Header-Before > * {
+    margin: auto;
+}
+
+.Header-Titles {
+    margin: 12px 0 8px;
+}
+
+.Header-Title {
+    display: flex;
+    align-items: baseline;
+}
+
+.Header-Titles--primary > .Header-Title {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.Header-Titles--secondary > .Header-Title {
+    font-weight: 450;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+.Header-Titles--tertiary > .Header-Title {
+    font-weight: 450;
+    text-transform: uppercase;
+    font-size: 13px;
+
+    color: var(--grayColor);
+}
+
+.Header-Subtitle {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: var(--grayColor);
+}
+
+.Header-Indicator {
+    margin-left: 6px;
+    font-size: 15px;
+    color: var(--grayColor);
+}
+
+.Header-Aside {
+    margin-right: 15px;
+}

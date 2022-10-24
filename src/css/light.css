@@ -1,0 +1,27 @@
+:root {
+    --colorPrimary: #149C53;
+    --colorOnPrimary: #FFFFFF;
+    --colorPrimaryContainer: #3CCD66;
+    --colorOnPrimaryContainer: #011C0B;
+    --colorSecondary: #595959;
+    --colorOnSecondary: #FFFFFF;
+    --colorSecondaryContainer: #22CA52;
+    --colorOnSecondaryContainer: #0E1F12;
+    --colorBackground: #FAFFF9;
+    --colorOnBackground: #00210E;
+    --colorSurface: #FAFFF9;
+    --colorOnSurface: #000000;
+    --colorSurfaceVariant: #e1ece0;
+    --colorOutline: #777e74;
+
+    --colorNegative: #fd3535;
+    --colorOnNegative: #ffffff;
+
+    --grayColor: #49454F;
+    --likeActive: #F63D3D;
+
+    --rippleColor: #00000010;
+    --navigationColor: #EBF4EF;
+
+    --colorSuccess: #31c400;
+}

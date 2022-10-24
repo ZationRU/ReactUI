@@ -1,0 +1,49 @@
+.TextInput {
+    display: flex;
+}
+
+.TextInput-Label {
+    font-size: 0.9em;
+    line-height: 100%;
+
+    padding-left: var(--zui-text-input-label-padding);
+    padding-right: var(--zui-text-input-label-padding);
+    margin-left: var(--zui-text-input-label-start);
+}
+
+.TextInput-Inner {
+    margin-top: auto;
+    margin-bottom: auto;
+    flex-direction: column;
+
+    border: 2px var(--grayColor) solid;
+    border-radius: 4px;
+
+    padding: 0;
+    width: 100%;
+
+    overflow: hidden;
+}
+
+.TextInput-Input {
+    background: transparent;
+    color: var(--grayColor);
+    font-size: 16px;
+    width: 100%;
+    line-height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+
+    border: none;
+    outline: none;
+}
+
+.TextInput-Inner-Focused {
+    outline: none;
+    color: var(--colorPrimary);
+    border-color: var(--colorPrimary);
+}
+
+.TextInput-Input::placeholder {
+    color: var(--grayColor);
+}

@@ -1,0 +1,52 @@
+.FloatingActionButton {
+    padding: 15px;
+    border: none;
+    border-radius: 16px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+
+    min-height: 35px;
+
+    background: var(--colorAppearance);
+    color: var(--colorOnAppearance);
+}
+
+.FloatingActionButton-Icon {
+    display: flex;
+    width: 85%;
+    height: 85%;
+    margin: auto;
+}
+
+.FloatingActionButton-Icon > svg {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.FloatingActionButton-Text {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+
+.FloatingActionButton--accent {
+    --rippleColor: rgba(255, 255, 255, 0.3);
+    --colorAppearance: var(--colorPrimary);
+    --colorOnAppearance: var(--colorOnPrimary);
+}
+
+.FloatingActionButton--negative {
+    --colorAppearance: var(--colorNegative);
+    --colorOnAppearance: var(--colorOnNegative);
+}
+
+.FloatingActionButton--positive {
+    --colorAppearance: var(--colorSuccess);
+    --colorOnAppearance: var(--colorOnPrimary);
+}

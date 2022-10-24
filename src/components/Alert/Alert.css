@@ -1,0 +1,14 @@
+.Alert-negative {
+    background: var(--colorNegative);
+    color: var(--colorOnNegative);
+}
+
+.Alert-positive {
+    background: var(--colorSuccess);
+    color: var(--colorOnSurface);
+}
+
+.Alert > * > * > .Header-Subtitle {
+    margin-top: 5px;
+    color: currentColor;
+}

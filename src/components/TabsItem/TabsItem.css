@@ -1,0 +1,29 @@
+.TabsItem {
+    color: var(--grayColor);
+    cursor: pointer;
+    padding: var(--zui-tabs-item-padding);
+
+    overflow: hidden;
+    position: relative;
+}
+
+.TabsItem-Active {
+    color: var(--colorPrimary);
+}
+
+.TabsItem-Title {
+    margin-bottom: var(--zui-tabs-item-title-bottom-margin);
+    font-weight: var(--zui-tabs-item-title-font-weight);
+    font-size: var(--zui-tabs-item-title-font-size);
+}
+
+.TabsItem-Indicator {
+    height: var(--zui-tabs-item-indicator-height);
+    width: var(--zui-tabs-item-indicator-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.TabsItem-Indicator {
+    background: var(--colorPrimary);
+}

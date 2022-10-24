@@ -1,0 +1,38 @@
+.Spinner > svg {
+    animation: Spinner var(--zui-spinner-rotare-duration) linear infinite;
+    color: var(--colorPrimary);
+}
+
+.Spinner-small > svg {
+    width: var(--zui-spinner-small-size);
+    height: var(--zui-spinner-small-size);
+}
+
+.Spinner-medium > svg {
+    width: var(--zui-spinner-medium-size);
+    height: var(--zui-spinner-medium-size);
+}
+
+.Spinner-regular > svg {
+    width: var(--zui-spinner-regular-size);
+    height: var(--zui-spinner-regular-size);
+}
+
+.Spinner-large > svg {
+    width: var(--zui-spinner-large-size);
+    height: var(--zui-spinner-large-size);
+}
+
+.Spinner {
+    overflow: hidden;
+}
+
+@-webkit-keyframes Spinner {
+    from{
+        transform: rotate(0deg);
+    }
+
+    to{
+        transform: rotate(360deg);
+    }
+}
