@@ -2,7 +2,7 @@ import ReactComponentProps from 'react-styleguidist/lib/client/rsg-components/Re
 import {Headline} from "../../components/Typography/Headline/Headline";
 import {Body} from "../../components/Typography/Body/Body";
 
-export default function ReactComponent(props: ReactComponentProps) {
+export function ReactComponent(props: ReactComponentProps) {
     const {
         component: {
             name,

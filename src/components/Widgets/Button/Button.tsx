@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classNames';
 import "./Button.css";
-import StateLayer from "../../Layouts/StateLayer/StateLayer";
+import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement>{
     mode: 'filled'|'text'|'outline'
@@ -10,7 +10,7 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement>{
 /**
  * Simple Button
  */
-export default function Button(props: ButtonProps) {
+export function Button(props: ButtonProps) {
     const {
         mode = 'filled',
         children,

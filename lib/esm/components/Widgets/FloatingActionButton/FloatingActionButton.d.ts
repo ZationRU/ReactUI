@@ -5,4 +5,4 @@ export interface FloatingActionButtonProps extends React.HTMLAttributes<HTMLButt
     appearance?: 'surface' | 'primary' | 'secondary' | 'tertiary';
     text?: string;
 }
-export default function FloatingActionButton(props: FloatingActionButtonProps): JSX.Element;
+export function FloatingActionButton(props: FloatingActionButtonProps): JSX.Element;

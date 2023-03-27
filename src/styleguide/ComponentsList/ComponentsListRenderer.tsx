@@ -1,6 +1,6 @@
-import NavigationDrawerItem from "../../components/Widgets/NavigationDrawerItem/NavigationDrawerItem";
+import {NavigationDrawerItem} from "../../components/Widgets/NavigationDrawerItem/NavigationDrawerItem";
 import React, {useState} from "react";
-import Layout from "../../components/Layouts/Layout/Layout";
+import { Layout } from "../../components/Layouts/Layout/Layout";
 
 type TOC = {
     heading: boolean,
@@ -40,7 +40,7 @@ const CItem = (props: TOC) => {
     </>
 }
 
-export default function ComponentsListRenderer(props: ComponentsListRendererProps) {
+export function ComponentsListRenderer(props: ComponentsListRendererProps) {
     return <>
         {
             props.items.map((it, i) => <CItem key={i} {...it}/>)

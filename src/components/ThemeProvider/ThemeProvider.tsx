@@ -6,7 +6,8 @@ export interface ThemeProviderProps {
     theme?: 'light'|'dark'
 }
 
-const ThemeProvider = (props: ThemeProviderProps) => {
+
+export const ThemeProvider = (props: ThemeProviderProps) => {
     const theme = props.theme || 'light'
     // useEffect(() => {
     //
@@ -16,4 +17,3 @@ const ThemeProvider = (props: ThemeProviderProps) => {
         {props.children}
     </div>
 }
-export default ThemeProvider

@@ -3,7 +3,7 @@ import Context from 'react-styleguidist/lib/client/rsg-components/Context';
 import NotFound from 'react-styleguidist/lib/client/rsg-components/NotFound';
 import Sections from 'react-styleguidist/lib/client/rsg-components/Sections';
 import StyleGuideProps from 'react-styleguidist/lib/client/rsg-components/StyleGuide';
-import StyleGuideRenderer from './StyleGuideRenderer';
+import {StyleGuideRenderer} from './StyleGuideRenderer';
 import TableOfContents from "react-styleguidist/lib/client/rsg-components/TableOfContents/TableOfContents";
 
 export default class StyleGuide extends Component<StyleGuideProps> {

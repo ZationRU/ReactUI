@@ -6,7 +6,7 @@ export interface ToolbarProps extends React.HTMLAttributes<HTMLDivElement> {
 
 }
 
-export default function Toolbar(props: ToolbarProps) {
+export function Toolbar(props: ToolbarProps) {
     const {
         className,
         children,

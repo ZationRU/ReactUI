@@ -1,6 +1,6 @@
-import Layout, {LayoutProps} from "../Layout/Layout";
+import {Layout, LayoutProps} from "../Layout/Layout";
 import classNames from "classNames";
-import StateLayer from "../StateLayer/StateLayer";
+import {StateLayer} from "../StateLayer/StateLayer";
 import "./SurfaceLayout.css";
 
 export interface SurfaceLayoutProps extends LayoutProps {
@@ -22,7 +22,7 @@ export interface SurfaceLayoutProps extends LayoutProps {
 
 }
 
-export default function SurfaceLayout(props: SurfaceLayoutProps) {
+export function SurfaceLayout(props: SurfaceLayoutProps) {
     const {
         s = 0,
         className,

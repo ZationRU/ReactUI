@@ -1,8 +1,8 @@
-import ThemeProvider from "../../components/ThemeProvider/ThemeProvider";
-import Layout from "../../components/Layouts/Layout/Layout";
-import Flexible from "../../components/Layouts/Flexible/Flexible";
-import NavigationDrawer from "../../components/Widgets/NavigationDrawer/NavigationDrawer";
-import SurfaceLayout from "../../components/Layouts/SurfaceLayout/SurfaceLayout";
+import {ThemeProvider} from "../../components/ThemeProvider/ThemeProvider";
+import { Layout } from "../../components/Layouts/Layout/Layout";
+import {Flexible} from "../../components/Layouts/Flexible/Flexible";
+import {NavigationDrawer} from "../../components/Widgets/NavigationDrawer/NavigationDrawer";
+import {SurfaceLayout} from "../../components/Layouts/SurfaceLayout/SurfaceLayout";
 import {Label} from "../../components/Typography/Label/Label";
 
 interface StyleGuideRendererProps {
@@ -13,7 +13,7 @@ interface StyleGuideRendererProps {
     hasSidebar?: boolean;
 }
 
-export default function StyleGuideRenderer(props: StyleGuideRendererProps) {
+export function StyleGuideRenderer(props: StyleGuideRendererProps) {
     const {
         title,
         version,

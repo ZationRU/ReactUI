@@ -5,4 +5,4 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLImageElement> {
     text?: string;
     size?: number;
 }
-export default function Avatar(props: AvatarProps): JSX.Element;
+export function Avatar(props: AvatarProps): JSX.Element;

@@ -1,5 +1,5 @@
 import React from "react";
-import StateLayer from "../../Layouts/StateLayer/StateLayer";
+import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 import "./NavigationDrawerItem.css";
 import classNames from "classNames";
 import {Label} from "../../Typography/Label/Label";
@@ -9,7 +9,7 @@ interface NavigationDrawerItemProps extends React.HTMLAttributes<HTMLDivElement>
     badge ?: string
 }
 
-export default function NavigationDrawerItem(props: NavigationDrawerItemProps) {
+export function NavigationDrawerItem(props: NavigationDrawerItemProps) {
     const {
         children,
         className,

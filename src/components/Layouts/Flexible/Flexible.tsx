@@ -18,7 +18,7 @@ export interface FlexibleProps extends React.HTMLAttributes<HTMLDivElement> {
      */
     warp?: boolean
 }
-export default function Flexible(props: FlexibleProps) {
+export function Flexible(props: FlexibleProps) {
     const {
         direction = 'column',
         reverse = false,

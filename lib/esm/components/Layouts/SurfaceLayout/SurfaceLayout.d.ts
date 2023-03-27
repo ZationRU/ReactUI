@@ -16,4 +16,4 @@ export interface SurfaceLayoutProps extends LayoutProps {
      */
     color?: string;
 }
-export default function SurfaceLayout(props: SurfaceLayoutProps): JSX.Element;
+export function SurfaceLayout(props: SurfaceLayoutProps): JSX.Element;

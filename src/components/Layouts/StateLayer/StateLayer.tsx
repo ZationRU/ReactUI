@@ -5,6 +5,6 @@ export interface StateLayerProps extends React.HTMLAttributes<HTMLDivElement> {
 
 }
 
-export default function StateLayer(props: React.HTMLAttributes<HTMLDivElement>) {
+export function StateLayer(props: React.HTMLAttributes<HTMLDivElement>) {
     return <div className="state-layer"/>
 }

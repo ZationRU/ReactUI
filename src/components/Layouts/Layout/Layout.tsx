@@ -11,7 +11,7 @@ export type LayoutProps =
     LayoutSizeProps &
     React.HTMLAttributes<HTMLDivElement>
 
-export default function Layout(props: LayoutProps) {
+export function Layout(props: LayoutProps) {
     const {
         /*
          * Colors

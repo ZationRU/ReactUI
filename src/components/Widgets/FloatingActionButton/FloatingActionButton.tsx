@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from "classNames";
 import "./FloatingActionButton.css";
-import StateLayer from "../../Layouts/StateLayer/StateLayer";
+import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 
 export interface FloatingActionButtonProps extends React.HTMLAttributes<HTMLButtonElement>{
     size?: 'small'|'default'|'expanded'|'large',
@@ -9,7 +9,7 @@ export interface FloatingActionButtonProps extends React.HTMLAttributes<HTMLButt
     text?: string
 }
 
-export default function FloatingActionButton(
+export function FloatingActionButton(
     props: FloatingActionButtonProps
 ) {
     const {
