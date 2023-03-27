@@ -4,4 +4,4 @@ import { LayoutColorsProps } from "./LayoutColorsProps";
 import { LayoutSizeProps } from "./LayoutSizeProps";
 import { LayoutPaddingProps } from "./LayoutPaddingProps";
 export type LayoutProps = LayoutPaddingProps & LayoutMarginProps & LayoutColorsProps & LayoutSizeProps & React.HTMLAttributes<HTMLDivElement>;
-export function Layout(props: LayoutProps): JSX.Element;
+export declare function Layout(props: LayoutProps): JSX.Element;

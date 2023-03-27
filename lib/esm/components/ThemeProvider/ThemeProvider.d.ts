@@ -4,5 +4,4 @@ export interface ThemeProviderProps {
     children: React.ReactNode;
     theme?: 'light' | 'dark';
 }
-declare const ThemeProvider: (props: ThemeProviderProps) => JSX.Element;
-export default ThemeProvider;
+export declare const ThemeProvider: (props: ThemeProviderProps) => JSX.Element;

@@ -1,2 +1,2 @@
 /// <reference types="react" />
-export function CoordinatorLayout(): JSX.Element;
+export declare function CoordinatorLayout(): JSX.Element;

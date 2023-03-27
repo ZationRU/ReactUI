@@ -14,4 +14,4 @@ export interface FlexibleProps extends React.HTMLAttributes<HTMLDivElement> {
      */
     warp?: boolean;
 }
-export function Flexible(props: FlexibleProps): JSX.Element;
+export declare function Flexible(props: FlexibleProps): JSX.Element;

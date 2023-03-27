@@ -6,4 +6,4 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 /**
  * Simple Button
  */
-export function Button(props: ButtonProps): JSX.Element;
+export declare function Button(props: ButtonProps): JSX.Element;

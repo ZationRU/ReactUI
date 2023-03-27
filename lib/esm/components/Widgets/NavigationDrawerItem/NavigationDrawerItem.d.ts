@@ -4,5 +4,5 @@ interface NavigationDrawerItemProps extends React.HTMLAttributes<HTMLDivElement>
     selected?: boolean;
     badge?: string;
 }
-export function NavigationDrawerItem(props: NavigationDrawerItemProps): JSX.Element;
+export declare function NavigationDrawerItem(props: NavigationDrawerItemProps): JSX.Element;
 export {};
