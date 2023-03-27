@@ -1,0 +1,21 @@
+.znui-display-large {
+    font-size: 57px;
+    font-family: Roboto;
+    font-weight: 400;
+    letter-spacing: 0em;
+    line-height: 64px;
+}
+.znui-display-medium {
+    font-size: 45px;
+    font-family: Roboto;
+    font-weight: 400;
+    letter-spacing: 0em;
+    line-height: 52px;
+}
+.znui-display-small {
+    font-size: 36px;
+    font-family: Roboto;
+    font-weight: 400;
+    letter-spacing: 0em;
+    line-height: 44px;
+}

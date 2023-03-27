@@ -1,0 +1,30 @@
+.SurfaceLayout {
+    position: relative;
+    background: var(--znui-surface);
+    --state-layer-opacity: 0;
+}
+
+.SurfaceLayout-1 {
+    --state-layer-opacity: 0.05;
+}
+
+.SurfaceLayout-2 {
+    --state-layer-opacity: 0.08;
+}
+
+.SurfaceLayout-3 {
+    --state-layer-opacity: 0.11;
+}
+
+.SurfaceLayout-4 {
+    --state-layer-opacity: 0.12;
+}
+
+.SurfaceLayout-5 {
+    --state-layer-opacity: 0.14;
+}
+
+.SurfaceLayout > .state-layer {
+    background: var(--znui-primary);
+    opacity: var(--state-layer-opacity);
+}

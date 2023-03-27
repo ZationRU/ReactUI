@@ -1,0 +1,11 @@
+.state-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    opacity: 0;
+
+    transition: background 300ms var(--emphasized-motion);
+}

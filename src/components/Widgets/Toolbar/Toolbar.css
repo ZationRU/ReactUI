@@ -1,0 +1,8 @@
+.Toolbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 4px;
+    gap: 6px;
+    height: 64px;
+}

@@ -1,0 +1,100 @@
+/*paint style*/
+:root {
+    --znui-dark-primary: #66dd8c;
+    --znui-dark-on-primary: #00391a;
+    --znui-dark-primary-container: #005228;
+    --znui-dark-on-primary-container: #83fba6;
+    --znui-dark-secondary: #b7ccb8;
+    --znui-dark-on-secondary: #223526;
+    --znui-dark-secondary-container: #005228;
+    --znui-dark-on-secondary-container: #f3f3f3;
+    --znui-dark-background: #191c19;
+    --znui-dark-on-background: #e2e3de;
+    --znui-dark-surface: #1c1d1c;
+    --znui-dark-on-surface: #e2e3de;
+    --znui-dark-surface-variant: #1d2925;
+    --znui-dark-outline: #697268;
+    --znui-dark-outline-variant: #2a2e2a;
+    --znui-dark-tertiary: #d5c63d;
+    --znui-dark-on-tertiary: #292502;
+    --znui-dark-on-tertiary-container: #fff9ca;
+    --znui-dark-tertiary-container: #a79b28;
+
+    --znui-light-primary: #149c52;
+    --znui-light-on-primary: #ffffff;
+    --znui-light-primary-container: #3bcd66;
+    --znui-light-on-primary-container: #011b0a;
+    --znui-light-secondary: #595959;
+    --znui-light-on-secondary: #ffffff;
+    --znui-light-secondary-container: #b8e2cc;
+    --znui-light-on-secondary-container: #0e1f12;
+    --znui-light-surface-variant: #ebf4ef;
+    --znui-light-background: #f9fff8;
+    --znui-light-on-background: #00210e;
+    --znui-light-surface: #f9fff8;
+    --znui-light-on-surface: #000000;
+    --znui-light-outline: #b4b9b2;
+    --znui-light-outline-variant: #d2daca;
+    --znui-light-tertiary-container: #fcf296;
+    --znui-light-tertiary: #efdb28;
+    --znui-light-on-tertiary: #ffffff;
+    --znui-light-on-tertiary-container: #1b1902;
+}
+
+.ThemeProvider {
+    --znui-primary: var(--znui-light-primary);
+    --znui-on-primary: var(--znui-light-on-primary);
+    --znui-primary-container: var(--znui-light-primary-container);
+    --znui-on-primary-container: var(--znui-light-on-primary-container);
+    --znui-secondary: var(--znui-light-secondary);
+    --znui-on-secondary: var(--znui-light-on-secondary);
+    --znui-secondary-container: var(--znui-light-secondary-container);
+    --znui-on-secondary-container: var(--znui-light-on-secondary-container);
+    --znui-background: var(--znui-light-background);
+    --znui-on-background: var(--znui-light-on-background);
+    --znui-surface: var(--znui-light-surface);
+    --znui-on-surface: var(--znui-light-on-surface);
+    --znui-surface-variant: var(--znui-light-surface-variant);
+    --znui-outline: var(--znui-light-outline);
+    --znui-outline-variant: var(--znui-light-outline-variant);
+    --znui-tertiary: var(--znui-light-tertiary);
+    --znui-on-tertiary: var(--znui-light-on-tertiary);
+    --znui-on-tertiary-container: var(--znui-light-on-tertiary-container);
+    --znui-tertiary-container: var(--znui-light-tertiary-container);
+}
+
+.ThemeProvider[data-theme='dark'] {
+    --znui-primary: var(--znui-dark-primary);
+    --znui-on-primary: var(--znui-dark-on-primary);
+    --znui-primary-container: var(--znui-dark-primary-container);
+    --znui-on-primary-container: var(--znui-dark-on-primary-container);
+    --znui-secondary: var(--znui-dark-secondary);
+    --znui-on-secondary: var(--znui-dark-on-secondary);
+    --znui-secondary-container: var(--znui-dark-secondary-container);
+    --znui-on-secondary-container: var(--znui-dark-on-secondary-container);
+    --znui-background: var(--znui-dark-background);
+    --znui-on-background: var(--znui-dark-on-background);
+    --znui-surface: var(--znui-dark-surface);
+    --znui-on-surface: var(--znui-dark-on-surface);
+    --znui-surface-variant: var(--znui-dark-surface-variant);
+    --znui-outline: var(--znui-dark-outline);
+    --znui-outline-variant: var(--znui-dark-outline-variant);
+    --znui-tertiary: var(--znui-dark-tertiary);
+    --znui-on-tertiary: var(--znui-dark-on-tertiary);
+    --znui-on-tertiary-container: var(--znui-dark-on-tertiary-container);
+    --znui-tertiary-container: var(--znui-dark-tertiary-container);
+}
+
+.ThemeProvider {
+    -webkit-tap-highlight-color: transparent;
+
+    font-family: 'Roboto';
+    --emphasized-decelerate-motion: cubic-bezier(0.3, 0.0, 0.8, 0.15);
+    --emphasized-motion: cubic-bezier(1, 0, 0.25, 0.82);
+}
+
+/*effect style*/
+.elevation-light-3 {
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+

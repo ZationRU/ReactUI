@@ -1,0 +1,21 @@
+.znui-label-large {
+    font-size: 14px;
+    font-family: Roboto;
+    font-weight: 500;
+    letter-spacing: 0em;
+    line-height: 20px;
+}
+.znui-label-medium {
+    font-size: 12px;
+    font-family: Roboto;
+    font-weight: 500;
+    letter-spacing: 0em;
+    line-height: 16px;
+}
+.znui-label-small {
+    font-size: 11px;
+    font-family: Roboto;
+    font-weight: 500;
+    letter-spacing: 0em;
+    line-height: 16px;
+}

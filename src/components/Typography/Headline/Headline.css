@@ -1,0 +1,21 @@
+.znui-headline-large {
+    font-size: 32px;
+    font-family: Roboto;
+    font-weight: 400;
+    letter-spacing: 0em;
+    line-height: 40px;
+}
+.znui-headline-medium {
+    font-size: 28px;
+    font-family: Roboto;
+    font-weight: 400;
+    letter-spacing: 0em;
+    line-height: 36px;
+}
+.znui-headline-small {
+    font-size: 24px;
+    font-family: Roboto;
+    font-weight: 400;
+    letter-spacing: 0em;
+    line-height: 32px;
+}

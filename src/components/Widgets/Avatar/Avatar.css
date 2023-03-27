@@ -1,0 +1,27 @@
+.Avatar {
+    border-radius: 50%;
+    overflow: clip;
+    background: var(--znui-surface);
+    user-select: none;
+}
+
+.Avatar--text {
+    background: var(--znui-primary);
+    color: var(--znui-on-primary);
+    font-style: normal;
+    font-weight: 500;
+
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.Avatar > img {
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+    object-fit: cover;
+    pointer-events: none;
+}
