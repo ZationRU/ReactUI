@@ -1,2 +1,6 @@
 /// <reference types="react" />
-export declare function CoordinatorLayout(): JSX.Element;
+import { LayoutProps } from "../Layout/Layout";
+import "./CoordinatorLayout.css";
+export interface CoordinatorLayoutProps extends LayoutProps {
+}
+export declare function CoordinatorLayout(props: CoordinatorLayoutProps): JSX.Element;

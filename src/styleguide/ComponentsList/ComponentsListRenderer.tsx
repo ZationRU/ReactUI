@@ -40,7 +40,7 @@ const CItem = (props: TOC) => {
     </>
 }
 
-export function ComponentsListRenderer(props: ComponentsListRendererProps) {
+export default function ComponentsListRenderer(props: ComponentsListRendererProps) {
     return <>
         {
             props.items.map((it, i) => <CItem key={i} {...it}/>)

@@ -59,7 +59,6 @@
 .FloatingActionButton > .inner > .icon {
     width: var(--icon-size);
     height: var(--icon-size);
-    background: currentColor;
 
     transition: width 300ms var(--emphasized-motion), height 300ms var(--emphasized-motion);
 }

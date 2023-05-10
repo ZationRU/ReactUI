@@ -8694,7 +8694,7 @@
     "node-dir" "^0.1.10"
     "strip-indent" "^3.0.0"
 
-"react-dom@*", "react-dom@^18.0.0", "react-dom@^18.2.0", "react-dom@>= 16.8.0", "react-dom@>=16.8", "react-dom@>=18.0":
+"react-dom@*", "react-dom@^18.0.0", "react-dom@^18.2.0", "react-dom@>= 16.8.0", "react-dom@>=16 || >=17 || >= 18", "react-dom@>=16.8", "react-dom@>=18.0":
   "integrity" "sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   "version" "18.2.0"
@@ -8876,7 +8876,12 @@
     "webpack-dev-server" "^4.9.2"
     "webpack-merge" "^4.2.2"
 
-"react@*", "react@^18.0.0", "react@^18.2.0", "react@>= 0.14.0", "react@>= 16", "react@>= 16.8.0", "react@>=16.0.0", "react@>=16.8", "react@>=18.0":
+"react-virtuoso@^4.3.6":
+  "integrity" "sha512-t2yzA9QKwMrcECLytVfZcBZMusuQ9Ahgt62SL8uC/sYm9Sk/h14sYTJC0MVO6CAtl3BzKiLKSC79Vp+W3KOXMg=="
+  "resolved" "https://registry.npmjs.org/react-virtuoso/-/react-virtuoso-4.3.6.tgz"
+  "version" "4.3.6"
+
+"react@*", "react@^18.0.0", "react@^18.2.0", "react@>= 0.14.0", "react@>= 16", "react@>= 16.8.0", "react@>=16 || >=17 || >= 18", "react@>=16.0.0", "react@>=16.8", "react@>=18.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"

@@ -6,3 +6,16 @@
     gap: 6px;
     height: 64px;
 }
+
+.Toolbar-Title {
+
+}
+
+.Toolbar-Title-Centered {
+
+}
+
+.Toolbar-NavigationIcon {
+    width: 48px;
+    height: 48px;
+}

@@ -17,6 +17,7 @@ export function FloatingActionButton(
         appearance = 'primary',
         text,
         className,
+        children,
         ...otherProps
     } = props
     
@@ -30,7 +31,7 @@ export function FloatingActionButton(
         <StateLayer/>
         <div className="inner">
             <div className="icon">
-
+                {children}
             </div>
 
             <div className="text">

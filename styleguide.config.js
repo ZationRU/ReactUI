@@ -60,7 +60,7 @@ module.exports = {
         Wrapper: path.join(__dirname, 'src/styleguide/ThemeWrapper'),
         CodeRenderer: path.join(__dirname, 'src/styleguide/CodeRenderer/CodeRenderer'),
         StyleGuideRenderer: path.join(__dirname, 'src/styleguide/StyleGuide/StyleGuideRenderer'),
-        TableOfContentsRenderer: path.join(__dirname, 'src/styleguide/TableOfContents/TableOfContentsRenderer'),
+        // TableOfContentsRenderer: path.join(__dirname, 'src/styleguide/TableOfContents/TableOfContentsRenderer'),
         ComponentsListRenderer: path.join(__dirname, 'src/styleguide/ComponentsList/ComponentsListRenderer'),
         // ReactComponent: path.join(__dirname, 'src/styleguide/ReactComponent/ReactComponent'),
         StyleGuide: path.join(__dirname, 'src/styleguide/StyleGuide/StyleGuide'),

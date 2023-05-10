@@ -29,7 +29,7 @@ export function Avatar(props: AvatarProps) {
         fontSize: 22/60*size
     }}>
         {
-            text&&!image ? text:
+            text&&!image ? text[0]:
                 <img src={image} alt="" {...otherProps} />
         }
     </div>

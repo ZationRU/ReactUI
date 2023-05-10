@@ -11,5 +11,5 @@ type TOC = {
 interface ComponentsListRendererProps {
     items: TOC[];
 }
-export declare function ComponentsListRenderer(props: ComponentsListRendererProps): JSX.Element;
+export default function ComponentsListRenderer(props: ComponentsListRendererProps): JSX.Element;
 export {};
