@@ -1,0 +1,5 @@
+.Card {
+    border-radius: 12px;
+    box-sizing: content-box;
+    border: var(--znui-outline-variant) 1px solid;
+}

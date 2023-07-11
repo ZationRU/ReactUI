@@ -20,13 +20,13 @@ export function Toolbar(props: ToolbarProps) {
         className,
         'Toolbar'
     )}>
-        <div className="Toolbar-NavigationIcon">
+        <div className="inner">
+            <div className="Toolbar-NavigationIcon"></div>
 
+            <Title size="large" className={classNames(
+                "Toolbar-Title",
+                centered&&"Toolbar-Title-Centered",
+            )}>{children}</Title>
         </div>
-
-        <Title size="large" className={classNames(
-            "Toolbar-Title",
-            centered&&"Toolbar-Title-Centered",
-        )}>{children}</Title>
     </SurfaceLayout>
 }

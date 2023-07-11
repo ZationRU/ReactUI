@@ -1,4 +1,4 @@
-import {NavigationDrawerItem} from "../../components/Widgets/NavigationDrawerItem/NavigationDrawerItem";
+import {NavigationDrawer} from "../../components/Widgets/NavigationDrawer/NavigationDrawer";
 import React, {useState} from "react";
 import { Layout } from "../../components/Layouts/Layout/Layout";
 
@@ -20,7 +20,7 @@ const CItem = (props: TOC) => {
     const [open, setOpen] = useState(props.initialOpen);
 
     return <>
-        <NavigationDrawerItem
+        <NavigationDrawer.Item
             onClick={() => {
                 if(props.content!=null) {
                     setOpen(!open)
@@ -32,7 +32,7 @@ const CItem = (props: TOC) => {
             selected={window.location.hash==='#'+(props.href.split('?')[0]+"/"+props.visibleName).split("#")[1]}
         >
             {props.visibleName}
-        </NavigationDrawerItem>
+        </NavigationDrawer.Item>
 
         {open ? <Layout ml={20}>
             {props.content}

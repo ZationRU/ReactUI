@@ -1,44 +1,50 @@
 /*paint style*/
 :root {
-    --znui-dark-primary: #66dd8c;
-    --znui-dark-on-primary: #00391a;
-    --znui-dark-primary-container: #005228;
-    --znui-dark-on-primary-container: #83fba6;
-    --znui-dark-secondary: #b7ccb8;
-    --znui-dark-on-secondary: #223526;
-    --znui-dark-secondary-container: #005228;
-    --znui-dark-on-secondary-container: #f3f3f3;
-    --znui-dark-background: #191c19;
-    --znui-dark-on-background: #e2e3de;
-    --znui-dark-surface: #1c1d1c;
-    --znui-dark-on-surface: #e2e3de;
-    --znui-dark-surface-variant: #1d2925;
-    --znui-dark-outline: #697268;
-    --znui-dark-outline-variant: #2a2e2a;
-    --znui-dark-tertiary: #d5c63d;
-    --znui-dark-on-tertiary: #292502;
-    --znui-dark-on-tertiary-container: #fff9ca;
-    --znui-dark-tertiary-container: #a79b28;
+    --znui-dark-primary: rgba(102, 221, 140, 1);
+    --znui-dark-on-primary: rgba(0, 57, 26, 1);
+    --znui-dark-primary-container: rgba(0, 82, 40, 1);
+    --znui-dark-on-primary-container: rgba(131, 251, 166, 1);
+    --znui-dark-secondary: rgba(183, 204, 184, 1);
+    --znui-dark-on-secondary: rgba(34, 53, 38, 1);
+    --znui-dark-secondary-container: rgba(0, 82, 40, 1);
+    --znui-dark-on-secondary-container: rgba(243, 243, 243, 1);
+    --znui-dark-background: rgba(25, 28, 25, 1);
+    --znui-dark-on-background: rgba(226, 227, 222, 1);
+    --znui-dark-surface: rgba(28, 29, 28, 1);
+    --znui-dark-on-surface: rgba(226, 227, 222, 1);
+    --znui-dark-surface-variant: rgba(29, 41, 37, 1);
+    --znui-dark-outline: rgba(105, 114, 104, 1);
+    --znui-dark-outline-variant: rgba(42, 46, 42, 1);
+    --znui-dark-tertiary: rgba(213, 198, 61, 1);
+    --znui-dark-on-tertiary: rgba(41, 37, 2, 1);
+    --znui-dark-on-tertiary-container: rgba(255, 249, 202, 1);
+    --znui-dark-tertiary-container: rgba(167, 155, 40, 1);
+    --znui-dark-on-surface-variant: rgba(185, 208, 183, 1);
+    --znui-dark-on-error: rgba(235, 244, 239, 1);
+    --znui-dark-error: rgba(208, 42, 32, 1);
 
-    --znui-light-primary: #149c52;
-    --znui-light-on-primary: #ffffff;
-    --znui-light-primary-container: #3bcd66;
-    --znui-light-on-primary-container: #011b0a;
-    --znui-light-secondary: #595959;
-    --znui-light-on-secondary: #ffffff;
-    --znui-light-secondary-container: #b8e2cc;
-    --znui-light-on-secondary-container: #0e1f12;
-    --znui-light-surface-variant: #ebf4ef;
-    --znui-light-background: #f9fff8;
-    --znui-light-on-background: #00210e;
-    --znui-light-surface: #f9fff8;
-    --znui-light-on-surface: #000000;
-    --znui-light-outline: #b4b9b2;
-    --znui-light-outline-variant: #d2daca;
-    --znui-light-tertiary-container: #fcf296;
-    --znui-light-tertiary: #efdb28;
-    --znui-light-on-tertiary: #ffffff;
-    --znui-light-on-tertiary-container: #1b1902;
+    --znui-light-primary: rgba(20, 156, 82, 1);
+    --znui-light-on-primary: rgba(255, 255, 255, 1);
+    --znui-light-primary-container: rgba(59, 205, 102, 1);
+    --znui-light-on-primary-container: rgba(1, 27, 10, 1);
+    --znui-light-secondary: rgba(89, 89, 89, 1);
+    --znui-light-on-secondary: rgba(255, 255, 255, 1);
+    --znui-light-secondary-container: rgba(184, 226, 204, 1);
+    --znui-light-on-secondary-container: rgba(14, 31, 18, 1);
+    --znui-light-surface-variant: rgba(235, 244, 239, 1);
+    --znui-light-background: rgba(249, 255, 248, 1);
+    --znui-light-on-background: rgba(0, 33, 14, 1);
+    --znui-light-surface: rgba(249, 255, 248, 1);
+    --znui-light-on-surface: rgba(0, 0, 0, 1);
+    --znui-light-outline: rgba(180, 185, 178, 1);
+    --znui-light-outline-variant: rgba(210, 218, 202, 1);
+    --znui-light-tertiary-container: rgba(252, 242, 150, 1);
+    --znui-light-tertiary: rgba(239, 219, 40, 1);
+    --znui-light-on-tertiary: rgba(255, 255, 255, 1);
+    --znui-light-on-tertiary-container: rgba(27, 25, 2, 1);
+    --znui-light-on-surface-variant: rgba(70, 79, 69, 1);
+    --znui-light-error: rgba(179, 38, 30, 1);
+    --znui-light-on-error: rgba(249, 255, 248, 1);
 }
 
 .ThemeProvider {
@@ -55,12 +61,15 @@
     --znui-surface: var(--znui-light-surface);
     --znui-on-surface: var(--znui-light-on-surface);
     --znui-surface-variant: var(--znui-light-surface-variant);
+    --znui-on-surface-variant: var(--znui-light-on-surface-variant);
     --znui-outline: var(--znui-light-outline);
     --znui-outline-variant: var(--znui-light-outline-variant);
     --znui-tertiary: var(--znui-light-tertiary);
     --znui-on-tertiary: var(--znui-light-on-tertiary);
     --znui-on-tertiary-container: var(--znui-light-on-tertiary-container);
     --znui-tertiary-container: var(--znui-light-tertiary-container);
+    --znui-on-error: var(--znui-light-on-error);
+    --znui-error: var(--znui-light-error);
 }
 
 .ThemeProvider[data-theme='dark'] {
@@ -77,12 +86,15 @@
     --znui-surface: var(--znui-dark-surface);
     --znui-on-surface: var(--znui-dark-on-surface);
     --znui-surface-variant: var(--znui-dark-surface-variant);
+    --znui-on-surface-variant: var(--znui-dark-on-surface-variant);
     --znui-outline: var(--znui-dark-outline);
     --znui-outline-variant: var(--znui-dark-outline-variant);
     --znui-tertiary: var(--znui-dark-tertiary);
     --znui-on-tertiary: var(--znui-dark-on-tertiary);
     --znui-on-tertiary-container: var(--znui-dark-on-tertiary-container);
     --znui-tertiary-container: var(--znui-dark-tertiary-container);
+    --znui-on-error: var(--znui-dark-on-error);
+    --znui-error: var(--znui-dark-error);
 }
 
 .ThemeProvider {

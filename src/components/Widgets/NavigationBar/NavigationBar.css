@@ -1,0 +1,63 @@
+.NavigationBarItem {
+    position: relative;
+
+    flex: 1 0 0;
+    padding: 16px 0px 12px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    color: var(--znui-on-surface-variant);
+    max-height: 80px;
+}
+
+.NavigationBarItem > .IconContainer > .background-state {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 50%;
+    left: 50%;
+    opacity: 0;
+
+    border-radius: 16px;
+    background: var(--znui-secondary-container);
+    transition: left 200ms var(--emphasized-motion), right 200ms var(--emphasized-motion), opacity 200ms var(--emphasized-motion);
+}
+
+.NavigationBarItem > .IconContainer {
+    position: relative;
+    padding: 4px 20px;
+    border-radius: 16px;
+    overflow: clip;
+}
+
+.NavigationBarItem > .IconContainer > .icon {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    z-index: 1;
+
+    color: currentColor;
+    transition: color 200ms var(--emphasized-motion);
+}
+
+.NavigationBarItem > .Title {
+    color: var(--znui-on-surface-variant);
+    transition: color 200ms var(--emphasized-motion);
+}
+
+.NavigationBarItem--selected > .IconContainer > .icon {
+    color: var(--znui-on-secondary-container);
+}
+
+.NavigationBarItem--selected > .Title {
+    color: var(--znui-on-surface);
+    transition: color 200ms var(--emphasized-motion);
+}
+
+.NavigationBarItem--selected > .IconContainer > .background-state {
+    right: 0;
+    left: 0;
+    opacity: 1;
+}

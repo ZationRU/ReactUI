@@ -4,4 +4,4 @@ interface TableOfContentsRendererProps {
 
 export function TableOfContentsRenderer(props: TableOfContentsRendererProps) {
     return props.children;
-};
+}

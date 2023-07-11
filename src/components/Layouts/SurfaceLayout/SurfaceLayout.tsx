@@ -19,7 +19,6 @@ export interface SurfaceLayoutProps extends LayoutProps {
      * @default var(--znui-on-surface)
      */
     color?: string
-
 }
 
 export function SurfaceLayout(props: SurfaceLayoutProps) {
@@ -28,15 +27,16 @@ export function SurfaceLayout(props: SurfaceLayoutProps) {
         className,
         children,
         color = 'var(--znui-on-surface)',
+        onClick,
         ...otherProps
     } = props
 
-    return <Layout {...otherProps} color={color} className={classNames(
+    return <Layout {...otherProps} color={color} onClick={onClick} className={classNames(
         className,
         "SurfaceLayout",
         "SurfaceLayout-"+s
     )}>
-        <StateLayer/>
+        <StateLayer ripple={!!onClick}/>
         {children}
     </Layout>
 }

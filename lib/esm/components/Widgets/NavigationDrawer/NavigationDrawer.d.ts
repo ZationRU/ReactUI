@@ -1,6 +1,14 @@
-/// <reference types="react" />
 import { LayoutProps } from "../../Layouts/Layout/Layout";
-interface NavigationDrawerProps extends LayoutProps {
+import React, { ReactNode } from "react";
+import "./NavigationDrawer.css";
+export interface NavigationDrawerProps extends LayoutProps {
 }
 export declare function NavigationDrawer(props: NavigationDrawerProps): JSX.Element;
-export {};
+export declare namespace NavigationDrawer {
+    var Item: (props: NavigationDrawerItemProps) => JSX.Element;
+}
+export interface NavigationDrawerItemProps extends React.HTMLAttributes<HTMLDivElement> {
+    selected?: boolean;
+    badge?: string;
+    icon?: ReactNode;
+}

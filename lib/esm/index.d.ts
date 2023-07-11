@@ -1,7 +1,6 @@
 export * from "./components/Layouts/Layout/Layout";
 export * from "./components/Layouts/CoordinatorLayout/CoordinatorLayout";
 export * from "./components/Layouts/SurfaceLayout/SurfaceLayout";
-export * from "./components/Layouts/Flexible/Flexible";
 export * from "./components/Layouts/StateLayer/StateLayer";
 export * from "./components/ThemeProvider/ThemeProvider";
 export * from "./components/Typography/Body/Body";
@@ -13,5 +12,4 @@ export * from "./components/Widgets/Button/Button";
 export * from "./components/Widgets/Avatar/Avatar";
 export * from "./components/Widgets/FloatingActionButton/FloatingActionButton";
 export * from "./components/Widgets/NavigationDrawer/NavigationDrawer";
-export * from "./components/Widgets/NavigationDrawerItem/NavigationDrawerItem";
 export * from "./components/Widgets/Toolbar/Toolbar";

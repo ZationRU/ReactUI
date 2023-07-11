@@ -27,4 +27,5 @@
 .SurfaceLayout > .state-layer {
     background: var(--znui-primary);
     opacity: var(--state-layer-opacity);
+    transition: opacity 300ms var(--emphasized-motion), background-color 300ms var(--emphasized-motion);
 }

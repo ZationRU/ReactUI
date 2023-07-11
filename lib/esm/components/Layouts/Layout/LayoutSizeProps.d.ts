@@ -36,5 +36,15 @@ export interface LayoutSizeProps {
      */
     maxH?: string | number;
     maxHeight?: string | number;
+    /**
+     * Overflow
+     * @default clip
+     */
+    overflow?: 'clip' | 'scroll' | 'auto' | 'hidden';
+    /**
+     * Display
+     * @default block
+     */
+    display?: 'none' | 'block' | 'flex';
 }
 export declare function buildSizeProps(props: LayoutSizeProps): React.CSSProperties;

@@ -3,12 +3,14 @@ import {LayoutMarginProps} from "./LayoutMarginProps";
 import {LayoutColorsProps} from "./LayoutColorsProps";
 import {buildSizeProps, LayoutSizeProps} from "./LayoutSizeProps";
 import {LayoutPaddingProps} from "./LayoutPaddingProps";
+import {LayoutFlexProps} from "./LayoutFlexProps";
 
 export type LayoutProps =
     LayoutPaddingProps &
     LayoutMarginProps &
     LayoutColorsProps &
     LayoutSizeProps &
+    LayoutFlexProps &
     React.HTMLAttributes<HTMLDivElement>
 
 export function Layout(props: LayoutProps) {
@@ -45,9 +47,25 @@ export function Layout(props: LayoutProps) {
         w, width, h, height,
         maxW, maxWidth, minW, minWidth,
         maxH, maxHeight, minH, minHeight,
+        overflow, display,
+
+        /*
+         * Flex
+         */
+        direction,
+        reverse,
+        warp,
+        flex = null,
+        gap = null,
 
         ...otherProps
     } = props
+
+    let flexProps = display === 'flex' ? {
+        flexDirection: direction+(reverse?'-reverse':''),
+        flexWrap: warp || 'nowrap',
+        gap: gap
+    } : undefined
 
     return <div {...otherProps} style={{
         ...style,
@@ -90,5 +108,13 @@ export function Layout(props: LayoutProps) {
         maxWidth: maxW ?? maxWidth,
         minHeight: minH ?? minHeight,
         minWidth: minW ?? minWidth,
-    }}/>
+        overflow: overflow ?? 'clip',
+        display: display,
+
+        /*
+         * Flex
+         */
+        ...flexProps,
+        flex: flex,
+    } as React.CSSProperties}/>
 }

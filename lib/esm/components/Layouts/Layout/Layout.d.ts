@@ -3,5 +3,6 @@ import { LayoutMarginProps } from "./LayoutMarginProps";
 import { LayoutColorsProps } from "./LayoutColorsProps";
 import { LayoutSizeProps } from "./LayoutSizeProps";
 import { LayoutPaddingProps } from "./LayoutPaddingProps";
-export type LayoutProps = LayoutPaddingProps & LayoutMarginProps & LayoutColorsProps & LayoutSizeProps & React.HTMLAttributes<HTMLDivElement>;
+import { LayoutFlexProps } from "./LayoutFlexProps";
+export type LayoutProps = LayoutPaddingProps & LayoutMarginProps & LayoutColorsProps & LayoutSizeProps & LayoutFlexProps & React.HTMLAttributes<HTMLDivElement>;
 export declare function Layout(props: LayoutProps): JSX.Element;
