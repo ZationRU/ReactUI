@@ -3,7 +3,6 @@
     --width: 52px;
     --height: 32px;
     --transition-delay: 80ms;
-    padding-right: 3px;
 
     width: calc(var(--width) - var(--border-width) * 2);
     height: calc(var(--height) - var(--border-width) * 2);
@@ -31,15 +30,27 @@
     width: 16px;
     height: 16px;
     background: var(--znui-outline);
+    color: var(--znui-on-primary);
     border-radius: 128px;
-    margin-left: 5px;
-    margin-right: 5px;
     position: absolute;
 
-    transition: width       var(--transition-delay) linear,
+    transition: width var(--transition-delay) linear,
     height      var(--transition-delay) linear,
     background  var(--transition-delay) linear,
+    border  var(--transition-delay) linear,
+    margin-left  var(--transition-delay) linear,
+    margin-right  var(--transition-delay) linear,
+    opacity  var(--transition-delay) linear,
     transform   var(--transition-delay) linear;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Switch-Thumb > * {
+    width: 16px;
+    height: 16px;
 }
 
 .Switch > input {
@@ -49,8 +60,48 @@
     height: 100%;
 }
 
+.Switch--disabled {
+    pointer-events: none;
+    background: var(--znui-surface);
+    border-color: var(--znui-on-surface);
+    opacity: 0.12;
+}
+
+.Switch--disabled > .Switch-Thumb {
+    background: var(--znui-on-surface);
+    color: var(--znui-surface-variant);
+    opacity: 0.38;
+}
+
+.Switch--checked.Switch--disabled {
+    background: var(--znui-on-surface);
+    border-color: var(--znui-on-surface);
+    opacity: 0.12;
+}
+
+.Switch--checked.Switch--disabled > .Switch-Thumb {
+    background: var(--znui-surface);
+}
+
+.Switch:hover > .Switch-Thumb {
+    background: var(--znui-on-surface-variant);
+}
+
+.Switch:has(> input:focus-visible)  > .Switch-Thumb {
+    background: var(--znui-on-surface-variant);
+}
+
 .Switch--checked > .Switch-Thumb {
+    color: var(--znui-on-primary-container);
     background: var(--znui-on-primary);
+}
+
+.Switch--checked:hover > .Switch-Thumb {
+    background: var(--znui-primary-container);
+}
+
+.Switch--checked:has(> input:focus-visible) > .Switch-Thumb {
+    background: var(--znui-primary-container);
 }
 
 .Switch--checked {
