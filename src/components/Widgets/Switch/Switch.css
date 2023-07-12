@@ -1,34 +1,28 @@
 .Switch {
     --border-width: 3px;
-    --width: 52px;
-    --height: 32px;
     --transition-delay: 80ms;
 
-    width: calc(var(--width) - var(--border-width) * 2);
-    height: calc(var(--height) - var(--border-width) * 2);
-    border: var(--znui-outline) solid var(--border-width);
-    background: var(--znui-surface-variant);
-    border-radius: 52px;
+    width: 52px;
+    height: 32px;
 
     transition: background  var(--transition-delay) linear,
-    border      var(--transition-delay) linear
-;
+        border      var(--transition-delay) linear
+    ;
     cursor: pointer;
+    position: relative;
 
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
-}
 
-.Switch-Thumb-outer {
-    position: relative;
-    height: calc(var(--height) - var(--border-width) * 2);
+    overflow: clip;
 }
 
 .Switch-Thumb {
     width: 16px;
     height: 16px;
+
     background: var(--znui-outline);
     color: var(--znui-on-primary);
     border-radius: 128px;
@@ -53,6 +47,22 @@
     height: 16px;
 }
 
+.Switch > .Switch-Truck {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    transition:
+            background  var(--transition-delay) linear,
+            opacity     var(--transition-delay) linear,
+            border      var(--transition-delay) linear;
+    background: var(--znui-surface-variant);
+    border: var(--znui-outline) solid var(--border-width);
+    border-radius: 52px;
+}
+
 .Switch > input {
     cursor: pointer;
     opacity: 0;
@@ -60,8 +70,51 @@
     height: 100%;
 }
 
+
+.Switch--checked > .Switch-Truck {
+    background: var(--znui-primary);
+    border: var(--znui-primary) solid var(--border-width);
+}
+
+.Switch--checked > .Switch-Thumb {
+    color: var(--znui-on-primary-container);
+    background: var(--znui-on-primary);
+}
+
+
+/*
+ * Hovered
+ */
+
+.Switch:hover > .Switch-Thumb {
+    background: var(--znui-on-surface-variant);
+}
+
+.Switch--checked:hover > .Switch-Thumb {
+    background: var(--znui-primary-container);
+}
+
+/*
+ * Focused
+ */
+
+.Switch:has(> input:focus-visible)  > .Switch-Thumb {
+    background: var(--znui-on-surface-variant);
+}
+
+.Switch--checked:has(> input:focus-visible) > .Switch-Thumb {
+    background: var(--znui-primary-container);
+}
+
+
+/*
+ * Disabled
+ */
 .Switch--disabled {
     pointer-events: none;
+}
+
+.Switch--disabled > .Switch-Truck {
     background: var(--znui-surface);
     border-color: var(--znui-on-surface);
     opacity: 0.12;
@@ -73,7 +126,7 @@
     opacity: 0.38;
 }
 
-.Switch--checked.Switch--disabled {
+.Switch--checked.Switch--disabled > .Switch-Truck {
     background: var(--znui-on-surface);
     border-color: var(--znui-on-surface);
     opacity: 0.12;
@@ -81,30 +134,10 @@
 
 .Switch--checked.Switch--disabled > .Switch-Thumb {
     background: var(--znui-surface);
+    opacity: 1;
 }
 
-.Switch:hover > .Switch-Thumb {
-    background: var(--znui-on-surface-variant);
-}
-
-.Switch:has(> input:focus-visible)  > .Switch-Thumb {
-    background: var(--znui-on-surface-variant);
-}
-
-.Switch--checked > .Switch-Thumb {
-    color: var(--znui-on-primary-container);
-    background: var(--znui-on-primary);
-}
-
-.Switch--checked:hover > .Switch-Thumb {
-    background: var(--znui-primary-container);
-}
-
-.Switch--checked:has(> input:focus-visible) > .Switch-Thumb {
-    background: var(--znui-primary-container);
-}
-
-.Switch--checked {
-    background: var(--znui-primary);
-    border: var(--znui-primary) solid var(--border-width);
+.Switch--checked.Switch--disabled > .Switch-Thumb > * {
+    color: var(--znui-on-surface);
+    opacity: 0.38;
 }

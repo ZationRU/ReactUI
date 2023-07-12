@@ -14,6 +14,7 @@ export function Switch(props: SwitchProps) {
         value = false,
         disabled = false,
         icon,
+        onChange
     } = props
 
     const switchLayout = useRef<HTMLDivElement>(null)
@@ -23,14 +24,16 @@ export function Switch(props: SwitchProps) {
     const onClearDown = useCallback(() => {
         if (thumb.current == null) return;
         thumb.current.style.height = thumb.current.style.width = value||icon ? '24px' : '16px';
-        thumb.current.style.marginLeft = thumb.current.style.marginRight = '4px';
+        thumb.current.style.marginLeft = !value&&!icon ? '8px' : '4px';
+        thumb.current.style.transform = value ? "translateX(calc(100% - 4px))" : "translateX(0)";
     }, [thumb, value, icon])
 
     const onDown = useCallback(() => {
         if (thumb.current == null) return;
         thumb.current.style.height = thumb.current.style.width = "28px";
-        thumb.current.style.marginLeft = thumb.current.style.marginRight = '';
-    }, [thumb])
+        thumb.current.style.marginLeft = value ? '': '3px';
+        thumb.current.style.transform = value ? "translateX(calc(100% - 6px))" : "translateX(0)";
+    }, [thumb, value])
 
     return <div
         className={classNames(
@@ -52,6 +55,9 @@ export function Switch(props: SwitchProps) {
         onPointerOver={onClearDown}
         onPointerMove={onClearDown}
         onPointerCancel={onClearDown}>
+
+        <div className="Switch-Truck"/>
+
         <div 
             className="Switch-Thumb"
             ref={thumb}
@@ -63,16 +69,14 @@ export function Switch(props: SwitchProps) {
                     height: 16,
                     width: 16,
                 }),
-                marginLeft: 4,
+                marginLeft: !value&&!icon ? 8 : 4,
                 marginRight: 4,
-                transform: props.icon ?
-                    (props.value ? "translateX(calc(100% - 8px))" : "translateX(-3px)")
-                :   (props.value ? "translateX(calc(100% - 8px))" : "translateX(0)")
+                transform: value ? "translateX(calc(100% - 4px))" : "translateX(0)"
             }}
         >{icon}</div>
         <input type="checkbox" checked={value} disabled={disabled} ref={checkbox} onChange={event => {
-            if (props.onChange) {
-                props.onChange(event)
+            if (onChange) {
+                onChange(event)
             }
         }}/>
     </div>
