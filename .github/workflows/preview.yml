@@ -11,7 +11,7 @@ on:
 concurrency: preview-${{ github.ref }}
 
 jobs:
-  deploy-preview:
+  publish-preview:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
