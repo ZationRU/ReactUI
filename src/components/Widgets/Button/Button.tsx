@@ -1,5 +1,5 @@
 import React, {ReactNode} from 'react';
-import classNames from 'classNames';
+import classNames from 'classnames';
 import "./Button.css";
 import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 
