@@ -1,0 +1,59 @@
+.Switch {
+    --border-width: 3px;
+    --width: 52px;
+    --height: 32px;
+    --transition-delay: 80ms;
+    padding-right: 3px;
+
+    width: calc(var(--width) - var(--border-width) * 2);
+    height: calc(var(--height) - var(--border-width) * 2);
+    border: var(--znui-outline) solid var(--border-width);
+    background: var(--znui-surface-variant);
+    border-radius: 52px;
+
+    transition: background  var(--transition-delay) linear,
+    border      var(--transition-delay) linear
+;
+    cursor: pointer;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Switch-Thumb-outer {
+    position: relative;
+    height: calc(var(--height) - var(--border-width) * 2);
+}
+
+.Switch-Thumb {
+    width: 16px;
+    height: 16px;
+    background: var(--znui-outline);
+    border-radius: 128px;
+    margin-left: 5px;
+    margin-right: 5px;
+    position: absolute;
+
+    transition: width       var(--transition-delay) linear,
+    height      var(--transition-delay) linear,
+    background  var(--transition-delay) linear,
+    transform   var(--transition-delay) linear;
+}
+
+.Switch > input {
+    cursor: pointer;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.Switch-Thumb[checked=true] {
+    background: var(--znui-on-primary);
+}
+
+.Switch[checked=true] {
+    background: var(--znui-primary);
+    border: var(--znui-primary) solid var(--border-width);
+}
