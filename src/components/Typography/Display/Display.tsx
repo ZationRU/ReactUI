@@ -1,6 +1,6 @@
 import './Display.css';
 import React from "react";
-import classNames from "classNames";
+import classNames from "classnames";
 
 export interface DisplayProps extends React.HTMLAttributes<HTMLElement> {
     size?: 'small'|'medium'|'large'

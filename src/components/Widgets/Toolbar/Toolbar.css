@@ -1,10 +1,12 @@
 .Toolbar {
     height: 64px;
     user-select: none;
+    position: relative;
 }
 
 .Toolbar > .inner {
     padding: 8px 4px;
+    height: max-content;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -19,9 +21,30 @@
 
 .Toolbar-Title-Centered {
     text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.Toolbar-NavigationIconContainer {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    overflow: clip;
+}
+
+.Toolbar-NavigationIconContainer--Hidden {
+    width: 0;
+    margin-left: 12px;
 }
 
 .Toolbar-NavigationIcon {
-    width: 48px;
-    height: 48px;
+    width: 24px;
+    height: 24px;
+    color: var(--znui-on-surface);
 }

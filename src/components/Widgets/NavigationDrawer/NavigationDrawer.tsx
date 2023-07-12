@@ -1,6 +1,6 @@
 import {SurfaceLayout} from "../../Layouts/SurfaceLayout/SurfaceLayout";
 import {Layout, LayoutProps} from "../../Layouts/Layout/Layout";
-import classNames from "classNames";
+import classNames from "classnames";
 import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 import {Label} from "../../Typography/Label/Label";
 import React, {ReactNode} from "react";

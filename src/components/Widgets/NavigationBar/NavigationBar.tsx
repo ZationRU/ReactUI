@@ -3,7 +3,7 @@ import {Layout, LayoutProps} from "../../Layouts/Layout/Layout";
 import React from "react";
 import {SurfaceLayout} from "../../Layouts/SurfaceLayout/SurfaceLayout";
 import {Label} from "../../Typography/Label/Label";
-import classNames from "classNames";
+import classNames from "classnames";
 import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 
 export interface NavigationBarProps extends LayoutProps {

@@ -1,11 +1,14 @@
-import classNames from "classNames";
+import classNames from "classnames";
 import './Toolbar.css';
-import React from "react";
+import React, {ReactNode, MouseEventHandler} from "react";
 import {Title} from "../../Typography/Title/Title";
-import {SurfaceLayout} from "../../Layouts/SurfaceLayout/SurfaceLayout";
+import {SurfaceLayout, SurfaceLayoutProps} from "../../Layouts/SurfaceLayout/SurfaceLayout";
+import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 
-export interface ToolbarProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ToolbarProps extends SurfaceLayoutProps {
     centered?: boolean
+    navigationIcon?: ReactNode
+    onClickNavigationIcon?: MouseEventHandler<HTMLDivElement>
 }
 
 export function Toolbar(props: ToolbarProps) {
@@ -13,15 +16,23 @@ export function Toolbar(props: ToolbarProps) {
         className,
         children,
         centered,
+        navigationIcon,
+        onClickNavigationIcon,
         ...otherProps
     } = props
 
-    return <SurfaceLayout s={0} className={classNames(
+    return <SurfaceLayout className={classNames(
         className,
         'Toolbar'
-    )}>
+    )} {...otherProps}>
         <div className="inner">
-            <div className="Toolbar-NavigationIcon"></div>
+            <div className={classNames({
+                "Toolbar-NavigationIconContainer": true,
+                "Toolbar-NavigationIconContainer--Hidden": !navigationIcon
+            })} onClick={onClickNavigationIcon}>
+                <StateLayer/>
+                {navigationIcon&&<div className="Toolbar-NavigationIcon">{navigationIcon}</div>}
+            </div>
 
             <Title size="large" className={classNames(
                 "Toolbar-Title",

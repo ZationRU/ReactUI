@@ -1,6 +1,6 @@
 import './Title.css';
 import React from "react";
-import classNames from "classNames";
+import classNames from "classnames";
 
 export interface TitleProps extends React.HTMLAttributes<HTMLElement> {
     size?: 'small'|'medium'|'large'

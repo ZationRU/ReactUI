@@ -1,6 +1,6 @@
 import './Body.css';
 import React from "react";
-import classNames from "classNames";
+import classNames from "classnames";
 
 export interface BodyProps extends React.HTMLAttributes<HTMLElement> {
     size?: 'small'|'medium'|'large'
