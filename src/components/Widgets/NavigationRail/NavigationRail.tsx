@@ -66,6 +66,6 @@ NavigationRail.Item = (props: NavigationRailItemProps) => {
             </div>
         </div>
 
-        {title&&selected&&<Label size="medium" className="Title">{title}</Label>}
+        {title&&<Label size="medium" className="title">{title}</Label>}
     </Layout>
 }

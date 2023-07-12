@@ -98,13 +98,19 @@
     transition: color 200ms var(--emphasized-motion);
 }
 
+.NavigationRailItem > .title {
+    opacity: 0;
+    color: var(--znui-on-surface);
+    transition: opacity 200ms var(--emphasized-motion);
+}
+
 .NavigationRailItem--selected > .IconContainer > .icon {
     color: var(--znui-on-secondary-container);
 }
 
-.NavigationRailItem--selected > .Title {
-    color: var(--znui-on-surface);
-    transition: color 200ms var(--emphasized-motion);
+.NavigationRailItem--selected > .title {
+    opacity: 1;
+    transition: opacity 200ms var(--emphasized-decelerate-motion);
 }
 
 .NavigationRailItem--selected > .IconContainer > .background-state {
