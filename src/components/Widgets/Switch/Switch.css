@@ -49,11 +49,11 @@
     height: 100%;
 }
 
-.Switch-Thumb[checked=true] {
+.Switch--checked > .Switch-Thumb {
     background: var(--znui-on-primary);
 }
 
-.Switch[checked=true] {
+.Switch--checked {
     background: var(--znui-primary);
     border: var(--znui-primary) solid var(--border-width);
 }
