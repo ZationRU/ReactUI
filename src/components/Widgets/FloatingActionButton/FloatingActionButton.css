@@ -5,6 +5,7 @@
     overflow: clip;
     position: relative;
     transition: padding 300ms var(--emphasized-motion);
+    user-select: none;
 }
 
 .FloatingActionButton:enabled {
@@ -64,6 +65,7 @@
 }
 
 .FloatingActionButton > .inner > .text {
+    user-select: none;
     transition:
             max-width 200ms var(--emphasized-decelerate-motion),
             opacity 200ms var(--emphasized-decelerate-motion),
@@ -80,8 +82,6 @@
     padding-right: 0;
     margin-left: -40%;
     opacity: 0;
-
-
 }
 
 .FloatingActionButton--expanded > .inner > .text {

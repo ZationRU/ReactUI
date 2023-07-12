@@ -1,4 +1,6 @@
 .NavigationDrawerItem {
+    cursor: pointer;
+
     position: relative;
     display: flex;
     flex-direction: row;
@@ -46,6 +48,8 @@
     flex: none;
     order: 1;
     flex-grow: 1;
+    cursor: pointer;
+    user-select: none;
 }
 
 .NavigationDrawerItem > .inner > .badge {

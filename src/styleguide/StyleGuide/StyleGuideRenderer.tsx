@@ -43,9 +43,7 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
                 </div>
             </Layout>
 
-            <Layout pl={20} style={{
-                flex: 1,
-            }}>
+            <Layout pl={20} flex={1}>
                 {children}
             </Layout>
         </Layout>
