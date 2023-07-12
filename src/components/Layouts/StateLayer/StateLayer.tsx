@@ -14,25 +14,33 @@ export function StateLayer(props: StateLayerProps) {
     const state = useStateLayer()
 
     return <>
-        <div className="state-layer"
-             onPointerDown={ripple ? state.performDown : undefined}
-             onPointerCancel={state.performUp}
-             onPointerLeave={state.performUp}
-        />
-        {ripple && <span ref={state.rippleSpanRef} className="Ripple" onPointerUp={state.performUp}/>}
-    </>
+        <div className="state-layer" onPointerLeave={state.performUp}/>
+        {ripple &&
+            <>
+                <div className="ripple-trigger"
+                     ref={state.rippleTriggerRef}
+                     onPointerUp={state.performUp}
+                     onPointerCancel={state.performUp}
+                     onPointerDown={ripple ? state.performDown : undefined}/>
+            </>
+        }
+        </>
 }
 
 export interface StateLayerStateData {
-    rippleSpanRef: MutableRefObject<HTMLSpanElement | null>
+    rippleTriggerRef: MutableRefObject<HTMLDivElement | null>
     performDown: (event: PointerEvent<HTMLDivElement>) => void
     performUp: (event: PointerEvent<HTMLDivElement>) => void
 }
 
 export const useStateLayer = (): StateLayerStateData => {
-    const rippleSpanRef = useRef<HTMLSpanElement | null>(null)
+    const rippleTriggerRef = useRef<HTMLDivElement | null>(null)
     const msOfRipple = 400
-    let startedRipple = 0
+    const ripples: {
+        startTime: number,
+        element: HTMLSpanElement
+    }[] = []
+
 
     const performDown = (event: PointerEvent<HTMLDivElement>) => {
         console.log("down")
@@ -41,34 +49,50 @@ export const useStateLayer = (): StateLayerStateData => {
 
         const diameter = Math.max(rippleTarget.clientWidth, rippleTarget.clientHeight);
         const radius = diameter / 2;
+        
 
-        const rippleSpan = rippleSpanRef.current
-        if (rippleSpan === null) return
+
+        if (rippleTriggerRef.current === null) return;
+
+        const rippleSpan = document.createElement('span')
+
         rippleSpan.className = "Ripple Ripple-Animation"
         rippleSpan.style.width = rippleSpan.style.height = `${diameter}px`;
         rippleSpan.style.left = `${event.clientX - rect.left - radius}px`;
         rippleSpan.style.top = `${event.clientY - rect.top - radius}px`;
+        rippleTriggerRef.current.parentNode!!.insertBefore(rippleSpan, rippleTriggerRef.current)
 
-        startedRipple = new Date().getMilliseconds();
+        ripples.push(
+            {
+                startTime: new Date().getMilliseconds(),
+                element: rippleSpan
+            }
+        )
     }
 
     const performUp = (event: PointerEvent<HTMLDivElement>) => {
         console.log("up")
 
-        const rippleSpan = rippleSpanRef.current
-        if (rippleSpan === null) return
+        const now = new Date().getMilliseconds();
+        ripples.forEach(({ startTime, element}) => {
+            const delayTime = -(now - startTime)
+            console.log(delayTime)
 
-        const delayTime = new Date().getMilliseconds() - startedRipple
-        console.log(delayTime)
+            setTimeout(() => {
+                element.className = "Ripple Ripple-Hidden"
 
-        setTimeout(() => {
-            rippleSpan.className = "Ripple Ripple-Hidden"
-            rippleSpan.style.height = rippleSpan.style.width = rippleSpan.style.left = rippleSpan.style.top = ""
-        }, delayTime >= 0 ? 0 : msOfRipple + delayTime)
+                setTimeout(() => {
+                    element.style.width = element.style.height =
+                        element.style.left = element.style.top = "";
+
+                    element.className = "Ripple"
+                }, 300)
+            }, delayTime < 0 ?  msOfRipple - delayTime: 0)
+        })
     }
 
     return {
-        rippleSpanRef,
+        rippleTriggerRef,
         performDown,
         performUp
     }

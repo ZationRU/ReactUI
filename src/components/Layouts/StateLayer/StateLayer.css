@@ -7,7 +7,7 @@
     background: transparent;
     opacity: 0;
 
-    transition: background 300ms var(--emphasized-motion);
+    transition: background-color 300ms var(--emphasized-motion);
 }
 
 .Ripple-Animation {
@@ -18,9 +18,18 @@
     opacity: 0.12;
 }
 
+.ripple-trigger {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 .Ripple {
     position: absolute;
-    transition: background-color 400ms;
+    transition: opacity 300ms var(--emphasized-motion);
+    opacity: 0.12;
 }
 
 .Ripple-Fixed {
@@ -31,7 +40,9 @@
 }
 
 .Ripple-Hidden {
-    background-color: transparent;
+    background-color: var(--znui-primary);
+    transform: scale(4);
+    opacity: 0;
 }
 
 @keyframes ripple {
