@@ -43,6 +43,8 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           path: './styleguide'
-      - name: Deploy to GitHub Pages
+      - name: Deploy 🚀
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build2
