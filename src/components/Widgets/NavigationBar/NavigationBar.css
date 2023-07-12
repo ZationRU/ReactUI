@@ -10,6 +10,7 @@
     align-self: stretch;
     color: var(--znui-on-surface-variant);
     max-height: 80px;
+    cursor: pointer;
 }
 
 .NavigationBarItem > .IconContainer > .background-state {
@@ -43,6 +44,8 @@
 }
 
 .NavigationBarItem > .Title {
+    cursor: pointer;
+    user-select: none;
     color: var(--znui-on-surface-variant);
     transition: color 200ms var(--emphasized-motion);
 }

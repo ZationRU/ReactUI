@@ -52,6 +52,7 @@
     position: relative;
     height: 56px;
     width: inherit;
+    cursor: pointer;
 
     gap: 4px;
     display: flex;
@@ -81,6 +82,7 @@
     padding: 4px 16px;
     border-radius: 16px;
     overflow: clip;
+    user-select: none;
 }
 
 .NavigationRailItem > .IconContainer > .icon {
@@ -93,7 +95,9 @@
     transition: color 200ms var(--emphasized-motion);
 }
 
-.NavigationRailItem > .Title {
+.NavigationRailItem > .title {
+    user-select: none;
+    cursor: pointer;
     color: var(--znui-on-surface-variant);
     transition: color 200ms var(--emphasized-motion);
 }
