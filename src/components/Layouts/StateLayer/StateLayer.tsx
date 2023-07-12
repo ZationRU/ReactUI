@@ -74,7 +74,7 @@ export const useStateLayer = (): StateLayerStateData => {
         console.log("up")
 
         const now = new Date().getMilliseconds();
-        ripples.forEach(({ startTime, element}) => {
+        ripples.forEach(({ startTime, element}, index) => {
             const delayTime = -(now - startTime)
             console.log(delayTime)
 
@@ -86,6 +86,11 @@ export const useStateLayer = (): StateLayerStateData => {
                         element.style.left = element.style.top = "";
 
                     element.className = "Ripple"
+
+                    setTimeout(() => {
+                        element.remove()
+                        ripples.slice(index, 1)
+                    }, 20)
                 }, 300)
             }, delayTime < 0 ?  msOfRipple - delayTime: 0)
         })
