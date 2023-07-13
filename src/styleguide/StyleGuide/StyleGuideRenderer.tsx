@@ -37,7 +37,7 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
         hasSidebar,
     } = props
 
-    const [page, setPage] = useState(window.location.hash==='' ? 'main' : window.location.hash.substring(1))
+    const [page, setPage] = useState(window.location.hash==='' ? 'home' : window.location.hash.substring(1))
 
     const hashChangeHandler = useCallback(() => {
         setPage(window.location.hash.substring(1));
