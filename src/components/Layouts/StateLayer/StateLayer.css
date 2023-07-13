@@ -7,7 +7,7 @@
     background: transparent;
     opacity: 0;
 
-    transition: background-color 300ms var(--emphasized-motion);
+    transition: background-color 300ms var(--emphasized-motion), opacity 300ms var(--emphasized-motion);
 }
 
 .Ripple-Animation {

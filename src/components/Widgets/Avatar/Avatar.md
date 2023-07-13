@@ -1,5 +1,3 @@
-# Avatar
-
 ```js
 <Avatar size={24} text='L'/>
 <Avatar size={48} text='L'/>

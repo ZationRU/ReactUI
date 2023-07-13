@@ -1,3 +1,4 @@
+import React from "react";
 import { Virtuoso } from 'react-virtuoso'
 import {Layout, LayoutProps} from "../Layout/Layout";
 

@@ -1,5 +1,3 @@
-# NavigationRail
-
 ```tsx
 import {Layout} from "../../Layouts/Layout/Layout";
 import {FloatingActionButton} from "../FloatingActionButton/FloatingActionButton";

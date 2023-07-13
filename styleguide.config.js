@@ -48,26 +48,49 @@ const webpackConfig = {
     ],
 };
 
+const tsParse = require('react-docgen-typescript')
+    .withCustomConfig('./tsconfig.json', {
+        shouldExtractValuesFromUnion: true,
+        propFilter: (prop, component) => {
+            if (prop.declarations !== undefined && prop.declarations.length > 0) {
+                const hasPropAdditionalDescription = prop.declarations.find((declaration) => {
+                    return !declaration.fileName.includes("node_modules");
+                });
 
+                return Boolean(hasPropAdditionalDescription);
+            }
+
+            return true;
+        },
+    })
+    .parse
 
 module.exports = {
     title: "ZnUI Styleguide",
     webpackConfig,
-    propsParser: require('react-docgen-typescript').withDefaultConfig({
-        shouldExtractValuesFromUnion: true
-    }).parse,
+    propsParser: tsParse,
     styleguideComponents: {
         Wrapper: path.join(__dirname, 'src/styleguide/ThemeWrapper'),
         CodeRenderer: path.join(__dirname, 'src/styleguide/CodeRenderer/CodeRenderer'),
         StyleGuideRenderer: path.join(__dirname, 'src/styleguide/StyleGuide/StyleGuideRenderer'),
         // TableOfContentsRenderer: path.join(__dirname, 'src/styleguide/TableOfContents/TableOfContentsRenderer'),
         ComponentsListRenderer: path.join(__dirname, 'src/styleguide/ComponentsList/ComponentsListRenderer'),
-        // ReactComponent: path.join(__dirname, 'src/styleguide/ReactComponent/ReactComponent'),
+        ReactComponent: path.join(__dirname, 'src/styleguide/ReactComponent/ReactComponent'),
+        HeadingRenderer: path.join(__dirname, 'src/styleguide/HeadingRenderer/HeadingRenderer'),
+        Heading: path.join(__dirname, 'src/styleguide/HeadingRenderer/Heading'),
         StyleGuide: path.join(__dirname, 'src/styleguide/StyleGuide/StyleGuide'),
+        Editor: path.join(__dirname, 'src/styleguide/Editor/Editor'),
+        'Markdown/MarkdownHeading': path.join(__dirname, 'src/styleguide/MarkdownHeading/MarkdownHeading'),
     },
 
     template: {
         head: {
+            meta: [
+                {
+                    name: 'viewport',
+                    content: 'viewport-fit=cover, width=device-width, initial-scale=1.0'
+                }
+            ],
             links: [
                 {
                     rel: 'preconnect',
@@ -131,35 +154,23 @@ module.exports = {
     exampleMode: 'expand',
     sections: [
         {
-            name: 'Introduction',
-            content: 'README.md',
-            expand: true,
+            name: 'Layouts',
+            components: [
+                'src/components/Layouts/**/*.{jsx,tsx}',
+                'src/components/Flexible/*.{jsx,tsx}',
+                'src/components/**Layout/*.{jsx,tsx}',
+            ]
         },
         {
-            name: 'Components',
-            expand: true,
-            pagePerSection: true,
-            sections: [
-                {
-                    name: 'Layouts',
-                    components: [
-                        'src/components/Layouts/**/*.{jsx,tsx}',
-                        'src/components/Flexible/*.{jsx,tsx}',
-                        'src/components/**Layout/*.{jsx,tsx}',
-                    ]
-                },
-                {
-                    name: 'Widgets',
-                    components: [
-                        'src/components/Widgets/**/*.{jsx,tsx}',
-                    ]
-                },
-                {
-                    name: 'Typography',
-                    components: [
-                        'src/components/Typography/**/*.{jsx,tsx}',
-                    ]
-                }
+            name: 'Widgets',
+            components: [
+                'src/components/Widgets/**/*.{jsx,tsx}',
+            ]
+        },
+        {
+            name: 'Typography',
+            components: [
+                'src/components/Typography/**/*.{jsx,tsx}',
             ]
         }
     ]

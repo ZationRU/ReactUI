@@ -1,5 +1,3 @@
-# CoordinatorLayout
-
 ```tsx
 import {Toolbar} from "../../Widgets/Toolbar/Toolbar";
 import {Title} from "../../Typography/Title/Title";

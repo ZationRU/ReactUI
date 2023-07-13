@@ -1,5 +1,3 @@
-# NavigationBar
-
 ```tsx
     const [selected, setSelected] = React.useState('home');
 

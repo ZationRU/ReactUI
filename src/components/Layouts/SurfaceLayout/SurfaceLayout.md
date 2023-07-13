@@ -1,5 +1,3 @@
-# SurfaceLayout
-
 ```js
 import React from 'react';
 const [animatedS, setS] = React.useState(0);

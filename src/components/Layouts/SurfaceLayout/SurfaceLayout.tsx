@@ -1,3 +1,4 @@
+import React from "react";
 import {Layout, LayoutProps} from "../Layout/Layout";
 import classNames from "classnames";
 import {StateLayer} from "../StateLayer/StateLayer";

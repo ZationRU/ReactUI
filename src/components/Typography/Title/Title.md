@@ -1,5 +1,3 @@
-# Title
-
 ```js
 <Title size="large">Title Large</Title>
 <Title size="medium">Title Medium</Title>

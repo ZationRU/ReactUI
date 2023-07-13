@@ -43,6 +43,11 @@
     transition: color 200ms var(--emphasized-motion);
 }
 
+.NavigationBarItem--hidden {
+    justify-content: center;
+    padding: 0;
+}
+
 .NavigationBarItem > .Title {
     cursor: pointer;
     user-select: none;

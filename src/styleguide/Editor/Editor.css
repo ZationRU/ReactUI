@@ -1,0 +1,9 @@
+.Editor__inner {
+    max-height: 400px;
+    overflow: auto;
+}
+
+.Editor__inner > textarea {
+    border: none;
+    outline: none;
+}
