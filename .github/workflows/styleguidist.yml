@@ -11,7 +11,7 @@ on:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -22,10 +22,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
   publish:
-    needs: [build]
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -42,3 +39,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: './styleguide'
+
