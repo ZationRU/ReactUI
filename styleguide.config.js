@@ -154,35 +154,23 @@ module.exports = {
     exampleMode: 'expand',
     sections: [
         {
-            name: 'Introduction',
-            content: 'README.md',
-            expand: true,
+            name: 'Layouts',
+            components: [
+                'src/components/Layouts/**/*.{jsx,tsx}',
+                'src/components/Flexible/*.{jsx,tsx}',
+                'src/components/**Layout/*.{jsx,tsx}',
+            ]
         },
         {
-            name: 'Components',
-            expand: true,
-            pagePerSection: true,
-            sections: [
-                {
-                    name: 'Layouts',
-                    components: [
-                        'src/components/Layouts/**/*.{jsx,tsx}',
-                        'src/components/Flexible/*.{jsx,tsx}',
-                        'src/components/**Layout/*.{jsx,tsx}',
-                    ]
-                },
-                {
-                    name: 'Widgets',
-                    components: [
-                        'src/components/Widgets/**/*.{jsx,tsx}',
-                    ]
-                },
-                {
-                    name: 'Typography',
-                    components: [
-                        'src/components/Typography/**/*.{jsx,tsx}',
-                    ]
-                }
+            name: 'Widgets',
+            components: [
+                'src/components/Widgets/**/*.{jsx,tsx}',
+            ]
+        },
+        {
+            name: 'Typography',
+            components: [
+                'src/components/Typography/**/*.{jsx,tsx}',
             ]
         }
     ]

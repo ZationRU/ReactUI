@@ -1,12 +1,12 @@
-import {SurfaceLayout} from "../../Layouts/SurfaceLayout/SurfaceLayout";
-import {Layout, LayoutProps} from "../../Layouts/Layout/Layout";
+import {SurfaceLayout, SurfaceLayoutProps} from "../../Layouts/SurfaceLayout/SurfaceLayout";
+import {Layout} from "../../Layouts/Layout/Layout";
 import classNames from "classnames";
 import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 import {Label} from "../../Typography/Label/Label";
 import React, {ReactNode} from "react";
 import "./NavigationDrawer.css";
 
-export interface NavigationDrawerProps extends LayoutProps {
+export interface NavigationDrawerProps extends SurfaceLayoutProps {
 
 }
 
