@@ -1,3 +1,4 @@
+import React from "react";
 import {ThemeProvider} from "../../components/ThemeProvider/ThemeProvider";
 import { Layout } from "../../components/Layouts/Layout/Layout";
 import {NavigationDrawer} from "../../components/Widgets/NavigationDrawer/NavigationDrawer";
@@ -35,14 +36,19 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
     const {breakpointWidth} = useAdaptive()
 
     return <ThemeProvider>
-        <Layout bg="var(--znui-background)" color="var(--znui-on-background)" display='flex' direction={
+        <Layout bg="var(--znui-background)" color="var(--znui-on-background)" display='flex' style={{
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0
+        }} direction={
             breakpointWidth !== LayoutBreakPointsValues.esm ? 'row': 'column'
-        } reverse={breakpointWidth === LayoutBreakPointsValues.esm} minH="100vh" maxH="100vh">
+        } reverse={breakpointWidth === LayoutBreakPointsValues.esm}>
             {
                 breakpointWidth === LayoutBreakPointsValues.esm && <>
                     <NavigationBar pb="env(safe-area-inset-bottom)">
                         <NavigationBar.Item
-                            label="hidden"
                             title="Страницы"
                             selected={page==='list'}
                             onClick={() => setPage('list')}
@@ -51,7 +57,6 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
                         </NavigationBar.Item>
 
                         <NavigationBar.Item
-                            label="hidden"
                             title="Просмотр"
                             selected={page==='view'}
                             onClick={() => setPage('view')}
@@ -107,7 +112,7 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
             }
 
 
-            <Layout pl={20} flex={1} overflow="auto">
+            <Layout flex={1} overflow="auto">
                 {
                     page === 'view' || breakpointWidth >= LayoutBreakPointsValues.lg ?
                         children :

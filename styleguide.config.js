@@ -48,14 +48,27 @@ const webpackConfig = {
     ],
 };
 
+const tsParse = require('react-docgen-typescript')
+    .withCustomConfig('./tsconfig.json', {
+        shouldExtractValuesFromUnion: true,
+        propFilter: (prop, component) => {
+            if (prop.declarations !== undefined && prop.declarations.length > 0) {
+                const hasPropAdditionalDescription = prop.declarations.find((declaration) => {
+                    return !declaration.fileName.includes("node_modules");
+                });
 
+                return Boolean(hasPropAdditionalDescription);
+            }
+
+            return true;
+        },
+    })
+    .parse
 
 module.exports = {
     title: "ZnUI Styleguide",
     webpackConfig,
-    propsParser: require('react-docgen-typescript').withDefaultConfig({
-        shouldExtractValuesFromUnion: true
-    }).parse,
+    propsParser: tsParse,
     styleguideComponents: {
         Wrapper: path.join(__dirname, 'src/styleguide/ThemeWrapper'),
         CodeRenderer: path.join(__dirname, 'src/styleguide/CodeRenderer/CodeRenderer'),
@@ -63,7 +76,11 @@ module.exports = {
         // TableOfContentsRenderer: path.join(__dirname, 'src/styleguide/TableOfContents/TableOfContentsRenderer'),
         ComponentsListRenderer: path.join(__dirname, 'src/styleguide/ComponentsList/ComponentsListRenderer'),
         ReactComponent: path.join(__dirname, 'src/styleguide/ReactComponent/ReactComponent'),
+        HeadingRenderer: path.join(__dirname, 'src/styleguide/HeadingRenderer/HeadingRenderer'),
+        Heading: path.join(__dirname, 'src/styleguide/HeadingRenderer/Heading'),
         StyleGuide: path.join(__dirname, 'src/styleguide/StyleGuide/StyleGuide'),
+        Editor: path.join(__dirname, 'src/styleguide/Editor/Editor'),
+        'Markdown/MarkdownHeading': path.join(__dirname, 'src/styleguide/MarkdownHeading/MarkdownHeading'),
     },
 
     template: {

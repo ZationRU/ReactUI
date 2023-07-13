@@ -3,8 +3,8 @@ import React from "react";
 import classNames from "classnames";
 
 export interface TitleProps extends React.HTMLAttributes<HTMLElement> {
-    size?: 'small'|'medium'|'large'
-    Component?: React.ElementType
+    size?: 'small'|'medium'|'large';
+    Component?: React.ElementType;
 }
 
 export const Title = (props: TitleProps) => {
