@@ -123,12 +123,7 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
                         width: "inherit"
                     }}>
                         <SurfaceLayout s={1} overflow={"auto"} maxH="100vh" minH="100vh">
-                            <NavigationDrawer pl={10} pt={10} pr={0}>
-                                <img src="https://i.ibb.co/HXYdZgf/Type-Full.png" alt="Zation UI" style={{
-                                    height: 50,
-                                    marginBottom: 12
-                                }}/>
-
+                            <NavigationDrawer mh={10} mv={10}>
                                 <NavigationDrawer.Item
                                     icon={<HomeIcon/>}
                                     selected={page==='home'}
