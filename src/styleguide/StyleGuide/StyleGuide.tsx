@@ -30,7 +30,6 @@ export default class StyleGuide extends Component<StyleGuideProps> {
                     version={config.version}
                     toc={allSections ? <TableOfContents sections={allSections} /> : null}
                 >
-                    {this.isRootUrl() && <Sections sections={[allSections!![0]]} depth={1} />}
                     {!this.isRootUrl() && sections.length === 1 && <Sections sections={sections} depth={1} />}
                     {!this.isRootUrl() && !sections.length && <NotFound />}
                 </StyleGuideRenderer>
