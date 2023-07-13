@@ -1,5 +1,3 @@
-# Switch
-
 ```tsx
     import {Layout} from "../../Layouts/Layout/Layout"
 

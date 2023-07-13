@@ -37,14 +37,8 @@ jobs:
         run: |
           npm ci
           npm run build
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: './styleguide'
       - name: Deploy 🚀
         id: deployment
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: build2
+          folder: './styleguide'

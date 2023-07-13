@@ -1,5 +1,3 @@
-# Toolbar
-
 ```js
 import {Layout} from "../../Layouts/Layout/Layout"
 import {Button} from "../Button/Button"

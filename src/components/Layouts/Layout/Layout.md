@@ -1,5 +1,3 @@
-# Layout
-
 ```js
 <Layout bg="red" w={100} h={50}/>
 <Layout bg="blue" w={100} h={50} ml={20}/>

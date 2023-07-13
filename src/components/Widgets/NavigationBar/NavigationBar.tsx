@@ -17,6 +17,7 @@ export function NavigationBar(props: NavigationBarProps) {
 export interface NavigationBarItemProps extends LayoutProps {
     title?: string,
     selected?: boolean
+    label?: 'always'|'hidden'
 }
 
 NavigationBar.Item = (props: NavigationBarItemProps) => {
@@ -24,13 +25,14 @@ NavigationBar.Item = (props: NavigationBarItemProps) => {
         children,
         title = "None",
         selected = false,
+        label = 'always',
         ...layoutProps
     } = props
 
     return <Layout {...layoutProps} className={
-        classNames({
+        classNames("NavigationBarItem--"+label, {
             "NavigationBarItem": true,
-            "NavigationBarItem--selected": selected
+            "NavigationBarItem--selected": selected,
         })
     }>
         <div className="IconContainer">
@@ -42,6 +44,6 @@ NavigationBar.Item = (props: NavigationBarItemProps) => {
             </div>
         </div>
 
-        <Label size="medium" className="Title">{title}</Label>
+        {label==='always'&&<Label size="medium" className="Title">{title}</Label>}
     </Layout>
 }

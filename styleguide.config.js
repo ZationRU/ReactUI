@@ -62,12 +62,18 @@ module.exports = {
         StyleGuideRenderer: path.join(__dirname, 'src/styleguide/StyleGuide/StyleGuideRenderer'),
         // TableOfContentsRenderer: path.join(__dirname, 'src/styleguide/TableOfContents/TableOfContentsRenderer'),
         ComponentsListRenderer: path.join(__dirname, 'src/styleguide/ComponentsList/ComponentsListRenderer'),
-        // ReactComponent: path.join(__dirname, 'src/styleguide/ReactComponent/ReactComponent'),
+        ReactComponent: path.join(__dirname, 'src/styleguide/ReactComponent/ReactComponent'),
         StyleGuide: path.join(__dirname, 'src/styleguide/StyleGuide/StyleGuide'),
     },
 
     template: {
         head: {
+            meta: [
+                {
+                    name: 'viewport',
+                    content: 'viewport-fit=cover, width=device-width, initial-scale=1.0'
+                }
+            ],
             links: [
                 {
                     rel: 'preconnect',

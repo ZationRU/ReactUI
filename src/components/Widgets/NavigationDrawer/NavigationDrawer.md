@@ -1,5 +1,3 @@
-# NavigationDrawer
-
 ```tsx
 const [selected, setSelected] = React.useState('hub');
 

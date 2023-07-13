@@ -1,35 +1,20 @@
 import ReactComponentProps from 'react-styleguidist/lib/client/rsg-components/ReactComponent';
-import {Headline} from "../../components/Typography/Headline/Headline";
-import {Body} from "../../components/Typography/Body/Body";
+import {Toolbar} from "../../components/Widgets/Toolbar/Toolbar";
+import Markdown from "react-styleguidist/lib/client/rsg-components/Markdown/Markdown";
+import Examples from "react-styleguidist/lib/client/rsg-components/Examples/Examples";
+import React from "react";
 
-export function ReactComponent(props: ReactComponentProps) {
-    const {
-        component: {
-            name,
-            props: {
-                description
-            },
-        }
-    } = props
+export default function ReactComponent({ component, exampleMode }: any) {
+    const { name, visibleName, pathLine } = component;
+    const { description = '', examples = [] } = component.props || {};
 
-    console.log(props)
     return <div>
-        <Headline size="small">{name}</Headline>
-        <Body size="large">{description}</Body>
+        <Toolbar>{visibleName}</Toolbar>
 
-        {(props.description || props.docs) && (
-            <div>
-                {props.description}
-                {props.docs}
-            </div>
-        )}
+        {description && <Markdown text={description} />}
 
-        {props.tabButtons && (
-            <div>
-                <div>{props.tabButtons}</div>
-                <div>{props.tabBody}</div>
-            </div>
+        {examples.length > 0 && (
+            <Examples examples={examples} name={name} exampleMode={exampleMode} />
         )}
-        {props.examples}
-    </div>
+    </div>;
 }

@@ -1,5 +1,3 @@
-# Label
-
 ```js
 <Label size="large">Label Large</Label>
 <Label size="medium">Label Medium</Label>

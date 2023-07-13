@@ -1,5 +1,3 @@
-# Card
-
 ```tsx
 <Card p={16}>
     Hi!
