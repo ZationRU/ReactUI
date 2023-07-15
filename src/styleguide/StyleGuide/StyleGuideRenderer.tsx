@@ -3,10 +3,9 @@ import {ThemeProvider} from "../../components/ThemeProvider/ThemeProvider";
 import { Layout } from "../../components/Layouts/Layout/Layout";
 import {NavigationDrawer} from "../../components/Widgets/NavigationDrawer/NavigationDrawer";
 import {SurfaceLayout} from "../../components/Layouts/SurfaceLayout/SurfaceLayout";
-import {Label} from "../../components/Typography/Label/Label";
 import {useAdaptive} from "../../adaptive/useAdaptive";
 import {useState} from "react";
-import {LayoutBreakPointsValues} from "../../adaptive/LayoutBreakPoints";
+import {LayoutBreakpointsValues} from "../../adaptive/LayoutBreakpoint";
 import {NavigationBar} from "../../components/Widgets/NavigationBar/NavigationBar";
 import {NavigationRail} from "../../components/Widgets/NavigationRail/NavigationRail";
 import {HomePage} from "./pages/HomePage";
@@ -70,10 +69,10 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
             left: 0,
             right: 0
         }} direction={
-            breakpointWidth !== LayoutBreakPointsValues.esm ? 'row': 'column'
-        } reverse={breakpointWidth === LayoutBreakPointsValues.esm}>
+            breakpointWidth !== LayoutBreakpointsValues.esm ? 'row': 'column-reverse'
+        }>
             {
-                breakpointWidth === LayoutBreakPointsValues.esm && <>
+                breakpointWidth === LayoutBreakpointsValues.esm && <>
                     <NavigationBar pb="env(safe-area-inset-bottom)">
                         <NavigationBar.Item
                             title="Home"
@@ -95,7 +94,7 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
             }
 
             {
-                breakpointWidth !== LayoutBreakPointsValues.esm && breakpointWidth < LayoutBreakPointsValues.lg && <>
+                breakpointWidth !== LayoutBreakpointsValues.esm && breakpointWidth < LayoutBreakpointsValues.lg && <>
                     <NavigationRail s={1}>
                         <NavigationRail.Item
                             title="Home"
@@ -117,7 +116,7 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
             }
 
             {
-                breakpointWidth >= LayoutBreakPointsValues.lg&&<Layout w={360}>
+                breakpointWidth >= LayoutBreakpointsValues.lg&&<Layout w={360}>
                     <div style={{
                         position: "fixed",
                         width: "inherit"

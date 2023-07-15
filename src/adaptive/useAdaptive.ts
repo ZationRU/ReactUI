@@ -1,20 +1,22 @@
-import {useEffect, useState} from "react";
-import {LayoutBreakPoints, LayoutBreakPointsValues} from "./LayoutBreakPoints";
+import {useEffect, useMemo, useState} from "react";
+import {LayoutBreakpoint, LayoutBreakpointsValues} from "./LayoutBreakpoint";
+import {Adaptive} from "./Adaptive";
+import {resolveAdaptive} from "./AdaptiveResolver";
 
-export function getCurrentDimensionBreakpoint(): LayoutBreakPoints {
-    return Object.keys(LayoutBreakPointsValues).find((key) => window.innerWidth <= LayoutBreakPointsValues[key]) as LayoutBreakPoints
+export function getCurrentDimensionBreakpoint(): LayoutBreakpoint {
+    return Object.keys(LayoutBreakpointsValues).find((key) => window.innerWidth <= LayoutBreakpointsValues[key]) as LayoutBreakpoint
 }
 
 export const useAdaptive = () => {
-    const [currentBreakpoint, setCurrentBreakpoint] = useState<LayoutBreakPoints>(getCurrentDimensionBreakpoint())
-    const [breakpointWidth, setBreakpointWidth] = useState<number>(LayoutBreakPointsValues[currentBreakpoint])
+    const [currentBreakpoint, setCurrentBreakpoint] = useState<LayoutBreakpoint>(getCurrentDimensionBreakpoint())
+    const [breakpointWidth, setBreakpointWidth] = useState<number>(LayoutBreakpointsValues[currentBreakpoint])
 
     useEffect(() => {
         const resizeListener = () => {
             const resizedCurrentBreakpoint = getCurrentDimensionBreakpoint()
             if(currentBreakpoint!==resizedCurrentBreakpoint) {
                 setCurrentBreakpoint(resizedCurrentBreakpoint)
-                setBreakpointWidth(LayoutBreakPointsValues[resizedCurrentBreakpoint])
+                setBreakpointWidth(LayoutBreakpointsValues[resizedCurrentBreakpoint])
             }
         }
         window.addEventListener('resize', resizeListener);
@@ -29,4 +31,9 @@ export const useAdaptive = () => {
         currentBreakpoint,
         breakpointWidth
     }
+}
+
+export function useAdaptiveProps<T>(props: Object): { [key: string]: T } {
+    const adaptive = useAdaptive()
+    return useMemo(() => resolveAdaptive(adaptive.currentBreakpoint, props), [props, adaptive])
 }

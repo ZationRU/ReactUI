@@ -45,6 +45,19 @@ export * from "./components/ThemeProvider/ThemeProvider"
  * Adaptive
  */
 
-export * from "./adaptive/LayoutBreakPoints"
+export * from "./adaptive/LayoutBreakpoint"
 export * from "./adaptive/useAdaptive"
+export * from "./adaptive/Adaptive"
+export * from "./adaptive/AdaptiveResolver"
+export * from "./adaptive/utils"
+
+//
+
+
+/**
+ * Styled
+ */
+export * from "./styled/styled"
+export * from "./styled/styled.types"
+export * from "./styled/configs"
 
