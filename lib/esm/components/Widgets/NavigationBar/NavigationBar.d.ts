@@ -1,7 +1,8 @@
 /// <reference types="react" />
 import "./NavigationBar.css";
 import { LayoutProps } from "../../Layouts/Layout/Layout";
-export interface NavigationBarProps extends LayoutProps {
+import { SurfaceLayoutProps } from "../../Layouts/SurfaceLayout/SurfaceLayout";
+export interface NavigationBarProps extends SurfaceLayoutProps {
 }
 export declare function NavigationBar(props: NavigationBarProps): JSX.Element;
 export declare namespace NavigationBar {
@@ -10,4 +11,5 @@ export declare namespace NavigationBar {
 export interface NavigationBarItemProps extends LayoutProps {
     title?: string;
     selected?: boolean;
+    label?: 'always' | 'hidden';
 }

@@ -6,7 +6,7 @@ export interface StateLayerProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 export declare function StateLayer(props: StateLayerProps): JSX.Element;
 export interface StateLayerStateData {
-    rippleSpanRef: MutableRefObject<HTMLSpanElement | null>;
+    rippleTriggerRef: MutableRefObject<HTMLDivElement | null>;
     performDown: (event: PointerEvent<HTMLDivElement>) => void;
     performUp: (event: PointerEvent<HTMLDivElement>) => void;
 }

@@ -1,30 +1,23 @@
 import React from "react";
-import { Virtuoso } from 'react-virtuoso'
 import {Layout, LayoutProps} from "../Layout/Layout";
+import {Adaptive} from "../../../adaptive/Adaptive";
+import {useAdaptiveProps} from "../../../adaptive/useAdaptive";
 
 
 export interface ListProps extends LayoutProps {
-
+    orientation?: Adaptive<'vertical'|'horizontal'>
 }
 
-export abstract class ListAdapter<T> {
-    count: number = 0
-    getItemType(index: number): number {
-        return 0
-    }
-}
 
 export default function List(props: ListProps) {
     const {
-
+        orientation = "vertical",
         ...layoutProps
-    } = props
+    } = useAdaptiveProps(props)
 
-    return <Layout {...layoutProps}>
-        <Virtuoso
-            style={{ height: "400px" }}
-            totalCount={200}
-            itemContent={(index) => <div>Item {index}</div>}
-        />
-    </Layout>
+    return <Layout
+        display="flex"
+        direction={orientation==="vertical" ? "column": "row"}
+        {...layoutProps}
+    />
 }

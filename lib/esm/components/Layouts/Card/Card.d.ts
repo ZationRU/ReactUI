@@ -1,6 +1,6 @@
 /// <reference types="react" />
-import { LayoutProps } from "../Layout/Layout";
+import { SurfaceLayoutProps } from "../SurfaceLayout/SurfaceLayout";
 import "./Card.css";
-export interface CardProps extends LayoutProps {
+export interface CardProps extends SurfaceLayoutProps {
 }
 export default function Card(props: CardProps): JSX.Element;

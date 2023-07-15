@@ -24,9 +24,6 @@ export function getCss() {
             computedStyles[config.property] = styles[key]
         }
 
-        console.log(computedStyles)
-
-
         return computedStyles
     }
 }

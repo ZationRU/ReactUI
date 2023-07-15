@@ -1,9 +1,7 @@
 /// <reference types="react" />
 import { LayoutProps } from "../Layout/Layout";
+import { Adaptive } from "../../../adaptive/Adaptive";
 export interface ListProps extends LayoutProps {
-}
-export declare abstract class ListAdapter<T> {
-    count: number;
-    getItemType(index: number): number;
+    orientation?: Adaptive<'vertical' | 'horizontal'>;
 }
 export default function List(props: ListProps): JSX.Element;

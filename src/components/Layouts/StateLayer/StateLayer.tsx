@@ -43,7 +43,6 @@ export const useStateLayer = (): StateLayerStateData => {
 
 
     const performDown = (event: PointerEvent<HTMLDivElement>) => {
-        console.log("down")
         const rippleTarget = event.currentTarget
         const rect = rippleTarget.getBoundingClientRect();
 
@@ -71,12 +70,9 @@ export const useStateLayer = (): StateLayerStateData => {
     }
 
     const performUp = (event: PointerEvent<HTMLDivElement>) => {
-        console.log("up")
-
         const now = new Date().getMilliseconds();
         ripples.forEach(({ startTime, element}, index) => {
             const delayTime = -(now - startTime)
-            console.log(delayTime)
 
             setTimeout(() => {
                 element.className = "Ripple Ripple-Hidden"

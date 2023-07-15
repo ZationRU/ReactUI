@@ -1,8 +1,3 @@
-import React from "react";
-import { LayoutMarginProps } from "./LayoutMarginProps";
-import { LayoutColorsProps } from "./LayoutColorsProps";
-import { LayoutSizeProps } from "./LayoutSizeProps";
-import { LayoutPaddingProps } from "./LayoutPaddingProps";
-import { LayoutFlexProps } from "./LayoutFlexProps";
-export type LayoutProps = LayoutPaddingProps & LayoutMarginProps & LayoutColorsProps & LayoutSizeProps & LayoutFlexProps & React.HTMLAttributes<HTMLDivElement>;
-export declare function Layout(props: LayoutProps): JSX.Element;
+import { HTMLZnUIProps } from "../../../styled/styled.types";
+export type LayoutProps = HTMLZnUIProps<"div">;
+export declare const Layout: import("../../../styled/styled.types").ZnUIComponent<"div", HTMLZnUIProps<"div">>;

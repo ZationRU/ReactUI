@@ -14,7 +14,6 @@ export default function ReactComponent({ component, exampleMode }: any) {
     const { name, visibleName, pathLine } = component;
     const { description = '', examples = [], tags = {} } = component.props || {};
 
-    console.log(component)
 
     return <div>
         <Toolbar navigationIcon={<BackIcon/>} onClickNavigationIcon={() => {
