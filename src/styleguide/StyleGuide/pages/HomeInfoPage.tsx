@@ -3,7 +3,7 @@ import {Layout} from "../../../components/Layouts/Layout/Layout";
 import {Toolbar} from "../../../components/Widgets/Toolbar/Toolbar";
 import {Title} from "../../../components/Typography/Title/Title";
 
-export function HomePage() {
+export function HomeInfoPage() {
     return <Layout>
 
 

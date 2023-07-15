@@ -9,7 +9,8 @@ export type Adaptive<T> = T | AdaptiveArray<T> | AdaptiveObject<T>;
 
 function isAdaptiveObject<T>(adaptive: Adaptive<T>): adaptive is AdaptiveObject<T> {
     const obj = (adaptive as AdaptiveObject<T>)
-    return !!LayoutBreakpointsKeys.find(key => typeof it === 'object'&&key in obj);
+
+    return typeof obj === 'object'&&!!LayoutBreakpointsKeys.find(key => key in obj);
 }
 
 function isAdaptiveArray<T>(adaptive: Adaptive<T>): adaptive is AdaptiveArray<T> {

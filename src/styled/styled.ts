@@ -1,4 +1,4 @@
-import {colors, flex, layout, margin, padding} from "./configs";
+import {colors, flex, layout, margin, padding, position} from "./configs";
 import React from "react";
 import {StyleProps, ZnUIComponent} from "./styled.types";
 import createStyled, {FunctionInterpolation} from "@emotion/styled"
@@ -24,6 +24,7 @@ export const styledProps = {
     ...layout,
     ...margin,
     ...padding,
+    ...position,
 }
 
 export const isStyleProp = (prop: string) => prop in styledProps
@@ -41,11 +42,10 @@ export const toCSSObject: GetStyleObject =
 
             const baseStyles = runIfFn(baseStyle, rest) || {}
 
-
             return css({
                 ...baseStyles,
                 ...styleProps
-            })(currentBreakPoint)
+            })()
         }
 
 export function styled<T extends React.ElementType, P extends object = {}>(component: T,) {

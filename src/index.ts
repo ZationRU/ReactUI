@@ -37,7 +37,7 @@ export * from "./components/Widgets/Toolbar/Toolbar"
  * ThemeProvider
  */
 
-export * from "./components/ThemeProvider/ThemeProvider"
+export * from "./components/Providers/ThemeProvider/ThemeProvider"
 
 //-------------------------------------------------------------------------------------
 

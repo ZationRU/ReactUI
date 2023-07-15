@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect} from "react";
-import {ThemeProvider} from "../../components/ThemeProvider/ThemeProvider";
+import {ThemeProvider} from "../../components/Providers/ThemeProvider/ThemeProvider";
 import { Layout } from "../../components/Layouts/Layout/Layout";
 import {NavigationDrawer} from "../../components/Widgets/NavigationDrawer/NavigationDrawer";
 import {SurfaceLayout} from "../../components/Layouts/SurfaceLayout/SurfaceLayout";
@@ -8,8 +8,10 @@ import {useState} from "react";
 import {LayoutBreakpointsValues} from "../../adaptive/LayoutBreakpoint";
 import {NavigationBar} from "../../components/Widgets/NavigationBar/NavigationBar";
 import {NavigationRail} from "../../components/Widgets/NavigationRail/NavigationRail";
-import {HomePage} from "./pages/HomePage";
+import {HomeInfoPage} from "./pages/HomeInfoPage";
 import {Toolbar} from "../../components/Widgets/Toolbar/Toolbar";
+import {AdaptiveInfoPage} from "./pages/AdaptiveInfoPage";
+import {AdaptiveProvider} from "../../components/Providers/AdaptiveProvider/AdaptiveProvider";
 
 interface StyleGuideRendererProps {
     title: string;
@@ -26,6 +28,24 @@ const HomeIcon = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="non
 const Icon = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
     <circle cx="30" cy="30" r="30" stroke="currentColor" fill="currentColor" />
 </svg>;
+
+const Pages = [
+    {
+        id: 'home',
+        title: "Home",
+        icon: <HomeIcon/>
+    },
+    {
+        id: 'adaptive',
+        title: "Adaptive",
+        icon: <Icon/>
+    },
+    {
+        id: 'components',
+        title: "Components",
+        icon: <Icon/>,
+    }
+]
 
 export function StyleGuideRenderer(props: StyleGuideRendererProps) {
     const {
@@ -61,102 +81,74 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
 
     const {breakpointWidth} = useAdaptive()
 
-    return <ThemeProvider>
-        <Layout bg="var(--znui-background)" color="var(--znui-on-background)" display='flex' style={{
-            position: 'absolute',
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0
-        }} direction={
-            breakpointWidth !== LayoutBreakpointsValues.esm ? 'row': 'column-reverse'
-        }>
-            {
-                breakpointWidth === LayoutBreakpointsValues.esm && <>
-                    <NavigationBar pb="env(safe-area-inset-bottom)">
-                        <NavigationBar.Item
-                            title="Home"
-                            selected={page==='home'}
-                            onClick={() => go('home')}
-                        >
-                            <HomeIcon/>
-                        </NavigationBar.Item>
+    return <Layout
+        bg="var(--znui-background)"
+        color="var(--znui-on-background)"
+        display='flex'
+        direction={['column-reverse','row']}
+        pos="absolute"
+        posV={0}
+        posH={0}>
+        {
+            breakpointWidth === LayoutBreakpointsValues.esm && <>
+                <NavigationBar pb="env(safe-area-inset-bottom)">
+                    {
+                        Pages.map(({title, icon, id}) => <NavigationBar.Item
+                            title={title}
+                            selected={page===id}
+                            onClick={() => go(id)}
+                        >{icon}</NavigationBar.Item>)
+                    }
+                </NavigationBar>
+            </>
+        }
 
-                        <NavigationBar.Item
-                            title="Components"
-                            selected={page==='components'||page[0]==='/'}
-                            onClick={() => go('components')}
-                        >
-                            <Icon/>
-                        </NavigationBar.Item>
-                    </NavigationBar>
-                </>
-            }
+        {
+            breakpointWidth !== LayoutBreakpointsValues.esm && breakpointWidth < LayoutBreakpointsValues.lg && <>
+                <NavigationRail s={1}>
+                    {
+                        Pages.map(({title, icon, id}) => <NavigationRail.Item
+                            title={title}
+                            selected={page===id}
+                            onClick={() => go(id)}
+                        >{icon}</NavigationRail.Item>)
+                    }
+                </NavigationRail>
+            </>
+        }
 
-            {
-                breakpointWidth !== LayoutBreakpointsValues.esm && breakpointWidth < LayoutBreakpointsValues.lg && <>
-                    <NavigationRail s={1}>
-                        <NavigationRail.Item
-                            title="Home"
-                            selected={page==='home'}
-                            onClick={() => go('home')}
-                        >
-                            <HomeIcon/>
-                        </NavigationRail.Item>
-
-                        <NavigationRail.Item
-                            title="Components"
-                            selected={page==='components'||page[0]==='/'}
-                            onClick={() => go('components')}
-                        >
-                            <Icon/>
-                        </NavigationRail.Item>
-                    </NavigationRail>
-                </>
-            }
-
-            {
-                breakpointWidth >= LayoutBreakpointsValues.lg&&<Layout w={360}>
-                    <div style={{
-                        position: "fixed",
-                        width: "inherit"
-                    }}>
-                        <SurfaceLayout s={1} overflow={"auto"} maxH="100vh" minH="100vh">
-                            <NavigationDrawer mh={10} mv={10}>
-                                <NavigationDrawer.Item
-                                    icon={<HomeIcon/>}
-                                    selected={page==='home'}
-                                    onClick={() => go('home')}
-                                >
-                                    Home
-                                </NavigationDrawer.Item>
-
-                                <NavigationDrawer.Item
-                                    icon={<Icon/>}
-                                    selected={page==='components'||page[0]==='/'}
-                                    onClick={() => go('components')}
-                                >
-                                    Components
-                                </NavigationDrawer.Item>
-                            </NavigationDrawer>
-                        </SurfaceLayout>
-                    </div>
+        {
+            breakpointWidth >= LayoutBreakpointsValues.lg&&<Layout w={360}>
+                <Layout pos="fixed" w="inherit">
+                    <SurfaceLayout s={1} overflow={"auto"} maxH="100vh" minH="100vh">
+                        <NavigationDrawer mh={10} mv={10}>
+                            {
+                                Pages.map(({title, icon, id}) => <NavigationDrawer.Item
+                                    icon={icon}
+                                    selected={page===id}
+                                    onClick={() => go(id)}
+                                >{title}</NavigationDrawer.Item>)
+                            }
+                        </NavigationDrawer>
+                    </SurfaceLayout>
                 </Layout>
-            }
-
-
-            <Layout flex={1} overflow="auto">
-                {
-                    page === 'home' ?
-                        <HomePage/> :
-                    page === 'components' ?
-                        <>
-                            <Toolbar>Components</Toolbar>
-                            {toc}
-                        </>      :
-                    children
-                }
             </Layout>
+        }
+
+
+        <Layout flex={1} overflow="auto">
+            {
+                page === 'home' ?
+                    <HomeInfoPage/> :
+                    page === 'adaptive' ?
+                        <AdaptiveInfoPage/> :
+                        page === 'components' ?
+                            <>
+                                <Toolbar>Components</Toolbar>
+                                {toc}
+                            </>      :
+                            children
+            }
         </Layout>
-    </ThemeProvider>
+    </Layout>
 }

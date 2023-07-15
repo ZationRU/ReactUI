@@ -1,11 +1,13 @@
 import {resolveAdaptive} from "../adaptive/AdaptiveResolver";
 import {LayoutBreakpoint} from "../adaptive/LayoutBreakpoint";
 import {styledProps} from "./styled";
+import {useAdaptive} from "../adaptive/useAdaptive";
 
 
-export function getCss(currentBreakpoint: LayoutBreakpoint) {
+export function getCss() {
     return (stylesOrFn: Record<string, any>) => {
-        const styles = resolveAdaptive(currentBreakpoint, stylesOrFn)
+        const adaptiveData = useAdaptive()
+        const styles = resolveAdaptive(adaptiveData.currentBreakpoint, stylesOrFn)
 
         let computedStyles: Record<string, any> = {}
         for (let key in styles) {
@@ -29,7 +31,7 @@ export function getCss(currentBreakpoint: LayoutBreakpoint) {
     }
 }
 
-export const css = (styles: Record<string, any>) => (currentBreakpoint: LayoutBreakpoint) => {
-    const cssFn = getCss(currentBreakpoint)
+export const css = (styles: Record<string, any>) => () => {
+    const cssFn = getCss()
     return cssFn(styles)
 }
