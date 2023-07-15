@@ -1,8 +1,6 @@
-import React from "react";
 import {Adaptive} from "../../adaptive/Adaptive";
 import * as CSS from "csstype";
 import {propConfig} from "../utils/props";
-import {FlexProps} from "./flex";
 
 export const padding = {
     padding: propConfig("padding"),

@@ -1,8 +1,6 @@
-import React from "react";
 import type * as CSS from 'csstype';
 import {Adaptive} from "../../adaptive/Adaptive";
 import {propConfig} from "../utils/props";
-import {FlexProps} from "./flex";
 
 export const layout = {
     width: propConfig("width"),
