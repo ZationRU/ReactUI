@@ -1,9 +1,10 @@
 .Editor__inner {
     max-height: 400px;
-    overflow: auto;
+    overflow: auto!important;
 }
 
 .Editor__inner > textarea {
     border: none;
     outline: none;
+    overflow:visible;
 }

@@ -1,17 +1,17 @@
 import "./NavigationBar.css"
 import {Layout, LayoutProps} from "../../Layouts/Layout/Layout";
 import React from "react";
-import {SurfaceLayout} from "../../Layouts/SurfaceLayout/SurfaceLayout";
+import {SurfaceLayout, SurfaceLayoutProps} from "../../Layouts/SurfaceLayout/SurfaceLayout";
 import {Label} from "../../Typography/Label/Label";
 import classNames from "classnames";
 import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 
-export interface NavigationBarProps extends LayoutProps {
+export interface NavigationBarProps extends SurfaceLayoutProps {
 
 }
 
 export function NavigationBar(props: NavigationBarProps) {
-    return <SurfaceLayout s={2} display="flex" minHeight={80} {...props}/>
+    return <SurfaceLayout s={props.s??2} display="flex" minHeight={80} {...props}/>
 }
 
 export interface NavigationBarItemProps extends LayoutProps {

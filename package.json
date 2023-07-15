@@ -1,6 +1,6 @@
 {
   "name": "@znui/react",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
@@ -9,12 +9,12 @@
     "README.md"
   ],
   "dependencies": {
+    "@emotion/styled": "^11.11.0",
     "classnames": "^2.3.2",
+    "css-loader": "^6.8.1",
+    "csstype": "^3.1.2",
     "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-virtuoso": "^4.3.6",
-    "styled-components": "^5.3.6"
+    "style-loader": "^3.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,6 +23,10 @@
     "eject": "react-scripts eject",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "eslintConfig": {
     "extends": [
@@ -59,15 +63,16 @@
     "url": "git+https://github.com/ZationSocial/ZationUI.git"
   },
   "devDependencies": {
-    "@babel/cli": "^7.21.0",
     "@rollup/plugin-commonjs": "^21.1.0",
+    "@rollup/plugin-node-resolve": "^15.1.0",
     "@rollup/plugin-typescript": "^8.3.1",
-    "@svgr/rollup": "^6.2.1",
+    "@svgr/rollup": "^8.0.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.12",
+    "@types/prismjs": "^1.26.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@types/styled-components": "^5.1.26",
@@ -76,17 +81,12 @@
     "prismjs": "^1.29.0",
     "react-docgen-typescript": "^2.2.2",
     "react-frame-component": "^5.2.6",
-    "react-scripts": "5.0.1",
     "react-styleguidist": "^13.1.1",
     "rimraf": "^4.4.1",
     "rollup": "^2.70.1",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript2": "^0.31.2",
-    "rollup-plugin-url": "^3.0.1",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.5",
     "typescript-plugin-styled-components": "^2.0.0"

@@ -6,12 +6,8 @@ export interface ThemeProviderProps {
     theme?: 'light'|'dark'
 }
 
-
 export const ThemeProvider = (props: ThemeProviderProps) => {
     const theme = props.theme || 'light'
-    // useEffect(() => {
-    //
-    // }, [props.theme])
 
     return <div className="ThemeProvider" data-theme={theme}>
         {props.children}

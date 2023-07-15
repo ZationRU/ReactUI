@@ -1,32 +1,21 @@
-import {useEffect, useState} from "react";
-import {LayoutBreakPoints, LayoutBreakPointsValues} from "./LayoutBreakPoints";
+import {useContext, useMemo} from "react";
+import {AdaptiveData} from "./AdaptiveData";
+import {AdaptiveContext} from "../components/Providers/AdaptiveProvider/AdaptiveProvider";
+import {resolveAdaptive} from "./AdaptiveResolver";
 
-export function getCurrentDimensionBreakpoint(): LayoutBreakPoints {
-    return Object.keys(LayoutBreakPointsValues).find((key) => window.innerWidth <= LayoutBreakPointsValues[key]) as LayoutBreakPoints
+
+
+export const useAdaptive = (): AdaptiveData => {
+    const adaptive = useContext(AdaptiveContext)
+    if(adaptive==null) {
+        throw new Error("AdaptiveProvider ")
+    }
+
+    return adaptive;
 }
 
-export const useAdaptive = () => {
-    const [currentBreakpoint, setCurrentBreakpoint] = useState<LayoutBreakPoints>(getCurrentDimensionBreakpoint())
-    const [breakpointWidth, setBreakpointWidth] = useState<number>(LayoutBreakPointsValues[currentBreakpoint])
 
-    useEffect(() => {
-        const resizeListener = () => {
-            const resizedCurrentBreakpoint = getCurrentDimensionBreakpoint()
-            if(currentBreakpoint!==resizedCurrentBreakpoint) {
-                setCurrentBreakpoint(resizedCurrentBreakpoint)
-                setBreakpointWidth(LayoutBreakPointsValues[resizedCurrentBreakpoint])
-            }
-        }
-        window.addEventListener('resize', resizeListener);
-
-
-        return(() => {
-            window.removeEventListener('resize', resizeListener);
-        })
-    }, [currentBreakpoint, setCurrentBreakpoint])
-    
-    return {
-        currentBreakpoint,
-        breakpointWidth
-    }
+export function useAdaptiveProps<T>(props: Object): { [key: string]: T } {
+    const adaptive = useAdaptive()
+    return useMemo(() => resolveAdaptive(adaptive.currentBreakpoint, props), [props, adaptive])
 }

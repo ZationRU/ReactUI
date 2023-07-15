@@ -12,8 +12,6 @@ import {Editor} from "react-styleguidist/lib/client/rsg-components/Editor/Editor
 import Card from "../../components/Layouts/Card/Card";
 
 export default function EditorWrapper(props: any) {
-    console.log(props)
-
     return (
         <Card>
             <Editor {...props} classes={{
