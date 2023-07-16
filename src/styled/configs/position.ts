@@ -30,38 +30,38 @@ export interface PositionProps {
      * Position top
      * @default pv
      */
-    top?: Adaptive<CSS.Property.Top|number>
+    top?: Adaptive<CSS.Property.Top|number|string>
 
     /**
      * Position bottom
      * @default pv
      */
-    bottom?: Adaptive<CSS.Property.Bottom|number>
+    bottom?: Adaptive<CSS.Property.Bottom|number|string>
 
     /**
      * Position left
      * @default ph
      */
-    left?: Adaptive<CSS.Property.Left|number>
+    left?: Adaptive<CSS.Property.Left|number|string>
 
     /**
      * Position right
      * @default ph
      */
-    right?: Adaptive<CSS.Property.Right|number>
+    right?: Adaptive<CSS.Property.Right|number|string>
 
 
     /**
      * Position horizontal (posH = position left = position right)
      * @default undefined
      */
-    posH?: Adaptive<CSS.Property.Left|CSS.Property.Right|number>
-    positionHorizontal?: Adaptive<CSS.Property.Left|CSS.Property.Right|number>
+    posH?: Adaptive<CSS.Property.Left|CSS.Property.Right|number|string>
+    positionHorizontal?: Adaptive<CSS.Property.Left|CSS.Property.Right|number|string>
 
     /**
      * Position vertical (posV = position top = position bottom)
      * @default undefined
      */
-    posV?: Adaptive<CSS.Property.Top|CSS.Property.Bottom|number>
-    positionVertical?: Adaptive<CSS.Property.Top|CSS.Property.Bottom|number>
+    posV?: Adaptive<CSS.Property.Top|CSS.Property.Bottom|number|string>
+    positionVertical?: Adaptive<CSS.Property.Top|CSS.Property.Bottom|number|string>
 }
