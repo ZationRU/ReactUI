@@ -3,10 +3,6 @@
  */
 
 export * from "./components/Basic/znui"
-
-/**
- * Basic
- */
 export * from "./components/Basic/Center/Center"
 export * from "./components/Basic/AbsoluteCenter/AbsoluteCenter"
 export * from "./components/Basic/Layout/Layout"
