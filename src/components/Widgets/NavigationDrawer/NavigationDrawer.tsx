@@ -1,5 +1,5 @@
 import {SurfaceLayout, SurfaceLayoutProps} from "../../Layouts/SurfaceLayout/SurfaceLayout";
-import {Layout} from "../../Layouts/Layout/Layout";
+import {Layout} from "../../Basic/Layout/Layout";
 import classNames from "classnames";
 import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 import {Label} from "../../Typography/Label/Label";

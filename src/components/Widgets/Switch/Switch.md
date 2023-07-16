@@ -1,5 +1,5 @@
 ```tsx
-    import {Layout} from "../../Layouts/Layout/Layout"
+    import {Layout} from "../../Basic/Layout/Layout"
 
     const [value, setValue] = React.useState(false);
     const [disabled, setDisabled] = React.useState(false);

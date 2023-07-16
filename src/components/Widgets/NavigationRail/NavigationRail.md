@@ -1,5 +1,5 @@
 ```tsx
-import {Layout} from "../../Layouts/Layout/Layout";
+import {Layout} from "../../Basic/Layout/Layout";
 import {FloatingActionButton} from "../FloatingActionButton/FloatingActionButton";
 import {Button} from "../Button/Button";
 

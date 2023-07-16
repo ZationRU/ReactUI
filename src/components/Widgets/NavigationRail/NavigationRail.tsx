@@ -2,7 +2,7 @@ import {SurfaceLayout, SurfaceLayoutProps} from "../../Layouts/SurfaceLayout/Sur
 import "./NavigationRail.css";
 import React, {ReactNode} from "react";
 import classNames from "classnames";
-import {Layout, LayoutProps} from "../../Layouts/Layout/Layout";
+import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
 import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 import {Label} from "../../Typography/Label/Label";
 

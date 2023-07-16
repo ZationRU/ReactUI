@@ -1,5 +1,5 @@
 import React from "react";
-import {Layout} from "../../../components/Layouts/Layout/Layout";
+import {Layout} from "../../../components/Basic/Layout/Layout";
 import {Toolbar} from "../../../components/Widgets/Toolbar/Toolbar";
 import {Title} from "../../../components/Typography/Title/Title";
 import EditorWrapper from "../../Editor/Editor";

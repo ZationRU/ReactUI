@@ -1,5 +1,5 @@
 import React from "react";
-import {Layout, LayoutProps} from "../Layout/Layout";
+import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
 import "./CoordinatorLayout.css";
 
 export interface CoordinatorLayoutProps extends LayoutProps {

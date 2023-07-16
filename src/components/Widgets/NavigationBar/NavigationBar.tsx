@@ -1,5 +1,5 @@
 import "./NavigationBar.css"
-import {Layout, LayoutProps} from "../../Layouts/Layout/Layout";
+import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
 import React from "react";
 import {SurfaceLayout, SurfaceLayoutProps} from "../../Layouts/SurfaceLayout/SurfaceLayout";
 import {Label} from "../../Typography/Label/Label";

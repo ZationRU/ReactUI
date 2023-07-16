@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect} from "react";
 import {ThemeProvider} from "../../components/Providers/ThemeProvider/ThemeProvider";
-import { Layout } from "../../components/Layouts/Layout/Layout";
+import { Layout } from "../../components/Basic/Layout/Layout";
 import {NavigationDrawer} from "../../components/Widgets/NavigationDrawer/NavigationDrawer";
 import {SurfaceLayout} from "../../components/Layouts/SurfaceLayout/SurfaceLayout";
 import {useAdaptive} from "../../adaptive/useAdaptive";

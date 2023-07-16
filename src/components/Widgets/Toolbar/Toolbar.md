@@ -1,5 +1,5 @@
 ```js
-import {Layout} from "../../Layouts/Layout/Layout"
+import {Layout} from "../../Basic/Layout/Layout"
 import {Button} from "../Button/Button"
 
 const [navigationIcon, setNavigationIcon] = React.useState(true);
