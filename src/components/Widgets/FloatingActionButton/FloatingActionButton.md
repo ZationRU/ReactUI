@@ -1,6 +1,5 @@
 ```jsx
 import React from 'react';
-import {List} from '../../Basic/List/List'
 import {Title} from '../../Typography/Title/Title'
 
 const [isExpanded, setExpanded] = React.useState(true);
