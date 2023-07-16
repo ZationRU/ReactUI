@@ -1,5 +1,4 @@
 import React from "react";
-import {HTMLZnUIProps} from "../../../styled/styled.types";
 import {Layout, LayoutProps} from "../Layout/Layout";
 
 export interface AbsoluteCenterProps extends LayoutProps {

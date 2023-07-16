@@ -1,4 +1,3 @@
-import React from "react";
 import {znui} from "../znui";
 import {HTMLZnUIProps} from "../../../styled/styled.types";
 
