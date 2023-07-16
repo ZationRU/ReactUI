@@ -1,6 +1,6 @@
 {
   "name": "@znui/react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
@@ -56,11 +56,11 @@
   "author": "levkopo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ZationSocial/ZationUI/issues"
+    "url": "https://github.com/ZationRU/ZationUI/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ZationSocial/ZationUI.git"
+    "url": "git+https://github.com/ZationRU/ZationUI.git"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^21.1.0",
