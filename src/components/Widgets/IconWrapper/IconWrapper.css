@@ -1,0 +1,11 @@
+.IconWrapper > svg {
+    transition: width 300ms var(--emphasized-motion), height 300ms var(--emphasized-motion);
+    width: var(--icon-size);
+    height: var(--icon-size);
+}
+
+.IconWrapper {
+    transition: font-size 300ms var(--emphasized-motion);
+    display: flex;
+    font-size: var(--icon-size);
+}

@@ -45,8 +45,7 @@
     margin-left: 12px;
 }
 
-.Toolbar-NavigationIcon {
-    width: 24px;
-    height: 24px;
+.Toolbar-NavigationIconContainer > .IconWrapper {
+    --icon-size: 24px;
     color: var(--znui-on-surface);
 }

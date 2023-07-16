@@ -5,6 +5,7 @@ import classNames from "classnames";
 import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
 import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 import {Label} from "../../Typography/Label/Label";
+import {IconWrapper} from "../IconWrapper/IconWrapper";
 
 
 export interface NavigationRailProps extends SurfaceLayoutProps {
@@ -61,9 +62,9 @@ NavigationRail.Item = (props: NavigationRailItemProps) => {
             <div className="background-state"/>
             <StateLayer/>
 
-            <div className="icon">
+            <IconWrapper>
                 {children}
-            </div>
+            </IconWrapper>
         </div>
 
         {title&&<Label size="medium" className="title">{title}</Label>}

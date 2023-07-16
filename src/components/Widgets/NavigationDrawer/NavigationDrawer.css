@@ -39,9 +39,8 @@
     z-index: 1;
 }
 
-.NavigationDrawerItem > .inner > .icon {
-    width: 24px;
-    height: 24px;
+.NavigationDrawerItem > .inner > .IconWrapper {
+    --icon-size: 24px;
 }
 
 .NavigationDrawerItem > .inner > .text {

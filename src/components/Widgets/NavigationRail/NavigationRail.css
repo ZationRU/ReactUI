@@ -85,10 +85,9 @@
     user-select: none;
 }
 
-.NavigationRailItem > .IconContainer > .icon {
+.NavigationRailItem > .IconContainer > .IconWrapper {
+    --icon-size: 24px;
     position: relative;
-    width: 24px;
-    height: 24px;
     z-index: 1;
 
     color: currentColor;

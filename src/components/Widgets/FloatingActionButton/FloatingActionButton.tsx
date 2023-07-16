@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from "classnames";
 import "./FloatingActionButton.css";
 import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
+import {IconWrapper} from "../IconWrapper/IconWrapper";
 
 export interface FloatingActionButtonProps extends React.HTMLAttributes<HTMLButtonElement>{
     size?: 'small'|'default'|'expanded'|'large',
@@ -30,9 +31,9 @@ export function FloatingActionButton(
     )} {...otherProps} aria-label={text}>
         <StateLayer/>
         <div className="inner">
-            <div className="icon">
+            <IconWrapper>
                 {children}
-            </div>
+            </IconWrapper>
 
             <div className="text">
                 {text}

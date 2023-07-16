@@ -57,13 +57,6 @@
     color: var(--znui-on-tertiary-container);
 }
 
-.FloatingActionButton > .inner > .icon {
-    width: var(--icon-size);
-    height: var(--icon-size);
-
-    transition: width 300ms var(--emphasized-motion), height 300ms var(--emphasized-motion);
-}
-
 .FloatingActionButton > .inner > .text {
     user-select: none;
     transition:

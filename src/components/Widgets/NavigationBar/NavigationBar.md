@@ -1,4 +1,11 @@
 ```tsx
+    import {
+        ZnUIIconHomeFilled, 
+        ZnUIIconCommentsFilled, 
+        ZnUIIconNotificationsFilled,
+        ZnUIIconMenuFilled
+    } from "@znui/icons"
+
     const [selected, setSelected] = React.useState('home');
 
     const Icon = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -6,33 +13,33 @@
     </svg>;
     
     
-    <NavigationBar w={412}>
+    <NavigationBar maxW={412}>
         <NavigationBar.Item 
             title="Главная"
             onClick={() => setSelected('home')}
             selected={selected==='home'}>
-            <Icon/>
+            <ZnUIIconHomeFilled/>
         </NavigationBar.Item>
 
         <NavigationBar.Item 
             title="Сообщения"
             onClick={() => setSelected('messages')}
             selected={selected==='messages'}>
-            <Icon/>
+            <ZnUIIconCommentsFilled/>
         </NavigationBar.Item>
 
         <NavigationBar.Item 
             title="Уведомления"
             onClick={() => setSelected('notifications')}
             selected={selected==='notifications'}>
-            <Icon/>
+            <ZnUIIconNotificationsFilled/>
         </NavigationBar.Item>
 
         <NavigationBar.Item 
             title="Меню" 
             onClick={() => setSelected('menu')}
             selected={selected==='menu'}>
-            <Icon/>
+            <ZnUIIconMenuFilled/>
         </NavigationBar.Item>
     </NavigationBar>
 ```

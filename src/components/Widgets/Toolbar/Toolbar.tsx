@@ -4,6 +4,7 @@ import React, {ReactNode, MouseEventHandler} from "react";
 import {Title} from "../../Typography/Title/Title";
 import {SurfaceLayout, SurfaceLayoutProps} from "../../Layouts/SurfaceLayout/SurfaceLayout";
 import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
+import {IconWrapper} from "../IconWrapper/IconWrapper";
 
 export interface ToolbarProps extends SurfaceLayoutProps {
     centered?: boolean
@@ -31,7 +32,7 @@ export function Toolbar(props: ToolbarProps) {
                 "Toolbar-NavigationIconContainer--Hidden": !navigationIcon
             })} onClick={onClickNavigationIcon}>
                 <StateLayer/>
-                {navigationIcon&&<div className="Toolbar-NavigationIcon">{navigationIcon}</div>}
+                {navigationIcon&&<IconWrapper>{navigationIcon}</IconWrapper>}
             </div>
 
             <Title size="large" className={classNames(

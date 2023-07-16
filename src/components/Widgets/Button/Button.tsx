@@ -2,6 +2,7 @@ import React, {ReactNode} from 'react';
 import classNames from 'classnames';
 import "./Button.css";
 import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
+import {IconWrapper} from "../IconWrapper/IconWrapper";
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement>{
     mode: 'filled'|'text'|'outline',
@@ -27,7 +28,7 @@ export function Button(props: ButtonProps) {
         <StateLayer/>
 
         <div className="inner">
-            {icon&&<div className="icon">{icon}</div>}
+            {icon&&<IconWrapper>{icon}</IconWrapper>}
             <div className="text">{children}</div>
         </div>
     </button>

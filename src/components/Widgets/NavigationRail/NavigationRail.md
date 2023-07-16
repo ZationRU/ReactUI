@@ -2,6 +2,12 @@
 import {Layout} from "../../Basic/Layout/Layout";
 import {FloatingActionButton} from "../FloatingActionButton/FloatingActionButton";
 import {Button} from "../Button/Button";
+import {
+    ZnUIIconHomeFilled,
+    ZnUIIconCommentsFilled,
+    ZnUIIconNotificationsFilled,
+    ZnUIIconSettingsFilled
+} from "@znui/icons"
 
 
 const [selected, setSelected] = React.useState('hub');
@@ -20,7 +26,7 @@ const Items = <>
         onClick={() => setSelected('hub')}
         title="Главная"
     >
-        <Icon/>
+        <ZnUIIconHomeFilled/>
     </NavigationRail.Item>
 
     <NavigationRail.Item
@@ -28,7 +34,7 @@ const Items = <>
         onClick={() => setSelected('messages')}
         title="Сообщения"
     >
-        <Icon/>
+        <ZnUIIconCommentsFilled/>
     </NavigationRail.Item>
 
     <NavigationRail.Item
@@ -36,7 +42,7 @@ const Items = <>
         onClick={() => setSelected('notifications')}
         title="Уведомления"
     >
-        <Icon/>
+        <ZnUIIconNotificationsFilled/>
     </NavigationRail.Item>
 
     <NavigationRail.Item
@@ -44,7 +50,7 @@ const Items = <>
         onClick={() => setSelected('settings')}
         title="Настройки"
     >
-        <Icon/>
+        <ZnUIIconSettingsFilled/>
     </NavigationRail.Item>
 </>;
     

@@ -5,6 +5,7 @@ import {SurfaceLayout, SurfaceLayoutProps} from "../../Layouts/SurfaceLayout/Sur
 import {Label} from "../../Typography/Label/Label";
 import classNames from "classnames";
 import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
+import {IconWrapper} from "../IconWrapper/IconWrapper";
 
 export interface NavigationBarProps extends SurfaceLayoutProps {
 
@@ -39,9 +40,9 @@ NavigationBar.Item = (props: NavigationBarItemProps) => {
             <div className="background-state"/>
             <StateLayer/>
 
-            <div className="icon">
+            <IconWrapper>
                 {children}
-            </div>
+            </IconWrapper>
         </div>
 
         {label==='always'&&<Label size="medium" className="Title">{title}</Label>}

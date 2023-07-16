@@ -5,6 +5,7 @@ import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 import {Label} from "../../Typography/Label/Label";
 import React, {ReactNode} from "react";
 import "./NavigationDrawer.css";
+import {IconWrapper} from "../IconWrapper/IconWrapper";
 
 export interface NavigationDrawerProps extends SurfaceLayoutProps {
 
@@ -42,7 +43,7 @@ NavigationDrawer.Item = (props: NavigationDrawerItemProps) => {
 
         <div className="inner">
             {
-                <div className="icon">{icon}</div>
+                <IconWrapper>{icon}</IconWrapper>
             }
 
             <Label size="large" className="text">
