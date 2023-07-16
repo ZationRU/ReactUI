@@ -1,6 +1,7 @@
 .Editor__inner {
     max-height: 400px;
     overflow: auto!important;
+    color: var(--znui-dark-on-background);
 }
 
 .Editor__inner > textarea {
