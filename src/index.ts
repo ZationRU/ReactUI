@@ -6,7 +6,7 @@ export * from "./components/Basic/znui"
 export * from "./components/Basic/Center/Center"
 export * from "./components/Basic/AbsoluteCenter/AbsoluteCenter"
 export * from "./components/Basic/Layout/Layout"
-export * from "./components/Basic/List/List"
+export * from "./components/Basic/Stack/Stack"
 export * from "./components/Basic/FlexLayout/FlexLayout"
 
 /**
