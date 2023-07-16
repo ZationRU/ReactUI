@@ -9,7 +9,7 @@ export interface ListProps extends LayoutProps {
 }
 
 
-export default function List(props: ListProps) {
+export function List(props: ListProps) {
     const {
         orientation = "vertical",
         ...layoutProps

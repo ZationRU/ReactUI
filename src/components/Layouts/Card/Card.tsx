@@ -6,7 +6,7 @@ export interface CardProps extends SurfaceLayoutProps {
 
 }
 
-export default function Card(props: CardProps) {
+export function Card(props: CardProps) {
     const {
         ...otherProps
     } = props
