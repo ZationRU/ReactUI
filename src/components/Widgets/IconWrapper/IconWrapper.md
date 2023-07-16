@@ -7,7 +7,7 @@ import {
 } from "@znui/icons";
 
 <IconWrapper style={{
-    "--icon-size": 30   
+    "--icon-size": '50px'   
 }}>
     <ZnUIIconAddFilled/>
 </IconWrapper>

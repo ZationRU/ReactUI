@@ -1,3 +1,5 @@
+> Not yet finished component
+
 ```tsx
 import {Toolbar} from "../../Widgets/Toolbar/Toolbar";
 import {Title} from "../../Typography/Title/Title";
@@ -6,7 +8,7 @@ import {Title} from "../../Typography/Title/Title";
     <Toolbar>Hello</Toolbar>
 
     {
-        Array.from({length: 1000}, () => 0).map((_, i) => <Title>{i}</Title>)
+        Array.from({length: 1}, () => 0).map((_, i) => <Title>{i}</Title>)
     }
 
 </CoordinatorLayout>
