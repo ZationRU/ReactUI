@@ -40,17 +40,17 @@ export type MergeWithAs<
     | RightJoinProps<ComponentProps, AdditionalProps>
     | RightJoinProps<TypeProps, AdditionalProps>
     ) & {
-    type?: TypeComponent
+    as?: TypeComponent
 }
 
 export type PropsOf<T extends React.ElementType> = React.ComponentPropsWithoutRef<T> & {
-    type?: React.ElementType
+    as?: React.ElementType
 }
 
 export type HTMLZnUIProps<T extends React.ElementType> = Omit<
     PropsOf<T>,
     "ref" | keyof StyleProps
-> & ZnUIProps & { type?: React.ElementType }
+> & ZnUIProps & { as?: React.ElementType }
 
 
 export type Component<Component extends React.ElementType, Props extends object = {}> = {
