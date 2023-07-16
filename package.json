@@ -26,7 +26,8 @@
   },
   "peerDependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "@znui/icons": "^1.0.8"
   },
   "eslintConfig": {
     "extends": [
@@ -78,6 +79,7 @@
     "@types/styled-components": "^5.1.26",
     "copyfiles": "^2.4.1",
     "cross-env": "^7.0.3",
+    "eslint-config-react-app": "^7.0.1",
     "prismjs": "^1.29.0",
     "react-docgen-typescript": "^2.2.2",
     "react-frame-component": "^5.2.6",
