@@ -154,11 +154,15 @@ module.exports = {
     exampleMode: 'expand',
     sections: [
         {
+            name: 'Basic',
+            components: [
+                'src/components/Basic/**/*.{jsx,tsx}',
+            ]
+        },
+        {
             name: 'Layouts',
             components: [
                 'src/components/Layouts/**/*.{jsx,tsx}',
-                'src/components/Flexible/*.{jsx,tsx}',
-                'src/components/**Layout/*.{jsx,tsx}',
             ]
         },
         {
