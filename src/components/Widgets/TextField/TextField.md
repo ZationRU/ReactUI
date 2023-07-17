@@ -2,8 +2,11 @@
 
 ```tsx
 import {TextField} from "./TextField";
+import {Layout} from "../../Basic/Layout/Layout";
 
-<TextField>
+<Layout maxW={210}>
+    <TextField placeholder="Placeholder">
 
-</TextField>
+    </TextField>
+</Layout>
 ```

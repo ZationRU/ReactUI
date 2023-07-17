@@ -1,3 +1,28 @@
 .TextField {
+    box-sizing: border-box;
+    border: var(--znui-on-surface) 1px solid;
+    border-radius: 4px;
+    position: relative;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.TextField > input {
+    margin-left: 16px;
+    background: transparent;
+    height: 40px;
+    width: inherit;
+    border: none;
+    padding: 0;
+    text-overflow: ellipsis;
+}
+
+.TextField > input:focus {
+    outline: none;
+}
+
+.TextField:has(> input:focus) {
+    border: var(--znui-primary) 2px solid;
 }

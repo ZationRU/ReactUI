@@ -1,15 +1,20 @@
 import React from "react";
 import "./TextField.css";
+import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
+import {HTMLZnUIProps} from "../../../styled/styled.types";
 
-interface TextFieldProps {
-    style?: "outline"|"filled"
-    defaultValue?: string|undefined|null
-    hint?: string|undefined|null
-    label?: string|undefined|null
+export interface TextFieldProps extends HTMLZnUIProps<"input"> {
+
 }
 
 export const TextField = (props: TextFieldProps) => {
-    return <div className="TextField">
+    const {
+        ...inputProps
+    } = props
 
-    </div>
+    return <Layout minW={210}>
+        <Layout h={56} className="TextField">
+            <Layout className="znui-body-large" as="input" {...inputProps}/>
+        </Layout>
+    </Layout>
 }
