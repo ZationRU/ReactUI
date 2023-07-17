@@ -23,6 +23,8 @@
     width: 16px;
     height: 16px;
 
+    --icon-size: 16px;
+
     background: var(--znui-outline);
     color: var(--znui-on-primary);
     border-radius: 128px;
@@ -40,11 +42,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.Switch-Thumb > * {
-    width: 16px;
-    height: 16px;
 }
 
 .Switch > .Switch-Truck {

@@ -1,6 +1,7 @@
 import React, {ChangeEventHandler, ChangeEvent, useRef, useState, useCallback, ReactNode} from "react";
 import "./Switch.css";
 import classNames from "classnames";
+import {IconWrapper} from "../IconWrapper/IconWrapper";
 
 export interface SwitchProps {
     onChange?: ChangeEventHandler<HTMLInputElement>
@@ -73,7 +74,7 @@ export function Switch(props: SwitchProps) {
                 marginRight: 4,
                 transform: value ? "translateX(calc(100% - 4px))" : "translateX(0)"
             }}
-        >{icon}</div>
+        ><IconWrapper>{icon}</IconWrapper></div>
         <input type="checkbox" checked={value} disabled={disabled} ref={checkbox} onChange={event => {
             if (onChange) {
                 onChange(event)
