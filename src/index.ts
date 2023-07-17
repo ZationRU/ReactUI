@@ -7,6 +7,7 @@ export * from "./components/Basic/Center/Center"
 export * from "./components/Basic/AbsoluteCenter/AbsoluteCenter"
 export * from "./components/Basic/Layout/Layout"
 export * from "./components/Basic/Stack/Stack"
+export * from "./components/Basic/GridLayout/GridLayout"
 export * from "./components/Basic/FlexLayout/FlexLayout"
 
 /**
