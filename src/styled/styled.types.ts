@@ -8,7 +8,8 @@ import {
     PositionProps,
     TransformProps,
     TypographyProps,
-    BorderProps
+    BorderProps,
+    BackgroundProps
 } from "./configs";
 import React from "react";
 
@@ -21,7 +22,8 @@ export type StyleProps = ColorsProps &
         GridProps &
         TransformProps &
         TypographyProps &
-        BorderProps;
+        BorderProps &
+        BackgroundProps;
 
 export interface ZnUIProps extends StyleProps {
 
