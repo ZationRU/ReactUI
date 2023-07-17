@@ -42,6 +42,7 @@ export * from "./components/Typography/Title/Title"
 
 export * from "./components/Widgets/Avatar/Avatar"
 export * from "./components/Widgets/Button/Button"
+export * from "./components/Widgets/IconButton/IconButton"
 export * from "./components/Widgets/FloatingActionButton/FloatingActionButton"
 export * from "./components/Widgets/NavigationBar/NavigationBar"
 export * from "./components/Widgets/NavigationDrawer/NavigationDrawer"
