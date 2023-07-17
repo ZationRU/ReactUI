@@ -1,4 +1,16 @@
-import * as styledProps_ from "./configs";
+import {
+    background,
+    border,
+    colors, effect,
+    flex,
+    grid,
+    layout,
+    margin,
+    padding,
+    position,
+    transform,
+    typography
+} from "./configs";
 import React from "react";
 import {StyleProps, ZnUIComponent} from "./styled.types";
 import createStyled, {FunctionInterpolation} from "@emotion/styled"
@@ -18,7 +30,20 @@ interface GetStyleObject {
     }): FunctionInterpolation<StyleResolverProps>
 }
 
-export const styledProps = styledProps_;
+export const styledProps = {
+    ...background,
+    ...border,
+    ...colors,
+    ...effect,
+    ...flex,
+    ...grid,
+    ...layout,
+    ...margin,
+    ...padding,
+    ...position,
+    ...transform,
+    ...typography,
+}
 
 export const isStyleProp = (prop: string) => prop in styledProps
 
