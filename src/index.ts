@@ -1,4 +1,10 @@
 /**
+ * Animation
+ */
+
+export * from "./components/Animation/AnimatedVisibility/AnimatedVisibility"
+
+/**
  * Basic
  */
 

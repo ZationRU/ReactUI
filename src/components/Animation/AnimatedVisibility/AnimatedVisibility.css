@@ -1,0 +1,29 @@
+.AnimatedVisibility {
+    --duration: 400ms;
+    opacity: 0;
+    animation: AnimatedVisibility var(--duration) var(--emphasized-motion) forwards;
+    transform: translate(0px);
+}
+
+.AnimatedVisibility--top {
+    transform: translateY(-100%);
+}
+
+.AnimatedVisibility--bottom {
+    transform: translateY(100%);
+}
+
+.AnimatedVisibility--left {
+    transform: translateX(-100%);
+}
+
+.AnimatedVisibility--right {
+    transform: translateX(100%);
+}
+
+@keyframes AnimatedVisibility {
+    to {
+        transform: translate(0px);
+        opacity: 1;
+    }
+}
