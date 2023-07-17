@@ -1,6 +1,15 @@
-import {ColorsProps, FlexProps, GridProps, LayoutCSSProps, MarginProps, PaddingProps, PositionProps} from "./configs";
+import {
+    ColorsProps,
+    FlexProps,
+    GridProps,
+    LayoutCSSProps,
+    MarginProps,
+    PaddingProps,
+    PositionProps,
+    TransformProps,
+    TypographyProps
+} from "./configs";
 import React from "react";
-import {TransformProps} from "./configs/transform";
 
 export type StyleProps = ColorsProps &
         FlexProps &
@@ -9,7 +18,8 @@ export type StyleProps = ColorsProps &
         PaddingProps &
         PositionProps &
         GridProps &
-        TransformProps;
+        TransformProps &
+        TypographyProps;
 
 export interface ZnUIProps extends StyleProps {
 
