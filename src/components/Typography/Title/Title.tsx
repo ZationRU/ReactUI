@@ -1,23 +1,23 @@
 import './Title.css';
 import React from "react";
 import classNames from "classnames";
+import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
 
-export interface TitleProps extends React.HTMLAttributes<HTMLElement> {
+export interface TitleProps extends LayoutProps {
     size?: 'small'|'medium'|'large';
-    Component?: React.ElementType;
 }
 
 export const Title = (props: TitleProps) => {
     const {
         size = 'medium',
-        Component = 'h4' as React.ElementType,
+        as = 'h4' as React.ElementType,
         className,
         ...otherProps
     } = props
 
 
-    return <Component {...otherProps} className={classNames(
+    return <Layout ms={0} me={0} as={as} className={classNames(
         className,
         'znui-title-'+size
-    )}/>
+    )} {...otherProps}/>
 }

@@ -1,23 +1,23 @@
 import './Label.css';
 import React from "react";
 import classNames from "classnames";
+import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
 
-export interface LabelProps extends React.HTMLAttributes<HTMLElement> {
+export interface LabelProps extends LayoutProps {
     size?: 'small'|'medium'|'large';
-    Component?: React.ElementType;
 }
 
 export const Label = (props: LabelProps) => {
     const {
         size = 'medium',
-        Component = 'label' as React.ElementType,
+        as = 'h4' as React.ElementType,
         className,
         ...otherProps
     } = props
 
 
-    return <Component {...otherProps} className={classNames(
+    return <Layout ms={0} me={0} as={as} className={classNames(
         className,
         'znui-label-'+size
-    )}/>
+    )} {...otherProps}/>
 }

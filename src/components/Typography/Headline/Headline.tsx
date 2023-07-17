@@ -1,23 +1,23 @@
 import './Headline.css';
 import React from "react";
 import classNames from "classnames";
+import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
 
-export interface HeadlineProps extends React.HTMLAttributes<HTMLElement> {
+export interface HeadlineProps extends LayoutProps {
     size?: 'small'|'medium'|'large';
-    Component?: React.ElementType;
 }
 
 export const Headline = (props: HeadlineProps) => {
     const {
         size = 'medium',
-        Component = 'h4' as React.ElementType,
+        as = 'h4' as React.ElementType,
         className,
         ...otherProps
     } = props
 
 
-    return <Component {...otherProps} className={classNames(
+    return <Layout ms={0} me={0} as={as} className={classNames(
         className,
         'znui-headline-'+size
-    )}/>
+    )} {...otherProps}/>
 }
