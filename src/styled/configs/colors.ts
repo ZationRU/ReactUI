@@ -3,36 +3,34 @@ import {Adaptive} from "../../adaptive/Adaptive";
 import {propConfig} from "../utils/props";
 
 export const colors = {
-    background: propConfig("background"),
     color: propConfig("color"),
+    fill: propConfig("fill"),
+    stroke: propConfig("stroke"),
     opacity: propConfig("opacity"),
 }
 
 Object.assign(colors, {
-    bg: colors.background,
+    textColor: colors.color,
     c: colors.color,
     oc: colors.opacity
 })
 
 export interface ColorsProps {
     /**
-     * Background
-     * @default transparent
-     */
-    background?: Adaptive<CSS.Property.Background|string>
-    bg?: Adaptive<CSS.Property.Background|string>
-
-    /**
      * Text color
-     * @default transparent
+     * @default currentColor
      */
+    textColor?: Adaptive<CSS.Property.Color>
     color?: Adaptive<CSS.Property.Color|string>
     c?: Adaptive<CSS.Property.Color|string>
 
     /**
-     * Opacity
-     * @default 1
+     * The CSS `fill` property for icon svgs and paths
      */
-    opacity?: Adaptive<CSS.Property.Opacity|number>
-    oc?: Adaptive<CSS.Property.Opacity|number>
+    fill?: Adaptive<CSS.Property.Color>
+
+    /**
+     * The CSS `stroke` property for icon svgs and paths
+     */
+    stroke?: Adaptive<CSS.Property.Color>
 }
