@@ -40,11 +40,16 @@ export const GridLayout = (props: GridLayoutProps) => {
         ...otherProps
     } = useAdaptiveProps<any>(props)
 
+    const templateColumns = minChildWidth
+        ? columns ? `repeat(auto-fit, minmax(${minChildWidth}, 1fr))`: null
+        : columns ? `repeat(${columns}, minmax(0, 1fr))`: null
+
     return <Layout
         display="grid"
         gridGap={spacing}
         gridColumnGap={spacingH}
         gridRowGap={spacingV}
+        gridTemplateColumns={templateColumns||undefined}
         {...otherProps}
     />
 }
