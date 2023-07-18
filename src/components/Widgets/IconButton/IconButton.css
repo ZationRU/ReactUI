@@ -1,8 +1,22 @@
 .IconButton {
     overflow: clip;
     position: relative;
+    border: none;
+    outline: none;
+    background: none;
     border-radius: 50%;
     height: 40px;
     width: 40px;
     --icon-size: 24px;
+}
+
+.IconButton:enabled:hover > .state-layer {
+    background: var(--znui-primary);
+    opacity: 0.08;
+}
+
+/** state: focused */
+.IconButton:enabled:focus-visible > .state-layer {
+    background: var(--znui-primary);
+    opacity: 0.12;
 }

@@ -15,7 +15,7 @@ export const IconButton = (props: IconButtonProps) => {
         ...otherProps
     } = props
 
-    return <Center className={classNames(
+    return <Center as="button" className={classNames(
         "IconButton",
         className,
     )} {...otherProps}>
