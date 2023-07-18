@@ -5,7 +5,7 @@ import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement>{
-    mode: 'filled'|'text'|'outline',
+    mode?: 'filled'|'text'|'outline',
     icon?: ReactNode
 }
 
