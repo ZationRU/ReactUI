@@ -1,8 +1,7 @@
 .AnimatedVisibility {
     --duration: 400ms;
+    transition: transform var(--duration) var(--emphasized-motion), opacity var(--duration) var(--emphasized-motion);
     opacity: 0;
-    animation: AnimatedVisibility var(--duration) var(--emphasized-motion) forwards;
-    transform: translate(0px);
 }
 
 .AnimatedVisibility--top {
@@ -17,13 +16,19 @@
     transform: translateX(-100%);
 }
 
+.AnimatedVisibility--center {
+    transform: translate(0px);
+}
+
 .AnimatedVisibility--right {
     transform: translateX(100%);
 }
 
-@keyframes AnimatedVisibility {
-    to {
-        transform: translate(0px);
-        opacity: 1;
-    }
+/**
+ * Visibility states
+ */
+
+.AnimatedVisibility--visible {
+    transform: translate(0px);
+    opacity: 1;
 }
