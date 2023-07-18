@@ -1,5 +1,3 @@
-> It's template
-
 ```tsx
 import {GridLayout} from "./GridLayout";
 import {Center} from "../Center/Center";
