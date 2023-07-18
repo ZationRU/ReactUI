@@ -1,8 +1,9 @@
 import classNames from "classnames";
 import React from "react";
 import "./Avatar.css";
+import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
 
-export interface AvatarProps extends React.HTMLAttributes<HTMLImageElement>{
+export interface AvatarProps extends LayoutProps {
     image?: string
     text?: string
     size?: number
@@ -17,7 +18,7 @@ export function Avatar(props: AvatarProps) {
         ...otherProps
     } = props
 
-    return <div className={classNames(
+    return <Layout className={classNames(
         className,
         classNames({
             'Avatar': true,
@@ -27,10 +28,10 @@ export function Avatar(props: AvatarProps) {
         width: size,
         height: size,
         fontSize: 22/60*size
-    }}>
+    }}  {...otherProps}>
         {
             text&&!image ? text[0]:
-                <img src={image} alt="" {...otherProps} />
+                <img src={image} alt=""/>
         }
-    </div>
+    </Layout>
 }
