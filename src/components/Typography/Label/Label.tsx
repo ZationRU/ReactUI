@@ -2,9 +2,10 @@ import './Label.css';
 import React from "react";
 import classNames from "classnames";
 import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
+import {useAdaptiveProps} from "../../../adaptive/useAdaptive";
 
 export interface LabelProps extends LayoutProps {
-    size?: 'small'|'medium'|'large';
+    size?: Adaptive<'small'|'medium'|'large'>;
 }
 
 export const Label = (props: LabelProps) => {
@@ -13,7 +14,7 @@ export const Label = (props: LabelProps) => {
         as = 'h4' as React.ElementType,
         className,
         ...otherProps
-    } = props
+    } = useAdaptiveProps<any>(props)
 
 
     return <Layout ms={0} me={0} as={as} className={classNames(
