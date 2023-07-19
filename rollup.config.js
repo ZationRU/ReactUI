@@ -1,13 +1,14 @@
-import typescript from 'rollup-plugin-typescript2';
-import commonjs from '@rollup/plugin-commonjs'
-import external from 'rollup-plugin-peer-deps-external';
-import postcss from 'rollup-plugin-postcss';
-import dts from 'rollup-plugin-dts';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
-import svgr from '@svgr/rollup';
-import del from 'rollup-plugin-delete';
+const typescript = require('rollup-plugin-typescript2');
+const commonjs = require('@rollup/plugin-commonjs');
+const external = require('rollup-plugin-peer-deps-external');
+const postcss = require('rollup-plugin-postcss');
+const { default: dts } = require('rollup-plugin-dts');
+const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const svgr = require('@svgr/rollup');
+const del = require('rollup-plugin-delete');
 
-import pkg from './package.json';
+const pkg = require('./package.json');
+
 
 const config = [
     {
@@ -78,4 +79,4 @@ const config = [
     },
 ];
 
-export default config;
+module.exports = config;
