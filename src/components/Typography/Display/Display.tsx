@@ -3,6 +3,7 @@ import React from "react";
 import classNames from "classnames";
 import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
 import {useAdaptiveProps} from "../../../adaptive/useAdaptive";
+import {Adaptive} from "../../../adaptive/Adaptive";
 
 export interface DisplayProps extends LayoutProps {
     size?: Adaptive<'small'|'medium'|'large'>;
