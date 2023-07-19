@@ -5,7 +5,7 @@ import {
     flex,
     grid, interactivity,
     layout, list,
-    margin,
+    margin, scroll,
     padding,
     position,
     transform,
@@ -45,6 +45,7 @@ export const styledProps = {
     ...typography,
     ...interactivity,
     ...list,
+    ...scroll,
 }
 
 export const isStyleProp = (prop: string) => prop in styledProps

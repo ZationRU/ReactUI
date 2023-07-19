@@ -12,7 +12,7 @@ import {
     BackgroundProps,
     EffectProps,
     FilterProps,
-    InteractivityProps, ListProps
+    InteractivityProps, ListProps, ScrollProps
 } from "./configs";
 import React from "react";
 
@@ -30,7 +30,8 @@ export type StyleProps = ColorsProps &
         BackgroundProps &
         FilterProps &
         InteractivityProps &
-        ListProps;
+        ListProps &
+        ScrollProps;
 
 export interface ZnUIProps extends StyleProps {
 
