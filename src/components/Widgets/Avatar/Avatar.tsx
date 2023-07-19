@@ -15,6 +15,7 @@ export function Avatar(props: AvatarProps) {
         text,
         size = 60,
         className,
+        style,
         ...otherProps
     } = props
 
@@ -24,11 +25,7 @@ export function Avatar(props: AvatarProps) {
             'Avatar': true,
             'Avatar--text': text&&!image,
         })
-    )} style={{
-        width: size,
-        height: size,
-        fontSize: 22/60*size
-    }}  {...otherProps}>
+    )} fontSize={22/60*size} layoutSize={size} {...otherProps}>
         {
             text&&!image ? text[0]:
                 <img src={image} alt=""/>
