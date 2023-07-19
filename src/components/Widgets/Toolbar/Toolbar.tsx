@@ -52,13 +52,14 @@ export function Toolbar(props: ToolbarProps) {
                     "Toolbar-Title-Centered": centered,
                     "Toolbar-Title-Icon--Hidden": !navigationIcon&&!centered
                 },
-            )}>{children}</Title>
+            )} whiteSpace="nowrap" textOverflow="ellipsis" flex={1}>{children}</Title>
 
-            <Spacer/>
-
-            {menu&&<FlexLayout className="Toolbar-Menu">
-                {menu}
-            </FlexLayout>}
+            {menu&&<>
+                {centered&&<Spacer/>}
+                <FlexLayout className="Toolbar-Menu">
+                    {menu}
+                </FlexLayout>
+            </>}
         </div>
     </SurfaceLayout>
 }
