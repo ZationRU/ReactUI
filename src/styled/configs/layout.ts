@@ -27,7 +27,7 @@ export const layout = {
     isolation: propConfig("isolation"),
     inlineSize: propConfig("inlineSize"),
     blockSize: propConfig("blockSize"),
-    boxSize: propConfig("boxSize"),
+    layoutSize: propConfig(["width", "height"]),
     minInlineSize: propConfig("minInlineSize"),
     minBlockSize: propConfig("minBlockSize"),
     maxInlineSize: propConfig("maxInlineSize"),
