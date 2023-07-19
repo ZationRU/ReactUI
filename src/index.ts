@@ -56,6 +56,7 @@ export * from "./components/Widgets/NavigationRail/NavigationRail"
 export * from "./components/Widgets/Switch/Switch"
 export * from "./components/Widgets/TextField/TextField"
 export * from "./components/Widgets/Toolbar/Toolbar"
+export * from "./components/Widgets/Divider/Divider"
 export * from "./components/Widgets/IconWrapper/IconWrapper"
 
 //-------------------------------------------------------------------------------------
