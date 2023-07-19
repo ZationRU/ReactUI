@@ -49,9 +49,11 @@ export const useDialogs = (): DialogInterface => {
                         const baseDialogWrapper = baseDialogWrapperRef.current
                         if(scrim==null||baseDialogWrapper==null) return;
                         scrim.style.opacity = "0.4";
+                        scrim.style.transitionTimingFunction = "var(--emphasized-motion)";
 
                         const baseDialog = (baseDialogWrapper.firstElementChild!! as HTMLDivElement);
-                        baseDialog.style.maxHeight = "100vh";
+                        baseDialog.style.maxHeight = "100em";
+                        baseDialog.style.transitionTimingFunction = "var(--emphasized-motion)";
                     }, 10)
                 }, [scrimRef])
 
@@ -67,7 +69,7 @@ export const useDialogs = (): DialogInterface => {
 
                         setTimeout(() => {
                             portal.remove()
-                        }, 300)
+                        }, 500)
                     })
                 }, [])
 
@@ -84,7 +86,7 @@ export const useDialogs = (): DialogInterface => {
                         pos="absolute"
                         opacity={0}
                         ref={scrimRef}
-                        transition="opacity 300ms var(--emphasized-motion)"
+                        transition="opacity 300ms var(--emphasized-decelerate-motion)"
                         top={0}
                         left={0}
                         right={0}
@@ -104,7 +106,7 @@ export const useDialogs = (): DialogInterface => {
                             icon={config.icon}
                             title={config.title}
                             description={config.description}
-                            transition="max-height 200ms var(--emphasized-motion)"
+                            transition="max-height 300ms var(--emphasized-decelerate-motion)"
                             actions={config.actions&&config.actions.map((action, index) =>
                                 <Button mode="text" key={index} onClick={e => {
                                     if(action.cancel) {
