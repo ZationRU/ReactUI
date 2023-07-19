@@ -1,14 +1,17 @@
-import React, {ReactNode} from "react";
+import React, {CSSProperties, ReactNode} from "react";
 import {SurfaceLayout, SurfaceLayoutProps} from "../SurfaceLayout/SurfaceLayout";
 import {Headline} from "../../Typography/Headline/Headline";
 import {HStack, Stack} from "../../Basic/Stack/Stack";
 import {Body} from "../../Typography/Body/Body";
 import {Spacer} from "../../Basic/FlexLayout/FlexLayout";
+import {LayoutProps} from "../../Basic/Layout/Layout";
+import {IconWrapper} from "../../Widgets/IconWrapper/IconWrapper";
 
-export interface BaseDialogProps {
+export interface BaseDialogProps extends Omit<LayoutProps, "title"> {
     title: ReactNode|string
     description?: ReactNode|string
     actions?: ReactNode
+    icon?: ReactNode
 }
 
 export function BaseDialog(props: BaseDialogProps) {
@@ -16,6 +19,8 @@ export function BaseDialog(props: BaseDialogProps) {
         title,
         description,
         actions,
+        icon,
+        ...layoutRest
     } = props
 
 
@@ -24,9 +29,14 @@ export function BaseDialog(props: BaseDialogProps) {
         borderRadius={28}
         minW={280}
         maxW={560}
+        {...layoutRest}
     >
         <Stack spacing={16} ph={24} pt={24}>
-            <Headline size="small">{title}</Headline>
+            {icon&&<IconWrapper display="flex" c="var(--znui-secondary)" style={{
+                "--icon-size": '24px'
+            } as CSSProperties} justify="center">{icon}</IconWrapper>}
+
+            <Headline size="small" textAlign={icon?"center":"start"}>{title}</Headline>
             {description&&<Body size="medium" c="var(--znui-on-surface-variant)">{description}</Body>}
         </Stack>
 
