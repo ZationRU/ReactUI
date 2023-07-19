@@ -9,7 +9,7 @@ import {
     padding,
     position,
     transform,
-    typography
+    typography, textDecoration
 } from "./configs";
 import React from "react";
 import {StyleProps, ZnUIComponent} from "./styled.types";
@@ -46,6 +46,7 @@ export const styledProps = {
     ...interactivity,
     ...list,
     ...scroll,
+    ...textDecoration,
 }
 
 export const isStyleProp = (prop: string) => prop in styledProps
