@@ -10,6 +10,11 @@ export const position = {
     right: propConfig("right"),
     positionVertical: propConfig(["left", "right"]),
     positionHorizontal: propConfig(["top", "bottom"]),
+    zIndex: propConfig("zIndex"),
+    insetInline: propConfig("insetInline"),
+    insetBlock: propConfig("insetBlock"),
+    insetBlockStart: propConfig("insetBlockStart"),
+    insetBlockEnd: propConfig("insetBlockEnd"),
 }
 
 Object.assign(position, {
@@ -50,7 +55,6 @@ export interface PositionProps {
      */
     right?: Adaptive<CSS.Property.Right|number|string>
 
-
     /**
      * Position horizontal (posH = position left = position right)
      * @default undefined
@@ -64,4 +68,34 @@ export interface PositionProps {
      */
     posV?: Adaptive<CSS.Property.Top|CSS.Property.Bottom|number|string>
     positionVertical?: Adaptive<CSS.Property.Top|CSS.Property.Bottom|number|string>
+
+    /**
+     * Index of position in layout
+     * @default undefined
+     */
+    zIndex?: Adaptive<CSS.Property.ZIndex|number>
+
+    /**
+     * Index of position in layout
+     * @default ph
+     */
+    insetInline?: Adaptive<CSS.Property.InsetInline|number>
+
+    /**
+     * Index of position in layout
+     * @default ph
+     */
+    insetBlock?: Adaptive<CSS.Property.InsetBlock|number>
+
+    /**
+     * Index of position in layout
+     * @default ph
+     */
+    insetBlockStart?: Adaptive<CSS.Property.InsetBlockStart|number>
+
+    /**
+     * Index of position in layout
+     * @default ph
+     */
+    insetBlockEnd?: Adaptive<CSS.Property.InsetBlockEnd|number>
 }
