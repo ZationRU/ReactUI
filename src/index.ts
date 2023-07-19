@@ -21,6 +21,7 @@ export * from "./components/Basic/FlexLayout/FlexLayout"
  */
 
 export * from "./components/Layouts/Card/Card"
+export * from "./components/Layouts/BaseDialog/BaseDialog"
 export * from "./components/Layouts/CoordinatorLayout/CoordinatorLayout"
 export * from "./components/Layouts/StateLayer/StateLayer"
 export * from "./components/Layouts/SurfaceLayout/SurfaceLayout"
@@ -80,4 +81,12 @@ export * from "./adaptive/utils"
 export * from "./styled/styled"
 export * from "./styled/styled.types"
 export * from "./styled/configs"
+
+//-------------------------------------------------------------------------------------
+
+/**
+ * Dialogs
+ */
+export * from "./dialogs/useDialogs"
+
 
