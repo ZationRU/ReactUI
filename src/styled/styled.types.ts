@@ -33,7 +33,7 @@ export type StyleProps = ColorsProps &
         ListProps &
         ScrollProps &
         TextDecorationProps &
-        TransitionProps;
+        TransitionProps ;
 
 export interface ZnUIProps extends StyleProps {
 

@@ -48,6 +48,7 @@ export const styledProps = {
     ...scroll,
     ...textDecoration,
     ...transition,
+    ...transform,
 }
 
 export const isStyleProp = (prop: string) => prop in styledProps
