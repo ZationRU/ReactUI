@@ -3,7 +3,7 @@ import {
     border,
     colors, effect,
     flex,
-    grid,
+    grid, interactivity,
     layout,
     margin,
     padding,
@@ -43,6 +43,7 @@ export const styledProps = {
     ...position,
     ...transform,
     ...typography,
+    ...interactivity,
 }
 
 export const isStyleProp = (prop: string) => prop in styledProps
