@@ -4,7 +4,7 @@ import {
     colors, effect,
     flex,
     grid, interactivity,
-    layout,
+    layout, list,
     margin,
     padding,
     position,
@@ -44,6 +44,7 @@ export const styledProps = {
     ...transform,
     ...typography,
     ...interactivity,
+    ...list,
 }
 
 export const isStyleProp = (prop: string) => prop in styledProps
