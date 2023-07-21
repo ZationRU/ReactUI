@@ -1,6 +1,6 @@
 import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
 import {Adaptive} from "../../../adaptive/Adaptive";
-import {useAdaptiveProps} from "../../../adaptive/useAdaptive";
+import {useAdaptive, useAdaptiveValue} from "../../../adaptive/useAdaptive";
 import classNames from "classnames";
 import React, {CSSProperties} from "react";
 import "./AnimatedVisibility.css";
@@ -15,7 +15,7 @@ export interface AnimatedVisibilityProps extends LayoutProps {
     /**
      * @default true
      */
-    isVisible?: boolean
+    isVisible?: Adaptive<boolean>
 
     /**
      * @default 400ms
@@ -31,19 +31,19 @@ export function AnimatedVisibility(props: AnimatedVisibilityProps) {
         style,
         isVisible = true,
         ...otherProps
-    } = useAdaptiveProps(props)
+    } = props
 
     return <Layout className={
         classNames(
             "AnimatedVisibility",
-            "AnimatedVisibility--"+startPosition,
+            "AnimatedVisibility--"+useAdaptiveValue(startPosition),
             className as string,
             {
-                "AnimatedVisibility--visible": isVisible
+                "AnimatedVisibility--visible": useAdaptiveValue(isVisible)
             }
         )
     } style={{
        ...style as CSSProperties,
-        '--duration': duration + 'ms',
+        '--duration': useAdaptiveValue(duration) + 'ms',
     } as CSSProperties} {...otherProps}/>
 }
