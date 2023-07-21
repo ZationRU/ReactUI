@@ -1,11 +1,8 @@
-import {znui} from "../znui";
-import {HTMLZnUIProps} from "../../../styled/styled.types";
 import {Layout, LayoutProps} from "../Layout/Layout";
 import React from "react";
 import {Adaptive} from "../../../adaptive/Adaptive";
 import {GridProps} from "../../../styled/configs";
-import {resolveAdaptive} from "../../../adaptive/AdaptiveResolver";
-import {useAdaptiveProps, useAdaptiveValue} from "../../../adaptive/useAdaptive";
+import {useAdaptiveValue} from "../../../adaptive/useAdaptive";
 
 export interface GridLayoutProps extends LayoutProps {
     /**
