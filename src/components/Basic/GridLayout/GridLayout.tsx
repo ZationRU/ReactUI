@@ -5,7 +5,7 @@ import React from "react";
 import {Adaptive} from "../../../adaptive/Adaptive";
 import {GridProps} from "../../../styled/configs";
 import {resolveAdaptive} from "../../../adaptive/AdaptiveResolver";
-import {useAdaptiveProps} from "../../../adaptive/useAdaptive";
+import {useAdaptiveProps, useAdaptiveValue} from "../../../adaptive/useAdaptive";
 
 export interface GridLayoutProps extends LayoutProps {
     /**
@@ -38,18 +38,21 @@ export const GridLayout = (props: GridLayoutProps) => {
         spacingH,
         spacingV,
         ...otherProps
-    } = useAdaptiveProps<any>(props)
+    } = props
+
+    const minChildWidthResolved = useAdaptiveValue(minChildWidth);
+    const columnsResolved = useAdaptiveValue(columns);
 
     const templateColumns = minChildWidth
-        ? columns ? `repeat(auto-fit, minmax(${minChildWidth}, 1fr))`: null
-        : columns ? `repeat(${columns}, minmax(0, 1fr))`: null
+        ? columns ? `repeat(auto-fit, minmax(${minChildWidthResolved}, 1fr))`: undefined
+        : columns ? `repeat(${columnsResolved}, minmax(0, 1fr))`: undefined
 
     return <Layout
         display="grid"
-        gridGap={spacing}
-        gridColumnGap={spacingH}
-        gridRowGap={spacingV}
-        gridTemplateColumns={templateColumns||undefined}
+        gridGap={useAdaptiveValue(spacing)}
+        gridColumnGap={useAdaptiveValue(spacingH)}
+        gridRowGap={useAdaptiveValue(spacingV)}
+        gridTemplateColumns={templateColumns}
         {...otherProps}
     />
 }
