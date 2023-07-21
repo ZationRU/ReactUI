@@ -25,25 +25,25 @@ export interface AnimatedVisibilityProps extends LayoutProps {
 
 export function AnimatedVisibility(props: AnimatedVisibilityProps) {
     const {
-        startPosition = 'center',
-        duration = 400,
+        startPosition,
+        duration,
         className,
         style,
-        isVisible = true,
+        isVisible,
         ...otherProps
     } = props
 
     return <Layout className={
         classNames(
             "AnimatedVisibility",
-            "AnimatedVisibility--"+useAdaptiveValue(startPosition),
+            "AnimatedVisibility--"+useAdaptiveValue(startPosition||'center'),
             className as string,
             {
-                "AnimatedVisibility--visible": useAdaptiveValue(isVisible)
+                "AnimatedVisibility--visible": useAdaptiveValue(isVisible===undefined? true: isVisible)
             }
         )
     } style={{
        ...style as CSSProperties,
-        '--duration': useAdaptiveValue(duration) + 'ms',
+        '--duration': useAdaptiveValue(duration||400) + 'ms',
     } as CSSProperties} {...otherProps}/>
 }
