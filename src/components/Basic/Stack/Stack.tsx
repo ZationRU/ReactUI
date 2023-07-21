@@ -1,7 +1,7 @@
 import React from "react";
 import {Layout, LayoutProps} from "../Layout/Layout";
 import {Adaptive} from "../../../adaptive/Adaptive";
-import {useAdaptiveProps} from "../../../adaptive/useAdaptive";
+import {useAdaptiveProps, useAdaptiveValue} from "../../../adaptive/useAdaptive";
 import * as CSS from "csstype";
 
 export interface StackProps extends LayoutProps {
@@ -12,14 +12,15 @@ export interface StackProps extends LayoutProps {
 
 export function Stack(props: StackProps) {
     const {
-        orientation = "vertical",
+        orientation,
+        spacing,
         ...layoutProps
-    } = useAdaptiveProps(props)
+    } = props
 
     return <Layout
         display="flex"
-        gap={props.spacing}
-        direction={orientation==="vertical" ? "column": "row"}
+        gap={useAdaptiveValue(spacing)}
+        direction={useAdaptiveValue(orientation||"vertical")==="vertical" ? "column": "row"}
         {...layoutProps}
     />
 }
