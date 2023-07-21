@@ -2,7 +2,7 @@ import './Headline.css';
 import React from "react";
 import classNames from "classnames";
 import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
-import {useAdaptiveProps} from "../../../adaptive/useAdaptive";
+import {useAdaptiveProps, useAdaptiveValue} from "../../../adaptive/useAdaptive";
 import {Adaptive} from "../../../adaptive/Adaptive";
 
 export interface HeadlineProps extends LayoutProps {
@@ -11,15 +11,15 @@ export interface HeadlineProps extends LayoutProps {
 
 export const Headline = (props: HeadlineProps) => {
     const {
-        size = 'medium',
+        size,
         as = 'h4' as React.ElementType,
         className,
         ...otherProps
-    } = useAdaptiveProps<any>(props)
+    } = props
 
 
     return <Layout ms={0} me={0} as={as} className={classNames(
         className,
-        'znui-headline-'+size
+        'znui-headline-'+(useAdaptiveValue(size) || 'medium')
     )} {...otherProps}/>
 }

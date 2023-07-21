@@ -15,7 +15,7 @@ export const Title = (props: TitleProps) => {
         as = 'h4' as React.ElementType,
         className,
         ...otherProps
-    } = useAdaptiveProps<any>(props)
+    } = props
 
 
     return <Layout ms={0} me={0} as={as} className={classNames(
