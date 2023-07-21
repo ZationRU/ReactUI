@@ -5,8 +5,6 @@ import {TextField} from "./TextField";
 import {Layout} from "../../Basic/Layout/Layout";
 
 <Layout maxW={210}>
-    <TextField placeholder="Placeholder">
-
-    </TextField>
+    <TextField placeholder="Placeholder" label="Label"/>
 </Layout>
 ```

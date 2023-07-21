@@ -1,6 +1,11 @@
 .TextField {
+    transition: color 300ms var(--emphasized-motion);
+
+    color: var(--znui-outline);
+
+    --border-size: 1px;
     box-sizing: border-box;
-    border: var(--znui-on-surface) 1px solid;
+    border: currentColor 1px solid;
     border-radius: 4px;
     position: relative;
 
@@ -10,13 +15,27 @@
 }
 
 .TextField > input {
-    margin-left: 16px;
+    margin-left: calc(17px - var(--border-size));
     background: transparent;
     height: 40px;
-    width: inherit;
+    width: 100%;
     border: none;
     padding: 0;
     text-overflow: ellipsis;
+}
+
+.TextField > .label {
+    position: absolute;
+    left: calc(17px - var(--border-size));
+}
+
+.TextField:hover > input::placeholder {
+    color: currentColor;
+    transition: color 300ms var(--emphasized-motion);
+}
+
+.TextField:hover {
+    color: var(--znui-on-surface);
 }
 
 .TextField > input:focus {
@@ -24,5 +43,6 @@
 }
 
 .TextField:has(> input:focus) {
+    --border-size: 2px;
     border: var(--znui-primary) 2px solid;
 }
