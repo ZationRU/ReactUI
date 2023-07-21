@@ -2,7 +2,7 @@ import './Display.css';
 import React from "react";
 import classNames from "classnames";
 import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
-import {useAdaptiveProps} from "../../../adaptive/useAdaptive";
+import {useAdaptiveProps, useAdaptiveValue} from "../../../adaptive/useAdaptive";
 import {Adaptive} from "../../../adaptive/Adaptive";
 
 export interface DisplayProps extends LayoutProps {
@@ -11,15 +11,15 @@ export interface DisplayProps extends LayoutProps {
 
 export const Display = (props: DisplayProps) => {
     const {
-        size = 'medium',
+        size,
         as = 'h4' as React.ElementType,
         className,
         ...otherProps
-    } = useAdaptiveProps<any>(props)
+    } = props
 
 
     return <Layout ms={0} me={0} as={as} className={classNames(
         className,
-        'znui-display-'+size
+        'znui-display-'+(useAdaptiveValue(size) || 'medium')
     )} {...otherProps}/>
 }

@@ -2,7 +2,7 @@ import './Title.css';
 import React from "react";
 import classNames from "classnames";
 import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
-import {useAdaptiveProps} from "../../../adaptive/useAdaptive";
+import {useAdaptiveProps, useAdaptiveValue} from "../../../adaptive/useAdaptive";
 import {Adaptive} from "../../../adaptive/Adaptive";
 
 export interface TitleProps extends LayoutProps {
@@ -11,7 +11,7 @@ export interface TitleProps extends LayoutProps {
 
 export const Title = (props: TitleProps) => {
     const {
-        size = 'medium',
+        size,
         as = 'h4' as React.ElementType,
         className,
         ...otherProps
@@ -20,6 +20,6 @@ export const Title = (props: TitleProps) => {
 
     return <Layout ms={0} me={0} as={as} className={classNames(
         className,
-        'znui-title-'+size
+        'znui-title-'+(useAdaptiveValue(size) || 'medium')
     )} {...otherProps}/>
 }
