@@ -20,7 +20,7 @@ export function Stack(props: StackProps) {
     return <Layout
         display="flex"
         gap={useAdaptiveValue(spacing)}
-        direction={useAdaptiveValue(orientation||"vertical")==="vertical" ? "column": "row"}
+        direction={(useAdaptiveValue(orientation)||"vertical")==="vertical" ? "column": "row"}
         {...layoutProps}
     />
 }

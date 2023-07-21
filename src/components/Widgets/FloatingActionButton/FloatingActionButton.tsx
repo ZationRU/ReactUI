@@ -27,7 +27,7 @@ export function FloatingActionButton(
     return <button className={classNames(
         className,
         'FloatingActionButton',
-        'FloatingActionButton--'+useAdaptiveValue(size||'default'),
+        'FloatingActionButton--'+useAdaptiveValue(size)||'default',
         'FloatingActionButton--'+appearance,
         'elevation-light-3',
     )} {...otherProps} aria-label={text}>

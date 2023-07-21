@@ -39,7 +39,7 @@ export function AnimatedVisibility(props: AnimatedVisibilityProps) {
             "AnimatedVisibility--"+useAdaptiveValue(startPosition||'center'),
             className as string,
             {
-                "AnimatedVisibility--visible": useAdaptiveValue(isVisible===undefined? true: isVisible)
+                "AnimatedVisibility--visible": useAdaptiveValue(isVisible)===undefined? true: isVisible
             }
         )
     } style={{
