@@ -3,7 +3,7 @@ import classNames from "classnames";
 import "./FloatingActionButton.css";
 import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
-import {useAdaptiveProps, useAdaptiveValue} from "../../../adaptive/useAdaptive";
+import {useAdaptiveValue} from "../../../adaptive/useAdaptive";
 import {Adaptive} from "../../../adaptive/Adaptive";
 
 export interface FloatingActionButtonProps extends React.HTMLAttributes<HTMLButtonElement>{
@@ -16,7 +16,7 @@ export function FloatingActionButton(
     props: FloatingActionButtonProps
 ) {
     const {
-        size = 'default',
+        size,
         appearance = 'primary',
         text,
         className,
