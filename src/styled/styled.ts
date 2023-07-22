@@ -14,9 +14,9 @@ import {
 import React from "react";
 import {StyleProps, ZnUIComponent} from "./styled.types";
 import createStyled, {FunctionInterpolation} from "@emotion/styled"
-import {runIfFn} from "./utils/props";
 import {css} from "./css";
 import {LayoutBreakpoint} from "../adaptive/LayoutBreakpoint";
+import {runIfFn} from "../utils";
 
 const emotion = ((createStyled as any).default ?? createStyled) as typeof createStyled
 
