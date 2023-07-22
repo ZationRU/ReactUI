@@ -12,7 +12,7 @@ export interface SurfaceLayoutProps extends LayoutProps {
      *
      * @default 0
      */
-    s ?: 0 | 1 | 2 | 3 | 4 | 5
+    s ?: 0 | 1 | 2 | 3 | 4 | 5 | 'none'
 
 
     /**

@@ -24,6 +24,7 @@ export function Toolbar(props: ToolbarProps) {
         navigationIcon,
         onClickNavigationIcon,
         menu,
+        s = 'none',
         ...otherProps
     } = props
 
@@ -34,7 +35,7 @@ export function Toolbar(props: ToolbarProps) {
         }
     }, [navigationIcon])
 
-    return <SurfaceLayout className={classNames(
+    return <SurfaceLayout s={s} className={classNames(
         className,
         'Toolbar'
     )} {...otherProps}>

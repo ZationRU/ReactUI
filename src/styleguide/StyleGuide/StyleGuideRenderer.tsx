@@ -13,8 +13,9 @@ import {AdaptiveInfoPage} from "./pages/AdaptiveInfoPage";
 import {
     ZnUIIconHomeFilled,
     ZnUIIconPhotoOutline,
-    ZnUIIconMinimizeWindowFilled
+    ZnUIIconMinimizeWindowFilled, ZnUIIconDebugFilled
 } from "@znui/icons"
+import {GetStartedPage} from "./pages/GetStartedPage";
 
 interface StyleGuideRendererProps {
     title: string;
@@ -24,16 +25,22 @@ interface StyleGuideRendererProps {
     hasSidebar?: boolean;
 }
 
-const Pages = [
+const Pages = {
+    home: HomeInfoPage,
+    adaptive: AdaptiveInfoPage,
+    'get-started': GetStartedPage
+}
+
+const NavigationPagesLinks = [
     {
         id: 'home',
         title: "Home",
         icon: <ZnUIIconHomeFilled/>
     },
     {
-        id: 'adaptive',
-        title: "Adaptive",
-        icon: <ZnUIIconPhotoOutline/>
+        id: 'get-started',
+        title: "Get started",
+        icon: <ZnUIIconDebugFilled/>
     },
     {
         id: 'components',
@@ -42,7 +49,10 @@ const Pages = [
     }
 ]
 
+export type Navigate = (hash: string) => void
+
 export function StyleGuideRenderer(props: StyleGuideRendererProps) {
+    const ref = React.useRef<HTMLDivElement|null>(null)
     const {
         title,
         version,
@@ -52,6 +62,12 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
     } = props
 
     const [page, setPage] = useState(window.location.hash==='' ? 'home' : window.location.hash.substring(1))
+
+    useEffect(() => {
+        if(ref.current!=null) {
+            ref.current.scrollTo(0, 0)
+        }
+    }, [ref, page])
 
     const hashChangeHandler = useCallback(() => {
         setPage(window.location.hash.substring(1));
@@ -88,7 +104,7 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
             breakpointWidth === LayoutBreakpointsValues.esm && <>
                 <NavigationBar pb="env(safe-area-inset-bottom)">
                     {
-                        Pages.map(({title, icon, id}) => <NavigationBar.Item
+                        NavigationPagesLinks.map(({title, icon, id}) => <NavigationBar.Item
                             title={title}
                             selected={page===id}
                             onClick={() => go(id)}
@@ -100,9 +116,9 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
 
         {
             breakpointWidth !== LayoutBreakpointsValues.esm && breakpointWidth < LayoutBreakpointsValues.lg && <>
-                <NavigationRail s={1}>
+                <NavigationRail s={2}>
                     {
-                        Pages.map(({title, icon, id}) => <NavigationRail.Item
+                        NavigationPagesLinks.map(({title, icon, id}) => <NavigationRail.Item
                             title={title}
                             selected={page===id}
                             onClick={() => go(id)}
@@ -115,10 +131,10 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
         {
             breakpointWidth >= LayoutBreakpointsValues.lg&&<Layout w={360}>
                 <Layout pos="fixed" w="inherit">
-                    <SurfaceLayout s={1} overflow={"auto"} maxH="100vh" minH="100vh">
+                    <SurfaceLayout s={2} overflow={"auto"} maxH="100vh" minH="100vh">
                         <NavigationDrawer mh={10} mv={10}>
                             {
-                                Pages.map(({title, icon, id}) => <NavigationDrawer.Item
+                                NavigationPagesLinks.map(({title, icon, id}) => <NavigationDrawer.Item
                                     icon={icon}
                                     selected={page===id}
                                     onClick={() => go(id)}
@@ -130,19 +146,17 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
             </Layout>
         }
 
-
-            <Layout flex={1} overflow="auto">
+        <Layout flex={1} overflow="auto" ref={ref}>
             {
-                page === 'home' ?
-                    <HomeInfoPage/> :
-                    page === 'adaptive' ?
-                        <AdaptiveInfoPage/> :
-                        page === 'components' ?
-                            <>
-                                <Toolbar>Components</Toolbar>
-                                {toc}
-                            </>      :
-                            children
+                Object.hasOwn(Pages, page) ?
+                    React.createElement(Pages[page], {
+                        go
+                    }): page === 'components' ?
+                        <>
+                            <Toolbar>Components</Toolbar>
+                            {toc}
+                        </> : children
+
             }
         </Layout>
     </Layout>

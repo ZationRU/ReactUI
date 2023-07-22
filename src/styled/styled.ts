@@ -1,15 +1,5 @@
 import {
-    background,
-    border,
-    colors, effect,
-    flex,
-    grid, interactivity,
-    layout, list,
-    margin, scroll,
-    padding,
-    position,
-    transform,
-    typography, textDecoration, transition
+    cssConfig, znuiPropsConfig
 } from "./configs";
 import React from "react";
 import {StyleProps, ZnUIComponent} from "./styled.types";
@@ -31,24 +21,8 @@ interface GetStyleObject {
 }
 
 export const styledProps = {
-    ...background,
-    ...border,
-    ...colors,
-    ...effect,
-    ...flex,
-    ...grid,
-    ...layout,
-    ...margin,
-    ...padding,
-    ...position,
-    ...transform,
-    ...typography,
-    ...interactivity,
-    ...list,
-    ...scroll,
-    ...textDecoration,
-    ...transition,
-    ...transform,
+    ...cssConfig,
+    ...znuiPropsConfig
 }
 
 export const isStyleProp = (prop: string) => prop in styledProps

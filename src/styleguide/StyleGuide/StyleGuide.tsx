@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import Context from 'react-styleguidist/lib/client/rsg-components/Context';
 import NotFound from 'react-styleguidist/lib/client/rsg-components/NotFound';
 import Sections from 'react-styleguidist/lib/client/rsg-components/Sections';
@@ -8,38 +8,44 @@ import TableOfContents from "react-styleguidist/lib/client/rsg-components/TableO
 import {AdaptiveProvider} from "../../components/Providers/AdaptiveProvider/AdaptiveProvider";
 import {ThemeProvider} from "../../components/Providers/ThemeProvider/ThemeProvider";
 
-export default class StyleGuide extends Component<StyleGuideProps> {
+export default function StyleGuide(props: StyleGuideProps) {
+    const { config, sections, allSections, codeRevision, cssRevision, slots } = props;
+    const [theme, setTheme] = useState<"light"|"dark">("light")
 
-    isRootUrl() {
-        return window.location.hash === '';
-    }
+    useEffect(() => {
+        const currentTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+        setTheme(currentTheme)
 
-    render() {
-        const { config, sections, allSections, codeRevision, cssRevision, slots } = this.props;
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', function (e) {
+            const newTheme = e.matches ? "dark" : "light"
+            setTheme(newTheme)
+        });
+    }, [])
 
-        return (
-            <Context.Provider
-                value={{
-                    codeRevision,
-                    config,
-                    slots,
-                    cssRevision,
-                }}
-            >
-                <AdaptiveProvider>
-                    <ThemeProvider>
-                        <StyleGuideRenderer
-                            key={cssRevision}
-                            title={config.title}
-                            version={config.version}
-                            toc={allSections ? <TableOfContents sections={allSections} /> : null}
-                        >
-                            {!this.isRootUrl() && sections.length === 1 && <Sections sections={sections} depth={1} />}
-                            {!this.isRootUrl() && !sections.length && <NotFound />}
-                        </StyleGuideRenderer>
-                    </ThemeProvider>
-                </AdaptiveProvider>
-            </Context.Provider>
-        );
-    }
+    const isRootUrl = window.location.hash === ''
+
+    return (
+        <Context.Provider
+            value={{
+                codeRevision,
+                config,
+                slots,
+                cssRevision,
+            }}
+        >
+            <AdaptiveProvider>
+                <ThemeProvider theme={theme}>
+                    <StyleGuideRenderer
+                        key={cssRevision}
+                        title={config.title}
+                        version={config.version}
+                        toc={allSections ? <TableOfContents sections={allSections} /> : null}
+                    >
+                        {!isRootUrl && sections.length === 1 && <Sections sections={sections} depth={1} />}
+                        {!isRootUrl && !sections.length && <NotFound />}
+                    </StyleGuideRenderer>
+                </ThemeProvider>
+            </AdaptiveProvider>
+        </Context.Provider>
+    );
 }

@@ -61,6 +61,7 @@
     --znui-shape-md-radius: 12px;
     --znui-shape-lg-radius: 16px;
     --znui-shape-elg-radius: 28px;
+    --znui-shape-full-radius: 50%;
 }
 
 .ThemeProvider {

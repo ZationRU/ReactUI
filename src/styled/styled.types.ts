@@ -1,39 +1,9 @@
 import {
-    ColorsProps,
-    FlexProps,
-    GridProps,
-    LayoutCSSProps,
-    MarginProps,
-    PaddingProps,
-    PositionProps,
-    TransformProps,
-    TypographyProps,
-    BorderProps,
-    BackgroundProps,
-    EffectProps,
-    FilterProps,
-    InteractivityProps, ListProps, ScrollProps, TextDecorationProps, TransitionProps
+    CSSProps, ZnUICSSProps
 } from "./configs";
 import React from "react";
 
-export type StyleProps = ColorsProps &
-        FlexProps &
-        LayoutCSSProps &
-        MarginProps &
-        PaddingProps &
-        PositionProps &
-        GridProps &
-        TransformProps &
-        TypographyProps &
-        BorderProps &
-        EffectProps &
-        BackgroundProps &
-        FilterProps &
-        InteractivityProps &
-        ListProps &
-        ScrollProps &
-        TextDecorationProps &
-        TransitionProps ;
+export type StyleProps = CSSProps & ZnUICSSProps;
 
 export interface ZnUIProps extends StyleProps {
 

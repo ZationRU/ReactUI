@@ -1,6 +1,6 @@
 import type * as CSS from 'csstype';
-import {Adaptive} from "../../adaptive/Adaptive";
-import {asCSSProp} from "./config";
+import {Adaptive} from "../../../adaptive/Adaptive";
+import {asCSSProp} from "../config";
 
 export const layout = {
     width: asCSSProp("width"),

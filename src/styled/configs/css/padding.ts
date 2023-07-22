@@ -1,6 +1,6 @@
-import {Adaptive} from "../../adaptive/Adaptive";
+import {Adaptive} from "../../../adaptive/Adaptive";
 import * as CSS from "csstype";
-import {asCSSProp} from "./config";
+import {asCSSProp} from "../config";
 
 export const padding = {
     padding: asCSSProp("padding"),

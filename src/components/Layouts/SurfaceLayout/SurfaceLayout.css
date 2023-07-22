@@ -3,6 +3,9 @@
     background: var(--znui-surface);
     --state-layer-opacity: 0;
 }
+.SurfaceLayout > .state-layer {
+    opacity: 0;
+}
 
 .SurfaceLayout-1 {
     --state-layer-opacity: 0.05;
@@ -22,6 +25,11 @@
 
 .SurfaceLayout-5 {
     --state-layer-opacity: 0.14;
+}
+
+.SurfaceLayout-none {
+    --state-layer-opacity: 0;
+    background: transparent;
 }
 
 .SurfaceLayout > .state-layer {

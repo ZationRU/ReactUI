@@ -12,7 +12,7 @@ export interface NavigationDrawerProps extends SurfaceLayoutProps {
 }
 
 export function NavigationDrawer(props: NavigationDrawerProps) {
-    return <SurfaceLayout {...props} s={1} p={12}/>
+    return <SurfaceLayout {...props} s={2} p={12}/>
 }
 
 export interface NavigationDrawerItemProps extends React.HTMLAttributes<HTMLDivElement> {

@@ -1,4 +1,4 @@
-const isFunction = <T extends Function = Function>(value: any): value is T =>
+export const isFunction = <T extends Function = Function>(value: any): value is T =>
     typeof value === "function"
 
 export function runIfFn<T, U>(
