@@ -25,8 +25,35 @@
 }
 
 .TextField > .label {
+    pointer-events: none;
+    transition:
+            top 100ms var(--emphasized-decelerate-motion),
+            font-size 100ms var(--emphasized-decelerate-motion);
+
     position: absolute;
-    left: calc(17px - var(--border-size));
+    background-color: var(--znui-background);
+    left: calc(13px - var(--border-size));
+    padding-left: 4px;
+    padding-right: 4px;
+    z-index: 2;
+
+    top: 15px;
+}
+
+.TextField:not(:has(> input:placeholder-shown)) > .label, .TextField:has(> input:focus) > .label {
+    top: -10px;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    line-height: 16px;
+}
+
+.TextField--labeled:not(:has(> input:focus)) > input::placeholder {
+    color: transparent;
+}
+
+.TextField:has(> input:focus) > .label {
+    color: var(--znui-primary);
 }
 
 .TextField:hover > input::placeholder {
@@ -38,11 +65,13 @@
     color: var(--znui-on-surface);
 }
 
-.TextField > input:focus {
+.TextField > input::placeholder, .TextField > input:focus {
     outline: none;
+    color: var(--znui-on-surface);
 }
 
 .TextField:has(> input:focus) {
     --border-size: 2px;
     border: var(--znui-primary) 2px solid;
+    color: var(--znui-outline);
 }
