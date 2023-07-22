@@ -37,7 +37,7 @@ export const AdaptiveProvider = ({ children }: {
         return(() => {
             window.removeEventListener('resize', resizeListener);
         })
-    }, [setData])
+    }, [data.currentBreakpoint, setData])
 
     return <AdaptiveContext.Provider value={data}>
         <ZnUIProviderPortalContext.Provider value={portalData.registerPortal}>
