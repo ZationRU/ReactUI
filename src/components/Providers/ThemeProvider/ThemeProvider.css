@@ -1,5 +1,8 @@
 /*paint style*/
 :root {
+    /**
+     * Dark colors
+     */
     --znui-dark-primary: rgba(102, 221, 140, 1);
     --znui-dark-on-primary: rgba(0, 57, 26, 1);
     --znui-dark-primary-container: rgba(0, 82, 40, 1);
@@ -23,6 +26,9 @@
     --znui-dark-on-error: rgba(235, 244, 239, 1);
     --znui-dark-error: rgba(208, 42, 32, 1);
 
+    /**
+     * Light colors
+     */
     --znui-light-primary: rgba(20, 156, 82, 1);
     --znui-light-on-primary: rgba(255, 255, 255, 1);
     --znui-light-primary-container: rgba(59, 205, 102, 1);
@@ -45,6 +51,16 @@
     --znui-light-on-surface-variant: rgba(70, 79, 69, 1);
     --znui-light-error: rgba(179, 38, 30, 1);
     --znui-light-on-error: rgba(249, 255, 248, 1);
+
+    /**
+     * Shapes
+     */
+    --znui-shape-none-radius: 0px;
+    --znui-shape-esm-radius: 4px;
+    --znui-shape-sm-radius: 8px;
+    --znui-shape-md-radius: 12px;
+    --znui-shape-lg-radius: 16px;
+    --znui-shape-elg-radius: 28px;
 }
 
 .ThemeProvider {
