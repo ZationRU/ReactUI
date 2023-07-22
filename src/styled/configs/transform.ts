@@ -1,9 +1,9 @@
 import * as CSS from "csstype";
 import {Adaptive} from "../../adaptive/Adaptive";
-import {propConfig} from "./config";
+import {asCSSProp} from "./config";
 
 export const transform = {
-    transform: propConfig("transform"),
+    transform: asCSSProp("transform"),
 }
 
 export interface TransformProps {

@@ -1,17 +1,17 @@
 import {Adaptive} from "../../adaptive/Adaptive";
 import * as CSS from "csstype";
-import {propConfig} from "./config";
+import {asCSSProp} from "./config";
 
 export const padding = {
-    padding: propConfig("padding"),
-    paddingTop: propConfig("paddingTop"),
-    paddingBottom: propConfig("paddingBottom"),
-    paddingLeft: propConfig("paddingLeft"),
-    paddingRight: propConfig("paddingRight"),
-    paddingEnd: propConfig("paddingBlockEnd"),
-    paddingStart: propConfig("paddingBlockStart"),
-    paddingHorizontal: propConfig(["paddingLeft", "paddingRight"]),
-    paddingVertical: propConfig(["paddingTop", "paddingBottom"]),
+    padding: asCSSProp("padding"),
+    paddingTop: asCSSProp("paddingTop"),
+    paddingBottom: asCSSProp("paddingBottom"),
+    paddingLeft: asCSSProp("paddingLeft"),
+    paddingRight: asCSSProp("paddingRight"),
+    paddingEnd: asCSSProp("paddingBlockEnd"),
+    paddingStart: asCSSProp("paddingBlockStart"),
+    paddingHorizontal: asCSSProp(["paddingLeft", "paddingRight"]),
+    paddingVertical: asCSSProp(["paddingTop", "paddingBottom"]),
 }
 
 Object.assign(padding, {

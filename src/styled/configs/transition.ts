@@ -1,15 +1,15 @@
 import * as CSS from "csstype";
 import {Adaptive} from "../../adaptive/Adaptive";
-import {propConfig} from "./config";
+import {asCSSProp} from "./config";
 
 export const transition = {
-    transition: propConfig("transition"),
-    transitionProperty: propConfig("transitionProperty"),
-    transitionTimingFunction: propConfig("transitionTimingFunction"),
-    transitionDuration: propConfig("transitionDuration"),
-    transitionDelay: propConfig("transitionDelay"),
-    animation: propConfig("animation"),
-    willChange: propConfig("willChange"),
+    transition: asCSSProp("transition"),
+    transitionProperty: asCSSProp("transitionProperty"),
+    transitionTimingFunction: asCSSProp("transitionTimingFunction"),
+    transitionDuration: asCSSProp("transitionDuration"),
+    transitionDelay: asCSSProp("transitionDelay"),
+    animation: asCSSProp("animation"),
+    willChange: asCSSProp("willChange"),
 }
 
 export interface TransitionProps {

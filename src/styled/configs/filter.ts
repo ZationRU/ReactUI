@@ -1,10 +1,10 @@
 import * as CSS from "csstype";
 import {Adaptive} from "../../adaptive/Adaptive";
-import {propConfig} from "./config";
+import {asCSSProp} from "./config";
 
 export const filter = {
-    filter: propConfig("filter"),
-    backdropFilter: propConfig("backdropFilter"),
+    filter: asCSSProp("filter"),
+    backdropFilter: asCSSProp("backdropFilter"),
 }
 
 export interface FilterProps {

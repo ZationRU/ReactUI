@@ -1,28 +1,28 @@
 import {Adaptive} from "../../adaptive/Adaptive";
 import * as CSS from "csstype";
-import {propConfig} from "./config";
+import {asCSSProp} from "./config";
 
 export const flex = {
-    flexDirection: propConfig("flexDirection"),
-    flexWrap: propConfig("flexWrap"),
-    flex: propConfig("flex"),
-    gap: propConfig("gap"),
-    rowGap: propConfig("rowGap"),
-    columnGap: propConfig("columnGap"),
-    justifySelf: propConfig("justifySelf"),
-    alignSelf: propConfig("alignSelf"),
-    justifyItems: propConfig("justifyItems"),
-    justifyContent: propConfig("justifyContent"),
-    alignContent: propConfig("alignContent"),
-    alignItems: propConfig("alignItems"),
-    flexGrow: propConfig("flexGrow"),
-    flexShrink: propConfig("flexShrink"),
-    flexFlow: propConfig("flexFlow"),
-    placeItems: propConfig("placeItems"),
-    placeContent: propConfig("placeContent"),
-    placeSelf: propConfig("placeSelf"),
-    order: propConfig("order"),
-    flexBasis: propConfig("flexBasis"),
+    flexDirection: asCSSProp("flexDirection"),
+    flexWrap: asCSSProp("flexWrap"),
+    flex: asCSSProp("flex"),
+    gap: asCSSProp("gap"),
+    rowGap: asCSSProp("rowGap"),
+    columnGap: asCSSProp("columnGap"),
+    justifySelf: asCSSProp("justifySelf"),
+    alignSelf: asCSSProp("alignSelf"),
+    justifyItems: asCSSProp("justifyItems"),
+    justifyContent: asCSSProp("justifyContent"),
+    alignContent: asCSSProp("alignContent"),
+    alignItems: asCSSProp("alignItems"),
+    flexGrow: asCSSProp("flexGrow"),
+    flexShrink: asCSSProp("flexShrink"),
+    flexFlow: asCSSProp("flexFlow"),
+    placeItems: asCSSProp("placeItems"),
+    placeContent: asCSSProp("placeContent"),
+    placeSelf: asCSSProp("placeSelf"),
+    order: asCSSProp("order"),
+    flexBasis: asCSSProp("flexBasis"),
 }
 
 Object.assign(flex, {

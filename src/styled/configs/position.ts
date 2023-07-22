@@ -1,20 +1,20 @@
 import {Adaptive} from "../../adaptive/Adaptive";
 import * as CSS from "csstype";
-import {propConfig} from "./config";
+import {asCSSProp} from "./config";
 
 export const position = {
-    position: propConfig("position"),
-    top: propConfig("top"),
-    bottom: propConfig("bottom"),
-    left: propConfig("left"),
-    right: propConfig("right"),
-    positionVertical: propConfig(["left", "right"]),
-    positionHorizontal: propConfig(["top", "bottom"]),
-    zIndex: propConfig("zIndex"),
-    insetInline: propConfig("insetInline"),
-    insetBlock: propConfig("insetBlock"),
-    insetBlockStart: propConfig("insetBlockStart"),
-    insetBlockEnd: propConfig("insetBlockEnd"),
+    position: asCSSProp("position"),
+    top: asCSSProp("top"),
+    bottom: asCSSProp("bottom"),
+    left: asCSSProp("left"),
+    right: asCSSProp("right"),
+    positionVertical: asCSSProp(["left", "right"]),
+    positionHorizontal: asCSSProp(["top", "bottom"]),
+    zIndex: asCSSProp("zIndex"),
+    insetInline: asCSSProp("insetInline"),
+    insetBlock: asCSSProp("insetBlock"),
+    insetBlockStart: asCSSProp("insetBlockStart"),
+    insetBlockEnd: asCSSProp("insetBlockEnd"),
 }
 
 Object.assign(position, {

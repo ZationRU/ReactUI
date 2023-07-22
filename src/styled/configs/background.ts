@@ -1,16 +1,16 @@
 import * as CSS from "csstype";
 import {Adaptive} from "../../adaptive/Adaptive";
-import {propConfig} from "./config";
+import {asCSSProp} from "./config";
 
 export const background = {
-    background: propConfig("background"),
-    backgroundColor: propConfig("backgroundColor"),
-    backgroundImage: propConfig("backgroundImage"),
-    backgroundSize: propConfig("backgroundSize"),
-    backgroundPosition: propConfig("backgroundPosition"),
-    backgroundRepeat: propConfig("backgroundRepeat"),
-    backgroundAttachment: propConfig("backgroundAttachment"),
-    backgroundClip: propConfig("backgroundClip"),
+    background: asCSSProp("background"),
+    backgroundColor: asCSSProp("backgroundColor"),
+    backgroundImage: asCSSProp("backgroundImage"),
+    backgroundSize: asCSSProp("backgroundSize"),
+    backgroundPosition: asCSSProp("backgroundPosition"),
+    backgroundRepeat: asCSSProp("backgroundRepeat"),
+    backgroundAttachment: asCSSProp("backgroundAttachment"),
+    backgroundClip: asCSSProp("backgroundClip"),
 }
 
 Object.assign(background, {

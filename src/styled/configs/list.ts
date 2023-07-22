@@ -1,11 +1,11 @@
 import * as CSS from "csstype";
 import {Adaptive} from "../../adaptive/Adaptive";
-import {propConfig} from "./config";
+import {asCSSProp} from "./config";
 
 export const list = {
-    listStyleType: propConfig("listStyleType"),
-    listStylePosition: propConfig("listStylePosition"),
-    listStyleImage: propConfig("listStyleImage"),
+    listStyleType: asCSSProp("listStyleType"),
+    listStylePosition: asCSSProp("listStylePosition"),
+    listStyleImage: asCSSProp("listStyleImage"),
 }
 
 Object.assign(list, {

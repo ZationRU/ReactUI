@@ -1,15 +1,15 @@
 import * as CSS from "csstype";
 import {Adaptive} from "../../adaptive/Adaptive";
-import {propConfig} from "./config";
+import {asCSSProp} from "./config";
 
 export const textDecoration = {
-    textDecoration: propConfig("textDecoration"),
-    textDecorationColor: propConfig("textDecorationColor"),
-    textDecorationLine: propConfig("textDecorationLine"),
-    textDecorationStyle: propConfig("textDecorationStyle"),
-    textDecorationThickness: propConfig("textDecorationThickness"),
-    textUnderlineOffset: propConfig("textUnderlineOffset"),
-    textShadow: propConfig("textShadow"),
+    textDecoration: asCSSProp("textDecoration"),
+    textDecorationColor: asCSSProp("textDecorationColor"),
+    textDecorationLine: asCSSProp("textDecorationLine"),
+    textDecorationStyle: asCSSProp("textDecorationStyle"),
+    textDecorationThickness: asCSSProp("textDecorationThickness"),
+    textUnderlineOffset: asCSSProp("textUnderlineOffset"),
+    textShadow: asCSSProp("textShadow"),
 }
 
 Object.assign(textDecoration, {

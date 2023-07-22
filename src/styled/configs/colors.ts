@@ -1,12 +1,12 @@
 import * as CSS from "csstype";
 import {Adaptive} from "../../adaptive/Adaptive";
-import {propConfig} from "./config";
+import {asCSSProp} from "./config";
 
 export const colors = {
-    color: propConfig("color"),
-    fill: propConfig("fill"),
-    stroke: propConfig("stroke"),
-    opacity: propConfig("opacity"),
+    color: asCSSProp("color"),
+    fill: asCSSProp("fill"),
+    stroke: asCSSProp("stroke"),
+    opacity: asCSSProp("opacity"),
 }
 
 Object.assign(colors, {

@@ -1,25 +1,25 @@
 import {Adaptive} from "../../adaptive/Adaptive";
 import * as CSS from "csstype";
-import {propConfig} from "./config";
+import {asCSSProp} from "./config";
 
 export const grid = {
-    gridGap: propConfig("gridGap"),
-    gridColumnGap: propConfig("gridColumnGap"),
-    gridRowGap: propConfig("gridRowGap"),
-    gridColumnStart: propConfig("gridColumnStart"),
-    gridColumnEnd: propConfig("gridColumnEnd"),
-    gridColumn: propConfig("gridColumn"),
-    gridRowStart: propConfig("gridRowStart"),
-    gridRowEnd: propConfig("gridRowEnd"),
-    gridRow: propConfig("gridRow"),
-    gridTemplate: propConfig("gridTemplate"),
-    gridTemplateColumns: propConfig("gridTemplateColumns"),
-    gridTemplateRows: propConfig("gridTemplateRows"),
-    gridTemplateAreas: propConfig("gridTemplateAreas"),
-    gridAutoFlow: propConfig("gridAutoFlow"),
-    gridAutoColumns: propConfig("gridAutoColumns"),
-    gridAutoRows: propConfig("gridAutoRows"),
-    gridArea: propConfig("gridArea"),
+    gridGap: asCSSProp("gridGap"),
+    gridColumnGap: asCSSProp("gridColumnGap"),
+    gridRowGap: asCSSProp("gridRowGap"),
+    gridColumnStart: asCSSProp("gridColumnStart"),
+    gridColumnEnd: asCSSProp("gridColumnEnd"),
+    gridColumn: asCSSProp("gridColumn"),
+    gridRowStart: asCSSProp("gridRowStart"),
+    gridRowEnd: asCSSProp("gridRowEnd"),
+    gridRow: asCSSProp("gridRow"),
+    gridTemplate: asCSSProp("gridTemplate"),
+    gridTemplateColumns: asCSSProp("gridTemplateColumns"),
+    gridTemplateRows: asCSSProp("gridTemplateRows"),
+    gridTemplateAreas: asCSSProp("gridTemplateAreas"),
+    gridAutoFlow: asCSSProp("gridAutoFlow"),
+    gridAutoColumns: asCSSProp("gridAutoColumns"),
+    gridAutoRows: asCSSProp("gridAutoRows"),
+    gridArea: asCSSProp("gridArea"),
 }
 
 export interface GridProps {

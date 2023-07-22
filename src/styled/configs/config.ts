@@ -6,7 +6,7 @@ export interface PropConfig {
     property: CSSProp|CSSProp[]
 }
 
-export function propConfig<T extends CSSProp>(property: T|T[]) {
+export function asCSSProp<T extends CSSProp>(property: T|T[]) {
     return {
         property
     }

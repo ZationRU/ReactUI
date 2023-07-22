@@ -1,16 +1,16 @@
 import * as CSS from "csstype";
 import {Adaptive} from "../../adaptive/Adaptive";
-import {propConfig} from "./config";
+import {asCSSProp} from "./config";
 
 export const interactivity = {
-    appearance: propConfig("appearance"),
-    userSelect: propConfig("userSelect"),
-    pointerEvents: propConfig("pointerEvents"),
-    resize: propConfig("resize"),
-    cursor: propConfig("cursor"),
-    outline: propConfig("outline"),
-    outlineOffset: propConfig("outlineOffset"),
-    outlineColor: propConfig("outlineColor"),
+    appearance: asCSSProp("appearance"),
+    userSelect: asCSSProp("userSelect"),
+    pointerEvents: asCSSProp("pointerEvents"),
+    resize: asCSSProp("resize"),
+    cursor: asCSSProp("cursor"),
+    outline: asCSSProp("outline"),
+    outlineOffset: asCSSProp("outlineOffset"),
+    outlineColor: asCSSProp("outlineColor"),
 }
 
 export interface InteractivityProps  {

@@ -1,13 +1,13 @@
 import * as CSS from "csstype";
 import {Adaptive} from "../../adaptive/Adaptive";
-import {propConfig} from "./config";
+import {asCSSProp} from "./config";
 
 export const effect = {
-    boxShadow: propConfig("boxShadow"),
-    mixBlendMode: propConfig("mixBlendMode"),
-    blendMode: propConfig("blendMode"),
-    backgroundBlendMode: propConfig("backgroundBlendMode"),
-    opacity: propConfig("opacity"),
+    boxShadow: asCSSProp("boxShadow"),
+    mixBlendMode: asCSSProp("mixBlendMode"),
+    blendMode: asCSSProp("blendMode"),
+    backgroundBlendMode: asCSSProp("backgroundBlendMode"),
+    opacity: asCSSProp("opacity"),
 }
 
 Object.assign(effect, {

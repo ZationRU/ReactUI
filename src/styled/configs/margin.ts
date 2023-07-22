@@ -1,17 +1,17 @@
 import {Adaptive} from "../../adaptive/Adaptive";
 import * as CSS from "csstype";
-import {propConfig} from "./config";
+import {asCSSProp} from "./config";
 
 export const margin = {
-    margin: propConfig("margin"),
-    marginTop: propConfig("marginTop"),
-    marginBottom: propConfig("marginBottom"),
-    marginLeft: propConfig("marginLeft"),
-    marginRight: propConfig("marginRight"),
-    marginEnd: propConfig("marginBlockEnd"),
-    marginStart: propConfig("marginBlockStart"),
-    marginHorizontal: propConfig(["marginLeft", "marginRight"]),
-    marginVertical: propConfig(["marginTop", "marginBottom"]),
+    margin: asCSSProp("margin"),
+    marginTop: asCSSProp("marginTop"),
+    marginBottom: asCSSProp("marginBottom"),
+    marginLeft: asCSSProp("marginLeft"),
+    marginRight: asCSSProp("marginRight"),
+    marginEnd: asCSSProp("marginBlockEnd"),
+    marginStart: asCSSProp("marginBlockStart"),
+    marginHorizontal: asCSSProp(["marginLeft", "marginRight"]),
+    marginVertical: asCSSProp(["marginTop", "marginBottom"]),
 }
 
 Object.assign(margin, {

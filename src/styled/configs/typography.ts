@@ -1,21 +1,21 @@
 import * as CSS from "csstype";
 import {Adaptive} from "../../adaptive/Adaptive";
-import {propConfig} from "./config";
+import {asCSSProp} from "./config";
 
 export const typography = {
-    fontWeight: propConfig("fontWeight"),
-    lineHeight: propConfig("lineHeight"),
-    letterSpacing: propConfig("letterSpacing"),
-    fontSize: propConfig("fontSize"),
-    fontFamily: propConfig("fontFamily"),
-    textAlign: propConfig("textAlign"),
-    fontStyle: propConfig("fontStyle"),
-    textIndent: propConfig("textIndent"),
-    wordBreak: propConfig("wordBreak"),
-    overflowWrap: propConfig("overflowWrap"),
-    textOverflow: propConfig("textOverflow"),
-    textTransform: propConfig("textTransform"),
-    whiteSpace: propConfig("whiteSpace"),
+    fontWeight: asCSSProp("fontWeight"),
+    lineHeight: asCSSProp("lineHeight"),
+    letterSpacing: asCSSProp("letterSpacing"),
+    fontSize: asCSSProp("fontSize"),
+    fontFamily: asCSSProp("fontFamily"),
+    textAlign: asCSSProp("textAlign"),
+    fontStyle: asCSSProp("fontStyle"),
+    textIndent: asCSSProp("textIndent"),
+    wordBreak: asCSSProp("wordBreak"),
+    overflowWrap: asCSSProp("overflowWrap"),
+    textOverflow: asCSSProp("textOverflow"),
+    textTransform: asCSSProp("textTransform"),
+    whiteSpace: asCSSProp("whiteSpace"),
 }
 
 export interface TypographyProps {

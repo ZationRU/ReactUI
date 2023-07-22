@@ -1,28 +1,28 @@
 import {Adaptive} from "../../adaptive/Adaptive";
 import * as CSS from "csstype";
-import {propConfig} from "./config";
+import {asCSSProp} from "./config";
 
 export const scroll = {
-    scrollBehavior: propConfig("scrollBehavior"),
-    scrollSnapAlign: propConfig("scrollSnapAlign"),
-    scrollSnapStop: propConfig("scrollSnapStop"),
-    scrollSnapType: propConfig("scrollSnapType"),
+    scrollBehavior: asCSSProp("scrollBehavior"),
+    scrollSnapAlign: asCSSProp("scrollSnapAlign"),
+    scrollSnapStop: asCSSProp("scrollSnapStop"),
+    scrollSnapType: asCSSProp("scrollSnapType"),
 
-    scrollMargin: propConfig("scrollMargin"),
-    scrollMarginTop: propConfig("scrollMarginTop"),
-    scrollMarginBottom: propConfig("scrollMarginBottom"),
-    scrollMarginLeft: propConfig("scrollMarginLeft"),
-    scrollMarginRight: propConfig("scrollMarginRight"),
-    scrollMarginHorizontal: propConfig(["scrollMarginLeft", "scrollMarginRight"]),
-    scrollMarginVertical: propConfig(["scrollMarginTop", "scrollMarginBottom"]),
+    scrollMargin: asCSSProp("scrollMargin"),
+    scrollMarginTop: asCSSProp("scrollMarginTop"),
+    scrollMarginBottom: asCSSProp("scrollMarginBottom"),
+    scrollMarginLeft: asCSSProp("scrollMarginLeft"),
+    scrollMarginRight: asCSSProp("scrollMarginRight"),
+    scrollMarginHorizontal: asCSSProp(["scrollMarginLeft", "scrollMarginRight"]),
+    scrollMarginVertical: asCSSProp(["scrollMarginTop", "scrollMarginBottom"]),
 
-    scrollPadding: propConfig("scrollPadding"),
-    scrollPaddingTop: propConfig("scrollPaddingTop"),
-    scrollPaddingBottom: propConfig("scrollPaddingBottom"),
-    scrollPaddingLeft: propConfig("scrollPaddingLeft"),
-    scrollPaddingRight: propConfig("scrollPaddingRight"),
-    scrollPaddingHorizontal: propConfig(["scrollPaddingLeft", "scrollPaddingRight"]),
-    scrollPaddingVertical: propConfig(["scrollPaddingTop", "scrollPaddingBottom"]),
+    scrollPadding: asCSSProp("scrollPadding"),
+    scrollPaddingTop: asCSSProp("scrollPaddingTop"),
+    scrollPaddingBottom: asCSSProp("scrollPaddingBottom"),
+    scrollPaddingLeft: asCSSProp("scrollPaddingLeft"),
+    scrollPaddingRight: asCSSProp("scrollPaddingRight"),
+    scrollPaddingHorizontal: asCSSProp(["scrollPaddingLeft", "scrollPaddingRight"]),
+    scrollPaddingVertical: asCSSProp(["scrollPaddingTop", "scrollPaddingBottom"]),
 }
 
 Object.assign(scroll, {
