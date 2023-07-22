@@ -1,11 +1,11 @@
 .TextField {
     transition: color 300ms var(--emphasized-motion);
 
-    color: var(--znui-outline);
+    color: var(--znui-on-surface-variant);
 
     --border-size: 1px;
     box-sizing: border-box;
-    border: currentColor 1px solid;
+    border: var(--znui-outline) 1px solid;
     border-radius: 4px;
     position: relative;
 
@@ -57,7 +57,7 @@
 }
 
 .TextField:hover > input::placeholder {
-    color: currentColor;
+    color: var(--znui-on-surface-variant);
     transition: color 300ms var(--emphasized-motion);
 }
 
@@ -65,7 +65,7 @@
     color: var(--znui-on-surface);
 }
 
-.TextField > input::placeholder, .TextField > input:focus {
+.TextField > input:focus {
     outline: none;
     color: var(--znui-on-surface);
 }
@@ -74,4 +74,17 @@
     --border-size: 2px;
     border: var(--znui-primary) 2px solid;
     color: var(--znui-outline);
+}
+
+.TextField-Container--error {
+    color: var(--znui-error);
+}
+
+.TextField-Container--error > .TextField {
+    --border-size: 2px;
+    border: var(--znui-error) 2px solid!important;
+}
+
+.TextField-Container--error > .TextField > .label {
+    color: var(--znui-error)!important;
 }
