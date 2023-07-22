@@ -1,6 +1,6 @@
 import {Adaptive} from "../../adaptive/Adaptive";
 import * as CSS from "csstype";
-import {propConfig} from "../utils/props";
+import {propConfig} from "./config";
 
 export const scroll = {
     scrollBehavior: propConfig("scrollBehavior"),
