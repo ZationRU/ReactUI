@@ -90,13 +90,14 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                 <SurfaceLayout
                     innerRef={modalContainerRef}
                     position="fixed"
+                    oc={isExpanded? 1: 0.8}
                     s={isExpanded&&!isFullscreen ? 3: 0}
                     borderRadius={isExpanded? isFullscreen ? 0 : 28 : targetStyles?.borderRadius || 0}
                     h={isExpanded? isFullscreen ? '100vh': 'inherit': targetRect?.height||0}
                     w={isExpanded? isFullscreen ? '100vw': 800: targetRect?.width||0}
                     left={isExpanded? isFullscreen ? 0 : '50%' : targetRect?.left}
                     top={isExpanded? isFullscreen ? 0 : '50%' : targetRect?.top}
-                    bg={isExpanded? isFullscreen ? 'var(--znui-background)' : undefined: targetStyles?.background}
+                    bg={isExpanded&&isFullscreen ? 'var(--znui-background)' : undefined}
                     transform={isExpanded? !isFullscreen ? "translate(-50%, -50%)": undefined: "translate(0, 0)"}
                     transition={[
                         "left 300ms var(--emphasized-decelerate-motion)",
@@ -105,10 +106,15 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                         "height 300ms var(--emphasized-decelerate-motion)",
                         "border-radius 300ms var(--emphasized-decelerate-motion)",
                         "background-color 300ms var(--emphasized-decelerate-motion)",
+                        "opacity 300ms var(--emphasized-decelerate-motion)",
                         "transform 300ms var(--emphasized-decelerate-motion)",
                     ].join(",")}
                 >
-                    {isExpanded && <Component dialogInterface={modalDialogInterface}/>}
+                    <Layout oc={isExpanded? 1: 0} transition={[
+                        "opacity 300ms var(--emphasized-decelerate-motion)",
+                    ].join(",")}>
+                        {isExpanded && <Component dialogInterface={modalDialogInterface}/>}
+                    </Layout>
                 </SurfaceLayout>
             </Layout>
         }
