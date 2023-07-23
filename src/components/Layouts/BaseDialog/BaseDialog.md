@@ -1,6 +1,5 @@
 ```tsx
-import {Button} from "../../Widgets/Button/Button";
-import {useDialogs} from "../../../dialogs/useDialogs";
+import {Button, useDialogs} from "@znui/react";
 import {
     ZnUIIconAddFilled,
 } from "@znui/icons"

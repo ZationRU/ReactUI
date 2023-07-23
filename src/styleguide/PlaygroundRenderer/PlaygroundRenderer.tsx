@@ -25,7 +25,7 @@ const PlaygroundRenderer = ({ name, preview, previewProps, tabBody, exampleIndex
                 'row'
             ]}>
                 <SurfaceLayout s={1} flex={1}>{tabBody}</SurfaceLayout>
-                <SurfaceLayout p={15} s={2} data-preview={name} flex={1}>
+                <SurfaceLayout p={15} s={3} data-preview={name} flex={1} overflow="visible">
                     {preview}
                 </SurfaceLayout>
             </FlexLayout>

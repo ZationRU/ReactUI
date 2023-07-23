@@ -35,6 +35,9 @@ const webpackConfig = {
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
+        alias: {
+            '@znui/react': path.resolve(__dirname, `./src`),
+        },
     },
     plugins: [
         // Rewrites the absolute paths to those two files into relative paths
@@ -76,7 +79,6 @@ module.exports = {
     webpackConfig,
     propsParser: tsParse,
     styleguideComponents: {
-        Preview: path.resolve(__dirname, 'src/styleguide/Preview/Preview'),
         Wrapper: path.join(__dirname, 'src/styleguide/ThemeWrapper'),
         CodeRenderer: path.join(__dirname, 'src/styleguide/CodeRenderer/CodeRenderer'),
         StyleGuideRenderer: path.join(__dirname, 'src/styleguide/StyleGuide/StyleGuideRenderer'),
