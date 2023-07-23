@@ -15,6 +15,7 @@
 }
 
 .TextField > input {
+    color: currentColor;
     margin-left: calc(17px - var(--border-size));
     background: transparent;
     height: 40px;
@@ -40,7 +41,7 @@
     top: 15px;
 }
 
-.TextField:not(:has(> input:placeholder-shown)) > .label, .TextField:has(> input:focus) > .label {
+.TextField > input:not(:placeholder-shown) ~ .label, .TextField:focus-within > .label {
     top: -10px;
     font-size: 12px;
     font-weight: 400;
@@ -48,17 +49,22 @@
     line-height: 16px;
 }
 
-.TextField--labeled:not(:has(> input:focus)) > input::placeholder {
-    color: transparent;
-}
-
-.TextField:has(> input:focus) > .label {
+.TextField:focus-within > .label {
     color: var(--znui-primary);
 }
 
 .TextField:hover > input::placeholder {
     color: var(--znui-on-surface-variant);
     transition: color 300ms var(--emphasized-motion);
+}
+
+.TextField--labeled > input::placeholder {
+    color: transparent;
+    opacity: 0;
+}
+
+.TextField--labeled:focus-within > input::placeholder {
+    color: currentColor;
 }
 
 .TextField:hover {
@@ -70,7 +76,7 @@
     color: var(--znui-on-surface);
 }
 
-.TextField:has(> input:focus) {
+.TextField:focus-within {
     --border-size: 2px;
     border: var(--znui-primary) 2px solid;
     color: var(--znui-outline);
