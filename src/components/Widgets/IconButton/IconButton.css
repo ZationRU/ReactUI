@@ -8,6 +8,7 @@
     height: 48px;
     width: 48px;
     --icon-size: 24px;
+    color: currentColor;
 }
 
 .IconButton:enabled:hover > .state-layer {
