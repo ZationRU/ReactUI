@@ -19,7 +19,7 @@ export function HomeInfoPage(props: HomeInfoPageProps) {
         <Card
             s={2}
             h={{esm: "50vh", sm: "60vh"}}
-            bgImg="url(/znui_page_main.png)"
+            bgImg="url(./znui_page_main.png)"
             backgroundRepeat="no-repeat"
             backgroundPosition="right"
             borderColor="transparent"
