@@ -1,11 +1,28 @@
-import {AlertDialogConfig, AlertDialogInterface} from "./useDialogs";
-import {ZnUIPortal, ZnUIPortalRegistrar} from "../components/Providers/portals";
-import React, {useCallback, useEffect, useRef, useState} from "react";
+import {ZnUIPortalRegistrar} from "../components/Providers/portals";
+import React, {MouseEventHandler, ReactNode, useCallback, useEffect, useRef, useState} from "react";
 import Measure, {BoundingRect} from "react-measure";
 import {useAdaptiveValue} from "../adaptive/useAdaptive";
 import {Layout} from "../components/Basic/Layout/Layout";
 import {BaseDialog} from "../components/Layouts/BaseDialog/BaseDialog";
 import {Button} from "../components/Widgets/Button/Button";
+
+export type AlertDialogConfig = {
+    icon?: ReactNode,
+    title: ReactNode|string,
+    description?: ReactNode|string,
+    actions?: AlertDialogConfigActions[]
+    cancelable?: boolean
+}
+
+export type AlertDialogConfigActions = {
+    title: ReactNode|string,
+    cancel?: boolean,
+    onClick?: MouseEventHandler<HTMLButtonElement>
+}
+
+export type AlertDialogInterface = {
+    cancel: () => void;
+}
 
 export const showAlert = (portalRegister: ZnUIPortalRegistrar) => {
     return (config: AlertDialogConfig, clickEvent?: MouseEvent): AlertDialogInterface => {
@@ -23,8 +40,6 @@ export const showAlert = (portalRegister: ZnUIPortalRegistrar) => {
                 width: 0,
                 height: 0
             })
-
-            console.log(dialogSizes)
 
             const xPosition = useAdaptiveValue({
                 esm: window.innerWidth / 2,
@@ -61,11 +76,6 @@ export const showAlert = (portalRegister: ZnUIPortalRegistrar) => {
                         clickEvent.clientY + dialogSizes.height!! > window.innerHeight - 56 ? -dialogSizes.height!! :
                             -dialogSizes.height!! / 2
             })
-
-            console.log("xOffset: " + xOffset)
-            console.log("yOffset: " + yOffset)
-            console.log("xPosition: " + xPosition)
-            console.log("yPosition: " + yPosition)
 
             useEffect(() => {
                 setTimeout(() => {

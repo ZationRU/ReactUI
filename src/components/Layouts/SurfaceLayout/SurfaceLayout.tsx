@@ -1,4 +1,4 @@
-import React from "react";
+import React, {RefObject} from "react";
 import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
 import classNames from "classnames";
 import {StateLayer} from "../StateLayer/StateLayer";
@@ -20,6 +20,8 @@ export interface SurfaceLayoutProps extends LayoutProps {
      * @default var(--znui-on-surface)
      */
     surfaceColor?: string
+
+    innerRef?: RefObject<HTMLDivElement>
 }
 
 export function SurfaceLayout(props: SurfaceLayoutProps) {
@@ -29,10 +31,11 @@ export function SurfaceLayout(props: SurfaceLayoutProps) {
         children,
         surfaceColor = 'var(--znui-on-surface)',
         onClick,
+        innerRef,
         ...otherProps
     } = props
 
-    return <Layout {...otherProps} color={surfaceColor} onClick={onClick} className={classNames(
+    return <Layout {...otherProps} ref={innerRef} color={surfaceColor} onClick={onClick} className={classNames(
         className,
         "SurfaceLayout",
         "SurfaceLayout-"+s

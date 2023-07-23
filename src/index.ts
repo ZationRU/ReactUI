@@ -87,7 +87,7 @@ export * from "./styled/configs"
 /**
  * Dialogs
  */
-export * from "./dialogs/useDialogs"
+export * from "./dialogs"
 
 /**
  * Utils
