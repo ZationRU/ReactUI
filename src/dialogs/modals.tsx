@@ -5,23 +5,23 @@ import {useAdaptiveValue} from "../adaptive/useAdaptive";
 import {SurfaceLayout} from "../components/Layouts/SurfaceLayout/SurfaceLayout";
 
 export type ModalDialogInterface = {
-    cancel: () => void;
+    close: () => void
 }
 
 export type ModalProps = {
-    dialogInterface: ModalDialogInterface
+    dialogInterface: ModalDialogInterface,
 }
 
 export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
     return (Component: React.ComponentClass<ModalProps>, clickEvent?: MouseEvent): ModalDialogInterface => {
         const portal = portalRegister();
 
-        let cancel = () => {
+        let close = () => {
             portal.remove()
         }
 
         const modalDialogInterface: ModalDialogInterface = {
-            cancel: () => cancel()
+            close: () => close(),
         }
 
         const target = clickEvent?.currentTarget ? clickEvent.currentTarget as Element : null
@@ -45,7 +45,7 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                 }, 10)
             }, [scrimRef])
 
-            cancel = useCallback(() => {
+            close = useCallback(() => {
                 setTimeout(() => {
                     const scrim = scrimRef.current
                     const modalContainer = modalContainerRef.current
@@ -84,18 +84,20 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                     right={0}
                     bottom={0}
                     overflow="visible"
-                    onClick={cancel}
+                    onClick={close}
                 />
 
                 <SurfaceLayout
                     innerRef={modalContainerRef}
                     position="fixed"
-                    borderRadius={isExpanded? isFullscreen ? 0 : 0 : targetStyles?.borderRadius || 0}
-                    h={isExpanded? isFullscreen ? '100vh': '50vh': targetRect?.height||0}
-                    w={isExpanded? isFullscreen ? '100vw': '50vh': targetRect?.width||0}
+                    s={isExpanded&&!isFullscreen ? 3: 0}
+                    borderRadius={isExpanded? isFullscreen ? 0 : 28 : targetStyles?.borderRadius || 0}
+                    h={isExpanded? isFullscreen ? '100vh': 'inherit': targetRect?.height||0}
+                    w={isExpanded? isFullscreen ? '100vw': 800: targetRect?.width||0}
                     left={isExpanded? isFullscreen ? 0 : '50%' : targetRect?.left}
                     top={isExpanded? isFullscreen ? 0 : '50%' : targetRect?.top}
                     bg={isExpanded? isFullscreen ? 'var(--znui-background)' : undefined: targetStyles?.background}
+                    transform={isExpanded? !isFullscreen ? "translate(-50%, -50%)": undefined: "translate(0, 0)"}
                     transition={[
                         "left 300ms var(--emphasized-decelerate-motion)",
                         "top 300ms var(--emphasized-decelerate-motion)",
@@ -103,6 +105,7 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                         "height 300ms var(--emphasized-decelerate-motion)",
                         "border-radius 300ms var(--emphasized-decelerate-motion)",
                         "background-color 300ms var(--emphasized-decelerate-motion)",
+                        "transform 300ms var(--emphasized-decelerate-motion)",
                     ].join(",")}
                 >
                     {isExpanded && <Component dialogInterface={modalDialogInterface}/>}

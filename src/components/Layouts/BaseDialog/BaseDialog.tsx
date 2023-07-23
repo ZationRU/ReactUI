@@ -26,7 +26,7 @@ export function BaseDialog(props: BaseDialogProps) {
 
     return <SurfaceLayout
         s={4}
-        borderRadius={28}
+        shapeScale="elg"
         minW={280}
         maxW={560}
         {...layoutRest}
