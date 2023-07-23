@@ -9,13 +9,13 @@ import 'prismjs/components/prism-typescript';
 import 'prismjs/themes/prism-twilight.css';
 import './Editor.css';
 import {Editor} from "react-styleguidist/lib/client/rsg-components/Editor/Editor";
-import {Card} from "../../components/Layouts/Card/Card";
+import {Layout} from "../../components/Basic/Layout/Layout";
 
 let timer: NodeJS.Timeout
 
 export default function EditorWrapper(props: any) {
     return (
-        <Card bg="var(--znui-dark-background)" maxH={400} overflow="auto">
+        <Layout maxH={600} overflow="auto">
             <Editor {...props} onChange={(code) => {
                 clearTimeout(timer)
                 timer = setTimeout(() => {
@@ -24,6 +24,6 @@ export default function EditorWrapper(props: any) {
             }} classes={{
                 root: "Editor__inner"
             }} style={{ overflow: "auto" }}/>
-        </Card>
+        </Layout>
     );
 }

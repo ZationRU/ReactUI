@@ -76,6 +76,7 @@ module.exports = {
     webpackConfig,
     propsParser: tsParse,
     styleguideComponents: {
+        Preview: path.resolve(__dirname, 'src/styleguide/Preview/Preview'),
         Wrapper: path.join(__dirname, 'src/styleguide/ThemeWrapper'),
         CodeRenderer: path.join(__dirname, 'src/styleguide/CodeRenderer/CodeRenderer'),
         StyleGuideRenderer: path.join(__dirname, 'src/styleguide/StyleGuide/StyleGuideRenderer'),
@@ -86,6 +87,7 @@ module.exports = {
         Heading: path.join(__dirname, 'src/styleguide/HeadingRenderer/Heading'),
         StyleGuide: path.join(__dirname, 'src/styleguide/StyleGuide/StyleGuide'),
         Editor: path.join(__dirname, 'src/styleguide/Editor/Editor'),
+        PlaygroundRenderer: path.join(__dirname, 'src/styleguide/PlaygroundRenderer/PlaygroundRenderer'),
         'Markdown/MarkdownHeading': path.join(__dirname, 'src/styleguide/MarkdownHeading/MarkdownHeading'),
     },
 
