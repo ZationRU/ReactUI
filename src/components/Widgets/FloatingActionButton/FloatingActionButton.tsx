@@ -9,7 +9,8 @@ import {Adaptive} from "../../../adaptive/Adaptive";
 export interface FloatingActionButtonProps extends React.HTMLAttributes<HTMLButtonElement>{
     size?: Adaptive<'small' | 'default' | 'expanded' | 'large'>,
     appearance?: 'surface'|'primary'|'secondary'|'tertiary',
-    text?: string
+    text?: string,
+    elevation?: boolean
 }
 
 export function FloatingActionButton(
@@ -21,15 +22,18 @@ export function FloatingActionButton(
         text,
         className,
         children,
+        elevation = true,
         ...otherProps
     } = props
-    
+
     return <button className={classNames(
         className,
         'FloatingActionButton',
         'FloatingActionButton--'+useAdaptiveValue(size)||'default',
         'FloatingActionButton--'+appearance,
-        'elevation-light-3',
+        {
+            'elevation-light-3': elevation
+        },
     )} {...otherProps} aria-label={text}>
         <StateLayer/>
         <div className="inner">
