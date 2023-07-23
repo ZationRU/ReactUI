@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const webpackConfig = {
     devServer: {
@@ -45,6 +46,11 @@ const webpackConfig = {
             /react-styleguidist\/lib\/loaders\/utils\/client\/evalInContext$/,
             'react-styleguidist/lib/loaders/utils/client/evalInContext'
         ),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: "public", to: "" }
+            ],
+        })
     ],
 };
 
