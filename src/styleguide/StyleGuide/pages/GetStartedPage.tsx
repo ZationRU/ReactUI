@@ -10,7 +10,6 @@ import {Navigate} from "../StyleGuideRenderer";
 
 function Code(props: {children: string}) {
     return <EditorWrapper code={props.children} onChange={() => ''}/>
-
 }
 
 type GetStartedPageProps = {

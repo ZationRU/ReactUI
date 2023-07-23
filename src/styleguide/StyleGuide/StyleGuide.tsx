@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Context from 'react-styleguidist/lib/client/rsg-components/Context';
 import NotFound from 'react-styleguidist/lib/client/rsg-components/NotFound';
 import Sections from 'react-styleguidist/lib/client/rsg-components/Sections';
@@ -10,7 +10,9 @@ import {ThemeProvider} from "../../components/Providers/ThemeProvider/ThemeProvi
 
 export default function StyleGuide(props: StyleGuideProps) {
     const { config, sections, allSections, codeRevision, cssRevision, slots } = props;
-    const [theme, setTheme] = useState<"light"|"dark">("light")
+    const [theme, setTheme] = useState<"light"|"dark">(
+        window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+    )
 
     useEffect(() => {
         const currentTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"

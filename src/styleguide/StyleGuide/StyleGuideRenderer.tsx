@@ -13,7 +13,7 @@ import {AdaptiveInfoPage} from "./pages/AdaptiveInfoPage";
 import {
     ZnUIIconHomeFilled,
     ZnUIIconPhotoOutline,
-    ZnUIIconMinimizeWindowFilled, ZnUIIconDebugFilled
+    ZnUIIconMinimizeWindowFilled, ZnUIIconDebugFilled, ZnUIIconDebugOutline
 } from "@znui/icons"
 import {GetStartedPage} from "./pages/GetStartedPage";
 
@@ -40,7 +40,7 @@ const NavigationPagesLinks = [
     {
         id: 'get-started',
         title: "Get started",
-        icon: <ZnUIIconDebugFilled/>
+        icon: <ZnUIIconDebugOutline/>
     },
     {
         id: 'components',

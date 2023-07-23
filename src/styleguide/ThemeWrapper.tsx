@@ -4,7 +4,9 @@ import {AdaptiveProvider} from "../components/Providers/AdaptiveProvider/Adaptiv
 import {useEffect, useState} from "react";
 
 const ThemeWrapper = ({children}: React.HTMLAttributes<HTMLDivElement>) => {
-    const [theme, setTheme] = useState<"light"|"dark">("light")
+    const [theme, setTheme] = useState<"light"|"dark">(
+        window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+    )
 
     useEffect(() => {
         const currentTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
