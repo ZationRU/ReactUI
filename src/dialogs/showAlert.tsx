@@ -98,16 +98,17 @@ export const showAlert = (portalRegister: ZnUIPortalRegistrar) => {
             }, [])
 
             return <Layout
-                pos="absolute"
+                pos="fixed"
                 top={0}
                 left={0}
                 right={0}
                 bottom={0}
                 zIndex={portal.id + 1000}
+                overflow="visible"
             >
                 <Layout
                     bg="black"
-                    pos="absolute"
+                    pos="fixed"
                     opacity={0}
                     ref={scrimRef}
                     transition="opacity 300ms var(--emphasized-decelerate-motion)"
@@ -115,6 +116,7 @@ export const showAlert = (portalRegister: ZnUIPortalRegistrar) => {
                     left={0}
                     right={0}
                     bottom={0}
+                    overflow="visible"
                     onClick={cancelable ? cancel : undefined}
                 />
 
