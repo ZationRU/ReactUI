@@ -11,7 +11,7 @@ const dialogs = useDialogs();
     title="Show dialog?"
     description="A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made."
     actions={<>
-        <Button mode="text" onClick={() => {
+        <Button mode="text" onClick={(e) => {
             dialogs.showAlert({
                 icon: <ZnUIIconAddFilled/>,
                 title: "Show dialog?",
@@ -29,7 +29,7 @@ const dialogs = useDialogs();
                         }
                     }
                 ]
-            })
+            }, e)
         }}>Show with icon</Button>
         <Button mode="text" onClick={() => {
             dialogs.showAlert({
