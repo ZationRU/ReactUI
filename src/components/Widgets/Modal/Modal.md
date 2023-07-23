@@ -1,11 +1,29 @@
 ```tsx
-import {useDialogs, Button, useModalInterface} from "@znui/react";
+import {useDialogs, Button, useModalInterface, TextField} from "@znui/react";
+import {ZnUIIconCloseFilled} from "@znui/icons";
 
 const dialogs = useDialogs();
 
 <Button onClick={(e) => {
     dialogs.showModal(({dialogInterface}) => {
-        return <Button onClick={dialogInterface.close}>Close</Button>
+        return <Modal
+            title="Edit example"
+            action={
+                <Button
+                    mode="text"
+                    onClick={() => {
+                        dialogInterface.close()
+                    }}>
+                    Save
+                </Button>
+            }
+            navigationIcon={<ZnUIIconCloseFilled/>}
+            onClickNavigationIcon={() => {
+                dialogInterface.close()
+            }}
+        >
+            <TextField label="Example" placeholder="xD"/>
+        </Modal>
     }, e);
 }}>Show Modal</Button>
 
