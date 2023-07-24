@@ -48,17 +48,19 @@ export * from "./components/Typography/Title/Title"
  */
 
 export * from "./components/Widgets/Avatar/Avatar"
+export * from "./components/Widgets/BottomAppBar/BottomAppBar"
 export * from "./components/Widgets/Button/Button"
-export * from "./components/Widgets/IconButton/IconButton"
+export * from "./components/Widgets/Divider/Divider"
 export * from "./components/Widgets/FloatingActionButton/FloatingActionButton"
+export * from "./components/Widgets/IconButton/IconButton"
+export * from "./components/Widgets/IconWrapper/IconWrapper"
+export * from "./components/Widgets/Modal/Modal"
 export * from "./components/Widgets/NavigationBar/NavigationBar"
 export * from "./components/Widgets/NavigationDrawer/NavigationDrawer"
 export * from "./components/Widgets/NavigationRail/NavigationRail"
 export * from "./components/Widgets/Switch/Switch"
 export * from "./components/Widgets/TextField/TextField"
 export * from "./components/Widgets/Toolbar/Toolbar"
-export * from "./components/Widgets/Divider/Divider"
-export * from "./components/Widgets/IconWrapper/IconWrapper"
 
 //-------------------------------------------------------------------------------------
 
