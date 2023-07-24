@@ -1,6 +1,6 @@
 {
   "name": "@znui/react",
-  "version": "1.1.0-dev11",
+  "version": "1.1.0-dev12",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
