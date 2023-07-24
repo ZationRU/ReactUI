@@ -9,6 +9,7 @@ import {Body} from "../../components/Typography/Body/Body";
 import {Label} from "../../components/Typography/Label/Label";
 import {Divider} from "../../components/Widgets/Divider/Divider";
 import {Headline} from "../../components/Typography/Headline/Headline";
+import {Button} from "../../components/Widgets/Button/Button";
 
 interface TableProps {
     columns: {
@@ -36,7 +37,7 @@ const TableRows = ({ rows }: { rows: any[] }) => {
                                 <Body size="medium">{it.description}</Body>
                             </SurfaceLayout>
                         </FlexLayout>
-                        {rows.length-1!=i&&<Divider/>}
+                        {rows.length-1!==i&&<Divider/>}
                     </>
                 )
             }
@@ -45,20 +46,19 @@ const TableRows = ({ rows }: { rows: any[] }) => {
 };
 
 const TableRenderer = ({ columns, rows, getRowKey }: TableProps) => {
-    const tableRef = useRef();
-    const tableInRef = useRef();
-    const [expanded, toggleExpanded] = useState(false);
-
-
     const nodeModulesProps: any[] = [];
-    const baseLayoutProps: any[] = [];
+    const baseLayoutProps: Record<string, any[]> = {};
     const componentProps: any[] = [];
 
     rows.forEach((prop) => {
         if (prop.parent?.fileName?.includes('node_modules')) {
             nodeModulesProps.push(prop);
         } else if(isStyleProp(prop.name)) {
-            baseLayoutProps.push(prop);
+            if(!baseLayoutProps.hasOwnProperty(prop.parent.name)) {
+                baseLayoutProps[prop.parent.name] = []
+            }
+
+            baseLayoutProps[prop.parent.name].push(prop)
         } else componentProps.push(prop)
     });
 
@@ -67,11 +67,32 @@ const TableRenderer = ({ columns, rows, getRowKey }: TableProps) => {
     console.log("CP", componentProps)
 
     return (
-        <>
+        <SurfaceLayout>
             <Card mv={15} width="100%" border="none" shapeScale="lg" s={1}>
-                <TableRows rows={componentProps}/>
+                {
+                    window.location.hash==="#/Basic/Layout" ?
+                        Object.keys(baseLayoutProps).map((it, i) => <>
+                            <SurfaceLayout position="sticky" zIndex={2} top={0} s={4}>
+                                <Title p={20} size="large">{it}</Title>
+                            </SurfaceLayout>
+                            <TableRows rows={baseLayoutProps[it]}/>
+                        </>)
+                    : <SurfaceLayout s={2}>
+                        <TableRows rows={componentProps}/>
+                        {Object.keys(baseLayoutProps).length!==0&&<Button
+                            mode="text"
+                            width="100%"
+                            shapeScale="none"
+                            onClick={() => {
+                                window.location.hash = "#/Basic/Layout";
+                            }}
+                        >
+                            Show basic layout props
+                        </Button>}
+                    </SurfaceLayout>
+                }
             </Card>
-        </>
+        </SurfaceLayout>
     );
 };
 

@@ -6,6 +6,13 @@ export interface StateLayerProps extends React.HTMLAttributes<HTMLDivElement> {
     ripple?: boolean
 }
 
+/**
+ * Used for state layer for hover/focus effects. Also have function of ripple effect.
+ * Always have absolute position and can create multiple elements in your component.
+ * 
+ * @param props
+ * @constructor
+ */
 export function StateLayer(props: StateLayerProps) {
     const {
         ripple = true
