@@ -36,108 +36,210 @@ Object.assign(flex, {
 
 export interface FlexProps {
     /**
+     * The CSS `flex-direction` property.
+     *
      * @default column
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction
      */
     flexDirection?: Adaptive<CSS.Property.FlexDirection>
+
+    /**
+     * The CSS `flex-direction` property.
+     *
+     * @default column
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction
+     */
     direction?: Adaptive<CSS.Property.FlexDirection>
 
     /**
+     * The CSS `flex-wrap` property.
+     *
      * @default true
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap
      */
     flexWrap?: Adaptive<CSS.Property.FlexWrap>
+
+    /**
+     * The CSS `flex-wrap` property.
+     *
+     * @default true
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap
+     */
     warp?: Adaptive<CSS.Property.FlexWrap>
 
     /**
-     * @default null
-     * */
+     * The CSS `flex-flow` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/flex-flow
+     */
     flexFlow?: Adaptive<CSS.Property.FlexFlow>
 
     /**
-     * @default null
+     * The CSS `flex` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/flex
      */
     flex?: Adaptive<CSS.Property.Flex>
 
     /**
-     * @default null
+     * The CSS `flex-basis` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis
      */
     flexBasis?: Adaptive<CSS.Property.FlexBasis >
 
     /**
-     * @default null
+     * The CSS `gap` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/gap
      */
     gap?: Adaptive<CSS.Property.Gap|number>
 
     /**
-     * @default null
+     * The CSS `row-gap` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap
      */
     rowGap?: Adaptive<CSS.Property.RowGap|number>
 
     /**
-     * @default null
+     * The CSS `column-gap` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap
      */
     columnGap?: Adaptive<CSS.Property.ColumnGap|number>
 
     /**
-     * @default null
+     * The CSS `justify-self` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self
      */
     justifySelf?: Adaptive<CSS.Property.JustifySelf>
 
     /**
-     * @default null
+     * The CSS `align-self` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/align-self
      */
     alignSelf?: Adaptive<CSS.Property.AlignSelf>
 
     /**
-     * @default null
+     * The CSS `order` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/order
      */
     order?: Adaptive<CSS.Property.Order>
 
     /**
-     * @default null
+     * The CSS `justify-content` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
      */
     justifyContent?: Adaptive<CSS.Property.JustifyContent>
+
+    /**
+     * The CSS `justify-content` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
+     */
     justify?: Adaptive<CSS.Property.JustifyContent>
 
     /**
-     * @default null
+     * The CSS `justify-items` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items
      */
     justifyItems?: Adaptive<CSS.Property.JustifyItems>
 
     /**
-     * @default null
+     * The CSS `align-items` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
      */
     alignItems?: Adaptive<CSS.Property.AlignItems>
+
+    /**
+     * The CSS `align-items` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
+     */
     align?: Adaptive<CSS.Property.AlignItems>
 
     /**
-     * @default null
+     * The CSS `align-content` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
      */
     alignContent?: Adaptive<CSS.Property.AlignContent>
 
     /**
-     * @default null
+     * The CSS `flex-grow` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow
      */
     flexGrow?: Adaptive<CSS.Property.FlexGrow | (string & number)>
+
+    /**
+     * The CSS `flex-grow` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow
+     */
     grow?: Adaptive<CSS.Property.FlexGrow | (string & number)>
 
     /**
-     * @default null
+     * The CSS `flex-shrink` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink
      */
     flexShrink?: Adaptive<CSS.Property.FlexShrink | (string & number)>
+
+    /**
+     * The CSS `flex-shrink` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink
+     */
     shrink?: Adaptive<CSS.Property.FlexShrink | (string & number)>
 
     /**
-     * @default null
+     * The CSS `place-items` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/place-items
      */
     placeItems?: Adaptive<CSS.Property.PlaceItems>
 
     /**
-     * @default null
+     * The CSS `place-content` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/place-content
      */
     placeContent?: Adaptive<CSS.Property.PlaceContent>
 
     /**
-     * @default null
+     * The CSS `place-self` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/place-self
      */
     placeSelf?: Adaptive<CSS.Property.PlaceSelf>
 }
