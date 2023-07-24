@@ -21,6 +21,7 @@ export function StateLayer(props: StateLayerProps) {
                      ref={state.rippleTriggerRef}
                      onPointerUp={state.performUp}
                      onPointerCancel={state.performUp}
+                     onPointerLeave={state.performUp}
                      onPointerDown={ripple ? state.performDown : undefined}/>
             </>
         }
