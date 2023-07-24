@@ -43,7 +43,7 @@ export function GetStartedPage(props: GetStartedPageProps) {
         <Code>pnpm add @znui/react @znui/icons</Code>
 
         <Layout mh={10}>
-            After installing Chakra UI, you need to set up the <code>ThemeProvider</code> and <code>AdaptiveProvider</code> at the root of your application.
+            After installing ZnUI, you need to set up the <code>ThemeProvider</code> and <code>AdaptiveProvider</code> at the root of your application.
         </Layout>
         <Code>{
             'import * as React from \'react\'\n' +
