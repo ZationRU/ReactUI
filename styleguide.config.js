@@ -90,6 +90,7 @@ module.exports = {
         StyleGuide: path.join(__dirname, 'src/styleguide/StyleGuide/StyleGuide'),
         Editor: path.join(__dirname, 'src/styleguide/Editor/Editor'),
         PlaygroundRenderer: path.join(__dirname, 'src/styleguide/PlaygroundRenderer/PlaygroundRenderer'),
+        TableRenderer: path.join(__dirname, 'src/styleguide/TableRenderer/TableRenderer'),
         'Markdown/MarkdownHeading': path.join(__dirname, 'src/styleguide/MarkdownHeading/MarkdownHeading'),
     },
 

@@ -7,6 +7,7 @@ import {Layout} from "../../components/Basic/Layout/Layout";
 import {
     ZnUIIconBackArrowFilled,
 } from "@znui/icons"
+import {Headline} from "../../components/Typography/Headline/Headline";
 
 export default function ReactComponent({ component, exampleMode }: any) {
     const { name, visibleName, pathLine } = component;
@@ -21,10 +22,12 @@ export default function ReactComponent({ component, exampleMode }: any) {
         <Layout ph={10}>
             {description && <Markdown text={description} />}
 
+            <Headline size="small" mt={30} mb={15}>Example</Headline>
             {examples.length > 0 && (
                 <Examples examples={examples} name={name} exampleMode={exampleMode} />
             )}
 
+            <Headline size="small" mt={30}>Props</Headline>
             <PropsRenderer props={component.props.props} />
         </Layout>
     </div>;

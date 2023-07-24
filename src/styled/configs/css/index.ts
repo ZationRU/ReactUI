@@ -15,7 +15,7 @@ import {list, ListProps} from "./list";
 import {scroll, ScrollProps} from "./scroll";
 import {textDecoration, TextDecorationProps} from "./textDecoration";
 import {transition, TransitionProps} from "./transition";
-import {FilterProps} from "./filter";
+import {filter, FilterProps} from "./filter";
 
 export * from "./colors"
 export * from "./flex"
@@ -56,6 +56,7 @@ export const cssConfig = {
     ...textDecoration,
     ...transition,
     ...transform,
+    ...filter,
 }
 
 export type CSSProps = ColorsProps &
@@ -75,4 +76,4 @@ export type CSSProps = ColorsProps &
     ListProps &
     ScrollProps &
     TextDecorationProps &
-    TransitionProps ;
+    TransitionProps;

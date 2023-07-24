@@ -1,7 +1,3 @@
 .Code {
     font-family: 'JetBrains Mono', monospace;
-    padding: 0 3px;
-    background: var(--znui-dark-background);
-    color: var(--znui-dark-on-background);
-    border-radius: 4px;
 }
