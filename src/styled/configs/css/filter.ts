@@ -10,13 +10,17 @@ export const filter = {
 export interface FilterProps {
     /**
      * The CSS `filter` property.
-     * @default auto
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/filter
      */
     filter?: Adaptive<CSS.Property.Filter | "auto">
 
     /**
-     * The CSS `filter` property.
-     * @default auto
+     * The CSS `backdrop-filter` property.
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter
      */
     backdropFilter?: Adaptive<CSS.Property.BackdropFilter | "auto">
 }
