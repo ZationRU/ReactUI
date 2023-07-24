@@ -31,78 +31,153 @@ Object.assign(background, {
 export interface BackgroundProps {
     /**
      * The CSS `background` property
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background
      */
-    bg?: Adaptive<CSS.Property.Color>
+    bg?: Adaptive<CSS.Property.Background>
+
     /**
      * The CSS `background-clip` property
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip
      */
     bgClip?: Adaptive<CSS.Property.BackgroundClip | string>
+
     /**
      * The CSS `background-clip` property
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip
      */
     backgroundClip?: Adaptive<CSS.Property.BackgroundClip | string>
+
     /**
      * The CSS `background` property
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background
      */
     background?: Adaptive<CSS.Property.Color>
+
     /**
      * The CSS `background-color` property
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background-color
      */
     bgColor?: Adaptive<CSS.Property.Color>
+
     /**
      * The CSS `background-color` property
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background-color
      */
     backgroundColor?: Adaptive<CSS.Property.Color>
+
     /**
      * The CSS `background-image` property
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background-image
      */
     backgroundImage?: Adaptive<CSS.Property.BackgroundImage>
-    /**
-     * The background-gradient shorthand
-     */
-    bgGradient?: Adaptive<CSS.Property.BackgroundImage>
-    /**
-     * The CSS `background-size` property
-     */
-    backgroundSize?: Adaptive<CSS.Property.BackgroundSize | number>
-    /**
-     * The CSS `background-position` property
-     */
-    bgPos?: Adaptive<CSS.Property.BackgroundPosition | number>
-    /**
-     * The CSS `background-position` property
-     */
-    backgroundPosition?: Adaptive<CSS.Property.BackgroundPosition | number>
+
     /**
      * The CSS `background-image` property
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background-image
      */
     bgImage?: Adaptive<CSS.Property.BackgroundImage>
+
     /**
      * The CSS `background-image` property
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background-image
      */
     bgImg?: Adaptive<CSS.Property.BackgroundImage>
+
     /**
-     * The CSS `background-repeat` property
+     * The background-gradient shorthand
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background-gradient
      */
-    bgRepeat?: Adaptive<CSS.Property.BackgroundRepeat>
-    /**
-     * The CSS `background-repeat` property
-     */
-    backgroundRepeat?: Adaptive<CSS.Property.BackgroundRepeat>
+    bgGradient?: Adaptive<CSS.Property.BackgroundImage>
+
     /**
      * The CSS `background-size` property
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background-size
+     */
+    backgroundSize?: Adaptive<CSS.Property.BackgroundSize | number>
+
+    /**
+     * The CSS `background-size` property
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background-size
      */
     bgSize?: Adaptive<CSS.Property.BackgroundSize | number>
-    /**
-     * The CSS `background-attachment` property
-     */
-    bgAttachment?: Adaptive<CSS.Property.BackgroundAttachment>
-    /**
-     * The CSS `background-attachment` property
-     */
-    backgroundAttachment?: Adaptive<CSS.Property.BackgroundAttachment>
+
     /**
      * The CSS `background-position` property
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background-position
+     */
+    backgroundPosition?: Adaptive<CSS.Property.BackgroundPosition | number>
+
+    /**
+     * The CSS `background-position` property
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background-position
      */
     bgPosition?: Adaptive<CSS.Property.BackgroundPosition | number>
+
+    /**
+     * The CSS `background-position` property
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background-position
+     */
+    bgPos?: Adaptive<CSS.Property.BackgroundPosition | number>
+
+    /**
+     * The CSS `background-repeat` property
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background-repeat
+     */
+    backgroundRepeat?: Adaptive<CSS.Property.BackgroundRepeat>
+
+    /**
+     * The CSS `background-repeat` property
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background-repeat
+     */
+    bgRepeat?: Adaptive<CSS.Property.BackgroundRepeat>
+
+    /**
+     * The CSS `background-attachment` property
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background-attachment
+     */
+    backgroundAttachment?: Adaptive<CSS.Property.BackgroundAttachment>
+
+    /**
+     * The CSS `background-attachment` property
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background-attachment
+     */
+    bgAttachment?: Adaptive<CSS.Property.BackgroundAttachment>
 }
