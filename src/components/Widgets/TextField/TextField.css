@@ -65,6 +65,7 @@
 
 .TextField--labeled:focus-within > input::placeholder {
     color: currentColor;
+    opacity: 1;
 }
 
 .TextField:hover {
