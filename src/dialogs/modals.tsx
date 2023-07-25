@@ -1,5 +1,5 @@
 import {ZnUIPortalRegistrar} from "../components/Providers/portals";
-import React, {useCallback, useEffect, useRef, useState} from "react";
+import React, {JSXElementConstructor, useCallback, useEffect, useRef, useState} from "react";
 import {Layout} from "../components/Basic/Layout/Layout";
 import {useAdaptiveValue} from "../adaptive/useAdaptive";
 import {SurfaceLayout} from "../components/Layouts/SurfaceLayout/SurfaceLayout";
@@ -13,7 +13,7 @@ export type ModalProps = {
 }
 
 export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
-    return (Component: React.ComponentClass<ModalProps>, clickEvent?: MouseEvent): ModalDialogInterface => {
+    return (Component: JSXElementConstructor<ModalProps>, clickEvent?: MouseEvent): ModalDialogInterface => {
         const portal = portalRegister();
 
         let close = () => {
