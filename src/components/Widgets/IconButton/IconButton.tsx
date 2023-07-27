@@ -6,18 +6,24 @@ import classNames from "classnames";
 import "./IconButton.css";
 import {Center} from "../../Basic/Center/Center";
 
-export interface IconButtonProps extends LayoutProps {}
+export interface IconButtonProps extends LayoutProps {
+    disabled?: boolean
+}
 
 export const IconButton = (props: IconButtonProps) => {
     const {
         children,
         className,
+        disabled,
         ...otherProps
     } = props
 
     return <Center as="button" className={classNames(
         "IconButton",
         className,
+        {
+            "IconButton--disabled": disabled
+        }
     )} {...otherProps}>
         <StateLayer ripple={true}/>
 

@@ -1,7 +1,14 @@
 ```tsx
-import {ZnUIIconMoreFilled} from "@znui/icons";
+import {ZnUIIconLikeFilled, ZnUIIconMoreFilled} from "@znui/icons";
+import {HStack} from "@znui/react";
 
-<IconButton>
-    <ZnUIIconMoreFilled/>
-</IconButton>
+<HStack>
+    <IconButton disabled={true}>
+        <ZnUIIconLikeFilled/>
+    </IconButton>
+
+    <IconButton>
+        <ZnUIIconMoreFilled/>
+    </IconButton>
+</HStack>
 ```
