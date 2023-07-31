@@ -1,15 +1,24 @@
 ```tsx
-<SegmentedButton>
-    <SegmentedButton.Segment
-        isSelected={true}
-    >
-        Text
-    </SegmentedButton.Segment>
+import {useState} from "react";
+import {VStack} from "@znui/react";
 
-    <SegmentedButton.Segment
-        isSelected={false}
+const [selectedId, setSelectedId] = useState(null);
+const [multiSelectedId, setMultiSelectedId] = useState([]);
+
+<VStack spacing={10}>
+    <SegmentedButton selectedIds={selectedId} onSelect={setSelectedId}>
+        <SegmentedButton.Segment id="one">One</SegmentedButton.Segment>
+        <SegmentedButton.Segment id="two">Two</SegmentedButton.Segment>
+    </SegmentedButton>
+
+    <SegmentedButton 
+        multiselect={true} 
+        selectedIds={multiSelectedId} 
+        onSelect={setMultiSelectedId}
     >
-        Text
-    </SegmentedButton.Segment>
-</SegmentedButton>
+        <SegmentedButton.Segment id="one">One</SegmentedButton.Segment>
+        <SegmentedButton.Segment id="two">Two</SegmentedButton.Segment>
+        <SegmentedButton.Segment id="three">Three</SegmentedButton.Segment>
+    </SegmentedButton>
+</VStack>
 ```
