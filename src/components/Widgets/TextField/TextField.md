@@ -5,10 +5,24 @@ import {TextField} from "./TextField";
 import {Layout} from "../../Basic/Layout/Layout";
 
 <Layout maxW={210}>
-    <TextField placeholder="Placeholder" label="Label"/>
-    <TextField placeholder="Placeholder" label="Label" type="number"/>
-    <TextField placeholder="Placeholder" label="Label" type="password"/>
-    <TextField placeholder="Placeholder" label="Label" disabled={true}/>
-    <TextField placeholder="Placeholder" label="Label" error={true} supportingText="Oops.. I'm error"/>
+    <TextField label="Label">
+        <input placeholder="Placeholder"/>
+    </TextField>
+    
+    <TextField label="Label">
+        <input type="number" placeholder="Placeholder"/>
+    </TextField>
+
+    <TextField label="Label">
+        <input type="password" placeholder="Placeholder"/>
+    </TextField>
+
+    <TextField label="Label">
+        <input disabled={true} placeholder="Placeholder"/>
+    </TextField>
+
+    <TextField label="Label" error={true} supportingText="Oops.. I'm error">
+        <input placeholder="Placeholder"/>
+    </TextField>
 </Layout>
 ```

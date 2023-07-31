@@ -6,7 +6,7 @@ import {Body} from "../../Typography/Body/Body";
 import classNames from "classnames";
 import {AnimatedVisibility} from "../../Animation/AnimatedVisibility/AnimatedVisibility";
 
-export interface TextFieldProps extends HTMLZnUIProps<"input"> {
+export interface TextFieldProps extends HTMLZnUIProps<"div"> {
     label?: string
     error?: boolean
     supportingText?: string
@@ -15,22 +15,23 @@ export interface TextFieldProps extends HTMLZnUIProps<"input"> {
 export const TextField = (props: TextFieldProps) => {
     const {
         label,
-        disabled,
         error = false,
         supportingText,
-        ...inputProps
+        children,
+        className,
+        ...layoutProps
     } = props
 
-    return <Layout minW={210} pt={6} oc={disabled?0.32:1} className={classNames({
+    return <Layout minW={210} pt={6} className={classNames({
         "TextField-Container--error": error
-    })}>
+    }, className)} {...layoutProps}>
         <Layout as="fieldset" h={64} className={classNames(
             "TextField",
             {
                 "TextField--labeled": label,
             }
         )} overflow="visible">
-            <Layout className="znui-body-large" as="input" disabled={disabled} {...inputProps}/>
+            {children}
             {label&&<Body className="label" size="large">{label}</Body>}
             <legend className="legend">{label}</legend>
         </Layout>
