@@ -1,6 +1,5 @@
-import React, {createContext, useContext, useMemo} from "react";
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
-import {Body} from "../../Typography/Body/Body";
+import React, {createContext, useMemo} from "react";
+import {LayoutProps} from "../../Basic/Layout/Layout";
 import {FlexLayout} from "../../Basic/FlexLayout/FlexLayout";
 import {Label} from "../../Typography/Label/Label";
 import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
