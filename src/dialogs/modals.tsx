@@ -90,7 +90,6 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                 <SurfaceLayout
                     innerRef={modalContainerRef}
                     position="fixed"
-                    oc={isExpanded? 1: 0.8}
                     s={isExpanded&&!isFullscreen ? 3: 0}
                     borderRadius={isExpanded? isFullscreen ? 0 : 28 : targetStyles?.borderRadius || 0}
                     h={isExpanded? isFullscreen ? '100vh': 'inherit': targetRect?.height||0}
