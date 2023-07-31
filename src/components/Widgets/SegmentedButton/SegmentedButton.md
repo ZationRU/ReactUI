@@ -7,8 +7,9 @@ const [multiSelectedId, setMultiSelectedId] = useState([]);
 
 <VStack spacing={10}>
     <SegmentedButton selectedIds={selectedId} onSelect={setSelectedId}>
-        <SegmentedButton.Segment id="one">One</SegmentedButton.Segment>
-        <SegmentedButton.Segment id="two">Two</SegmentedButton.Segment>
+        <SegmentedButton.Segment id="day">Day</SegmentedButton.Segment>
+        <SegmentedButton.Segment id="week">Week</SegmentedButton.Segment>
+        <SegmentedButton.Segment id="month">Month</SegmentedButton.Segment>
     </SegmentedButton>
 
     <SegmentedButton 
@@ -16,9 +17,9 @@ const [multiSelectedId, setMultiSelectedId] = useState([]);
         selectedIds={multiSelectedId} 
         onSelect={setMultiSelectedId}
     >
-        <SegmentedButton.Segment id="one">One</SegmentedButton.Segment>
-        <SegmentedButton.Segment id="two">Two</SegmentedButton.Segment>
-        <SegmentedButton.Segment id="three">Three</SegmentedButton.Segment>
+        <SegmentedButton.Segment id="cheap">$</SegmentedButton.Segment>
+        <SegmentedButton.Segment id="average">$$</SegmentedButton.Segment>
+        <SegmentedButton.Segment id="expensive">$$$</SegmentedButton.Segment>
     </SegmentedButton>
 </VStack>
 ```
