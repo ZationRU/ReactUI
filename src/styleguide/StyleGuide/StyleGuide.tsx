@@ -41,6 +41,7 @@ export default function StyleGuide(props: StyleGuideProps) {
                         key={cssRevision}
                         title={config.title}
                         version={config.version}
+                        allSections={allSections}
                         toc={allSections ? <TableOfContents sections={allSections} /> : null}
                     >
                         {!isRootUrl && sections.length === 1 && <Sections sections={sections} depth={1} />}

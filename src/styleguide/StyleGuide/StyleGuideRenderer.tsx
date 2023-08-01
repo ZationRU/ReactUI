@@ -16,12 +16,14 @@ import {
     ZnUIIconMinimizeWindowFilled, ZnUIIconDebugFilled, ZnUIIconDebugOutline
 } from "@znui/icons"
 import {GetStartedPage} from "./pages/GetStartedPage";
+import {ComponentsPage} from "./pages/ComponentsPage";
 
 interface StyleGuideRendererProps {
     title: string;
     version?: string;
     children: any;
     toc?: React.ReactNode;
+    allSections?: any;
     hasSidebar?: boolean;
 }
 
@@ -59,6 +61,7 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
         children,
         toc,
         hasSidebar,
+        allSections
     } = props
 
     const [page, setPage] = useState(window.location.hash==='' ? 'home' : window.location.hash.substring(1))
@@ -115,7 +118,7 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
         }
 
         {
-            breakpointWidth !== LayoutBreakpointsValues.esm && breakpointWidth < LayoutBreakpointsValues.lg && <>
+            breakpointWidth !== LayoutBreakpointsValues.esm && <>
                 <NavigationRail s={2}>
                     {
                         NavigationPagesLinks.map(({title, icon, id}) => <NavigationRail.Item
@@ -129,35 +132,20 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
         }
 
         {
-            breakpointWidth >= LayoutBreakpointsValues.lg&&<Layout w={360}>
-                <Layout pos="fixed" w="inherit">
-                    <SurfaceLayout s={2} overflow={"auto"} maxH="100vh" minH="100vh">
-                        <NavigationDrawer mh={10} mv={10}>
-                            {
-                                NavigationPagesLinks.map(({title, icon, id}) => <NavigationDrawer.Item
-                                    icon={icon}
-                                    selected={page===id}
-                                    onClick={() => go(id)}
-                                >{title}</NavigationDrawer.Item>)
-                            }
-                        </NavigationDrawer>
-                    </SurfaceLayout>
-                </Layout>
-            </Layout>
+            Object.hasOwn(Pages, page) ?
+                <Layout flex={1} overflow="auto" ref={ref}>
+                    {
+                        React.createElement(Pages[page], {
+                            go
+                        })
+                    }
+                </Layout>:
+                <ComponentsPage
+                    go={go}
+                    toc={toc}
+                    allSections={allSections}
+                    ref={ref}
+                    children={page !== 'components' && children}/>
         }
-
-        <Layout flex={1} overflow="auto" ref={ref}>
-            {
-                Object.hasOwn(Pages, page) ?
-                    React.createElement(Pages[page], {
-                        go
-                    }): page === 'components' ?
-                        <>
-                            <Toolbar>Components</Toolbar>
-                            {toc}
-                        </> : children
-
-            }
-        </Layout>
     </Layout>
 }
