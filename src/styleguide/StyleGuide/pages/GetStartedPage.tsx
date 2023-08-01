@@ -1,19 +1,16 @@
 import React from "react";
 import {Layout} from "../../../components/Basic/Layout/Layout";
-import {Toolbar} from "../../../components/Widgets/Toolbar/Toolbar";
 import {Title} from "../../../components/Typography/Title/Title";
-import EditorWrapper from "../../Editor/Editor";
 import {Section, SectionCard, SectionTitle} from "../SectionsUI";
 import {VStack} from "../../../components/Basic/Stack/Stack";
 import {Body} from "../../../components/Typography/Body/Body";
 import {Navigate} from "../StyleGuideRenderer";
+import {Code, CodeFragment} from "../CodePlaygroundDocs";
 
-function Code(props: {children: string}) {
-    return <EditorWrapper code={props.children} onChange={() => ''}/>
-}
 
 type GetStartedPageProps = {
     go: Navigate
+    evalInContext: (code: string) => any
 }
 
 export function GetStartedPage(props: GetStartedPageProps) {
@@ -28,27 +25,27 @@ export function GetStartedPage(props: GetStartedPageProps) {
             npm:
         </Layout>
 
-        <Code>npm install @znui/react @znui/icons</Code>
+        <CodeFragment>npm install @znui/react @znui/icons</CodeFragment>
 
         <Layout mh={10}>
             yarn:
         </Layout>
 
-        <Code>yarn add @znui/react @znui/icons</Code>
+        <CodeFragment>yarn add @znui/react @znui/icons</CodeFragment>
 
         <Layout mh={10}>
             pnpm:
         </Layout>
 
-        <Code>pnpm add @znui/react @znui/icons</Code>
+        <CodeFragment>pnpm add @znui/react @znui/icons</CodeFragment>
 
         <Layout mh={10}>
             After installing ZnUI, you need to set up the <code>ThemeProvider</code> and <code>AdaptiveProvider</code> at the root of your application.
         </Layout>
-        <Code>{
+        <Code evalInContext={props.evalInContext}>{
             'import * as React from \'react\'\n' +
             '\n' +
-            'import { ThemeProvider, AdaptiveProvider } from \'@znui/react\'\n' +
+            'import { ThemeProvider, AdaptiveProvider, Button } from \'@znui/react\'\n' +
             '\n' +
             'function App() {\n' +
             '  return (\n' +
@@ -58,7 +55,13 @@ export function GetStartedPage(props: GetStartedPageProps) {
             '       </AdaptiveProvider>\n' +
             '    </ThemeProvider>\n' +
             '  )\n' +
-            '}'
+            '}\n' +
+            '\n' +
+            'function YourApplication() {\n' +
+            '  return <Button>My Cool Button in My Application</Button>\n' +
+            '}\n' +
+            '\n' +
+            '<App/>'
         }</Code>
 
         <SectionTitle mv={15}>Next to read</SectionTitle>
