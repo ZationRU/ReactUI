@@ -7,3 +7,8 @@ export const Divider = znui("div", {
     h: "1px",
     background: "var(--znui-outline-variant)"
 })
+
+export const VerticalDivider = znui("div", {
+    w: "100%",
+    background: "var(--znui-outline-variant)"
+})

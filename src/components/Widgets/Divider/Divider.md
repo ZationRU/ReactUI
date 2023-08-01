@@ -1,3 +1,5 @@
 ```tsx
 <Divider/>
+
+<VerticalDivider/>
 ```
