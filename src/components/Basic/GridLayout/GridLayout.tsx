@@ -27,6 +27,12 @@ export interface GridLayoutProps extends LayoutProps {
     spacingV?: GridProps["gridGap"]
 }
 
+/**
+ * Basic component for shortening grid properties
+ *
+ * @param props
+ * @constructor
+ */
 export const GridLayout = (props: GridLayoutProps) => {
     const {
         minChildWidth,

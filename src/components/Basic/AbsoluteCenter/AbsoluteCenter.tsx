@@ -5,6 +5,12 @@ export interface AbsoluteCenterProps extends LayoutProps {
     axis?: "horizontal" | "vertical" | "both"
 }
 
+/**
+ * Basic component centering component in abstract position
+ *
+ * @param props
+ * @constructor
+ */
 export const AbsoluteCenter = (props: AbsoluteCenterProps) => {
     const { axis = "both", ...otherProps } = props
 

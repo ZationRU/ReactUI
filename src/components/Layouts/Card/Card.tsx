@@ -6,6 +6,12 @@ export interface CardProps extends SurfaceLayoutProps {
 
 }
 
+/**
+ * Layout with surface background and border
+ *
+ * @param props
+ * @constructor
+ */
 export function Card(props: CardProps) {
     const {
         ...otherProps

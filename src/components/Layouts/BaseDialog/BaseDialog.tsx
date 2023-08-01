@@ -14,6 +14,12 @@ export interface BaseDialogProps extends Omit<LayoutProps, "title"> {
     icon?: ReactNode
 }
 
+/**
+ * Wrapper component for alert dialogs created with the useDialogs() hook
+ *
+ * @param props
+ * @constructor
+ */
 export function BaseDialog(props: BaseDialogProps) {
     const {
         title,

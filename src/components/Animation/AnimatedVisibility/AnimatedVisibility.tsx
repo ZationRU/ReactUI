@@ -23,6 +23,12 @@ export interface AnimatedVisibilityProps extends LayoutProps {
     duration?: Adaptive<number>
 }
 
+/**
+ * Utility for working with animation of appearance/disappearance
+ *
+ * @param props
+ * @constructor
+ */
 export function AnimatedVisibility(props: AnimatedVisibilityProps) {
     const {
         startPosition,

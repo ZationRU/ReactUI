@@ -24,6 +24,14 @@ export interface SurfaceLayoutProps extends LayoutProps {
     innerRef?: RefObject<HTMLDivElement>
 }
 
+/**
+ * A component for creating a surface background with a primary-color tint overlay.
+ *
+ * Equivalent for Surface1, Surface2, Surface3, Surface4, Surface5 from Figma.
+ *
+ * @param props
+ * @constructor
+ */
 export function SurfaceLayout(props: SurfaceLayoutProps) {
     const {
         s = 0,

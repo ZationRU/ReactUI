@@ -33,6 +33,11 @@ class CoordinatorLayoutAnchorControllerImpl extends CoordinatorLayoutAnchorContr
     }
 }
 
+/**
+ * Not yet finished component
+ * @param props
+ * @constructor
+ */
 export function CoordinatorLayout(props: CoordinatorLayoutProps) {
     const {
         children,

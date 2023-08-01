@@ -1,7 +1,7 @@
 import React from "react";
 import {Layout, LayoutProps} from "../Layout/Layout";
 import {Adaptive} from "../../../adaptive/Adaptive";
-import {useAdaptiveProps, useAdaptiveValue} from "../../../adaptive/useAdaptive";
+import {useAdaptiveValue} from "../../../adaptive/useAdaptive";
 import * as CSS from "csstype";
 
 export interface StackProps extends LayoutProps {
@@ -9,7 +9,12 @@ export interface StackProps extends LayoutProps {
     spacing?: Adaptive<CSS.Property.Gap|number>
 }
 
-
+/**
+ * Basic component for creating vertical and horizontal indented lists
+ *
+ * @param props
+ * @constructor
+ */
 export function Stack(props: StackProps) {
     const {
         orientation,

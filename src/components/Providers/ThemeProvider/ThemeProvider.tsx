@@ -9,6 +9,12 @@ export interface ThemeProviderProps {
     theme?: ZnUITheme
 }
 
+/**
+ * ZnUI Core Theme Provider. Sets the main styles of the framework.
+ *
+ * @param props
+ * @constructor
+ */
 export const ThemeProvider = (props: ThemeProviderProps) => {
     const theme = props.theme || 'light'
     const portalData = useZnUIProviderPortalCreator(useForceUpdate())

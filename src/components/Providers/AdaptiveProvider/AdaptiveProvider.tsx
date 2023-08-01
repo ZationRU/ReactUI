@@ -18,6 +18,13 @@ export function buildCurrentAdaptiveData(): AdaptiveData {
 
 export const AdaptiveContext = createContext<AdaptiveData|null>(null)
 
+
+/**
+ * Provider of information about the current screen size and the current breakpoint for adaptability
+ *
+ * @param children
+ * @constructor
+ */
 export const AdaptiveProvider = ({ children }: {
     children: React.ReactNode
 }) => {
