@@ -32,7 +32,7 @@ export function FloatingActionButton(
         'FloatingActionButton--'+useAdaptiveValue(size)||'default',
         'FloatingActionButton--'+appearance,
         {
-            'elevation-light-3': elevation
+            'elevation-3': elevation
         },
     )} {...otherProps} aria-label={text}>
         <StateLayer/>
