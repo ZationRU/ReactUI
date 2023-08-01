@@ -1,6 +1,4 @@
 .TextField {
-    transition: color 300ms var(--emphasized-motion);
-
     color: var(--znui-on-surface-variant);
 
     --border-size: 1px;
@@ -93,7 +91,6 @@
 
 .TextField:hover > input::placeholder {
     color: var(--znui-on-surface-variant);
-    transition: color 300ms var(--emphasized-motion);
 }
 
 .TextField--labeled > input::placeholder {
