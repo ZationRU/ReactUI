@@ -22,6 +22,7 @@ export function HomeInfoPage(props: HomeInfoPageProps) {
             bgImg="url(./znui_page_main.png)"
             backgroundRepeat="no-repeat"
             backgroundPosition="right"
+            bgSize="cover"
             borderColor="transparent"
             shapeScale="elg"
             mv={15}>
