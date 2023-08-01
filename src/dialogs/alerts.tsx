@@ -7,10 +7,11 @@ import {BaseDialog} from "../components/Layouts/BaseDialog/BaseDialog";
 import {Button} from "../components/Widgets/Button/Button";
 
 export type AlertDialogConfig = {
-    icon?: ReactNode,
-    title: ReactNode|string,
-    description?: ReactNode|string,
+    icon?: ReactNode
+    title: ReactNode|string
+    description?: ReactNode|string
     actions?: AlertDialogConfigActions[]
+    component?: ReactNode
     cancelable?: boolean
 }
 
@@ -162,7 +163,7 @@ export const showAlert = (portalRegister: ZnUIPortalRegistrar) => {
                                     action.onClick && action.onClick(e)
                                 }}>{action.title}</Button>
                             )}
-                        />
+                        >{config.component}</BaseDialog>
                     </Layout>
                 }</Measure>
             </Layout>
