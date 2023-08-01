@@ -1,19 +1,12 @@
 import React, {ReactNode, RefAttributes} from "react";
 import {Layout} from "../../../components/Basic/Layout/Layout";
-import EditorWrapper from "../../Editor/Editor";
 import {Navigate} from "../StyleGuideRenderer";
 import {Section, SectionCard, SectionTitle} from "../SectionsUI";
 import {useAdaptive} from "../../../adaptive/useAdaptive";
-import {NavigationDrawer} from "../../../components/Widgets/NavigationDrawer/NavigationDrawer";
 import {SurfaceLayout} from "../../../components/Layouts/SurfaceLayout/SurfaceLayout";
-import {Divider, VerticalDivider} from "../../../components/Widgets/Divider/Divider";
 import {VStack} from "../../../components/Basic/Stack/Stack";
 import {Title} from "../../../components/Typography/Title/Title";
 import {Body} from "../../../components/Typography/Body/Body";
-
-function Code(props: {children: string}) {
-    return <EditorWrapper code={props.children} onChange={() => ''}/>
-}
 
 interface ComponentsPageProps extends RefAttributes<HTMLDivElement> {
     go: Navigate

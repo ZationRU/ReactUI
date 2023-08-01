@@ -2,14 +2,15 @@ import React from "react";
 import {Layout} from "../../../components/Basic/Layout/Layout";
 import {Toolbar} from "../../../components/Widgets/Toolbar/Toolbar";
 import {Title} from "../../../components/Typography/Title/Title";
-import EditorWrapper from "../../Editor/Editor";
+import {Navigate} from "../StyleGuideRenderer";
+import {Code} from "../CodePlaygroundDocs";
 
-function Code(props: {children: string}) {
-    return <EditorWrapper code={props.children} onChange={() => ''}/>
-
+type AdaptiveInfoPageProps = {
+    go: Navigate
+    evalInContext: (code: string) => any
 }
 
-export function AdaptiveInfoPage() {
+export function AdaptiveInfoPage({evalInContext}: AdaptiveInfoPageProps) {
     return <Layout>
         <Toolbar>Adaptive Styles & Props</Toolbar>
 
@@ -40,7 +41,8 @@ export function AdaptiveInfoPage() {
             <p>
                 Let's assume we have a regular Layout:
             </p>
-            <Code>{
+            <Code evalInContext={evalInContext}>{
+                "import {Layout} from '@znui/react';\n" +
                 "<Layout bg='black' c='white' w='500px'>\n" +
                 "\tHello! My name is Layout!\n" +
                 "</Layout>"
@@ -51,7 +53,8 @@ export function AdaptiveInfoPage() {
             </p>
 
 
-            <Code>{
+            <Code evalInContext={evalInContext}>{
+                "import {Layout} from '@znui/react';\n" +
                 "<Layout bg='black' c='white' w=\{[300, 400, 500]}>\n" +
                 "\tHello! My name is Layout!\n" +
                 "</Layout>"
@@ -70,7 +73,8 @@ export function AdaptiveInfoPage() {
             <p>
                 Take the previous Layout with Array syntax:
             </p>
-            <Code>{
+            <Code evalInContext={evalInContext}>{
+                "import {Layout} from '@znui/react';\n" +
                 "<Layout bg='black' c='white' w=\{[300, 400, 500]}>\n" +
                 "\tHello! My name is Layout!\n" +
                 "</Layout>"
@@ -79,7 +83,8 @@ export function AdaptiveInfoPage() {
             <p>
                 Let's make it so that the color changes when the width of our screen changes:
             </p>
-            <Code>{
+            <Code evalInContext={evalInContext}>{
+                "import {Layout} from '@znui/react';\n" +
                 "<Layout bg='black' c=\{\{esm: 'white', lg: 'red'}} w=\{[300, 400, 500]}>\n" +
                 "\tHello! My name is Layout!\n" +
                 "</Layout>"

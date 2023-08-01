@@ -6,17 +6,12 @@ import {FlexLayout} from "../../components/Basic/FlexLayout/FlexLayout";
 import {SurfaceLayout} from "../../components/Layouts/SurfaceLayout/SurfaceLayout";
 
 interface PlaygroundRendererProps {
-    exampleIndex: number;
     name?: string;
-    padded: boolean;
     preview: React.ReactNode;
-    previewProps: any;
-    tabButtons: React.ReactNode;
     tabBody: React.ReactNode;
-    toolbar: React.ReactNode;
 }
 
-const PlaygroundRenderer = ({ name, preview, previewProps, tabBody, exampleIndex }: PlaygroundRendererProps) => {
+const PlaygroundRenderer = ({ name, preview, tabBody }: PlaygroundRendererProps) => {
     return (
         <SurfaceLayout s={1} shapeScale="lg">
             <FlexLayout w="100%" direction={[

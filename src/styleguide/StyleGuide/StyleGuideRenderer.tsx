@@ -95,6 +95,7 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
 
     const {breakpointWidth} = useAdaptive()
 
+    const evalInContext = allSections[0].components[0].props.examples[0].evalInContext
     return <Layout
         bg="var(--znui-background)"
         color="var(--znui-on-background)"
@@ -136,7 +137,7 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
                 <Layout flex={1} overflow="auto" ref={ref}>
                     {
                         React.createElement(Pages[page], {
-                            go
+                            go, evalInContext
                         })
                     }
                 </Layout>:
