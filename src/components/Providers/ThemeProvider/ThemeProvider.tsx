@@ -1,10 +1,12 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import './ThemeProvider.css';
 import {useForceUpdate, useZnUIProviderPortalCreator, ZnUIProviderPortalContext} from "../portals";
 
+export type ZnUITheme = 'light'|'dark'
+
 export interface ThemeProviderProps {
     children: React.ReactNode,
-    theme?: 'light'|'dark'
+    theme?: ZnUITheme
 }
 
 export const ThemeProvider = (props: ThemeProviderProps) => {
