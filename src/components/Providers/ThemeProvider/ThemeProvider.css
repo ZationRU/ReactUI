@@ -52,6 +52,9 @@
     --znui-light-error: rgba(179, 38, 30, 1);
     --znui-light-on-error: rgba(249, 255, 248, 1);
 
+    --znui-light-scrollbar-thumb: rgba(70, 79, 69, 0.34);
+    --znui-dark-scrollbar-thumb: rgba(185, 208, 183, 0.34);
+
     /**
      * Shapes
      */
@@ -87,6 +90,8 @@
     --znui-tertiary-container: var(--znui-light-tertiary-container);
     --znui-on-error: var(--znui-light-on-error);
     --znui-error: var(--znui-light-error);
+
+    --znui-scrollbar-thumb: var(--znui-light-scrollbar-thumb);
 }
 
 .ThemeProvider[data-theme='dark'] {
@@ -112,6 +117,8 @@
     --znui-tertiary-container: var(--znui-dark-tertiary-container);
     --znui-on-error: var(--znui-dark-on-error);
     --znui-error: var(--znui-dark-error);
+
+    --znui-scrollbar-thumb: var(--znui-dark-scrollbar-thumb);
 }
 
 .ThemeProvider {
@@ -163,10 +170,22 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3), 0px 8px 12px rgba(0, 0, 0, 0.2);
 }
 
-*::-webkit-scrollbar-track {
-    background-color: darkgrey;
+/**
+ * Scrollbar
+ * For WebKit Specific
+ */
+.ThemeProvider ::-webkit-scrollbar {
+    width: 3px;
 }
 
-*::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+.ThemeProvider ::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ThemeProvider * {
+    scrollbar-gutter: stable;
+}
+
+.ThemeProvider ::-webkit-scrollbar-thumb {
+    background: var(--znui-scrollbar-thumb);
 }
