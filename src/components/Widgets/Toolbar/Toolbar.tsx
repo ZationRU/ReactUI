@@ -16,6 +16,11 @@ export interface ToolbarProps extends SurfaceLayoutProps {
     menu?: ReactNode
 }
 
+/**
+ * Simple Toolbar component
+ * @param props
+ * @constructor
+ */
 export function Toolbar(props: ToolbarProps) {
     const {
         className,

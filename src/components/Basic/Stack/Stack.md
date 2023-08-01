@@ -1,8 +1,6 @@
 ```tsx
 
-import {Title} from "../../../index";
-import {HStack, VStack, Stack} from "./Stack";
-import {Center} from "../Center/Center";
+import {Title, HStack, VStack, Stack, Center} from "@znui/react";
 
 const Items = Array.from({length: 3}, (_, num) => 
     <Center h={200} w={200} bg="red" c="white">{num+1}</Center>);

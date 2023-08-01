@@ -1,15 +1,15 @@
 ```jsx
 import React from 'react';
-import {Title} from '../../Typography/Title/Title'
+import {Title, FloatingActionButton} from "@znui/react";
+import {
+    ZnUIIconAddFilled,
+} from "@znui/icons"
+
 
 const [isExpanded, setExpanded] = React.useState(true);
 const [isLarge, setLarge] = React.useState(true);
 const onExpandClick = () => setExpanded(!isExpanded);
 const onLargeClick = () => setLarge(!isLarge);
-
-import {
-    ZnUIIconAddFilled,
-} from "@znui/icons"
 
 const Icon = <ZnUIIconAddFilled/>;
 

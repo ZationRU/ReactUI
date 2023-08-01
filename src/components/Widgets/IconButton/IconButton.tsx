@@ -10,6 +10,11 @@ export interface IconButtonProps extends LayoutProps {
     disabled?: boolean
 }
 
+/**
+ * Icon Wrapper as Button. Default size 48px/dp
+ * @param props
+ * @constructor
+ */
 export const IconButton = (props: IconButtonProps) => {
     const {
         children,

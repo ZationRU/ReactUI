@@ -1,5 +1,5 @@
 .Editor__inner {
-    color: var(--znui-dark-on-background);
+    color: currentColor;
 }
 
 .Editor__inner > textarea {

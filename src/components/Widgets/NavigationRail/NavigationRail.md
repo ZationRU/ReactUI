@@ -1,7 +1,5 @@
 ```tsx
-import {Layout} from "../../Basic/Layout/Layout";
-import {FloatingActionButton} from "../FloatingActionButton/FloatingActionButton";
-import {Button} from "../Button/Button";
+import {Layout, FloatingActionButton, Button, NavigationRail} from "@znui/react";
 import {
     ZnUIIconHomeFilled,
     ZnUIIconCommentsFilled,

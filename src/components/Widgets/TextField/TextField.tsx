@@ -12,6 +12,13 @@ export interface TextFieldProps extends HTMLZnUIProps<"div"> {
     supportingText?: string
 }
 
+/**
+ * TextField Wrapper for input.
+ * Support all types of text input html component
+ *
+ * @param props
+ * @constructor
+ */
 export const TextField = (props: TextFieldProps) => {
     const {
         label,

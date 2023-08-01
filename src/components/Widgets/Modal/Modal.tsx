@@ -14,6 +14,12 @@ export interface ModalWrapperProps {
     children?: ReactNode
 }
 
+/**
+ * Wrapper component for modals created with the useDialogs() hook.
+ * Adaptive in esm as fullscreen
+ * @param props
+ * @constructor
+ */
 export function Modal(props: ModalWrapperProps) {
     const {
         action,

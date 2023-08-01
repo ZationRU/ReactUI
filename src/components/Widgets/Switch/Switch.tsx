@@ -10,6 +10,12 @@ export interface SwitchProps {
     disabled?: boolean
 }
 
+/**
+ * Simple Switch (true/false) component
+ *
+ * @param props
+ * @constructor
+ */
 export function Switch(props: SwitchProps) {
     const {
         value = false,

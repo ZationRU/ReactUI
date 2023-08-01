@@ -15,7 +15,9 @@ export interface ButtonProps extends HTMLZnUIProps<'button'>{
 export const _znuiButton = znui("button")
 
 /**
- * Styled Button
+ * ZnUI Button widget
+ * @param props
+ * @constructor
  */
 export function Button(props: ButtonProps) {
     const {

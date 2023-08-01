@@ -1,6 +1,5 @@
 ```tsx
-import {Toolbar} from "../../Widgets/Toolbar/Toolbar";
-import {Title} from "../../Typography/Title/Title";
+import {Toolbar, Title, CoordinatorLayout} from "@znui/react";
 
 <CoordinatorLayout overflow="auto" h={600} w={400} style={{border: 'black solid 1px'}}>
     <Toolbar>Hello</Toolbar>

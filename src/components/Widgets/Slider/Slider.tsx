@@ -12,6 +12,9 @@ export interface SliderProps {
 }
 
 /**
+ * Simple Slider component
+ * Alternative for <input type="range">
+ *
  * Not yet finished component
  *
  * @param props

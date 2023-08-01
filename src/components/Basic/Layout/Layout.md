@@ -1,9 +1,11 @@
 ```js
-<Layout bg="red" w={100} h={50}/>
-<Layout bg="blue" w={100} h={50} ml={20}/>
-<Layout bg="green" w={100} h={50} mv={20}/>
+import {Layout} from "@znui/react";
 
 <>
+    <Layout bg="red" w={100} h={50}/>
+    <Layout bg="blue" w={100} h={50} ml={20}/>
+    <Layout bg="green" w={100} h={50} mv={20}/>
+    
     <Layout display="flex" direction="column">
         <button>1</button>
         <button>2</button>

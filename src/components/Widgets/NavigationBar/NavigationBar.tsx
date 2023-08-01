@@ -11,6 +11,12 @@ export interface NavigationBarProps extends SurfaceLayoutProps {
 
 }
 
+/**
+ * Bottom Navigation Bar component
+ *
+ * @param props
+ * @constructor
+ */
 export function NavigationBar(props: NavigationBarProps) {
     return <SurfaceLayout s={props.s??2} display="flex" minHeight={80} {...props}/>
 }

@@ -9,6 +9,11 @@ export interface AvatarProps extends LayoutProps {
     size?: number
 }
 
+/**
+ * Simple avatar with text as avatar support
+ * @param props
+ * @constructor
+ */
 export function Avatar(props: AvatarProps) {
     const {
         image,

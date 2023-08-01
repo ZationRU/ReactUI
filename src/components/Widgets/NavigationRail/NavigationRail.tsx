@@ -13,6 +13,12 @@ export interface NavigationRailProps extends SurfaceLayoutProps {
     alignment?: 'start'|'center'|'end'|undefined
 }
 
+/**
+ * Navigation Rail component
+ *
+ * @param props
+ * @constructor
+ */
 export function NavigationRail(props: NavigationRailProps) {
     const {
         menu,

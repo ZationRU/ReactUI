@@ -22,6 +22,8 @@ interface SegmentedButtonContextInterface {
 const SegmentedButtonContext = createContext<SegmentedButtonContextInterface|null>(null)
 
 /**
+ * Segmented Button component
+ *
  * Not yet finished component
  *
  * @param props

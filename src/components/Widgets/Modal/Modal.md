@@ -1,5 +1,5 @@
 ```tsx
-import {useDialogs, Button, useModalInterface, TextField} from "@znui/react";
+import {useDialogs, Button, Modal, useModalInterface, TextField} from "@znui/react";
 import {ZnUIIconCloseFilled} from "@znui/icons";
 
 const dialogs = useDialogs();

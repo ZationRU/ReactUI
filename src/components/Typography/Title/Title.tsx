@@ -9,6 +9,11 @@ export interface TitleProps extends LayoutProps {
     size?: Adaptive<'small'|'medium'|'large'>;
 }
 
+/**
+ * Title Typography component
+ * @param props
+ * @constructor
+ */
 export const Title = (props: TitleProps) => {
     const {
         size,

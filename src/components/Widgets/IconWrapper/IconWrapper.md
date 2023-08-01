@@ -1,7 +1,5 @@
-Tool for manipulate icon size. Supports svg icons and font icons.
-Works in all components with icons.
-
 ```tsx
+import {IconWrapper} from "@znui/react";
 import {
     ZnUIIconAddFilled,
 } from "@znui/icons";

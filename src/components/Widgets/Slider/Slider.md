@@ -1,6 +1,7 @@
 ```tsx
+import {Slider, VStack} from "@znui/react";
 import {useState} from "react";
-import {VStack} from "@znui/react";
+
 const [value, setValue] = useState(0);
 
 <VStack>

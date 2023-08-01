@@ -1,6 +1,6 @@
 ```tsx
+import {SegmentedButton, VStack} from "@znui/react";
 import {useState} from "react";
-import {VStack} from "@znui/react";
 
 const [selectedId, setSelectedId] = useState(null);
 const [multiSelectedId, setMultiSelectedId] = useState([]);

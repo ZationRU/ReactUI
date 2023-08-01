@@ -9,6 +9,11 @@ export interface BodyProps extends LayoutProps {
     size?: Adaptive<'small'|'medium'|'large'>;
 }
 
+/**
+ * Body Typography component
+ * @param props
+ * @constructor
+ */
 export const Body = (props: BodyProps) => {
     const {
         size,

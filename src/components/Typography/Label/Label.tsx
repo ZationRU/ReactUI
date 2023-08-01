@@ -9,6 +9,11 @@ export interface LabelProps extends LayoutProps {
     size?: Adaptive<'small'|'medium'|'large'>;
 }
 
+/**
+ * Label Typography component
+ * @param props
+ * @constructor
+ */
 export const Label = (props: LabelProps) => {
     const {
         size,

@@ -1,6 +1,5 @@
 ```tsx
-import {Center} from "../../Basic/Center/Center";
-import {VStack} from "../../Basic/Stack/Stack";
+import {Center, VStack, AbsoluteVisibility} from "@znui/react";
 
 const [isVisible, setIsVisible] = React.useState(true);
 const onClick = () => setIsVisible(!isVisible);

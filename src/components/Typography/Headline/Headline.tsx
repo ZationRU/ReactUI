@@ -9,6 +9,11 @@ export interface HeadlineProps extends LayoutProps {
     size?: Adaptive<'small'|'medium'|'large'>;
 }
 
+/**
+ * Headline Typography component
+ * @param props
+ * @constructor
+ */
 export const Headline = (props: HeadlineProps) => {
     const {
         size,

@@ -1,6 +1,6 @@
 ```tsx
 import {ZnUIIconLikeFilled, ZnUIIconMoreFilled} from "@znui/icons";
-import {HStack} from "@znui/react";
+import {HStack, IconButton} from "@znui/react";
 
 <HStack>
     <IconButton disabled={true}>

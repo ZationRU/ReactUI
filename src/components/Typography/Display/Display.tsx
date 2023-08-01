@@ -9,6 +9,11 @@ export interface DisplayProps extends LayoutProps {
     size?: Adaptive<'small'|'medium'|'large'>;
 }
 
+/**
+ * Display Typography component
+ * @param props
+ * @constructor
+ */
 export const Display = (props: DisplayProps) => {
     const {
         size,

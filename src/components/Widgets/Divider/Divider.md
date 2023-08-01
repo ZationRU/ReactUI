@@ -1,5 +1,8 @@
 ```tsx
-<Divider/>
+import {Divider, VerticalDivider} from "@znui/react";
 
-<VerticalDivider/>
+<>
+    <Divider/>
+    <VerticalDivider/>
+</>
 ```

@@ -13,6 +13,11 @@ export interface FloatingActionButtonProps extends React.HTMLAttributes<HTMLButt
     elevation?: boolean
 }
 
+/**
+ * Simple Float Action Button (FAB) widget
+ * @param props
+ * @constructor
+ */
 export function FloatingActionButton(
     props: FloatingActionButtonProps
 ) {

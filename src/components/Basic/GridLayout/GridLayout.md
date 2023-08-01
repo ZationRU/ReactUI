@@ -1,6 +1,5 @@
 ```tsx
-import {GridLayout} from "./GridLayout";
-import {Center} from "../Center/Center";
+import {GridLayout, Center} from "@znui/react";
 
 <GridLayout columns={2} spacing={5}>
     <Center bg="red" c="white" h={50}>Test</Center>

@@ -8,6 +8,12 @@ export interface BottomAppBarProps extends LayoutProps {
     fab?: ReactNode
 }
 
+/**
+ * Bottom AppBar navigation component
+ *
+ * @param props
+ * @constructor
+ */
 export function BottomAppBar(props: BottomAppBarProps) {
     const {
         fab,

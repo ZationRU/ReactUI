@@ -1,6 +1,5 @@
 ```tsx
-import {Center} from "../Center/Center";
-import {Spacer} from "../FlexLayout/FlexLayout";
+import {Center, Spacer, FlexLayout} from "@znui/react";
 
 <div>
     <FlexLayout>

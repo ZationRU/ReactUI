@@ -3,6 +3,9 @@ import {HTMLZnUIProps} from "../../../styled/styled.types";
 
 export type DividerProps = HTMLZnUIProps<"div">
 
+/**
+ * Component for divide your contents
+ */
 export const Divider = znui("div", {
     h: "1px",
     background: "var(--znui-outline-variant)"

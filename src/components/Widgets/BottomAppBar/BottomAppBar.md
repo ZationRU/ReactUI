@@ -1,6 +1,5 @@
 ```tsx
-import {IconButton} from "../IconButton/IconButton";
-import {FloatingActionButton} from "../FloatingActionButton/FloatingActionButton";
+import {IconButton, FloatingActionButton, BottomAppBar} from "@znui/react";
 import {
     ZnUIIconAddFilled,
     ZnUIIconItalicFilled,

@@ -11,6 +11,12 @@ export interface NavigationDrawerProps extends SurfaceLayoutProps {
 
 }
 
+/**
+ * Navigation Drawer component
+ *
+ * @param props
+ * @constructor
+ */
 export function NavigationDrawer(props: NavigationDrawerProps) {
     return <SurfaceLayout {...props} s={2} p={12}/>
 }
