@@ -1,5 +1,3 @@
-> Not yet finished component
-
 ```tsx
 import {TextField, Layout} from "@znui/react";
 
