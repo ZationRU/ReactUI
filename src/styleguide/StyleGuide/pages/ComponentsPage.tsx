@@ -7,6 +7,7 @@ import {SurfaceLayout} from "../../../components/Layouts/SurfaceLayout/SurfaceLa
 import {VStack} from "../../../components/Basic/Stack/Stack";
 import {Title} from "../../../components/Typography/Title/Title";
 import {Body} from "../../../components/Typography/Body/Body";
+import {NavigationDrawer} from "../../../components/Widgets/NavigationDrawer/NavigationDrawer";
 
 interface ComponentsPageProps extends RefAttributes<HTMLDivElement> {
     go: Navigate
@@ -26,13 +27,13 @@ export function ComponentsPage(props: ComponentsPageProps) {
         flex={1}
     >
         {currentBreakpoint!=="esm" && <>
-            <Layout minW={200}>
+            <NavigationDrawer compat={true} minW={200}>
                 <SurfaceLayout s={1} overflow="auto" maxH="100vh" minH="100vh">
                     <Layout ph={10} overflow="auto" maxH="100vh" minH="100vh">
                         {props.toc}
                     </Layout>
                 </SurfaceLayout>
-            </Layout>
+            </NavigationDrawer>
         </>}
 
         <Layout flex={1} overflow="auto" ref={props.ref}>
