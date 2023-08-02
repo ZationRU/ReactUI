@@ -16,6 +16,10 @@
     transition: color 200ms var(--emphasized-motion), background-color 200ms var(--emphasized-motion);
 }
 
+.NavigationDrawer--compat .NavigationDrawerItem {
+    height: 48px;
+}
+
 .NavigationDrawerItem > .background-state {
     position: absolute;
     top: 0;

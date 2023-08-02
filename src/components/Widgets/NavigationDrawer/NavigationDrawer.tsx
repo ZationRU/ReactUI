@@ -8,7 +8,12 @@ import "./NavigationDrawer.css";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
 
 export interface NavigationDrawerProps extends SurfaceLayoutProps {
-
+    /**
+     * Items size style
+     *
+     * @default false
+     */
+    compat?: boolean
 }
 
 /**
@@ -18,7 +23,20 @@ export interface NavigationDrawerProps extends SurfaceLayoutProps {
  * @constructor
  */
 export function NavigationDrawer(props: NavigationDrawerProps) {
-    return <SurfaceLayout {...props} s={2} p={12}/>
+    const {
+        compat = false,
+        className,
+        ...layoutRest
+    } = props
+
+    return <SurfaceLayout
+        s={2}
+        p={12}
+        {...layoutRest}
+        className={classNames({
+            'NavigationDrawer--compat': compat
+        })}
+    />
 }
 
 export interface NavigationDrawerItemProps extends React.HTMLAttributes<HTMLDivElement> {
