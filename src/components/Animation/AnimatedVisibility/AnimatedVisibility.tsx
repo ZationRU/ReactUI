@@ -8,16 +8,19 @@ import "./AnimatedVisibility.css";
 export interface AnimatedVisibilityProps extends LayoutProps {
 
     /**
+     * Initial position of element when is not visible
      * @default center
      */
     startPosition?: Adaptive<'left' | 'right' | 'top' | 'bottom' | 'center'>
 
     /**
+     * Visibility controller prop
      * @default true
      */
     isVisible?: Adaptive<boolean>
 
     /**
+     * Duration of in/out animation
      * @default 400ms
      */
     duration?: Adaptive<number>
