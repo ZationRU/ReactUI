@@ -25,12 +25,13 @@ export interface NavigationDrawerProps extends SurfaceLayoutProps {
 export function NavigationDrawer(props: NavigationDrawerProps) {
     const {
         compat = false,
+        s = 2,
         className,
         ...layoutRest
     } = props
 
     return <SurfaceLayout
-        s={2}
+        s={s}
         p={12}
         {...layoutRest}
         className={classNames({
