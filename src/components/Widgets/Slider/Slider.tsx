@@ -29,6 +29,7 @@ export interface SliderProps {
 
     /**
      * Step of value change
+     * @default 0
      */
     step?: number
 
