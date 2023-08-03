@@ -3,11 +3,39 @@ import {Layout} from "../../Basic/Layout/Layout";
 import {HTMLZnUIProps} from "../../../styled/styled.types";
 
 export interface SliderProps {
+    /**
+     * Maximal value
+     * @default 100
+     */
     max: number
+
+    /**
+     * Minimal value
+     * @default 0
+     */
     min: number
+
+    /**
+     * Current value
+     * @default defaultValue prop
+     */
     value?: number
+
+    /**
+     * Default value
+     * @default 0
+     */
     defaultValue?: number
+
+    /**
+     * Step of value change
+     */
     step?: number
+
+    /**
+     * Changed value listener
+     * @param value
+     */
     onChange?: (value: number) => number;
 }
 
