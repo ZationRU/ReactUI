@@ -54,6 +54,8 @@
     user-select: none;
     color: var(--znui-on-surface-variant);
     transition: color 200ms var(--emphasized-motion);
+    max-width: 90%;
+    text-overflow: ellipsis;
 }
 
 .NavigationBarItem--selected > .IconContainer > .icon {
