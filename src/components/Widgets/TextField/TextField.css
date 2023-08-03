@@ -62,8 +62,9 @@
     line-height: 24px;
 }
 
-.TextField > input[disabled] ~ .TextField {
+.TextField--disabled {
     opacity: 0.34;
+    pointer-events: none;
 }
 
 .TextField > input:not(:placeholder-shown) ~ .label ~ legend, .TextField:focus-within > legend {

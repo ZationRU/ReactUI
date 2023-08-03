@@ -1,6 +1,6 @@
 import React from "react";
 import "./TextField.css";
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
+import {Layout} from "../../Basic/Layout/Layout";
 import {HTMLZnUIProps} from "../../../styled/styled.types";
 import {Body} from "../../Typography/Body/Body";
 import classNames from "classnames";
@@ -10,6 +10,7 @@ export interface TextFieldProps extends HTMLZnUIProps<"div"> {
     label?: string
     error?: boolean|string
     supportingText?: string
+    disabled?: boolean
 }
 
 /**
@@ -26,16 +27,18 @@ export const TextField = (props: TextFieldProps) => {
         supportingText,
         children,
         className,
+        disabled,
         ...layoutProps
     } = props
 
     return <Layout minW={210} pt={6} className={classNames({
-        "TextField-Container--error": error
+        "TextField-Container--error": error,
     }, className)} {...layoutProps}>
         <Layout as="fieldset" h={64} className={classNames(
             "TextField",
             {
                 "TextField--labeled": label,
+                "TextField--disabled": disabled,
             }
         )} overflow="visible">
             {children}

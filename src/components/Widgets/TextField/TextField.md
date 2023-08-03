@@ -14,8 +14,8 @@ import {TextField, Layout} from "@znui/react";
         <input type="password" placeholder="Placeholder"/>
     </TextField>
 
-    <TextField label="Label">
-        <input disabled={true} placeholder="Placeholder"/>
+    <TextField disabled={true} label="Label">
+        <input placeholder="Placeholder"/>
     </TextField>
 
     <TextField label="Label" error="Oops.. I'm error">
