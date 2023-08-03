@@ -8,7 +8,7 @@ import {AnimatedVisibility} from "../../Animation/AnimatedVisibility/AnimatedVis
 
 export interface TextFieldProps extends HTMLZnUIProps<"div"> {
     label?: string
-    error?: boolean
+    error?: boolean|string
     supportingText?: string
 }
 
@@ -43,8 +43,12 @@ export const TextField = (props: TextFieldProps) => {
             <legend className="legend">{label}</legend>
         </Layout>
 
-        {supportingText&&<AnimatedVisibility ph={16} pt={4}>
-            <Body size="small">{supportingText}</Body>
-        </AnimatedVisibility>}
+        <AnimatedVisibility ph={16} pt={4} isVisible={
+            typeof error === 'string'
+            ||
+            !!supportingText
+        }>
+            <Body size="small">{error||supportingText}</Body>
+        </AnimatedVisibility>
     </Layout>
 }
