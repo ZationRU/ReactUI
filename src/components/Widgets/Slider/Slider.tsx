@@ -102,6 +102,24 @@ export function Slider(props: SliderProps) {
             left={10}
             top="calc(50% - 2px)"
         >
+
+            <Layout
+                as="input"
+                type="range"
+                pos="absolute"
+                h={20}
+                w="100%"
+                oc={0}
+                min={min}
+                max={max}
+                value={value}
+                step={step}
+                defaultValue={defaultValue}
+                onChange={(e) => {
+                    onChange?.call(undefined, Number((e.currentTarget as HTMLInputElement).value))
+                }}
+            />
+
             <Layout
                 as="span"
                 pos="absolute"
