@@ -63,6 +63,7 @@ export * from "./components/Widgets/TextField/TextField"
 export * from "./components/Widgets/Toolbar/Toolbar"
 export * from "./components/Widgets/Slider/Slider"
 export * from "./components/Widgets/SegmentedButton/SegmentedButton"
+export * from "./components/Widgets/ContainedIconButton/ContainedIconButton"
 
 //-------------------------------------------------------------------------------------
 
