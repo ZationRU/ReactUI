@@ -27,7 +27,7 @@ export function ComponentsPage(props: ComponentsPageProps) {
         flex={1}
     >
         {currentBreakpoint!=="esm" && <>
-            <NavigationDrawer compat={true} minW={200}>
+            <NavigationDrawer s={1} p={0} compat={true} minW={200}>
                 <SurfaceLayout s={1} overflow="auto" maxH="100vh" minH="100vh">
                     <Layout ph={10} overflow="auto" maxH="100vh" minH="100vh">
                         {props.toc}
