@@ -34,7 +34,9 @@ export function Modal(props: ModalWrapperProps) {
         md: false
     });
 
-    return <Layout>
+    return <Layout
+        insets={isFullscreen ? "safe-area": undefined}
+    >
         <Toolbar
             navigationIcon={isFullscreen ? navigationIcon: undefined}
             onClickNavigationIcon={onClickNavigationIcon}
