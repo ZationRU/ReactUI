@@ -99,6 +99,8 @@
     cursor: pointer;
     color: var(--znui-on-surface-variant);
     transition: color 200ms var(--emphasized-motion);
+    max-width: 85%;
+    text-overflow: ellipsis;
 }
 
 .NavigationRailItem > .title {
