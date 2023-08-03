@@ -9,4 +9,5 @@
     transition: font-size 300ms var(--emphasized-motion);
     display: flex;
     font-size: var(--icon-size);
+    line-height: var(--icon-size);
 }
