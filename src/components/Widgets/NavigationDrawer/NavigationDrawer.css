@@ -53,6 +53,9 @@
     flex-grow: 1;
     cursor: pointer;
     user-select: none;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .NavigationDrawerItem > .inner > .badge {
