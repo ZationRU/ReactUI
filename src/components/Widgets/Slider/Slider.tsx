@@ -13,7 +13,7 @@ export interface SliderProps {
 
 /**
  * Simple Slider component
- * Alternative for <input type="range">
+ * Alternative for range type of input
  *
  * Not yet finished component
  *
