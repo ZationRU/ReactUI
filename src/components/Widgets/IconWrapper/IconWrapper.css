@@ -3,6 +3,7 @@
     width: var(--icon-size);
     height: var(--icon-size);
     color: currentColor;
+    overflow: visible;
 }
 
 .IconWrapper {
@@ -10,4 +11,5 @@
     display: flex;
     font-size: var(--icon-size);
     line-height: var(--icon-size);
+    overflow: visible;
 }
