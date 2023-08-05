@@ -39,7 +39,7 @@ export interface SliderProps {
      * @param value
      * @default undefined
      */
-    onChange?: (value: number) => number;
+    onChange?: (value: number) => void;
 }
 
 /**
