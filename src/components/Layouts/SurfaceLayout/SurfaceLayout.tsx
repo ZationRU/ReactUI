@@ -2,7 +2,7 @@ import React, {RefObject} from "react";
 import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
 import classNames from "classnames";
 import {StateLayer} from "../StateLayer/StateLayer";
-import "./SurfaceLayout.css";
+import {ThemeTokens} from "../../../theme";
 
 export interface SurfaceLayoutProps extends LayoutProps {
     /**
@@ -10,16 +10,9 @@ export interface SurfaceLayoutProps extends LayoutProps {
      *
      * The larger the number, the greater the shade from primary
      *
-     * @default 0
+     * @default lowest
      */
     s ?: 0 | 1 | 2 | 3 | 4 | 5 | 'none'
-
-
-    /**
-     * Text color
-     * @default var(--znui-on-surface)
-     */
-    surfaceColor?: string
 
     innerRef?: RefObject<HTMLDivElement>
 }
@@ -30,6 +23,7 @@ export interface SurfaceLayoutProps extends LayoutProps {
  * Equivalent for Surface1, Surface2, Surface3, Surface4, Surface5 from Figma.
  *
  * @param props
+ * @deprecated
  * @constructor
  */
 export function SurfaceLayout(props: SurfaceLayoutProps) {
@@ -37,17 +31,34 @@ export function SurfaceLayout(props: SurfaceLayoutProps) {
         s = 0,
         className,
         children,
-        surfaceColor = 'var(--znui-on-surface)',
         onClick,
         innerRef,
+        bg = {
+            0: ThemeTokens.surfaceContainerLowest,
+            1: ThemeTokens.surfaceContainerLow,
+            2: ThemeTokens.surfaceContainer,
+            3: ThemeTokens.surfaceContainerHigh,
+            4: ThemeTokens.surfaceContainerHigh,
+            5: ThemeTokens.surfaceContainerHighest,
+            'none': ThemeTokens.surface
+        }[s],
+        c = ThemeTokens.onSurface,
         ...otherProps
     } = props
 
-    return <Layout {...otherProps} ref={innerRef} color={surfaceColor} onClick={onClick} className={classNames(
-        className,
-        "SurfaceLayout",
-        "SurfaceLayout-"+s
-    )}>
+
+    return <Layout
+        {...otherProps}
+        ref={innerRef}
+        onClick={onClick}
+        bg={bg}
+        c={c}
+        pos="relative"
+        className={classNames(
+            className,
+            "SurfaceLayout",
+        )}
+    >
         <StateLayer ripple={!!onClick}/>
         {children}
     </Layout>
