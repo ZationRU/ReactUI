@@ -1,6 +1,7 @@
 import React, {PointerEvent, useRef} from "react";
 import {InputLayout, Layout, LayoutProps} from "../../Basic/Layout/Layout";
 import {FlexLayout} from "../../Basic/FlexLayout/FlexLayout";
+import {mergeRefs} from "../../../utils/refs";
 
 export interface SliderProps extends LayoutProps {
     /**
@@ -52,6 +53,7 @@ export interface SliderProps extends LayoutProps {
  */
 export const Slider = React.forwardRef((props: SliderProps, ref: React.ForwardedRef<HTMLInputElement>) => {
     const sliderLayoutRef = useRef<HTMLDivElement|null>(null)
+    const trackRef = useRef<HTMLDivElement|null>(null)
     const activeTrackRef = useRef<HTMLDivElement|null>(null)
     const handleRef = useRef<HTMLDivElement|null>(null)
     const inputRef = useRef<HTMLInputElement|null>(null)
@@ -69,16 +71,21 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
     const _currentValue = (value || defaultValue)
     const stepCount = (max-min) / step
 
-    const currentValue = _currentValue - (step===1? 0: (_currentValue % stepCount))
+    let currentValue = _currentValue - (step===1? 0: (_currentValue % stepCount))
+    if(currentValue>max) currentValue = max;
+
+
     const trackWidth = currentValue / (max-min) * 100;
 
     let pressed = false;
     let newValue = currentValue;
     const performUp = () => {
-        console.log("up")
         pressed = false
+
         if(inputRef.current) {
-            inputRef.current.setAttribute("value", newValue.toString())
+            const nativeInputValueSetter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")?.set!!;
+            nativeInputValueSetter.call(inputRef.current, newValue);
+            inputRef.current.dispatchEvent(new Event('input', { bubbles: true}));
         }
     }
 
@@ -90,11 +97,11 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
         {...layoutRest}
         h={20}
         p={3}
+        ref={sliderLayoutRef}
         pos="relative"
         overflow="visible"
         userSelect="none"
         cursor="pointer"
-        ref={sliderLayoutRef}
         onPointerMoveCapture={(e: PointerEvent<HTMLDivElement>) => {
             if(!pressed||
                 sliderLayoutRef.current==null||
@@ -104,10 +111,10 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
             }
 
             const rect = sliderLayoutRef.current.getBoundingClientRect();
-            let x = (e.clientX-rect.left);
+            let x = (e.clientX-rect.left-13);
             if(x<0) x = 0;
 
-            let percentage = x/(rect.width);
+            let percentage = x/(rect.width-13);
             if(percentage>1) percentage = 1;
 
             newValue = min + (percentage * (max-min));
@@ -116,10 +123,11 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
                 newValue = max
             }
 
-            let mod = (step===1? 0: (newValue % stepCount))
+
+            let mod = (step===1? 0: (newValue % step))
             newValue = Math.round(newValue - mod)
 
-            const finalPercentage = (newValue-min/(max-min)*100)
+            const finalPercentage = ((newValue-min)/(max-min))*100
             handleRef.current.style.left = "calc(" + finalPercentage + "% - 10px)";
             activeTrackRef.current.style.maxWidth = finalPercentage + "%";
         }}
@@ -141,17 +149,17 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
             oc={0}
             min={min}
             max={max}
-            value={value}
+            defaultValue={value}
             step={step}
-            defaultValue={defaultValue}
+            value={value}
             onChange={onChange}
-            ref={ref}
+            ref={mergeRefs(ref, inputRef)}
         />
 
         <Layout
             pos="absolute"
             left={10}
-            right={10}
+            right={20}
             h={4}
             overflow="visible"
             top="calc(50% - 2px)"

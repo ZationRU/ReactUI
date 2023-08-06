@@ -81,10 +81,6 @@ export const Switch = React.forwardRef((props: SwitchProps, ref: ForwardedRef<HT
                 transform: checked ? "translateX(calc(100% - 4px))" : "translateX(0)"
             }}
         ><IconWrapper>{icon}</IconWrapper></div>
-        <input type="checkbox" checked={checked} disabled={disabled} ref={checkbox} onChange={event => {
-            if (onChange) {
-                onChange(event)
-            }
-        }}/>
+        <input type="checkbox" checked={checked} disabled={disabled} ref={checkbox} onChange={onChange}/>
     </div>
 })
