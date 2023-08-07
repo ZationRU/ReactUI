@@ -24,7 +24,6 @@ export * from "./components/Layouts/Card/Card"
 export * from "./components/Layouts/BaseDialog/BaseDialog"
 export * from "./components/Layouts/CoordinatorLayout/CoordinatorLayout"
 export * from "./components/Layouts/StateLayer/StateLayer"
-export * from "./components/Layouts/SurfaceLayout/SurfaceLayout"
 
 /**
  * Providers
@@ -64,6 +63,7 @@ export * from "./components/Widgets/Toolbar/Toolbar"
 export * from "./components/Widgets/Slider/Slider"
 export * from "./components/Widgets/SegmentedButton/SegmentedButton"
 export * from "./components/Widgets/ContainedIconButton/ContainedIconButton"
+export * from "./components/Widgets/LinearProgressIndicator/LinearProgressIndicator"
 
 //-------------------------------------------------------------------------------------
 
