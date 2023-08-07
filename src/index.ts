@@ -64,6 +64,7 @@ export * from "./components/Widgets/Slider/Slider"
 export * from "./components/Widgets/SegmentedButton/SegmentedButton"
 export * from "./components/Widgets/ContainedIconButton/ContainedIconButton"
 export * from "./components/Widgets/LinearProgressIndicator/LinearProgressIndicator"
+export * from "./components/Widgets/CircularProgressIndicator/CircularProgressIndicator"
 
 //-------------------------------------------------------------------------------------
 

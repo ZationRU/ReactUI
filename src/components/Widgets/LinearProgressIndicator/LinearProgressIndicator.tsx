@@ -32,7 +32,6 @@ export const LinearProgressIndicator = React.forwardRef(
             ...layoutRest
         } = props
 
-
         const currentValue = value > 100 ? 100: (value < 0 ? 0: value)
 
         return <Layout
