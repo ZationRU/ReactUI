@@ -16,7 +16,13 @@ const Icon = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" x
 </svg>;
     
 const Menu = menu &&
-    <FloatingActionButton appearance="surface" size="default"><Icon/></FloatingActionButton>
+    <FloatingActionButton 
+        appearance="tertiary" 
+        elevation={false}
+        size="default"
+    >
+        <Icon/>
+    </FloatingActionButton>
     
 const Items = <>
     <NavigationRail.Item
