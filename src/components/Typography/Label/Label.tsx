@@ -23,8 +23,15 @@ export const Label = (props: LabelProps) => {
     } = props
 
 
-    return <Layout ms={0} me={0} as={as} className={classNames(
-        className,
-        'znui-label-'+(useAdaptiveValue(size) || 'medium')
-    )} {...otherProps}/>
+    return <Layout
+        ms={0}
+        me={0}
+        as={as}
+        overflow="unset"
+        className={classNames(
+            className,
+            'znui-label-'+(useAdaptiveValue(size) || 'medium')
+        )}
+        {...otherProps}
+    />
 }

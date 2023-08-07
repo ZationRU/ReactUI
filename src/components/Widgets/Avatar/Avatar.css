@@ -6,8 +6,8 @@
 }
 
 .Avatar--text {
-    background: var(--znui-primary);
-    color: var(--znui-on-primary);
+    background: var(--znui-primary-container);
+    color: var(--znui-on-primary-container);
     font-style: normal;
     font-weight: 500;
 

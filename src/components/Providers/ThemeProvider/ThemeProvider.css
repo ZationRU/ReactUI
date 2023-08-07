@@ -218,7 +218,7 @@
     /**
      * Shapes
      */
-    --znui-shape-none-radius: 0px;
+    --znui-shape-none-radius: 0;
     --znui-shape-esm-radius: 4px;
     --znui-shape-sm-radius: 8px;
     --znui-shape-md-radius: 12px;
@@ -388,43 +388,43 @@
 
 /*effect style*/
 .ThemeProvider .elevation-1 {
-    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.2), 0px 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .ThemeProvider .elevation-2 {
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2), 0px 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .ThemeProvider .elevation-3 {
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .ThemeProvider .elevation-4 {
-    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3), 0px 6px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 .ThemeProvider .elevation-5 {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3), 0px 8px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3), 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .ThemeProvider[data-theme='dark'] .elevation-1 {
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 3px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 3px 3px rgba(0, 0, 0, 0.2);
 }
 
 .ThemeProvider[data-theme='dark'] .elevation-2 {
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 6px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.2);
 }
 
 .ThemeProvider[data-theme='dark'] .elevation-3 {
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .ThemeProvider[data-theme='dark'] .elevation-4 {
-    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3), 0px 6px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3), 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 .ThemeProvider[data-theme='dark'] .elevation-5 {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3), 0px 8px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3), 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 /**

@@ -1,15 +1,15 @@
 import {Card} from "../../components/Layouts/Card/Card";
-import React, {Fragment, useRef, useState} from "react";
+import React from "react";
 import {Title} from "../../components/Typography/Title/Title";
 import {isStyleProp} from "../../styled/styled";
 import {FlexLayout} from "../../components/Basic/FlexLayout/FlexLayout";
-import {SurfaceLayout} from "../../components/Layouts/SurfaceLayout/SurfaceLayout";
 import CodeRenderer from "../CodeRenderer/CodeRenderer";
 import {Body} from "../../components/Typography/Body/Body";
 import {Label} from "../../components/Typography/Label/Label";
 import {Divider} from "../../components/Widgets/Divider/Divider";
-import {Headline} from "../../components/Typography/Headline/Headline";
 import {Button} from "../../components/Widgets/Button/Button";
+import {Layout} from "../../components/Basic/Layout/Layout";
+import {ThemeTokens} from "../../theme";
 
 interface TableProps {
     columns: {
@@ -27,15 +27,15 @@ const TableRows = ({ rows }: { rows: any[] }) => {
                 rows.map((it, i) =>
                     <>
                         <FlexLayout direction={['column', null, 'row']} key={i}>
-                            <SurfaceLayout s={1} maxW={['unset', null, 400]} flex={1} p={20}>
+                            <Layout bg={ThemeTokens.surfaceContainer} maxW={['unset', null, 400]} flex={1} p={20}>
                                 <Label size="medium">{it.type.raw}</Label>
                                 <CodeRenderer>{it.name}</CodeRenderer>
-                            </SurfaceLayout>
+                            </Layout>
 
-                            <SurfaceLayout s={2} flex={1} ph={20} pv={15}>
+                            <Layout bg={ThemeTokens.surfaceContainerHigh} flex={1} ph={20} pv={15}>
                                 {it.defaultValue&&<Body size="medium">Default value: {it.defaultValue.value}</Body>}
                                 <Body size="medium">{it.description}</Body>
-                            </SurfaceLayout>
+                            </Layout>
                         </FlexLayout>
                         {rows.length-1!==i&&<Divider/>}
                     </>
@@ -45,7 +45,7 @@ const TableRows = ({ rows }: { rows: any[] }) => {
     );
 };
 
-const TableRenderer = ({ columns, rows, getRowKey }: TableProps) => {
+const TableRenderer = ({rows}: TableProps) => {
     const nodeModulesProps: any[] = [];
     const baseLayoutProps: Record<string, any[]> = {};
     const componentProps: any[] = [];
@@ -67,17 +67,16 @@ const TableRenderer = ({ columns, rows, getRowKey }: TableProps) => {
     console.log("CP", componentProps)
 
     return (
-        <SurfaceLayout>
-            <Card mv={15} width="100%" border="none" shapeScale="lg" s={1}>
-                {
-                    window.location.hash==="#/Basic/Layout" ?
-                        Object.keys(baseLayoutProps).map((it, i) => <>
-                            <SurfaceLayout position="sticky" zIndex={2} top={0} s={4}>
-                                <Title p={20} size="large">{it}</Title>
-                            </SurfaceLayout>
-                            <TableRows rows={baseLayoutProps[it]}/>
-                        </>)
-                    : <SurfaceLayout s={2}>
+        <Card mv={15} width="100%" border="none" shapeScale="lg" mode='filled'>
+            {
+                window.location.hash==="#/Basic/Layout" ?
+                    Object.keys(baseLayoutProps).map((it, i) => <>
+                        <Layout key={i} position="sticky" zIndex={2} top={0} bg={ThemeTokens.surfaceContainerHighest}>
+                            <Title p={20} size="large">{it}</Title>
+                        </Layout>
+                        <TableRows rows={baseLayoutProps[it]}/>
+                    </>)
+                    : <Layout bg={ThemeTokens.surfaceContainerHigh}>
                         <TableRows rows={componentProps}/>
                         {Object.keys(baseLayoutProps).length!==0&&<Button
                             mode="text"
@@ -89,10 +88,9 @@ const TableRenderer = ({ columns, rows, getRowKey }: TableProps) => {
                         >
                             Show basic layout props
                         </Button>}
-                    </SurfaceLayout>
-                }
-            </Card>
-        </SurfaceLayout>
+                    </Layout>
+            }
+        </Card>
     );
 };
 

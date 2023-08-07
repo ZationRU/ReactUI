@@ -1,19 +1,16 @@
 import React, {useCallback, useEffect} from "react";
 import { Layout } from "../../components/Basic/Layout/Layout";
-import {NavigationDrawer} from "../../components/Widgets/NavigationDrawer/NavigationDrawer";
-import {SurfaceLayout} from "../../components/Layouts/SurfaceLayout/SurfaceLayout";
 import {useAdaptive} from "../../adaptive/useAdaptive";
 import {useState} from "react";
 import {LayoutBreakpointsValues} from "../../adaptive/LayoutBreakpoint";
 import {NavigationBar} from "../../components/Widgets/NavigationBar/NavigationBar";
 import {NavigationRail} from "../../components/Widgets/NavigationRail/NavigationRail";
 import {HomeInfoPage} from "./pages/HomeInfoPage";
-import {Toolbar} from "../../components/Widgets/Toolbar/Toolbar";
 import {AdaptiveInfoPage} from "./pages/AdaptiveInfoPage";
 import {
     ZnUIIconHomeFilled,
-    ZnUIIconPhotoOutline,
-    ZnUIIconMinimizeWindowFilled, ZnUIIconDebugFilled, ZnUIIconDebugOutline
+    ZnUIIconMinimizeWindowFilled,
+    ZnUIIconDebugOutline
 } from "@znui/icons"
 import {GetStartedPage} from "./pages/GetStartedPage";
 import {ComponentsPage} from "./pages/ComponentsPage";
@@ -120,7 +117,7 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
 
         {
             breakpointWidth !== LayoutBreakpointsValues.esm && <>
-                <NavigationRail s={2}>
+                <NavigationRail>
                     {
                         NavigationPagesLinks.map(({title, icon, id}) => <NavigationRail.Item
                             title={title}

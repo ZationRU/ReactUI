@@ -17,7 +17,7 @@ type HomeInfoPageProps = {
 export function HomeInfoPage(props: HomeInfoPageProps) {
     return <VStack mh={10} mv={10} spacing={10}>
         <Card
-            s={2}
+            mode='filled'
             h={{esm: "50vh", sm: "60vh"}}
             bgImg="url(./znui_page_main.png)"
             backgroundRepeat="no-repeat"

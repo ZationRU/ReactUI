@@ -2,7 +2,7 @@ import {ZnUIPortalRegistrar} from "../components/Providers/portals";
 import React, {JSXElementConstructor, useCallback, useEffect, useRef, useState} from "react";
 import {Layout} from "../components/Basic/Layout/Layout";
 import {useAdaptiveValue} from "../adaptive/useAdaptive";
-import {SurfaceLayout} from "../components/Layouts/SurfaceLayout/SurfaceLayout";
+import {ThemeTokens} from "../theme";
 
 export type ModalDialogInterface = {
     close: () => void
@@ -87,16 +87,16 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                     onClick={close}
                 />
 
-                <SurfaceLayout
-                    innerRef={modalContainerRef}
+                <Layout
+                    ref={modalContainerRef}
                     position="fixed"
-                    s={isExpanded&&!isFullscreen ? 3: 0}
+                    c={ThemeTokens.onSurface}
                     borderRadius={isExpanded? isFullscreen ? 0 : 28 : targetStyles?.borderRadius || 0}
                     h={isExpanded? isFullscreen ? '100vh': 'inherit': targetRect?.height||0}
                     w={isExpanded? isFullscreen ? '100vw': 800: targetRect?.width||0}
                     left={isExpanded? isFullscreen ? 0 : '50%' : targetRect?.left}
                     top={isExpanded? isFullscreen ? 0 : '50%' : targetRect?.top}
-                    bg={isExpanded&&isFullscreen ? 'var(--znui-background)' : undefined}
+                    bg={isExpanded&&isFullscreen ? ThemeTokens.surface : ThemeTokens.surfaceContainerHigh}
                     transform={isExpanded? !isFullscreen ? "translate(-50%, -50%)": undefined: "translate(0, 0)"}
                     transition={[
                         "left 300ms var(--emphasized-decelerate-motion)",
@@ -114,7 +114,7 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                     ].join(",")}>
                         {isExpanded && <Component dialogInterface={modalDialogInterface}/>}
                     </Layout>
-                </SurfaceLayout>
+                </Layout>
             </Layout>
         }
 

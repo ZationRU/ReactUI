@@ -1,8 +1,8 @@
 import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
 import React, {ReactNode} from "react";
-import {SurfaceLayout} from "../../Layouts/SurfaceLayout/SurfaceLayout";
-import {FlexLayout, Spacer} from "../../Basic/FlexLayout/FlexLayout";
+import {FlexLayout} from "../../Basic/FlexLayout/FlexLayout";
 import {Center} from "../../Basic/Center/Center";
+import {ThemeTokens} from "../../../theme";
 
 export interface BottomAppBarProps extends LayoutProps {
     fab?: ReactNode
@@ -21,7 +21,13 @@ export function BottomAppBar(props: BottomAppBarProps) {
         ...layoutProps
     } = props
 
-    return <SurfaceLayout {...layoutProps} h={80} s={2}>
+    return <Layout
+        bg={ThemeTokens.surfaceContainer}
+        c={ThemeTokens.onSurface}
+        h={80}
+        minH={80}
+        {...layoutProps}
+    >
         <Center w="100%" h="100%">
             <FlexLayout w="100%" ml={4} mr={16} justifyContent="space-between" alignItems="center">
                 <FlexLayout mv={10} c="var(--znui-on-surface-variant)">
@@ -33,5 +39,5 @@ export function BottomAppBar(props: BottomAppBarProps) {
                 </Layout>
             </FlexLayout>
         </Center>
-    </SurfaceLayout>
+    </Layout>
 }

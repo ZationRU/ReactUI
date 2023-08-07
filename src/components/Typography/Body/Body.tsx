@@ -23,8 +23,14 @@ export const Body = (props: BodyProps) => {
     } = props
 
 
-    return <Layout ms={0} me={0} as={as} className={classNames(
-        className,
-        'znui-body-'+(useAdaptiveValue(size) || 'medium')
-    )} {...otherProps}/>
+    return <Layout
+        ms={0}
+        me={0}
+        as={as}
+        overflow="unset"
+        className={classNames(
+            className,
+            'znui-body-'+(useAdaptiveValue(size) || 'medium')
+        )}
+        {...otherProps}/>
 }

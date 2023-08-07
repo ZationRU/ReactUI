@@ -3,7 +3,6 @@ import {Layout} from "../../../components/Basic/Layout/Layout";
 import {Navigate} from "../StyleGuideRenderer";
 import {Section, SectionCard, SectionTitle} from "../SectionsUI";
 import {useAdaptive} from "../../../adaptive/useAdaptive";
-import {SurfaceLayout} from "../../../components/Layouts/SurfaceLayout/SurfaceLayout";
 import {VStack} from "../../../components/Basic/Stack/Stack";
 import {Title} from "../../../components/Typography/Title/Title";
 import {Body} from "../../../components/Typography/Body/Body";
@@ -27,12 +26,12 @@ export function ComponentsPage(props: ComponentsPageProps) {
         flex={1}
     >
         {currentBreakpoint!=="esm" && <>
-            <NavigationDrawer s={1} p={0} compat={true} minW={200}>
-                <SurfaceLayout s={1} overflow="auto" maxH="100vh" minH="100vh">
+            <NavigationDrawer p={0} compat={true} minW={200}>
+                <Layout overflow="auto" maxH="100vh" minH="100vh">
                     <Layout ph={10} overflow="auto" maxH="100vh" minH="100vh">
                         {props.toc}
                     </Layout>
-                </SurfaceLayout>
+                </Layout>
             </NavigationDrawer>
         </>}
 

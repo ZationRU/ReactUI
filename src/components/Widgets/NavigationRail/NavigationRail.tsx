@@ -1,4 +1,3 @@
-import {SurfaceLayout, SurfaceLayoutProps} from "../../Layouts/SurfaceLayout/SurfaceLayout";
 import "./NavigationRail.css";
 import React, {ReactNode} from "react";
 import classNames from "classnames";
@@ -6,11 +5,12 @@ import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
 import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 import {Label} from "../../Typography/Label/Label";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
+import {ThemeTokens} from "../../../theme";
 
 
-export interface NavigationRailProps extends SurfaceLayoutProps {
+export interface NavigationRailProps extends LayoutProps {
     menu?: ReactNode
-    alignment?: 'start'|'center'|'end'|undefined
+    alignment?: 'start' | 'center' | 'end' | undefined
 }
 
 /**
@@ -27,22 +27,27 @@ export function NavigationRail(props: NavigationRailProps) {
         ...surfaceLayoutProps
     } = props
 
-    return <SurfaceLayout {...surfaceLayoutProps} className={classNames(
-        "NavigationRail",
-        "NavigationRail--"+alignment
-    )}>
+    return <Layout
+        bg={ThemeTokens.surfaceContainer}
+        c={ThemeTokens.onSurface}
+        {...surfaceLayoutProps}
+        className={classNames(
+            "NavigationRail",
+            "NavigationRail--" + alignment
+        )}
+    >
         <div className="inner">
-            {menu&&<div className="menu">
+            {menu && <div className="menu">
                 {menu}
             </div>}
 
-            {children&&<div className="items">
+            {children && <div className="items">
                 {
                     children
                 }
             </div>}
         </div>
-    </SurfaceLayout>
+    </Layout>
 }
 
 export interface NavigationRailItemProps extends LayoutProps {
@@ -73,6 +78,6 @@ NavigationRail.Item = (props: NavigationRailItemProps) => {
             </IconWrapper>
         </div>
 
-        {title&&<Label size="medium" className="title">{title}</Label>}
+        {title && <Label size="medium" className="title">{title}</Label>}
     </Layout>
 }

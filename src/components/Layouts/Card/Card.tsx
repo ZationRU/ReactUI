@@ -1,9 +1,35 @@
 import React from "react";
-import {SurfaceLayout, SurfaceLayoutProps} from "../SurfaceLayout/SurfaceLayout";
-import "./Card.css";
+import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
+import {ThemeTokens} from "../../../theme";
+import {StateLayer} from "../StateLayer/StateLayer";
+import classNames from "classnames";
 
-export interface CardProps extends SurfaceLayoutProps {
+export interface CardProps extends LayoutProps {
+    mode?: 'outlined'|'elevated'|'filled'
+}
 
+const outlinedStyles: LayoutProps = {
+    bg: ThemeTokens.surface,
+    c: ThemeTokens.onSurface,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: ThemeTokens.outlineVariant,
+}
+
+const elevatedStyles: LayoutProps = {
+    bg: ThemeTokens.surfaceContainerLow,
+    c: ThemeTokens.onSurface,
+}
+
+const filledStyles: LayoutProps = {
+    bg: ThemeTokens.surfaceContainerHighest,
+    c: ThemeTokens.onSurface,
+}
+
+const styles = {
+    outlined: outlinedStyles,
+    elevated: elevatedStyles,
+    filled: filledStyles,
 }
 
 /**
@@ -14,8 +40,29 @@ export interface CardProps extends SurfaceLayoutProps {
  */
 export function Card(props: CardProps) {
     const {
+        mode = 'outlined',
+        shapeScale = 'md',
+        onClick,
+        children,
+        className,
         ...otherProps
     } = props
 
-    return <SurfaceLayout className="Card" {...otherProps}/>
+    return <Layout
+        pos="relative"
+        {...styles[mode]}
+        onClick={onClick}
+        cursor={onClick?"pointer":undefined}
+        {...otherProps}
+        className={classNames(
+            className,
+            {
+                "elevation-1": mode==='elevated'
+            }
+        )}
+        shapeScale={shapeScale}
+    >
+        <StateLayer ripple={!!onClick}/>
+        {children}
+    </Layout>
 }

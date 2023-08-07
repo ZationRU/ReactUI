@@ -1,13 +1,13 @@
-import {SurfaceLayout, SurfaceLayoutProps} from "../../Layouts/SurfaceLayout/SurfaceLayout";
-import {Layout} from "../../Basic/Layout/Layout";
+import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
 import classNames from "classnames";
 import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 import {Label} from "../../Typography/Label/Label";
 import React, {ReactNode} from "react";
 import "./NavigationDrawer.css";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
+import {ThemeTokens} from "../../../theme";
 
-export interface NavigationDrawerProps extends SurfaceLayoutProps {
+export interface NavigationDrawerProps extends LayoutProps {
     /**
      * Items size style
      *
@@ -25,13 +25,13 @@ export interface NavigationDrawerProps extends SurfaceLayoutProps {
 export function NavigationDrawer(props: NavigationDrawerProps) {
     const {
         compat = false,
-        s = 2,
         className,
         ...layoutRest
     } = props
 
-    return <SurfaceLayout
-        s={s}
+    return <Layout
+        bg={ThemeTokens.surfaceContainerLow}
+        c={ThemeTokens.onSurface}
         p={12}
         {...layoutRest}
         className={classNames({

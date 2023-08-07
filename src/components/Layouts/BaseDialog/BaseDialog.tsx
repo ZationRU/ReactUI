@@ -1,11 +1,11 @@
 import React, {CSSProperties, ReactNode} from "react";
-import {SurfaceLayout, SurfaceLayoutProps} from "../SurfaceLayout/SurfaceLayout";
 import {Headline} from "../../Typography/Headline/Headline";
 import {HStack, Stack} from "../../Basic/Stack/Stack";
 import {Body} from "../../Typography/Body/Body";
 import {Spacer} from "../../Basic/FlexLayout/FlexLayout";
-import {LayoutProps} from "../../Basic/Layout/Layout";
+import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
 import {IconWrapper} from "../../Widgets/IconWrapper/IconWrapper";
+import {ThemeTokens} from "../../../theme";
 
 export interface BaseDialogProps extends Omit<LayoutProps, "title"> {
     title: ReactNode|string
@@ -30,8 +30,9 @@ export function BaseDialog(props: BaseDialogProps) {
     } = props
 
 
-    return <SurfaceLayout
-        s={4}
+    return <Layout
+        bg={ThemeTokens.surfaceContainerHigh}
+        c={ThemeTokens.onSurface}
         shapeScale="elg"
         minW={280}
         maxW={560}
@@ -52,5 +53,5 @@ export function BaseDialog(props: BaseDialogProps) {
                 {actions}
             </HStack>
         </Stack>
-    </SurfaceLayout>
+    </Layout>
 }

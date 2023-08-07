@@ -19,13 +19,13 @@ const Menu = <>
     <Button onClick={() => updateMenu(!enableMenu)}>Menu</Button>
     
     <Layout display="flex" direction="column" gap={5}>
-        <Toolbar 
-            s={scrolled?2:0} 
+        <Toolbar
+            scrolled={scrolled} 
             navigationIcon={navigationIcon&&Icon}
             menu={enableMenu&&Menu}
         >Title</Toolbar>
         <Toolbar
-            s={scrolled?2:0} 
+            scrolled={scrolled} 
             navigationIcon={navigationIcon&&Icon} 
             menu={enableMenu&&Menu}
             centered={true}

@@ -5,7 +5,7 @@ type ShapeScale = 'none'|'esm'|'sm'|'md'|'lg'|'elg'|'full'
 
 export const shapes = {
     shapeScale: asTransformProp((value: ShapeScale) => ({
-        borderRadius: 'var(--znui-shape-'+value+'-radius)'
+        borderRadius: 'var(--znui-shape-'+value+'-radius)',
     }))
 }
 

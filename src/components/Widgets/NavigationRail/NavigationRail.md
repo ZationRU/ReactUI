@@ -58,9 +58,9 @@ const Items = <>
     </Button>
 
     <Layout display="flex" gap={12}>
-        <NavigationRail menu={Menu} s={2} h="80vh">{Items}</NavigationRail>
-        <NavigationRail menu={Menu} s={2} h="80vh" alignment="center">{Items}</NavigationRail>
-        <NavigationRail menu={Menu} s={2} h="80vh" alignment="end">{Items}</NavigationRail>
+        <NavigationRail menu={Menu} h="80vh">{Items}</NavigationRail>
+        <NavigationRail menu={Menu} h="80vh" alignment="center">{Items}</NavigationRail>
+        <NavigationRail menu={Menu} h="80vh" alignment="end">{Items}</NavigationRail>
     </Layout>
 </div>
 ```

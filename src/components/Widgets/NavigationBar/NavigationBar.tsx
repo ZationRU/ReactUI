@@ -1,13 +1,13 @@
 import "./NavigationBar.css"
 import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
 import React from "react";
-import {SurfaceLayout, SurfaceLayoutProps} from "../../Layouts/SurfaceLayout/SurfaceLayout";
 import {Label} from "../../Typography/Label/Label";
 import classNames from "classnames";
 import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
+import {ThemeTokens} from "../../../theme";
 
-export interface NavigationBarProps extends SurfaceLayoutProps {
+export interface NavigationBarProps extends LayoutProps {
 
 }
 
@@ -18,7 +18,14 @@ export interface NavigationBarProps extends SurfaceLayoutProps {
  * @constructor
  */
 export function NavigationBar(props: NavigationBarProps) {
-    return <SurfaceLayout s={props.s??2} display="flex" minHeight={80} {...props}/>
+    return <Layout
+        bg={ThemeTokens.surfaceContainer}
+        c={ThemeTokens.onSurface}
+        display="flex"
+        ph={8}
+        minHeight={80}
+        {...props}
+    />
 }
 
 export interface NavigationBarItemProps extends LayoutProps {

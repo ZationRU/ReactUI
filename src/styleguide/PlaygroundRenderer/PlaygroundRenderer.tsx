@@ -1,9 +1,7 @@
-import React, { cloneElement } from 'react';
-import {Headline} from "../../components/Typography/Headline/Headline";
-import {Card} from "../../components/Layouts/Card/Card";
+import React from 'react';
 import {Layout} from "../../components/Basic/Layout/Layout";
 import {FlexLayout} from "../../components/Basic/FlexLayout/FlexLayout";
-import {SurfaceLayout} from "../../components/Layouts/SurfaceLayout/SurfaceLayout";
+import {ThemeTokens} from "../../theme";
 
 interface PlaygroundRendererProps {
     name?: string;
@@ -13,18 +11,18 @@ interface PlaygroundRendererProps {
 
 const PlaygroundRenderer = ({ name, preview, tabBody }: PlaygroundRendererProps) => {
     return (
-        <SurfaceLayout s={1} shapeScale="lg">
+        <Layout bg={ThemeTokens.surfaceContainerLowest} shapeScale="lg">
             <FlexLayout w="100%" direction={[
                 'column-reverse',
                 null,
                 'row'
             ]}>
-                <SurfaceLayout s={1} flex={1}>{tabBody}</SurfaceLayout>
-                <SurfaceLayout p={15} s={3} data-preview={name} flex={1} overflow="visible">
+                <Layout flex={1}>{tabBody}</Layout>
+                <Layout bg={ThemeTokens.surfaceContainer} p={15} data-preview={name} flex={1} overflow="visible">
                     {preview}
-                </SurfaceLayout>
+                </Layout>
             </FlexLayout>
-        </SurfaceLayout>
+        </Layout>
     );
 };
 

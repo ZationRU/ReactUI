@@ -2,18 +2,17 @@ import classNames from "classnames";
 import './Toolbar.css';
 import React, {ReactNode, MouseEventHandler, useState, useEffect} from "react";
 import {Title} from "../../Typography/Title/Title";
-import {SurfaceLayout, SurfaceLayoutProps} from "../../Layouts/SurfaceLayout/SurfaceLayout";
-import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
-import {IconWrapper} from "../IconWrapper/IconWrapper";
 import {IconButton} from "../IconButton/IconButton";
-import {Layout} from "../../Basic/Layout/Layout";
+import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
 import {FlexLayout, Spacer} from "../../Basic/FlexLayout/FlexLayout";
+import {ThemeTokens} from "../../../theme";
 
-export interface ToolbarProps extends SurfaceLayoutProps {
+export interface ToolbarProps extends LayoutProps {
     centered?: boolean
     navigationIcon?: ReactNode
     onClickNavigationIcon?: MouseEventHandler<HTMLDivElement>
     menu?: ReactNode
+    scrolled?: boolean
 }
 
 /**
@@ -29,7 +28,7 @@ export function Toolbar(props: ToolbarProps) {
         navigationIcon,
         onClickNavigationIcon,
         menu,
-        s = 'none',
+        scrolled = false,
         ...otherProps
     } = props
 
@@ -40,10 +39,16 @@ export function Toolbar(props: ToolbarProps) {
         }
     }, [navigationIcon])
 
-    return <SurfaceLayout s={s} className={classNames(
-        className,
-        'Toolbar'
-    )} {...otherProps}>
+    return <Layout
+        bg={scrolled?ThemeTokens.surfaceContainer:'transparent'}
+        c={ThemeTokens.onSurface}
+        transition={"background-color 150ms var(--emphasized-motion)"}
+        className={classNames(
+            className,
+            'Toolbar'
+        )}
+        {...otherProps}
+    >
         <div className="inner">
             <IconButton className={classNames({
                 "Toolbar-NavigationIconContainer": true,
@@ -67,5 +72,5 @@ export function Toolbar(props: ToolbarProps) {
                 </FlexLayout>
             </>}
         </div>
-    </SurfaceLayout>
+    </Layout>
 }

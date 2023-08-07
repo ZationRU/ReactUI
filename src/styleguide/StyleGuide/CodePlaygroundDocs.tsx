@@ -1,6 +1,7 @@
 import React from "react";
 import Playground from "react-styleguidist/lib/client/rsg-components/Playground/Playground";
-import {SurfaceLayout} from "../../components/Layouts/SurfaceLayout/SurfaceLayout";
+import {ThemeTokens} from "../../theme";
+import {Layout} from "../../components/Basic/Layout/Layout";
 
 let index = 1000;
 
@@ -21,11 +22,11 @@ export function Code(props: {
 export function CodeFragment(props: {
     children: string,
 }) {
-    return <SurfaceLayout
-        s={1}
+    return <Layout
+        bg={ThemeTokens.surfaceContainer}
         p={15}
         shapeScale="lg"
         userSelect="all">
         {props.children}
-    </SurfaceLayout>
+    </Layout>
 }
