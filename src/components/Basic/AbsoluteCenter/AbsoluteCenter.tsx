@@ -1,7 +1,11 @@
 import React from "react";
-import {Layout, LayoutProps} from "../Layout/Layout";
+import {znui} from "../znui";
+import {HTMLZnUIProps} from "../../../styled/styled.types";
 
-export interface AbsoluteCenterProps extends LayoutProps {
+export interface AbsoluteCenterProps extends HTMLZnUIProps<'div'> {
+    /**
+     * Axis of center position
+     */
     axis?: "horizontal" | "vertical" | "both"
 }
 
@@ -11,18 +15,17 @@ export interface AbsoluteCenterProps extends LayoutProps {
  * @param props
  * @constructor
  */
-export const AbsoluteCenter = (props: AbsoluteCenterProps) => {
-    const { axis = "both", ...otherProps } = props
-
-    return <Layout
-        pos="absolute"
-        left={axis!=="vertical" ? "50%" : undefined}
-        top={axis!=="horizontal" ? "50%" : undefined}
-        transform={{
+export const AbsoluteCenter = znui("div", {
+    baseStyle: {
+        pos: "absolute"
+    },
+    styles: ({ axis }: AbsoluteCenterProps) => ({
+        left: axis!=="vertical" ? "50%" : undefined,
+        top: axis!=="horizontal" ? "50%" : undefined,
+        transform: ({
             horizontal: "translateX(-50%)",
             vertical: "translateY(-50%)",
             both: "translate(-50%, -50%)",
-        }[axis]}
-        {...otherProps}
-    />
-}
+        }[axis||'both'])
+    })
+})
