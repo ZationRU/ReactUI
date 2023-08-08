@@ -4,15 +4,12 @@ import "./Button.css";
 import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
 import {HTMLZnUIProps} from "../../../styled/styled.types";
-import {Layout} from "../../Basic/Layout/Layout";
 import {znui} from "../../Basic/znui";
 
 export interface ButtonProps extends HTMLZnUIProps<'button'>{
     mode?: 'filled'|'text'|'outline',
     icon?: ReactNode
 }
-
-export const _znuiButton = znui("button")
 
 /**
  * ZnUI Button widget
@@ -28,7 +25,7 @@ export function Button(props: ButtonProps) {
         ...otherProps
     } = props
 
-    return <_znuiButton as="button" className={
+    return <znui.button as="button" className={
         classNames(className, 'Button', 'Button--'+mode)
     } {...otherProps}>
         <StateLayer/>
@@ -37,6 +34,6 @@ export function Button(props: ButtonProps) {
             {icon&&<IconWrapper>{icon}</IconWrapper>}
             <div className="text">{children}</div>
         </div>
-    </_znuiButton>
+    </znui.button>
 }
 

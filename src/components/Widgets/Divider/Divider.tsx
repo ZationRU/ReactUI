@@ -7,12 +7,16 @@ export type DividerProps = HTMLZnUIProps<"div">
  * Component for divide your contents
  */
 export const Divider = znui("div", {
-    h: "1px",
-    background: "var(--znui-outline-variant)"
+    baseStyle: {
+        h: "1px",
+        background: "var(--znui-outline-variant)"
+    }
 })
 
 export const VerticalDivider = znui("div", {
-    w: "1px",
-    h: "100%",
-    background: "var(--znui-outline-variant)"
+    baseStyle: {
+        w: "1px",
+        h: "100%",
+        background: "var(--znui-outline-variant)"
+    }
 })
