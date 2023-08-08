@@ -2,7 +2,7 @@ import {
     cssConfig, znuiPropsConfig
 } from "./configs";
 import React from "react";
-import {StyleProps, ZnUIComponent} from "./styled.types";
+import {StyleProps, ZnUIComponent, ZnUIStyleObject} from "./styled.types";
 import createStyled, {FunctionInterpolation} from "@emotion/styled"
 import {css} from "./css";
 import {LayoutBreakpoint} from "../adaptive/LayoutBreakpoint";
@@ -16,7 +16,7 @@ type StyleResolverProps = StyleProps & {
 
 interface GetStyleObject {
     (options: {
-        baseStyle?: StyleProps,
+        baseStyle?: ZnUIStyleObject,
     }): FunctionInterpolation<StyleResolverProps>
 }
 
@@ -46,11 +46,21 @@ export const toCSSObject: GetStyleObject =
             })
         }
 
-export function styled<T extends React.ElementType, P extends object = {}>(component: T, baseProps: P|null = null) {
+export interface ZnUIStyledOptions<P extends object> {
+    baseStyle?: ZnUIStyleObject
+    styles?: (props: P) => ZnUIStyleObject
+}
+
+export function styled<T extends React.ElementType, P extends object = {}>(
+    component: T,
+    options: ZnUIStyledOptions<P>|null = null
+) {
+    const { baseStyle, styles } = options || {}
+
     const styleObject = toCSSObject({
         baseStyle: {
             overflow: 'clip',
-            ...baseProps
+            ...baseStyle
         }
     })
 
@@ -62,9 +72,11 @@ export function styled<T extends React.ElementType, P extends object = {}>(compo
         props,
         ref,
     ) {
+        const resolvedStyles = styles?.call(undefined, props as P)
         return React.createElement(Component, {
             ref,
             ...props,
+            ...resolvedStyles
         })
     })
 

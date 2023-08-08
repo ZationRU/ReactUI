@@ -1,24 +1,22 @@
 import React from "react";
 import {
     HTMLZnUIComponents,
-    HTMLZnUIProps,
     JSXElements,
     ZnUIComponent,
-    ZnUIStyleObject
 } from "../../styled/styled.types";
-import {styled} from "../../styled/styled";
+import {styled, ZnUIStyledOptions} from "../../styled/styled";
 
 const cache = new Map<JSXElements, ZnUIComponent<JSXElements>>()
 
 type ZnUIFactory = {
     <T extends React.ElementType, P extends object = {}>(
         component: T,
-        options?: ZnUIStyleObject,
+        options?: ZnUIStyledOptions<P>,
     ): ZnUIComponent<T, P>
 }
 
 export const znui = new Proxy(styled, {
-    apply(target, thisArg, argArray: [JSXElements, ZnUIStyleObject]) {
+    apply(target, thisArg, argArray: [JSXElements, ZnUIStyledOptions<any>]) {
         return styled(...argArray)
     },
 
