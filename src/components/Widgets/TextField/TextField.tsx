@@ -31,6 +31,24 @@ export const TextField = (props: TextFieldProps) => {
         ...layoutProps
     } = props
 
+    let child = children
+
+    if(
+        child!=null&&
+        typeof child === 'object'&&
+        "props" in child
+    ) {
+        if(!child.props.placeholder) {
+            child = React.cloneElement(
+                child,
+                {
+                    ...child.props,
+                    placeholder: ' '
+                }
+            )
+        }
+    }
+
     return <Layout minW={210} pt={6} className={classNames({
         "TextField-Container--error": error,
     }, className)} {...layoutProps}>
@@ -41,7 +59,7 @@ export const TextField = (props: TextFieldProps) => {
                 "TextField--disabled": disabled,
             }
         )} overflow="visible">
-            {children}
+            {child}
             {label&&<Body className="label" size="large">{label}</Body>}
             <legend className="legend">{label}</legend>
         </Layout>
