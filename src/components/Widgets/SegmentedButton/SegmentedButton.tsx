@@ -45,6 +45,7 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
         shapeScale="full"
         direction="row"
         wrap="wrap"
+        userSelect="none"
         {...layoutRest}>
 
         <SegmentedButtonContext.Provider value={useMemo(() => ({
@@ -86,6 +87,7 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                 align="center"
                 borderRight="1px var(--znui-outline) solid"
                 pos="relative"
+                cursor="pointer"
                 onClick={() => {
                     if(data.multiselect) {
                         const newArray = isSelected ?
@@ -97,7 +99,8 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                         data.onSelect?.call(undefined, id)
                     }
                 }}
-                bg={isSelected?"var(--znui-secondary-container)":undefined}
+                p={0}
+                bg={isSelected?"var(--znui-secondary-container)":'none'}
             >
                 <StateLayer/>
                 <Label size="large">{children}</Label>
