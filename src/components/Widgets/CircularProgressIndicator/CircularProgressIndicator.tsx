@@ -52,9 +52,6 @@ const dashKeyframe = keyframes`
   }
 `;
 
-const Svg = znui("svg")
-const Circle = znui("circle")
-
 const CIRCLE_SIZE = 36
 
 export const CircularProgressIndicator = React.forwardRef(
@@ -92,16 +89,14 @@ export const CircularProgressIndicator = React.forwardRef(
                 animation={variant === 'indeterminate' ? rotateKeyframe+' infinite 2s linear' : ''}
                 {...rootStyles}
             >
-                <Svg
-                    as="svg"
+                <znui.svg
                     display="block"
                     viewBox={`${CIRCLE_SIZE / 2} ${CIRCLE_SIZE / 2} ${CIRCLE_SIZE} ${CIRCLE_SIZE}`}
                     animation={variant === 'indeterminate' ? dashKeyframe+' infinite 2.5s var(--emphasized-motion)' : ''}
 
                     {...svgStyles}
                 >
-                    <Circle
-                        as="circle"
+                    <znui.circle
                         cx={CIRCLE_SIZE}
                         cy={CIRCLE_SIZE}
                         r={(CIRCLE_SIZE - thicknessResolved) / 2}
@@ -110,7 +105,7 @@ export const CircularProgressIndicator = React.forwardRef(
                         stroke="currentColor"
                         {...circleStyles}
                     />
-                </Svg>
+                </znui.svg>
             </Layout>
         </Layout>
     }
