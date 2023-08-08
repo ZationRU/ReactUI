@@ -1,11 +1,12 @@
 import './Body.css';
 import React from "react";
 import classNames from "classnames";
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
+import {znui} from "../../Basic/znui";
 import {useAdaptiveValue} from "../../../adaptive/useAdaptive";
 import {Adaptive} from "../../../adaptive/Adaptive";
+import {HTMLZnUIProps} from "../../../styled/styled.types";
 
-export interface BodyProps extends LayoutProps {
+export interface BodyProps extends HTMLZnUIProps<'h4'> {
     size?: Adaptive<'small'|'medium'|'large'>;
 }
 
@@ -17,16 +18,14 @@ export interface BodyProps extends LayoutProps {
 export const Body = (props: BodyProps) => {
     const {
         size,
-        as = 'h4' as React.ElementType,
         className,
         ...otherProps
     } = props
 
 
-    return <Layout
+    return <znui.h4
         ms={0}
         me={0}
-        as={as}
         overflow="unset"
         className={classNames(
             className,

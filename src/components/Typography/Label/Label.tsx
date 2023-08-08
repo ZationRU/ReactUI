@@ -1,11 +1,13 @@
 import './Label.css';
 import React from "react";
 import classNames from "classnames";
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
-import {useAdaptiveProps, useAdaptiveValue} from "../../../adaptive/useAdaptive";
+import {Layout} from "../../Basic/Layout/Layout";
+import {useAdaptiveValue} from "../../../adaptive/useAdaptive";
 import {Adaptive} from "../../../adaptive/Adaptive";
+import {HTMLZnUIProps} from "../../../styled/styled.types";
+import {znui} from "../../Basic/znui";
 
-export interface LabelProps extends LayoutProps {
+export interface LabelProps extends HTMLZnUIProps<'h4'> {
     size?: Adaptive<'small'|'medium'|'large'>;
 }
 
@@ -17,16 +19,14 @@ export interface LabelProps extends LayoutProps {
 export const Label = (props: LabelProps) => {
     const {
         size,
-        as = 'h4' as React.ElementType,
         className,
         ...otherProps
     } = props
 
 
-    return <Layout
+    return <znui.h4
         ms={0}
         me={0}
-        as={as}
         overflow="unset"
         className={classNames(
             className,

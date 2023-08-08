@@ -1,11 +1,13 @@
 import './Display.css';
 import React from "react";
 import classNames from "classnames";
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
-import {useAdaptiveProps, useAdaptiveValue} from "../../../adaptive/useAdaptive";
+import {useAdaptiveValue} from "../../../adaptive/useAdaptive";
 import {Adaptive} from "../../../adaptive/Adaptive";
+import {HTMLZnUIProps} from "../../../styled/styled.types";
+import {znui} from "../../Basic/znui";
 
-export interface DisplayProps extends LayoutProps {
+
+export interface DisplayProps extends HTMLZnUIProps<'h4'> {
     size?: Adaptive<'small'|'medium'|'large'>;
 }
 
@@ -17,16 +19,14 @@ export interface DisplayProps extends LayoutProps {
 export const Display = (props: DisplayProps) => {
     const {
         size,
-        as = 'h4' as React.ElementType,
         className,
         ...otherProps
     } = props
 
 
-    return <Layout
+    return <znui.h4
         ms={0}
         me={0}
-        as={as}
         overflow="unset"
         className={classNames(
             className,
