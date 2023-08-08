@@ -1,7 +1,8 @@
 import React, {PointerEvent, useRef} from "react";
-import {InputLayout, Layout, LayoutProps} from "../../Basic/Layout/Layout";
+import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
 import {FlexLayout} from "../../Basic/FlexLayout/FlexLayout";
 import {mergeRefs} from "../../../utils/refs";
+import {znui} from "../../Basic/znui";
 
 export interface SliderProps extends LayoutProps {
     /**
@@ -140,7 +141,7 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
         onPointerLeave={performUp}
         onPointerDown={performDown}>
 
-        <InputLayout
+        <znui.input
             type="range"
             pos="absolute"
             h={20}
