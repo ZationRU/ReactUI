@@ -9,6 +9,7 @@ import {znui} from "../../Basic/znui";
 
 export interface LabelProps extends HTMLZnUIProps<'h4'> {
     size?: Adaptive<'small'|'medium'|'large'>;
+    prominent?: boolean;
 }
 
 /**
@@ -20,6 +21,7 @@ export const Label = (props: LabelProps) => {
     const {
         size,
         className,
+        prominent = false,
         ...otherProps
     } = props
 
@@ -30,7 +32,7 @@ export const Label = (props: LabelProps) => {
         overflow="unset"
         className={classNames(
             className,
-            'znui-label-'+(useAdaptiveValue(size) || 'medium')
+            'znui-label-'+(useAdaptiveValue(size) || 'medium')+(prominent?'--prominent':'')
         )}
         {...otherProps}
     />
