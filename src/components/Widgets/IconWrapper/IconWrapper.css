@@ -7,9 +7,11 @@
 }
 
 .IconWrapper {
-    transition: font-size 300ms var(--emphasized-motion);
+    transition: font-size 300ms var(--emphasized-motion), width 300ms var(--emphasized-motion), height 300ms var(--emphasized-motion);
     display: flex;
     font-size: var(--icon-size);
     line-height: var(--icon-size);
     overflow: visible;
+    width: var(--icon-size);
+    height: var(--icon-size);
 }
