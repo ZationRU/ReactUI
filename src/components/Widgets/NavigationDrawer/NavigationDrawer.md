@@ -1,64 +1,62 @@
 ```tsx
-import {NavigationDrawer, VStack} from "@znui/react";
+import {NavigationDrawer, VStack, SegmentedButton, Divider} from "@znui/react";
 import {
     ZnUIIconHomeFilled,
     ZnUIIconCommentsFilled,
     ZnUIIconNotificationsFilled,
-    ZnUIIconMenuFilled
+    ZnUIIconMenuFilled,
+    ZnUIIconGameOutline,
+    ZnUIIconBookmarkFilled
 } from "@znui/icons"
 
+const [mode, setMode] = React.useState([]);
 const [selected, setSelected] = React.useState('hub');
 
-const Icon = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"
-                        xmlns:xlink="http://www.w3.org/1999/xlink">
-    <circle cx="30" cy="30" r="30" stroke="currentColor" fill="currentColor"/>
-</svg>;
-
 <VStack spacing={15}>
-    <NavigationDrawer maxW={412}>
+    <SegmentedButton selectedIds={mode} onSelect={setMode} multiselect={true}>
+        <SegmentedButton.Segment id="compat">Compat</SegmentedButton.Segment>
+        <SegmentedButton.Segment id="divider">Divider</SegmentedButton.Segment>
+        <SegmentedButton.Segment id="headline">Headline</SegmentedButton.Segment>
+        <SegmentedButton.Segment id="sections">Sections</SegmentedButton.Segment>
+    </SegmentedButton>
+    
+    <NavigationDrawer maxW={412} compat={mode.includes('compat')}>
+        {mode.includes('headline')&&
+            <NavigationDrawer.Headline>Headline</NavigationDrawer.Headline>
+        }
+        {mode.includes('sections')&&
+            <NavigationDrawer.SectionHeader>Section</NavigationDrawer.SectionHeader>
+        }
         <NavigationDrawer.Item
             icon={<ZnUIIconHomeFilled/>}
             selected={selected=="hub"}
             onClick={() => setSelected("hub")}
-        >Главная</NavigationDrawer.Item>
+        >Hub</NavigationDrawer.Item>
         <NavigationDrawer.Item
             icon={<ZnUIIconNotificationsFilled/>}
             selected={selected=="notifications"}
             onClick={() => setSelected("notifications")}
-        >Уведомления</NavigationDrawer.Item>
+            badge="100+"
+        >Notifications</NavigationDrawer.Item>
         <NavigationDrawer.Item
             icon={<ZnUIIconCommentsFilled/>}
             selected={selected=="messages"}
             onClick={() => setSelected("messages")}
-        >Сообщения</NavigationDrawer.Item>
+        >Messages</NavigationDrawer.Item>
+        {mode.includes('divider')&&<Divider/>}
+        {mode.includes('sections')&&
+            <NavigationDrawer.SectionHeader>Section</NavigationDrawer.SectionHeader>
+        }
         <NavigationDrawer.Item
-            icon={<ZnUIIconMenuFilled/>}
-            selected={selected=="menu"}
-            onClick={() => setSelected("menu")}
-        >Меню</NavigationDrawer.Item>
-    </NavigationDrawer>
-
-    <NavigationDrawer maxW={412} compat={true}>
+            icon={<ZnUIIconGameOutline/>}
+            selected={selected=="games"}
+            onClick={() => setSelected("games")}
+        >Games</NavigationDrawer.Item>
         <NavigationDrawer.Item
-            icon={<ZnUIIconHomeFilled/>}
-            selected={selected=="hub"}
-            onClick={() => setSelected("hub")}
-        >Главная</NavigationDrawer.Item>
-        <NavigationDrawer.Item
-            icon={<ZnUIIconNotificationsFilled/>}
-            selected={selected=="notifications"}
-            onClick={() => setSelected("notifications")}
-        >Уведомления</NavigationDrawer.Item>
-        <NavigationDrawer.Item
-            icon={<ZnUIIconCommentsFilled/>}
-            selected={selected=="messages"}
-            onClick={() => setSelected("messages")}
-        >Сообщения</NavigationDrawer.Item>
-        <NavigationDrawer.Item
-            icon={<ZnUIIconMenuFilled/>}
-            selected={selected=="menu"}
-            onClick={() => setSelected("menu")}
-        >Меню</NavigationDrawer.Item>
+            icon={<ZnUIIconBookmarkFilled/>}
+            selected={selected=="books"}
+            onClick={() => setSelected("books")}
+        >Books</NavigationDrawer.Item>
     </NavigationDrawer>
 </VStack>
 
