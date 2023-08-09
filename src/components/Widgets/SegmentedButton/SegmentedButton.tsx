@@ -12,6 +12,7 @@ export interface SegmentedButtonProps extends Omit<LayoutProps, "onSelect"> {
     density?: number
     multiselect?: boolean
     selectedIds: string|string[]
+    minSelected?: number
     onSelect?: SelectEventHandler
 }
 
@@ -19,6 +20,7 @@ interface SegmentedButtonContextInterface {
     selectedIds: string[]
     onSelect?: SelectEventHandler
     multiselect: boolean
+    minSelected: number
 }
 
 const SegmentedButtonContext = createContext<SegmentedButtonContextInterface|null>(null)
@@ -37,6 +39,7 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
         density = 0,
         multiselect = false,
         selectedIds,
+        minSelected = 1,
         onSelect,
         ...layoutRest
     } = props
@@ -53,7 +56,8 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
         <SegmentedButtonContext.Provider value={useMemo(() => ({
             onSelect,
             selectedIds: Array.isArray(selectedIds)?selectedIds:[selectedIds],
-            multiselect
+            multiselect,
+            minSelected
         }), [onSelect, selectedIds])}>
             {children}
         </SegmentedButtonContext.Provider>
@@ -63,6 +67,7 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
 export interface SegmentedButtonSegmentProps extends LayoutProps {
     id: string
     disabled?: boolean
+    icon?: React.ReactNode
 }
 
 const SelectedIcon = <svg xmlns="http://www.w3.org/2000/svg" width="14" height="11" viewBox="0 0 14 11" fill="none">
@@ -75,6 +80,7 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
     const {
         id,
         children,
+        icon,
         ...layoutRest
     } = props
 
@@ -102,6 +108,10 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                             selectedIds.filter(it => it !== id)
                             : [...selectedIds, id]
 
+                        if(isSelected&&data.minSelected!==0&&selectedIds.length-1<=data.minSelected) {
+                            return
+                        }
+
                         data.onSelect?.call(undefined, newArray)
                     }else{
                         data.onSelect?.call(undefined, id)
@@ -126,6 +136,22 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                         ].join(',')}
                     >
                         {isSelected&&SelectedIcon}
+                    </IconWrapper>
+
+                    <IconWrapper
+                        style={{
+                            '--icon-size': '18px'
+                        } as CSSProperties}
+                        maxW={icon ? 18: 0}
+                        minW={icon ? 18: 0}
+                        mr={icon&&children ? 8: 0}
+                        transition={[
+                            'max-width 300ms var(--emphasized-motion)',
+                            'min-width 300ms var(--emphasized-motion)',
+                            'margin 300ms var(--emphasized-motion)'
+                        ].join(',')}
+                    >
+                        {icon}
                     </IconWrapper>
 
                     <Label
