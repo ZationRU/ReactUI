@@ -135,7 +135,7 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                             'margin 300ms var(--emphasized-motion)'
                         ].join(',')}
                     >
-                        {isSelected&&SelectedIcon}
+                        {SelectedIcon}
                     </IconWrapper>
 
                     <IconWrapper
