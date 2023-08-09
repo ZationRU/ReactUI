@@ -35,7 +35,7 @@ const Icon = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"
     <NavigationBar.Item
         title="Notifications"
         onClick={() => setSelected('notifications')}
-        badge={<Badge size="multiple">532</Badge>}
+        badge={<Badge size="multiple">32</Badge>}
         selected={selected === 'notifications'}>
         <ZnUIIconNotificationsFilled/>
     </NavigationBar.Item>

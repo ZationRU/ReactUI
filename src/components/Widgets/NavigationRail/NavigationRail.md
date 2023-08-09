@@ -1,5 +1,5 @@
 ```tsx
-import {Layout, FloatingActionButton, Button, NavigationRail} from "@znui/react";
+import {Layout, FloatingActionButton, Button, NavigationRail, Badge} from "@znui/react";
 import {
     ZnUIIconHomeFilled,
     ZnUIIconCommentsFilled,
@@ -28,7 +28,8 @@ const Items = <>
     <NavigationRail.Item
         selected={selected==='hub'}
         onClick={() => setSelected('hub')}
-        title="Главная"
+        badge={<Badge/>}
+        title="Hub"
     >
         <ZnUIIconHomeFilled/>
     </NavigationRail.Item>
@@ -36,7 +37,8 @@ const Items = <>
     <NavigationRail.Item
         selected={selected==='messages'}
         onClick={() => setSelected('messages')}
-        title="Сообщения"
+        badge={<Badge size="single">5</Badge>}
+        title="Messages"
     >
         <ZnUIIconCommentsFilled/>
     </NavigationRail.Item>
@@ -44,7 +46,8 @@ const Items = <>
     <NavigationRail.Item
         selected={selected==='notifications'}
         onClick={() => setSelected('notifications')}
-        title="Уведомления"
+        badge={<Badge size="multiple">32</Badge>}
+        title="Notifications"
     >
         <ZnUIIconNotificationsFilled/>
     </NavigationRail.Item>
@@ -52,7 +55,7 @@ const Items = <>
     <NavigationRail.Item
         selected={selected==='settings'}
         onClick={() => setSelected('settings')}
-        title="Настройки"
+        title="Settings"
     >
         <ZnUIIconSettingsFilled/>
     </NavigationRail.Item>
