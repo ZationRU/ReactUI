@@ -6,6 +6,9 @@ import React, {ReactNode} from "react";
 import "./NavigationDrawer.css";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
 import {ThemeTokens} from "../../../theme";
+import {Center} from "../../Basic/Center/Center";
+import {FlexLayout} from "../../Basic/FlexLayout/FlexLayout";
+import {Title} from "../../Typography/Title/Title";
 
 export interface NavigationDrawerProps extends LayoutProps {
     /**
@@ -26,21 +29,24 @@ export function NavigationDrawer(props: NavigationDrawerProps) {
     const {
         compat = false,
         className,
+        children,
         ...layoutRest
     } = props
 
     return <Layout
         bg={ThemeTokens.surfaceContainerLow}
         c={ThemeTokens.onSurface}
-        p={12}
         {...layoutRest}
-        className={classNames({
+    >
+        <Layout p={12} className={classNames({
             'NavigationDrawer--compat': compat
-        })}
-    />
+        })}>
+            {children}
+        </Layout>
+    </Layout>
 }
 
-export interface NavigationDrawerItemProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface NavigationDrawerItemProps extends LayoutProps {
     selected?: boolean
     badge ?: string
     icon ?: ReactNode
@@ -80,4 +86,53 @@ NavigationDrawer.Item = (props: NavigationDrawerItemProps) => {
             </Label>}
         </div>
     </Layout>
+}
+
+export interface NavigationDrawerHeadingProps extends LayoutProps {}
+
+NavigationDrawer.Headline = (props: NavigationDrawerHeadingProps) => {
+    const {
+        children,
+        ...layoutRest
+    } = props
+
+    return <FlexLayout
+        h={56}
+        c={ThemeTokens.onSurfaceVariant}
+        align="center"
+        {...layoutRest}
+    >
+        <Title
+            size="small"
+            pl={16}
+            textOverflow="ellipsis"
+            overflow="hidden"
+            whiteSpace="nowrap"
+        >{children}</Title>
+    </FlexLayout>
+}
+
+export interface NavigationDrawerHeadingProps extends LayoutProps {}
+
+
+NavigationDrawer.SectionHeader = (props: NavigationDrawerHeadingProps) => {
+    const {
+        children,
+        ...layoutRest
+    } = props
+
+    return <FlexLayout
+        h={56}
+        align="center"
+        c={ThemeTokens.onSurfaceVariant}
+        {...layoutRest}
+    >
+        <Title
+            size="small"
+            pl={16}
+            textOverflow="ellipsis"
+            overflow="hidden"
+            whiteSpace="nowrap"
+        >{children}</Title>
+    </FlexLayout>
 }
