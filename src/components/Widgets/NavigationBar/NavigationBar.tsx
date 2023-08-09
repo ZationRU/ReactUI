@@ -1,11 +1,12 @@
 import "./NavigationBar.css"
 import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
-import React from "react";
+import React, {ReactElement} from "react";
 import {Label} from "../../Typography/Label/Label";
 import classNames from "classnames";
 import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
 import {ThemeTokens} from "../../../theme";
+import {BadgeProps} from "../Badge/Badge";
 
 export interface NavigationBarProps extends LayoutProps {
 
@@ -32,6 +33,7 @@ export interface NavigationBarItemProps extends LayoutProps {
     title?: string,
     selected?: boolean
     label?: 'always'|'hidden'
+    badge?: React.ReactElement
 }
 
 NavigationBar.Item = (props: NavigationBarItemProps) => {
@@ -40,8 +42,11 @@ NavigationBar.Item = (props: NavigationBarItemProps) => {
         title = "None",
         selected = false,
         label = 'always',
+        badge,
         ...layoutProps
     } = props
+
+    const badgeSize: BadgeProps['size'] = badge?.props?.size || 'small'
 
     return <Layout {...layoutProps} className={
         classNames("NavigationBarItem--"+label, {
@@ -56,6 +61,15 @@ NavigationBar.Item = (props: NavigationBarItemProps) => {
             <IconWrapper>
                 {children}
             </IconWrapper>
+
+            {badge&&<Layout
+                pos="absolute"
+                top={badgeSize==='small'? 4: 2}
+                left={badgeSize==='small'? 38: 32}
+                zIndex={1}
+            >
+                {badge}
+            </Layout>}
         </div>
 
         {label==='always'&&<Label size="medium" className="Title">{title}</Label>}
