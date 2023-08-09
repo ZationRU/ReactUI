@@ -6,6 +6,7 @@ import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
 import {Label} from "../../Typography/Label/Label";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
 import {ThemeTokens} from "../../../theme";
+import {BadgeProps} from "../Badge/Badge";
 
 
 export interface NavigationRailProps extends LayoutProps {
@@ -53,6 +54,7 @@ export function NavigationRail(props: NavigationRailProps) {
 export interface NavigationRailItemProps extends LayoutProps {
     title?: string,
     selected?: boolean
+    badge?: React.ReactElement
 }
 
 NavigationRail.Item = (props: NavigationRailItemProps) => {
@@ -60,8 +62,11 @@ NavigationRail.Item = (props: NavigationRailItemProps) => {
         children,
         title,
         selected = false,
+        badge,
         ...layoutProps
     } = props
+
+    const badgeSize: BadgeProps['size'] = badge?.props?.size || 'small'
 
     return <Layout {...layoutProps} className={
         classNames({
@@ -76,6 +81,15 @@ NavigationRail.Item = (props: NavigationRailItemProps) => {
             <IconWrapper>
                 {children}
             </IconWrapper>
+
+            {badge&&<Layout
+                pos="absolute"
+                top={badgeSize==='small'? 4: 2}
+                left={badgeSize==='small'? 38: 28}
+                zIndex={1}
+            >
+                {badge}
+            </Layout>}
         </div>
 
         {title && <Label size="medium" className="title">{title}</Label>}
