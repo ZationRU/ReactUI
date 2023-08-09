@@ -1,8 +1,10 @@
-import React, {createContext, useMemo} from "react";
+import React, {createContext, CSSProperties, useMemo} from "react";
 import {LayoutProps} from "../../Basic/Layout/Layout";
 import {FlexLayout} from "../../Basic/FlexLayout/FlexLayout";
 import {Label} from "../../Typography/Label/Label";
 import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
+import {IconWrapper} from "../IconWrapper/IconWrapper";
+import {HStack} from "../../Basic/Stack/Stack";
 
 export type SelectEventHandler = (id: string|string[]) => void
 
@@ -63,6 +65,12 @@ export interface SegmentedButtonSegmentProps extends LayoutProps {
     disabled?: boolean
 }
 
+const SelectedIcon = <svg xmlns="http://www.w3.org/2000/svg" width="14" height="11" viewBox="0 0 14 11" fill="none">
+    <path
+        d="M4.24914 8.12738L1.12164 4.99988L0.0566406 6.05738L4.24914 10.2499L13.2491 1.24988L12.1916 0.192383L4.24914 8.12738Z"
+        fill="currentColor"/>
+</svg>
+
 SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
     const {
         id,
@@ -103,7 +111,30 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                 bg={isSelected?"var(--znui-secondary-container)":'none'}
             >
                 <StateLayer/>
-                <Label size="large">{children}</Label>
+                <HStack ph={12} pv={10}>
+                    <IconWrapper
+                        style={{
+                            '--icon-size': '18px'
+                        } as CSSProperties}
+                        maxW={isSelected ? 18: 0}
+                        minW={isSelected ? 18: 0}
+                        mr={isSelected ? 8: 0}
+                        transition={[
+                            'max-width 300ms var(--emphasized-motion)',
+                            'min-width 300ms var(--emphasized-motion)',
+                            'margin 300ms var(--emphasized-motion)'
+                        ].join(',')}
+                    >
+                        {isSelected&&SelectedIcon}
+                    </IconWrapper>
+
+                    <Label
+                        size="large"
+                        overflow="hidden"
+                        whiteSpace="nowrap"
+                        textOverflow="ellipsis"
+                    >{children}</Label>
+                </HStack>
             </FlexLayout>
         }
     }</SegmentedButtonContext.Consumer>
