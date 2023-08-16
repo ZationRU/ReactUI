@@ -7,6 +7,7 @@ import {StyleGuideRenderer} from './StyleGuideRenderer';
 import TableOfContents from "react-styleguidist/lib/client/rsg-components/TableOfContents/TableOfContents";
 import {AdaptiveProvider} from "../../components/Providers/AdaptiveProvider/AdaptiveProvider";
 import {ThemeProvider} from "../../components/Providers/ThemeProvider/ThemeProvider";
+import ReactComponent from "../ReactComponent/ReactComponent";
 
 export default function StyleGuide(props: StyleGuideProps) {
     const { config, sections, allSections, codeRevision, cssRevision, slots } = props;
@@ -44,7 +45,7 @@ export default function StyleGuide(props: StyleGuideProps) {
                         allSections={allSections}
                         toc={allSections ? <TableOfContents sections={allSections} /> : null}
                     >
-                        {!isRootUrl && sections.length === 1 && <Sections sections={sections} depth={1} />}
+                        {!isRootUrl && sections.length === 1 && <ReactComponent component={sections[0]['components'][0]} />}
                         {!isRootUrl && !sections.length && <NotFound />}
                     </StyleGuideRenderer>
                 </ThemeProvider>
