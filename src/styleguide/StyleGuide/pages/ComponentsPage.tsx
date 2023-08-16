@@ -35,7 +35,7 @@ export function ComponentsPage(props: ComponentsPageProps) {
             </NavigationDrawer>
         </>}
 
-        <Layout flex={1} overflow="auto" ref={props.ref}>
+        <Layout flex={1} ref={props.ref}>
             {
                 props.children || <>
                     {props.allSections.map(it => {
