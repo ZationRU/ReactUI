@@ -12,7 +12,6 @@ export interface ToolbarProps extends LayoutProps {
     navigationIcon?: ReactNode
     onClickNavigationIcon?: MouseEventHandler<HTMLDivElement>
     menu?: ReactNode
-    scrolled?: boolean
 }
 
 /**
@@ -28,7 +27,6 @@ export function Toolbar(props: ToolbarProps) {
         navigationIcon,
         onClickNavigationIcon,
         menu,
-        scrolled = false,
         ...otherProps
     } = props
 
@@ -40,7 +38,6 @@ export function Toolbar(props: ToolbarProps) {
     }, [navigationIcon])
 
     return <Layout
-        bg={scrolled?ThemeTokens.surfaceContainer:'transparent'}
         c={ThemeTokens.onSurface}
         transition={"background-color 150ms var(--emphasized-motion)"}
         className={classNames(
