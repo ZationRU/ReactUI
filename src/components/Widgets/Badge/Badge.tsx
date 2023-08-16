@@ -1,4 +1,3 @@
-import {znui} from "../../Basic/znui";
 import {ThemeTokens} from "../../../theme";
 import {HTMLZnUIProps} from "../../../styled/styled.types";
 import {Label} from "../../Typography/Label/Label";
