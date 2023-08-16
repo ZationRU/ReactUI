@@ -18,7 +18,7 @@ const PlaygroundRenderer = ({ name, preview, tabBody }: PlaygroundRendererProps)
                 'row'
             ]}>
                 <Layout flex={1}>{tabBody}</Layout>
-                <Layout bg={ThemeTokens.surfaceContainer} p={15} data-preview={name} flex={1} overflow="visible">
+                <Layout bg={ThemeTokens.surfaceBright} p={15} data-preview={name} flex={1} overflow="visible">
                     {preview}
                 </Layout>
             </FlexLayout>
