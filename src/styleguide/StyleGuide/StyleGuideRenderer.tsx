@@ -14,6 +14,7 @@ import {
 } from "@znui/icons"
 import {GetStartedPage} from "./pages/GetStartedPage";
 import {ComponentsPage} from "./pages/ComponentsPage";
+import {keyframes} from "@emotion/react";
 
 interface StyleGuideRendererProps {
     title: string;
@@ -47,6 +48,15 @@ const NavigationPagesLinks = [
         icon: <ZnUIIconMinimizeWindowFilled/>,
     }
 ]
+
+const pageAnimation = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
 
 export type Navigate = (hash: string) => void
 
@@ -131,7 +141,13 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
 
         {
             Object.hasOwn(Pages, page) ?
-                <Layout flex={1} overflow="auto" ref={ref}>
+                <Layout
+                    flex={1}
+                    overflow="auto"
+                    ref={ref}
+                    key={page}
+                    animation={pageAnimation+" 300ms var(--emphasized-motion)"}
+                >
                     {
                         React.createElement(Pages[page], {
                             go, evalInContext
