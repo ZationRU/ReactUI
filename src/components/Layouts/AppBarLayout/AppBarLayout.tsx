@@ -28,6 +28,15 @@ class AppBarLayoutScrollBehavior extends CoordinatorLayoutBehavior<'div'> {
         appBarLayout.style.background = lift ? ThemeTokens.surfaceContainer: this.defaultBackground!!
     }
 
+    onDependentViewChanged(parent: HTMLElement, child: CoordinatorLayoutElement, dependency: CoordinatorLayoutElement) {
+        const currentHeight = parent.clientHeight
+        const dependencyRect = dependency.elementInstance!!.getBoundingClientRect()
+
+        console.log(child.elementInstance!!.getBoundingClientRect())
+
+        child.elementInstance!!.style.height = (currentHeight - dependencyRect.height) + "px"
+    }
+
     onScroll(
         dependencies: CoordinatorLayoutElement[],
         child: React.ReactElement<any, "div">,
@@ -56,7 +65,7 @@ export const AppBarLayout = React.forwardRef<AppBarLayoutRefProps>((props: AppBa
     return <Layout
         {...layoutRest}
         transition={[
-            'background 300ms var(--emphasized-motion)s',
+            'background 300ms var(--emphasized-motion)',
             transition
         ].join(',')}
         ref={ref}
