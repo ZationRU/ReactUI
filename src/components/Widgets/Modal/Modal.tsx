@@ -5,6 +5,9 @@ import {Toolbar} from "../Toolbar/Toolbar";
 import {IconButton} from "../IconButton/IconButton";
 import {Spacer} from "../../Basic/FlexLayout/FlexLayout";
 import {HStack} from "../../Basic/Stack/Stack";
+import {CoordinatorLayout} from "../../Layouts/CoordinatorLayout/CoordinatorLayout";
+import {AppBarLayout} from "../../Layouts/AppBarLayout/AppBarLayout";
+import {ScrollLayout} from "../../Layouts/ScrollLayout/ScrollLayout";
 
 export interface ModalWrapperProps {
     action?: ReactNode,
@@ -34,24 +37,29 @@ export function Modal(props: ModalWrapperProps) {
         md: false
     });
 
-    return <Layout
+    return <CoordinatorLayout
+        maxH={isFullscreen? '100vh': '60vh'}
         insets={isFullscreen ? "safe-area": undefined}
     >
-        <Toolbar
-            navigationIcon={isFullscreen ? navigationIcon: undefined}
-            onClickNavigationIcon={onClickNavigationIcon}
-            menu={isFullscreen? action : <IconButton onClick={onClickNavigationIcon}>
-                {navigationIcon}
-            </IconButton>}
-        >{title}</Toolbar>
+        <AppBarLayout>
+            <Toolbar
+                navigationIcon={isFullscreen ? navigationIcon: undefined}
+                onClickNavigationIcon={onClickNavigationIcon}
+                menu={isFullscreen? action : <IconButton onClick={onClickNavigationIcon}>
+                    {navigationIcon}
+                </IconButton>}
+            >{title}</Toolbar>
+        </AppBarLayout>
 
-        <Layout p={24}>
-            {children}
-        </Layout>
+        <ScrollLayout orientation="vertical" behavior={AppBarLayout.ScrollBehavior}>
+            <Layout ph={24} pb={24}>
+                {children}
+            </Layout>
+        </ScrollLayout>
 
         {!isFullscreen&&<HStack spacing={16} pv={24} pr={24} pl={16}>
             <Spacer/>
             {action}
         </HStack>}
-    </Layout>
+    </CoordinatorLayout>
 }
