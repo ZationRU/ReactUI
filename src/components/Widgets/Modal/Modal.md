@@ -22,7 +22,57 @@ const dialogs = useDialogs();
                 dialogInterface.close()
             }}
         >
-            <TextField label="Example" placeholder="xD"/>
+            <TextField label="Example" placeholder="xD">
+                <input/>
+            </TextField>
+            <TextField label="Example" placeholder="xD">
+                <input/>
+            </TextField>
+            <TextField label="Example" placeholder="xD">
+                <input/>
+            </TextField>
+            <TextField label="Example" placeholder="xD">
+                <input/>
+            </TextField>
+            <TextField label="Example" placeholder="xD">
+                <input/>
+            </TextField>
+            <TextField label="Example" placeholder="xD">
+                <input/>
+            </TextField>
+            <TextField label="Example" placeholder="xD">
+                <input/>
+            </TextField>
+            <TextField label="Example" placeholder="xD">
+                <input/>
+            </TextField>
+            <TextField label="Example" placeholder="xD">
+                <input/>
+            </TextField>
+            <TextField label="Example" placeholder="xD">
+                <input/>
+            </TextField>
+            <TextField label="Example" placeholder="xD">
+                <input/>
+            </TextField>
+            <TextField label="Example" placeholder="xD">
+                <input/>
+            </TextField>
+            <TextField label="Example" placeholder="xD">
+                <input/>
+            </TextField>
+            <TextField label="Example" placeholder="xD">
+                <input/>
+            </TextField>
+            <TextField label="Example" placeholder="xD">
+                <input/>
+            </TextField>
+            <TextField label="Example" placeholder="xD">
+                <input/>
+            </TextField>
+            <TextField label="Example" placeholder="xD">
+                <input/>
+            </TextField>
         </Modal>
     }, e);
 }}>Show Modal</Button>

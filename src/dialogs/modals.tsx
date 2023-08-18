@@ -16,6 +16,11 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
     return (Component: JSXElementConstructor<ModalProps>, clickEvent?: MouseEvent): ModalDialogInterface => {
         const portal = portalRegister();
 
+        const target = clickEvent?.currentTarget ? clickEvent.currentTarget as Element : null
+        const targetStyles = target ? window.getComputedStyle(target) : null;
+
+        let targetRect = target ? target.getBoundingClientRect() : null;
+
         let close = () => {
             portal.remove()
         }
@@ -23,10 +28,6 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
         const modalDialogInterface: ModalDialogInterface = {
             close: () => close(),
         }
-
-        const target = clickEvent?.currentTarget ? clickEvent.currentTarget as Element : null
-        const targetStyles = target ? window.getComputedStyle(target) : null;
-        const targetRect = target ? target.getBoundingClientRect() : null;
 
         const ModalPortal = () => {
             const scrimRef = useRef<HTMLDivElement | null>(null)
@@ -52,6 +53,10 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                     if (scrim == null||modalContainer==null) return;
                     scrim.style.opacity = "0"
                     setIsExpanded(false)
+
+                    if(target!=null) {
+                        targetRect = target.getBoundingClientRect()
+                    }
 
                     setTimeout(() => {
                         portal.remove()

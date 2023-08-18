@@ -7,13 +7,13 @@ import React, {
 import {CoordinatorLayoutBehavior, CoordinatorLayoutElement} from "../CoordinatorLayout/CoordinatorLayout";
 import {ThemeTokens} from "../../../theme";
 
-class AppBarLayoutBehavior extends CoordinatorLayoutBehavior {
+ export class AppBarLayoutBehavior extends CoordinatorLayoutBehavior {
     layoutDependsOn(child: React.ReactElement<any, React.ReactElement["type"]>, dependency: React.ReactElement): boolean {
         return false
     }
 }
 
-class AppBarLayoutScrollBehavior extends CoordinatorLayoutBehavior<'div'> {
+export class AppBarLayoutScrollBehavior extends CoordinatorLayoutBehavior<'div'> {
     private defaultBackground: string|null = null
 
     layoutDependsOn(child: React.ReactElement<any, 'div'>, dependency: React.ReactElement): boolean {
@@ -28,17 +28,31 @@ class AppBarLayoutScrollBehavior extends CoordinatorLayoutBehavior<'div'> {
         appBarLayout.style.background = lift ? ThemeTokens.surfaceContainer: this.defaultBackground!!
     }
 
+    onDependentViewChanged(parent: HTMLElement, child: CoordinatorLayoutElement, dependency: CoordinatorLayoutElement) {
+        const currentHeight = parent.clientHeight
+        const dependencyRect = dependency.elementInstance!!.getBoundingClientRect()
+
+        console.log(child.elementInstance!!.getBoundingClientRect())
+
+        child.elementInstance!!.style.height = (currentHeight - dependencyRect.height) + "px"
+    }
+
     onScroll(
         dependencies: CoordinatorLayoutElement[],
-        child: React.ReactElement<any, "div">,
-        childInstance: HTMLDivElement
+        child: CoordinatorLayoutElement,
+        dx: number,
+        dy: number
     ) {
-        const shouldLift = childInstance.scrollTop > 0
+        const shouldLift = child.elementInstance!!.scrollTop > 0
         const appBarLayout = dependencies.find(it => it.element.type===AppBarLayout)
 
         if(appBarLayout&&appBarLayout.elementInstance) {
             this.updateLiftedState(appBarLayout.elementInstance, shouldLift)
         }
+    }
+
+    onScrollStart(dependencies: CoordinatorLayoutElement[], child: CoordinatorLayoutElement): boolean {
+        return true
     }
 }
 
@@ -56,7 +70,7 @@ export const AppBarLayout = React.forwardRef<AppBarLayoutRefProps>((props: AppBa
     return <Layout
         {...layoutRest}
         transition={[
-            'background 300ms var(--emphasized-motion)s',
+            'background 300ms var(--emphasized-motion)',
             transition
         ].join(',')}
         ref={ref}
