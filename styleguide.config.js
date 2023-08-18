@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const remarkGridTables = require('remark-grid-tables')
 
 async function gfm(options) {
     return (await import('remark-gfm'))
