@@ -1,0 +1,68 @@
+# Adaptive Styles & Props
+
+ZnUI supports responsive styles and props out of the box.
+Responsive styles help implement UI for different devices with different screens.
+As an example for tablets and mobile phones.
+
+
+Responsive styles can be set without `@media` tags in css.
+Instead, you need to specify values using the Array syntax or Object syntax
+
+Adaptive syntax relies on the breakpoints. ZnUI uses the following breakpoints:
+
+| Breakpoint | Min Width | Max Width |
+|------------|-----------|-----------|
+| esm        | 0         | 559       |
+| sm         | 600       | 904       |
+| emd        | 905       | 1239      |
+| md         | 1240      | 1439      |
+| lg         | 1440      | unlimited |
+
+## Array syntax
+
+Let's assume we have a regular Layout:
+```tsx
+import {Layout} from '@znui/react';
+<Layout bg='black' c='white' w='500px'>
+    Hello! My name is Layout!
+</Layout>
+```
+
+Let's make it responsive with Array syntax!
+```tsx
+import {Layout} from '@znui/react';
+<Layout bg='black' c='white' w={[300, 400, 500]}>
+    Hello! My name is Layout!
+</Layout>
+```
+
+Here's how to interpret this syntax:
+
+| Breakpoint | Width | Min Width | Max Width |
+|------------|-------|-----------|-----------|
+| esm        | 300px | 0         | 559       |
+| sm         | 400px | 600       | 904       |
+| emd        | 500px | 905       | unlimited |
+
+## Object syntax
+
+Take the previous Layout with Array syntax:
+```tsx
+import {Layout} from '@znui/react';
+<Layout bg='black' c='white' w={[300, 400, 500]}>
+    Hello! My name is Layout!
+</Layout>
+```
+
+Let's make it so that the color changes when the width of our screen changes:
+```tsx
+import {Layout} from '@znui/react';
+<Layout bg='black' c={{esm: 'white', lg: 'red'}} w={[300, 400, 500]}>
+    Hello! My name is Layout!
+</Layout>
+```
+
+| Breakpoint | Color | Min Width | Max Width |
+|------------|-------|-----------|-----------|
+| esm        | white | 0         | 559       |
+| sm         | red   | 600       | 904       |
