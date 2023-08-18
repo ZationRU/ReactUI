@@ -6,15 +6,17 @@ import {LayoutBreakpointsValues} from "../../adaptive/LayoutBreakpoint";
 import {NavigationBar} from "../../components/Widgets/NavigationBar/NavigationBar";
 import {NavigationRail} from "../../components/Widgets/NavigationRail/NavigationRail";
 import {HomeInfoPage} from "./pages/HomeInfoPage";
-import {AdaptiveInfoPage} from "./pages/AdaptiveInfoPage";
 import {
     ZnUIIconHomeFilled,
     ZnUIIconMinimizeWindowFilled,
     ZnUIIconDebugOutline
 } from "@znui/icons"
-import {GetStartedPage} from "./pages/GetStartedPage";
 import {ComponentsPage} from "./pages/ComponentsPage";
 import {keyframes} from "@emotion/react";
+import AdaptivePage from './pages/adaptive.mdx';
+import GetStarted from './pages/get-started.mdx';
+import {Headline} from "../../components/Typography/Headline/Headline";
+import {MDXFactory} from "./pages/MDXFactory";
 
 interface StyleGuideRendererProps {
     title: string;
@@ -27,8 +29,8 @@ interface StyleGuideRendererProps {
 
 const Pages = {
     home: HomeInfoPage,
-    adaptive: AdaptiveInfoPage,
-    'get-started': GetStartedPage
+    adaptive: MDXFactory(AdaptivePage),
+    'get-started': MDXFactory(GetStarted)
 }
 
 const NavigationPagesLinks = [
@@ -117,6 +119,7 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
                     {
                         NavigationPagesLinks.map(({title, icon, id}) => <NavigationBar.Item
                             title={title}
+                            key={id}
                             selected={page===id}
                             onClick={() => go(id)}
                         >{icon}</NavigationBar.Item>)
@@ -127,10 +130,15 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
 
         {
             breakpointWidth !== LayoutBreakpointsValues.esm && <>
-                <NavigationRail>
+                <NavigationRail menu={
+                    <Headline size="small" fontWeight="bold">
+                        ZnUI
+                    </Headline>
+                }>
                     {
                         NavigationPagesLinks.map(({title, icon, id}) => <NavigationRail.Item
                             title={title}
+                            key={id}
                             selected={page===id}
                             onClick={() => go(id)}
                         >{icon}</NavigationRail.Item>)
