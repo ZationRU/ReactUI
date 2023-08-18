@@ -17,6 +17,7 @@ import AdaptivePage from './pages/adaptive.mdx';
 import GetStarted from './pages/get-started.mdx';
 import {Headline} from "../../components/Typography/Headline/Headline";
 import {MDXFactory} from "./pages/MDXFactory";
+import {HooksPage} from "./pages/hooks/HooksPage";
 
 interface StyleGuideRendererProps {
     title: string;
@@ -47,6 +48,11 @@ const NavigationPagesLinks = [
     {
         id: 'components',
         title: "Components",
+        icon: <ZnUIIconMinimizeWindowFilled/>,
+    },
+    {
+        id: 'hooks',
+        title: "Hooks",
         icon: <ZnUIIconMinimizeWindowFilled/>,
     }
 ]
@@ -162,12 +168,16 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
                         })
                     }
                 </Layout>:
-                <ComponentsPage
-                    go={go}
-                    toc={toc}
-                    allSections={allSections}
-                    ref={ref}
-                    children={page !== 'components' && children}/>
+                (
+                    page.startsWith('hook')?
+                        <HooksPage ref={ref} evalInContext={evalInContext} go={go}/> :
+                        <ComponentsPage
+                            go={go}
+                            toc={toc}
+                            allSections={allSections}
+                            ref={ref}
+                            children={page !== 'components' && children}/>
+                )
         }
     </Layout>
 }
