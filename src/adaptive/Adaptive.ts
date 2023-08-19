@@ -42,9 +42,3 @@ export function getAdaptiveValue<T>(
 
     return value as T
 }
-
-export function useBreakpointValue<T>(
-    values: AdaptiveObject<T> | AdaptiveArray<T>
-): T {
-    return getBreakpointValue(useAdaptive().currentBreakpoint, values)
-}
