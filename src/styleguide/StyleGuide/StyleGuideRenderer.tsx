@@ -53,7 +53,7 @@ const NavigationPagesLinks = [
     {
         id: 'hooks',
         title: "Hooks",
-        icon: <ZnUIIconMinimizeWindowFilled/>,
+        icon: <>H</>,
     }
 ]
 
