@@ -6,15 +6,18 @@ import {LayoutBreakpointsValues} from "../../adaptive/LayoutBreakpoint";
 import {NavigationBar} from "../../components/Widgets/NavigationBar/NavigationBar";
 import {NavigationRail} from "../../components/Widgets/NavigationRail/NavigationRail";
 import {HomeInfoPage} from "./pages/HomeInfoPage";
-import {AdaptiveInfoPage} from "./pages/AdaptiveInfoPage";
 import {
     ZnUIIconHomeFilled,
     ZnUIIconMinimizeWindowFilled,
     ZnUIIconDebugOutline
 } from "@znui/icons"
-import {GetStartedPage} from "./pages/GetStartedPage";
 import {ComponentsPage} from "./pages/ComponentsPage";
 import {keyframes} from "@emotion/react";
+import AdaptivePage from './pages/adaptive.mdx';
+import GetStarted from './pages/get-started.mdx';
+import {Headline} from "../../components/Typography/Headline/Headline";
+import {MDXFactory} from "./pages/MDXFactory";
+import {HooksPage} from "./pages/hooks/HooksPage";
 
 interface StyleGuideRendererProps {
     title: string;
@@ -27,8 +30,8 @@ interface StyleGuideRendererProps {
 
 const Pages = {
     home: HomeInfoPage,
-    adaptive: AdaptiveInfoPage,
-    'get-started': GetStartedPage
+    adaptive: MDXFactory(AdaptivePage),
+    'get-started': MDXFactory(GetStarted)
 }
 
 const NavigationPagesLinks = [
@@ -46,6 +49,11 @@ const NavigationPagesLinks = [
         id: 'components',
         title: "Components",
         icon: <ZnUIIconMinimizeWindowFilled/>,
+    },
+    {
+        id: 'hooks',
+        title: "Hooks",
+        icon: <>H</>,
     }
 ]
 
@@ -117,6 +125,7 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
                     {
                         NavigationPagesLinks.map(({title, icon, id}) => <NavigationBar.Item
                             title={title}
+                            key={id}
                             selected={page===id}
                             onClick={() => go(id)}
                         >{icon}</NavigationBar.Item>)
@@ -127,10 +136,15 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
 
         {
             breakpointWidth !== LayoutBreakpointsValues.esm && <>
-                <NavigationRail>
+                <NavigationRail menu={
+                    <Headline size="small" fontWeight="bold">
+                        ZnUI
+                    </Headline>
+                }>
                     {
                         NavigationPagesLinks.map(({title, icon, id}) => <NavigationRail.Item
                             title={title}
+                            key={id}
                             selected={page===id}
                             onClick={() => go(id)}
                         >{icon}</NavigationRail.Item>)
@@ -154,12 +168,16 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
                         })
                     }
                 </Layout>:
-                <ComponentsPage
-                    go={go}
-                    toc={toc}
-                    allSections={allSections}
-                    ref={ref}
-                    children={page !== 'components' && children}/>
+                (
+                    page.startsWith('hook')?
+                        <HooksPage ref={ref} evalInContext={evalInContext} go={go}/> :
+                        <ComponentsPage
+                            go={go}
+                            toc={toc}
+                            allSections={allSections}
+                            ref={ref}
+                            children={page !== 'components' && children}/>
+                )
         }
     </Layout>
 }

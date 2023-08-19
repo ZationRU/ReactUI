@@ -2,6 +2,11 @@ const webpack = require('webpack');
 const path = require('path');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
+async function gfm(options) {
+    return (await import('remark-gfm'))
+        .default.call(this, options)
+}
+
 const webpackConfig = {
     devServer: {
         allowedHosts: "all"
@@ -22,6 +27,18 @@ const webpackConfig = {
                     }
                 }],
                 exclude: /node_modules/,
+            },
+            {
+                test: /\.mdx?$/,
+                use: [
+                    {
+                        loader: '@mdx-js/loader',
+                        /** @type {import('@mdx-js/loader').Options} */
+                        options: {
+                            remarkPlugins: [gfm]
+                        }
+                    }
+                ]
             },
             {
                 test: /\.svg$/,

@@ -1,0 +1,14 @@
+```tsx
+import {useAdaptive, Layout} from "@znui/react";
+
+const adaptive = useAdaptive();
+
+<Layout>
+    <div>
+        Current breakpoint: {adaptive.currentBreakpoint}
+    </div>
+    <div>
+        Current breakpoint width: {adaptive.breakpointWidth}
+    </div>
+</Layout>
+```

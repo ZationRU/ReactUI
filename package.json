@@ -66,6 +66,7 @@
     "url": "git+https://github.com/ZationRU/ZationUI.git"
   },
   "devDependencies": {
+    "@mdx-js/loader": "^2.3.0",
     "@rollup/plugin-commonjs": "^25.0.3",
     "@rollup/plugin-node-resolve": "^15.1.0",
     "@rollup/plugin-typescript": "^11.1.2",
@@ -88,6 +89,7 @@
     "react-docgen-typescript": "^2.2.2",
     "react-frame-component": "^5.2.6",
     "react-styleguidist": "^13.1.1",
+    "remark-gfm": "^3.0.1",
     "rimraf": "^4.4.1",
     "rollup": "^3.26.3",
     "rollup-plugin-delete": "^2.0.0",

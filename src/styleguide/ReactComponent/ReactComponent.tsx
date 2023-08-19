@@ -11,10 +11,11 @@ import {Headline} from "../../components/Typography/Headline/Headline";
 import {CoordinatorLayout} from "../../components/Layouts/CoordinatorLayout/CoordinatorLayout";
 import {AppBarLayout} from "../../components/Layouts/AppBarLayout/AppBarLayout";
 import {ScrollLayout} from "../../components/Layouts/ScrollLayout/ScrollLayout";
+import {BottomAppBar} from "../../components/Widgets/BottomAppBar/BottomAppBar";
 
-export default function ReactComponent({ component, exampleMode }: any) {
+export default function ReactComponent({ component }: any) {
     const { name, visibleName, pathLine } = component;
-    const { description = '', examples = [], tags = {} } = component.props || {};
+    const { description = '', examples = []  } = component.props || {};
 
 
     return <CoordinatorLayout h="100%">
@@ -30,7 +31,7 @@ export default function ReactComponent({ component, exampleMode }: any) {
 
                 <Headline size="small" mt={30} mb={15}>Example</Headline>
                 {examples.length > 0 && (
-                    <Examples examples={examples} name={name} exampleMode={exampleMode} />
+                    <Examples examples={examples} name={name} exampleMode='expand' />
                 )}
 
                 <Headline size="small" mt={30}>Props</Headline>

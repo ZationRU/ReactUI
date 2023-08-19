@@ -7,6 +7,7 @@ import {VStack} from "../../../components/Basic/Stack/Stack";
 import {Title} from "../../../components/Typography/Title/Title";
 import {Body} from "../../../components/Typography/Body/Body";
 import {NavigationDrawer} from "../../../components/Widgets/NavigationDrawer/NavigationDrawer";
+import {ScrollLayout} from "../../../components/Layouts/ScrollLayout/ScrollLayout";
 
 interface ComponentsPageProps extends RefAttributes<HTMLDivElement> {
     go: Navigate
@@ -37,14 +38,14 @@ export function ComponentsPage(props: ComponentsPageProps) {
 
         <Layout flex={1} ref={props.ref}>
             {
-                props.children || <>
+                props.children || <ScrollLayout orientation="vertical" h="100%">
                     {props.allSections.map(it => {
                         return <VStack key={it.href} mh={10}>
                             <SectionTitle mv={15}>{it.name}</SectionTitle>
                             <Section>
                                 {
                                     it.components.map((component: any) =>
-                                        <SectionCard onClick={() => {
+                                        <SectionCard key={component.visibleName} onClick={() => {
                                             window.location.href = component.href.split('?')[0]+"/"+component.visibleName
                                         }}>
                                             <Title size="large">{component.props.displayName}</Title>
@@ -55,7 +56,7 @@ export function ComponentsPage(props: ComponentsPageProps) {
                             </Section>
                         </VStack>
                     })}
-                </>
+                </ScrollLayout>
             }
         </Layout>
     </Layout>

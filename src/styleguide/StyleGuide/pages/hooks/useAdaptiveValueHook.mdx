@@ -1,0 +1,25 @@
+```tsx
+import {useAdaptiveValue, useAdaptive, Layout} from "@znui/react";
+
+const adaptive = useAdaptive();
+
+<Layout>
+    <div>
+        Current breakpoint: {adaptive.currentBreakpoint}
+    </div>
+    <div>
+        Current breakpoint width: {adaptive.breakpointWidth}
+    </div>
+
+    <div>{
+        useAdaptiveValue({
+            esm: "I'm a extra small breakpoint",
+            sm: "I'm a small breakpoint",
+            emd: "I'm a extra medium breakpoint",
+            md: "I'm a medium breakpoint",
+            lg: "I'm a large breakpoint"
+        })
+    }</div>
+</Layout>
+
+```
