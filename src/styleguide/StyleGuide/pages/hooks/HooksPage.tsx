@@ -8,7 +8,7 @@ import {
     CoordinatorLayout,
     AppBarLayout, Toolbar, VStack, useAdaptiveValue
 } from "../../../../";
-import {Section, SectionCard} from "../../SectionsUI";
+import {Section, SectionCard, SectionTitle} from "../../SectionsUI";
 import React, {RefAttributes} from "react";
 import {Navigate} from "../../StyleGuideRenderer";
 import {MDXFactory} from "../MDXFactory";
@@ -85,7 +85,9 @@ export function HooksPage({ go, ref, evalInContext }: HooksPageProps) {
                         </VStack>
                     </ScrollLayout>
                 </CoordinatorLayout> : <ScrollLayout orientation="vertical" h="100%">
-                    <Section m={10}>
+                    <Section m={10} mt={15}>
+                        <SectionTitle>Hooks</SectionTitle>
+
                         {Object.keys(Hooks).map(hookName => {
                             const hookPageInfo = Hooks[hookName]
                             return <SectionCard key={hookName} onClick={() => {
