@@ -6,7 +6,11 @@ import {ModalDialogInterface, ModalProps, showModal} from "./modals";
 
 export type DialogInterface = {
     showAlert: (config: AlertDialogConfig, clickEvent?: MouseEvent) => AlertDialogInterface
-    showModal: (component: JSXElementConstructor<ModalProps>, clickEvent?: MouseEvent) => ModalDialogInterface
+    showModal: (
+        component: JSXElementConstructor<ModalProps>,
+        clickEvent?: MouseEvent,
+        fullscreen?: boolean|'auto'
+    ) => ModalDialogInterface
 }
 
 export const useDialogs = (): DialogInterface => {
