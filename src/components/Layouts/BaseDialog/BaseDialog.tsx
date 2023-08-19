@@ -42,10 +42,10 @@ export function BaseDialog(props: BaseDialogProps) {
             <Stack spacing={16} ph={24} pt={24}>
                 {icon&&<IconWrapper display="flex" c="var(--znui-secondary)" style={{
                     "--icon-size": '24px'
-                } as CSSProperties} justify="center">{icon}</IconWrapper>}
+                } as CSSProperties} w="100%" justify="center">{icon}</IconWrapper>}
 
                 <Headline size="small" textAlign={icon?"center":"start"}>{title}</Headline>
-                {description&&<Body size="medium" c="var(--znui-on-surface-variant)">{description}</Body>}
+                {description&&<Body whiteSpace="break-spaces" size="medium" c="var(--znui-on-surface-variant)">{description}</Body>}
             </Stack>
 
             <HStack spacing={16} pv={24} pr={24} pl={16}>
