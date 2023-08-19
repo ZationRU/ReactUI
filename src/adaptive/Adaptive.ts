@@ -1,4 +1,3 @@
-import {useAdaptive} from "./useAdaptive";
 import {arrayToObjectNotation, getClosestValue} from "./utils";
 import {LayoutBreakpoint, LayoutBreakpointsKeys} from "./LayoutBreakpoint";
 

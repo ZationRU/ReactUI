@@ -6,7 +6,6 @@ import React, {ReactNode} from "react";
 import "./NavigationDrawer.css";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
 import {ThemeTokens} from "../../../theme";
-import {Center} from "../../Basic/Center/Center";
 import {FlexLayout} from "../../Basic/FlexLayout/FlexLayout";
 import {Title} from "../../Typography/Title/Title";
 
