@@ -12,6 +12,8 @@
     font-size: var(--icon-size);
     line-height: var(--icon-size);
     overflow: visible;
+    justify-content: center;
+    align-items: center;
     width: var(--icon-size);
     height: var(--icon-size);
 }

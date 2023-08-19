@@ -1,4 +1,3 @@
-import {useAdaptive} from "./useAdaptive";
 import {arrayToObjectNotation, getClosestValue} from "./utils";
 import {LayoutBreakpoint, LayoutBreakpointsKeys} from "./LayoutBreakpoint";
 
@@ -41,10 +40,4 @@ export function getAdaptiveValue<T>(
     }
 
     return value as T
-}
-
-export function useBreakpointValue<T>(
-    values: AdaptiveObject<T> | AdaptiveArray<T>
-): T {
-    return getBreakpointValue(useAdaptive().currentBreakpoint, values)
 }
