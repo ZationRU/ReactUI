@@ -12,8 +12,19 @@ export type ModalProps = {
     dialogInterface: ModalDialogInterface,
 }
 
+export type ModalContextData = {
+    dialogInterface: ModalDialogInterface
+    isFullscreen: boolean
+}
+export const ModalContext
+    = React.createContext<ModalContextData|null>(null)
+
 export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
-    return (Component: JSXElementConstructor<ModalProps>, clickEvent?: MouseEvent): ModalDialogInterface => {
+    return (
+        Component: JSXElementConstructor<ModalProps>,
+        clickEvent?: MouseEvent,
+        fullscreen?: boolean|'auto'
+    ): ModalDialogInterface => {
         const portal = portalRegister();
 
         const target = clickEvent?.currentTarget ? clickEvent.currentTarget as Element : null
@@ -47,27 +58,41 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
             }, [scrimRef])
 
             close = useCallback(() => {
+                console.log('close')
                 setTimeout(() => {
                     const scrim = scrimRef.current
                     const modalContainer = modalContainerRef.current
                     if (scrim == null||modalContainer==null) return;
                     scrim.style.opacity = "0"
-                    setIsExpanded(false)
 
                     if(target!=null) {
                         targetRect = target.getBoundingClientRect()
                     }
 
+                    setIsExpanded(false)
                     setTimeout(() => {
                         portal.remove()
                     }, 500)
                 })
             }, [])
 
-            const isFullscreen = useAdaptiveValue({
+            const autoFullscreen = useAdaptiveValue({
                 esm: true,
-                md: false
+                emd: false
             })
+
+            const isFullscreen = fullscreen==='auto' ? autoFullscreen: !!fullscreen
+
+            const targetHeightHalf = targetRect ? targetRect.height / 2: 0
+            const targetWidthHalf = targetRect ? targetRect.width / 2: 0
+            const x = isExpanded?
+                isFullscreen ? '50vw' : '50%'
+            : (targetRect?.left||0) + targetWidthHalf
+            const y = isExpanded?
+                isFullscreen ? '50vh' : '50%'
+            : (targetRect?.top||0) + targetHeightHalf
+
+            console.log(targetRect)
 
             return <Layout
                 pos="fixed"
@@ -97,27 +122,33 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                     position="fixed"
                     c={ThemeTokens.onSurface}
                     borderRadius={isExpanded? isFullscreen ? 0 : 28 : targetStyles?.borderRadius || 0}
-                    h={isExpanded? isFullscreen ? '100vh': 'inherit': targetRect?.height||0}
+                    maxH={isExpanded? '100vh': targetRect?.height||0}
                     w={isExpanded? isFullscreen ? '100vw': 800: targetRect?.width||0}
-                    left={isExpanded? isFullscreen ? 0 : '50%' : targetRect?.left}
-                    top={isExpanded? isFullscreen ? 0 : '50%' : targetRect?.top}
+                    maxW={isExpanded&&!isFullscreen ? "calc(100vw - 50px)": '100vw'}
+                    left={x}
+                    top={y}
                     bg={isExpanded&&isFullscreen ? ThemeTokens.surface : ThemeTokens.surfaceContainerHigh}
-                    transform={isExpanded? !isFullscreen ? "translate(-50%, -50%)": undefined: "translate(0, 0)"}
+                    transform={"translate(-50%, -50%)"}
                     transition={[
-                        "left 300ms var(--emphasized-decelerate-motion)",
-                        "top 300ms var(--emphasized-decelerate-motion)",
-                        "width 300ms var(--emphasized-decelerate-motion)",
-                        "height 300ms var(--emphasized-decelerate-motion)",
-                        "border-radius 300ms var(--emphasized-decelerate-motion)",
-                        "background-color 300ms var(--emphasized-decelerate-motion)",
-                        "opacity 300ms var(--emphasized-decelerate-motion)",
-                        "transform 300ms var(--emphasized-decelerate-motion)",
+                        ...(targetRect?[
+                            "left 300ms var(--emphasized-motion)",
+                            "top 300ms var(--emphasized-motion)",
+                            "width 300ms var(--emphasized-motion)",
+                            "max-height 300ms var(--emphasized-motion)",
+                            "border-radius 300ms var(--emphasized-motion)",
+                            "background-color 300ms var(--emphasized-motion)",
+                        ]:[]),
                     ].join(",")}
                 >
-                    <Layout oc={isExpanded? 1: 0} transition={[
-                        "opacity 300ms var(--emphasized-decelerate-motion)",
-                    ].join(",")}>
-                        {isExpanded && <Component dialogInterface={modalDialogInterface}/>}
+                    <Layout oc={isExpanded? 1: 0} transition={targetRect? [
+                        "opacity " + (isExpanded? '500ms': '200ms') + "var(--emphasized-decelerate-motion)",
+                    ].join(","): undefined}>
+                        <ModalContext.Provider value={{
+                            dialogInterface: modalDialogInterface,
+                            isFullscreen
+                        }}>
+                            <Component dialogInterface={modalDialogInterface}/>
+                        </ModalContext.Provider>
                     </Layout>
                 </Layout>
             </Layout>
