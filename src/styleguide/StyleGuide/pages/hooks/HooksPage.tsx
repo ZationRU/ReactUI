@@ -24,17 +24,18 @@ interface HooksPageProps extends RefAttributes<HTMLDivElement> {
 
 export const Hooks = {
     useAdaptive: {
-        description: 'Description',
+        description: 'Hook to get current page size to ensure responsive state',
         component: MDXFactory(UseAdaptiveHook)
     },
+    useAdaptiveValue: {
+        description: 'Hook to get value from adaptive value',
+        component: MDXFactory(UseAdaptiveValueHook)
+    },
     useDialogs: {
-        description: 'Description',
+        description: 'Hook for creating modal windows and dialogs',
         component: MDXFactory(UseDialogsHook)
     },
-    useAdaptiveValue: {
-        description: 'Description',
-        component: MDXFactory(UseAdaptiveValueHook)
-    }
+
 }
 
 export function HooksPage({ go, ref, evalInContext }: HooksPageProps) {
@@ -85,9 +86,8 @@ export function HooksPage({ go, ref, evalInContext }: HooksPageProps) {
                         </VStack>
                     </ScrollLayout>
                 </CoordinatorLayout> : <ScrollLayout orientation="vertical" h="100%">
-                    <Section m={10} mt={15}>
-                        <SectionTitle>Hooks</SectionTitle>
-
+                    <SectionTitle mh={10} mv={15}>Hooks</SectionTitle>
+                    <Section m={10}>
                         {Object.keys(Hooks).map(hookName => {
                             const hookPageInfo = Hooks[hookName]
                             return <SectionCard key={hookName} onClick={() => {
