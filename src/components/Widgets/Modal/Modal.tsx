@@ -1,6 +1,5 @@
 import React, {MouseEventHandler, ReactNode} from "react";
 import {Layout} from "../../Basic/Layout/Layout";
-import {useAdaptiveValue} from "../../../adaptive/useAdaptive";
 import {Toolbar} from "../Toolbar/Toolbar";
 import {IconButton} from "../IconButton/IconButton";
 import {Spacer} from "../../Basic/FlexLayout/FlexLayout";
