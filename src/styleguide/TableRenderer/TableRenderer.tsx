@@ -51,14 +51,16 @@ const TableRenderer = ({rows}: TableProps) => {
     const componentProps: any[] = [];
 
     rows.forEach((prop) => {
-        if (prop.parent?.fileName?.includes('node_modules')) {
+        if (prop?.parent?.fileName?.includes('node_modules')) {
             nodeModulesProps.push(prop);
         } else if(isStyleProp(prop.name)) {
-            if(!baseLayoutProps.hasOwnProperty(prop.parent.name)) {
-                baseLayoutProps[prop.parent.name] = []
+            const parentName = prop.parent ? prop.parent.name : 'Pseudos & other';
+            if(!baseLayoutProps.hasOwnProperty(parentName)) {
+                baseLayoutProps[parentName] = []
             }
 
-            baseLayoutProps[prop.parent.name].push(prop)
+            baseLayoutProps[parentName].push(prop)
+
         } else componentProps.push(prop)
     });
 

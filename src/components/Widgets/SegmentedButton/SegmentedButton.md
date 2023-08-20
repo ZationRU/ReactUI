@@ -16,6 +16,12 @@ const [iconSelectedId, setIconSelectedId] = useState(null);
         <SegmentedButton.Segment id="month">Month</SegmentedButton.Segment>
     </SegmentedButton>
 
+    <SegmentedButton selectIcon={false} selectedIds={selectedId} onSelect={setSelectedId}>
+        <SegmentedButton.Segment id="day">Day</SegmentedButton.Segment>
+        <SegmentedButton.Segment id="week">Week</SegmentedButton.Segment>
+        <SegmentedButton.Segment id="month">Month</SegmentedButton.Segment>
+    </SegmentedButton>
+
     <SegmentedButton 
         multiselect={true} 
         minSelected={0}

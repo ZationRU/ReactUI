@@ -9,11 +9,46 @@ import {HStack} from "../../Basic/Stack/Stack";
 export type SelectEventHandler = (id: string|string[]) => void
 
 export interface SegmentedButtonProps extends Omit<LayoutProps, "onSelect"> {
+    /**
+     * Height density
+     *
+     * @default 0
+     */
     density?: number
+
+    /**
+     * Support of multiselect
+     *
+     * @default false
+     */
     multiselect?: boolean
+
+    /**
+     * Current selected Segment id's
+     */
     selectedIds: string|string[]
+
+    /**
+     * Minimal count of selected elements.
+     * Works only in multiselect mode
+     *
+     * @default 1
+     */
     minSelected?: number
+
+    /**
+     * Select of Segment handler
+     *
+     * @default undefined
+     */
     onSelect?: SelectEventHandler
+
+    /**
+     * Enable select Segment icon on select
+     *
+     * @default true
+     */
+    selectIcon?: boolean
 }
 
 interface SegmentedButtonContextInterface {
@@ -21,14 +56,13 @@ interface SegmentedButtonContextInterface {
     onSelect?: SelectEventHandler
     multiselect: boolean
     minSelected: number
+    selectIcon: boolean
 }
 
 const SegmentedButtonContext = createContext<SegmentedButtonContextInterface|null>(null)
 
 /**
- * Segmented Button component
- *
- * Not yet finished component
+ * Segmented buttons help people select options, switch views, or sort elements
  *
  * @param props
  * @constructor
@@ -40,6 +74,7 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
         multiselect = false,
         selectedIds,
         minSelected = 1,
+        selectIcon = true,
         onSelect,
         ...layoutRest
     } = props
@@ -57,7 +92,8 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
             onSelect,
             selectedIds: Array.isArray(selectedIds)?selectedIds:[selectedIds],
             multiselect,
-            minSelected
+            minSelected,
+            selectIcon
         }), [onSelect, selectedIds])}>
             {children}
         </SegmentedButtonContext.Provider>
@@ -92,6 +128,7 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
 
             const isSelected = data.selectedIds.includes(id)
             const selectedIds = data.selectedIds
+            const selectIcon = data.selectIcon
 
             return <FlexLayout
                 {...layoutRest}
@@ -102,6 +139,9 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                 borderRight="1px var(--znui-outline) solid"
                 pos="relative"
                 cursor="pointer"
+                _last={{
+                    borderRight: 'none'
+                }}
                 onClick={() => {
                     if(data.multiselect) {
                         const newArray = isSelected ?
@@ -126,9 +166,9 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                         style={{
                             '--icon-size': '18px'
                         } as CSSProperties}
-                        maxW={isSelected ? 18: 0}
-                        minW={isSelected ? 18: 0}
-                        mr={isSelected ? 8: 0}
+                        maxW={selectIcon&&isSelected ? 18: 0}
+                        minW={selectIcon&&isSelected ? 18: 0}
+                        mr={selectIcon&&isSelected ? 8: 0}
                         transition={[
                             'max-width 300ms var(--emphasized-motion)',
                             'min-width 300ms var(--emphasized-motion)',
