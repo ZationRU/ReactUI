@@ -14,6 +14,7 @@ export interface SegmentedButtonProps extends Omit<LayoutProps, "onSelect"> {
     selectedIds: string|string[]
     minSelected?: number
     onSelect?: SelectEventHandler
+    selectIcon?: boolean
 }
 
 interface SegmentedButtonContextInterface {
@@ -21,6 +22,7 @@ interface SegmentedButtonContextInterface {
     onSelect?: SelectEventHandler
     multiselect: boolean
     minSelected: number
+    selectIcon: boolean
 }
 
 const SegmentedButtonContext = createContext<SegmentedButtonContextInterface|null>(null)
@@ -40,6 +42,7 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
         multiselect = false,
         selectedIds,
         minSelected = 1,
+        selectIcon = true,
         onSelect,
         ...layoutRest
     } = props
@@ -57,7 +60,8 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
             onSelect,
             selectedIds: Array.isArray(selectedIds)?selectedIds:[selectedIds],
             multiselect,
-            minSelected
+            minSelected,
+            selectIcon
         }), [onSelect, selectedIds])}>
             {children}
         </SegmentedButtonContext.Provider>
@@ -92,6 +96,7 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
 
             const isSelected = data.selectedIds.includes(id)
             const selectedIds = data.selectedIds
+            const selectIcon = data.selectIcon
 
             return <FlexLayout
                 {...layoutRest}
@@ -129,9 +134,9 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                         style={{
                             '--icon-size': '18px'
                         } as CSSProperties}
-                        maxW={isSelected ? 18: 0}
-                        minW={isSelected ? 18: 0}
-                        mr={isSelected ? 8: 0}
+                        maxW={selectIcon&&isSelected ? 18: 0}
+                        minW={selectIcon&&isSelected ? 18: 0}
+                        mr={selectIcon&&isSelected ? 8: 0}
                         transition={[
                             'max-width 300ms var(--emphasized-motion)',
                             'min-width 300ms var(--emphasized-motion)',
