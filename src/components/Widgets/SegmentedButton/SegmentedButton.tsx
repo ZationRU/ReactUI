@@ -102,6 +102,9 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                 borderRight="1px var(--znui-outline) solid"
                 pos="relative"
                 cursor="pointer"
+                _last={{
+                    borderRight: 'none'
+                }}
                 onClick={() => {
                     if(data.multiselect) {
                         const newArray = isSelected ?
