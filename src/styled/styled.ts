@@ -7,6 +7,7 @@ import createStyled, {FunctionInterpolation} from "@emotion/styled"
 import {css} from "./css";
 import {LayoutBreakpoint} from "../adaptive/LayoutBreakpoint";
 import {runIfFn} from "../utils";
+import {pseudoSelectors} from "./configs/pseudo/Pseudo";
 
 const emotion = ((createStyled as any).default ?? createStyled) as typeof createStyled
 
@@ -22,21 +23,18 @@ interface GetStyleObject {
 
 export const styledProps = {
     ...cssConfig,
-    ...znuiPropsConfig
+    ...znuiPropsConfig,
+    ...pseudoSelectors
 }
-
 export const isStyleProp = (prop: string) => prop in styledProps
 
 export const toCSSObject: GetStyleObject =
     ({ baseStyle }) =>
         (props) => {
             const {currentBreakPoint, ...rest} = props
-            const styleProps = {}
-            Object.keys(rest)
-                .filter((prop) => isStyleProp(prop))
-                .forEach(prop => {
-                    styleProps[prop] = rest[prop]
-                })
+            const styleProps = Object.fromEntries(
+                Object.entries(rest).filter(([key]) => isStyleProp(key))
+            )
 
             const baseStyles = runIfFn(baseStyle, rest) || {}
 

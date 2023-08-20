@@ -3,8 +3,18 @@ import {
 } from "./configs";
 import * as CSS from "csstype";
 import React from "react";
+import {Pseudos} from "./configs/pseudo/Pseudo";
 
 export type StyleProps = CSSProps & ZnUICSSProps;
+
+/** Pseudos **/
+type PseudoKeys = keyof CSS.Pseudos | keyof Pseudos
+
+type PseudoSelectorDefinition<D> = D | RecursivePseudo<D>
+
+export type RecursivePseudo<D> = {
+    [K in PseudoKeys]?: PseudoSelectorDefinition<D> & D
+}
 
 export interface SystemCSSProperties
     extends CSS.Properties,
@@ -25,13 +35,16 @@ export interface RecursiveCSSSelector<D> {
     [selector: string]: CSSDefinition<D> & D
 }
 
-export type RecursiveCSSObject<D> = D & (D | RecursiveCSSSelector<D>)
+export type RecursiveCSSObject<D> = D &
+    (D | RecursivePseudo<D> | RecursiveCSSSelector<D>)
 
 export type ZnUIStyleObject = RecursiveCSSObject<CSSWithMultiValues>
 
-export interface ZnUIProps extends StyleProps {
-
+type PseudoProps = {
+    [K in keyof Pseudos]?: ZnUIStyleObject
 }
+
+export interface ZnUIProps extends StyleProps, PseudoProps {}
 
 export type OmitCommonProps<
     Target,
