@@ -9,11 +9,45 @@ import {HStack} from "../../Basic/Stack/Stack";
 export type SelectEventHandler = (id: string|string[]) => void
 
 export interface SegmentedButtonProps extends Omit<LayoutProps, "onSelect"> {
+    /**
+     * Height density
+     *
+     * @default 0
+     */
     density?: number
+
+    /**
+     * Support of multiselect
+     *
+     * @default false
+     */
     multiselect?: boolean
+
+    /**
+     * Current selected Segment id's
+     */
     selectedIds: string|string[]
+
+    /**
+     * Minimal count of selected elements.
+     * Works only in multiselect mode
+     *
+     * @default 1
+     */
     minSelected?: number
+
+    /**
+     * Select of Segment handler
+     *
+     * @default undefined
+     */
     onSelect?: SelectEventHandler
+
+    /**
+     * Enable select Segment icon on select
+     *
+     * @default true
+     */
     selectIcon?: boolean
 }
 
@@ -28,9 +62,7 @@ interface SegmentedButtonContextInterface {
 const SegmentedButtonContext = createContext<SegmentedButtonContextInterface|null>(null)
 
 /**
- * Segmented Button component
- *
- * Not yet finished component
+ * Segmented buttons help people select options, switch views, or sort elements
  *
  * @param props
  * @constructor
