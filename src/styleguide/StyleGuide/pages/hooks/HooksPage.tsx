@@ -6,7 +6,7 @@ import {
     Body,
     useAdaptive,
     CoordinatorLayout,
-    AppBarLayout, Toolbar, VStack, useAdaptiveValue
+    AppBarLayout, Toolbar, VStack
 } from "../../../../";
 import {Section, SectionCard, SectionTitle} from "../../SectionsUI";
 import React, {RefAttributes} from "react";
