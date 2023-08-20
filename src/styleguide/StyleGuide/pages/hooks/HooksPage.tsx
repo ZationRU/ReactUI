@@ -6,7 +6,7 @@ import {
     Body,
     useAdaptive,
     CoordinatorLayout,
-    AppBarLayout, Toolbar, VStack, useAdaptiveValue
+    AppBarLayout, Toolbar, VStack
 } from "../../../../";
 import {Section, SectionCard, SectionTitle} from "../../SectionsUI";
 import React, {RefAttributes} from "react";
@@ -15,6 +15,7 @@ import {MDXFactory} from "../MDXFactory";
 import UseAdaptiveHook from "./useAdaptiveHook.mdx";
 import UseDialogsHook from "./useDialogsHook.mdx";
 import UseAdaptiveValueHook from "./useAdaptiveValueHook.mdx";
+import UseSnackbarHook from "./useSnackbarHook.mdx";
 import {ZnUIIconBackArrowFilled} from "@znui/icons";
 
 interface HooksPageProps extends RefAttributes<HTMLDivElement> {
@@ -35,7 +36,10 @@ export const Hooks = {
         description: 'Hook for creating modal windows and dialogs',
         component: MDXFactory(UseDialogsHook)
     },
-
+    useSnackbar: {
+        description: 'Hook for creating Snackbars',
+        component: MDXFactory(UseSnackbarHook)
+    },
 }
 
 export function HooksPage({ go, ref, evalInContext }: HooksPageProps) {

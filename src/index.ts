@@ -111,3 +111,10 @@ export * from "./utils"
  * Theme
  */
 export * from "./theme"
+
+//-------------------------------------------------------------------------------------
+
+/**
+ * Snackbar
+ */
+export * from "./snackbar"
