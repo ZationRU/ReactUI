@@ -68,6 +68,7 @@ export * from "./components/Widgets/ContainedIconButton/ContainedIconButton"
 export * from "./components/Widgets/LinearProgressIndicator/LinearProgressIndicator"
 export * from "./components/Widgets/CircularProgressIndicator/CircularProgressIndicator"
 export * from "./components/Widgets/Badge/Badge"
+export * from "./components/Widgets/Radio/Radio"
 
 //-------------------------------------------------------------------------------------
 
