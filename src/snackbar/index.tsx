@@ -59,6 +59,8 @@ export const useSnackbar = () => {
             const Snackbar = () => {
                 const [isHide, setIsHide]
                     = useState<|boolean>(false)
+                const [isTouched, setIsTouched]
+                    = useState<|boolean>(false)
 
                 const durationValue = useAdaptiveValue(config.duration) || 'short'
                 const bottomOffset = (useAdaptiveValue(config.bottom) || 0) + 15
@@ -74,17 +76,19 @@ export const useSnackbar = () => {
                 }
 
                 useEffect(() => {
-                    // const timeout = setTimeout(hide,
-                    //     typeof durationValue === 'string' ? {
-                    //         short: 1550,
-                    //         long: 2750,
-                    //     }[durationValue] : durationValue
-                    // )
-                    //
-                    // return () => {
-                    //     clearTimeout(timeout)
-                    // }
-                }, [durationValue]);
+                    if(isTouched) return;
+
+                    const timeout = setTimeout(hide,
+                        typeof durationValue === 'string' ? {
+                            short: 1550,
+                            long: 2750,
+                        }[durationValue] : durationValue
+                    )
+
+                    return () => {
+                        clearTimeout(timeout)
+                    }
+                }, [durationValue, isTouched]);
 
                 const defaultTransitions = [
                     "opacity 200ms var(--emphasized-decelerate-motion)",
@@ -104,6 +108,8 @@ export const useSnackbar = () => {
                         e.currentTarget.setAttribute('data-offset-x', e.touches[0].clientX.toString())
                         e.currentTarget.setAttribute('data-offset-y', e.touches[0].toString())
                         e.currentTarget.style.transition = 'none'
+
+                        setIsTouched(true)
                     }}
                     onTouchMove={(e) => {
                         const offsetX = parseInt(e.currentTarget.getAttribute('data-offset-x')||'0')
@@ -158,6 +164,8 @@ export const useSnackbar = () => {
                             "bottom 200ms var(--emphasized-decelerate-motion)",
                             "right 200ms var(--emphasized-decelerate-motion)",
                         ].join(','))
+
+                        setIsTouched(false)
                     }}
                     style={{
                         touchAction: "none"
