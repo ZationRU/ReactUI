@@ -81,7 +81,7 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                 emd: false
             })
 
-            const isFullscreen = fullscreen==='auto' ? autoFullscreen: !!fullscreen
+            const isFullscreen = fullscreen==='auto'||fullscreen===undefined ? autoFullscreen: fullscreen
 
             const targetHeightHalf = targetRect ? targetRect.height / 2: 0
             const targetWidthHalf = targetRect ? targetRect.width / 2: 0
