@@ -1,5 +1,5 @@
 import React from "react";
-import {Body} from "../components/Typography/Body/Body";
+import {Body} from "../components";
 
 interface ParaProps {
     semantic?: 'p';

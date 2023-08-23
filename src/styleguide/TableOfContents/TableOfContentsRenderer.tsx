@@ -1,5 +1,5 @@
 import React from "react";
-import {Toolbar} from "../../components/Widgets/Toolbar/Toolbar";
+import {Toolbar} from "../../components";
 import Examples from "react-styleguidist/lib/client/rsg-components/Examples/Examples";
 import Markdown from "react-styleguidist/lib/client/rsg-components/Markdown/Markdown";
 

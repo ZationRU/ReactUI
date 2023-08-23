@@ -1,8 +1,6 @@
 import React, {PointerEvent, useRef} from "react";
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
-import {FlexLayout} from "../../Basic/FlexLayout/FlexLayout";
-import {mergeRefs} from "../../../utils/refs";
-import {znui} from "../../Basic/znui";
+import {Layout, LayoutProps, FlexLayout, znui} from "../../Basic";
+import {mergeRefs} from "../../../utils";
 
 export interface SliderProps extends LayoutProps {
     /**

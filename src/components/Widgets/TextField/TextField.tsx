@@ -1,10 +1,10 @@
 import React from "react";
 import "./TextField.css";
-import {Layout} from "../../Basic/Layout/Layout";
-import {HTMLZnUIProps} from "../../../styled/styled.types";
-import {Body} from "../../Typography/Body/Body";
+import {Layout} from "../../Basic";
+import {HTMLZnUIProps} from "../../../styled";
+import {Body} from "../../Typography";
 import classNames from "classnames";
-import {AnimatedVisibility} from "../../Animation/AnimatedVisibility/AnimatedVisibility";
+import {AnimatedVisibility} from "../../Animation";
 
 export interface TextFieldProps extends HTMLZnUIProps<"div"> {
     label?: string

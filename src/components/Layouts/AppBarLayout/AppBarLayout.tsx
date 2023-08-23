@@ -1,4 +1,4 @@
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
+import {Layout, LayoutProps} from "../../Basic";
 import React, {
     ForwardRefExoticComponent,
     PropsWithoutRef,

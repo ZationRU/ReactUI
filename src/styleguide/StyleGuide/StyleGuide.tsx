@@ -1,12 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import Context from 'react-styleguidist/lib/client/rsg-components/Context';
 import NotFound from 'react-styleguidist/lib/client/rsg-components/NotFound';
-import Sections from 'react-styleguidist/lib/client/rsg-components/Sections';
 import StyleGuideProps from 'react-styleguidist/lib/client/rsg-components/StyleGuide';
 import {StyleGuideRenderer} from './StyleGuideRenderer';
 import TableOfContents from "react-styleguidist/lib/client/rsg-components/TableOfContents/TableOfContents";
-import {AdaptiveProvider} from "../../components/Providers/AdaptiveProvider/AdaptiveProvider";
-import {ThemeProvider} from "../../components/Providers/ThemeProvider/ThemeProvider";
+import {ThemeProvider, AdaptiveProvider} from "../../components";
 import ReactComponent from "../ReactComponent/ReactComponent";
 
 export default function StyleGuide(props: StyleGuideProps) {

@@ -1,10 +1,5 @@
-import React, {useCallback, useEffect} from "react";
-import { Layout } from "../../components/Basic/Layout/Layout";
-import {useAdaptive} from "../../adaptive/useAdaptive";
-import {useState} from "react";
-import {LayoutBreakpointsValues} from "../../adaptive/LayoutBreakpoint";
-import {NavigationBar} from "../../components/Widgets/NavigationBar/NavigationBar";
-import {NavigationRail} from "../../components/Widgets/NavigationRail/NavigationRail";
+import React, {useCallback, useEffect, useState} from "react";
+import { Layout, useAdaptive, LayoutBreakpointsValues, NavigationBar, NavigationRail, Headline} from "../../";
 import {HomeInfoPage} from "./pages/HomeInfoPage";
 import {
     ZnUIIconHomeFilled,
@@ -15,7 +10,6 @@ import {ComponentsPage} from "./pages/ComponentsPage";
 import {keyframes} from "@emotion/react";
 import AdaptivePage from './pages/adaptive.mdx';
 import GetStarted from './pages/get-started.mdx';
-import {Headline} from "../../components/Typography/Headline/Headline";
 import {MDXFactory} from "./pages/MDXFactory";
 import {HooksPage} from "./pages/hooks/HooksPage";
 

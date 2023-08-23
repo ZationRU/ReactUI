@@ -1,6 +1,4 @@
-import React from "react";
-import {znui} from "../znui";
-import {HTMLZnUIProps} from "../../../styled/styled.types";
+import {HTMLZnUIProps, znui} from "../../../";
 
 export interface AbsoluteCenterProps extends HTMLZnUIProps<'div'> {
     /**

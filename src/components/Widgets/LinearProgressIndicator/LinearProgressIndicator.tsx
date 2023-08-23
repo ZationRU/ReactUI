@@ -1,5 +1,5 @@
 import React, {ForwardedRef} from "react";
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
+import {Layout, LayoutProps} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
 import { keyframes } from '@emotion/react'
 

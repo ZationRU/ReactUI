@@ -1,5 +1,4 @@
-import {znui} from "../znui";
-import {HTMLZnUIProps} from "../../../styled/styled.types";
+import {znui, HTMLZnUIProps} from "../../../";
 
 export type FlexLayoutProps = HTMLZnUIProps<"div">
 

@@ -1,14 +1,8 @@
 import {Navigate} from "../StyleGuideRenderer";
-import {Layout} from "../../../components/Basic/Layout/Layout";
 import {Section, SectionCard, SectionTitle} from "../SectionsUI";
-import {Title} from "../../../components/Typography/Title/Title";
+import {Title, Card, znui, Body, VStack, ThemeTokens} from "../../../";
 import {Code} from "../CodePlaygroundDocs";
-import {Card} from "../../../components/Layouts/Card/Card";
-import {znui} from "../../../components/Basic/znui";
-import {ThemeTokens} from "../../../theme";
 import React from "react";
-import {Body} from "../../../components/Typography/Body/Body";
-import {VStack} from "../../../components/Basic/Stack/Stack";
 
 export const MDXFactory = (
     Component: (props: any) => JSX.Element

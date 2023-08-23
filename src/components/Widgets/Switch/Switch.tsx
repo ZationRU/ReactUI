@@ -1,4 +1,4 @@
-import React, {ChangeEventHandler, ChangeEvent, useRef, useState, useCallback, ReactNode, ForwardedRef} from "react";
+import React, {ChangeEventHandler, useRef, useCallback, ReactNode, ForwardedRef} from "react";
 import "./Switch.css";
 import classNames from "classnames";
 import {IconWrapper} from "../IconWrapper/IconWrapper";

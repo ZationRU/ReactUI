@@ -1,15 +1,6 @@
-import {Card} from "../../components/Layouts/Card/Card";
+import {Card, Title, FlexLayout, Body, Label, Divider, Button, Layout, ThemeTokens} from "../../";
 import React from "react";
-import {Title} from "../../components/Typography/Title/Title";
-import {isStyleProp} from "../../styled/styled";
-import {FlexLayout} from "../../components/Basic/FlexLayout/FlexLayout";
 import CodeRenderer from "../CodeRenderer/CodeRenderer";
-import {Body} from "../../components/Typography/Body/Body";
-import {Label} from "../../components/Typography/Label/Label";
-import {Divider} from "../../components/Widgets/Divider/Divider";
-import {Button} from "../../components/Widgets/Button/Button";
-import {Layout} from "../../components/Basic/Layout/Layout";
-import {ThemeTokens} from "../../theme";
 
 interface TableProps {
     columns: {

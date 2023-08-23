@@ -1,8 +1,4 @@
-import {LayoutProps} from "../../components/Basic/Layout/Layout";
-import {Display} from "../../components/Typography/Display/Display";
-import {Card} from "../../components/Layouts/Card/Card";
-import {VStack} from "../../components/Basic/Stack/Stack";
-import {GridLayout} from "../../components/Basic/GridLayout/GridLayout";
+import {LayoutProps, Display, Card, VStack, GridLayout} from "../../";
 import React from "react";
 
 import "./SectionsUI.css";

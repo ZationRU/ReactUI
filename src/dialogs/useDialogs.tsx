@@ -1,6 +1,6 @@
 import {JSXElementConstructor, UIEvent, MouseEvent} from "react";
 import {useMemo} from "react";
-import {portals} from "../components/Providers/portals";
+import {usePortals} from "../components/Providers/portals";
 import {AlertDialogConfig, AlertDialogInterface, showAlert} from "./alerts";
 import {ModalDialogInterface, ModalProps, showModal} from "./modals";
 
@@ -14,7 +14,7 @@ export type DialogInterface = {
 }
 
 export const useDialogs = (): DialogInterface => {
-    const portalRegister = portals()
+    const portalRegister = usePortals()
 
     return useMemo(() => ({
         showAlert: showAlert(portalRegister),

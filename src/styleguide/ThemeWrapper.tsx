@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {ThemeProvider} from '../components/Providers/ThemeProvider/ThemeProvider';
-import {AdaptiveProvider} from "../components/Providers/AdaptiveProvider/AdaptiveProvider";
+import {ThemeProvider, AdaptiveProvider} from '../components';
 import {useEffect, useState} from "react";
 
 const ThemeWrapper = ({children}: React.HTMLAttributes<HTMLDivElement>) => {

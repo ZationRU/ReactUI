@@ -1,7 +1,7 @@
 import {ZnUIPortalRegistrar} from "../components/Providers/portals";
 import React, {JSXElementConstructor, useCallback, useEffect, useRef, useState, UIEvent} from "react";
-import {Layout} from "../components/Basic/Layout/Layout";
-import {useAdaptiveValue} from "../adaptive/useAdaptive";
+import {Layout} from "../components";
+import {useAdaptiveValue} from "../adaptive";
 import {ThemeTokens} from "../theme";
 
 export type ModalDialogInterface = {

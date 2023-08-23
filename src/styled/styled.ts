@@ -5,7 +5,7 @@ import React from "react";
 import {StyleProps, ZnUIComponent, ZnUIStyleObject} from "./styled.types";
 import createStyled, {FunctionInterpolation} from "@emotion/styled"
 import {css} from "./css";
-import {LayoutBreakpoint} from "../adaptive/LayoutBreakpoint";
+import {LayoutBreakpoint} from "../adaptive";
 import {runIfFn} from "../utils";
 import {pseudoSelectors} from "./configs/pseudo/Pseudo";
 

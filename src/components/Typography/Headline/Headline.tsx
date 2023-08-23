@@ -1,10 +1,9 @@
 import './Headline.css';
 import React from "react";
 import classNames from "classnames";
-import {useAdaptiveValue} from "../../../adaptive/useAdaptive";
-import {Adaptive} from "../../../adaptive/Adaptive";
-import {znui} from "../../Basic/znui";
-import {HTMLZnUIProps} from "../../../styled/styled.types";
+import {znui} from "../..";
+import {useAdaptiveValue, Adaptive} from "../../../adaptive";
+import {HTMLZnUIProps} from "../../../styled";
 
 export interface HeadlineProps extends HTMLZnUIProps<'h4'> {
     size?: Adaptive<'small'|'medium'|'large'>;

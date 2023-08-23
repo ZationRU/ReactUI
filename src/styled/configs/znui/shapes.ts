@@ -1,4 +1,4 @@
-import {Adaptive} from "../../../adaptive/Adaptive";
+import {Adaptive} from "../../../adaptive/";
 import {asTransformProp} from "../config";
 
 type ShapeScale = 'none'|'esm'|'sm'|'md'|'lg'|'elg'|'full'

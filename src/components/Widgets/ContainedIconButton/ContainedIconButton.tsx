@@ -1,10 +1,9 @@
 import React from "react";
-import {LayoutProps} from "../../Basic/Layout/Layout";
-import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
+import {LayoutProps, Center} from "../../Basic";
+import {StateLayer} from "../../Layouts";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
 import classNames from "classnames";
 import "./ContainedIconButton.css";
-import {Center} from "../../Basic/Center/Center";
 
 export interface ContainedIconButtonProps extends LayoutProps {
     /**

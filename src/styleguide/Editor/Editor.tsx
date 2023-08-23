@@ -9,7 +9,7 @@ import 'prismjs/components/prism-typescript';
 import 'prismjs/themes/prism-twilight.css';
 import './Editor.css';
 import {Editor} from "react-styleguidist/lib/client/rsg-components/Editor/Editor";
-import {Layout} from "../../components/Basic/Layout/Layout";
+import {Layout} from "../../";
 
 let timer: NodeJS.Timeout
 

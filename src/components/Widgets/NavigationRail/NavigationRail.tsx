@@ -1,9 +1,9 @@
 import "./NavigationRail.css";
 import React, {ReactNode} from "react";
 import classNames from "classnames";
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
-import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
-import {Label} from "../../Typography/Label/Label";
+import {Layout, LayoutProps} from "../../Basic";
+import {StateLayer} from "../../Layouts";
+import {Label} from "../../Typography";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
 import {ThemeTokens} from "../../../theme";
 import {BadgeProps} from "../Badge/Badge";

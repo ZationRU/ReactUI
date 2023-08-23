@@ -1,9 +1,9 @@
 import "./NavigationBar.css"
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
-import React, {ReactElement} from "react";
-import {Label} from "../../Typography/Label/Label";
+import {Layout, LayoutProps} from "../../Basic";
+import React from "react";
+import {Label} from "../../Typography";
 import classNames from "classnames";
-import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
+import {StateLayer} from "../../Layouts";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
 import {ThemeTokens} from "../../../theme";
 import {BadgeProps} from "../Badge/Badge";

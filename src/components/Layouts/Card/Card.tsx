@@ -1,5 +1,5 @@
 import React from "react";
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
+import {Layout, LayoutProps} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
 import {StateLayer} from "../StateLayer/StateLayer";
 import classNames from "classnames";

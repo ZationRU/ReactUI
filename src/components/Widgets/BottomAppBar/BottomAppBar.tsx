@@ -1,15 +1,7 @@
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
 import React, {ForwardRefExoticComponent, PropsWithoutRef, ReactNode, RefAttributes} from "react";
-import {FlexLayout} from "../../Basic/FlexLayout/FlexLayout";
-import {Center} from "../../Basic/Center/Center";
+import {Layout, LayoutProps, Center, FlexLayout} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
-import {CoordinatorLayoutBehavior, CoordinatorLayoutElement} from "../../Layouts/CoordinatorLayout/CoordinatorLayout";
-import {
-    AppBarLayoutBehavior,
-    AppBarLayoutProps,
-    AppBarLayoutRefProps,
-    AppBarLayoutScrollBehavior
-} from "../../Layouts/AppBarLayout/AppBarLayout";
+import {CoordinatorLayoutBehavior, CoordinatorLayoutElement} from "../../Layouts";
 
 export interface BottomAppBarProps extends LayoutProps {
     fab?: ReactNode,

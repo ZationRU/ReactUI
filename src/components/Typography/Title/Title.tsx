@@ -1,11 +1,9 @@
 import './Title.css';
 import React from "react";
 import classNames from "classnames";
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
-import {useAdaptiveValue} from "../../../adaptive/useAdaptive";
-import {Adaptive} from "../../../adaptive/Adaptive";
-import {znui} from "../../Basic/znui";
-import {HTMLZnUIProps} from "../../../styled/styled.types";
+import {znui} from "../..";
+import {useAdaptiveValue, Adaptive} from "../../../adaptive";
+import {HTMLZnUIProps} from "../../../styled";
 
 export interface TitleProps extends HTMLZnUIProps<'h4'> {
     size?: Adaptive<'small'|'medium'|'large'>;

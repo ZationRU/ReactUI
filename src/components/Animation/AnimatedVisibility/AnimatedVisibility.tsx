@@ -1,6 +1,4 @@
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
-import {Adaptive} from "../../../adaptive/Adaptive";
-import {useAdaptive, useAdaptiveValue} from "../../../adaptive/useAdaptive";
+import {Adaptive, Layout, LayoutProps, useAdaptiveValue} from "../../../";
 import classNames from "classnames";
 import React, {CSSProperties} from "react";
 import "./AnimatedVisibility.css";

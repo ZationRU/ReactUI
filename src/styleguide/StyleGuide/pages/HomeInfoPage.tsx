@@ -1,12 +1,5 @@
 import React from "react";
-import {Layout} from "../../../components/Basic/Layout/Layout";
-import {Title} from "../../../components/Typography/Title/Title";
-import {Card} from "../../../components/Layouts/Card/Card";
-import {Center} from "../../../components/Basic/Center/Center";
-import {Headline} from "../../../components/Typography/Headline/Headline";
-import {VStack} from "../../../components/Basic/Stack/Stack";
-import {Body} from "../../../components/Typography/Body/Body";
-import {Button} from "../../../components/Widgets/Button/Button";
+import {Layout, Title, Card, Center, Headline, VStack, Body, Button} from "../../../";
 import {Navigate} from "../StyleGuideRenderer";
 import {Section, SectionCard, SectionTitle} from "../SectionsUI";
 

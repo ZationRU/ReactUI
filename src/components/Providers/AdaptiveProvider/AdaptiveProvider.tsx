@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 import {createContext, useState} from "react";
-import {LayoutBreakpoint, LayoutBreakpointsValues} from "../../../adaptive/LayoutBreakpoint";
-import {AdaptiveData} from "../../../adaptive/AdaptiveData";
+import {AdaptiveData, LayoutBreakpoint, LayoutBreakpointsValues} from "../../../adaptive";
 import {useForceUpdate, useZnUIProviderPortalCreator, ZnUIProviderPortalContext} from "../portals";
 
 export function getCurrentDimensionBreakpoint(): LayoutBreakpoint {

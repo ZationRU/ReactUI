@@ -1,7 +1,6 @@
 import React from "react";
 import Playground from "react-styleguidist/lib/client/rsg-components/Playground/Playground";
-import {ThemeTokens} from "../../theme";
-import {Layout} from "../../components/Basic/Layout/Layout";
+import {Layout, ThemeTokens} from "../../";
 
 let index = 1000;
 

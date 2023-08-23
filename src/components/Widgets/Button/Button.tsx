@@ -1,10 +1,10 @@
 import React, {ReactNode} from 'react';
 import classNames from 'classnames';
 import "./Button.css";
-import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
+import {StateLayer} from "../../Layouts";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
-import {HTMLZnUIProps} from "../../../styled/styled.types";
-import {znui} from "../../Basic/znui";
+import {HTMLZnUIProps} from "../../../styled";
+import {znui} from "../../Basic";
 
 export interface ButtonProps extends HTMLZnUIProps<'button'>{
     mode?: 'filled'|'text'|'outline'|'tonal'|'elevated',

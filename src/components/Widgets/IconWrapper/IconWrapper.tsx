@@ -1,5 +1,5 @@
 import React from "react"
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
+import {Layout, LayoutProps} from "../../Basic";
 import classNames from "classnames";
 import "./IconWrapper.css";
 

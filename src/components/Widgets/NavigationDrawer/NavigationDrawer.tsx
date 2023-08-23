@@ -1,13 +1,11 @@
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
+import {Layout, LayoutProps, FlexLayout} from "../../Basic";
 import classNames from "classnames";
-import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
-import {Label} from "../../Typography/Label/Label";
+import {StateLayer} from "../../Layouts";
+import {Label, Title} from "../../Typography";
 import React, {ReactNode} from "react";
 import "./NavigationDrawer.css";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
 import {ThemeTokens} from "../../../theme";
-import {FlexLayout} from "../../Basic/FlexLayout/FlexLayout";
-import {Title} from "../../Typography/Title/Title";
 
 export interface NavigationDrawerProps extends LayoutProps {
     /**

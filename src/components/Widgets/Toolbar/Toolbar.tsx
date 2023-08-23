@@ -1,10 +1,9 @@
 import classNames from "classnames";
 import './Toolbar.css';
 import React, {ReactNode, MouseEventHandler, useState, useEffect} from "react";
-import {Title} from "../../Typography/Title/Title";
+import {Title} from "../../Typography";
 import {IconButton} from "../IconButton/IconButton";
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
-import {FlexLayout, Spacer} from "../../Basic/FlexLayout/FlexLayout";
+import {Layout, LayoutProps, FlexLayout, Spacer} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
 
 export interface ToolbarProps extends LayoutProps {

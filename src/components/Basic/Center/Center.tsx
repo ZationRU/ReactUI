@@ -1,5 +1,4 @@
-import {HTMLZnUIProps} from "../../../styled/styled.types";
-import {znui} from "../znui";
+import {znui, HTMLZnUIProps} from "../../../";
 
 export interface CenterProps extends HTMLZnUIProps<"div"> {}
 

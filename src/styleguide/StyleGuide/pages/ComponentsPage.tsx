@@ -1,13 +1,7 @@
 import React, {ReactNode, RefAttributes} from "react";
-import {Layout} from "../../../components/Basic/Layout/Layout";
+import {Layout, useAdaptive, VStack, Title, Body, NavigationDrawer, ScrollLayout} from "../../../";
 import {Navigate} from "../StyleGuideRenderer";
 import {Section, SectionCard, SectionTitle} from "../SectionsUI";
-import {useAdaptive} from "../../../adaptive/useAdaptive";
-import {VStack} from "../../../components/Basic/Stack/Stack";
-import {Title} from "../../../components/Typography/Title/Title";
-import {Body} from "../../../components/Typography/Body/Body";
-import {NavigationDrawer} from "../../../components/Widgets/NavigationDrawer/NavigationDrawer";
-import {ScrollLayout} from "../../../components/Layouts/ScrollLayout/ScrollLayout";
 
 interface ComponentsPageProps extends RefAttributes<HTMLDivElement> {
     go: Navigate

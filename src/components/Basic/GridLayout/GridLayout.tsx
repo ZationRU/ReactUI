@@ -1,8 +1,6 @@
 import {Layout, LayoutProps} from "../Layout/Layout";
 import React from "react";
-import {Adaptive} from "../../../adaptive/Adaptive";
-import {GridProps} from "../../../styled/configs";
-import {useAdaptiveValue} from "../../../adaptive/useAdaptive";
+import {Adaptive, GridProps, useAdaptiveValue} from "../../../";
 
 export interface GridLayoutProps extends LayoutProps {
     /**

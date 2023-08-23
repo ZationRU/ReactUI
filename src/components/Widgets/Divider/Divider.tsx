@@ -1,5 +1,5 @@
-import {znui} from "../../Basic/znui";
-import {HTMLZnUIProps} from "../../../styled/styled.types";
+import {znui} from "../../Basic";
+import {HTMLZnUIProps} from "../../../styled";
 
 export type DividerProps = HTMLZnUIProps<"div">
 

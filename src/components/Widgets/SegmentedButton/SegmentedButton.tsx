@@ -1,10 +1,8 @@
 import React, {createContext, CSSProperties, useMemo} from "react";
-import {LayoutProps} from "../../Basic/Layout/Layout";
-import {FlexLayout} from "../../Basic/FlexLayout/FlexLayout";
-import {Label} from "../../Typography/Label/Label";
-import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
+import {LayoutProps, FlexLayout, HStack} from "../../Basic";
+import {Label} from "../../Typography";
+import {StateLayer} from "../../Layouts";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
-import {HStack} from "../../Basic/Stack/Stack";
 
 export type SelectEventHandler = (id: string|string[]) => void
 

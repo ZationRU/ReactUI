@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React from "react";
 import "./Avatar.css";
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
+import {Layout, LayoutProps} from "../../Basic";
 
 export interface AvatarProps extends LayoutProps {
     image?: string

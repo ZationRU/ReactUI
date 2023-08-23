@@ -1,10 +1,9 @@
 import './Display.css';
 import React from "react";
 import classNames from "classnames";
-import {useAdaptiveValue} from "../../../adaptive/useAdaptive";
-import {Adaptive} from "../../../adaptive/Adaptive";
-import {HTMLZnUIProps} from "../../../styled/styled.types";
-import {znui} from "../../Basic/znui";
+import {znui} from "../..";
+import {useAdaptiveValue, Adaptive} from "../../../adaptive";
+import {HTMLZnUIProps} from "../../../styled";
 
 
 export interface DisplayProps extends HTMLZnUIProps<'h4'> {

@@ -1,5 +1,5 @@
-import {znui} from "../../Basic/znui";
-import {ZnUIComponent} from "../../../styled/styled.types";
+import {znui} from "../../Basic";
+import {ZnUIComponent} from "../../../styled";
 
 export const ScrollLayout: ZnUIComponent<'div', {
     orientation?: 'vertical'|'horizontal'

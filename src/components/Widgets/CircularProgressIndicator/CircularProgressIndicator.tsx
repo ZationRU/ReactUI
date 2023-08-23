@@ -1,9 +1,7 @@
 import React, {ForwardedRef} from "react";
-import { Adaptive } from "../../../adaptive/Adaptive";
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
-import {useAdaptiveValue} from "../../../adaptive/useAdaptive";
-import {HTMLZnUIProps} from "../../../styled/styled.types";
-import {znui} from "../../Basic/znui";
+import { Adaptive, useAdaptiveValue} from "../../../adaptive";
+import {Layout, LayoutProps, znui} from "../../Basic";
+import {HTMLZnUIProps} from "../../../styled";
 import {ThemeTokens} from "../../../theme";
 import {keyframes} from "@emotion/react";
 

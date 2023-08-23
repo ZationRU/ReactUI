@@ -1,4 +1,4 @@
-import React, {createContext, Dispatch, ReactNode, SetStateAction, useContext, useMemo, useState} from "react";
+import React, {createContext, ReactNode, useContext, useMemo, useState} from "react";
 
 export const ZnUIProviderPortalContext = createContext<ZnUIPortalRegistrar>(() => {
     throw new Error("Portal registration site not found. Please use <ThemeProvider/> or <AdaptiveProvider/> before using portals.")
@@ -52,7 +52,7 @@ class ZnUIPortalImpl implements ZnUIPortal {
     }
 }
 
-export const portals = () => useContext(ZnUIProviderPortalContext)
+export const usePortals = () => useContext(ZnUIProviderPortalContext)
 
 export const useZnUIProviderPortalCreator = (forceUpdate: () => void) => {
     const mainPortal: ZnUIPortals = useMemo(() => [], [])

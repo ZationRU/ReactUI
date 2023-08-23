@@ -1,6 +1,6 @@
-import {resolveAdaptive} from "../adaptive/AdaptiveResolver";
+import {resolveAdaptive} from "../adaptive";
 import {styledProps} from "./styled";
-import {useAdaptive} from "../adaptive/useAdaptive";
+import {useAdaptive} from "../adaptive";
 import {isFunction} from "../utils";
 import {pseudoSelectors} from "./configs/pseudo/Pseudo";
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import classNames from "classnames";
 import "./FloatingActionButton.css";
-import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
+import {StateLayer} from "../../Layouts";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
-import {useAdaptiveValue} from "../../../adaptive/useAdaptive";
-import {Adaptive} from "../../../adaptive/Adaptive";
+import {useAdaptiveValue} from "../../../adaptive";
+import {Adaptive} from "../../../adaptive";
 
 export interface FloatingActionButtonProps extends React.HTMLAttributes<HTMLButtonElement>{
     size?: Adaptive<'small' | 'default' | 'expanded' | 'large'>,

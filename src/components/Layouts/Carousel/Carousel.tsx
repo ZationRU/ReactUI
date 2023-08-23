@@ -1,4 +1,4 @@
-import {znui} from "../../Basic/znui";
+import {znui} from "../../Basic";
 
 /**
  * Not yet finished component

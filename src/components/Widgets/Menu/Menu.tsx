@@ -1,9 +1,7 @@
-import React, {useCallback, useState, SyntheticEvent, useContext} from 'react';
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
+import React, {useCallback, useState, SyntheticEvent} from 'react';
+import {Layout, LayoutProps, HStack, VStack} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
-import {FlexLayout} from "../../Basic/FlexLayout/FlexLayout";
-import {HStack, VStack} from "../../Basic/Stack/Stack";
-import {Body} from "../../Typography/Body/Body";
+import {Body} from "../../Typography";
 
 const MenuContext = React.createContext<MenuContextProps>({
     density: 0

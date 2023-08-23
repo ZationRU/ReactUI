@@ -1,11 +1,9 @@
 import './Label.css';
 import React from "react";
 import classNames from "classnames";
-import {Layout} from "../../Basic/Layout/Layout";
-import {useAdaptiveValue} from "../../../adaptive/useAdaptive";
-import {Adaptive} from "../../../adaptive/Adaptive";
-import {HTMLZnUIProps} from "../../../styled/styled.types";
-import {znui} from "../../Basic/znui";
+import {znui} from "../..";
+import {useAdaptiveValue, Adaptive} from "../../../adaptive";
+import {HTMLZnUIProps} from "../../../styled";
 
 export interface LabelProps extends HTMLZnUIProps<'h4'> {
     size?: Adaptive<'small'|'medium'|'large'>;

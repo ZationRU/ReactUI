@@ -1,10 +1,9 @@
 import React from "react";
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
-import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
+import {Center, LayoutProps} from "../../Basic";
+import {StateLayer} from "../../Layouts";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
 import classNames from "classnames";
 import "./IconButton.css";
-import {Center} from "../../Basic/Center/Center";
 
 export interface IconButtonProps extends LayoutProps {
     disabled?: boolean

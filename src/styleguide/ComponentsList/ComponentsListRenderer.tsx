@@ -1,6 +1,5 @@
-import {NavigationDrawer} from "../../components/Widgets/NavigationDrawer/NavigationDrawer";
 import React, {useState} from "react";
-import { Layout } from "../../components/Basic/Layout/Layout";
+import { Layout, NavigationDrawer } from "../../";
 
 type TOC = {
     heading: boolean,

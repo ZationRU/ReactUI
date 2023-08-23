@@ -1,13 +1,9 @@
-import {portals} from "../components/Providers/portals";
+import {usePortals} from "../components/Providers/portals";
 import React, {MouseEventHandler, ReactNode, useEffect, useState} from "react";
-import {Layout} from "../components/Basic/Layout/Layout";
+import {Layout, Body, HStack, Button, ButtonProps} from "../components";
 import {ThemeTokens} from "../theme";
-import {Body} from "../components/Typography/Body/Body";
-import {HStack} from "../components/Basic/Stack/Stack";
-import {Button, ButtonProps} from "../components/Widgets/Button/Button";
 import {keyframes} from "@emotion/react";
-import {Adaptive} from "../adaptive/Adaptive";
-import {useAdaptiveValue} from "../adaptive/useAdaptive";
+import {Adaptive, useAdaptiveValue} from "../adaptive";
 
 export type SnackbarConfig = {
     icon?: ReactNode
@@ -49,7 +45,7 @@ const showAnimation = keyframes`
 `
 
 export const useSnackbar = () => {
-    const portalRegister = portals()
+    const portalRegister = usePortals()
 
     return (config: SnackbarConfig): SnackbarInterface => {
         const horizontal = config.horizontal || 'right'

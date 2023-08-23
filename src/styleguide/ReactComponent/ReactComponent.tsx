@@ -1,17 +1,11 @@
 import PropsRenderer from 'react-styleguidist/lib/client/rsg-components/Props';
-import {Toolbar} from "../../components/Widgets/Toolbar/Toolbar";
+import {Toolbar, Layout, Headline, CoordinatorLayout, AppBarLayout, ScrollLayout} from "../../";
 import Markdown from "react-styleguidist/lib/client/rsg-components/Markdown/Markdown";
 import Examples from "react-styleguidist/lib/client/rsg-components/Examples/Examples";
 import React from "react";
-import {Layout} from "../../components/Basic/Layout/Layout";
 import {
     ZnUIIconBackArrowFilled,
 } from "@znui/icons"
-import {Headline} from "../../components/Typography/Headline/Headline";
-import {CoordinatorLayout} from "../../components/Layouts/CoordinatorLayout/CoordinatorLayout";
-import {AppBarLayout} from "../../components/Layouts/AppBarLayout/AppBarLayout";
-import {ScrollLayout} from "../../components/Layouts/ScrollLayout/ScrollLayout";
-import {BottomAppBar} from "../../components/Widgets/BottomAppBar/BottomAppBar";
 
 export default function ReactComponent({ component }: any) {
     const { name, visibleName, pathLine } = component;

@@ -1,8 +1,8 @@
 import {ThemeTokens} from "../../../theme";
-import {HTMLZnUIProps} from "../../../styled/styled.types";
-import {Label} from "../../Typography/Label/Label";
+import {HTMLZnUIProps} from "../../../styled";
+import {Label} from "../../Typography";
 import React from "react";
-import {Center} from "../../Basic/Center/Center";
+import {Center} from "../../Basic";
 
 export interface BadgeProps extends HTMLZnUIProps<'div'> {
     size?: 'small'|'single'|'multiple'

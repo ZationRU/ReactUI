@@ -1,4 +1,4 @@
-import {Adaptive} from "../../../adaptive/Adaptive";
+import {Adaptive} from "../../../adaptive/";
 import * as CSS from "csstype";
 import {asCSSProp} from "../config";
 

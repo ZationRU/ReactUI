@@ -1,10 +1,8 @@
 import React, {CSSProperties, ReactNode} from "react";
-import {Headline} from "../../Typography/Headline/Headline";
-import {HStack, Stack} from "../../Basic/Stack/Stack";
-import {Body} from "../../Typography/Body/Body";
-import {Spacer} from "../../Basic/FlexLayout/FlexLayout";
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
-import {IconWrapper} from "../../Widgets/IconWrapper/IconWrapper";
+import {Headline} from "../../Typography";
+import {HStack, Stack, Spacer, Layout, LayoutProps} from "../../Basic";
+import {Body} from "../../Typography";
+import {IconWrapper} from "../../Widgets";
 import {ThemeTokens} from "../../../theme";
 
 export interface BaseDialogProps extends Omit<LayoutProps, "title"> {

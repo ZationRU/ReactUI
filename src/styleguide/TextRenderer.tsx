@@ -1,5 +1,5 @@
 import React from 'react';
-import {Layout} from "../components/Basic/Layout/Layout";
+import {Layout} from "../components";
 
 export const TextRenderer = ({
                                  children,

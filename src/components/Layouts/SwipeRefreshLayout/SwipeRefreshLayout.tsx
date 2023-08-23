@@ -1,9 +1,8 @@
 import React, {ForwardedRef, useCallback, useState, PointerEvent} from "react";
 import {ScrollLayout} from "../ScrollLayout/ScrollLayout";
-import {LayoutProps} from "../../Basic/Layout/Layout";
+import {LayoutProps, Center} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
-import {CircularProgressIndicator} from "../../Widgets/CircularProgressIndicator/CircularProgressIndicator";
-import {Center} from "../../Basic/Center/Center";
+import {CircularProgressIndicator} from "../../Widgets";
 
 export interface SwipeRefreshLayoutProps extends LayoutProps{
     onRefresh: (event: RefreshEvent) => void

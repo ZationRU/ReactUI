@@ -1,8 +1,5 @@
 import React from 'react';
-import {Layout} from "../../components/Basic/Layout/Layout";
-import {FlexLayout} from "../../components/Basic/FlexLayout/FlexLayout";
-import {ThemeTokens} from "../../theme";
-import {ScrollLayout} from "../../components/Layouts/ScrollLayout/ScrollLayout";
+import {Layout, FlexLayout, ThemeTokens, ScrollLayout} from "../../";
 
 interface PlaygroundRendererProps {
     name?: string;

@@ -1,5 +1,5 @@
 import * as CSS from "csstype";
-import {Adaptive} from "../../../adaptive/Adaptive";
+import {Adaptive} from "../../../adaptive/";
 import {asCSSProp} from "../config";
 
 export const interactivity = {

@@ -1,12 +1,8 @@
 import React, {MouseEventHandler, ReactNode} from "react";
-import {Layout} from "../../Basic/Layout/Layout";
+import {Layout, Spacer, HStack, VStack} from "../../Basic";
 import {Toolbar} from "../Toolbar/Toolbar";
 import {IconButton} from "../IconButton/IconButton";
-import {Spacer} from "../../Basic/FlexLayout/FlexLayout";
-import {HStack, VStack} from "../../Basic/Stack/Stack";
-import {CoordinatorLayout} from "../../Layouts/CoordinatorLayout/CoordinatorLayout";
-import {AppBarLayout} from "../../Layouts/AppBarLayout/AppBarLayout";
-import {ScrollLayout} from "../../Layouts/ScrollLayout/ScrollLayout";
+import {CoordinatorLayout, AppBarLayout, ScrollLayout} from "../../Layouts";
 import {ModalContext} from "../../../dialogs";
 
 export interface ModalWrapperProps {

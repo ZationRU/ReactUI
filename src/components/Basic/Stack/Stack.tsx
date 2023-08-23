@@ -1,7 +1,6 @@
 import React from "react";
 import {Layout, LayoutProps} from "../Layout/Layout";
-import {Adaptive} from "../../../adaptive/Adaptive";
-import {useAdaptiveValue} from "../../../adaptive/useAdaptive";
+import {Adaptive, useAdaptiveValue} from "../../../adaptive";
 import * as CSS from "csstype";
 
 export interface StackProps extends LayoutProps {
