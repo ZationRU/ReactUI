@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Layout, NavigationDrawer } from "../../";
+import {Divider, Layout, NavigationDrawer} from "../../";
 
 type TOC = {
     heading: boolean,
@@ -16,26 +16,23 @@ interface ComponentsListRendererProps {
 }
 
 const CItem = (props: TOC) => {
-    const [open, setOpen] = useState(props.initialOpen);
+    const isSection = props.content!=null
+    return isSection? <>
+        <NavigationDrawer.SectionHeader>
+            {props.visibleName}
+        </NavigationDrawer.SectionHeader>
 
-    return <>
+        {props.content}
+    </>: <>
         <NavigationDrawer.Item
+            ml={10}
             onClick={() => {
-                if(props.content!=null) {
-                    setOpen(!open)
-                }else{
-                    window.location.href = props.href.split('?')[0]+"/"+props.visibleName
-                }
+                window.location.href = props.href.split('?')[0]+"/"+props.visibleName
             }}
-            badge={props.content!=null? '>': ''}
             selected={window.location.hash==='#'+(props.href.split('?')[0]+"/"+props.visibleName).split("#")[1]}
         >
             {props.visibleName}
         </NavigationDrawer.Item>
-
-        {open ? <Layout ml={20}>
-            {props.content}
-        </Layout>: null}
     </>
 }
 
