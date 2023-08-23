@@ -12,6 +12,8 @@ export interface CircularProgressIndicatorProps extends LayoutProps {
     value?: number
     size?: Adaptive<number>
     thickness?: Adaptive<number>
+    motionFunction?: string
+    motionDuration?: string
 }
 
 const rotateKeyframe = keyframes`
@@ -61,6 +63,8 @@ export const CircularProgressIndicator = React.forwardRef(
             value = 0,
             thickness = 4,
             size = 36,
+            motionFunction = 'var(--emphasized-motion)',
+            motionDuration,
             ...layoutRest
         } = props
 
@@ -76,7 +80,7 @@ export const CircularProgressIndicator = React.forwardRef(
             const circumference =  2 * Math.PI * ((CIRCLE_SIZE - thicknessResolved) / 2);
             circleStyles.strokeDasharray = circumference.toFixed(3);
             circleStyles.strokeDashoffset = (((100 - value) / 100) * circumference).toFixed(3)+'px';
-            circleStyles.transition = 'stroke-dashoffset 300ms var(--emphasized-motion)';
+            circleStyles.transition = 'stroke-dashoffset '+(motionDuration||'300ms')+' '+motionFunction;
         }
 
 
@@ -86,13 +90,14 @@ export const CircularProgressIndicator = React.forwardRef(
                 {...layoutRest}
                 ref={forwardRef}
                 layoutSize={size}
-                animation={variant === 'indeterminate' ? rotateKeyframe+' infinite 2s linear' : ''}
+                animation={variant === 'indeterminate' ? rotateKeyframe+' infinite '+(motionDuration||'2.5s')+' linear' : ''}
                 {...rootStyles}
             >
                 <znui.svg
                     display="block"
                     viewBox={`${CIRCLE_SIZE / 2} ${CIRCLE_SIZE / 2} ${CIRCLE_SIZE} ${CIRCLE_SIZE}`}
-                    animation={variant === 'indeterminate' ? dashKeyframe+' infinite 2.5s var(--emphasized-motion)' : ''}
+                    animation={variant === 'indeterminate' ? dashKeyframe+' infinite '+
+                        (motionDuration||'2.5s')+' '+motionFunction : ''}
 
                     {...svgStyles}
                 >
