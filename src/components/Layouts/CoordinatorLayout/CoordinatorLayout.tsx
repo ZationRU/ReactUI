@@ -123,12 +123,15 @@ export const CoordinatorLayout = React.forwardRef((props: CoordinatorLayoutProps
 
         childrenFragment.filter(it => typeof it === 'object' && Object.hasOwn(it as object, 'type'))
             .forEach((child, i) => {
+                const element = child as ReactElement
 
                 let prevY = 0
                 let prevX = 0
 
-                childrenFragment[i] = React.cloneElement(child as ReactElement, {
+                childrenFragment[i] = React.cloneElement(element, {
                     onScroll: (event: React.UIEvent<any>) => {
+                        element.props.onScroll?.call(undefined, event)
+
                         const started = scrollStarted
                         if (started) {
                             scrollStarted = true
