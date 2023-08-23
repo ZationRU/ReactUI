@@ -17,8 +17,8 @@ const TableRows = ({ rows }: { rows: any[] }) => {
         <>
             {
                 rows.map((it, i) =>
-                    <>
-                        <FlexLayout direction={['column', null, 'row']} key={i}>
+                    <React.Fragment key={i}>
+                        <FlexLayout direction={['column', null, 'row']} key={it.name}>
                             <Layout bg={ThemeTokens.surfaceContainer} maxW={['unset', null, 400]} flex={1} p={20}>
                                 <Label size="medium">{it.type.raw}</Label>
                                 <CodeRenderer>{it.name}</CodeRenderer>
@@ -30,7 +30,7 @@ const TableRows = ({ rows }: { rows: any[] }) => {
                             </Layout>
                         </FlexLayout>
                         {rows.length-1!==i&&<Divider/>}
-                    </>
+                    </React.Fragment>
                 )
             }
         </>
@@ -61,10 +61,10 @@ const TableRenderer = ({rows}: TableProps) => {
             {
                 window.location.hash==="#/Basic/Layout" ?
                     Object.keys(baseLayoutProps).map((it, i) => <>
-                        <Layout key={i} position="sticky" zIndex={2} top={0} bg={ThemeTokens.surfaceContainerHighest}>
+                        <Layout key={it+'-title'} position="sticky" zIndex={2} top={0} bg={ThemeTokens.surfaceContainerHighest}>
                             <Title p={20} size="large">{it}</Title>
                         </Layout>
-                        <TableRows rows={baseLayoutProps[it]}/>
+                        <TableRows key={it+'-table'} rows={baseLayoutProps[it]}/>
                     </>)
                     : <Layout bg={ThemeTokens.surfaceContainerHigh}>
                         <TableRows rows={componentProps}/>

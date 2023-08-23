@@ -169,7 +169,6 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
                             go={go}
                             toc={toc}
                             allSections={allSections}
-                            ref={ref}
                             children={page !== 'components' && children}/>
                 )
         }
