@@ -104,6 +104,7 @@ NavigationDrawer.Headline = (props: NavigationDrawerHeadingProps) => {
             pl={16}
             textOverflow="ellipsis"
             overflow="hidden"
+            userSelect='none'
             whiteSpace="nowrap"
         >{children}</Title>
     </FlexLayout>
@@ -129,6 +130,7 @@ NavigationDrawer.SectionHeader = (props: NavigationDrawerHeadingProps) => {
             pl={16}
             textOverflow="ellipsis"
             overflow="hidden"
+            userSelect='none'
             whiteSpace="nowrap"
         >{children}</Title>
     </FlexLayout>
