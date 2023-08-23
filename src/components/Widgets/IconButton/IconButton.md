@@ -1,6 +1,6 @@
 ```tsx
 import {ZnUIIconLikeFilled, ZnUIIconMoreFilled} from "@znui/icons";
-import {HStack, IconButton} from "@znui/react";
+import {HStack, IconButton, Badge} from "@znui/react";
 
 <HStack>
     <IconButton disabled={true}>
@@ -8,6 +8,10 @@ import {HStack, IconButton} from "@znui/react";
     </IconButton>
 
     <IconButton>
+        <ZnUIIconMoreFilled/>
+    </IconButton>
+
+    <IconButton badge={<Badge size="single">1</Badge>}>
         <ZnUIIconMoreFilled/>
     </IconButton>
 </HStack>
