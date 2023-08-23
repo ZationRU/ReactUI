@@ -1,4 +1,5 @@
-import {HTMLZnUIProps, znui} from "../../../";
+import {HTMLZnUIProps} from "../../../styled";
+import {znui} from "../znui";
 
 export interface AbsoluteCenterProps extends HTMLZnUIProps<'div'> {
     /**

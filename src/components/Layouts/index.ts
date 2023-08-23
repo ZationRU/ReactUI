@@ -1,4 +1,5 @@
 export * from './AppBarLayout/AppBarLayout'
+export * from './BottomAppBar/BottomAppBar'
 export * from './BaseDialog/BaseDialog'
 export * from './Card/Card'
 export * from './Carousel/Carousel'

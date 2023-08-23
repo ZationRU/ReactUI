@@ -1,7 +1,7 @@
 import React, {ForwardRefExoticComponent, PropsWithoutRef, ReactNode, RefAttributes} from "react";
 import {Layout, LayoutProps, Center, FlexLayout} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
-import {CoordinatorLayoutBehavior, CoordinatorLayoutElement} from "../../Layouts";
+import {CoordinatorLayoutBehavior, CoordinatorLayoutElement} from "../CoordinatorLayout/CoordinatorLayout";
 
 export interface BottomAppBarProps extends LayoutProps {
     fab?: ReactNode,

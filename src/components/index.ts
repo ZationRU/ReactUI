@@ -1,6 +1,6 @@
-export * from './Animation'
 export * from './Basic'
 export * from './Layouts'
+export * from './Animation'
 export * from './Providers'
 export * from './Typography'
 export * from './Widgets'

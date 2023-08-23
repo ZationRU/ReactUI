@@ -1,6 +1,5 @@
 export * from './Avatar/Avatar'
 export * from './Badge/Badge'
-export * from './BottomAppBar/BottomAppBar'
 export * from './Button/Button'
 export * from './CircularProgressIndicator/CircularProgressIndicator'
 export * from './ContainedIconButton/ContainedIconButton'

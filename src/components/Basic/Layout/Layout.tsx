@@ -1,4 +1,5 @@
-import {znui, HTMLZnUIProps} from "../../../";
+import {HTMLZnUIProps} from "../../../styled";
+import {znui} from "../znui";
 
 export type LayoutProps = HTMLZnUIProps<"div">
 

@@ -5,7 +5,7 @@ import React, {
     useRef,
     useState
 } from "react";
-import {Layout, LayoutProps} from "../../Basic/Layout/Layout";
+import {Layout, LayoutProps} from "../../Basic";
 import {getArrayByReactNode, mergeRefs} from "../../../utils";
 import Measure, {ContentRect} from "react-measure";
 
