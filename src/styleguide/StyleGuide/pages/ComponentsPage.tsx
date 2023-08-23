@@ -13,8 +13,6 @@ interface ComponentsPageProps extends RefAttributes<HTMLDivElement> {
 export function ComponentsPage(props: ComponentsPageProps) {
     const {currentBreakpoint} = useAdaptive()
 
-    console.log(props.allSections)
-
     return <Layout
         display='flex'
         direction="row"

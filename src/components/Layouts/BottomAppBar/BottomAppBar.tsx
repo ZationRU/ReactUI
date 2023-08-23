@@ -73,8 +73,6 @@ export class BottomAppBarBehavior extends CoordinatorLayoutBehavior {
         child.elementInstance!!.style.width = parentRect.width + 'px'
         child.elementInstance!!.style.transition = 'bottom 300ms var(--emphasized-motion)'
         child.elementInstance!!.style.bottom = child.elementInstance!!.style.left = child.elementInstance!!.style.right = '0px'
-
-        console.log(parent.getBoundingClientRect())
     }
 }
 

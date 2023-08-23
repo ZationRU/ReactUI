@@ -58,7 +58,6 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
             }, [scrimRef])
 
             close = useCallback(() => {
-                console.log('close')
                 setTimeout(() => {
                     const scrim = scrimRef.current
                     const modalContainer = modalContainerRef.current
@@ -91,8 +90,6 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
             const y = isExpanded?
                 isFullscreen ? '50vh' : '50%'
             : (targetRect?.top||0) + targetHeightHalf
-
-            console.log(targetRect)
 
             return <Layout
                 pos="fixed"

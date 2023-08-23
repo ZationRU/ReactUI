@@ -26,7 +26,6 @@ export const Menu = (props: MenuProps) => {
 
     const open = useCallback((event: SyntheticEvent<HTMLElement>) => {
         const point = event.currentTarget.getBoundingClientRect()
-        console.log(point);
         setPoint(point)
     }, [])
 

@@ -56,10 +56,6 @@ const TableRenderer = ({rows}: TableProps) => {
         } else componentProps.push(prop)
     });
 
-    console.log("NMP", nodeModulesProps)
-    console.log("BLP", baseLayoutProps)
-    console.log("CP", componentProps)
-
     return (
         <Card mv={15} width="100%" border="none" shapeScale="lg" mode='filled'>
             {

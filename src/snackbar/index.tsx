@@ -65,7 +65,6 @@ export const useSnackbar = () => {
                 hide = (onHide?: () => void) => {
                     setIsHide(true)
                     setTimeout(() => {
-                        console.log(portal.id)
                         portal.remove()
                         onHide?.call(undefined)
                     }, 200)

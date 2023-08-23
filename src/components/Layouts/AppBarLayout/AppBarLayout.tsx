@@ -32,8 +32,6 @@ export class AppBarLayoutScrollBehavior extends CoordinatorLayoutBehavior<'div'>
         const currentHeight = parent.clientHeight
         const dependencyRect = dependency.elementInstance!!.getBoundingClientRect()
 
-        console.log(child.elementInstance!!.getBoundingClientRect())
-
         child.elementInstance!!.style.height = (currentHeight - dependencyRect.height) + "px"
     }
 

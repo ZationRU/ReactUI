@@ -72,7 +72,6 @@ export const SwipeRefreshLayout = React.forwardRef((
                 const currentY = e.clientY - startY
                 const percentage = currentY/180
                 setRefreshPercentage(percentage>1? 1: percentage)
-                console.log(currentY)
             }
         }}
     >
