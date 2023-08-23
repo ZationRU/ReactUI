@@ -1,5 +1,5 @@
 import {ZnUIPortalRegistrar} from "../components/Providers/portals";
-import React, {JSXElementConstructor, useCallback, useEffect, useRef, useState} from "react";
+import React, {JSXElementConstructor, useCallback, useEffect, useRef, useState, UIEvent} from "react";
 import {Layout} from "../components/Basic/Layout/Layout";
 import {useAdaptiveValue} from "../adaptive/useAdaptive";
 import {ThemeTokens} from "../theme";
@@ -22,12 +22,12 @@ export const ModalContext
 export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
     return (
         Component: JSXElementConstructor<ModalProps>,
-        clickEvent?: MouseEvent,
+        clickEvent?: UIEvent,
         fullscreen?: boolean|'auto'
     ): ModalDialogInterface => {
         const portal = portalRegister();
 
-        const target = clickEvent?.currentTarget ? clickEvent.currentTarget as Element : null
+        const target = clickEvent?.currentTarget
         const targetStyles = target ? window.getComputedStyle(target) : null;
 
         let targetRect = target ? target.getBoundingClientRect() : null;

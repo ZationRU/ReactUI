@@ -1,4 +1,4 @@
-import {JSXElementConstructor} from "react";
+import {JSXElementConstructor, UIEvent, MouseEvent} from "react";
 import {useMemo} from "react";
 import {portals} from "../components/Providers/portals";
 import {AlertDialogConfig, AlertDialogInterface, showAlert} from "./alerts";
@@ -8,7 +8,7 @@ export type DialogInterface = {
     showAlert: (config: AlertDialogConfig, clickEvent?: MouseEvent) => AlertDialogInterface
     showModal: (
         component: JSXElementConstructor<ModalProps>,
-        clickEvent?: MouseEvent,
+        clickEvent?: UIEvent,
         fullscreen?: boolean|'auto'
     ) => ModalDialogInterface
 }
