@@ -1,6 +1,7 @@
 import {Card, Title, FlexLayout, Body, Label, Divider, Button, Layout, ThemeTokens} from "../../";
 import React from "react";
 import CodeRenderer from "../CodeRenderer/CodeRenderer";
+import {isStyleProp} from '../../styled'
 
 interface TableProps {
     columns: {
