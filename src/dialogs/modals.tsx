@@ -16,6 +16,12 @@ export type ModalContextData = {
     dialogInterface: ModalDialogInterface
     isFullscreen: boolean
 }
+
+export type ModalOptions = {
+    fullscreen?: boolean|'auto'
+    cancelable?: boolean
+}
+
 export const ModalContext
     = React.createContext<ModalContextData|null>(null)
 
@@ -23,8 +29,13 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
     return (
         Component: JSXElementConstructor<ModalProps>,
         clickEvent?: UIEvent,
-        fullscreen?: boolean|'auto'
+        options?: ModalOptions
     ): ModalDialogInterface => {
+        const {
+            fullscreen = 'auto',
+            cancelable = true
+        } = options || {}
+
         const portal = portalRegister();
 
         const target = clickEvent?.currentTarget
@@ -118,7 +129,7 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                     right={0}
                     bottom={0}
                     overflow="visible"
-                    onClick={close}
+                    onClick={cancelable ? close: undefined}
                 />
 
                 <Layout

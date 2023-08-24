@@ -215,7 +215,10 @@ const dialogs = useDialogs();
                     <input/>
                 </TextField>
             </Modal>
-        }, e, mode==='auto'? 'auto': mode==='fullscreen');
-    }}>Show Modal</Button>
+        }, e, {
+            fullscreen: mode==='auto'? 'auto': mode==='fullscreen',
+            cancelable: false
+        });
+    }}>Show Modal non-cancelable</Button>
 </VStack>
 ```
