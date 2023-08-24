@@ -76,6 +76,7 @@ export function Modal(props: ModalWrapperProps) {
 
             {((!isFullscreen&&action)||bottomAction)&&
                 <HStack spacing={16} pv={24} pr={24} pl={16} justify={bottomActionJustify}>
+                    {bottomAction}
                     {action}
                 </HStack>
             }
