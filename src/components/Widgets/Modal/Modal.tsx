@@ -13,7 +13,8 @@ export interface ModalWrapperProps {
     title?: string
     navigationIcon?: ReactNode
     onClickNavigationIcon?: MouseEventHandler<HTMLDivElement>
-    children?: ReactNode
+    children?: ReactNode,
+    innerChildren?: ReactNode
 }
 
 /**
@@ -31,6 +32,7 @@ export function Modal(props: ModalWrapperProps) {
         navigationIcon,
         onClickNavigationIcon,
         children,
+        innerChildren,
         bottomActionJustify = 'end'
     } = props
 
@@ -44,8 +46,10 @@ export function Modal(props: ModalWrapperProps) {
         return <VStack
             maxH={isFullscreen? '100vh': '60vh'}
             h={isFullscreen? '100vh': 'auto'}
+            pos='relative'
             insets={isFullscreen ? "safe-area": undefined}
         >
+            {innerChildren}
             <CoordinatorLayout flex={1}>
                 <AppBarLayout>
                     <Toolbar
