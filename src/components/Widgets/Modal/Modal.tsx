@@ -1,15 +1,18 @@
 import React, {MouseEventHandler, ReactNode} from "react";
-import {Layout, Spacer, HStack, VStack} from "../../Basic";
+import {Layout, Spacer, HStack, VStack, FlexLayoutProps} from "../../Basic";
 import {Toolbar} from "../Toolbar/Toolbar";
 import {IconButton} from "../IconButton/IconButton";
 import {CoordinatorLayout, AppBarLayout, ScrollLayout} from "../../Layouts";
 import {ModalContext} from "../../../dialogs";
 
 export interface ModalWrapperProps {
-    action?: ReactNode,
-    title?: string,
-    navigationIcon?: ReactNode,
-    onClickNavigationIcon?: MouseEventHandler<HTMLDivElement>,
+    action?: ReactNode
+    toolbarAction?: ReactNode
+    bottomAction?: ReactNode
+    bottomActionJustify?: FlexLayoutProps['justify']
+    title?: string
+    navigationIcon?: ReactNode
+    onClickNavigationIcon?: MouseEventHandler<HTMLDivElement>
     children?: ReactNode
 }
 
@@ -22,10 +25,13 @@ export interface ModalWrapperProps {
 export function Modal(props: ModalWrapperProps) {
     const {
         action,
+        toolbarAction,
+        bottomAction,
         title,
         navigationIcon,
         onClickNavigationIcon,
-        children
+        children,
+        bottomActionJustify = 'end'
     } = props
 
     return <ModalContext.Consumer>{(data) => {
@@ -40,14 +46,20 @@ export function Modal(props: ModalWrapperProps) {
             h={isFullscreen? '100vh': 'auto'}
             insets={isFullscreen ? "safe-area": undefined}
         >
-            <CoordinatorLayout maxH="100%">
+            <CoordinatorLayout flex={1}>
                 <AppBarLayout>
                     <Toolbar
                         navigationIcon={isFullscreen ? navigationIcon: undefined}
                         onClickNavigationIcon={onClickNavigationIcon||dialogInterface.close}
-                        menu={isFullscreen? action : <IconButton onClick={onClickNavigationIcon}>
-                            {navigationIcon}
-                        </IconButton>}
+                        menu={<>
+                            {toolbarAction}
+
+                            {
+                                isFullscreen? action : <IconButton onClick={onClickNavigationIcon}>
+                                    {navigationIcon}
+                                </IconButton>
+                            }
+                        </>}
                     >{title}</Toolbar>
                 </AppBarLayout>
 
@@ -58,10 +70,11 @@ export function Modal(props: ModalWrapperProps) {
                 </ScrollLayout>
             </CoordinatorLayout>
 
-            {!isFullscreen&&<HStack spacing={16} pv={24} pr={24} pl={16}>
-                <Spacer/>
-                {action}
-            </HStack>}
+            {((!isFullscreen&&action)||bottomAction)&&
+                <HStack spacing={16} pv={24} pr={24} pl={16} justify={bottomActionJustify}>
+                    {action}
+                </HStack>
+            }
         </VStack>
     }}</ModalContext.Consumer>
 }
