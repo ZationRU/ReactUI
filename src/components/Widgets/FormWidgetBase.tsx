@@ -22,7 +22,6 @@ const FormWidgetBaseInput = znui('input', {
 const inputPropsKeys = [
     'autoFocus',
     'checked',
-    'className',
     'disabled',
     'id',
     'name',
@@ -34,8 +33,11 @@ const inputPropsKeys = [
     'tabIndex',
     'value',
     'type',
+    'max',
+    'min',
     'defaultValue',
     'defaultChecked',
+    'step',
 ]
 
 /**

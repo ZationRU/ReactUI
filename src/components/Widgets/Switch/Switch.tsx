@@ -2,12 +2,12 @@ import React, {ChangeEventHandler, useRef, useCallback, ReactNode, ForwardedRef}
 import "./Switch.css";
 import classNames from "classnames";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
+import {FormWidgetBase} from "../FormWidgetBase";
+import {mergeRefs} from "../../../utils";
+import {HTMLZnUIProps} from "../../../styled";
 
-export interface SwitchProps {
-    onChange?: ChangeEventHandler<HTMLInputElement>
-    checked?: boolean
+export interface SwitchProps extends HTMLZnUIProps<'input'> {
     icon?: ReactNode
-    disabled?: boolean
 }
 
 /**
@@ -16,15 +16,18 @@ export interface SwitchProps {
  * @param props
  * @constructor
  */
-export const Switch = React.forwardRef((props: SwitchProps, ref: ForwardedRef<HTMLInputElement>) => {
+export const Switch = React.forwardRef((
+    props: SwitchProps,
+    ref: ForwardedRef<HTMLInputElement>
+) => {
     const {
         checked = false,
         disabled = false,
         icon,
-        onChange
+        className,
+        ...otherProps
     } = props
 
-    const switchLayout = useRef<HTMLDivElement>(null)
     const thumb = useRef<HTMLDivElement>(null)
     const checkbox = useRef<HTMLInputElement>(null)
 
@@ -42,26 +45,33 @@ export const Switch = React.forwardRef((props: SwitchProps, ref: ForwardedRef<HT
         thumb.current.style.transform = checked ? "translateX(calc(100% - 6px))" : "translateX(0)";
     }, [thumb, checked])
 
-    return <div
+    return <FormWidgetBase
+        type='checkbox'
+        ref={mergeRefs(ref, checkbox)}
+        onClick={() => {
+            if (checkbox.current == null || disabled) return;
+            checkbox.current.checked = !checked
+        }}
+        checked={checked}
+        disabled={disabled}
+        {...otherProps}
+
         className={classNames(
             "Switch",
             {
                 "Switch--checked": checked,
                 "Switch--disabled": disabled,
-            }
+            },
+            className
         )}
-        ref={switchLayout}
-        onClick={() => {
-            if (checkbox.current == null || disabled) return;
-            checkbox.current.checked = !checked
-        }}
         onPointerDown={onDown}
         onPointerUp={onClearDown}
         onPointerOut={onClearDown}
         onPointerLeave={onClearDown}
         onPointerOver={onClearDown}
         onPointerMove={onClearDown}
-        onPointerCancel={onClearDown}>
+        onPointerCancel={onClearDown}
+    >
 
         <div className="Switch-Truck"/>
 
@@ -81,6 +91,5 @@ export const Switch = React.forwardRef((props: SwitchProps, ref: ForwardedRef<HT
                 transform: checked ? "translateX(calc(100% - 4px))" : "translateX(0)"
             }}
         ><IconWrapper>{icon}</IconWrapper></div>
-        <input type="checkbox" checked={checked} disabled={disabled} ref={checkbox} onChange={onChange}/>
-    </div>
+    </FormWidgetBase>
 })
