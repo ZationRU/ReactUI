@@ -1,4 +1,4 @@
-import React, {PointerEvent, useRef} from "react";
+import React, {useRef} from "react";
 import {Layout, FlexLayout} from "../../Basic";
 import {mergeRefs} from "../../../utils";
 import {FormWidgetBase, FormWidgetBaseProps} from "../FormWidgetBase";
