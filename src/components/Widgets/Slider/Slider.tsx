@@ -1,8 +1,9 @@
 import React, {PointerEvent, useRef} from "react";
-import {Layout, LayoutProps, FlexLayout, znui} from "../../Basic";
+import {Layout, FlexLayout} from "../../Basic";
 import {mergeRefs} from "../../../utils";
+import {FormWidgetBase, FormWidgetBaseProps} from "../FormWidgetBase";
 
-export interface SliderProps extends LayoutProps {
+export interface SliderProps extends FormWidgetBaseProps {
     /**
      * Maximal value
      * @default 100
@@ -51,8 +52,6 @@ export interface SliderProps extends LayoutProps {
  * @constructor
  */
 export const Slider = React.forwardRef((props: SliderProps, ref: React.ForwardedRef<HTMLInputElement>) => {
-    const sliderLayoutRef = useRef<HTMLDivElement|null>(null)
-    const trackRef = useRef<HTMLDivElement|null>(null)
     const activeTrackRef = useRef<HTMLDivElement|null>(null)
     const handleRef = useRef<HTMLDivElement|null>(null)
     const inputRef = useRef<HTMLInputElement|null>(null)
@@ -63,7 +62,6 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
         value,
         defaultValue = 0,
         step = 1,
-        onChange,
         ...layoutRest
     } = props
 
@@ -73,87 +71,24 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
     let currentValue = _currentValue - (step===1? 0: (_currentValue % stepCount))
     if(currentValue>max) currentValue = max;
 
-
     const trackWidth = currentValue / (max-min) * 100;
 
-    let pressed = false;
-    let newValue = currentValue;
-    const performUp = () => {
-        pressed = false
-
-        if(inputRef.current) {
-            const nativeInputValueSetter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")?.set!!;
-            nativeInputValueSetter.call(inputRef.current, newValue);
-            inputRef.current.dispatchEvent(new Event('input', { bubbles: true}));
-        }
-    }
-
-    const performDown = () => {
-        pressed = true
-    }
-
-    return <Layout
+    return <FormWidgetBase
         {...layoutRest}
         h={20}
         p={3}
-        ref={sliderLayoutRef}
+        type='range'
+        max={max}
+        min={min}
+        value={value}
+        defaultValue={defaultValue}
+        step={step}
+        ref={mergeRefs(ref, inputRef)}
         pos="relative"
         overflow="visible"
         userSelect="none"
         cursor="pointer"
-        onPointerMoveCapture={(e: PointerEvent<HTMLDivElement>) => {
-            if(!pressed||
-                sliderLayoutRef.current==null||
-                activeTrackRef.current==null ||
-                handleRef.current==null) {
-                return;
-            }
-
-            const rect = sliderLayoutRef.current.getBoundingClientRect();
-            let x = (e.clientX-rect.left-13);
-            if(x<0) x = 0;
-
-            let percentage = x/(rect.width-13);
-            if(percentage>1) percentage = 1;
-
-            newValue = min + (percentage * (max-min));
-
-            if(max-newValue<step/2) {
-                newValue = max
-            }
-
-
-            let mod = (step===1? 0: (newValue % step))
-            newValue = Math.round(newValue - mod)
-
-            const finalPercentage = ((newValue-min)/(max-min))*100
-            handleRef.current.style.left = "calc(" + finalPercentage + "% - 10px)";
-            activeTrackRef.current.style.maxWidth = finalPercentage + "%";
-        }}
-
-        style={{
-            touchAction: "none"
-        }}
-        onPointerUp={performUp}
-        onPointerCancel={performUp}
-        onPointerLeave={performUp}
-        onPointerDown={performDown}>
-
-        <znui.input
-            type="range"
-            pos="absolute"
-            h={20}
-            left={0}
-            right={0}
-            oc={0}
-            min={min}
-            max={max}
-            defaultValue={value}
-            step={step}
-            value={value}
-            onChange={onChange}
-            ref={mergeRefs(ref, inputRef)}
-        />
+    >
 
         <Layout
             pos="absolute"
@@ -180,7 +115,7 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
                     mt={1}
                 >
                     {
-                        Array.from({ length: step<=1 ? 0: stepCount }).map((it, i) =>
+                        Array.from({ length: step<=1 ? 0: stepCount+1 }).map((it, i) =>
                             <Layout
                                 key={"step-"+i}
                                 layoutSize={2}
@@ -204,7 +139,7 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
                 bg="var(--znui-primary)"
             >
                 {
-                    Array.from({ length: step<=1 ? 0: stepCount }).map((it, i) =>
+                    Array.from({ length: step<=1 ? 0: stepCount+1 }).map((it, i) =>
                         <Layout
                             key={"step-"+i}
                             layoutSize={2}
@@ -226,5 +161,5 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
                 top={-8}
                 layoutSize={20}/>
         </Layout>
-    </Layout>
+    </FormWidgetBase>
 })
