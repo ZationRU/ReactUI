@@ -80,6 +80,13 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                 emd: false
             })
 
+            console.log(targetStyles?.background)
+            const hasBackground = !targetStyles?.background?.split(' ')?.find(it =>
+                [
+                    'rgb(0, 0, 0)'
+                ].includes(it)
+            )
+
             const isFullscreen = fullscreen==='auto'||fullscreen===undefined ? autoFullscreen: fullscreen
 
             const targetHeightHalf = targetRect ? targetRect.height / 2: 0
@@ -119,12 +126,13 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                     position="fixed"
                     c={ThemeTokens.onSurface}
                     borderRadius={isExpanded? isFullscreen ? 0 : 28 : targetStyles?.borderRadius || 0}
+                    borderColor={!isExpanded&&targetStyles? targetStyles.borderColor : 'none'}
                     maxH={isExpanded? '100vh': targetRect?.height||0}
                     w={isExpanded? isFullscreen ? '100vw': 800: targetRect?.width||0}
                     maxW={isExpanded&&!isFullscreen ? "calc(100vw - 50px)": '100vw'}
                     left={x}
                     top={y}
-                    bg={isExpanded&&isFullscreen ? ThemeTokens.surface : ThemeTokens.surfaceContainerHigh}
+                    bg={isExpanded||!hasBackground ? (isFullscreen ? ThemeTokens.surface : ThemeTokens.surfaceContainerHigh): targetStyles?.background}
                     transform={"translate(-50%, -50%)"}
                     transition={[
                         ...(targetRect?[
@@ -133,12 +141,31 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                             "width 300ms var(--emphasized-motion)",
                             "max-height 300ms var(--emphasized-motion)",
                             "border-radius 300ms var(--emphasized-motion)",
-                            "background-color 300ms var(--emphasized-motion)",
+                            "border-color 300ms var(--emphasized-motion)",
+                            isExpanded ? "background-color 100ms var(--emphasized-motion)":
+                                "background-color 300ms var(--emphasized-motion)",
                         ]:[]),
                     ].join(",")}
                 >
+                    {/*{target&&<Layout*/}
+                    {/*    oc={isExpanded? 0: 1}*/}
+                    {/*    pos='absolute'*/}
+                    {/*    transition={*/}
+                    {/*        "opacity " + (isExpanded? '200ms': '500ms') + " var(--emphasized-decelerate-motion)"*/}
+                    {/*    }*/}
+                    {/*>*/}
+                    {/*    {*/}
+                    {/*        React.createElement(target.tagName, {*/}
+                    {/*            ...target.attributes,*/}
+                    {/*            dangerouslySetInnerHTML: {*/}
+                    {/*                __html:target.innerHTML*/}
+                    {/*            }*/}
+                    {/*        })*/}
+                    {/*    }*/}
+                    {/*</Layout>}*/}
+
                     <Layout oc={isExpanded? 1: 0} transition={targetRect? [
-                        "opacity " + (isExpanded? '500ms': '200ms') + "var(--emphasized-decelerate-motion)",
+                        "opacity " + (isExpanded? '300ms': '200ms') + " var(--emphasized-decelerate-motion)",
                     ].join(","): undefined}>
                         <ModalContext.Provider value={{
                             dialogInterface: modalDialogInterface,

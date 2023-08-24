@@ -37,6 +37,7 @@ export function Modal(props: ModalWrapperProps) {
 
         return <VStack
             maxH={isFullscreen? '100vh': '60vh'}
+            h={isFullscreen? '100vh': 'auto'}
             insets={isFullscreen ? "safe-area": undefined}
         >
             <CoordinatorLayout maxH="100%">
