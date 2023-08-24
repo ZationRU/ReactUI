@@ -3,7 +3,7 @@ import {
 } from "./configs";
 import * as CSS from "csstype";
 import React from "react";
-import {Pseudos} from "./configs/pseudo/Pseudo";
+import {Pseudos} from "./configs";
 
 export type StyleProps = CSSProps & ZnUICSSProps;
 

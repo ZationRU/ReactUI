@@ -1,7 +1,8 @@
-import {Adaptive, Layout, LayoutProps, useAdaptiveValue} from "../../../";
 import classNames from "classnames";
 import React, {CSSProperties} from "react";
 import "./AnimatedVisibility.css";
+import {Layout, LayoutProps} from "../../Basic";
+import {Adaptive, useAdaptiveValue} from "../../../adaptive";
 
 export interface AnimatedVisibilityProps extends LayoutProps {
 

@@ -1,6 +1,6 @@
 import {Adaptive} from "../../../adaptive/";
 import * as CSS from "csstype";
-import {asCSSProp} from "../config";
+import {asCSSProp} from "../../config";
 
 export const position = {
     position: asCSSProp("position"),

@@ -5558,11 +5558,6 @@ lodash.merge@^4.6.2:
   resolved "https://registry.npmjs.org/lodash.merge/-/lodash.merge-4.6.2.tgz"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
 
-lodash.trimend@^4.5.1:
-  version "4.5.1"
-  resolved "https://registry.npmjs.org/lodash.trimend/-/lodash.trimend-4.5.1.tgz"
-  integrity sha512-lsD+k73XztDsMBKPKvzHXRKFNMohTjoTKIIo4ADLn5dA65LZ1BqlAvSXhR2rPEC3BgAUQnzMnorqDtqn2z4IHA==
-
 lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.npmjs.org/lodash.uniq/-/lodash.uniq-4.5.0.tgz"
@@ -7705,16 +7700,6 @@ remark-gfm@^3.0.1:
     micromark-extension-gfm "^2.0.0"
     unified "^10.0.0"
 
-remark-grid-tables@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.npmjs.org/remark-grid-tables/-/remark-grid-tables-2.2.0.tgz"
-  integrity sha512-BgC8TjQUNr6PcMA11MWSEq5zDkji6un3kI592Cbcmy8pUYdhvScH0opxImqYNF372fUGCRN7NAZle5BRYeQjLw==
-  dependencies:
-    grapheme-splitter "^1.0.4"
-    lodash.trimend "^4.5.1"
-    string-width "^4.2.0"
-    unist-util-visit "^2.0.3"
-
 remark-mdx@^2.0.0:
   version "2.3.0"
   resolved "https://registry.npmjs.org/remark-mdx/-/remark-mdx-2.3.0.tgz"
@@ -8893,7 +8878,7 @@ unist-util-visit-parents@^5.1.1:
     "@types/unist" "^2.0.0"
     unist-util-is "^5.0.0"
 
-unist-util-visit@^2.0.0, unist-util-visit@^2.0.3:
+unist-util-visit@^2.0.0:
   version "2.0.3"
   resolved "https://registry.npmjs.org/unist-util-visit/-/unist-util-visit-2.0.3.tgz"
   integrity sha512-iJ4/RczbJMkD0712mGktuGpm/U4By4FfDonL7N/9tATGIF4imikjOuagyMY53tnZq3NP6BcmlrHhEKAfGWjh7Q==

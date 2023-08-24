@@ -3,8 +3,9 @@ import {
     HTMLZnUIComponents,
     JSXElements,
     ZnUIComponent,
-} from "../../styled/styled.types";
-import {styled, ZnUIStyledOptions} from "../../styled/styled";
+    styled,
+    ZnUIStyledOptions
+} from "../../styled";
 
 const cache = new Map<JSXElements, ZnUIComponent<JSXElements>>()
 

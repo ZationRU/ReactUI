@@ -35,7 +35,7 @@ export * from "./list"
 export * from "./scroll"
 export * from "./textDecoration"
 export * from "./transition"
-export * from "../config"
+export * from "../../config"
 
 export const cssConfig = {
     ...background,

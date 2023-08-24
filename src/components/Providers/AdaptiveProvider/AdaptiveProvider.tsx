@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
-import {createContext, useState} from "react";
-import {AdaptiveData, LayoutBreakpoint, LayoutBreakpointsValues} from "../../../adaptive";
+import {useState} from "react";
+import {AdaptiveContext, AdaptiveData, LayoutBreakpoint, LayoutBreakpointsValues} from "../../../adaptive";
 import {useForceUpdate, useZnUIProviderPortalCreator, ZnUIProviderPortalContext} from "../portals";
 
 export function getCurrentDimensionBreakpoint(): LayoutBreakpoint {
@@ -15,7 +15,6 @@ export function buildCurrentAdaptiveData(): AdaptiveData {
     }
 }
 
-export const AdaptiveContext = createContext<AdaptiveData|null>(null)
 
 
 /**

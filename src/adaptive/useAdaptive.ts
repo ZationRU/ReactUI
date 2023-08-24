@@ -1,10 +1,9 @@
-import {useContext, useMemo} from "react";
+import {createContext, useContext, useMemo} from "react";
 import {AdaptiveData} from "./AdaptiveData";
-import {AdaptiveContext} from "../components/Providers/AdaptiveProvider/AdaptiveProvider";
 import {resolveAdaptive} from "./AdaptiveResolver";
 import {Adaptive, getAdaptiveValue} from "./Adaptive";
 
-
+export const AdaptiveContext = createContext<AdaptiveData|null>(null)
 
 export const useAdaptive = (): AdaptiveData => {
     const adaptive = useContext(AdaptiveContext)

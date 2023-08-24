@@ -1,5 +1,5 @@
 import {Adaptive} from "../../../adaptive/";
-import {asTransformProp} from "../config";
+import {asTransformProp} from "../../config";
 
 export const insets = {
     insetsTop: asTransformProp((value: InsetsType) => ({ paddingTop: 'var(--znui-'+value+'-inset-top)'})),

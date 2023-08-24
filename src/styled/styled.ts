@@ -4,10 +4,9 @@ import {
 import React from "react";
 import {StyleProps, ZnUIComponent, ZnUIStyleObject} from "./styled.types";
 import createStyled, {FunctionInterpolation} from "@emotion/styled"
-import {css} from "./css";
-import {LayoutBreakpoint} from "../adaptive";
-import {runIfFn} from "../utils";
-import {pseudoSelectors} from "./configs/pseudo/Pseudo";
+import {LayoutBreakpoint, resolveAdaptive, useAdaptive} from "../adaptive";
+import {isFunction, runIfFn} from "../utils";
+import {pseudoSelectors} from "./configs";
 
 const emotion = ((createStyled as any).default ?? createStyled) as typeof createStyled
 
@@ -79,4 +78,50 @@ export function styled<T extends React.ElementType, P extends object = {}>(
     })
 
     return znComponent as ZnUIComponent<T, P>
+}
+
+export const css = (styles: Record<string, any>) => () => {
+    const adaptiveData = useAdaptive()
+    const resolvedStyles = resolveAdaptive(adaptiveData.currentBreakpoint, styles)
+
+    let computedStyles: Record<string, any> = {}
+    for (let key in resolvedStyles) {
+        const currentValue = resolvedStyles[key]
+
+        if(key in pseudoSelectors) {
+            key = pseudoSelectors[key]
+        }
+
+        if (typeof currentValue === 'object') {
+            computedStyles[key] = computedStyles[key] ?? {}
+            computedStyles[key] = {
+                ...computedStyles[key],
+                ...css(currentValue)()
+            }
+
+
+            continue
+        }
+
+        const config = styledProps[key]
+        if(isFunction(config.property)) {
+            computedStyles = {
+                ...config.property(currentValue),
+                ...computedStyles,
+            }
+            continue
+        }
+
+        if(Array.isArray(config.property)) {
+            for (const property of config.property) {
+                computedStyles[property] = currentValue
+            }
+
+            continue
+        }
+
+        computedStyles[config.property] = currentValue
+    }
+
+    return computedStyles
 }
