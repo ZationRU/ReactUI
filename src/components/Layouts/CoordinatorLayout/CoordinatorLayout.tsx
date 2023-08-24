@@ -31,7 +31,7 @@ export const CoordinatorLayout = React.forwardRef((props: CoordinatorLayoutProps
         let endScrollTimeoutPid: NodeJS.Timeout | null = null
 
         if (measuredRect == null || parentRef.current == null) return []
-        const childrenFragment = Array.from(getArrayByReactNode(children))
+        const childrenFragment = Array.from(getArrayByReactNode(children)).filter(it => !!it)
         const nodes = childrenFragment
             .filter(it => typeof it === 'object' && Object.hasOwn(it as object, 'type')) as ReactElement[]
 
@@ -129,6 +129,7 @@ export const CoordinatorLayout = React.forwardRef((props: CoordinatorLayoutProps
                 let prevX = 0
 
                 childrenFragment[i] = React.cloneElement(element, {
+                    key: i,
                     onScroll: (event: React.UIEvent<any>) => {
                         element.props.onScroll?.call(undefined, event)
 

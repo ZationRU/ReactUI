@@ -1,4 +1,4 @@
-import React, {MouseEventHandler, ReactNode} from "react";
+import React, {MouseEventHandler, ReactNode, useContext} from "react";
 import {Layout, Spacer, HStack, VStack, FlexLayoutProps} from "../../Basic";
 import {Toolbar} from "../Toolbar/Toolbar";
 import {IconButton} from "../IconButton/IconButton";
@@ -24,6 +24,13 @@ export interface ModalWrapperProps {
  * @constructor
  */
 export function Modal(props: ModalWrapperProps) {
+    const modalInfo = useContext(ModalContext)
+    if(modalInfo==null) {
+        throw new Error("Modal component can be used only in modals")
+    }
+
+    const { isFullscreen, dialogInterface } = modalInfo
+
     const {
         action,
         toolbarAction,
@@ -36,50 +43,42 @@ export function Modal(props: ModalWrapperProps) {
         bottomActionJustify = 'end'
     } = props
 
-    return <ModalContext.Consumer>{(data) => {
-        if(data==null) {
-            throw new Error("Modal component can be used only in modals")
+    return <CoordinatorLayout
+        maxH={isFullscreen? '100%': '80vh'}
+        h={isFullscreen? '100%': 'auto'}
+        pos='relative'
+        display='flex'
+        direction='column'
+        insets={isFullscreen ? "safe-area": undefined}
+    >
+        {innerChildren}
+        <AppBarLayout>
+            <Toolbar
+                navigationIcon={isFullscreen ? navigationIcon: undefined}
+                onClickNavigationIcon={onClickNavigationIcon||dialogInterface.close}
+                menu={<>
+                    {toolbarAction}
+
+                    {
+                        isFullscreen? action : <IconButton onClick={onClickNavigationIcon}>
+                            {navigationIcon}
+                        </IconButton>
+                    }
+                </>}
+            >{title}</Toolbar>
+        </AppBarLayout>
+
+        <ScrollLayout flex={1} overflow='hidden' orientation="vertical" behavior={AppBarLayout.ScrollBehavior}>
+            <Layout ph={24} pb={24}>
+                {children}
+            </Layout>
+        </ScrollLayout>
+
+        {((!isFullscreen&&action)||bottomAction)&&
+            <HStack spacing={16} pv={24} pr={24} pl={16} justify={bottomActionJustify}>
+                {bottomAction}
+                {action}
+            </HStack>
         }
-
-        const { isFullscreen, dialogInterface } = data
-
-        return <VStack
-            maxH={isFullscreen? '100vh': '60vh'}
-            h={isFullscreen? '100vh': 'auto'}
-            pos='relative'
-            insets={isFullscreen ? "safe-area": undefined}
-        >
-            {innerChildren}
-            <CoordinatorLayout flex={1}>
-                <AppBarLayout>
-                    <Toolbar
-                        navigationIcon={isFullscreen ? navigationIcon: undefined}
-                        onClickNavigationIcon={onClickNavigationIcon||dialogInterface.close}
-                        menu={<>
-                            {toolbarAction}
-
-                            {
-                                isFullscreen? action : <IconButton onClick={onClickNavigationIcon}>
-                                    {navigationIcon}
-                                </IconButton>
-                            }
-                        </>}
-                    >{title}</Toolbar>
-                </AppBarLayout>
-
-                <ScrollLayout orientation="vertical" behavior={AppBarLayout.ScrollBehavior}>
-                    <Layout ph={24} pb={24}>
-                        {children}
-                    </Layout>
-                </ScrollLayout>
-            </CoordinatorLayout>
-
-            {((!isFullscreen&&action)||bottomAction)&&
-                <HStack spacing={16} pv={24} pr={24} pl={16} justify={bottomActionJustify}>
-                    {bottomAction}
-                    {action}
-                </HStack>
-            }
-        </VStack>
-    }}</ModalContext.Consumer>
+    </CoordinatorLayout>
 }

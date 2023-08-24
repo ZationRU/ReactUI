@@ -103,10 +103,10 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
             const targetHeightHalf = targetRect ? targetRect.height / 2: 0
             const targetWidthHalf = targetRect ? targetRect.width / 2: 0
             const x = isExpanded?
-                isFullscreen ? '50vw' : '50%'
+                isFullscreen ? '50%' : '50%'
             : (targetRect?.left||0) + targetWidthHalf
             const y = isExpanded?
-                isFullscreen ? '50vh' : '50%'
+                isFullscreen ? '50%' : '50%'
             : (targetRect?.top||0) + targetHeightHalf
 
             return <Layout
@@ -138,9 +138,10 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                     c={ThemeTokens.onSurface}
                     borderRadius={isExpanded? isFullscreen ? 0 : 28 : targetStyles?.borderRadius || 0}
                     borderColor={!isExpanded&&targetStyles? targetStyles.borderColor : 'none'}
-                    maxH={isExpanded? '100vh': targetRect?.height||0}
-                    w={isExpanded? isFullscreen ? '100vw': 800: targetRect?.width||0}
-                    maxW={isExpanded&&!isFullscreen ? "calc(100vw - 50px)": '100vw'}
+                    maxH={isExpanded? '100%': targetRect?.height||0}
+                    h={isExpanded&&isFullscreen ? '100%': undefined}
+                    w={isExpanded? isFullscreen ? '100%': 800: targetRect?.width||0}
+                    maxW={isExpanded&&!isFullscreen ? "calc(100% - 50px)": '100%'}
                     left={x}
                     top={y}
                     bg={isExpanded||!hasBackground ? (isFullscreen ? ThemeTokens.surface : ThemeTokens.surfaceContainerHigh): targetStyles?.background}
@@ -175,7 +176,7 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                     {/*    }*/}
                     {/*</Layout>}*/}
 
-                    <Layout oc={isExpanded? 1: 0} transition={targetRect? [
+                    <Layout h='100%' w='100%' oc={isExpanded? 1: 0} transition={targetRect? [
                         "opacity " + (isExpanded? '300ms': '200ms') + " var(--emphasized-decelerate-motion)",
                     ].join(","): undefined}>
                         <ModalContext.Provider value={{
