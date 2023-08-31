@@ -1,12 +1,13 @@
 import classNames from "classnames";
-import React from "react";
+import React, {useState} from "react";
 import "./Avatar.css";
-import {Layout, LayoutProps} from "../../Basic";
+import {Layout, LayoutProps, znui} from "../../Basic";
 
 export interface AvatarProps extends LayoutProps {
     image?: string
     text?: string
     size?: number
+    contentDescription?: string
 }
 
 /**
@@ -15,12 +16,14 @@ export interface AvatarProps extends LayoutProps {
  * @constructor
  */
 export function Avatar(props: AvatarProps) {
+    const [isLoaded, setIsLoaded] = useState(false)
     const {
         image,
         text,
         size = 60,
         className,
         style,
+        contentDescription,
         ...otherProps
     } = props
 
@@ -33,7 +36,13 @@ export function Avatar(props: AvatarProps) {
     )} fontSize={22/60*size} layoutSize={size} {...otherProps}>
         {
             text&&!image ? text[0]:
-                <img src={image} alt=""/>
+                <znui.img
+                    src={image}
+                    alt={contentDescription}
+                    transition='opacity 200ms'
+                    oc={isLoaded? 1: 0}
+                    onLoad={() => setIsLoaded(true)}
+                />
         }
     </Layout>
 }
