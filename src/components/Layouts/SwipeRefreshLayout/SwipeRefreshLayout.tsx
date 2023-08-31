@@ -1,4 +1,4 @@
-import React, {ForwardedRef, useCallback, useState, PointerEvent} from "react";
+import React, {ForwardedRef, useCallback, useState, UIEvent} from "react";
 import {ScrollLayout} from "../ScrollLayout/ScrollLayout";
 import {LayoutProps, Center} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
@@ -19,15 +19,19 @@ export const SwipeRefreshLayout = React.forwardRef((
     const [isRefreshing, setIsRefreshing] = useState(false)
     const [refreshPercentage, setRefreshPercentage] = useState(0)
     const [transition, setTransition] = useState<string|undefined>()
+    const [downY, setDownY] = useState<number|null>(null)
     const {
         onRefresh,
         children,
         ...otherProps
     } = props
 
-    const refresh = useCallback((e: PointerEvent<HTMLDivElement>) => {
+    const refresh = useCallback((event: UIEvent<HTMLDivElement>) => {
         if(!isRefreshing) {
-            e.currentTarget.removeAttribute('data-y-down')
+            event.currentTarget.style.overflowY = 'scroll'
+            event.currentTarget.style.touchAction = 'pan-y'
+
+            setDownY(null)
             if(refreshPercentage>=1){
                 onRefresh?.call(undefined, {
                     complete: () => {
@@ -46,6 +50,25 @@ export const SwipeRefreshLayout = React.forwardRef((
 
     const currentPercentage = isRefreshing ? 1: refreshPercentage
 
+    const onMove = (target: HTMLDivElement, clientY: number) => {
+        if(target.scrollTop===0&&downY!=null) {
+            const currentY = clientY - downY
+            if(currentY>0) {
+                target.scrollTop = 0
+                target.style.touchAction = 'none'
+                target.style.overflowY = 'hidden'
+                const percentage = currentY/180
+                setRefreshPercentage(percentage>1? 1: percentage)
+                return
+            }
+        }
+
+        target.style.touchAction = 'pan-y'
+        target.style.overflowY = 'scroll'
+    }
+
+    console.log(currentPercentage)
+
     return <ScrollLayout
         overscrollBehavior='none'
         orientation='vertical'
@@ -53,27 +76,19 @@ export const SwipeRefreshLayout = React.forwardRef((
         ref={ref}
         {...otherProps}
         onPointerDown={(e) => {
-            if(!isRefreshing) {
-                e.currentTarget.setAttribute('data-y-down', e.clientY.toString())
+            if(e.currentTarget.scrollTop===0&&!isRefreshing) {
+                e.currentTarget.style.touchAction = 'none'
+                setDownY(e.clientY)
                 setTransition(undefined)
             }
         }}
-        style={{
-            touchAction: "none"
-        }}
-        onPointerUp={refresh}
-        onPointerLeave={refresh}
-        onPointerCancel={refresh}
-        onPointerMove={(e) => {
-            const target = e.currentTarget
-            const startYAttribute = target.getAttribute('data-y-down')
-            const startY = startYAttribute ? parseInt(startYAttribute): null
-            if(startY!=null&&target.scrollTop===0) {
-                const currentY = e.clientY - startY
-                const percentage = currentY/180
-                setRefreshPercentage(percentage>1? 1: percentage)
-            }
-        }}
+        onMouseUp={refresh}
+        onMouseLeave={refresh}
+        onMouseOver={refresh}
+        onTouchCancel={refresh}
+        onTouchEnd={refresh}
+        onTouchMove={(e) => onMove(e.currentTarget, e.touches[0].clientY)}
+        onPointerMove={(e) => onMove(e.currentTarget, e.clientY)}
     >
         <Center
             pos='absolute'
@@ -89,6 +104,7 @@ export const SwipeRefreshLayout = React.forwardRef((
             <CircularProgressIndicator
                 variant={isRefreshing ? 'indeterminate': 'determinate'}
                 size={24}
+                transform={'rotate('+(currentPercentage*180)+"deg)"}
                 motionDuration={isRefreshing||transition!==undefined? undefined: '0ms'}
                 value={currentPercentage*100}
             />
