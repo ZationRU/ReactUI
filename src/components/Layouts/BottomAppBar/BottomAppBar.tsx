@@ -67,7 +67,6 @@ export class BottomAppBarBehavior extends CoordinatorLayoutBehavior {
 
     onLayout(parent: HTMLElement, child: CoordinatorLayoutElement) {
         const parentRect = parent.getBoundingClientRect()
-        const childRect = child.elementInstance!!.getBoundingClientRect()
 
         child.elementInstance!!.style.position = 'absolute'
         child.elementInstance!!.style.zIndex = '1'

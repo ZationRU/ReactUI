@@ -65,11 +65,8 @@ export type Navigate = (hash: string) => void
 export function StyleGuideRenderer(props: StyleGuideRendererProps) {
     const ref = React.useRef<HTMLDivElement|null>(null)
     const {
-        title,
-        version,
         children,
         toc,
-        hasSidebar,
         allSections
     } = props
 
