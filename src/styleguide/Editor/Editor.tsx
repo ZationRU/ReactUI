@@ -15,7 +15,7 @@ let timer: NodeJS.Timeout
 
 export default function EditorWrapper(props: any) {
     return (
-        <Layout overflow="auto">
+        <Layout clip overflowY="auto">
             <Editor {...props} onChange={(code) => {
                 clearTimeout(timer)
                 timer = setTimeout(() => {

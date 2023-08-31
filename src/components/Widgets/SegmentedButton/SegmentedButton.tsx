@@ -84,6 +84,7 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
         direction="row"
         wrap="wrap"
         userSelect="none"
+        clip
         {...layoutRest}>
 
         <SegmentedButtonContext.Provider value={useMemo(() => ({
@@ -92,7 +93,7 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
             multiselect,
             minSelected,
             selectIcon
-        }), [onSelect, selectedIds])}>
+        }), [minSelected, multiselect, onSelect, selectIcon, selectedIds])}>
             {children}
         </SegmentedButtonContext.Provider>
     </FlexLayout>
@@ -140,6 +141,7 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                 _last={{
                     borderRight: 'none'
                 }}
+                clip
                 onClick={() => {
                     if(data.multiselect) {
                         const newArray = isSelected ?
@@ -159,8 +161,9 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                 bg={isSelected?"var(--znui-secondary-container)":'none'}
             >
                 <StateLayer/>
-                <HStack ph={12} pv={10}>
+                <HStack ph={12} pv={10} clip>
                     <IconWrapper
+                        clip
                         style={{
                             '--icon-size': '18px'
                         } as CSSProperties}
@@ -177,6 +180,7 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                     </IconWrapper>
 
                     <IconWrapper
+                        clip
                         style={{
                             '--icon-size': '18px'
                         } as CSSProperties}
@@ -193,6 +197,7 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                     </IconWrapper>
 
                     <Label
+                        clip
                         size="large"
                         overflow="hidden"
                         whiteSpace="nowrap"

@@ -4,6 +4,7 @@ import {StateLayer} from "../../Layouts";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
 import classNames from "classnames";
 import "./ContainedIconButton.css";
+import ReactShadowRoot from "react-shadow-root";
 
 export interface ContainedIconButtonProps extends LayoutProps {
     /**
@@ -59,7 +60,6 @@ export const ContainedIconButton = (props: ContainedIconButtonProps) => {
         )}
     >
         <StateLayer ripple={true}/>
-
         <IconWrapper>{children}</IconWrapper>
     </Center>
 }

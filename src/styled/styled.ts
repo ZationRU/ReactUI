@@ -55,10 +55,7 @@ export function styled<T extends React.ElementType, P extends object = {}>(
     const { baseStyle, styles } = options || {}
 
     const styleObject = toCSSObject({
-        baseStyle: {
-            overflow: 'clip',
-            ...baseStyle
-        }
+        baseStyle
     })
 
     const Component = emotion(

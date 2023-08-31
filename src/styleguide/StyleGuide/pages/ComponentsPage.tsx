@@ -17,6 +17,7 @@ export function ComponentsPage(props: ComponentsPageProps) {
         display='flex'
         direction="row"
         flex={1}
+        clip
     >
         {currentBreakpoint!=="esm" && <>
             <NavigationDrawer p={0} compat={true} minW={200}>
@@ -28,7 +29,7 @@ export function ComponentsPage(props: ComponentsPageProps) {
             </NavigationDrawer>
         </>}
 
-        <Layout flex={1} ref={props.ref}>
+        <Layout flex={1} ref={props.ref} clip>
             {
                 props.children || <ScrollLayout orientation="vertical" h="100%">
                     {props.allSections.map(it => {

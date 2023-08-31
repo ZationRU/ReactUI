@@ -26,7 +26,7 @@ export function Button(props: ButtonProps) {
     } = props
 
     return <znui.button
-        as="button"
+        clip
         className={
             classNames(className, 'Button', 'Button--'+mode, {
                 'elevation-1': mode==='elevated'

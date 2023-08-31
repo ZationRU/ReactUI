@@ -43,6 +43,7 @@ export function Toolbar(props: ToolbarProps) {
             className,
             'Toolbar'
         )}
+        clip
         {...otherProps}
     >
         <div className="inner">

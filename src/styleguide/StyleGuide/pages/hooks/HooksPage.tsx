@@ -51,6 +51,7 @@ export function HooksPage({ go, ref, evalInContext }: HooksPageProps) {
         display='flex'
         direction="row"
         flex={1}
+        clip
     >
         {currentBreakpoint!=="esm" && <>
             <NavigationDrawer p={0} compat={true} minW={284}>

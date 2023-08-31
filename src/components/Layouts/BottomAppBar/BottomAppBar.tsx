@@ -26,6 +26,7 @@ export const BottomAppBar = React.forwardRef((props: BottomAppBarProps, innerRef
         c={ThemeTokens.onSurface}
         h={80}
         minH={80}
+        clip
         ref={innerRef}
         {...layoutProps}
     >

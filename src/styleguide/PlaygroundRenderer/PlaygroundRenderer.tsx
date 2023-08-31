@@ -9,7 +9,7 @@ interface PlaygroundRendererProps {
 
 const PlaygroundRenderer = ({ name, preview, tabBody }: PlaygroundRendererProps) => {
     return (
-        <Layout bg={ThemeTokens.surfaceContainerLow} shapeScale="lg">
+        <Layout bg={ThemeTokens.surfaceContainerLow} shapeScale="lg" clip>
             <FlexLayout w="100%" direction={[
                 'column-reverse',
                 null,

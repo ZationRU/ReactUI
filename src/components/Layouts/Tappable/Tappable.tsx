@@ -24,6 +24,7 @@ export const Tappable = React.forwardRef(
             cursor={ripple ? 'pointer': undefined}
             {...otherProps}
             pos='relative'
+            clip={true}
         >
             <StateLayer ripple={ripple}/>
             {children}

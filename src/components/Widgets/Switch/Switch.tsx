@@ -72,7 +72,6 @@ export const Switch = React.forwardRef((
         onPointerMove={onClearDown}
         onPointerCancel={onClearDown}
     >
-
         <div className="Switch-Truck"/>
 
         <div 
