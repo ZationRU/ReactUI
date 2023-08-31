@@ -5,8 +5,10 @@ import {StateLayer} from "../../Layouts";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
 import {useAdaptiveValue} from "../../../adaptive";
 import {Adaptive} from "../../../adaptive";
+import {HTMLZnUIProps} from "../../../styled";
+import { znui } from '../../Basic';
 
-export interface FloatingActionButtonProps extends React.HTMLAttributes<HTMLButtonElement>{
+export interface FloatingActionButtonProps extends Omit<HTMLZnUIProps<'button'>, 'appearance'> {
     size?: Adaptive<'small' | 'default' | 'expanded' | 'large'>,
     appearance?: 'surface'|'primary'|'secondary'|'tertiary',
     text?: string,
@@ -31,7 +33,7 @@ export function FloatingActionButton(
         ...otherProps
     } = props
 
-    return <button className={classNames(
+    return <znui.button className={classNames(
         className,
         'FloatingActionButton',
         'FloatingActionButton--'+useAdaptiveValue(size)||'default',
@@ -50,5 +52,5 @@ export function FloatingActionButton(
                 {text}
             </div>
         </div>
-    </button>
+    </znui.button>
 }
