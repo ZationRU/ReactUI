@@ -1,7 +1,7 @@
 import React, {PointerEvent, MutableRefObject, useRef} from 'react';
 import "./StateLayer.css";
 
-export interface StateLayerProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface StateLayerProps {
     state?: StateLayerStateData,
     ripple?: boolean
 }
