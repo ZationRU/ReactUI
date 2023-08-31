@@ -432,7 +432,8 @@
  * For WebKit Specific
  */
 .ThemeProvider ::-webkit-scrollbar {
-    width: 0px;
+    width: 0;
+    height: 0;
 }
 
 .ThemeProvider ::-webkit-scrollbar-track {
