@@ -51,4 +51,14 @@ export const ThemeTokens = {
     scrim: 'var(--znui-scrim)',
     shadow: 'var(--znui-shadow)',
     scrollbarThumb: 'var(--znui-scrollbar-thumb)',
+
+    motion: {
+        standard: 'var(--znui-standard-motion)',
+        standardAccelerate: 'var(--znui-standard-accelerate-motion)',
+        standardDecelerate: 'var(--znui-standard-decelerate-motion)',
+
+        emphasized: 'var(--znui-standard-motion)',
+        emphasizedAccelerate: 'var(--znui-standard-accelerate-motion)',
+        emphasizedDecelerate: 'var(--znui-standard-decelerate-motion)',
+    }
 }

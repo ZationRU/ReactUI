@@ -366,6 +366,14 @@
     --znui-all-inset-bottom: calc(var(--znui-safe-area-inset-bottom) + var(--znui-keyboard-inset-bottom));
     --znui-all-inset-left: calc(var(--znui-safe-area-inset-left) + var(--znui-keyboard-inset-left));
     --znui-all-inset-right: calc(var(--znui-safe-area-inset-right) + var(--znui-keyboard-inset-right));
+
+    /* Motion */
+    --znui-standard-motion: cubic-bezier(0.2, 0, 0, 1);
+    --znui-standard-accelerate-motion: cubic-bezier(0.3, 0, 1, 1);
+    --znui-standard-decelerate-motion: cubic-bezier(0, 0, 0, 1);
+    --znui-emphasized-motion: cubic-bezier(0.45, 0.25, 0, 1.1);
+    --znui-emphasized-accelerate-motion: cubic-bezier(0.3, 0, 0.8, 0.15);
+    --znui-emphasized-decelerate-motion: cubic-bezier(0.05, 0.7, 0.1, 1);
 }
 
 .ThemeProvider {
@@ -488,14 +496,6 @@
     --znui-scrim: var(--md-sys-color-scrim-dark);
     --znui-shadow: var(--md-sys-color-shadow-dark);
     --znui-scrollbar-thumb: var(--znui-surface-variant);
-
-    /* Motion */
-    --znui-standard-motion: cubic-bezier(0.2, 0, 0, 1);
-    --znui-standard-accelerate-motion: cubic-bezier(0.3, 0, 1, 1);
-    --znui-standard-decelerate-motion: cubic-bezier(0, 0, 0, 1);
-    --znui-emphasized-motion: cubic-bezier(0.45, 0.25, 0, 1.1);
-    --znui-emphasized-accelerate-motion: cubic-bezier(0.3, 0, 0.8, 0.15);
-    --znui-emphasized-decelerate-motion: cubic-bezier(0.05, 0.7, 0.1, 1);
 }
 
 /** Deprecated fallbacks **/
