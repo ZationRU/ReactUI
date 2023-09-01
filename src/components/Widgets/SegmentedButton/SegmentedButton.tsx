@@ -171,9 +171,9 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                         minW={selectIcon&&isSelected ? 18: 0}
                         mr={selectIcon&&isSelected ? 8: 0}
                         transition={[
-                            'max-width 300ms var(--emphasized-motion)',
-                            'min-width 300ms var(--emphasized-motion)',
-                            'margin 300ms var(--emphasized-motion)'
+                            'max-width 300ms var(--znui-emphasized-motion)',
+                            'min-width 300ms var(--znui-emphasized-motion)',
+                            'margin 300ms var(--znui-emphasized-motion)'
                         ].join(',')}
                     >
                         {SelectedIcon}
@@ -188,9 +188,9 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                         minW={icon ? 18: 0}
                         mr={icon&&children ? 8: 0}
                         transition={[
-                            'max-width 300ms var(--emphasized-motion)',
-                            'min-width 300ms var(--emphasized-motion)',
-                            'margin 300ms var(--emphasized-motion)'
+                            'max-width 300ms var(--znui-emphasized-motion)',
+                            'min-width 300ms var(--znui-emphasized-motion)',
+                            'margin 300ms var(--znui-emphasized-motion)'
                         ].join(',')}
                     >
                         {icon}

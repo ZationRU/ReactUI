@@ -4,7 +4,7 @@
     border-radius: 12px;
     overflow: clip;
     position: relative;
-    transition: padding 300ms var(--emphasized-motion);
+    transition: padding 300ms var(--znui-emphasized-motion);
     user-select: none;
 }
 
@@ -60,10 +60,10 @@
 .FloatingActionButton > .inner > .text {
     user-select: none;
     transition:
-            max-width 200ms var(--emphasized-decelerate-motion),
-            opacity 200ms var(--emphasized-decelerate-motion),
-            margin-left 300ms var(--emphasized-decelerate-motion),
-            padding-right 300ms var(--emphasized-decelerate-motion)
+            max-width 200ms var(--znui-emphasized-decelerate-motion),
+            opacity 200ms var(--znui-emphasized-decelerate-motion),
+            margin-left 300ms var(--znui-emphasized-decelerate-motion),
+            padding-right 300ms var(--znui-emphasized-decelerate-motion)
 ;
 
     font-family: 'Roboto';
@@ -79,10 +79,10 @@
 
 .FloatingActionButton--expanded > .inner > .text {
     transition:
-            max-width 300ms var(--emphasized-motion),
-            opacity 200ms var(--emphasized-motion),
-            margin-left 300ms var(--emphasized-motion),
-            padding-right 300ms var(--emphasized-motion)
+            max-width 300ms var(--znui-emphasized-motion),
+            opacity 200ms var(--znui-emphasized-motion),
+            margin-left 300ms var(--znui-emphasized-motion),
+            padding-right 300ms var(--znui-emphasized-motion)
 ;
 
     padding-right: 4px;

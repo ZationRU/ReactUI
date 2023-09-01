@@ -1,21 +1,24 @@
 .znui-headline-large {
-    font-size: 32px;
-    font-family: Roboto;
-    font-weight: 400;
-    letter-spacing: 0em;
-    line-height: 40px;
+    font-size: var(--md-sys-typescale-headline-large-font-size);
+    font-family: var(--md-sys-typescale-headline-large-font-family-name);
+    font-weight: var(--md-sys-typescale-headline-large-font-weight);
+    letter-spacing: var(--md-sys-typescale-headline-large-letter-spacing);
+    line-height: var(--md-sys-typescale-headline-large-line-height);
+    font-style: var(--md-sys-typescale-headline-large-font-family-style);
 }
 .znui-headline-medium {
-    font-size: 28px;
-    font-family: Roboto;
-    font-weight: 400;
-    letter-spacing: 0em;
-    line-height: 36px;
+    font-size: var(--md-sys-typescale-headline-medium-font-size);
+    font-family: var(--md-sys-typescale-headline-medium-font-family-name);
+    font-weight: var(--md-sys-typescale-headline-medium-font-weight);
+    letter-spacing: var(--md-sys-typescale-headline-medium-letter-spacing);
+    line-height: var(--md-sys-typescale-headline-medium-line-height);
+    font-style: var(--md-sys-typescale-headline-medium-font-family-style);
 }
 .znui-headline-small {
-    font-size: 24px;
-    font-family: Roboto;
-    font-weight: 400;
-    letter-spacing: 0em;
-    line-height: 32px;
+    font-size: var(--md-sys-typescale-headline-small-font-size);
+    font-family: var(--md-sys-typescale-headline-small-font-family-name);
+    font-weight: var(--md-sys-typescale-headline-small-font-weight);
+    letter-spacing: var(--md-sys-typescale-headline-small-letter-spacing);
+    line-height: var(--md-sys-typescale-headline-small-line-height);
+    font-style: var(--md-sys-typescale-headline-small-font-family-style);
 }

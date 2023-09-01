@@ -13,7 +13,7 @@
     gap: 12px;
 
     color: var(--znui-on-surface-variant);
-    transition: color 200ms var(--emphasized-motion), background-color 200ms var(--emphasized-motion);
+    transition: color 200ms var(--znui-emphasized-motion), background-color 200ms var(--znui-emphasized-motion);
 }
 
 .NavigationDrawer--compat .NavigationDrawerItem {
@@ -30,7 +30,7 @@
 
     border-radius: 100px;
     background: var(--znui-secondary-container);
-    transition: left 200ms var(--emphasized-motion), right 200ms var(--emphasized-motion), opacity 200ms var(--emphasized-motion);
+    transition: left 200ms var(--znui-emphasized-motion), right 200ms var(--znui-emphasized-motion), opacity 200ms var(--znui-emphasized-motion);
 }
 
 .NavigationDrawerItem > .inner {

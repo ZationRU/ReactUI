@@ -38,7 +38,7 @@ export function Toolbar(props: ToolbarProps) {
 
     return <Layout
         c={ThemeTokens.onSurface}
-        transition={"background-color 150ms var(--emphasized-motion)"}
+        transition={"background-color 150ms var(--znui-emphasized-motion)"}
         className={classNames(
             className,
             'Toolbar'

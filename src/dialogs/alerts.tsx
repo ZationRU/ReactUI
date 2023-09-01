@@ -82,11 +82,11 @@ export const showAlert = (portalRegister: ZnUIPortalRegistrar) => {
                     const baseDialogWrapper = baseDialogWrapperRef.current
                     if (scrim == null || baseDialogWrapper == null) return;
                     scrim.style.opacity = "0.4";
-                    scrim.style.transitionTimingFunction = "var(--emphasized-motion)";
+                    scrim.style.transitionTimingFunction = "var(--znui-emphasized-motion)";
 
                     const baseDialog = (baseDialogWrapper.firstElementChild!! as HTMLDivElement);
                     baseDialog.style.maxHeight = "100em";
-                    baseDialog.style.transitionTimingFunction = "var(--emphasized-motion)";
+                    baseDialog.style.transitionTimingFunction = "var(--znui-emphasized-motion)";
                 }, 10)
             }, [scrimRef])
 
@@ -120,7 +120,7 @@ export const showAlert = (portalRegister: ZnUIPortalRegistrar) => {
                     pos="fixed"
                     opacity={0}
                     ref={scrimRef}
-                    transition="opacity 300ms var(--emphasized-decelerate-motion)"
+                    transition="opacity 300ms var(--znui-emphasized-decelerate-motion)"
                     top={0}
                     left={0}
                     right={0}
@@ -151,7 +151,7 @@ export const showAlert = (portalRegister: ZnUIPortalRegistrar) => {
                             icon={config.icon}
                             title={config.title}
                             description={config.description}
-                            transition="max-height 300ms var(--emphasized-decelerate-motion)"
+                            transition="max-height 300ms var(--znui-emphasized-decelerate-motion)"
                             actions={config.actions && config.actions.map((action, index) =>
                                 <Button mode="text" key={index} onClick={e => {
                                     if (action.cancel) {

@@ -68,7 +68,7 @@ export const AppBarLayout = React.forwardRef<AppBarLayoutRefProps>((props: AppBa
     return <Layout
         {...layoutRest}
         transition={[
-            'background 300ms var(--emphasized-motion)',
+            'background 300ms var(--znui-emphasized-motion)',
             transition
         ].join(',')}
         ref={ref}

@@ -1,5 +1,7 @@
 import React, {PointerEvent, MutableRefObject, useRef} from 'react';
 import "./StateLayer.css";
+import {Layout} from "../../Basic";
+import {ThemeTokens} from "../../../theme";
 
 export interface StateLayerProps {
     state?: StateLayerStateData,
@@ -21,7 +23,10 @@ export function StateLayer(props: StateLayerProps) {
     const state = useStateLayer()
 
     return <>
-        <div className="state-layer" onPointerLeave={state.performUp}/>
+        <Layout
+            className="state-layer"
+            onPointerLeave={state.performUp}
+        />
         {ripple &&
             <>
                 <div className="ripple-trigger"
@@ -29,7 +34,8 @@ export function StateLayer(props: StateLayerProps) {
                      onPointerUp={state.performUp}
                      onPointerCancel={state.performUp}
                      onPointerLeave={state.performUp}
-                     onPointerDown={ripple ? state.performDown : undefined}/>
+                     onPointerDown={ripple ? state.performDown : undefined}
+                />
             </>
         }
         </>

@@ -153,7 +153,7 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
                     overflow="auto"
                     ref={ref}
                     key={page}
-                    animation={pageAnimation+" 300ms var(--emphasized-motion)"}
+                    animation={pageAnimation+" 300ms var(--znui-emphasized-motion)"}
                 >
                     {
                         React.createElement(Pages[page], {

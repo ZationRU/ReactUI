@@ -40,8 +40,8 @@
 .TextField > .label {
     pointer-events: none;
     transition:
-            top 100ms var(--emphasized-decelerate-motion),
-            font-size 100ms var(--emphasized-decelerate-motion);
+            top 100ms var(--znui-emphasized-decelerate-motion),
+            font-size 100ms var(--znui-emphasized-decelerate-motion);
 
     position: absolute;
     /*background-color: var(--znui-background);*/

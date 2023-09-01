@@ -39,7 +39,7 @@ export const Radio = React.forwardRef(
                     <znui.div
                         bg='currentColor'
                         shapeScale='full'
-                        transition='width 200ms var(--emphasized-motion), height 200ms var(--emphasized-motion)'
+                        transition='width 200ms var(--znui-emphasized-motion), height 200ms var(--znui-emphasized-motion)'
                         layoutSize={isChecked? 10: 0}
                     />
                 </Center>

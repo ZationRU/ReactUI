@@ -62,7 +62,7 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                     const modalContainer = modalContainerRef.current
                     if (scrim == null||modalContainer==null) return;
                     scrim.style.opacity = "0.4";
-                    scrim.style.transitionTimingFunction = "var(--emphasized-motion)";
+                    scrim.style.transitionTimingFunction = "var(--znui-emphasized-motion)";
 
                     setIsExpanded(true)
                 }, 10)
@@ -123,7 +123,7 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                     pos="fixed"
                     opacity={0}
                     ref={scrimRef}
-                    transition="opacity 300ms var(--emphasized-decelerate-motion)"
+                    transition="opacity 300ms var(--znui-emphasized-decelerate-motion)"
                     top={0}
                     left={0}
                     right={0}
@@ -149,14 +149,14 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                     transform={"translate(-50%, -50%)"}
                     transition={[
                         ...(targetRect?[
-                            "left 300ms var(--emphasized-motion)",
-                            "top 300ms var(--emphasized-motion)",
-                            "width 300ms var(--emphasized-motion)",
-                            "max-height 300ms var(--emphasized-motion)",
-                            "border-radius 300ms var(--emphasized-motion)",
-                            "border-color 300ms var(--emphasized-motion)",
-                            isExpanded ? "background-color 100ms var(--emphasized-motion)":
-                                "background-color 300ms var(--emphasized-motion)",
+                            "left 300ms var(--znui-emphasized-motion)",
+                            "top 300ms var(--znui-emphasized-motion)",
+                            "width 300ms var(--znui-emphasized-motion)",
+                            "max-height 300ms var(--znui-emphasized-motion)",
+                            "border-radius 300ms var(--znui-emphasized-motion)",
+                            "border-color 300ms var(--znui-emphasized-motion)",
+                            isExpanded ? "background-color 100ms var(--znui-emphasized-motion)":
+                                "background-color 300ms var(--znui-emphasized-motion)",
                         ]:[]),
                     ].join(",")}
                 >
@@ -164,7 +164,7 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                     {/*    oc={isExpanded? 0: 1}*/}
                     {/*    pos='absolute'*/}
                     {/*    transition={*/}
-                    {/*        "opacity " + (isExpanded? '200ms': '500ms') + " var(--emphasized-decelerate-motion)"*/}
+                    {/*        "opacity " + (isExpanded? '200ms': '500ms') + " var(--znui-emphasized-decelerate-motion)"*/}
                     {/*    }*/}
                     {/*>*/}
                     {/*    {*/}
@@ -178,7 +178,7 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                     {/*</Layout>}*/}
 
                     <Layout h='100%' w='100%' oc={isExpanded? 1: 0} transition={targetRect? [
-                        "opacity " + (isExpanded? '300ms': '200ms') + " var(--emphasized-decelerate-motion)",
+                        "opacity " + (isExpanded? '300ms': '200ms') + " var(--znui-emphasized-decelerate-motion)",
                     ].join(","): undefined}>
                         <ModalContext.Provider value={{
                             dialogInterface: modalDialogInterface,

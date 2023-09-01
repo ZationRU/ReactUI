@@ -86,15 +86,15 @@ export const useSnackbar = () => {
                 }, [durationValue, isTouched]);
 
                 const defaultTransitions = [
-                    "opacity 200ms var(--emphasized-decelerate-motion)",
-                    "transform 200ms var(--emphasized-decelerate-motion)",
+                    "opacity 200ms var(--znui-emphasized-decelerate-motion)",
+                    "transform 200ms var(--znui-emphasized-decelerate-motion)",
                 ].join(",")
 
 
                 return <Layout
                     shapeScale='esm'
                     className="elevation-3"
-                    animation={showAnimation + " 300ms var(--emphasized-motion)"}
+                    animation={showAnimation + " 300ms var(--znui-emphasized-motion)"}
                     bg={ThemeTokens.inverseSurface}
                     c={ThemeTokens.inverseOnSurface}
                     userSelect='none'
@@ -155,9 +155,9 @@ export const useSnackbar = () => {
                         e.currentTarget.style.bottom = bottomOffset + 'px'
                         e.currentTarget.style.opacity = '1'
                         e.currentTarget.style.transition = defaultTransitions+','+([
-                            "left 200ms var(--emphasized-decelerate-motion)",
-                            "bottom 200ms var(--emphasized-decelerate-motion)",
-                            "right 200ms var(--emphasized-decelerate-motion)",
+                            "left 200ms var(--znui-emphasized-decelerate-motion)",
+                            "bottom 200ms var(--znui-emphasized-decelerate-motion)",
+                            "right 200ms var(--znui-emphasized-decelerate-motion)",
                         ].join(','))
 
                         setIsTouched(false)

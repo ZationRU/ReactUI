@@ -35,14 +35,14 @@ export const SwipeRefreshLayout = React.forwardRef((
             if(refreshPercentage>=1){
                 onRefresh?.call(undefined, {
                     complete: () => {
-                        setTransition('top 300ms var(--emphasized-motion)')
+                        setTransition('top 300ms var(--znui-emphasized-motion)')
                         setRefreshPercentage(0)
                         setIsRefreshing(false)
                     }
                 })
                 setIsRefreshing(true)
             }else{
-                setTransition('top 300ms var(--emphasized-motion)')
+                setTransition('top 300ms var(--znui-emphasized-motion)')
                 setRefreshPercentage(0)
             }
         }

@@ -1,6 +1,6 @@
 .AnimatedVisibility {
     --duration: 400ms;
-    transition: transform var(--duration) var(--emphasized-motion), opacity var(--duration) var(--emphasized-motion);
+    transition: transform var(--duration) var(--znui-emphasized-motion), opacity var(--duration) var(--znui-emphasized-motion);
     opacity: 0;
 }
 

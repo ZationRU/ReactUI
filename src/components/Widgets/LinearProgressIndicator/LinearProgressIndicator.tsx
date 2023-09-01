@@ -48,13 +48,13 @@ export const LinearProgressIndicator = React.forwardRef(
                 w="100%"
                 maxW={variant==='determinate'? currentValue+"%": '0%'}
                 animation={variant==='indeterminate' ?
-                    progressBarIntermediate+" infinite 2s var(--emphasized-motion)"
+                    progressBarIntermediate+" infinite 2s var(--znui-emphasized-motion)"
                 : ''}
                 ml={0}
                 bg="currentColor"
                 transition={[
-                    'max-width 300ms var(--emphasized-motion)',
-                    'margin-left 300ms var(--emphasized-motion)',
+                    'max-width 300ms var(--znui-emphasized-motion)',
+                    'margin-left 300ms var(--znui-emphasized-motion)',
                 ].join(', ')}
             />
         </Layout>

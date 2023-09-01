@@ -61,7 +61,7 @@ export const CircularProgressIndicator = React.forwardRef(
             value = 0,
             thickness = 4,
             size = 36,
-            motionFunction = 'var(--emphasized-motion)',
+            motionFunction = 'var(--znui-emphasized-motion)',
             motionDuration,
             ...layoutRest
         } = props
