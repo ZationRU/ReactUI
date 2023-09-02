@@ -7,7 +7,13 @@ import {ZnUIIconMoreFilled} from "@znui/icons";
 
 <CoordinatorLayout bg={ThemeTokens.surface} h={600} maxW={400} border="black solid 1px">
     <AppBarLayout>
-        <Toolbar>Title</Toolbar>
+        <Toolbar scrollFlags={['scroll']}>Title</Toolbar>
+        <Layout scrollFlags={['scroll', 'enterAlways']}>
+            I show on top scroll
+        </Layout>
+        <Layout>
+            I fixed
+        </Layout>
     </AppBarLayout>
 
     <ScrollLayout behavior={AppBarLayout.ScrollBehavior} height="100%">
