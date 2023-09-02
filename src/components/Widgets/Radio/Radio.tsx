@@ -18,13 +18,13 @@ export const Radio = React.forwardRef(
             type='radio'
             checked={isChecked}
             ref={inputRef}
-            layoutSize={40}
+            layoutSize={24}
             {...otherProps}
         >
             <Center
                 shapeScale='full'
                 position='relative'
-                layoutSize={40}
+                layoutSize={24}
                 color={isChecked? ThemeTokens.primary: ThemeTokens.onSurfaceVariant}
             >
                 <Center
