@@ -45,7 +45,7 @@ export const ListItem = React.forwardRef(
                 {supportText&&<Body size='medium' c={ThemeTokens.onSurfaceVariant}>{supportText}</Body>}
             </VStack>
 
-            <HStack spacing={10} align='center'>
+            <HStack spacing={10} align='center' h='min-content'>
                 {trailingSupportText&&<Label size={'small'}>{trailingSupportText}</Label>}
                 {trailing}
             </HStack>
