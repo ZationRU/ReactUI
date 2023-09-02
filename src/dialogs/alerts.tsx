@@ -1,5 +1,14 @@
 import {ZnUIPortalRegistrar} from "../components/Providers/portals";
-import React, {MouseEventHandler, ReactNode, useCallback, useEffect, useRef, useState, MouseEvent} from "react";
+import React, {
+    MouseEventHandler,
+    ReactNode,
+    useCallback,
+    useEffect,
+    useRef,
+    useState,
+    MouseEvent,
+    EventHandler, JSXElementConstructor
+} from "react";
 import Measure, {BoundingRect} from "react-measure";
 import {useAdaptiveValue} from "../adaptive";
 import {Layout, BaseDialog, Button} from "../components";
@@ -9,18 +18,24 @@ export type AlertDialogConfig = {
     title: ReactNode|string
     description?: ReactNode|string
     actions?: AlertDialogConfigActions[]
-    component?: ReactNode
+    component?: JSXElementConstructor<{
+        dialogInterface: AlertDialogInterface
+    }>
     cancelable?: boolean
 }
 
 export type AlertDialogConfigActions = {
     title: ReactNode|string,
     cancel?: boolean,
-    onClick?: MouseEventHandler<HTMLButtonElement>
+    onClick?: EventHandler<MouseEvent<HTMLButtonElement> & {
+        dialogInterface: AlertDialogInterface
+    }>
 }
 
 export type AlertDialogInterface = {
     cancel: () => void;
+    values: { [key: string]: any }
+    setValue: (key: string, value: any) => void
 }
 
 export const showAlert = (portalRegister: ZnUIPortalRegistrar) => {
@@ -30,6 +45,16 @@ export const showAlert = (portalRegister: ZnUIPortalRegistrar) => {
 
         let cancel = () => {
             portal.remove()
+        }
+
+        const values = {}
+
+        let dialogInterface: AlertDialogInterface = {
+            cancel: () => cancel(),
+            values,
+            setValue: (key: string, value: any) => {
+                values[key] = value
+            }
         }
 
         const AlertDialog = () => {
@@ -158,10 +183,19 @@ export const showAlert = (portalRegister: ZnUIPortalRegistrar) => {
                                         cancel()
                                     }
 
-                                    action.onClick && action.onClick(e)
+                                    action.onClick && action.onClick({
+                                        ...e,
+                                        dialogInterface
+                                    })
                                 }}>{action.title}</Button>
                             )}
-                        >{config.component}</BaseDialog>
+                        >
+                            {
+                                config.component&&React.createElement(config.component, {
+                                    dialogInterface
+                                })
+                            }
+                        </BaseDialog>
                     </Layout>
                 }</Measure>
             </Layout>
@@ -169,8 +203,6 @@ export const showAlert = (portalRegister: ZnUIPortalRegistrar) => {
 
         portal.show(<AlertDialog/>)
 
-        return {
-            cancel: () => cancel()
-        }
+        return dialogInterface
     }
 }

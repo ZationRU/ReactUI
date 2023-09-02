@@ -2,31 +2,65 @@
 
 Simple Alert Dialog without icon:
 ```tsx
-import {useDialogs, Button} from "@znui/react";
+import {useDialogs, useSnackbar, Button, VStack, TextField} from "@znui/react";
 
 const dialogs = useDialogs();
+const snackbar = useSnackbar();
 
-<Button
-    onClick={() => {
-        dialogs.showAlert({
-            title: "I'm Alert Dialog",
-            description: "A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.",
-            actions: [
-                {
-                    title: "Cancel",
-                    cancel: true
-                },
-                {
-                    title: "Done",
-                    cancel: true,
-                    onClick: () => {
-                        // Do your staff
+<VStack spacing={10}>
+    <Button
+        onClick={() => {
+            dialogs.showAlert({
+                title: "I'm Alert Dialog",
+                description: "A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.",
+                actions: [
+                    {
+                        title: "Cancel",
+                        cancel: true
+                    },
+                    {
+                        title: "Done",
+                        cancel: true,
+                        onClick: () => {
+                            // Do your staff
+                        }
                     }
-                }
-            ]
-        })
-    }}
->Show dialog</Button>
+                ]
+            })
+        }}
+    >Show dialog</Button>
+
+    <Button
+        onClick={() => {
+            dialogs.showAlert({
+                title: "I'm Alert Dialog",
+                description: "A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.",
+                component: ({dialogInterface}) => {
+                    return <TextField mh={24} label="Example" placeholder="xD">
+                        <input
+                            value={dialogInterface.values['name']}
+                            onChange={(e) => dialogInterface.setValue('name', e.currentTarget.value)}/>
+                    </TextField>
+                },
+                actions: [
+                    {
+                        title: "Cancel",
+                        cancel: true
+                    },
+                    {
+                        title: "Done",
+                        cancel: true,
+                        onClick: ({dialogInterface}) => {
+                            snackbar({
+                                text: 'You name is: '+dialogInterface.values.name
+                            })
+                        }
+                    }
+                ]
+            })
+        }}
+    >Show dialog with component</Button>
+</VStack>
 ```
 
 A simple Alert Dialog with an icon. She will always be in the center:
@@ -220,5 +254,75 @@ const dialogs = useDialogs();
             cancelable: false
         });
     }}>Show Modal non-cancelable</Button>
+</VStack>
+```
+
+## Bottom Sheet
+
+```tsx
+import {useDialogs, Button, Modal, TextField, VStack, SegmentedButton} from "@znui/react";
+
+const dialogs = useDialogs();
+
+<VStack spacing={5}>
+    <Button onClick={(e) => {
+        dialogs.showBottomSheet(({dialogInterface}) => {
+            return <>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+            </>
+        }, {
+            cancelable: false
+        });
+    }}>Show Bottom sheet non-cancelable</Button>
 </VStack>
 ```

@@ -1,6 +1,6 @@
 import React, {CSSProperties, ReactNode} from "react";
 import {Headline} from "../../Typography";
-import {HStack, Stack, Spacer, Layout, LayoutProps} from "../../Basic";
+import {HStack, Stack, Spacer, Layout, LayoutProps, VStack} from "../../Basic";
 import {Body} from "../../Typography";
 import {IconWrapper} from "../../Widgets";
 import {ThemeTokens} from "../../../theme";
@@ -24,6 +24,7 @@ export function BaseDialog(props: BaseDialogProps) {
         description,
         actions,
         icon,
+        children,
         ...layoutRest
     } = props
 
@@ -37,20 +38,22 @@ export function BaseDialog(props: BaseDialogProps) {
         clip
         {...layoutRest}
     >
-        <Stack>
-            <Stack spacing={16} ph={24} pt={24}>
+        <VStack>
+            <VStack spacing={16} ph={24} pt={24}>
                 {icon&&<IconWrapper display="flex" c="var(--znui-secondary)" style={{
                     "--icon-size": '24px'
                 } as CSSProperties} w="100%" justify="center">{icon}</IconWrapper>}
 
                 <Headline size="small" textAlign={icon?"center":"start"}>{title}</Headline>
                 {description&&<Body whiteSpace="break-spaces" size="medium" c="var(--znui-on-surface-variant)">{description}</Body>}
-            </Stack>
+            </VStack>
+
+            {children}
 
             <HStack spacing={16} pv={24} pr={24} pl={16}>
                 <Spacer/>
                 {actions}
             </HStack>
-        </Stack>
+        </VStack>
     </Layout>
 }
