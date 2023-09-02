@@ -121,7 +121,8 @@ export const CoordinatorLayout = React.forwardRef((props: CoordinatorLayoutProps
             childrenFragment[childrenFragment.indexOf(child)] = childCloned
         })
 
-        childrenFragment.filter(it => typeof it === 'object' && Object.hasOwn(it as object, 'type'))
+        childrenFragment
+            .filter(it => typeof it === 'object' && Object.hasOwn(it as object, 'type'))
             .forEach((child, i) => {
                 const element = child as ReactElement
 
@@ -130,6 +131,7 @@ export const CoordinatorLayout = React.forwardRef((props: CoordinatorLayoutProps
 
                 childrenFragment[i] = React.cloneElement(element, {
                     key: i,
+                    style: { ...element.props.style, position: 'absolute' },
                     onScroll: (event: React.UIEvent<any>) => {
                         element.props.onScroll?.call(undefined, event)
 
@@ -152,6 +154,10 @@ export const CoordinatorLayout = React.forwardRef((props: CoordinatorLayoutProps
                                     behavior._child!!,
                                     event.currentTarget.scrollLeft - prevX,
                                     event.currentTarget.scrollTop - prevY,
+                                    [
+                                        event.currentTarget.scrollLeft,
+                                        event.currentTarget.scrollTop,
+                                    ]
                                 )
                             }
                         })
@@ -190,6 +196,7 @@ export const CoordinatorLayout = React.forwardRef((props: CoordinatorLayoutProps
                 {...otherProps}
                 pos="relative"
                 ref={measureRef}
+                clip
             >{clones}</Layout>
         }
     </Measure>
@@ -227,7 +234,8 @@ export abstract class CoordinatorLayoutBehavior<T extends ReactElement['type'] =
         dependencies: CoordinatorLayoutElement[],
         child: CoordinatorLayoutElement,
         dx: number,
-        dy: number
+        dy: number,
+        current: [number, number]
     ): void {
     }
 

@@ -56,7 +56,8 @@ export class BottomAppBarBehavior extends CoordinatorLayoutBehavior {
         dependencies: CoordinatorLayoutElement[],
         child: CoordinatorLayoutElement,
         dx: number,
-        dy: number
+        dy: number,
+        current: [number, number]
     ) {
         if(dy>0) {
             child.elementInstance!!.style.bottom = (-child.elementInstance!!.getBoundingClientRect().height) + 'px'
