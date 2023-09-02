@@ -73,6 +73,11 @@ export class AppBarLayoutScrollBehavior extends CoordinatorLayoutBehavior<'div'>
 
         const dependencyRect = dependencies[0].elementInstance!!.getBoundingClientRect()
         child.elementInstance!!.style.paddingTop = dependencyRect.height + "px"
+
+        const lastElementChild = child.elementInstance!!.lastElementChild
+        if(lastElementChild instanceof HTMLElement) {
+            lastElementChild.style.paddingBottom = dependencyRect.height + "px"
+        }
     }
 
     onScrollStart(dependencies: CoordinatorLayoutElement[], child: CoordinatorLayoutElement): boolean {
