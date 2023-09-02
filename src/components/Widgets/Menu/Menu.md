@@ -2,8 +2,8 @@
 import {ZnUIIconMoreFilled} from "@znui/icons";
 import {ContainedIconButton, Divider} from "@znui/react";
 
-<Menu menu={
-    <>
+<Menu>
+    <Menu.Items>
         <Menu.Item>
             Menu Item
         </Menu.Item>
@@ -11,15 +11,27 @@ import {ContainedIconButton, Divider} from "@znui/react";
             Menu Item
         </Menu.Item>
         <Divider/>
-        <Menu.Item>
-            Menu Item
-        </Menu.Item>
-    </>
-}>
-    {(trigger) =>
-        <ContainedIconButton onClick={trigger.open}>
+        <Menu>
+            <Menu.Trigger>
+                <Menu.Item>
+                    Submenu Item
+                </Menu.Item>
+            </Menu.Trigger>
+            <Menu.Items>
+                <Menu.Item>
+                    Menu Item
+                </Menu.Item>
+                <Menu.Item supportingText="Supporting text">
+                    Menu Item
+                </Menu.Item>
+            </Menu.Items>
+        </Menu>
+    </Menu.Items>
+
+    <Menu.Trigger>
+        <ContainedIconButton>
             <ZnUIIconMoreFilled/>
         </ContainedIconButton>
-    }
+    </Menu.Trigger>
 </Menu>
 ```
