@@ -1,5 +1,6 @@
 .Editor__inner {
     color: currentColor;
+    z-index: 0;
 }
 
 .Editor__inner > textarea {
