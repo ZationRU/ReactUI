@@ -28,6 +28,8 @@ export const layout = {
     inlineSize: asCSSProp("inlineSize"),
     blockSize: asCSSProp("blockSize"),
     layoutSize: asCSSProp(["width", "height"]),
+    minLayoutSize: asCSSProp(["min-width", "min-height"]),
+    maxLayoutSize: asCSSProp(["max-width", "max-height"]),
     minInlineSize: asCSSProp("minInlineSize"),
     minBlockSize: asCSSProp("minBlockSize"),
     maxInlineSize: asCSSProp("maxInlineSize"),
@@ -121,6 +123,16 @@ export interface LayoutCSSProps {
      * The CSS `width` and `height` property
      */
     layoutSize?: Adaptive<CSS.Property.Width | number>
+
+    /**
+     * The CSS `width` and `height` property
+     */
+    minLayoutSize?: Adaptive<CSS.Property.MinWidth | number>
+
+    /**
+     * The CSS `width` and `height` property
+     */
+    maxLayoutSize?: Adaptive<CSS.Property.MaxWidth | number>
 
     /**
      * The CSS `maxInlineSize` property
