@@ -27,13 +27,19 @@ export function Avatar(props: AvatarProps) {
         ...otherProps
     } = props
 
-    return <Layout className={classNames(
-        className,
-        classNames({
-            'Avatar': true,
-            'Avatar--text': text&&!image,
-        })
-    )} fontSize={22/60*size} layoutSize={size} {...otherProps}>
+    return <Layout
+        className={classNames(
+            className,
+            classNames({
+                'Avatar': true,
+                'Avatar--text': text&&!image,
+            })
+        )}
+        fontSize={22/60*size}
+        minLayoutSize={size}
+        layoutSize={size}
+        {...otherProps}
+    >
         {
             text&&!image ? text[0]:
                 <znui.img
