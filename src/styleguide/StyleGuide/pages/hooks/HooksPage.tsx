@@ -71,7 +71,7 @@ export function HooksPage({ go, ref, evalInContext }: HooksPageProps) {
             </NavigationDrawer>
         </>}
 
-        <Layout flex={1} ref={ref}>
+        <Layout flex={1} ref={ref} clip>
             {
                 Hooks[currentHook] ? <CoordinatorLayout h="100%">
                     <AppBarLayout>
@@ -83,7 +83,7 @@ export function HooksPage({ go, ref, evalInContext }: HooksPageProps) {
                         >{currentHook}</Toolbar>
                     </AppBarLayout>
 
-                    <ScrollLayout behavior={AppBarLayout.ScrollBehavior}>
+                    <ScrollLayout behavior={AppBarLayout.ScrollBehavior} orientation="vertical" h="100%">
                         <VStack>
                             {React.createElement(Hooks[currentHook].component, {
                                 go, evalInContext
@@ -91,18 +91,20 @@ export function HooksPage({ go, ref, evalInContext }: HooksPageProps) {
                         </VStack>
                     </ScrollLayout>
                 </CoordinatorLayout> : <ScrollLayout orientation="vertical" h="100%">
-                    <SectionTitle mh={10} mv={15}>Hooks</SectionTitle>
-                    <Section m={10}>
-                        {Object.keys(Hooks).map(hookName => {
-                            const hookPageInfo = Hooks[hookName]
-                            return <SectionCard key={hookName} onClick={() => {
-                                go("hooks/"+hookName)
-                            }}>
-                                <Title size="large">{hookName}</Title>
-                                <Body size="large">{hookPageInfo.description}</Body>
-                            </SectionCard>
-                        })}
-                    </Section>
+                    <VStack>
+                        <SectionTitle mh={10} mv={15}>Hooks</SectionTitle>
+                        <Section m={10}>
+                            {Object.keys(Hooks).map(hookName => {
+                                const hookPageInfo = Hooks[hookName]
+                                return <SectionCard key={hookName} onClick={() => {
+                                    go("hooks/"+hookName)
+                                }}>
+                                    <Title size="large">{hookName}</Title>
+                                    <Body size="large">{hookPageInfo.description}</Body>
+                                </SectionCard>
+                            })}
+                        </Section>
+                    </VStack>
                 </ScrollLayout>
             }
         </Layout>
