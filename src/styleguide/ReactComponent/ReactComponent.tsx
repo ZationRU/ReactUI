@@ -21,9 +21,9 @@ export default function ReactComponent({ component }: any) {
 
         <ScrollLayout behavior={AppBarLayout.ScrollBehavior} height="100%">
             <Layout ph={10}>
-                {description && <Markdown text={description} />}
-
-                <Headline size="small" mt={30} mb={15}>Example</Headline>
+                {description && <Layout mb={10}>
+                    <Markdown text={description} />
+                </Layout>}
                 {examples.length > 0 && (
                     <Examples examples={examples} name={name} exampleMode='expand' />
                 )}
