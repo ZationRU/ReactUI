@@ -18,7 +18,7 @@ export interface ToolbarProps extends LayoutProps {
  * @param props
  * @constructor
  */
-export function Toolbar(props: ToolbarProps) {
+export const Toolbar = React.forwardRef((props: ToolbarProps, ref) => {
     const {
         className,
         children,
@@ -44,6 +44,7 @@ export function Toolbar(props: ToolbarProps) {
             'Toolbar'
         )}
         clip
+        ref={ref}
         {...otherProps}
     >
         <div className="inner">
@@ -70,4 +71,4 @@ export function Toolbar(props: ToolbarProps) {
             </>}
         </div>
     </Layout>
-}
+})
