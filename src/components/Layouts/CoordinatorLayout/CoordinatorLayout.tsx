@@ -193,10 +193,10 @@ export const CoordinatorLayout = React.forwardRef((props: CoordinatorLayoutProps
     >
         {({measureRef}) =>
             <Layout
+                clip={true}
                 {...otherProps}
                 pos="relative"
                 ref={measureRef}
-                clip
             >{clones}</Layout>
         }
     </Measure>
