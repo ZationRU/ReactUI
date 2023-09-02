@@ -13,12 +13,14 @@ import {Layout, LayoutProps, HStack, VStack} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
 import {Body} from "../../Typography";
 import {mergeRefs} from "../../../utils";
+import {Tappable} from "../../Layouts";
 
 const MenuContext = React.createContext<MenuContextProps>({
     density: 0,
     open: () => {},
     close: () => {},
-    point: null
+    point: null,
+    isRoot: undefined
 })
 
 interface MenuContextProps {
@@ -26,6 +28,7 @@ interface MenuContextProps {
     open: (event: SyntheticEvent<HTMLElement>) => void
     close: () => void
     point: DOMRect|null
+    isRoot?: boolean
 }
 
 export interface MenuProps {
@@ -36,6 +39,7 @@ export interface MenuProps {
 
 export const Menu = (props: MenuProps) => {
     const [point, setPoint] = useState<DOMRect|null>(null)
+    const prevContext = useMenuContext()
 
     const open = useCallback((event: SyntheticEvent<HTMLElement>) => {
         const point = event.currentTarget.getBoundingClientRect()
@@ -45,10 +49,11 @@ export const Menu = (props: MenuProps) => {
     const close = () => setPoint(point)
 
     return <MenuContext.Provider value={{
-        density: props.density || 0,
+        density: props.density || prevContext.density,
         open,
         close,
-        point
+        point,
+        isRoot: prevContext.isRoot === undefined
     }}>
         {props.children}
     </MenuContext.Provider>
@@ -70,6 +75,7 @@ Menu.Item = (props: MenuItemProps) => {
 
     return <MenuContext.Consumer>{(menuContext) =>
         <Layout
+            as={layoutRest.onClick&&Tappable}
             h={56 + (menuContext.density * -8)}
             {...layoutRest}
         >
@@ -81,7 +87,7 @@ Menu.Item = (props: MenuItemProps) => {
             >
                 <VStack flex={1}>
                     <Body size="large">{children}</Body>
-                    {supportingText&&
+                    {supportingText&&menuContext.density===0&&
                         <Body
                             size="medium"
                             c={ThemeTokens.onSurfaceVariant}
@@ -156,7 +162,7 @@ Menu.Items = React.forwardRef((
     ref: ForwardedRef<HTMLDivElement>
 ) => {
     const itemRef = useRef<HTMLDivElement|null>(null)
-    const { point, close } = useMenuContext()
+    const { point, close, isRoot } = useMenuContext()
     const [currentPoint, setCurrentPoint] = useState(
         point
     )
@@ -181,9 +187,10 @@ Menu.Items = React.forwardRef((
     }, [point, currentPoint])
 
     if(currentPoint) {
-        let x = currentPoint.left + currentPoint.width + 4
+        const padding = isRoot? 4: 0
+        let x = currentPoint.left + currentPoint.width + padding
         if(x+212>window.innerWidth) {
-            x = currentPoint.left - 204
+            x = currentPoint.left - 200 - padding
         }
 
         return currentPoint && <Layout

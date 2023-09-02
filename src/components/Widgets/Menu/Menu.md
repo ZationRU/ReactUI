@@ -4,7 +4,7 @@ import {ContainedIconButton, Divider} from "@znui/react";
 
 <Menu>
     <Menu.Items>
-        <Menu.Item>
+        <Menu.Item onClick={(e) => alert(e)}>
             Menu Item
         </Menu.Item>
         <Menu.Item supportingText="Supporting text">
