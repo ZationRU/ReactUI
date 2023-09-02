@@ -18,10 +18,10 @@ import {ContainedIconButton, Divider} from "@znui/react";
                 </Menu.Item>
             </Menu.Trigger>
             <Menu.Items>
-                <Menu.Item>
+                <Menu.Item icon={<ZnUIIconMoreFilled/>}>
                     Menu Item
                 </Menu.Item>
-                <Menu.Item supportingText="Supporting text">
+                <Menu.Item icon={<ZnUIIconMoreFilled/>} supportingText="Supporting text">
                     Menu Item
                 </Menu.Item>
             </Menu.Items>

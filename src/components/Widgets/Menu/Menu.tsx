@@ -7,13 +7,14 @@ import React, {
     ReactNode,
     useMemo,
     useEffect,
-    useRef,
+    useRef, CSSProperties,
 } from 'react';
-import {Layout, LayoutProps, HStack, VStack} from "../../Basic";
+import {Layout, LayoutProps, HStack, VStack, Center} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
 import {Body} from "../../Typography";
 import {mergeRefs} from "../../../utils";
 import {Tappable} from "../../Layouts";
+import {IconWrapper} from "../IconWrapper/IconWrapper";
 
 const MenuContext = React.createContext<MenuContextProps>({
     density: 0,
@@ -62,12 +63,14 @@ export const Menu = (props: MenuProps) => {
 const useMenuContext = () => useContext(MenuContext)
 
 export interface MenuItemProps extends LayoutProps {
+    icon?: React.ReactNode
     children: React.ReactNode
     supportingText?: React.ReactNode
 }
 
 Menu.Item = (props: MenuItemProps) => {
     const {
+        icon,
         children,
         supportingText,
         ...layoutRest
@@ -85,6 +88,14 @@ Menu.Item = (props: MenuItemProps) => {
                 h="100%"
                 align="center"
             >
+                {icon&&<Center minLayoutSize={24}>
+                    <IconWrapper style={{
+                        '--icon-size': 20
+                    } as CSSProperties}>
+                        {icon}
+                    </IconWrapper>
+                </Center>}
+
                 <VStack flex={1}>
                     <Body size="large">{children}</Body>
                     {supportingText&&menuContext.density===0&&
@@ -138,7 +149,7 @@ Menu.Trigger = React.forwardRef((
         }
 
         return props
-    }, [mode, children.props, open, close])
+    }, [mode, children.props, open])
 
     return <>
         {
@@ -204,7 +215,7 @@ Menu.Items = React.forwardRef((
             shapeScale="esm"
             w={200}
             maxW={200}
-            zIndex={1}
+            zIndex={3}
             maxH={point===null ? 0: '100vh'}
             transition={'max-height 300ms '+ThemeTokens.motion.emphasized}
             userSelect="none"
