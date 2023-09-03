@@ -1,5 +1,5 @@
 ```tsx
-import {TextField, Layout} from "@znui/react";
+import {TextField, Layout, znui} from "@znui/react";
 
 <Layout maxW={210}>
     <TextField label="Label">
@@ -12,6 +12,10 @@ import {TextField, Layout} from "@znui/react";
 
     <TextField label="Label">
         <input type="password" placeholder="Placeholder"/>
+    </TextField>
+
+    <TextField label="Multiline">
+        <znui.textarea h={28} type="password" placeholder="Placeholder"/>
     </TextField>
 
     <TextField disabled={true} label="Label">

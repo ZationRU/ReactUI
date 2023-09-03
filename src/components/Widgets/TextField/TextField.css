@@ -7,10 +7,6 @@
     border-radius: 4px;
     position: relative;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     margin-inline-start: 0;
     margin-inline-end: 0;
     padding-block-start: 0;
@@ -26,6 +22,10 @@
     height: 18px;
 }
 
+.TextField {
+    min-height: 64px;
+}
+
 .TextField > input {
     color: currentColor;
     margin-left: calc(17px - var(--border-size) - 12px);
@@ -35,7 +35,21 @@
     border: none;
     padding: 0;
     text-overflow: ellipsis;
-    margin-top: calc(-7px + var(--border-size));
+    margin-top: calc(-5px + var(--border-size));
+}
+
+.TextField > textarea {
+    color: currentColor;
+    margin-left: calc(17px - var(--border-size) - 12px);
+    background: transparent;
+    min-height: 28px;
+    width: 100%;
+    border: none;
+    padding: 0;
+    outline: none;
+    text-overflow: ellipsis;
+    resize: none;
+    margin-top: calc(7px);
 }
 
 .TextField > .label {
@@ -62,12 +76,22 @@
     line-height: 24px;
 }
 
+.TextField > textarea {
+    font-size: 16px;
+    font-family: Roboto;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    line-height: 24px;
+}
+
 .TextField--disabled {
     opacity: 0.34;
     pointer-events: none;
 }
 
-.TextField > input:not(:placeholder-shown) ~ .label ~ legend, .TextField:focus-within > legend {
+.TextField > input:not(:placeholder-shown) ~ .label ~ legend,
+    .TextField > textarea:not(:placeholder-shown) ~ .label ~ legend,
+    .TextField:focus-within > legend {
     padding-left: 4px;
     padding-right: 4px;
     max-width: 100vw;
@@ -78,7 +102,9 @@
     line-height: 16px;
 }
 
-.TextField > input:not(:placeholder-shown) ~ .label, .TextField:focus-within > .label {
+.TextField > input:not(:placeholder-shown) ~ .label,
+    .TextField > textarea:not(:placeholder-shown) ~ .label,
+    .TextField:focus-within > .label {
     top: -10px;
     font-size: 12px;
     font-weight: 400;
@@ -90,16 +116,19 @@
     color: var(--znui-primary);
 }
 
-.TextField:hover > input::placeholder {
+.TextField:hover > input::placeholder,
+.TextField:hover > textarea::placeholder {
     color: var(--znui-on-surface-variant);
 }
 
-.TextField--labeled > input::placeholder {
+.TextField--labeled > input::placeholder,
+.TextField--labeled > textarea::placeholder {
     color: transparent;
     opacity: 0;
 }
 
-.TextField--labeled:focus-within > input::placeholder {
+.TextField--labeled:focus-within > input::placeholder,
+.TextField--labeled:focus-within > textarea::placeholder {
     color: currentColor;
     opacity: 1;
 }
@@ -120,6 +149,7 @@
 }
 
 .TextField-Container--error {
+    caret-color: currentColor;
     color: var(--znui-error);
 }
 

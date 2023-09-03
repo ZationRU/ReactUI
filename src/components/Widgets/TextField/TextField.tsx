@@ -43,7 +43,8 @@ export const TextField = (props: TextFieldProps) => {
                 child,
                 {
                     ...child.props,
-                    placeholder: ' '
+                    placeholder: ' ',
+                    disabled
                 }
             )
         }
@@ -52,7 +53,7 @@ export const TextField = (props: TextFieldProps) => {
     return <Layout minW={210} pt={6} className={classNames({
         "TextField-Container--error": error,
     }, className)} {...layoutProps}>
-        <Layout as="fieldset" h={64} className={classNames(
+        <Layout as="fieldset" className={classNames(
             "TextField",
             {
                 "TextField--labeled": label,
