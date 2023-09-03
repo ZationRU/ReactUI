@@ -437,7 +437,7 @@
     --znui-scrollbar-thumb: var(--znui-surface-variant);
 }
 
-.ThemeProvider[data-theme='dark'] {
+.ThemeProvider[data-scheme='dark'] {
     /* Primary tokens */
     --znui-primary: var(--md-sys-color-primary-dark);
     --znui-on-primary: var(--md-sys-color-on-primary-dark);
