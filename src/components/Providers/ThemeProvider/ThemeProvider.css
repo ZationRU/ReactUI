@@ -377,6 +377,8 @@
 }
 
 .ThemeProvider {
+    color-scheme: light;
+
     /* Primary tokens */
     --znui-primary: var(--md-sys-color-primary-light);
     --znui-on-primary: var(--md-sys-color-on-primary-light);
@@ -438,6 +440,8 @@
 }
 
 .ThemeProvider[data-scheme='dark'] {
+    color-scheme: dark;
+
     /* Primary tokens */
     --znui-primary: var(--md-sys-color-primary-dark);
     --znui-on-primary: var(--md-sys-color-on-primary-dark);
@@ -498,6 +502,15 @@
     --znui-scrollbar-thumb: var(--znui-surface-variant);
 }
 
+.ThemeProvider a:link {
+    color: var(--znui-primary);
+}
+
+.ThemeProvider a:visited {
+    color: var(--znui-inverse-primary);
+}
+
+
 /** Deprecated fallbacks **/
 .ThemeProvider {
     --znui-background: var(--znui-surface);
@@ -508,6 +521,7 @@
 
 .ThemeProvider {
     -webkit-tap-highlight-color: transparent;
+    caret-color: var(--znui-primary);
 
     font-family: 'Roboto';
 }
