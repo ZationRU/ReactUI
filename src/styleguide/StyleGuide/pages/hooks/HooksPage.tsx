@@ -16,6 +16,7 @@ import UseAdaptiveHook from "./useAdaptiveHook.mdx";
 import UseDialogsHook from "./useDialogsHook.mdx";
 import UseAdaptiveValueHook from "./useAdaptiveValueHook.mdx";
 import UseSnackbarHook from "./useSnackbarHook.mdx";
+import UseThemeHook from "./useTheme.mdx";
 import {ZnUIIconBackArrowFilled} from "@znui/icons";
 
 interface HooksPageProps extends RefAttributes<HTMLDivElement> {
@@ -27,6 +28,10 @@ export const Hooks = {
     useAdaptive: {
         description: 'Hook to get current page size to ensure responsive state',
         component: MDXFactory(UseAdaptiveHook)
+    },
+    useTheme: {
+        description: 'Hook to get theme data: current scheme and other',
+        component: MDXFactory(UseThemeHook)
     },
     useAdaptiveValue: {
         description: 'Hook to get value from adaptive value',

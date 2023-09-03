@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import Context from 'react-styleguidist/lib/client/rsg-components/Context';
 import NotFound from 'react-styleguidist/lib/client/rsg-components/NotFound';
 import StyleGuideProps from 'react-styleguidist/lib/client/rsg-components/StyleGuide';
@@ -9,19 +9,6 @@ import ReactComponent from "../ReactComponent/ReactComponent";
 
 export default function StyleGuide(props: StyleGuideProps) {
     const { config, sections, allSections, codeRevision, cssRevision, slots } = props;
-    const [theme, setTheme] = useState<"light"|"dark">(
-        window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
-    )
-
-    useEffect(() => {
-        const currentTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
-        setTheme(currentTheme)
-
-        window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', function (e) {
-            const newTheme = e.matches ? "dark" : "light"
-            setTheme(newTheme)
-        });
-    }, [])
 
     const isRootUrl = window.location.hash === ''
 
@@ -35,7 +22,7 @@ export default function StyleGuide(props: StyleGuideProps) {
             }}
         >
             <AdaptiveProvider>
-                <ThemeProvider theme={theme}>
+                <ThemeProvider scheme='system'>
                     <StyleGuideRenderer
                         key={cssRevision}
                         title={config.title}
