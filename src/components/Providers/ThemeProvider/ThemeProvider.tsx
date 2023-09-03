@@ -10,6 +10,8 @@ export interface ThemeProviderProps {
      * @default 'light'
      */
     scheme?: ZnUIScheme | 'system'
+
+    onSchemeChanged?: (currentScheme: ZnUIScheme) => void
 }
 
 /**
@@ -37,6 +39,10 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
         mediaWatch.addEventListener('change', listener)
         return () => mediaWatch.removeEventListener('change', listener);
     }, [isSystemScheme])
+
+    useEffect(() => {
+        props?.onSchemeChanged?.call(undefined, currentScheme)
+    }, [currentScheme, props.onSchemeChanged]);
 
     const portalData = useZnUIProviderPortalCreator(useForceUpdate())
 
