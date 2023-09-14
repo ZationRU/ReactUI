@@ -67,8 +67,6 @@ export const SwipeRefreshLayout = React.forwardRef((
         target.style.overflowY = 'scroll'
     }
 
-    console.log(currentPercentage)
-
     return <ScrollLayout
         overscrollBehavior='none'
         orientation='vertical'

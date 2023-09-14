@@ -91,7 +91,6 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                 emd: false
             })
 
-            console.log(targetStyles?.background)
             const hasBackground = !targetStyles?.background?.split(' ')?.find(it =>
                 [
                     'rgb(0, 0, 0)'
