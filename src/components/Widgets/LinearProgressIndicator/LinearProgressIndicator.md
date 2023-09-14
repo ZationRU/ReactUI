@@ -39,6 +39,7 @@ useEffect(() => {
 <VStack spacing={20}>
     <LinearProgressIndicator/>
     <LinearProgressIndicator variant="determinate" value={value}/>
+    <LinearProgressIndicator variant="determinate" value={value} linear={true}/>
     <LinearProgressIndicator variant={responsiveStateValue==='loading'?
         "indeterminate":
         "determinate"

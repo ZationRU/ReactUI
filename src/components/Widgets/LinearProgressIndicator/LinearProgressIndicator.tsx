@@ -6,6 +6,7 @@ import { keyframes } from '@emotion/react'
 export interface LinearProgressIndicatorProps extends LayoutProps {
     variant?: 'determinate'|'indeterminate',
     value?: number
+    linear?: boolean
 }
 
 const progressBarIntermediate = keyframes`
@@ -29,10 +30,13 @@ export const LinearProgressIndicator = React.forwardRef(
         const {
             variant = 'indeterminate',
             value = 0,
+            linear,
             ...layoutRest
         } = props
 
         const currentValue = value > 100 ? 100: (value < 0 ? 0: value)
+
+        const motionFunction = linear ? 'linear': ThemeTokens.motion.emphasized
 
         return <Layout
             ref={forwardRef}
@@ -41,6 +45,7 @@ export const LinearProgressIndicator = React.forwardRef(
             c={ThemeTokens.primary}
             {...layoutRest}
             minH={4}
+            clip={true}
         >
 
             <Layout
@@ -48,13 +53,14 @@ export const LinearProgressIndicator = React.forwardRef(
                 w="100%"
                 maxW={variant==='determinate'? currentValue+"%": '0%'}
                 animation={variant==='indeterminate' ?
-                    progressBarIntermediate+" infinite 2s var(--znui-emphasized-motion)"
+                    progressBarIntermediate+" infinite 2s "+motionFunction
                 : ''}
                 ml={0}
+                borderRadius='inherit'
                 bg="currentColor"
                 transition={[
-                    'max-width 300ms var(--znui-emphasized-motion)',
-                    'margin-left 300ms var(--znui-emphasized-motion)',
+                    'max-width 300ms '+motionFunction,
+                    'margin-left 300ms '+motionFunction,
                 ].join(', ')}
             />
         </Layout>
