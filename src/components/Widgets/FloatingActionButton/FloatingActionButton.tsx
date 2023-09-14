@@ -7,6 +7,7 @@ import {useAdaptiveValue} from "../../../adaptive";
 import {Adaptive} from "../../../adaptive";
 import {HTMLZnUIProps} from "../../../styled";
 import { znui } from '../../Basic';
+import {Label} from "../../Typography";
 
 export interface FloatingActionButtonProps extends Omit<HTMLZnUIProps<'button'>, 'appearance'> {
     size?: Adaptive<'small' | 'default' | 'expanded' | 'large'>,
@@ -48,9 +49,9 @@ export function FloatingActionButton(
                 {children}
             </IconWrapper>
 
-            <div className="text">
+            <Label size='large' className="text">
                 {text}
-            </div>
+            </Label>
         </div>
     </znui.button>
 }

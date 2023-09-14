@@ -65,12 +65,6 @@
             margin-left 300ms var(--znui-emphasized-decelerate-motion),
             padding-right 300ms var(--znui-emphasized-decelerate-motion)
 ;
-
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 19px;
     max-width: 0;
     padding-right: 0;
     margin-left: -40%;
