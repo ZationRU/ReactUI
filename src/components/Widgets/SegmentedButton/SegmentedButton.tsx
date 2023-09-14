@@ -84,7 +84,7 @@ export const SegmentedButton = (props: SegmentedButtonProps) => {
         direction="row"
         wrap="wrap"
         userSelect="none"
-        clip
+        clip={true}
         {...layoutRest}>
 
         <SegmentedButtonContext.Provider value={useMemo(() => ({
@@ -163,7 +163,7 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                 <StateLayer/>
                 <HStack ph={12} pv={10} clip>
                     <IconWrapper
-                        clip
+                        clip={true}
                         style={{
                             '--icon-size': '18px'
                         } as CSSProperties}
@@ -180,7 +180,7 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                     </IconWrapper>
 
                     <IconWrapper
-                        clip
+                        clip={true}
                         style={{
                             '--icon-size': '18px'
                         } as CSSProperties}
@@ -197,7 +197,7 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                     </IconWrapper>
 
                     <Label
-                        clip
+                        clip={true}
                         size="large"
                         overflow="hidden"
                         whiteSpace="nowrap"

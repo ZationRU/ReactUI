@@ -43,7 +43,7 @@ export const Toolbar = React.forwardRef((props: ToolbarProps, ref) => {
             className,
             'Toolbar'
         )}
-        clip
+        clip={true}
         ref={ref}
         {...otherProps}
     >

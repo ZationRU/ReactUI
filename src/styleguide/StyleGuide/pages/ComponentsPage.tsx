@@ -29,7 +29,7 @@ export function ComponentsPage(props: ComponentsPageProps) {
             </NavigationDrawer>
         </>}
 
-        <Layout flex={1} ref={props.ref} clip>
+        <Layout flex={1} ref={props.ref} clip={true}>
             {
                 props.children || <ScrollLayout orientation="vertical" h="100%">
                     {props.allSections.map(it => {

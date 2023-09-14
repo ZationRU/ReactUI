@@ -56,7 +56,7 @@ export function HooksPage({ go, ref, evalInContext }: HooksPageProps) {
         display='flex'
         direction="row"
         flex={1}
-        clip
+        clip={true}
     >
         {currentBreakpoint!=="esm" && <>
             <NavigationDrawer p={0} compat={true} minW={284}>
@@ -76,7 +76,7 @@ export function HooksPage({ go, ref, evalInContext }: HooksPageProps) {
             </NavigationDrawer>
         </>}
 
-        <Layout flex={1} ref={ref} clip>
+        <Layout flex={1} ref={ref} clip={true}>
             {
                 Hooks[currentHook] ? <CoordinatorLayout h="100%">
                     <AppBarLayout>

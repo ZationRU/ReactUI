@@ -53,7 +53,7 @@ export function Card(props: CardProps) {
         {...styles[mode]}
         onClick={onClick}
         cursor={onClick?"pointer":undefined}
-        clip
+        clip={true}
         {...otherProps}
         className={classNames(
             className,

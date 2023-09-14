@@ -135,7 +135,7 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                 <Layout
                     ref={modalContainerRef}
                     position="fixed"
-                    clip
+                    clip={true}
                     c={ThemeTokens.onSurface}
                     borderRadius={isExpanded? isFullscreen ? 0 : 28 : targetStyles?.borderRadius || 0}
                     borderColor={!isExpanded&&targetStyles? targetStyles.borderColor : 'none'}

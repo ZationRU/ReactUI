@@ -108,7 +108,7 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
         display='flex'
         direction={['column-reverse','row']}
         pos="absolute"
-        clip
+        clip={true}
         posV={0}
         posH={0}>
         {
@@ -149,7 +149,7 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
             Object.hasOwn(Pages, page) ?
                 <Layout
                     flex={1}
-                    clip
+                    clip={true}
                     overflow="auto"
                     ref={ref}
                     key={page}

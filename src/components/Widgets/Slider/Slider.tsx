@@ -113,7 +113,7 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
                     justify="space-between"
                     ml={1}
                     mt={1}
-                    clip
+                    clip={true}
                 >
                     {
                         Array.from({ length: step<=1 ? 0: stepCount+1 }).map((it, i) =>
@@ -138,7 +138,7 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
                 ref={activeTrackRef}
                 maxW={trackWidth+"%"}
                 bg="var(--znui-primary)"
-                clip
+                clip={true}
             >
                 {
                     Array.from({ length: step<=1 ? 0: stepCount+1 }).map((it, i) =>

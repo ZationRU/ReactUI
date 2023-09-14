@@ -35,7 +35,7 @@ export function BaseDialog(props: BaseDialogProps) {
         shapeScale="elg"
         minW={280}
         maxW={560}
-        clip
+        clip={true}
         {...layoutRest}
     >
         <VStack>

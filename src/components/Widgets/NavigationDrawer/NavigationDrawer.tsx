@@ -34,7 +34,7 @@ export function NavigationDrawer(props: NavigationDrawerProps) {
         bg={ThemeTokens.surfaceContainerLow}
         c={ThemeTokens.onSurface}
         {...layoutRest}
-        clip
+        clip={true}
     >
         <Layout p={12} className={classNames({
             'NavigationDrawer--compat': compat
@@ -69,7 +69,7 @@ NavigationDrawer.Item = (props: NavigationDrawerItemProps) => {
                 "NavigationDrawerItem--selected": selected
             })
         )}
-        clip
+        clip={true}
     >
         <div className="background-state"/>
         <StateLayer/>
@@ -102,7 +102,7 @@ NavigationDrawer.Headline = (props: NavigationDrawerHeadingProps) => {
         h={56}
         c={ThemeTokens.onSurfaceVariant}
         align="center"
-        clip
+        clip={true}
         {...layoutRest}
     >
         <Title
@@ -128,7 +128,7 @@ NavigationDrawer.SectionHeader = (props: NavigationDrawerHeadingProps) => {
     return <FlexLayout
         h={56}
         align="center"
-        clip
+        clip={true}
         c={ThemeTokens.onSurfaceVariant}
         {...layoutRest}
     >
