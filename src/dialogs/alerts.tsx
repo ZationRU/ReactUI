@@ -7,7 +7,7 @@ import React, {
     useRef,
     useState,
     MouseEvent,
-    EventHandler, JSXElementConstructor
+    EventHandler, JSXElementConstructor, useMemo
 } from "react";
 import Measure, {BoundingRect} from "react-measure";
 import {useAdaptiveValue} from "../adaptive";
@@ -21,7 +21,8 @@ export type AlertDialogConfig = {
     component?: JSXElementConstructor<{
         dialogInterface: AlertDialogInterface
     }>
-    cancelable?: boolean
+    cancelable?: boolean,
+    defaultValue?: { [key: string]: any }
 }
 
 export type AlertDialogConfigActions = {
@@ -47,8 +48,7 @@ export const showAlert = (portalRegister: ZnUIPortalRegistrar) => {
             portal.remove()
         }
 
-        const values = {}
-
+        let values = config.defaultValue || {}
         let dialogInterface: AlertDialogInterface = {
             cancel: () => cancel(),
             values,
@@ -64,6 +64,24 @@ export const showAlert = (portalRegister: ZnUIPortalRegistrar) => {
                 width: 0,
                 height: 0
             })
+
+            const [stateValues, setStateValues] = useState(values)
+
+            dialogInterface.setValue = useCallback((key, value) => {
+                setStateValues((oldValues) => {
+                    const values = {
+                        ...oldValues,
+                    }
+
+                    values[key] = value
+                    return values
+                })
+            }, [setStateValues])
+
+            useEffect(() => {
+                values = stateValues
+                dialogInterface.values = stateValues
+            }, [stateValues]);
 
             const xPosition = useAdaptiveValue({
                 esm: window.innerWidth / 2,
@@ -192,7 +210,10 @@ export const showAlert = (portalRegister: ZnUIPortalRegistrar) => {
                         >
                             {
                                 config.component&&React.createElement(config.component, {
-                                    dialogInterface
+                                    dialogInterface: {
+                                        ...dialogInterface,
+                                        values: stateValues,
+                                    }
                                 })
                             }
                         </BaseDialog>
