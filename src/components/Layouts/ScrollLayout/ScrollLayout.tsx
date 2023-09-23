@@ -1,5 +1,7 @@
-import {znui} from "../../Basic";
+import {LayoutProps, znui} from "../../Basic";
 import {ZnUIComponent} from "../../../styled";
+
+export type ScrollLayoutProps = LayoutProps
 
 export const ScrollLayout: ZnUIComponent<'div', {
     orientation?: 'vertical'|'horizontal'
