@@ -69,7 +69,9 @@ export class AppBarLayoutScrollBehavior extends CoordinatorLayoutBehavior<'div'>
         dy: number,
         current: [number, number]
     ) {
-        super.onScroll(dependencies, child, dx, dy, current);
+        if(dependencies.length===0) {
+            return
+        }
 
         const dependencyRect = dependencies[0].elementInstance!!.getBoundingClientRect()
         child.elementInstance!!.style.paddingTop = dependencyRect.height + "px"
@@ -139,7 +141,8 @@ export const AppBarLayout = React.forwardRef<AppBarLayoutRefProps>((
             transition
         ].join(',')}
         zIndex={1}
-        w='100%'
+        top={0}
+        posH={0}
         ref={mergeRefs((rawRef) => {
             if(rawRef){
                 rawRef.getScrollElements = () => scrollElements
