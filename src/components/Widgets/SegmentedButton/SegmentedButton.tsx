@@ -141,7 +141,7 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                 _last={{
                     borderRight: 'none'
                 }}
-                clip
+                clip={true}
                 onClick={() => {
                     if(data.multiselect) {
                         const newArray = isSelected ?
@@ -167,14 +167,12 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                         style={{
                             '--icon-size': '18px'
                         } as CSSProperties}
-                        maxW={selectIcon&&isSelected ? 18: 0}
-                        minW={selectIcon&&isSelected ? 18: 0}
-                        mr={selectIcon&&isSelected ? 8: 0}
-                        transition={[
-                            'max-width 300ms var(--znui-emphasized-motion)',
-                            'min-width 300ms var(--znui-emphasized-motion)',
-                            'margin 300ms var(--znui-emphasized-motion)'
-                        ].join(',')}
+                        to={{
+                            baseDuration: 300,
+                            maxW: selectIcon&&isSelected ? 18: 0,
+                            minW: selectIcon&&isSelected ? 18: 0,
+                            mr: selectIcon&&isSelected ? 8: 0
+                        }}
                     >
                         {SelectedIcon}
                     </IconWrapper>
@@ -184,14 +182,12 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                         style={{
                             '--icon-size': '18px'
                         } as CSSProperties}
-                        maxW={icon ? 18: 0}
-                        minW={icon ? 18: 0}
-                        mr={icon&&children ? 8: 0}
-                        transition={[
-                            'max-width 300ms var(--znui-emphasized-motion)',
-                            'min-width 300ms var(--znui-emphasized-motion)',
-                            'margin 300ms var(--znui-emphasized-motion)'
-                        ].join(',')}
+                        to={{
+                            baseDuration: 300,
+                            maxW: icon ? 18: 0,
+                            minW: icon ? 18: 0,
+                            mr: icon&&children ? 8: 0
+                        }}
                     >
                         {icon}
                     </IconWrapper>
