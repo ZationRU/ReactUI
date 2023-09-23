@@ -1,6 +1,4 @@
-import classNames from "classnames";
-import React, {CSSProperties} from "react";
-import "./AnimatedVisibility.css";
+import React from "react";
 import {Layout, LayoutProps} from "../../Basic";
 import {Adaptive, useAdaptiveValue} from "../../../adaptive";
 
@@ -35,23 +33,31 @@ export function AnimatedVisibility(props: AnimatedVisibilityProps) {
     const {
         startPosition,
         duration,
-        className,
-        style,
         isVisible,
+        to,
         ...otherProps
     } = props
 
-    return <Layout className={
-        classNames(
-            "AnimatedVisibility",
-            "AnimatedVisibility--"+useAdaptiveValue(startPosition||'center'),
-            className as string,
-            {
-                "AnimatedVisibility--visible": useAdaptiveValue(isVisible)===undefined? true: isVisible
+    const position = useAdaptiveValue(startPosition)||'center'
+    const d = useAdaptiveValue(duration) || 400
+
+    return <Layout
+        to={{
+            ...to,
+            transform: {
+                value: isVisible ? 'translate(0px)': {
+                    'top': 'translateY(-100%)',
+                    'bottom': 'translateY(100%)',
+                    'left': 'translateX(-100%)',
+                    'right': 'translateX(100%)',
+                    'center': 'translate(0px)',
+                }[position],
+                duration: d
+            },
+            opacity: {
+                value: isVisible ? 1: 0,
+                duration: d
             }
-        )
-    } style={{
-       ...style as CSSProperties,
-        '--duration': useAdaptiveValue(duration||400) + 'ms',
-    } as CSSProperties} {...otherProps}/>
+        }}
+        {...otherProps}/>
 }
