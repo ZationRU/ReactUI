@@ -10,7 +10,25 @@ export const insets = {
         padding: 'var(--znui-'+value+'-inset-top) var(--znui-'+value+'-inset-right) ' +
             'var(--znui-'+value+'-inset-bottom) var(--znui-'+value+'-inset-left)'
     })),
+    insetsHorizontal: asTransformProp((value: InsetsType) => ({
+        paddingLeft: 'var(--znui-'+value+'-inset-left)',
+        paddingRight: 'var(--znui-'+value+'-inset-right)'
+    })),
+    insetsVertical: asTransformProp((value: InsetsType) => ({
+        paddingLeft: 'var(--znui-'+value+'-inset-left)',
+        paddingRight: 'var(--znui-'+value+'-inset-right)'
+    })),
 }
+
+Object.assign(insets, {
+    is: insets.insets,
+    isL: insets.insetsLeft,
+    isR: insets.insetsRight,
+    isB: insets.insetsBottom,
+    isT: insets.insetsTop,
+    isH: insets.insetsHorizontal,
+    isV: insets.insetsVertical,
+})
 
 export type InsetsType = 'keyboard'|'safe-area'|'all'
 
@@ -23,7 +41,17 @@ export interface InsetsProps {
     /**
      * @default undefined
      */
+    i?: Adaptive<InsetsType>
+
+    /**
+     * @default undefined
+     */
     insetsTop?: Adaptive<InsetsType>
+
+    /**
+     * @default undefined
+     */
+    ist?: Adaptive<InsetsType>
 
     /**
      * @default undefined
@@ -33,10 +61,45 @@ export interface InsetsProps {
     /**
      * @default undefined
      */
+    isb?: Adaptive<InsetsType>
+
+    /**
+     * @default undefined
+     */
     insetsLeft?: Adaptive<InsetsType>
 
     /**
      * @default undefined
      */
+    isl?: Adaptive<InsetsType>
+
+    /**
+     * @default undefined
+     */
     insetsRight?: Adaptive<InsetsType>
+
+    /**
+     * @default undefined
+     */
+    isr?: Adaptive<InsetsType>
+
+    /**
+     * @default undefined
+     */
+    insetsHorizontal?: Adaptive<InsetsType>
+
+    /**
+     * @default undefined
+     */
+    insetsVertical?: Adaptive<InsetsType>
+
+    /**
+     * @default undefined
+     */
+    isH?: Adaptive<InsetsType>
+
+    /**
+     * @default undefined
+     */
+    isV?: Adaptive<InsetsType>
 }
