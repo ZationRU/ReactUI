@@ -10,6 +10,7 @@ export const position = {
     right: asCSSProp("right"),
     positionVertical: asCSSProp(["top", "bottom"]),
     positionHorizontal: asCSSProp(["left", "right"]),
+    positionAll: asCSSProp(["top", "bottom", "left", "right"]),
     zIndex: asCSSProp("zIndex"),
     insetInline: asCSSProp("insetInline"),
     insetBlock: asCSSProp("insetBlock"),
@@ -21,6 +22,7 @@ Object.assign(position, {
     pos: position.position,
     posV: position.positionVertical,
     posH: position.positionHorizontal,
+    posA: position.positionAll,
 })
 
 export interface PositionProps {
@@ -68,6 +70,13 @@ export interface PositionProps {
      */
     posV?: Adaptive<CSS.Property.Top|CSS.Property.Bottom|number|string>
     positionVertical?: Adaptive<CSS.Property.Top|CSS.Property.Bottom|number|string>
+
+    /**
+     * Position for all (posA = position top = position bottom = position left = position right)
+     * @default undefined
+     */
+    posA?: Adaptive<CSS.Property.Top|CSS.Property.Bottom|number|string>
+    positionAll?: Adaptive<CSS.Property.Top|CSS.Property.Bottom|number|string>
 
     /**
      * Index of position in layout
