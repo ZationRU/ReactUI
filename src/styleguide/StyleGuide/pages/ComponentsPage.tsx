@@ -17,7 +17,7 @@ export function ComponentsPage(props: ComponentsPageProps) {
         display='flex'
         direction="row"
         flex={1}
-        clip
+        clip={true}
     >
         {currentBreakpoint!=="esm" && <>
             <NavigationDrawer p={0} compat={true} minW={200}>
