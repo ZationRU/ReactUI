@@ -80,6 +80,7 @@ Menu.Item = (props: MenuItemProps) => {
         <Layout
             as={layoutRest.onClick&&Tappable}
             h={56 + (menuContext.density * -8)}
+            w={200}
             {...layoutRest}
         >
             <HStack
@@ -120,31 +121,42 @@ export interface MenuTriggerProps {
 Menu.Trigger = React.forwardRef((
     {
         children,
-        mode = 'click'
+        mode = 'click',
     }: MenuTriggerProps,
     ref: ForwardedRef<HTMLDivElement>
 ) => {
-    const { open, close } = useMenuContext()
+    const { open, point, close } = useMenuContext()
 
     const props = useMemo(() => {
         const props = Object.create(children.props)
         if(mode === 'click') {
             props.onClick = (e: SyntheticEvent<HTMLElement>) => {
                 e.preventDefault()
-                open(e)
+                if(point===null) {
+                    open(e)
+                }else{
+                    close()
+                }
+
                 children.props.onClick?.call(this, e)
             }
-        }else if(mode === 'context'){
+        }else if(mode === 'context') {
             props.onContextMenu = (e: SyntheticEvent<HTMLElement>) => {
                 e.preventDefault()
                 open(e)
                 children.props.onContextMenu?.call(this, e)
             }
-        }else if(mode === 'hover'){
+        }else if(mode === 'hover') {
             props.onPointerOver = (e: SyntheticEvent<HTMLElement>) => {
                 e.preventDefault()
                 open(e)
                 children.props.onPointerOver?.call(this, e)
+            }
+
+            props.onPointerOut = (e: SyntheticEvent<HTMLElement>) => {
+                e.preventDefault()
+                close()
+                children.props.onPointerOut?.call(this, e)
             }
         }
 
@@ -200,26 +212,36 @@ Menu.Items = React.forwardRef((
     if(currentPoint) {
         const padding = isRoot? 4: 0
         let x = currentPoint.left + currentPoint.width + padding
+        let byRight = false
+
+        console.log(currentPoint.right)
         if(x+212>window.innerWidth) {
-            x = currentPoint.left - 200 - padding
+            x = currentPoint.right + currentPoint.width + padding
+            byRight = true
         }
 
         return currentPoint && <Layout
             ref={mergeRefs(ref, itemRef)}
             position="fixed"
-            left={x}
+            left={!byRight? x: undefined}
+            right={byRight? x: undefined}
             top={currentPoint.top}
             bg={ThemeTokens.surfaceContainer}
             c={ThemeTokens.onSurface}
             className="elevation-2"
             shapeScale="esm"
             w={200}
-            maxW={200}
             zIndex={3}
+            maxW={point===null ? 0: 200}
             maxH={point===null ? 0: '100vh'}
-            transition={'max-height 300ms '+ThemeTokens.motion.emphasized}
+            oc={point===null ? 0: 1}
+            transition={[
+                'max-height 300ms '+ThemeTokens.motion.emphasized,
+                'max-width 300ms '+ThemeTokens.motion.emphasized,
+                'opacity 300ms '+ThemeTokens.motion.emphasized
+            ].join(',')}
             userSelect="none"
-            clip
+            clip={true}
         >
             {children}
         </Layout>

@@ -14,7 +14,39 @@ import {ContainedIconButton, Divider} from "@znui/react";
         <Menu>
             <Menu.Trigger>
                 <Menu.Item>
-                    Submenu Item
+                    Submenu Click Item
+                </Menu.Item>
+            </Menu.Trigger>
+            <Menu.Items>
+                <Menu.Item icon={<ZnUIIconMoreFilled/>}>
+                    Menu Item
+                </Menu.Item>
+                <Menu.Item icon={<ZnUIIconMoreFilled/>} supportingText="Supporting text">
+                    Menu Item
+                </Menu.Item>
+            </Menu.Items>
+        </Menu>
+
+        <Menu>
+            <Menu.Trigger mode='hover'>
+                <Menu.Item>
+                    Submenu Hover Item
+                </Menu.Item>
+            </Menu.Trigger>
+            <Menu.Items>
+                <Menu.Item icon={<ZnUIIconMoreFilled/>}>
+                    Menu Item
+                </Menu.Item>
+                <Menu.Item icon={<ZnUIIconMoreFilled/>} supportingText="Supporting text">
+                    Menu Item
+                </Menu.Item>
+            </Menu.Items>
+        </Menu>
+
+        <Menu>
+            <Menu.Trigger mode='context'>
+                <Menu.Item>
+                    Submenu Context Item
                 </Menu.Item>
             </Menu.Trigger>
             <Menu.Items>
