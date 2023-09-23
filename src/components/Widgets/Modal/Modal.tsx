@@ -45,38 +45,45 @@ export function Modal(props: ModalWrapperProps) {
 
     return <VStack
         maxH={isFullscreen? '100%': '80vh'}
-        insets={isFullscreen ? "safe-area": undefined}
+        minH={isFullscreen? '100vh': 'inherit'}
         pos='relative'
     >
         {innerChildren}
-        <Toolbar
-            flex='1 0 100%'
-            navigationIcon={isFullscreen ? navigationIcon: undefined}
-            onClickNavigationIcon={onClickNavigationIcon||dialogInterface.close}
-            menu={<>
-                {toolbarAction}
-
-                {
-                    isFullscreen? action : <IconButton onClick={onClickNavigationIcon}>
-                        {navigationIcon}
-                    </IconButton>
-                }
-            </>}
-        >{title}</Toolbar>
-
-        <ScrollLayout
-            orientation="vertical"
+        <VStack
+            flex={1}
+            clip={true}
+            insets={isFullscreen ? "safe-area": undefined}
         >
-            <Layout ph={24} pb={24}>
-                {children}
-            </Layout>
-        </ScrollLayout>
+            <Toolbar
+                minH={64}
+                navigationIcon={isFullscreen ? navigationIcon: undefined}
+                onClickNavigationIcon={onClickNavigationIcon||dialogInterface.close}
+                menu={<>
+                    {toolbarAction}
 
-        {((!isFullscreen&&action)||bottomAction)&&
-            <HStack spacing={16} pv={24} pr={24} pl={16} justify={bottomActionJustify}>
-                {bottomAction}
-                {!isFullscreen&&action}
-            </HStack>
-        }
+                    {
+                        isFullscreen? action : <IconButton onClick={onClickNavigationIcon}>
+                            {navigationIcon}
+                        </IconButton>
+                    }
+                </>}
+            >{title}</Toolbar>
+
+            <ScrollLayout
+                orientation="vertical"
+                flex={1}
+            >
+                <Layout ph={24} pb={24}>
+                    {children}
+                </Layout>
+            </ScrollLayout>
+
+            {((!isFullscreen&&action)||bottomAction)&&
+                <HStack spacing={16} pv={24} pr={24} pl={16} justify={bottomActionJustify}>
+                    {bottomAction}
+                    {!isFullscreen&&action}
+                </HStack>
+            }
+        </VStack>
     </VStack>
 }

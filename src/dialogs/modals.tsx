@@ -1,6 +1,6 @@
 import {ZnUIPortalRegistrar} from "../components/Providers/portals";
 import React, {JSXElementConstructor, useCallback, useEffect, useRef, useState, UIEvent} from "react";
-import {Layout} from "../components";
+import {Layout, znui} from "../components";
 import {useAdaptiveValue} from "../adaptive";
 import {ThemeTokens} from "../theme";
 
@@ -15,6 +15,7 @@ export type ModalProps = {
 export type ModalContextData = {
     dialogInterface: ModalDialogInterface
     isFullscreen: boolean
+    isExpanded: boolean
 }
 
 export type ModalOptions = {
@@ -61,8 +62,6 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                     const scrim = scrimRef.current
                     const modalContainer = modalContainerRef.current
                     if (scrim == null||modalContainer==null) return;
-                    scrim.style.opacity = "0.4";
-                    scrim.style.transitionTimingFunction = "var(--znui-emphasized-motion)";
 
                     setIsExpanded(true)
                 }, 10)
@@ -73,8 +72,6 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                     const scrim = scrimRef.current
                     const modalContainer = modalContainerRef.current
                     if (scrim == null||modalContainer==null) return;
-                    scrim.style.opacity = "0"
-
                     if(target!=null) {
                         targetRect = target.getBoundingClientRect()
                     }
@@ -110,23 +107,21 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
 
             return <Layout
                 pos="fixed"
-                top={0}
-                left={0}
-                right={0}
-                bottom={0}
+                posA={0}
                 zIndex={portal.id + 1000}
                 overflow="visible"
             >
                 <Layout
                     bg="black"
                     pos="fixed"
-                    opacity={0}
+                    to={{
+                        baseDuration: 300,
+                        baseTransition: isExpanded? ThemeTokens.motion.emphasized:
+                            ThemeTokens.motion.emphasizedDecelerate,
+                        oc: isExpanded? 0.4: 0
+                    }}
                     ref={scrimRef}
-                    transition="opacity 300ms var(--znui-emphasized-decelerate-motion)"
-                    top={0}
-                    left={0}
-                    right={0}
-                    bottom={0}
+                    posA={0}
                     overflow="visible"
                     onClick={cancelable ? close: undefined}
                 />
@@ -135,53 +130,73 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                     ref={modalContainerRef}
                     position="fixed"
                     clip={true}
-                    c={ThemeTokens.onSurface}
-                    borderRadius={isExpanded? isFullscreen ? 0 : 28 : targetStyles?.borderRadius || 0}
-                    borderColor={!isExpanded&&targetStyles? targetStyles.borderColor : 'none'}
-                    maxH={isExpanded? '100%': targetRect?.height||0}
-                    h={isExpanded&&isFullscreen ? '100%': undefined}
-                    w={isExpanded? isFullscreen ? '100%': 800: targetRect?.width||0}
-                    maxW={isExpanded&&!isFullscreen ? "calc(100% - 50px)": '100%'}
-                    left={x}
-                    top={y}
-                    bg={isExpanded||!hasBackground ? (isFullscreen ? ThemeTokens.surface : ThemeTokens.surfaceContainerHigh): targetStyles?.background}
                     transform={"translate(-50%, -50%)"}
-                    transition={[
-                        ...(targetRect?[
-                            "left 300ms var(--znui-emphasized-motion)",
-                            "top 300ms var(--znui-emphasized-motion)",
-                            "width 300ms var(--znui-emphasized-motion)",
-                            "max-height 300ms var(--znui-emphasized-motion)",
-                            "border-radius 300ms var(--znui-emphasized-motion)",
-                            "border-color 300ms var(--znui-emphasized-motion)",
-                            isExpanded ? "background-color 100ms var(--znui-emphasized-motion)":
-                                "background-color 300ms var(--znui-emphasized-motion)",
-                        ]:[]),
-                    ].join(",")}
+                    to={{
+                        baseDuration: targetRect? isExpanded? 200: 300: 0,
+                        left: x,
+                        top: y,
+                        borderRadius: isExpanded? isFullscreen ? 0 : 28 : targetStyles?.borderRadius || 0,
+                        borderColor: !isExpanded&&targetStyles? targetStyles.borderColor : 'none',
+                        maxH: isExpanded? '100%': targetRect?.height||0,
+                        maxW: isExpanded&&!isFullscreen ? "calc(100% - 50px)": '100%',
+                        h: isExpanded&&isFullscreen ? '100%': undefined,
+                        w: isExpanded? isFullscreen ? '100%': 800: targetRect?.width||0,
+                        bg: {
+                            duration: isExpanded ? 100: 50,
+                            value: isExpanded||!hasBackground ?
+                                (isFullscreen ? ThemeTokens.surface : ThemeTokens.surfaceContainerHigh):
+                                targetStyles?.background
+                        }
+                    }}
                 >
-                    {/*{target&&<Layout*/}
-                    {/*    oc={isExpanded? 0: 1}*/}
-                    {/*    pos='absolute'*/}
-                    {/*    transition={*/}
-                    {/*        "opacity " + (isExpanded? '200ms': '500ms') + " var(--znui-emphasized-decelerate-motion)"*/}
-                    {/*    }*/}
-                    {/*>*/}
-                    {/*    {*/}
-                    {/*        React.createElement(target.tagName, {*/}
-                    {/*            ...target.attributes,*/}
-                    {/*            dangerouslySetInnerHTML: {*/}
-                    {/*                __html:target.innerHTML*/}
-                    {/*            }*/}
-                    {/*        })*/}
-                    {/*    }*/}
-                    {/*</Layout>}*/}
+                    {target&&<Layout
+                        to={{
+                            baseDuration: isExpanded? 200: 300,
+                            baseTransition: ThemeTokens.motion.emphasizedDecelerate,
+                            oc: isExpanded? 0: 1
+                        }}
+                        pos='absolute'
+                        posA={0}
+                        pointerEvents='none'
+                    >
+                        {
+                            React.createElement(target.tagName.toLowerCase(), {
+                                className: target.className,
+                                style: {
+                                    ...target['style'],
+                                    position: 'absolute',
+                                    left: 0,
+                                    right: 0,
+                                    bottom: 0,
+                                    top: 0,
+                                    borderRadius: isExpanded? isFullscreen ? 0 : 28 : targetStyles?.borderRadius || 0,
+                                },
+                                ...target.attributes,
+                                dangerouslySetInnerHTML: {
+                                    __html:target.innerHTML
+                                }
+                            })
+                        }
+                    </Layout>}
 
-                    <Layout h='100%' w='100%' oc={isExpanded? 1: 0} transition={targetRect? [
-                        "opacity " + (isExpanded? '300ms': '200ms') + " var(--znui-emphasized-decelerate-motion)",
-                    ].join(","): undefined}>
+                    <Layout
+                        to={{
+                            baseDuration: targetRect? isExpanded? 200: 300: 0,
+                            oc: {
+                                value: !isExpanded? 0: 1,
+                                duration: isExpanded? 200: 300,
+                                transition: ThemeTokens.motion.emphasizedDecelerate
+                            },
+                            h: isExpanded&&isFullscreen ? '100%': undefined,
+                            w: isExpanded? isFullscreen ? '100%': 800: targetRect?.width||0,
+                        }}
+                        clip={true}
+                        c={ThemeTokens.onSurface}
+                    >
                         <ModalContext.Provider value={{
                             dialogInterface: modalDialogInterface,
-                            isFullscreen
+                            isFullscreen,
+                            isExpanded
                         }}>
                             <Component dialogInterface={modalDialogInterface}/>
                         </ModalContext.Provider>
