@@ -6,6 +6,7 @@ import React from "react";
 import {
     ZnUIIconBackArrowFilled,
 } from "@znui/icons"
+import {TopInset} from "../../components";
 
 export default function ReactComponent({ component }: any) {
     const { name, visibleName, pathLine } = component;
@@ -14,9 +15,13 @@ export default function ReactComponent({ component }: any) {
 
     return <CoordinatorLayout h="100%">
         <AppBarLayout>
-            <Toolbar navigationIcon={<ZnUIIconBackArrowFilled/>} onClickNavigationIcon={() => {
-                window.location.hash = "#components"
-            }}>{visibleName}</Toolbar>
+            <Layout>
+                <TopInset/>
+
+                <Toolbar navigationIcon={<ZnUIIconBackArrowFilled/>} onClickNavigationIcon={() => {
+                    window.location.hash = "#components"
+                }}>{visibleName}</Toolbar>
+            </Layout>
         </AppBarLayout>
 
         <ScrollLayout behavior={AppBarLayout.ScrollBehavior} height="100%">
