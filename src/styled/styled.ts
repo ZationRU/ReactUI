@@ -10,10 +10,7 @@ import {pseudoSelectors} from "./configs";
 
 const emotion = ((createStyled as any).default ?? createStyled) as typeof createStyled
 
-type StyleResolverProps = StyleProps & {
-    currentBreakPoint: LayoutBreakpoint
-}
-
+type StyleResolverProps = StyleProps
 interface GetStyleObject {
     (options: {
         baseStyle?: ZnUIStyleObject,
@@ -30,7 +27,7 @@ export const isStyleProp = (prop: string) => prop in styledProps
 export const toCSSObject: GetStyleObject =
     ({ baseStyle }) =>
         (props) => {
-            const {currentBreakPoint, ...rest} = props
+            const { ...rest} = props
             const styleProps = Object.fromEntries(
                 Object.entries(rest).filter(([key]) => isStyleProp(key))
             )
@@ -83,29 +80,34 @@ export const css = (styles: Record<string, any>) => () => {
 
     let computedStyles: Record<string, any> = {}
     for (let key in resolvedStyles) {
-        const currentValue = resolvedStyles[key]
+        let currentValue = resolvedStyles[key]
 
         if(key in pseudoSelectors) {
             key = pseudoSelectors[key]
-        }
 
-        if (typeof currentValue === 'object') {
-            computedStyles[key] = computedStyles[key] ?? {}
-            computedStyles[key] = {
-                ...computedStyles[key],
-                ...css(currentValue)()
+            if (typeof currentValue === 'object') {
+                computedStyles[key] = computedStyles[key] ?? {}
+                computedStyles[key] = {
+                    ...computedStyles[key],
+                    ...css(currentValue)()
+                }
+
+
+                continue
             }
-
-
-            continue
         }
 
         const config = styledProps[key]
+        if(!config.adaptive) {
+            currentValue = styles[key] ?? currentValue
+        }
+
         if(isFunction(config.property)) {
             computedStyles = {
                 ...config.property(currentValue),
                 ...computedStyles,
             }
+
             continue
         }
 
