@@ -65,13 +65,15 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
         ...layoutRest
     } = props
 
-    const _currentValue = (value || defaultValue)
+    let _currentValue = (value || defaultValue)
+    _currentValue = _currentValue < min ? min: (_currentValue > max ? max: _currentValue)
+
     const stepCount = (max-min) / step
 
     let currentValue = _currentValue - (step===1? 0: (_currentValue % stepCount))
     if(currentValue>max) currentValue = max;
 
-    const trackWidth = currentValue / (max-min) * 100;
+    const trackWidth = (currentValue - min) / (max-min) * 100;
 
     return <FormWidgetBase
         {...layoutRest}
@@ -80,8 +82,7 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
         type='range'
         max={max}
         min={min}
-        value={value}
-        defaultValue={defaultValue}
+        value={_currentValue}
         step={step}
         ref={mergeRefs(ref, inputRef)}
         pos="relative"
