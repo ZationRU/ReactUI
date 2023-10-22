@@ -4,7 +4,12 @@ import {AdaptiveContext, AdaptiveData, LayoutBreakpoint, LayoutBreakpointsValues
 import {useForceUpdate, useZnUIProviderPortalCreator, ZnUIProviderPortalContext} from "../portals";
 
 export function getCurrentDimensionBreakpoint(): LayoutBreakpoint {
-    return Object.keys(LayoutBreakpointsValues).find((key) => window.innerWidth <= LayoutBreakpointsValues[key]) as LayoutBreakpoint
+    if (typeof window === "undefined") {
+        return "unknown"
+    }
+
+    return Object.keys(LayoutBreakpointsValues).find((key) =>
+        window.innerWidth <= LayoutBreakpointsValues[key]) as LayoutBreakpoint
 }
 
 export function buildCurrentAdaptiveData(): AdaptiveData {

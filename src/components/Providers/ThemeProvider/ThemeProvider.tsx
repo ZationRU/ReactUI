@@ -21,16 +21,16 @@ export interface ThemeProviderProps {
  * @constructor
  */
 export const ThemeProvider = (props: ThemeProviderProps) => {
-    const ref = useRef<HTMLDivElement|null>(null)
-    const isSystemScheme = props.scheme==='system'
+    const ref = useRef<HTMLDivElement | null>(null)
+    const isSystemScheme = props.scheme === 'system'
     const [currentScheme, setCurrentScheme] = useState<ZnUIScheme>(
-        isSystemScheme&&typeof window !== 'undefined' ?
-            window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light":
+        isSystemScheme && typeof window !== 'undefined' ?
+            window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light" :
             (props.scheme || 'light') as ZnUIScheme
     )
 
     useEffect(() => {
-        if(!isSystemScheme||typeof window === 'undefined') return;
+        if (!isSystemScheme || typeof window === 'undefined') return;
         const mediaWatch = window.matchMedia("(prefers-color-scheme: dark)")
         const listener = (event: MediaQueryListEventMap['change']) => {
             setCurrentScheme(event.matches ? "dark" : "light")
@@ -53,8 +53,8 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
     >
         <ThemeContext.Provider value={{
             currentScheme,
-            isSystemScheme: props.scheme==='system',
-            changeScheme: (theme) => !isSystemScheme&&setCurrentScheme(theme)
+            isSystemScheme: props.scheme === 'system',
+            changeScheme: (theme) => !isSystemScheme && setCurrentScheme(theme)
         }}>
             <ZnUIProviderPortalContext.Provider value={portalData.registerPortal}>
                 {props.children}
