@@ -1,9 +1,13 @@
-import React from "react"
+import React, {CSSProperties} from "react"
 import {Layout, LayoutProps} from "../../Basic";
 import classNames from "classnames";
 import "./IconWrapper.css";
+import {Adaptive, useAdaptiveValue} from "../../../adaptive";
+import {Console} from "inspector";
 
-export interface IconWrapperProps extends LayoutProps {}
+export interface IconWrapperProps extends LayoutProps {
+    size?: Adaptive<number>
+}
 
 /**
  * Tool for manipulate icon size. Supports svg icons and font icons.
@@ -14,8 +18,15 @@ export interface IconWrapperProps extends LayoutProps {}
 export const IconWrapper = (props: IconWrapperProps) => {
     const {
         className,
+        size,
         ...otherProps
     } = props
 
-    return <Layout className={classNames("IconWrapper", className)} {...otherProps}/>
+    return <Layout
+        className={classNames("IconWrapper", className)}
+        style={{
+            '--icon-size': (useAdaptiveValue(size) || 24) + "px"
+        } as CSSProperties}
+        {...otherProps}
+    />
 }
