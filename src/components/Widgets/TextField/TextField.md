@@ -5,6 +5,10 @@ import {TextField, Layout, znui} from "@znui/react";
     <TextField label="Label">
         <input placeholder="Placeholder"/>
     </TextField>
+
+    <TextField mode='filled' label="Label">
+        <input placeholder="Placeholder"/>
+    </TextField>
     
     <TextField label="Label">
         <input type="number" placeholder="Placeholder"/>

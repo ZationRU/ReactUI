@@ -10,7 +10,7 @@
     margin-inline-start: 0;
     margin-inline-end: 0;
     padding-block-start: 0;
-    padding-inline-start: 11px;
+    padding-inline-start: 12px;
     padding-inline-end: 0;
     padding-block-end: 0;
 }
@@ -30,19 +30,19 @@
     color: currentColor;
     margin-left: calc(17px - var(--border-size) - 12px);
     background: transparent;
-    height: 40px;
+    height: 24px;
     width: 100%;
     border: none;
     padding: 0;
     text-overflow: ellipsis;
-    margin-top: calc(-5px + var(--border-size));
+    margin-top: 8px;
 }
 
 .TextField > textarea {
     color: currentColor;
     margin-left: calc(17px - var(--border-size) - 12px);
     background: transparent;
-    min-height: 28px;
+    min-height: 24px;
     width: 100%;
     border: none;
     padding: 0;
@@ -143,21 +143,64 @@
 }
 
 .TextField:focus-within {
-    --border-size: 2px;
-    border: var(--znui-primary) 2px solid;
+    --border-size: 3px;
+    border: var(--znui-primary) 3px solid;
     color: var(--znui-outline);
 }
 
-.TextField-Container--error {
+.TextField-Container--error:not(:focus-within) {
     caret-color: currentColor;
     color: var(--znui-error);
 }
 
-.TextField-Container--error > .TextField {
-    --border-size: 2px;
-    border: var(--znui-error) 2px solid!important;
+.TextField-Container--error > .TextField:not(:focus-within) {
+    --border-size: 3px;
+    border: var(--znui-error) 3px solid!important;
 }
 
-.TextField-Container--error > .TextField > .label {
+.TextField-Container--error > .TextField:not(:focus-within) > .label {
+    color: var(--znui-error)!important;
+}
+
+.FilledTextView {
+    background: var(--znui-surface-container-highest);
+    border: none;
+    border-radius: var(--znui-shape-esm-radius) var(--znui-shape-esm-radius) 0 0;
+    border-bottom: var(--border-size) solid var(--znui-outline);
+}
+
+.FilledTextView > input {
+    margin-left: 4px;
+    margin-top: 16px;
+}
+
+.FilledTextView > .label {
+    left: 12px;
+}
+
+.FilledTextView:focus-within {
+    --border-size: 3px;
+    border: none;
+    border-bottom: var(--znui-primary) 3px solid;
+    color: var(--znui-outline);
+}
+
+.TextField-Container--error > .FilledTextView:not(:focus-within) {
+    --border-size: 3px;
+    border: none;
+    border-bottom: var(--znui-error) 3px solid!important;
+}
+
+.FilledTextView > input:not(:placeholder-shown) ~ .label,
+.FilledTextView > textarea:not(:placeholder-shown) ~ .label,
+.FilledTextView:focus-within > .label {
+    top: 8px;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    line-height: 16px;
+}
+
+.TextField-Container--error > .FilledTextView:not(:focus-within) > .label {
     color: var(--znui-error)!important;
 }

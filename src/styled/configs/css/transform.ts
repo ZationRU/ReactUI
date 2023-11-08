@@ -6,6 +6,7 @@ export const transform = {
     transform: asCSSProp("transform"),
     transformOrigin: asCSSProp("transformOrigin"),
     transformStyle: asCSSProp("transformStyle"),
+    rotate: asCSSProp("rotate"),
 }
 
 export interface TransformProps {
@@ -26,4 +27,10 @@ export interface TransformProps {
      * @default auto
      */
     transformStyle?: Adaptive<CSS.Property.TransformStyle>
+
+    /**
+     * The CSS `transform` property.
+     * @default auto
+     */
+    rotate?: Adaptive<CSS.Property.Rotate>
 }

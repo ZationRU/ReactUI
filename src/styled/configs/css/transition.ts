@@ -9,6 +9,7 @@ export const transition = {
     transitionDuration: asCSSProp("transitionDuration"),
     transitionDelay: asCSSProp("transitionDelay"),
     animation: asCSSProp("animation"),
+    animationDelay: asCSSProp("animationDelay"),
     willChange: asCSSProp("willChange"),
 }
 
@@ -42,6 +43,11 @@ export interface TransitionProps {
      * The CSS `animation` property
      */
     animation?: Adaptive<CSS.Property.Animation>
+
+    /**
+     * The CSS `animation` property
+     */
+    animationDelay?: Adaptive<CSS.Property.AnimationDelay>
 
     /**
      * The CSS `will-change` property

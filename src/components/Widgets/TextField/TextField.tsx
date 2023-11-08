@@ -7,6 +7,7 @@ import classNames from "classnames";
 import {AnimatedVisibility} from "../../Animation";
 
 export interface TextFieldProps extends HTMLZnUIProps<"div"> {
+    mode?: 'outline'|'filled'
     label?: string
     error?: boolean|string
     supportingText?: string
@@ -22,6 +23,7 @@ export interface TextFieldProps extends HTMLZnUIProps<"div"> {
  */
 export const TextField = (props: TextFieldProps) => {
     const {
+        mode = 'outline',
         label,
         error = false,
         supportingText,
@@ -56,6 +58,7 @@ export const TextField = (props: TextFieldProps) => {
         <Layout as="fieldset" className={classNames(
             "TextField",
             {
+                "FilledTextView": mode==='filled',
                 "TextField--labeled": label,
                 "TextField--disabled": disabled,
             }
