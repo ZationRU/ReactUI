@@ -16,6 +16,7 @@ export const position = {
     insetBlock: asCSSProp("insetBlock"),
     insetBlockStart: asCSSProp("insetBlockStart"),
     insetBlockEnd: asCSSProp("insetBlockEnd"),
+    inset: asCSSProp("inset"),
 }
 
 Object.assign(position, {
@@ -83,6 +84,12 @@ export interface PositionProps {
      * @default undefined
      */
     zIndex?: Adaptive<CSS.Property.ZIndex|number>
+
+    /**
+     * Index of position in layout
+     * @default ph
+     */
+    inset?: Adaptive<CSS.Property.InsetInline|number>
 
     /**
      * Index of position in layout
