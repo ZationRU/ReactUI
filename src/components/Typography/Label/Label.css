@@ -1,4 +1,4 @@
-.znui-label-large---prominent {
+.znui-label-large--prominent {
     font-size: var(--md-sys-typescale-label-large-font-size);
     font-family: var(--md-sys-typescale-label-large-font-family-name);
     font-weight: 600;
@@ -14,7 +14,7 @@
     line-height: var(--md-sys-typescale-label-large-line-height);
     font-style: var(--md-sys-typescale-label-large-font-family-style);
 }
-.znui-label-medium---prominent {
+.znui-label-medium--prominent {
     font-size: var(--md-sys-typescale-label-medium-font-size);
     font-family: var(--md-sys-typescale-label-medium-font-family-name);
     font-weight: 600;

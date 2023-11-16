@@ -79,11 +79,11 @@ NavigationDrawer.Item = (props: NavigationDrawerItemProps) => {
                 icon&&<IconWrapper>{icon}</IconWrapper>
             }
 
-            <Label size="large" className="text">
+            <Label prominent={true} size="large" className="text">
                 {children}
             </Label>
 
-            {badge&&<Label size="large" className="badge">
+            {badge&&<Label prominent={true} size="large" className="badge">
                 {badge}
             </Label>}
         </div>
