@@ -157,7 +157,9 @@
 
 .FilledTextView {
     background: var(--znui-surface-container-highest);
-    border: none;
+    border-left: none!important;
+    border-right: none!important;
+    border-top: none!important;
     border-radius: var(--znui-shape-esm-radius) var(--znui-shape-esm-radius) 0 0;
     border-bottom: var(--border-size) solid var(--znui-outline);
 }
@@ -173,14 +175,15 @@
 
 .FilledTextView:focus-within {
     --border-size: 3px;
-    border: none;
     border-bottom: var(--znui-primary) 3px solid;
     color: var(--znui-outline);
 }
 
 .TextField-Container--error > .FilledTextView:not(:focus-within) {
     --border-size: 3px;
-    border: none;
+    border-left: none!important;
+    border-right: none!important;
+    border-top: none!important;
     border-bottom: var(--znui-error) 3px solid!important;
 }
 
