@@ -3,7 +3,8 @@ export type LayoutBreakpointsBase<T> = {
     sm: T,
     emd: T,
     md: T,
-    lg: T
+    lg: T,
+    unknown: T,
 }
 
 export type LayoutBreakpoint = keyof LayoutBreakpointsBase<any>
@@ -13,7 +14,8 @@ export const LayoutBreakpointsValues: LayoutBreakpointsBase<number> = {
     sm: 904,
     emd: 1239,
     md: 1439,
-    lg: Number.POSITIVE_INFINITY
+    lg: Number.POSITIVE_INFINITY,
+    unknown: NaN,
 }
 
 export const LayoutBreakpointsKeys = Object.keys(LayoutBreakpointsValues)

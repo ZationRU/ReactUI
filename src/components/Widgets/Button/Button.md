@@ -1,30 +1,64 @@
 ```tsx
-const Icon = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <circle cx="30" cy="30" r="30" stroke="currentColor" fill="currentColor" />
-</svg>
+import {Button, VStack, Title, HStack} from "@znui/react";
+import {
+    ZnUIIconAddFilled,
+} from "@znui/icons"
+const Icon = <ZnUIIconAddFilled/>;
 
-const Main = () => <>
-    <div>
+<VStack spacing={10}>
+    <Title>Filled buttons</Title>
+    <HStack spacing={5}>
         <Button>Enabled</Button>
         <Button disabled>Disabled</Button>
-    </div>
+    </HStack>
 
-    <div>
-        <Button icon={Icon}>Iconed</Button>
-        <Button icon={Icon} mode="outline">Iconed</Button>
-        <Button icon={Icon} mode="text">Iconed</Button>
-    </div>
+    <HStack spacing={5}>
+        <Button icon={Icon}>Enabled</Button>
+        <Button icon={Icon} disabled>Disabled</Button>
+    </HStack>
 
-    <div>
+    <Title>Outlined buttons</Title>
+    <HStack spacing={5}>
         <Button mode="outline">Enabled</Button>
         <Button mode="outline" disabled>Disabled</Button>
-    </div>
+    </HStack>
 
-    <div>
+    <HStack spacing={5}>
+        <Button mode="outline" icon={Icon}>Enabled</Button>
+        <Button mode="outline" icon={Icon} disabled>Disabled</Button>
+    </HStack>
+
+    <Title>Text buttons</Title>
+    <HStack spacing={5}>
         <Button mode="text">Enabled</Button>
         <Button mode="text" disabled>Disabled</Button>
-    </div>
-</>;
+    </HStack>
 
-<Main/>
+    <HStack spacing={5}>
+        <Button mode="text" icon={Icon}>Enabled</Button>
+        <Button mode="text" icon={Icon} disabled>Disabled</Button>
+    </HStack>
+
+    <Title>Elevated buttons</Title>
+    <HStack spacing={5}>
+        <Button mode="elevated">Enabled</Button>
+        <Button mode="elevated" disabled>Disabled</Button>
+    </HStack>
+
+    <HStack spacing={5}>
+        <Button mode="elevated" icon={Icon}>Enabled</Button>
+        <Button mode="elevated" icon={Icon} disabled>Disabled</Button>
+    </HStack>
+
+    <Title>Tonal buttons</Title>
+    <HStack spacing={5}>
+        <Button mode="tonal">Enabled</Button>
+        <Button mode="tonal" disabled>Disabled</Button>
+    </HStack>
+
+    <HStack spacing={5}>
+        <Button mode="tonal" icon={Icon}>Enabled</Button>
+        <Button mode="tonal" icon={Icon} disabled>Disabled</Button>
+    </HStack>
+</VStack>
 ```

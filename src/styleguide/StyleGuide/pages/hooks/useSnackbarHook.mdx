@@ -1,0 +1,50 @@
+```tsx
+import {useSnackbar, VStack, Button, SegmentedButton} from "@znui/react";
+import {useState} from "react";
+
+const [horizontal, setHorizontal] = useState('right')
+
+const snackbar = useSnackbar();
+
+<VStack spacing={10}>
+    <SegmentedButton selectedIds={horizontal} onSelect={setHorizontal}>
+        <SegmentedButton.Segment id='left'>
+            Left
+        </SegmentedButton.Segment>
+        <SegmentedButton.Segment id='right'>
+            Right
+        </SegmentedButton.Segment>
+    </SegmentedButton>
+
+    <Button onClick={() => {
+        snackbar({
+            text: 'Single-line snackbar',
+            horizontal
+        })
+    }}>
+        Show Snackbar
+    </Button>
+
+    <Button onClick={() => {
+        snackbar({
+            text: 'Single-line snackbar',
+            bottom: [80, 0],
+            horizontal,
+        })
+    }}>
+        Show Snackbar with bottom in esm
+    </Button>
+
+    <Button onClick={() => {
+        snackbar({
+            text: 'Single-line snackbar with action',
+            action: {
+                title: 'Action'
+            },
+            horizontal
+        })
+    }}>
+        Show Snackbar with action
+    </Button>
+</VStack>
+```

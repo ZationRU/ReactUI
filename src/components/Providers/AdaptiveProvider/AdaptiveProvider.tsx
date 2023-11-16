@@ -1,10 +1,15 @@
 import React, {useEffect} from "react";
-import {createContext, useState} from "react";
-import {LayoutBreakpoint, LayoutBreakpointsValues} from "../../../adaptive/LayoutBreakpoint";
-import {AdaptiveData} from "../../../adaptive/AdaptiveData";
+import {useState} from "react";
+import {AdaptiveContext, AdaptiveData, LayoutBreakpoint, LayoutBreakpointsValues} from "../../../adaptive";
+import {useForceUpdate, useZnUIProviderPortalCreator, ZnUIProviderPortalContext} from "../portals";
 
 export function getCurrentDimensionBreakpoint(): LayoutBreakpoint {
-    return Object.keys(LayoutBreakpointsValues).find((key) => window.innerWidth <= LayoutBreakpointsValues[key]) as LayoutBreakpoint
+    if (typeof window === "undefined") {
+        return "unknown"
+    }
+
+    return Object.keys(LayoutBreakpointsValues).find((key) =>
+        window.innerWidth <= LayoutBreakpointsValues[key]) as LayoutBreakpoint
 }
 
 export function buildCurrentAdaptiveData(): AdaptiveData {
@@ -15,12 +20,19 @@ export function buildCurrentAdaptiveData(): AdaptiveData {
     }
 }
 
-export const AdaptiveContext = createContext<AdaptiveData|null>(null)
 
+
+/**
+ * Provider of information about the current screen size and the current breakpoint for adaptability
+ *
+ * @param children
+ * @constructor
+ */
 export const AdaptiveProvider = ({ children }: {
     children: React.ReactNode
 }) => {
     const [data, setData] = useState<AdaptiveData>(buildCurrentAdaptiveData())
+    const portalData = useZnUIProviderPortalCreator(useForceUpdate())
 
     useEffect(() => {
         const resizeListener = () => {
@@ -35,9 +47,12 @@ export const AdaptiveProvider = ({ children }: {
         return(() => {
             window.removeEventListener('resize', resizeListener);
         })
-    }, [setData])
+    }, [data.currentBreakpoint, setData])
 
     return <AdaptiveContext.Provider value={data}>
-        {children}
+        <ZnUIProviderPortalContext.Provider value={portalData.registerPortal}>
+            {children}
+            {portalData.mainPortal.map((item) => <div key={item.id}>{item.node}</div>)}
+        </ZnUIProviderPortalContext.Provider>
     </AdaptiveContext.Provider>
 }

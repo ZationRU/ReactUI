@@ -1,21 +1,24 @@
 .znui-display-large {
-    font-size: 57px;
-    font-family: Roboto;
-    font-weight: 400;
-    letter-spacing: 0em;
-    line-height: 64px;
+    font-size: var(--md-sys-typescale-display-large-font-size);
+    font-family: var(--md-sys-typescale-display-large-font-family-name);
+    font-weight: var(--md-sys-typescale-display-large-font-weight);
+    letter-spacing: var(--md-sys-typescale-display-large-letter-spacing);
+    line-height: var(--md-sys-typescale-display-large-line-height);
+    font-style: var(--md-sys-typescale-display-large-font-family-style);
 }
 .znui-display-medium {
-    font-size: 45px;
-    font-family: Roboto;
-    font-weight: 400;
-    letter-spacing: 0em;
-    line-height: 52px;
+    font-size: var(--md-sys-typescale-display-medium-font-size);
+    font-family: var(--md-sys-typescale-display-medium-font-family-name);
+    font-weight: var(--md-sys-typescale-display-medium-font-weight);
+    letter-spacing: var(--md-sys-typescale-display-medium-letter-spacing);
+    line-height: var(--md-sys-typescale-display-medium-line-height);
+    font-style: var(--md-sys-typescale-display-medium-font-family-style);
 }
 .znui-display-small {
-    font-size: 36px;
-    font-family: Roboto;
-    font-weight: 400;
-    letter-spacing: 0em;
-    line-height: 44px;
+    font-size: var(--md-sys-typescale-display-small-font-size);
+    font-family: var(--md-sys-typescale-display-small-font-family-name);
+    font-weight: var(--md-sys-typescale-display-small-font-weight);
+    letter-spacing: var(--md-sys-typescale-display-small-letter-spacing);
+    line-height: var(--md-sys-typescale-display-small-line-height);
+    font-style: var(--md-sys-typescale-display-small-font-family-style);
 }

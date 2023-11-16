@@ -1,14 +1,17 @@
 ```jsx
 import React from 'react';
-import {Title} from '../../Typography/Title/Title'
+import {Title, Layout, FloatingActionButton} from "@znui/react";
+import {
+    ZnUIIconAddFilled,
+} from "@znui/icons"
+
+
 const [isExpanded, setExpanded] = React.useState(true);
 const [isLarge, setLarge] = React.useState(true);
 const onExpandClick = () => setExpanded(!isExpanded);
 const onLargeClick = () => setLarge(!isLarge);
 
-const Icon = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <circle cx="30" cy="30" r="30" stroke="currentColor" fill="currentColor" />
-</svg>;
+const Icon = <ZnUIIconAddFilled/>;
 
 <>
     <Title>Small</Title>
@@ -27,38 +30,6 @@ const Icon = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" xmlns:x
         <FloatingActionButton appearance="tertiary" size="default">{Icon}</FloatingActionButton>
     </div>
 
-    <Title>Expand Animation</Title>
-    <div>
-        <FloatingActionButton
-            appearance="surface"
-            size={isExpanded?"expanded":"small"}
-            text="Text"
-            onClick={onExpandClick}>
-            {Icon}
-        </FloatingActionButton>
-        <FloatingActionButton
-            appearance="primary"
-            size={isExpanded?"expanded":"default"}
-            text="Text"
-            onClick={onExpandClick}>
-            {Icon}
-        </FloatingActionButton>
-        <FloatingActionButton 
-            appearance="secondary" 
-            size={isExpanded?"expanded":"large"} 
-            text="Text"
-            onClick={onExpandClick}>
-            {Icon}
-        </FloatingActionButton>
-        <FloatingActionButton 
-            appearance="tertiary"
-            size="expanded"
-            text="Text"
-            onClick={onExpandClick}>
-            {Icon}
-        </FloatingActionButton>
-    </div>
-
     <Title>Large</Title>
     <div>
         <FloatingActionButton appearance="primary" size="large">{Icon}</FloatingActionButton>
@@ -67,11 +38,43 @@ const Icon = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" xmlns:x
         <FloatingActionButton appearance="tertiary" size="large">{Icon}</FloatingActionButton>
     </div>
 
+    <Title>Expand Animation</Title>
+    <Layout>
+        <FloatingActionButton
+            appearance="surface"
+            size={isExpanded ? "expanded" : "small"}
+            text="Text"
+            onClick={onExpandClick}>
+            {Icon}
+        </FloatingActionButton>
+        <FloatingActionButton
+            appearance="primary"
+            size={isExpanded ? "expanded" : "default"}
+            text="Text"
+            onClick={onExpandClick}>
+            {Icon}
+        </FloatingActionButton>
+        <FloatingActionButton
+            appearance="secondary"
+            size={isExpanded ? "expanded" : "large"}
+            text="Text"
+            onClick={onExpandClick}>
+            {Icon}
+        </FloatingActionButton>
+        <FloatingActionButton
+            appearance="tertiary"
+            size="expanded"
+            text="Text"
+            onClick={onExpandClick}>
+            {Icon}
+        </FloatingActionButton>
+    </Layout>
+
     <Title>Animated Size</Title>
     <div>
-        <FloatingActionButton 
-            appearance="primary" 
-            size={isLarge?"large":"default"}
+        <FloatingActionButton
+            appearance="primary"
+            size={isLarge ? "large" : "default"}
             onClick={onLargeClick}
         >
             {Icon}

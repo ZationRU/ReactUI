@@ -4,7 +4,7 @@
     border-radius: 12px;
     overflow: clip;
     position: relative;
-    transition: padding 300ms var(--emphasized-motion);
+    transition: padding 300ms var(--znui-emphasized-motion);
     user-select: none;
 }
 
@@ -14,22 +14,18 @@
 
 .FloatingActionButton--default {
     padding: 16px;
-    --icon-size: 24px;
 }
 
 .FloatingActionButton--expanded {
     padding: 16px;
-    --icon-size: 24px;
 }
 
 .FloatingActionButton--small {
     padding: 8px;
-    --icon-size: 24px;
 }
 
 .FloatingActionButton--large {
     padding: 30px;
-    --icon-size: 36px;
 }
 
 .FloatingActionButton--primary {
@@ -57,27 +53,14 @@
     color: var(--znui-on-tertiary-container);
 }
 
-.FloatingActionButton > .inner > .icon {
-    width: var(--icon-size);
-    height: var(--icon-size);
-
-    transition: width 300ms var(--emphasized-motion), height 300ms var(--emphasized-motion);
-}
-
 .FloatingActionButton > .inner > .text {
     user-select: none;
     transition:
-            max-width 200ms var(--emphasized-decelerate-motion),
-            opacity 200ms var(--emphasized-decelerate-motion),
-            margin-left 300ms var(--emphasized-decelerate-motion),
-            padding-right 300ms var(--emphasized-decelerate-motion)
+            max-width 200ms var(--znui-emphasized-decelerate-motion),
+            opacity 200ms var(--znui-emphasized-decelerate-motion),
+            margin-left 300ms var(--znui-emphasized-decelerate-motion),
+            padding-right 300ms var(--znui-emphasized-decelerate-motion)
 ;
-
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 19px;
     max-width: 0;
     padding-right: 0;
     margin-left: -40%;
@@ -86,10 +69,10 @@
 
 .FloatingActionButton--expanded > .inner > .text {
     transition:
-            max-width 300ms var(--emphasized-motion),
-            opacity 200ms var(--emphasized-motion),
-            margin-left 300ms var(--emphasized-motion),
-            padding-right 300ms var(--emphasized-motion)
+            max-width 300ms var(--znui-emphasized-motion),
+            opacity 200ms var(--znui-emphasized-motion),
+            margin-left 300ms var(--znui-emphasized-motion),
+            padding-right 300ms var(--znui-emphasized-motion)
 ;
 
     padding-right: 4px;

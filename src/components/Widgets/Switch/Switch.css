@@ -1,12 +1,12 @@
 .Switch {
     --border-width: 3px;
-    --transition-delay: 80ms;
+    --transition-delay: 250ms;
 
     width: 52px;
     height: 32px;
 
-    transition: background  var(--transition-delay) linear,
-        border      var(--transition-delay) linear
+    transition: background  var(--transition-delay) var(--znui-standard-motion),
+        border      var(--transition-delay) var(--znui-standard-motion)
     ;
     cursor: pointer;
     position: relative;
@@ -28,23 +28,18 @@
     border-radius: 128px;
     position: absolute;
 
-    transition: width var(--transition-delay) linear,
-    height      var(--transition-delay) linear,
-    background  var(--transition-delay) linear,
-    border  var(--transition-delay) linear,
-    margin-left  var(--transition-delay) linear,
-    margin-right  var(--transition-delay) linear,
-    opacity  var(--transition-delay) linear,
-    transform   var(--transition-delay) linear;
+    transition: width var(--transition-delay) var(--znui-standard-motion),
+    height      var(--transition-delay) var(--znui-standard-motion),
+    background  var(--transition-delay) var(--znui-standard-motion),
+    border  var(--transition-delay) var(--znui-standard-motion),
+    margin-left  var(--transition-delay) var(--znui-standard-motion),
+    margin-right  var(--transition-delay) var(--znui-standard-motion),
+    opacity  var(--transition-delay) var(--znui-standard-motion),
+    transform   var(--transition-delay) var(--znui-standard-motion);
 
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.Switch-Thumb > * {
-    width: 16px;
-    height: 16px;
 }
 
 .Switch > .Switch-Truck {
@@ -55,9 +50,9 @@
     right: 0;
 
     transition:
-            background  var(--transition-delay) linear,
-            opacity     var(--transition-delay) linear,
-            border      var(--transition-delay) linear;
+            background  var(--transition-delay) var(--znui-standard-motion),
+            opacity     var(--transition-delay) var(--znui-standard-motion),
+            border      var(--transition-delay) var(--znui-standard-motion);
     background: var(--znui-surface-variant);
     border: var(--znui-outline) solid var(--border-width);
     border-radius: 52px;
@@ -98,11 +93,11 @@
  * Focused
  */
 
-.Switch:has(> input:focus-visible)  > .Switch-Thumb {
+.Switch:focus-within  > .Switch-Thumb {
     background: var(--znui-on-surface-variant);
 }
 
-.Switch--checked:has(> input:focus-visible) > .Switch-Thumb {
+.Switch--checked:focus-within > .Switch-Thumb {
     background: var(--znui-primary-container);
 }
 

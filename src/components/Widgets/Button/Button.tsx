@@ -1,15 +1,21 @@
 import React, {ReactNode} from 'react';
 import classNames from 'classnames';
 import "./Button.css";
-import {StateLayer} from "../../Layouts/StateLayer/StateLayer";
+import {StateLayer} from "../../Layouts";
+import {IconWrapper} from "../IconWrapper/IconWrapper";
+import {HTMLZnUIProps} from "../../../styled";
+import {znui} from "../../Basic";
+import {Label} from "../../Typography";
 
-export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement>{
-    mode: 'filled'|'text'|'outline',
+export interface ButtonProps extends HTMLZnUIProps<'button'>{
+    mode?: 'filled'|'text'|'outline'|'tonal'|'elevated',
     icon?: ReactNode
 }
 
 /**
- * Simple Button
+ * ZnUI Button widget
+ * @param props
+ * @constructor
  */
 export function Button(props: ButtonProps) {
     const {
@@ -20,15 +26,26 @@ export function Button(props: ButtonProps) {
         ...otherProps
     } = props
 
-
-    return <button className={
-        classNames(className, 'Button', 'Button--'+mode)
-    } {...otherProps}>
+    return <znui.button
+        clip={true}
+        className={
+            classNames(className, 'Button', 'Button--'+mode, {
+                'elevation-1': mode==='elevated'
+            })
+        }
+        {...otherProps}
+    >
         <StateLayer/>
 
         <div className="inner">
-            {icon&&<div className="icon">{icon}</div>}
-            <div className="text">{children}</div>
+            {icon&&<IconWrapper size={18}>{icon}</IconWrapper>}
+            <Label
+                ml={8}
+                size='large'
+            >
+                {children}
+            </Label>
         </div>
-    </button>
+    </znui.button>
 }
+

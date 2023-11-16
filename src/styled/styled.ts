@@ -1,58 +1,58 @@
-import {colors, flex, layout, margin, padding, position} from "./configs";
+import {
+    cssConfig, znuiPropsConfig
+} from "./configs";
 import React from "react";
-import {StyleProps, ZnUIComponent} from "./styled.types";
+import {StyleProps, ZnUIComponent, ZnUIStyleObject} from "./styled.types";
 import createStyled, {FunctionInterpolation} from "@emotion/styled"
-import {runIfFn} from "./utils/props";
-import {css} from "./css";
-import {LayoutBreakpoint} from "../adaptive/LayoutBreakpoint";
+import {LayoutBreakpoint, resolveAdaptive, useAdaptive} from "../adaptive";
+import {isFunction, runIfFn} from "../utils";
+import {pseudoSelectors} from "./configs";
 
 const emotion = ((createStyled as any).default ?? createStyled) as typeof createStyled
 
-type StyleResolverProps = StyleProps & {
-    currentBreakPoint: LayoutBreakpoint
-}
-
+type StyleResolverProps = StyleProps
 interface GetStyleObject {
     (options: {
-        baseStyle?: StyleProps,
+        baseStyle?: ZnUIStyleObject,
     }): FunctionInterpolation<StyleResolverProps>
 }
 
 export const styledProps = {
-    ...colors,
-    ...flex,
-    ...layout,
-    ...margin,
-    ...padding,
-    ...position,
+    ...cssConfig,
+    ...znuiPropsConfig,
+    ...pseudoSelectors
 }
-
 export const isStyleProp = (prop: string) => prop in styledProps
 
 export const toCSSObject: GetStyleObject =
     ({ baseStyle }) =>
         (props) => {
-            const {currentBreakPoint, ...rest} = props
-            const styleProps = {}
-            Object.keys(rest)
-                .filter((prop) => isStyleProp(prop))
-                .forEach(prop => {
-                    styleProps[prop] = rest[prop]
-                })
+            const { ...rest} = props
+            const styleProps = Object.fromEntries(
+                Object.entries(rest).filter(([key]) => isStyleProp(key))
+            )
 
             const baseStyles = runIfFn(baseStyle, rest) || {}
 
             return css({
                 ...baseStyles,
                 ...styleProps
-            })()
+            })
         }
 
-export function styled<T extends React.ElementType, P extends object = {}>(component: T,) {
+export interface ZnUIStyledOptions<P extends object> {
+    baseStyle?: ZnUIStyleObject
+    styles?: (props: P) => ZnUIStyleObject
+}
+
+export function styled<T extends React.ElementType, P extends object = {}>(
+    component: T,
+    options: ZnUIStyledOptions<P>|null = null
+) {
+    const { baseStyle, styles } = options || {}
+
     const styleObject = toCSSObject({
-        baseStyle: {
-            overflow: 'clip'
-        }
+        baseStyle
     })
 
     const Component = emotion(
@@ -63,11 +63,64 @@ export function styled<T extends React.ElementType, P extends object = {}>(compo
         props,
         ref,
     ) {
+        const resolvedStyles = styles?.call(undefined, props as P)
         return React.createElement(Component, {
             ref,
             ...props,
+            ...resolvedStyles
         })
     })
 
     return znComponent as ZnUIComponent<T, P>
+}
+
+export const css = (styles: Record<string, any>) => () => {
+    const adaptiveData = useAdaptive()
+    const resolvedStyles = resolveAdaptive(adaptiveData.currentBreakpoint, styles)
+
+    let computedStyles: Record<string, any> = {}
+    for (let key in resolvedStyles) {
+        let currentValue = resolvedStyles[key]
+
+        if(key in pseudoSelectors) {
+            key = pseudoSelectors[key]
+
+            if (typeof currentValue === 'object') {
+                computedStyles[key] = computedStyles[key] ?? {}
+                computedStyles[key] = {
+                    ...computedStyles[key],
+                    ...css(currentValue)()
+                }
+
+
+                continue
+            }
+        }
+
+        const config = styledProps[key]
+        if(!config.adaptive) {
+            currentValue = styles[key] ?? currentValue
+        }
+
+        if(isFunction(config.property)) {
+            computedStyles = {
+                ...config.property(currentValue),
+                ...computedStyles,
+            }
+
+            continue
+        }
+
+        if(Array.isArray(config.property)) {
+            for (const property of config.property) {
+                computedStyles[property] = currentValue
+            }
+
+            continue
+        }
+
+        computedStyles[config.property] = currentValue
+    }
+
+    return computedStyles
 }

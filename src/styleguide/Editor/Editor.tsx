@@ -6,17 +6,24 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-tsx';
 import 'prismjs/components/prism-typescript';
-import 'prismjs/themes/prism.min.css';
+import 'prismjs/themes/prism-twilight.css';
 import './Editor.css';
 import {Editor} from "react-styleguidist/lib/client/rsg-components/Editor/Editor";
-import Card from "../../components/Layouts/Card/Card";
+import {Layout} from "../../";
+
+let timer: NodeJS.Timeout
 
 export default function EditorWrapper(props: any) {
     return (
-        <Card>
-            <Editor {...props} classes={{
+        <Layout clip={true} overflowY="auto">
+            <Editor {...props} onChange={(code) => {
+                clearTimeout(timer)
+                timer = setTimeout(() => {
+                    props.onChange(code)
+                }, 3*1000)
+            }} classes={{
                 root: "Editor__inner"
-            }}/>
-        </Card>
+            }} style={{ overflow: "auto" }}/>
+        </Layout>
     );
 }

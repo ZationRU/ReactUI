@@ -7,14 +7,14 @@
     background: transparent;
     opacity: 0;
 
-    transition: background-color 300ms var(--emphasized-motion), opacity 300ms var(--emphasized-motion);
+    transition: background-color 300ms var(--znui-emphasized-motion), opacity 300ms var(--znui-emphasized-motion);
 }
 
 .Ripple-Animation {
     border-radius: 50%;
     transform: scale(0);
-    animation: ripple 400ms var(--emphasized-motion) forwards;
-    background-color: var(--znui-primary);
+    animation: ripple 400ms var(--znui-emphasized-motion) forwards;
+    background-color: currentColor;
     opacity: 0.12;
 }
 
@@ -24,23 +24,24 @@
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 2;
 }
 
 .Ripple {
     position: absolute;
-    transition: opacity 300ms var(--emphasized-motion);
+    transition: opacity 300ms var(--znui-emphasized-motion);
     opacity: 0.12;
 }
 
 .Ripple-Fixed {
     border-radius: 50%;
-    background-color: var(--znui-primary);
+    background-color: currentColor;
     opacity: 0.12;
     transform: scale(4);
 }
 
 .Ripple-Hidden {
-    background-color: var(--znui-primary);
+    background-color: currentColor;
     transform: scale(4);
     opacity: 0;
 }

@@ -1,23 +1,34 @@
 import './Headline.css';
 import React from "react";
 import classNames from "classnames";
-
-export interface HeadlineProps extends React.HTMLAttributes<HTMLElement> {
-    size?: 'small'|'medium'|'large';
-    Component?: React.ElementType;
+import {useAdaptiveValue, Adaptive} from "../../../adaptive";
+import {HTMLZnUIProps} from "../../../styled";
+import {znui} from "../../Basic";
+export interface HeadlineProps extends HTMLZnUIProps<'h4'> {
+    size?: Adaptive<'small'|'medium'|'large'>;
 }
 
+/**
+ * Headline Typography component
+ * @param props
+ * @constructor
+ */
 export const Headline = (props: HeadlineProps) => {
     const {
-        size = 'medium',
-        Component = 'h4' as React.ElementType,
+        size,
         className,
         ...otherProps
     } = props
 
 
-    return <Component {...otherProps} className={classNames(
-        className,
-        'znui-headline-'+size
-    )}/>
+    return <znui.h4
+        ms={0}
+        me={0}
+        overflow="unset"
+        className={classNames(
+            className,
+            'znui-headline-'+(useAdaptiveValue(size) || 'medium')
+        )}
+        {...otherProps}
+    />
 }

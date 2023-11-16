@@ -13,7 +13,11 @@
     gap: 12px;
 
     color: var(--znui-on-surface-variant);
-    transition: color 200ms var(--emphasized-motion), background-color 200ms var(--emphasized-motion);
+    transition: color 200ms var(--znui-emphasized-motion), background-color 200ms var(--znui-emphasized-motion);
+}
+
+.NavigationDrawer--compat .NavigationDrawerItem {
+    height: 48px;
 }
 
 .NavigationDrawerItem > .background-state {
@@ -26,11 +30,12 @@
 
     border-radius: 100px;
     background: var(--znui-secondary-container);
-    transition: left 200ms var(--emphasized-motion), right 200ms var(--emphasized-motion), opacity 200ms var(--emphasized-motion);
+    transition: left 200ms var(--znui-emphasized-motion), right 200ms var(--znui-emphasized-motion), opacity 200ms var(--znui-emphasized-motion);
 }
 
 .NavigationDrawerItem > .inner {
-    width: 100%;
+    max-width: calc(100% - 32px);
+    flex: 1;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -39,23 +44,18 @@
     z-index: 1;
 }
 
-.NavigationDrawerItem > .inner > .icon {
-    width: 24px;
-    height: 24px;
-}
-
 .NavigationDrawerItem > .inner > .text {
-    flex: none;
-    order: 1;
-    flex-grow: 1;
+    flex: 1 0 0;
     cursor: pointer;
     user-select: none;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .NavigationDrawerItem > .inner > .badge {
-    flex: none;
-    order: 2;
-    flex-grow: 0;
+
 }
 
 .NavigationDrawerItem--selected {

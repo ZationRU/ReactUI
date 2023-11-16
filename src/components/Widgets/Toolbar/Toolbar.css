@@ -2,9 +2,12 @@
     height: 64px;
     user-select: none;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .Toolbar > .inner {
+    width: 100%;
     padding: 8px 4px;
     height: max-content;
     display: flex;
@@ -13,20 +16,31 @@
     gap: 6px;
 }
 
+.Toolbar-Menu {
+    color: var(--znui-on-surface-variant);
+}
+
 .Toolbar-Title {
     flex: 1;
     margin-block-start: 0;
     margin-block-end: 0;
+
+    transition: transform 200ms var(--znui-emphasized-motion);
+    transform: translateX(0px);
 }
 
 .Toolbar-Title-Centered {
-    text-align: center;
     position: absolute;
-    left: 0;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.Toolbar-Title-Icon--Hidden {
+    transform: translateX(calc(-40px + 12px));
 }
 
 .Toolbar-NavigationIconContainer {
+    color: var(--znui-on-surface-variant);
     cursor: pointer;
 
     width: 48px;
@@ -38,15 +52,12 @@
     justify-content: center;
     align-items: center;
     overflow: clip;
+
+    transition: transform 200ms var(--znui-emphasized-motion), opacity 200ms var(--znui-emphasized-motion);
+    transform: translateX(0px);
 }
 
 .Toolbar-NavigationIconContainer--Hidden {
-    width: 0;
-    margin-left: 12px;
-}
-
-.Toolbar-NavigationIcon {
-    width: 24px;
-    height: 24px;
-    color: var(--znui-on-surface);
+    transform: translateX(-40px);
+    opacity: 0;
 }

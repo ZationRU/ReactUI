@@ -1,7 +1,11 @@
 ```tsx
-import {Layout} from "../../Layouts/Layout/Layout";
-import {FloatingActionButton} from "../FloatingActionButton/FloatingActionButton";
-import {Button} from "../Button/Button";
+import {Layout, FloatingActionButton, Button, NavigationRail, Badge} from "@znui/react";
+import {
+    ZnUIIconHomeFilled,
+    ZnUIIconCommentsFilled,
+    ZnUIIconNotificationsFilled,
+    ZnUIIconSettingsFilled
+} from "@znui/icons"
 
 
 const [selected, setSelected] = React.useState('hub');
@@ -12,39 +16,48 @@ const Icon = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" x
 </svg>;
     
 const Menu = menu &&
-    <FloatingActionButton appearance="surface" size="default"><Icon/></FloatingActionButton>
+    <FloatingActionButton 
+        appearance="tertiary" 
+        elevation={false}
+        size="default"
+    >
+        <Icon/>
+    </FloatingActionButton>
     
 const Items = <>
     <NavigationRail.Item
         selected={selected==='hub'}
         onClick={() => setSelected('hub')}
-        title="Главная"
+        badge={<Badge/>}
+        title="Hub"
     >
-        <Icon/>
+        <ZnUIIconHomeFilled/>
     </NavigationRail.Item>
 
     <NavigationRail.Item
         selected={selected==='messages'}
         onClick={() => setSelected('messages')}
-        title="Сообщения"
+        badge={<Badge size="single">5</Badge>}
+        title="Messages"
     >
-        <Icon/>
+        <ZnUIIconCommentsFilled/>
     </NavigationRail.Item>
 
     <NavigationRail.Item
         selected={selected==='notifications'}
         onClick={() => setSelected('notifications')}
-        title="Уведомления"
+        badge={<Badge size="multiple">32</Badge>}
+        title="Notifications"
     >
-        <Icon/>
+        <ZnUIIconNotificationsFilled/>
     </NavigationRail.Item>
 
     <NavigationRail.Item
         selected={selected==='settings'}
         onClick={() => setSelected('settings')}
-        title="Настройки"
+        title="Settings"
     >
-        <Icon/>
+        <ZnUIIconSettingsFilled/>
     </NavigationRail.Item>
 </>;
     
@@ -54,9 +67,9 @@ const Items = <>
     </Button>
 
     <Layout display="flex" gap={12}>
-        <NavigationRail menu={Menu} s={2} h="80vh">{Items}</NavigationRail>
-        <NavigationRail menu={Menu} s={2} h="80vh" alignment="center">{Items}</NavigationRail>
-        <NavigationRail menu={Menu} s={2} h="80vh" alignment="end">{Items}</NavigationRail>
+        <NavigationRail menu={Menu} h="80vh">{Items}</NavigationRail>
+        <NavigationRail menu={Menu} h="80vh" alignment="center">{Items}</NavigationRail>
+        <NavigationRail menu={Menu} h="80vh" alignment="end">{Items}</NavigationRail>
     </Layout>
 </div>
 ```

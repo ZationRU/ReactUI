@@ -1,0 +1,63 @@
+# Installation
+
+To use ZnUI in your project, run one of the following commands in your terminal:
+
+
+import {
+    SegmentedButton,
+    Layout, VStack
+} from "../../../index";
+import { useState } from 'react';
+import {CodeFragment} from "../CodePlaygroundDocs"
+
+export const PackageInstall = () => {
+    const [selectedPackageManager, setPackageManager] = useState('npm');
+
+    return <VStack spacing={15}>
+        <SegmentedButton w={{
+            xsm: 'auto',
+            emd: 300
+        }} selectedIds={selectedPackageManager} onSelect={setPackageManager}>
+            <SegmentedButton.Segment id='npm'>
+                npm
+            </SegmentedButton.Segment>
+            <SegmentedButton.Segment id='yarn'>
+                yarn
+            </SegmentedButton.Segment>
+            <SegmentedButton.Segment id='pnpm'>
+                pnpm
+            </SegmentedButton.Segment>
+        </SegmentedButton>
+
+        <CodeFragment>
+            {selectedPackageManager==='npm'&&"npm install @znui/react @znui/icons"}
+            {selectedPackageManager==='yarn'&&"yarn add @znui/react @znui/icons"}
+            {selectedPackageManager==='pnpm'&&"pnpm add @znui/react @znui/icons"}
+        </CodeFragment>
+    </VStack>
+}
+
+<PackageInstall/>
+
+After installing ZnUI, you need to set up the <code>ThemeProvider</code> and <code>AdaptiveProvider</code> at the root of your application.
+
+```tsx
+import * as React from 'react';
+
+import { ThemeProvider, AdaptiveProvider, Button } from '@znui/react'
+
+function App() {
+  return (
+    <ThemeProvider scheme='system'>
+      <AdaptiveProvider>
+        <YourApplication />
+      </AdaptiveProvider>
+    </ThemeProvider>
+  )
+}
+function YourApplication() {
+  return <Button>My Cool Button in My Application</Button>
+}
+
+<App/>
+```

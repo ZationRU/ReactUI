@@ -23,7 +23,7 @@
 
     border-radius: 16px;
     background: var(--znui-secondary-container);
-    transition: left 200ms var(--emphasized-motion), right 200ms var(--emphasized-motion), opacity 200ms var(--emphasized-motion);
+    transition: left 200ms var(--znui-emphasized-motion), right 200ms var(--znui-emphasized-motion), opacity 200ms var(--znui-emphasized-motion);
 }
 
 .NavigationBarItem > .IconContainer {
@@ -33,14 +33,14 @@
     overflow: clip;
 }
 
-.NavigationBarItem > .IconContainer > .icon {
+
+
+.NavigationBarItem > .IconContainer > .IconWrapper {
     position: relative;
-    width: 24px;
-    height: 24px;
     z-index: 1;
 
     color: currentColor;
-    transition: color 200ms var(--emphasized-motion);
+    transition: color 200ms var(--znui-emphasized-motion);
 }
 
 .NavigationBarItem--hidden {
@@ -52,7 +52,10 @@
     cursor: pointer;
     user-select: none;
     color: var(--znui-on-surface-variant);
-    transition: color 200ms var(--emphasized-motion);
+    transition: color 200ms var(--znui-emphasized-motion);
+    max-width: 90%;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .NavigationBarItem--selected > .IconContainer > .icon {
@@ -61,7 +64,7 @@
 
 .NavigationBarItem--selected > .Title {
     color: var(--znui-on-surface);
-    transition: color 200ms var(--emphasized-motion);
+    transition: color 200ms var(--znui-emphasized-motion);
 }
 
 .NavigationBarItem--selected > .IconContainer > .background-state {

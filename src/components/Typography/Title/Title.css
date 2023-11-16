@@ -1,20 +1,24 @@
 .znui-title-large {
-    font-size: 22px;
-    font-family: Roboto;
-    font-weight: 500;
-    letter-spacing: 0em;
-    line-height: 28px;
+    font-size: var(--md-sys-typescale-title-large-font-size);
+    font-family: var(--md-sys-typescale-title-large-font-family-name);
+    font-weight: var(--md-sys-typescale-title-large-font-weight);
+    letter-spacing: var(--md-sys-typescale-title-large-letter-spacing);
+    line-height: var(--md-sys-typescale-title-large-line-height);
+    font-style: var(--md-sys-typescale-title-large-font-family-style);
 }
 .znui-title-medium {
-    font-size: 16px;
-    font-family: Roboto;
-    font-weight: 500;
-    letter-spacing: 0em;
-    line-height: 24px;
+    font-size: var(--md-sys-typescale-title-medium-font-size);
+    font-family: var(--md-sys-typescale-title-medium-font-family-name);
+    font-weight: var(--md-sys-typescale-title-medium-font-weight);
+    letter-spacing: var(--md-sys-typescale-title-medium-letter-spacing);
+    line-height: var(--md-sys-typescale-title-medium-line-height);
+    font-style: var(--md-sys-typescale-title-medium-font-family-style);
 }
 .znui-title-small {
-    font-size: 12px;
-    font-family: Roboto;
-    font-weight: 500;
-    letter-spacing: 0em;
+    font-size: var(--md-sys-typescale-title-small-font-size);
+    font-family: var(--md-sys-typescale-title-small-font-family-name);
+    font-weight: var(--md-sys-typescale-title-small-font-weight);
+    letter-spacing: var(--md-sys-typescale-title-small-letter-spacing);
+    line-height: var(--md-sys-typescale-title-small-line-height);
+    font-style: var(--md-sys-typescale-title-small-font-family-style);
 }

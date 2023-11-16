@@ -1,23 +1,34 @@
 import './Body.css';
 import React from "react";
 import classNames from "classnames";
+import {useAdaptiveValue, Adaptive} from "../../../adaptive";
+import {HTMLZnUIProps} from "../../../styled";
+import {znui} from "../../Basic";
 
-export interface BodyProps extends React.HTMLAttributes<HTMLElement> {
-    size?: 'small'|'medium'|'large';
-    Component?: React.ElementType;
+export interface BodyProps extends HTMLZnUIProps<'h4'> {
+    size?: Adaptive<'small'|'medium'|'large'>;
 }
 
+/**
+ * Body Typography component
+ * @param props
+ * @constructor
+ */
 export const Body = (props: BodyProps) => {
     const {
-        size = 'medium',
-        Component = 'h4' as React.ElementType,
+        size,
         className,
         ...otherProps
     } = props
 
 
-    return <Component {...otherProps} className={classNames(
-        className,
-        'znui-body-'+size
-    )}/>
+    return <znui.h4
+        ms={0}
+        me={0}
+        overflow="unset"
+        className={classNames(
+            className,
+            'znui-body-'+(useAdaptiveValue(size) || 'medium')
+        )}
+        {...otherProps}/>
 }

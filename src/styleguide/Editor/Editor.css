@@ -1,6 +1,6 @@
 .Editor__inner {
-    max-height: 400px;
-    overflow: auto!important;
+    color: currentColor;
+    z-index: 0;
 }
 
 .Editor__inner > textarea {

@@ -1,6 +1,6 @@
 {
   "name": "@znui/react",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
@@ -8,12 +8,15 @@
     "dist",
     "README.md"
   ],
+  "license": "MIT",
   "dependencies": {
+    "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "classnames": "^2.3.2",
     "css-loader": "^6.8.1",
     "csstype": "^3.1.2",
     "prop-types": "^15.8.1",
+    "react-measure": "^2.5.2",
     "style-loader": "^3.3.3"
   },
   "scripts": {
@@ -25,6 +28,7 @@
     "styleguide:build": "styleguidist build"
   },
   "peerDependencies": {
+    "@znui/icons": "^1.0.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -54,7 +58,6 @@
     "zation"
   ],
   "author": "levkopo",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ZationRU/ZationUI/issues"
   },
@@ -63,9 +66,10 @@
     "url": "git+https://github.com/ZationRU/ZationUI.git"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^21.1.0",
+    "@mdx-js/loader": "^2.3.0",
+    "@rollup/plugin-commonjs": "^25.0.3",
     "@rollup/plugin-node-resolve": "^15.1.0",
-    "@rollup/plugin-typescript": "^8.3.1",
+    "@rollup/plugin-typescript": "^11.1.2",
     "@svgr/rollup": "^8.0.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -75,18 +79,24 @@
     "@types/prismjs": "^1.26.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "@types/react-measure": "^2.0.8",
     "@types/styled-components": "^5.1.26",
+    "copy-webpack-plugin": "^11.0.0",
     "copyfiles": "^2.4.1",
     "cross-env": "^7.0.3",
+    "eslint-config-react-app": "^7.0.1",
     "prismjs": "^1.29.0",
     "react-docgen-typescript": "^2.2.2",
     "react-frame-component": "^5.2.6",
     "react-styleguidist": "^13.1.1",
+    "remark-gfm": "^3.0.1",
     "rimraf": "^4.4.1",
-    "rollup": "^2.70.1",
+    "rollup": "^3.26.3",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-dts": "^5.3.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-typescript2": "^0.31.2",
+    "rollup-plugin-typescript2": "^0.35.0",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.5",
     "typescript-plugin-styled-components": "^2.0.0"

@@ -1,0 +1,19 @@
+.IconWrapper > svg {
+    transition: width 300ms var(--znui-emphasized-motion), height 300ms var(--znui-emphasized-motion);
+    width: var(--icon-size);
+    height: var(--icon-size);
+    color: currentColor;
+    overflow: visible;
+}
+
+.IconWrapper {
+    transition: font-size 300ms var(--znui-emphasized-motion), width 300ms var(--znui-emphasized-motion), height 300ms var(--znui-emphasized-motion);
+    display: flex;
+    font-size: var(--icon-size);
+    line-height: var(--icon-size);
+    overflow: visible;
+    justify-content: center;
+    align-items: center;
+    width: var(--icon-size);
+    height: var(--icon-size);
+}

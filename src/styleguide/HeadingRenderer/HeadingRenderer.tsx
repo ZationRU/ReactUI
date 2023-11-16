@@ -1,6 +1,5 @@
 import React from 'react';
-import {Title} from "../../components/Typography/Title/Title";
-import {Headline} from "../../components/Typography/Headline/Headline";
+import {Title, Headline} from "../../";
 
 const HeadingRenderer = ({ level, children, className }: any) => {
     switch (level) {

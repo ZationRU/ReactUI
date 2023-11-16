@@ -1,16 +1,50 @@
-import {ColorsProps, FlexProps, LayoutCSSProps, MarginProps, PaddingProps, PositionProps} from "./configs";
+import {
+    CSSProps, ZnUICSSProps
+} from "./configs";
+import * as CSS from "csstype";
 import React from "react";
+import {Pseudos} from "./configs";
 
-export type StyleProps = ColorsProps &
-        FlexProps &
-        LayoutCSSProps &
-        MarginProps &
-        PaddingProps &
-        PositionProps;
+export type StyleProps = CSSProps & ZnUICSSProps;
 
-export interface ZnUIProps extends StyleProps {
+/** Pseudos **/
+type PseudoKeys = keyof CSS.Pseudos | keyof Pseudos
 
+type PseudoSelectorDefinition<D> = D | RecursivePseudo<D>
+
+export type RecursivePseudo<D> = {
+    [K in PseudoKeys]?: PseudoSelectorDefinition<D> & D
 }
+
+export interface SystemCSSProperties
+    extends CSS.Properties,
+        Omit<StyleProps, keyof CSS.Properties> {}
+
+
+type PropertyValue<K extends keyof SystemCSSProperties> = SystemCSSProperties[K]
+
+export type CSSWithMultiValues = {
+    [K in keyof SystemCSSProperties]?: K extends keyof StyleProps
+        ? StyleProps[K] | PropertyValue<K>
+        : PropertyValue<K>
+}
+
+type CSSDefinition<D> = D | string | RecursiveCSSSelector<D | string>
+
+export interface RecursiveCSSSelector<D> {
+    [selector: string]: CSSDefinition<D> & D
+}
+
+export type RecursiveCSSObject<D> = D &
+    (D | RecursivePseudo<D> | RecursiveCSSSelector<D>)
+
+export type ZnUIStyleObject = RecursiveCSSObject<CSSWithMultiValues>
+
+type PseudoProps = {
+    [K in keyof Pseudos]?: ZnUIStyleObject
+}
+
+export interface ZnUIProps extends StyleProps, PseudoProps {}
 
 export type OmitCommonProps<
     Target,
@@ -38,17 +72,17 @@ export type MergeWithAs<
     | RightJoinProps<ComponentProps, AdditionalProps>
     | RightJoinProps<TypeProps, AdditionalProps>
     ) & {
-    type?: TypeComponent
+    as?: TypeComponent
 }
 
 export type PropsOf<T extends React.ElementType> = React.ComponentPropsWithoutRef<T> & {
-    type?: React.ElementType
+    as?: React.ElementType
 }
 
 export type HTMLZnUIProps<T extends React.ElementType> = Omit<
     PropsOf<T>,
     "ref" | keyof StyleProps
-> & ZnUIProps & { type?: React.ElementType }
+> & ZnUIProps & { as?: React.ElementType }
 
 
 export type Component<Component extends React.ElementType, Props extends object = {}> = {
@@ -70,3 +104,10 @@ export type Component<Component extends React.ElementType, Props extends object 
 
 export interface ZnUIComponent<T extends React.ElementType, P extends object = {}>
     extends Component<T, Assign<ZnUIProps, P>> {}
+
+export type JSXElements = keyof JSX.IntrinsicElements
+
+export type HTMLZnUIComponents = {
+    [Tag in JSXElements]: ZnUIComponent<Tag, {}>
+}
+

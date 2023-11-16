@@ -1,0 +1,22 @@
+```tsx
+import {useTheme, VStack, Layout, Button, ThemeTokens} from "@znui/react";
+
+const theme = useTheme();
+
+<VStack
+    spacing={5}
+    p={20}
+    bg={ThemeTokens.surface}
+    c={ThemeTokens.primary}
+>
+    <Layout>
+        Current scheme: {theme.currentScheme}
+    </Layout>
+    <Layout>
+        Is system scheme: {theme.isSystemScheme ? 'true': 'false'}
+    </Layout>
+    <Button onClick={() => theme.changeScheme(theme.currentScheme==='light' ? 'dark': 'light')}>
+        Toggle scheme
+    </Button>
+</VStack>
+```
