@@ -90,9 +90,7 @@ Menu.Item = (props: MenuItemProps) => {
                 align="center"
             >
                 {icon&&<Center minLayoutSize={24}>
-                    <IconWrapper style={{
-                        '--icon-size': 20
-                    } as CSSProperties}>
+                    <IconWrapper size={20}>
                         {icon}
                     </IconWrapper>
                 </Center>}

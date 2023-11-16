@@ -61,7 +61,3 @@
     transform: translateX(-40px);
     opacity: 0;
 }
-
-.Toolbar-NavigationIconContainer > .IconWrapper {
-    --icon-size: 24px;
-}

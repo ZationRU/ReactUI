@@ -164,9 +164,7 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                 <HStack ph={12} pv={10} clip>
                     <IconWrapper
                         clip={true}
-                        style={{
-                            '--icon-size': '18px'
-                        } as CSSProperties}
+                        size={18}
                         to={{
                             baseDuration: 300,
                             maxW: selectIcon&&isSelected ? 18: 0,
@@ -179,9 +177,7 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
 
                     <IconWrapper
                         clip={true}
-                        style={{
-                            '--icon-size': '18px'
-                        } as CSSProperties}
+                        size={18}
                         to={{
                             baseDuration: 300,
                             maxW: icon ? 18: 0,

@@ -33,7 +33,7 @@ export const IconButton = (props: IconButtonProps) => {
     )} p={0} {...otherProps}>
         <Center layoutSize={48} shapeScale='full' pos='relative' clip>
             <StateLayer ripple={true}/>
-            <IconWrapper>{children}</IconWrapper>
+            <IconWrapper size={24}>{children}</IconWrapper>
         </Center>
 
         {badge&&<Layout

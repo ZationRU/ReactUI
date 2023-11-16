@@ -14,22 +14,18 @@
 
 .FloatingActionButton--default {
     padding: 16px;
-    --icon-size: 24px;
 }
 
 .FloatingActionButton--expanded {
     padding: 16px;
-    --icon-size: 24px;
 }
 
 .FloatingActionButton--small {
     padding: 8px;
-    --icon-size: 24px;
 }
 
 .FloatingActionButton--large {
     padding: 30px;
-    --icon-size: 36px;
 }
 
 .FloatingActionButton--primary {

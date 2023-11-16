@@ -1,6 +1,6 @@
 ```jsx
 import React from 'react';
-import {Title, FloatingActionButton} from "@znui/react";
+import {Title, Layout, FloatingActionButton} from "@znui/react";
 import {
     ZnUIIconAddFilled,
 } from "@znui/icons"
@@ -39,7 +39,7 @@ const Icon = <ZnUIIconAddFilled/>;
     </div>
 
     <Title>Expand Animation</Title>
-    <div>
+    <Layout>
         <FloatingActionButton
             appearance="surface"
             size={isExpanded ? "expanded" : "small"}
@@ -68,7 +68,7 @@ const Icon = <ZnUIIconAddFilled/>;
             onClick={onExpandClick}>
             {Icon}
         </FloatingActionButton>
-    </div>
+    </Layout>
 
     <Title>Animated Size</Title>
     <div>

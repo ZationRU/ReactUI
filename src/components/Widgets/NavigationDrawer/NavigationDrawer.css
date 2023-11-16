@@ -44,10 +44,6 @@
     z-index: 1;
 }
 
-.NavigationDrawerItem > .inner > .IconWrapper {
-    --icon-size: 24px;
-}
-
 .NavigationDrawerItem > .inner > .text {
     flex: 1 0 0;
     cursor: pointer;

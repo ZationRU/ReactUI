@@ -36,7 +36,6 @@
 
 
 .NavigationBarItem > .IconContainer > .IconWrapper {
-    --icon-size: 24px;
     position: relative;
     z-index: 1;
 

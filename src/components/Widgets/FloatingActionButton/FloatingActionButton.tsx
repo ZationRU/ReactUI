@@ -6,12 +6,12 @@ import {IconWrapper} from "../IconWrapper/IconWrapper";
 import {useAdaptiveValue} from "../../../adaptive";
 import {Adaptive} from "../../../adaptive";
 import {HTMLZnUIProps} from "../../../styled";
-import { znui } from '../../Basic';
+import {znui} from '../../Basic';
 import {Label} from "../../Typography";
 
 export interface FloatingActionButtonProps extends Omit<HTMLZnUIProps<'button'>, 'appearance'> {
     size?: Adaptive<'small' | 'default' | 'expanded' | 'large'>,
-    appearance?: 'surface'|'primary'|'secondary'|'tertiary',
+    appearance?: 'surface' | 'primary' | 'secondary' | 'tertiary',
     text?: string,
     elevation?: boolean
 }
@@ -34,18 +34,25 @@ export function FloatingActionButton(
         ...otherProps
     } = props
 
+    const s = useAdaptiveValue(size) || 'default'
+
     return <znui.button className={classNames(
         className,
         'FloatingActionButton',
-        'FloatingActionButton--'+useAdaptiveValue(size)||'default',
-        'FloatingActionButton--'+appearance,
+        'FloatingActionButton--' + s,
+        'FloatingActionButton--' + appearance,
         {
             'elevation-3': elevation
         },
     )} {...otherProps} aria-label={text}>
         <StateLayer/>
         <div className="inner">
-            <IconWrapper>
+            <IconWrapper size={{
+                'default': 24,
+                'expanded': 24,
+                'small': 24,
+                'large': 36,
+            }[s]}>
                 {children}
             </IconWrapper>
 

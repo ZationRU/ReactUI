@@ -59,6 +59,6 @@ export const ContainedIconButton = (props: ContainedIconButtonProps) => {
         )}
     >
         <StateLayer ripple={true}/>
-        <IconWrapper>{children}</IconWrapper>
+        <IconWrapper size={24}>{children}</IconWrapper>
     </Center>
 }

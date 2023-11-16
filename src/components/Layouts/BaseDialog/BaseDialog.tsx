@@ -40,9 +40,7 @@ export function BaseDialog(props: BaseDialogProps) {
     >
         <VStack>
             <VStack spacing={16} ph={24} pt={24}>
-                {icon&&<IconWrapper display="flex" c="var(--znui-secondary)" style={{
-                    "--icon-size": '24px'
-                } as CSSProperties} w="100%" justify="center">{icon}</IconWrapper>}
+                {icon&&<IconWrapper display="flex" c="var(--znui-secondary)" size={24} w="100%" justify="center">{icon}</IconWrapper>}
 
                 <Headline size="small" textAlign={icon?"center":"start"}>{title}</Headline>
                 {description&&<Body whiteSpace="break-spaces" size="medium" c="var(--znui-on-surface-variant)">{description}</Body>}

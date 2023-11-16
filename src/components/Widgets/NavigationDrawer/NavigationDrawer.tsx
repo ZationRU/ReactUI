@@ -76,7 +76,7 @@ NavigationDrawer.Item = (props: NavigationDrawerItemProps) => {
 
         <div className="inner">
             {
-                icon&&<IconWrapper>{icon}</IconWrapper>
+                icon&&<IconWrapper size={24}>{icon}</IconWrapper>
             }
 
             <Label prominent={true} size="large" className="text">

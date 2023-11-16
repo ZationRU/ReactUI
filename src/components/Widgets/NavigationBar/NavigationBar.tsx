@@ -58,7 +58,7 @@ NavigationBar.Item = (props: NavigationBarItemProps) => {
             <div className="background-state"/>
             <StateLayer/>
 
-            <IconWrapper>
+            <IconWrapper size={24}>
                 {children}
             </IconWrapper>
 

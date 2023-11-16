@@ -89,6 +89,6 @@ export const Switch = React.forwardRef((
                 marginRight: 4,
                 transform: checked ? "translateX(calc(100% - 4px))" : "translateX(0)"
             }}
-        ><IconWrapper>{icon}</IconWrapper></div>
+        ><IconWrapper size={16}>{icon}</IconWrapper></div>
     </FormWidgetBase>
 })
