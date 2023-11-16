@@ -68,20 +68,13 @@
     top: 15px;
 }
 
-.TextField > input {
-    font-size: 16px;
-    font-family: Roboto;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    line-height: 24px;
-}
-
-.TextField > textarea {
-    font-size: 16px;
-    font-family: Roboto;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    line-height: 24px;
+.TextField > input, .TextField > textarea {
+    font-size: var(--md-sys-typescale-body-large-font-size);
+    font-family: var(--md-sys-typescale-body-large-font-family-name);
+    font-weight: var(--md-sys-typescale-body-large-font-weight);
+    letter-spacing: var(--md-sys-typescale-body-large-letter-spacing);
+    line-height: var(--md-sys-typescale-body-large-line-height);
+    font-style: var(--md-sys-typescale-body-large-font-family-style);
 }
 
 .TextField--disabled {
