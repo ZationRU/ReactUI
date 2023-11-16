@@ -72,6 +72,10 @@ NavigationBar.Item = (props: NavigationBarItemProps) => {
             </Layout>}
         </div>
 
-        {label==='always'&&<Label size="medium" className="Title">{title}</Label>}
+        {label==='always'&&<Label
+            size="medium"
+            prominent={true}
+            className="Title"
+        >{title}</Label>}
     </Layout>
 }

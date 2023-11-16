@@ -141,6 +141,7 @@ NavigationRail.Item = (props: NavigationRailItemProps) => {
                     opacity: selected ? 1 : 0
                 }}
                 size="medium"
+                prominent={true}
                 className="title"
                 maxW='85%'
                 overflow='hidden'
