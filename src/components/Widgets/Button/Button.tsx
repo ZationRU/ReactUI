@@ -5,6 +5,7 @@ import {StateLayer} from "../../Layouts";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
 import {HTMLZnUIProps} from "../../../styled";
 import {znui} from "../../Basic";
+import {Label} from "../../Typography";
 
 export interface ButtonProps extends HTMLZnUIProps<'button'>{
     mode?: 'filled'|'text'|'outline'|'tonal'|'elevated',
@@ -37,8 +38,13 @@ export function Button(props: ButtonProps) {
         <StateLayer/>
 
         <div className="inner">
-            {icon&&<IconWrapper>{icon}</IconWrapper>}
-            <div className="text">{children}</div>
+            {icon&&<IconWrapper size={18}>{icon}</IconWrapper>}
+            <Label
+                ml={8}
+                size='large'
+            >
+                {children}
+            </Label>
         </div>
     </znui.button>
 }

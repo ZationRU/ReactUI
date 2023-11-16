@@ -51,22 +51,7 @@
     justify-content: center;
     align-items: center;
     padding: 10px 24px 10px 16px;
-    gap: 8px;
     width: inherit;
-}
-
-.Button > .inner > .IconWrapper {
-    --icon-size: 18px;
-}
-
-.Button > .inner > .text {
-    margin-left: 8px;
-
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
 }
 
 /** state: hover */
