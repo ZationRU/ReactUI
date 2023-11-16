@@ -1,7 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react'
-import './ThemeProvider.css';
 import {useForceUpdate, useZnUIProviderPortalCreator, ZnUIProviderPortalContext} from "../portals";
 import {ThemeContext, ZnUIScheme} from "../../../theme";
+import './ThemeProvider.css';
+import './default-tokens.css';
 
 export interface ThemeProviderProps {
     children: React.ReactNode,
