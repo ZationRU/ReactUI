@@ -9,7 +9,7 @@ import {mergeRefs} from "../../../utils";
 export type ScrollFlag = 'scroll'|'enterAlways'
 
 export class AppBarLayoutBehavior extends CoordinatorLayoutBehavior {
-    private defaultBackground: string | null = null
+    private defaultBackground: string = ThemeTokens.surface
 
     updateLiftedState(appBarLayout: HTMLElement, lift: boolean) {
         if (!this.defaultBackground && lift) {
@@ -136,11 +136,12 @@ export const AppBarLayout = React.forwardRef<AppBarLayoutRefProps>((
 
     return <Layout
         {...layoutRest}
+        bg={ThemeTokens.surface}
         transition={[
             'background 300ms var(--znui-emphasized-motion)',
             transition
         ].join(',')}
-        zIndex={1}
+        zIndex={2}
         top={0}
         posH={0}
         ref={mergeRefs((rawRef) => {
