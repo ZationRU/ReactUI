@@ -200,3 +200,10 @@
 .TextField-Container--error > .FilledTextView:not(:focus-within) > .label {
     color: var(--znui-error)!important;
 }
+
+.FilledTextView > input::-ms-reveal,
+.FilledTextView > input::-ms-clear,
+.TextField > input::-ms-reveal,
+.TextField > input::-ms-clear{
+    display: none;
+}
