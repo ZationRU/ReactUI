@@ -3,9 +3,15 @@ import {ScrollLayout} from "../ScrollLayout/ScrollLayout";
 import {LayoutProps, Center} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
 import {CircularProgressIndicator} from "../../Widgets";
+import {Adaptive, useAdaptiveValue} from "../../../adaptive";
 
 export interface SwipeRefreshLayoutProps extends LayoutProps{
     onRefresh: (event: RefreshEvent) => void
+
+    /**
+     * @default true
+     */
+    enabled?: Adaptive<boolean>
 }
 
 export interface RefreshEvent {
@@ -23,8 +29,11 @@ export const SwipeRefreshLayout = React.forwardRef((
     const {
         onRefresh,
         children,
+        enabled: enabledRaw = true,
         ...otherProps
     } = props
+
+    const enabled = useAdaptiveValue(enabledRaw)
 
     const refresh = useCallback((event: UIEvent<HTMLDivElement>) => {
         if(!isRefreshing) {
@@ -74,7 +83,7 @@ export const SwipeRefreshLayout = React.forwardRef((
         ref={ref}
         {...otherProps}
         onPointerDown={(e) => {
-            if(e.currentTarget.scrollTop===0&&!isRefreshing) {
+            if(enabled&&e.currentTarget.scrollTop===0&&!isRefreshing) {
                 e.currentTarget.style.touchAction = 'none'
                 setDownY(e.clientY)
                 setTransition(undefined)
@@ -88,7 +97,7 @@ export const SwipeRefreshLayout = React.forwardRef((
         onTouchMove={(e) => onMove(e.currentTarget, e.touches[0].clientY)}
         onPointerMove={(e) => onMove(e.currentTarget, e.clientY)}
     >
-        <Center
+        {enabled&&<Center
             pos='absolute'
             layoutSize={40}
             shapeScale='full'
@@ -106,7 +115,7 @@ export const SwipeRefreshLayout = React.forwardRef((
                 motionDuration={isRefreshing||transition!==undefined? undefined: '0ms'}
                 value={currentPercentage*100}
             />
-        </Center>
+        </Center>}
         {children}
     </ScrollLayout>
 })
