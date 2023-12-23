@@ -77,6 +77,7 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
 
     return <FormWidgetBase
         {...layoutRest}
+        display='block'
         h={20}
         p={3}
         type='range'
