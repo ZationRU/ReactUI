@@ -1,6 +1,5 @@
 import React, {ForwardedRef, useState} from "react";
 import {Layout, LayoutProps, znui} from "../../Basic";
-import {HTMLZnUIProps} from "../../../styled";
 
 export interface ImageViewProps extends LayoutProps {
     alt?: string | undefined;

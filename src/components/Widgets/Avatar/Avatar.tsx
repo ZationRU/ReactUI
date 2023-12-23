@@ -1,6 +1,6 @@
 import classNames from "classnames";
-import React, {useState} from "react";
-import {Center, Layout, LayoutProps, znui} from "../../Basic";
+import React from "react";
+import {Center, Layout, LayoutProps} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
 import {Title} from "../../Typography";
 import {ImageView} from "../ImageView/ImageView";
