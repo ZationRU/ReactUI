@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import {Center, Layout, LayoutProps, znui} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
 import {Title} from "../../Typography";
+import {ImageView} from "../ImageView/ImageView";
 
 export interface AvatarProps extends LayoutProps {
     image?: string
@@ -17,7 +18,6 @@ export interface AvatarProps extends LayoutProps {
  * @constructor
  */
 export function Avatar(props: AvatarProps) {
-    const [isLoaded, setIsLoaded] = useState(false)
     const {
         image,
         text,
@@ -29,7 +29,7 @@ export function Avatar(props: AvatarProps) {
         ...otherProps
     } = props
 
-    const isTextAvatar = text && (!image||!isLoaded)
+    const isTextAvatar = text && (!image)
 
     return <Layout
         className={classNames(
@@ -55,16 +55,13 @@ export function Avatar(props: AvatarProps) {
         {...otherProps}
     >
         {
-            image && <znui.img
+            image && <ImageView
                 src={image}
                 alt={contentDescription}
-                to={{ oc: isLoaded? 1: 0 }}
                 layoutSize='100%'
                 verticalAlign='middle'
                 objectFit='cover'
                 pointerEvents='none'
-                fontWeight={500}
-                onLoad={() => setIsLoaded(true)}
             />
         }
 
