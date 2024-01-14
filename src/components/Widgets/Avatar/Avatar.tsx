@@ -66,7 +66,7 @@ export function Avatar(props: AvatarProps) {
         }
 
         <Center as={Title} size='medium' fontSize={22/60*size} pos='absolute' posA={0}>
-            {isTextAvatar && text}
+            {isTextAvatar && text?.at(0)?.toUpperCase()}
         </Center>
     </Layout>
 }
