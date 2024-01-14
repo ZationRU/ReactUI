@@ -57,7 +57,7 @@ export function Avatar(props: AvatarProps) {
         {
             image && <ImageView
                 src={image}
-                alt={contentDescription}
+                alt={contentDescription || text}
                 layoutSize='100%'
                 verticalAlign='middle'
                 objectFit='cover'

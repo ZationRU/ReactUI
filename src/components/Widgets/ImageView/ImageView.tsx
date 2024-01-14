@@ -15,6 +15,8 @@ export const ImageView = React.forwardRef(
             alt,
             src,
             to,
+            objectFit,
+            objectPosition,
             ...rest
         } = props
 
@@ -29,6 +31,8 @@ export const ImageView = React.forwardRef(
                 }}
                 alt={alt}
                 src={src}
+                objectFit={objectFit}
+                objectPosition={objectPosition}
                 layoutSize='inherit'
                 pointerEvents='none'
                 onLoad={(e) => {
