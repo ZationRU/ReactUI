@@ -140,7 +140,7 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                         maxH: isExpanded? '100%': targetRect?.height||0,
                         maxW: isExpanded&&!isFullscreen ? "calc(100% - 50px)": '100%',
                         h: isExpanded&&isFullscreen ? '100%': undefined,
-                        w: isExpanded? isFullscreen ? '100%': 800: targetRect?.width||0,
+                        w: isExpanded? isFullscreen ? '100%': ['100vw', null, 800]: targetRect?.width||0,
                         bg: {
                             duration: isExpanded ? 100: 50,
                             value: isExpanded||!hasBackground ?
@@ -188,7 +188,7 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                                 transition: ThemeTokens.motion.emphasizedDecelerate
                             },
                             h: isExpanded&&isFullscreen ? '100%': undefined,
-                            w: isExpanded? isFullscreen ? '100%': 800: targetRect?.width||0,
+                            w: isExpanded? isFullscreen ? '100%': [undefined, null, 800]: targetRect?.width||0,
                         }}
                         clip={true}
                         c={ThemeTokens.onSurface}
