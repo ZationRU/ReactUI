@@ -61,6 +61,7 @@
             margin-left 300ms var(--znui-emphasized-decelerate-motion),
             padding-right 300ms var(--znui-emphasized-decelerate-motion)
 ;
+    white-space: nowrap;
     max-width: 0;
     padding-right: 0;
     margin-left: -40%;
