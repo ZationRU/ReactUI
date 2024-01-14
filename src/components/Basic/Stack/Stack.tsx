@@ -5,6 +5,7 @@ import * as CSS from "csstype";
 
 export interface StackProps extends LayoutProps {
     orientation?: Adaptive<'vertical'|'horizontal'>
+    reverse?: Adaptive<boolean>
     spacing?: Adaptive<CSS.Property.Gap|number>
 }
 
@@ -19,6 +20,7 @@ export const Stack = React.forwardRef(
         const {
             orientation,
             spacing,
+            reverse,
             ...layoutProps
         } = props
 
@@ -26,7 +28,11 @@ export const Stack = React.forwardRef(
             ref={ref}
             display="flex"
             gap={useAdaptiveValue(spacing)}
-            direction={(useAdaptiveValue(orientation)||"vertical")==="vertical" ? "column": "row"}
+            direction={(
+                (
+                    (useAdaptiveValue(orientation)||"vertical")==="vertical" ? "column": "row"
+                ) + (useAdaptiveValue(reverse) ? '-reverse': '')
+            ) as LayoutProps['direction']}
             {...layoutProps}
         />
     }
