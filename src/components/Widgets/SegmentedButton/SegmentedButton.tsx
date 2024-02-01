@@ -161,7 +161,7 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                 bg={isSelected?"var(--znui-secondary-container)":'none'}
             >
                 <StateLayer/>
-                <HStack ph={12} pv={10} clip>
+                <HStack ph={12} pv={10} clip={true}>
                     <IconWrapper
                         clip={true}
                         size={18}

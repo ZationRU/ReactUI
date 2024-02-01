@@ -35,33 +35,45 @@ export const LinearProgressIndicator = React.forwardRef(
         } = props
 
         const currentValue = value > 100 ? 100: (value < 0 ? 0: value)
-
         const motionFunction = linear ? 'linear': ThemeTokens.motion.emphasized
 
         return <Layout
             ref={forwardRef}
             h={4}
-            bg={ThemeTokens.surfaceContainerHighest}
+            bg={ThemeTokens.primaryContainer}
             c={ThemeTokens.primary}
             {...layoutRest}
             minH={4}
+            pos='relative'
+            shapeScale='full'
             clip={true}
         >
 
             <Layout
                 h={4}
                 w="100%"
-                maxW={variant==='determinate'? currentValue+"%": '0%'}
+                to={{
+                    baseTransition: motionFunction,
+                    maxW: variant==='determinate'? currentValue+"%": '0%',
+                    ml: 0,
+                }}
                 animation={variant==='indeterminate' ?
                     progressBarIntermediate+" infinite 2s "+motionFunction
                 : ''}
-                ml={0}
-                borderRadius='inherit'
                 bg="currentColor"
-                transition={[
-                    'max-width 300ms '+motionFunction,
-                    'margin-left 300ms '+motionFunction,
-                ].join(', ')}
+                shapeScale='full'
+            />
+
+            <Layout
+                to={{
+                    layoutSize: variant==='determinate' ? 4: 0
+                }}
+                top={0}
+                bottom={0}
+                pos='absolute'
+                bg="currentColor"
+                shapeScale='full'
+                right={0}
             />
         </Layout>
     }

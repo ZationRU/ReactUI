@@ -35,6 +35,14 @@ export const pseudoSelectors = {
      */
     _disabled: "&:disabled, &[disabled], &[aria-disabled=true], &[data-disabled]",
     /**
+     * Styles to apply when this element is disabled. The passed styles are applied to these CSS selectors:
+     * - `&[aria-enabled=true]`
+     * - `&:enabled`
+     * - `&[data-enabled]`
+     * - `&[enabled]`
+     */
+    _enabled: "&:enabled, &[enabled], &[aria-enabled=true], &[data-enabled]",
+    /**
      * Styles for CSS Selector `&:readonly`
      */
     _readOnly: "&[aria-readonly=true], &[readonly], &[data-readonly]",

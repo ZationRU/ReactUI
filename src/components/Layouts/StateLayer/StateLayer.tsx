@@ -1,9 +1,9 @@
 import React, {PointerEvent, MutableRefObject, useRef, useMemo} from 'react';
 import "./StateLayer.css";
-import {Layout} from "../../Basic";
+import {Layout, LayoutProps} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
 
-export interface StateLayerProps {
+export interface StateLayerProps extends LayoutProps {
     state?: StateLayerStateData,
     ripple?: boolean
 }
@@ -17,7 +17,8 @@ export interface StateLayerProps {
  */
 export function StateLayer(props: StateLayerProps) {
     const {
-        ripple = true
+        ripple = true,
+        ...rest
     } = props
 
     const state = useStateLayer()
@@ -26,6 +27,7 @@ export function StateLayer(props: StateLayerProps) {
         <Layout
             className="state-layer"
             onPointerLeave={state.performUp}
+            {...rest}
         />
         {ripple &&
             <>

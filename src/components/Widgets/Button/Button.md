@@ -3,6 +3,10 @@ import {Button, VStack, Title, HStack} from "@znui/react";
 import {
     ZnUIIconAddFilled,
 } from "@znui/icons"
+import {useState} from "react";
+
+const [state, setState] = useState(false)
+const [isLoading, setIsLoading] = useState(false)
 const Icon = <ZnUIIconAddFilled/>;
 
 <VStack spacing={10}>
@@ -59,6 +63,23 @@ const Icon = <ZnUIIconAddFilled/>;
     <HStack spacing={5}>
         <Button mode="tonal" icon={Icon}>Enabled</Button>
         <Button mode="tonal" icon={Icon} disabled>Disabled</Button>
+    </HStack>
+
+    <HStack>
+        <Button
+            mode={!state ? 'filled': 'tonal'}
+            icon={Icon}
+            onClick={() => {
+                setIsLoading(true)
+                setTimeout(() => {
+                   setState(it => !it)
+                    setIsLoading(false) 
+                }, 5000)
+            }}
+            loading={isLoading}
+        >
+            {!state ? 'Download': 'Delete application'}
+        </Button>
     </HStack>
 </VStack>
 ```

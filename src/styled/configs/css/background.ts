@@ -59,7 +59,7 @@ export interface BackgroundProps {
      * @default undefined
      * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background
      */
-    background?: Adaptive<CSS.Property.Color>
+    background?: Adaptive<CSS.Property.Background>
 
     /**
      * The CSS `background-color` property
@@ -67,7 +67,7 @@ export interface BackgroundProps {
      * @default undefined
      * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background-color
      */
-    bgColor?: Adaptive<CSS.Property.Color>
+    bgColor?: Adaptive<CSS.Property.BackgroundColor>
 
     /**
      * The CSS `background-color` property
@@ -75,7 +75,7 @@ export interface BackgroundProps {
      * @default undefined
      * @link https://developer.mozilla.org/en-US/docs/Web/CSS/background-color
      */
-    backgroundColor?: Adaptive<CSS.Property.Color>
+    backgroundColor?: Adaptive<CSS.Property.BackgroundColor>
 
     /**
      * The CSS `background-image` property

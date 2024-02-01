@@ -22,7 +22,7 @@ export const styledProps = {
     ...znuiPropsConfig,
     ...pseudoSelectors
 }
-export const isStyleProp = (prop: string) => prop in styledProps
+export const isStyleProp = (prop: string) => prop in styledProps || prop === 'pseudos'
 
 export const toCSSObject: GetStyleObject =
     ({ baseStyle }) =>
@@ -75,10 +75,24 @@ export function styled<T extends React.ElementType, P extends object = {}>(
 }
 
 export const css = (styles: Record<string, any>) => () => {
+    const {
+        pseudos,
+        ...rest
+    } = styles
     const adaptiveData = useAdaptive()
-    const resolvedStyles = resolveAdaptive(adaptiveData.currentBreakpoint, styles)
+    const resolvedStyles = resolveAdaptive(adaptiveData.currentBreakpoint, rest)
 
     let computedStyles: Record<string, any> = {}
+    for (const pseudo in pseudos) {
+        let key = pseudoSelectors[pseudo] ?? pseudo
+
+        computedStyles[key] = computedStyles[key] ?? {}
+        computedStyles[key] = {
+            ...computedStyles[key],
+            ...css(pseudos[pseudo])()
+        }
+    }
+
     for (let key in resolvedStyles) {
         let currentValue = resolvedStyles[key]
 
@@ -104,8 +118,8 @@ export const css = (styles: Record<string, any>) => () => {
 
         if(isFunction(config.property)) {
             computedStyles = {
-                ...config.property(currentValue),
                 ...computedStyles,
+                ...config.property(currentValue, computedStyles),
             }
 
             continue

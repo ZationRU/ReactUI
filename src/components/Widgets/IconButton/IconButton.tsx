@@ -31,7 +31,7 @@ export const IconButton = (props: IconButtonProps) => {
             "IconButton--disabled": disabled
         }
     )} p={0} {...otherProps}>
-        <Center layoutSize={48} shapeScale='full' pos='relative' clip>
+        <Center layoutSize={48} shapeScale='full' pos='relative' clip={true}>
             <StateLayer ripple={true}/>
             <IconWrapper size={24}>{children}</IconWrapper>
         </Center>
