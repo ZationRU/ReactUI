@@ -196,8 +196,12 @@ Menu.Items = React.forwardRef((
         }
 
         document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("pointerdown", handleClickOutside);
+        document.addEventListener("wheel", handleClickOutside);
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("pointerdown", handleClickOutside);
+            document.removeEventListener("wheel", handleClickOutside);
         };
     }, [itemRef]);
 
@@ -214,7 +218,7 @@ Menu.Items = React.forwardRef((
 
         console.log(currentPoint.right)
         if(x+212>window.innerWidth) {
-            x = currentPoint.right + currentPoint.width + padding
+            x = window.innerWidth - (currentPoint.right - currentPoint.width - padding)
             byRight = true
         }
 
