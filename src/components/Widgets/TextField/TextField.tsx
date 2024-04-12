@@ -4,7 +4,6 @@ import {Layout} from "../../Basic";
 import {HTMLZnUIProps} from "../../../styled";
 import {Body} from "../../Typography";
 import classNames from "classnames";
-import {AnimatedVisibility} from "../../Animation";
 
 export interface TextFieldProps extends HTMLZnUIProps<"div"> {
     mode?: 'outline'|'filled'
@@ -68,12 +67,15 @@ export const TextField = (props: TextFieldProps) => {
             <legend className="legend">{label}</legend>
         </Layout>
 
-        <AnimatedVisibility ph={16} pt={4} isVisible={
-            typeof error === 'string'
+        <Layout ph={16} pt={4} to={{
+            mt: typeof error === 'string'
+                ||
+                !!supportingText ? 0: '-100%',
+            oc: typeof error === 'string'
             ||
-            !!supportingText
-        }>
+            !!supportingText ? 1: 0,
+        }}>
             <Body size="small">{error||supportingText}</Body>
-        </AnimatedVisibility>
+        </Layout>
     </Layout>
 }
