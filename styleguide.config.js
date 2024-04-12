@@ -184,12 +184,6 @@ module.exports = {
     exampleMode: 'expand',
     sections: [
         {
-            name: 'Animation',
-            components: [
-                'src/components/Animation/**/*.{jsx,tsx}',
-            ]
-        },
-        {
             name: 'Basic',
             components: [
                 'src/components/Basic/**/*.{jsx,tsx}',
