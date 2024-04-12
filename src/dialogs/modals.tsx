@@ -191,6 +191,7 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
                             w: isExpanded? isFullscreen ? '100%': [undefined, null, 800]: targetRect?.width||0,
                         }}
                         clip={true}
+                        display='flex'
                         c={ThemeTokens.onSurface}
                     >
                         <ModalContext.Provider value={{

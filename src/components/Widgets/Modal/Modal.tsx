@@ -45,7 +45,7 @@ export function Modal(props: ModalWrapperProps) {
 
     return <VStack
         maxH={isFullscreen? '100%': '80vh'}
-        minH={isFullscreen? '100vh': 'inherit'}
+        flex={1}
         pos='relative'
     >
         {innerChildren}
