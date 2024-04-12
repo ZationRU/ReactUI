@@ -68,9 +68,9 @@ export const TextField = (props: TextFieldProps) => {
         </Layout>
 
         <Layout ph={16} pt={4} to={{
-            mt: typeof error === 'string'
+            h: typeof error === 'string'
                 ||
-                !!supportingText ? 0: '-100%',
+                !!supportingText ? 'auto': 0,
             oc: typeof error === 'string'
             ||
             !!supportingText ? 1: 0,
