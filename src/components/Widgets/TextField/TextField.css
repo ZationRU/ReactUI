@@ -29,7 +29,7 @@
 .TextField > input {
     color: currentColor;
     margin-left: calc(17px - var(--border-size) - 12px);
-    background: transparent;
+    background: none;
     height: 24px;
     width: 100%;
     border: none;
