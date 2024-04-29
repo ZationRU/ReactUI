@@ -87,13 +87,19 @@ export const ZnUIProvider = (props: ZnUIProviderProps) => {
         [childrenRaw]
     )
 
+    const resolvedScheme = useMemo(
+        () => currentScheme === 'system' ? currentSystemScheme: currentScheme,
+        [currentScheme, currentSystemScheme]
+    )
+
     return <div
         className="ThemeProvider"
-        data-scheme={currentScheme === 'system' ? currentSystemScheme: currentScheme}
+        data-scheme={resolvedScheme}
         ref={ref}
     >
         <ThemeContext.Provider value={{
             currentScheme,
+            resolvedScheme,
             changeScheme: (scheme) => {
                 setCurrentScheme(scheme)
                 onSchemeChanged?.call(undefined, currentScheme)

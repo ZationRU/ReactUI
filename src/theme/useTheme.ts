@@ -9,6 +9,11 @@ export type ThemeContextData = {
     currentScheme: ZnUIScheme
 
     /**
+     * Current resolved scheme of theme
+     */
+    resolvedScheme: Omit<ZnUIScheme, 'system'>
+
+    /**
      * Changes scheme of theme.
      * If scheme is system, call be ignored
      * @param theme

@@ -12,6 +12,9 @@ const theme = useTheme();
     <Layout>
         Current scheme: {theme.currentScheme}
     </Layout>
+    <Layout>
+        Current resolved scheme: {theme.resolvedScheme}
+    </Layout>
     <HStack gap={10}>
         <Button onClick={() => theme.changeScheme('light')}>
             Light scheme
