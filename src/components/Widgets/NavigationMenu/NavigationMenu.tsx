@@ -3,7 +3,7 @@ import classNames from "classnames";
 import {StateLayer} from "../../Layouts";
 import {Label, Title} from "../../Typography";
 import React, {ReactNode} from "react";
-import "./NavigationDrawer.css";
+import "./NavigationMenu.css";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
 import {ThemeTokens} from "../../../theme";
 
@@ -22,7 +22,7 @@ export interface NavigationDrawerProps extends LayoutProps {
  * @param props
  * @constructor
  */
-export function NavigationDrawer(props: NavigationDrawerProps) {
+export function NavigationMenu(props: NavigationDrawerProps) {
     const {
         compat = false,
         className,
@@ -50,7 +50,7 @@ export interface NavigationDrawerItemProps extends LayoutProps {
     icon ?: ReactNode
 }
 
-NavigationDrawer.Item = (props: NavigationDrawerItemProps) => {
+NavigationMenu.Item = (props: NavigationDrawerItemProps) => {
     const {
         children,
         className,
@@ -92,7 +92,7 @@ NavigationDrawer.Item = (props: NavigationDrawerItemProps) => {
 
 export interface NavigationDrawerHeadingProps extends LayoutProps {}
 
-NavigationDrawer.Headline = (props: NavigationDrawerHeadingProps) => {
+NavigationMenu.Headline = (props: NavigationDrawerHeadingProps) => {
     const {
         children,
         ...layoutRest
@@ -119,7 +119,7 @@ NavigationDrawer.Headline = (props: NavigationDrawerHeadingProps) => {
 export interface NavigationDrawerHeadingProps extends LayoutProps {}
 
 
-NavigationDrawer.SectionHeader = (props: NavigationDrawerHeadingProps) => {
+NavigationMenu.SectionHeader = (props: NavigationDrawerHeadingProps) => {
     const {
         children,
         ...layoutRest

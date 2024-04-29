@@ -27,7 +27,7 @@ pnpm i @znui/react
 ```tsx
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
-import {Layout, LayoutBreakpointsValues, AdaptiveProvider, NavigationDrawer, NavigationRail, SurfaceLayout, ThemeProvider, NavigationBar, useAdaptive} from "@znui/react";
+import {Layout, LayoutBreakpointsValues, AdaptiveProvider, NavigationMenu, NavigationRail, SurfaceLayout, ThemeProvider, NavigationBar, useAdaptive} from "@znui/react";
 import "@znui/react/dist/index.css";
 
 const HomeIcon = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -98,15 +98,15 @@ const App = () => {
             breakpointWidth >= LayoutBreakpointsValues.lg && <Layout w={360}>
                 <Layout pos="fixed" w="inherit">
                     <SurfaceLayout s={1} overflow={"auto"} maxH="100vh" minH="100vh">
-                        <NavigationDrawer mh={10} mv={10}>
+                        <NavigationMenu mh={10} mv={10}>
                             {
-                                Pages.map(({title, icon, id}) => <NavigationDrawer.Item
+                                Pages.map(({title, icon, id}) => <NavigationMenu.Item
                                     icon={icon}
                                     selected={page===id}
                                     onClick={() => setPage(id)}
-                                >{title}</NavigationDrawer.Item>)
+                                >{title}</NavigationMenu.Item>)
                             }
-                        </NavigationDrawer>
+                        </NavigationMenu>
                     </SurfaceLayout>
                 </Layout>
             </Layout>

@@ -1,5 +1,5 @@
 import React, {ReactNode, RefAttributes} from "react";
-import {Layout, useAdaptive, VStack, Title, Body, NavigationDrawer, ScrollLayout} from "../../../";
+import {Layout, useAdaptive, VStack, Title, Body, NavigationMenu, ScrollLayout} from "../../../";
 import {Navigate} from "../StyleGuideRenderer";
 import {Section, SectionCard, SectionTitle} from "../SectionsUI";
 
@@ -20,13 +20,13 @@ export function ComponentsPage(props: ComponentsPageProps) {
         clip={true}
     >
         {currentBreakpoint!=="esm" && <>
-            <NavigationDrawer p={0} compat={true} minW={200}>
+            <NavigationMenu p={0} compat={true} minW={200}>
                 <Layout overflow="auto" maxH="100vh" minH="100vh">
                     <Layout ph={10} overflow="auto" maxH="100vh" minH="100vh">
                         {props.toc}
                     </Layout>
                 </Layout>
-            </NavigationDrawer>
+            </NavigationMenu>
         </>}
 
         <Layout flex={1} ref={props.ref} clip={true}>

@@ -1,5 +1,5 @@
 ```tsx
-import {NavigationDrawer, VStack, SegmentedButton, Divider} from "@znui/react";
+import {NavigationMenu, VStack, SegmentedButton, Divider} from "@znui/react";
 import {
     ZnUIIconHomeFilled,
     ZnUIIconCommentsFilled,
@@ -20,44 +20,44 @@ const [selected, setSelected] = React.useState('hub');
         <SegmentedButton.Segment id="sections">Sections</SegmentedButton.Segment>
     </SegmentedButton>
     
-    <NavigationDrawer maxW={412} compat={mode.includes('compat')}>
+    <NavigationMenu maxW={412} compat={mode.includes('compat')}>
         {mode.includes('headline')&&
-            <NavigationDrawer.Headline>Headline</NavigationDrawer.Headline>
+            <NavigationMenu.Headline>Headline</NavigationMenu.Headline>
         }
         {mode.includes('sections')&&
-            <NavigationDrawer.SectionHeader>Section</NavigationDrawer.SectionHeader>
+            <NavigationMenu.SectionHeader>Section</NavigationMenu.SectionHeader>
         }
-        <NavigationDrawer.Item
+        <NavigationMenu.Item
             icon={<ZnUIIconHomeFilled/>}
             selected={selected=="hub"}
             onClick={() => setSelected("hub")}
-        >Hub</NavigationDrawer.Item>
-        <NavigationDrawer.Item
+        >Hub</NavigationMenu.Item>
+        <NavigationMenu.Item
             icon={<ZnUIIconNotificationsFilled/>}
             selected={selected=="notifications"}
             onClick={() => setSelected("notifications")}
             badge="100+"
-        >Notifications</NavigationDrawer.Item>
-        <NavigationDrawer.Item
+        >Notifications</NavigationMenu.Item>
+        <NavigationMenu.Item
             icon={<ZnUIIconCommentsFilled/>}
             selected={selected=="messages"}
             onClick={() => setSelected("messages")}
-        >Messages</NavigationDrawer.Item>
+        >Messages</NavigationMenu.Item>
         {mode.includes('divider')&&<Divider/>}
         {mode.includes('sections')&&
-            <NavigationDrawer.SectionHeader>Section</NavigationDrawer.SectionHeader>
+            <NavigationMenu.SectionHeader>Section</NavigationMenu.SectionHeader>
         }
-        <NavigationDrawer.Item
+        <NavigationMenu.Item
             icon={<ZnUIIconGameOutline/>}
             selected={selected=="games"}
             onClick={() => setSelected("games")}
-        >Games</NavigationDrawer.Item>
-        <NavigationDrawer.Item
+        >Games</NavigationMenu.Item>
+        <NavigationMenu.Item
             icon={<ZnUIIconBookmarkFilled/>}
             selected={selected=="books"}
             onClick={() => setSelected("books")}
-        >Books</NavigationDrawer.Item>
-    </NavigationDrawer>
+        >Books</NavigationMenu.Item>
+    </NavigationMenu>
 </VStack>
 
 ```

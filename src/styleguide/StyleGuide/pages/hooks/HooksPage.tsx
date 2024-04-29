@@ -1,6 +1,6 @@
 import {
     Layout,
-    NavigationDrawer,
+    NavigationMenu,
     ScrollLayout,
     Title,
     Body,
@@ -59,21 +59,21 @@ export function HooksPage({ go, ref, evalInContext }: HooksPageProps) {
         clip={true}
     >
         {currentBreakpoint!=="esm" && <>
-            <NavigationDrawer p={0} compat={true} minW={284}>
+            <NavigationMenu p={0} compat={true} minW={284}>
                 <Layout overflow="auto" maxH="100vh" minH="100vh">
                     <Layout ph={10} overflow="auto" maxH="100vh" minH="100vh">
                         {
                             Object.keys(Hooks).map(hookName =>
-                                <NavigationDrawer.Item key={hookName} onClick={() => {
+                                <NavigationMenu.Item key={hookName} onClick={() => {
                                     go("hooks/"+hookName)
                                 }} selected={currentHook===hookName}>
                                     {hookName}
-                                </NavigationDrawer.Item>
+                                </NavigationMenu.Item>
                             )
                         }
                     </Layout>
                 </Layout>
-            </NavigationDrawer>
+            </NavigationMenu>
         </>}
 
         <Layout flex={1} ref={ref} clip={true}>

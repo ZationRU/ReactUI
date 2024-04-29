@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Divider, Layout, NavigationDrawer} from "../../";
+import {Divider, Layout, NavigationMenu} from "../../";
 
 type TOC = {
     heading: boolean,
@@ -18,13 +18,13 @@ interface ComponentsListRendererProps {
 const CItem = (props: TOC) => {
     const isSection = props.content!=null
     return isSection? <>
-        <NavigationDrawer.SectionHeader>
+        <NavigationMenu.SectionHeader>
             {props.visibleName}
-        </NavigationDrawer.SectionHeader>
+        </NavigationMenu.SectionHeader>
 
         {props.content}
     </>: <>
-        <NavigationDrawer.Item
+        <NavigationMenu.Item
             ml={10}
             onClick={() => {
                 window.location.href = props.href.split('?')[0]+"/"+props.visibleName
@@ -32,7 +32,7 @@ const CItem = (props: TOC) => {
             selected={window.location.hash==='#'+(props.href.split('?')[0]+"/"+props.visibleName).split("#")[1]}
         >
             {props.visibleName}
-        </NavigationDrawer.Item>
+        </NavigationMenu.Item>
     </>
 }
 
