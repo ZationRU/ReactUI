@@ -1,5 +1,5 @@
-import React, {ReactNode, useEffect, useMemo, useRef, useState} from "react";
-import {useForceUpdate, useZnUIProviderPortalCreator} from "../portals";
+import React, {JSXElementConstructor, ReactNode, useEffect, useMemo, useRef, useState} from "react";
+import {useForceUpdate, useZnUIProviderPortalCreator, ZnUIProviderPortalContext} from "../portals";
 import {ThemeContext, ZnUIScheme} from "../../../theme";
 import {AdaptiveData, buildAdaptiveData, buildCurrentAdaptiveData, LayoutBreakpoint, AdaptiveContext} from "../../../adaptive";
 import './based.css';
@@ -7,9 +7,7 @@ import './default-tokens.css';
 import {PortalProvider} from "../PortalProvider/PortalProvider";
 
 export interface ZnUIProviderProps {
-    children: React.ReactNode | (
-        (Provider: (props: {children: React.ReactNode}) => ReactNode) => React.ReactNode
-    ),
+    children: React.ReactNode
 
     /**
      * @default 'system'
@@ -28,7 +26,7 @@ export interface ZnUIProviderProps {
 
 export const ZnUIProvider = (props: ZnUIProviderProps) => {
     const {
-        children: childrenRaw,
+        children,
         initialScheme,
         currentBreakpoint: fixedBreakpoint,
         onSchemeChanged
@@ -78,19 +76,12 @@ export const ZnUIProvider = (props: ZnUIProviderProps) => {
         props?.onSchemeChanged?.call(undefined, currentScheme)
     }, [currentScheme, props.onSchemeChanged]);
 
-    const children = useMemo(() =>
-        typeof childrenRaw === "function" ?
-            childrenRaw(PortalProvider):
-            <PortalProvider>
-                {childrenRaw}
-            </PortalProvider>,
-        [childrenRaw]
-    )
-
     const resolvedScheme = useMemo(
         () => currentScheme === 'system' ? currentSystemScheme: currentScheme,
         [currentScheme, currentSystemScheme]
     )
+
+    const portalData = useZnUIProviderPortalCreator(useForceUpdate())
 
     return <div
         className="ThemeProvider"
@@ -106,7 +97,9 @@ export const ZnUIProvider = (props: ZnUIProviderProps) => {
             }
         }}>
             <AdaptiveContext.Provider value={data}>
-                {children}
+                <ZnUIProviderPortalContext.Provider value={portalData}>
+                    {children}
+                </ZnUIProviderPortalContext.Provider>
             </AdaptiveContext.Provider>
         </ThemeContext.Provider>
     </div>

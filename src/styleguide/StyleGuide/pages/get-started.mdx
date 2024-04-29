@@ -39,7 +39,8 @@ export const PackageInstall = () => {
 
 <PackageInstall/>
 
-After installing ZnUI, you need to set up the <code>ZnUIProvider</code> at the root of your application.
+After installing ZnUI, you need to set up the <code>ZnUIProvider</code> and <code>ZnUIPortal</code> at the root of your application.
+<code>ZnUIPortal</code> is util for dialogs and modals and must be one.
 
 ```tsx
 import * as React from 'react';
@@ -49,23 +50,11 @@ import { ZnUIProvider, Button } from '@znui/react'
 function App() {
   return (
     <ZnUIProvider initialScheme='system'>
+        <ZnUIPortal/>
+
         <YourApplication />
     </ZnUIProvider>
   )
-
-  /**
-    or if you need other providers:
-
-    <ZnUIProvider initialScheme='system'>
-       {(ZnUISystemProvider) =>
-            <OtherProvider>
-                <ZnUISystemProvider>
-                    <YourApplication />
-                </ZnUISystemProvider>
-            </OtherProvider>
-       }
-    </ZnUIProvider>
-  **/
 }
 function YourApplication() {
   return <Button>My Cool Button in My Application</Button>

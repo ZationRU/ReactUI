@@ -6,6 +6,7 @@ import {StyleGuideRenderer} from './StyleGuideRenderer';
 import TableOfContents from "react-styleguidist/lib/client/rsg-components/TableOfContents/TableOfContents";
 import {ZnUIProvider} from "../../components";
 import ReactComponent from "../ReactComponent/ReactComponent";
+import {ZnUIPortal} from "../../components/Providers/PortalProvider/ZnUIPortal";
 
 export default function StyleGuide(props: StyleGuideProps) {
     const { config, sections, allSections, codeRevision, cssRevision, slots } = props;
@@ -22,6 +23,8 @@ export default function StyleGuide(props: StyleGuideProps) {
             }}
         >
             <ZnUIProvider initialScheme='system'>
+                <ZnUIPortal/>
+
                 <StyleGuideRenderer
                     key={cssRevision}
                     title={config.title}

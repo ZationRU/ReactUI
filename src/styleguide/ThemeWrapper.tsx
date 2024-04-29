@@ -2,6 +2,7 @@ import * as React from 'react';
 import {useEffect, useState} from "react";
 import {ZnUIScheme} from "../theme";
 import {ZnUIProvider} from "../components";
+import {ZnUIPortal} from "../components/Providers/PortalProvider/ZnUIPortal";
 
 const ThemeWrapper = ({children}: React.HTMLAttributes<HTMLDivElement>) => {
     const [scheme, setScheme] = useState<ZnUIScheme>(
@@ -19,6 +20,7 @@ const ThemeWrapper = ({children}: React.HTMLAttributes<HTMLDivElement>) => {
     }, [])
 
     return <ZnUIProvider initialScheme={scheme}>
+        <ZnUIPortal/>
         {children}
     </ZnUIProvider>;
 };

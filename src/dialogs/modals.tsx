@@ -1,4 +1,4 @@
-import {ZnUIPortalRegistrar} from "../components/Providers/portals";
+import {ZnUIPortalContext} from "../components/Providers/portals";
 import React, {JSXElementConstructor, useCallback, useEffect, useRef, useState, UIEvent} from "react";
 import {Layout, znui} from "../components";
 import {useAdaptiveValue} from "../adaptive";
@@ -26,7 +26,7 @@ export type ModalOptions = {
 export const ModalContext
     = React.createContext<ModalContextData|null>(null)
 
-export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
+export const showModal = (portalRegister: ZnUIPortalContext) => {
     return (
         Component: JSXElementConstructor<ModalProps>,
         clickEvent?: UIEvent,
@@ -37,7 +37,7 @@ export const showModal = (portalRegister: ZnUIPortalRegistrar) => {
             cancelable = true
         } = options || {}
 
-        const portal = portalRegister();
+        const portal = portalRegister.register();
 
         const target = clickEvent?.currentTarget
         const targetStyles = target ? window.getComputedStyle(target) : null;
