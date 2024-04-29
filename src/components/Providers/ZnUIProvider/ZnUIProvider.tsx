@@ -4,7 +4,6 @@ import {ThemeContext, ZnUIScheme} from "../../../theme";
 import {AdaptiveData, buildAdaptiveData, buildCurrentAdaptiveData, LayoutBreakpoint, AdaptiveContext} from "../../../adaptive";
 import './based.css';
 import './default-tokens.css';
-import {PortalProvider} from "../PortalProvider/PortalProvider";
 
 export interface ZnUIProviderProps {
     children: React.ReactNode

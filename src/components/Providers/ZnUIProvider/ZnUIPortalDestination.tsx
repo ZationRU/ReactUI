@@ -1,7 +1,7 @@
 import {usePortals} from "../portals";
 import React from "react";
 
-export const ZnUIPortal = () => {
+export const ZnUIPortalDestination = () => {
     const {portals} = usePortals()
 
     return <>
