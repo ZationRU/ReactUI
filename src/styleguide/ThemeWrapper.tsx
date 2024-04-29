@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {ThemeProvider, AdaptiveProvider} from '../components';
 import {useEffect, useState} from "react";
 import {ZnUIScheme} from "../theme";
+import {ZnUIProvider} from "../components";
 
 const ThemeWrapper = ({children}: React.HTMLAttributes<HTMLDivElement>) => {
     const [scheme, setScheme] = useState<ZnUIScheme>(
@@ -18,11 +18,9 @@ const ThemeWrapper = ({children}: React.HTMLAttributes<HTMLDivElement>) => {
         });
     }, [])
 
-    return <AdaptiveProvider>
-        <ThemeProvider scheme={scheme}>
-            {children}
-        </ThemeProvider>
-    </AdaptiveProvider>;
+    return <ZnUIProvider scheme={scheme}>
+        {children}
+    </ZnUIProvider>;
 };
 
 export default ThemeWrapper;
