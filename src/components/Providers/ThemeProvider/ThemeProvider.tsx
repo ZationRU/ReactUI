@@ -3,6 +3,7 @@ import {useForceUpdate, useZnUIProviderPortalCreator, ZnUIProviderPortalContext}
 import {ThemeContext, ZnUIScheme} from "../../../theme";
 import './ThemeProvider.css';
 import './default-tokens.css';
+import {PortalProvider} from "../PortalProvider/PortalProvider";
 
 export interface ThemeProviderProps {
     children: React.ReactNode,
@@ -45,7 +46,6 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
         props?.onSchemeChanged?.call(undefined, currentScheme)
     }, [currentScheme, props.onSchemeChanged]);
 
-    const portalData = useZnUIProviderPortalCreator(useForceUpdate())
 
     return <div
         className="ThemeProvider"
@@ -57,10 +57,9 @@ export const ThemeProvider = (props: ThemeProviderProps) => {
             isSystemScheme: props.scheme === 'system',
             changeScheme: (theme) => !isSystemScheme && setCurrentScheme(theme)
         }}>
-            <ZnUIProviderPortalContext.Provider value={portalData.registerPortal}>
+            <PortalProvider>
                 {props.children}
-                {portalData.mainPortal.map((item) => <div key={item.id}>{item.node}</div>)}
-            </ZnUIProviderPortalContext.Provider>
+            </PortalProvider>
         </ThemeContext.Provider>
     </div>
 }

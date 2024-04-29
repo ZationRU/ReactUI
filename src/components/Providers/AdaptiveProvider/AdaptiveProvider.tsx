@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {useState} from "react";
 import {AdaptiveContext, AdaptiveData, LayoutBreakpoint, LayoutBreakpointsValues} from "../../../adaptive";
-import {useForceUpdate, useZnUIProviderPortalCreator, ZnUIProviderPortalContext} from "../portals";
+import {PortalProvider} from "../PortalProvider/PortalProvider";
 
 export function getCurrentDimensionBreakpoint(): LayoutBreakpoint {
     if (typeof window === "undefined") {
@@ -32,7 +32,6 @@ export const AdaptiveProvider = ({ children }: {
     children: React.ReactNode
 }) => {
     const [data, setData] = useState<AdaptiveData>(buildCurrentAdaptiveData())
-    const portalData = useZnUIProviderPortalCreator(useForceUpdate())
 
     useEffect(() => {
         const resizeListener = () => {
@@ -50,9 +49,8 @@ export const AdaptiveProvider = ({ children }: {
     }, [data.currentBreakpoint, setData])
 
     return <AdaptiveContext.Provider value={data}>
-        <ZnUIProviderPortalContext.Provider value={portalData.registerPortal}>
+        <PortalProvider>
             {children}
-            {portalData.mainPortal.map((item) => <div key={item.id}>{item.node}</div>)}
-        </ZnUIProviderPortalContext.Provider>
+        </PortalProvider>
     </AdaptiveContext.Provider>
 }
