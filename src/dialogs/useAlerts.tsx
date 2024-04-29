@@ -1,4 +1,4 @@
-import {ZnUIPortalContext} from "../components/Providers/portals";
+import {usePortals, ZnUIPortalContext} from "../components/Providers/portals";
 import React, {
     MouseEventHandler,
     ReactNode,
@@ -39,7 +39,9 @@ export type AlertDialogInterface = {
     setValue: (key: string, value: any) => void
 }
 
-export const showAlert = (portalRegister: ZnUIPortalContext) => {
+export const useAlerts = (): (config: AlertDialogConfig, clickEvent?: MouseEvent) => AlertDialogInterface => {
+    const portalRegister = usePortals()
+
     return (config: AlertDialogConfig, clickEvent?: MouseEvent): AlertDialogInterface => {
         const portal = portalRegister.register()
         const cancelable = config.cancelable === undefined ? true : config.cancelable

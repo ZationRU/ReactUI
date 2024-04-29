@@ -49,7 +49,7 @@ export const useSnackbar = () => {
 
     return (config: SnackbarConfig): SnackbarInterface => {
         const horizontal = config.horizontal || 'right'
-        const portal = portalRegister()
+        const portal = portalRegister.register()
 
         hide(() => {
             const Snackbar = () => {

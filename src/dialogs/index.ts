@@ -1,3 +1,3 @@
-export * from "./alerts";
-export * from "./modals";
-export * from "./useDialogs";
+export * from "./useAlerts";
+export * from "./useModals";
+export * from "./useSnackbar";

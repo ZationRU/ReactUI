@@ -1,8 +1,9 @@
-import {ZnUIPortalContext} from "../components/Providers/portals";
+import {usePortals, ZnUIPortalContext} from "../components/Providers/portals";
 import React, {JSXElementConstructor, useCallback, useEffect, useRef, useState, UIEvent} from "react";
 import {Layout, znui} from "../components";
 import {useAdaptiveValue} from "../adaptive";
 import {ThemeTokens} from "../theme";
+
 
 export type ModalDialogInterface = {
     close: () => void
@@ -26,7 +27,13 @@ export type ModalOptions = {
 export const ModalContext
     = React.createContext<ModalContextData|null>(null)
 
-export const showModal = (portalRegister: ZnUIPortalContext) => {
+export const useModals = (): (
+    component: JSXElementConstructor<ModalProps>,
+    clickEvent?: UIEvent,
+    options?: ModalOptions
+) => ModalDialogInterface => {
+    const portalRegister = usePortals()
+
     return (
         Component: JSXElementConstructor<ModalProps>,
         clickEvent?: UIEvent,

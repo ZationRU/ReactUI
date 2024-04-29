@@ -13,7 +13,8 @@ import React, {RefAttributes} from "react";
 import {Navigate} from "../../StyleGuideRenderer";
 import {MDXFactory} from "../MDXFactory";
 import UseAdaptiveHook from "./useAdaptiveHook.mdx";
-import UseDialogsHook from "./useDialogsHook.mdx";
+import UseAlertsHook from "./useAlerts.mdx";
+import UseModalsHook from "./useModals.mdx";
 import UseAdaptiveValueHook from "./useAdaptiveValueHook.mdx";
 import UseSnackbarHook from "./useSnackbarHook.mdx";
 import UseThemeHook from "./useTheme.mdx";
@@ -37,9 +38,13 @@ export const Hooks = {
         description: 'Hook to get value from adaptive value',
         component: MDXFactory(UseAdaptiveValueHook)
     },
-    useDialogs: {
-        description: 'Hook for creating modal windows and dialogs',
-        component: MDXFactory(UseDialogsHook)
+    useAlerts: {
+        description: 'Hook for creating alerts dialogs',
+        component: MDXFactory(UseAlertsHook)
+    },
+    useModals: {
+        description: 'Hook for creating modal windows',
+        component: MDXFactory(UseModalsHook)
     },
     useSnackbar: {
         description: 'Hook for creating Snackbars',
