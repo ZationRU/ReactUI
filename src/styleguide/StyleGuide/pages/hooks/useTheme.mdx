@@ -1,5 +1,5 @@
 ```tsx
-import {useTheme, VStack, Layout, Button, ThemeTokens} from "@znui/react";
+import {useTheme, VStack, Layout, Button, ThemeTokens, HStack} from "@znui/react";
 
 const theme = useTheme();
 
@@ -12,11 +12,16 @@ const theme = useTheme();
     <Layout>
         Current scheme: {theme.currentScheme}
     </Layout>
-    <Layout>
-        Is system scheme: {theme.isSystemScheme ? 'true': 'false'}
-    </Layout>
-    <Button onClick={() => theme.changeScheme(theme.currentScheme==='light' ? 'dark': 'light')}>
-        Toggle scheme
-    </Button>
+    <HStack gap={10}>
+        <Button onClick={() => theme.changeScheme('light')}>
+            Light scheme
+        </Button>
+        <Button onClick={() => theme.changeScheme('dark')}>
+            Dark scheme
+        </Button>
+        <Button onClick={() => theme.changeScheme('system')}>
+            System scheme
+        </Button>
+    </HStack>
 </VStack>
 ```

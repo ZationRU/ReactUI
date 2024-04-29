@@ -18,7 +18,7 @@ const ThemeWrapper = ({children}: React.HTMLAttributes<HTMLDivElement>) => {
         });
     }, [])
 
-    return <ZnUIProvider scheme={scheme}>
+    return <ZnUIProvider initialScheme={scheme}>
         {children}
     </ZnUIProvider>;
 };

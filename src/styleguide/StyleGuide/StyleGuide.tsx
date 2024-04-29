@@ -21,7 +21,7 @@ export default function StyleGuide(props: StyleGuideProps) {
                 cssRevision,
             }}
         >
-            <ZnUIProvider scheme='system'>
+            <ZnUIProvider initialScheme='system'>
                 <StyleGuideRenderer
                     key={cssRevision}
                     title={config.title}

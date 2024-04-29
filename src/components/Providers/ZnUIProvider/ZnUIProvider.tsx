@@ -1,4 +1,4 @@
-import React, {ReactNode, useEffect, useRef, useState} from "react";
+import React, {ReactNode, useEffect, useMemo, useRef, useState} from "react";
 import {useForceUpdate, useZnUIProviderPortalCreator} from "../portals";
 import {ThemeContext, ZnUIScheme} from "../../../theme";
 import {AdaptiveData, buildAdaptiveData, buildCurrentAdaptiveData, LayoutBreakpoint, AdaptiveContext} from "../../../adaptive";
@@ -12,12 +12,12 @@ export interface ZnUIProviderProps {
     ),
 
     /**
-     * @default 'light'
+     * @default 'system'
      */
-    scheme?: ZnUIScheme | 'system'
+    initialScheme?: ZnUIScheme
 
     /**
-     * @default
+     * @default undefined
      */
     currentBreakpoint?: LayoutBreakpoint
 
@@ -27,20 +27,25 @@ export interface ZnUIProviderProps {
 
 
 export const ZnUIProvider = (props: ZnUIProviderProps) => {
+    const {
+        children: childrenRaw,
+        initialScheme,
+        currentBreakpoint: fixedBreakpoint,
+        onSchemeChanged
+    } = props
+
     const ref = useRef<HTMLDivElement | null>(null)
-    const isSystemScheme = props.scheme === 'system'
-    const [currentScheme, setCurrentScheme] = useState<ZnUIScheme>(
-        isSystemScheme && typeof window !== 'undefined' ?
-            window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light" :
-            (props.scheme || 'light') as ZnUIScheme
+    const [currentScheme, setCurrentScheme] = useState<ZnUIScheme>(initialScheme || 'system')
+    const [currentSystemScheme, setCurrentSystemScheme] = useState(
+        window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
     )
 
     const [data, setData] = useState<AdaptiveData>(
-        props.currentBreakpoint ? buildAdaptiveData(props.currentBreakpoint): buildCurrentAdaptiveData()
+        fixedBreakpoint ? buildAdaptiveData(fixedBreakpoint): buildCurrentAdaptiveData()
     )
 
     useEffect(() => {
-        if(props.currentBreakpoint) {
+        if(fixedBreakpoint) {
             return
         }
 
@@ -60,41 +65,42 @@ export const ZnUIProvider = (props: ZnUIProviderProps) => {
 
 
     useEffect(() => {
-        if (!isSystemScheme || typeof window === 'undefined') return;
         const mediaWatch = window.matchMedia("(prefers-color-scheme: dark)")
         const listener = (event: MediaQueryListEventMap['change']) => {
-            setCurrentScheme(event.matches ? "dark" : "light")
+            setCurrentSystemScheme(event.matches ? "dark" : "light")
         }
 
         mediaWatch.addEventListener('change', listener)
         return () => mediaWatch.removeEventListener('change', listener);
-    }, [isSystemScheme])
+    }, [currentScheme])
 
     useEffect(() => {
         props?.onSchemeChanged?.call(undefined, currentScheme)
     }, [currentScheme, props.onSchemeChanged]);
 
-    const portalData = useZnUIProviderPortalCreator(useForceUpdate())
-
+    const children = useMemo(() =>
+        typeof childrenRaw === "function" ?
+            childrenRaw(PortalProvider):
+            <PortalProvider>
+                {childrenRaw}
+            </PortalProvider>,
+        [childrenRaw]
+    )
 
     return <div
         className="ThemeProvider"
-        data-scheme={currentScheme}
+        data-scheme={currentScheme === 'system' ? currentSystemScheme: currentScheme}
         ref={ref}
     >
         <ThemeContext.Provider value={{
             currentScheme,
-            isSystemScheme: props.scheme === 'system',
-            changeScheme: (theme) => !isSystemScheme && setCurrentScheme(theme)
+            changeScheme: (scheme) => {
+                setCurrentScheme(scheme)
+                onSchemeChanged?.call(undefined, currentScheme)
+            }
         }}>
             <AdaptiveContext.Provider value={data}>
-                {
-                    typeof props.children === "function" ?
-                        props.children(PortalProvider):
-                        <PortalProvider>
-                            {props.children}
-                        </PortalProvider>
-                }
+                {children}
             </AdaptiveContext.Provider>
         </ThemeContext.Provider>
     </div>

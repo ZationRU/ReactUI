@@ -1,17 +1,12 @@
 import {createContext, useContext} from "react";
 
-export type ZnUIScheme = 'light'|'dark'
+export type ZnUIScheme = 'light'|'dark'|'system'
 
 export type ThemeContextData = {
     /**
      * Current scheme of theme
      */
     currentScheme: ZnUIScheme
-
-    /**
-     * Value is true if ThemeProvider uses system theme
-     */
-    isSystemScheme: boolean
 
     /**
      * Changes scheme of theme.
