@@ -7,7 +7,7 @@ import React, {
     ReactNode,
     useMemo,
     useEffect,
-    useRef, CSSProperties,
+    useRef,
 } from 'react';
 import {Layout, LayoutProps, HStack, VStack, Center} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
@@ -47,7 +47,7 @@ export const Menu = (props: MenuProps) => {
         setPoint(point)
     }, [setPoint])
 
-    const close = () => setPoint(point)
+    const close = useCallback(() => setPoint(null), [setPoint])
 
     return <MenuContext.Provider value={{
         density: props.density || prevContext.density,
@@ -113,7 +113,7 @@ Menu.Item = (props: MenuItemProps) => {
 
 export interface MenuTriggerProps {
     children: React.ReactElement
-    mode: 'click'|'context'|'hover'
+    mode: 'click'|'context'
 }
 
 Menu.Trigger = React.forwardRef((
@@ -121,7 +121,7 @@ Menu.Trigger = React.forwardRef((
         children,
         mode = 'click',
     }: MenuTriggerProps,
-    ref: ForwardedRef<HTMLDivElement>
+    ref: ForwardedRef<HTMLElement>
 ) => {
     const { open, point, close } = useMenuContext()
 
@@ -144,22 +144,10 @@ Menu.Trigger = React.forwardRef((
                 open(e)
                 children.props.onContextMenu?.call(this, e)
             }
-        }else if(mode === 'hover') {
-            props.onPointerOver = (e: SyntheticEvent<HTMLElement>) => {
-                e.preventDefault()
-                open(e)
-                children.props.onPointerOver?.call(this, e)
-            }
-
-            props.onPointerOut = (e: SyntheticEvent<HTMLElement>) => {
-                e.preventDefault()
-                close()
-                children.props.onPointerOut?.call(this, e)
-            }
         }
 
         return props
-    }, [mode, children.props, open])
+    }, [children.props, mode, point, open, close])
 
     return <>
         {
@@ -184,9 +172,34 @@ Menu.Items = React.forwardRef((
 ) => {
     const itemRef = useRef<HTMLDivElement|null>(null)
     const { point, close, isRoot } = useMenuContext()
-    const [currentPoint, setCurrentPoint] = useState(
-        point
-    )
+    const [currentPoint, setCurrentPoint] = useState<{
+        x: number, y: number, byRight: boolean
+    }>()
+
+    useEffect(() => {
+        if(!itemRef || !point) {
+            return
+        }
+
+        const padding = isRoot ? 4: 0
+        let x =  point.left + point.width + padding
+        let y =  point.top
+        let byRight = false
+
+        if(x+212>window.innerWidth) {
+            x = window.innerWidth - (point.right - point.width - padding)
+            byRight = true
+        }
+
+        if(y + 400 >= window.innerHeight) {
+            y = point.bottom - itemRef.current!!.getBoundingClientRect().height
+            // console.log(currentPoint.bottom - itemRef.current!!.getBoundingClientRect().height)
+        }
+
+        setCurrentPoint({
+            x, y, byRight
+        })
+    }, [isRoot, point])
 
     useEffect(() => {
         function handleClickOutside(e: MouseEvent) {
@@ -203,51 +216,29 @@ Menu.Items = React.forwardRef((
             document.removeEventListener("pointerdown", handleClickOutside);
             document.removeEventListener("wheel", handleClickOutside);
         };
-    }, [itemRef]);
+    }, [close, itemRef]);
 
-    useEffect(() => {
-        if(point!=null&&currentPoint!==point) {
-            setCurrentPoint(point)
-        }
-    }, [point, currentPoint])
 
-    if(currentPoint) {
-        const padding = isRoot? 4: 0
-        let x = currentPoint.left + currentPoint.width + padding
-        let byRight = false
-
-        console.log(currentPoint.right)
-        if(x+212>window.innerWidth) {
-            x = window.innerWidth - (currentPoint.right - currentPoint.width - padding)
-            byRight = true
-        }
-
-        return currentPoint && <Layout
-            ref={mergeRefs(ref, itemRef)}
-            position="fixed"
-            left={!byRight? x: undefined}
-            right={byRight? x: undefined}
-            top={currentPoint.top}
-            bg={ThemeTokens.surfaceContainer}
-            c={ThemeTokens.onSurface}
-            className="elevation-2"
-            shapeScale="esm"
-            w={200}
-            zIndex={3}
-            maxW={point===null ? 0: 200}
-            maxH={point===null ? 0: '100vh'}
-            oc={point===null ? 0: 1}
-            transition={[
-                'max-height 300ms '+ThemeTokens.motion.emphasized,
-                'max-width 300ms '+ThemeTokens.motion.emphasized,
-                'opacity 300ms '+ThemeTokens.motion.emphasized
-            ].join(',')}
-            userSelect="none"
-            clip={true}
-        >
-            {children}
-        </Layout>
-    }
-
-    return <></>
+    return <Layout
+        ref={mergeRefs(ref, itemRef)}
+        position="fixed"
+        left={!currentPoint?.byRight ? currentPoint?.x: undefined}
+        right={currentPoint?.byRight ? currentPoint?.x: undefined}
+        top={currentPoint?.y}
+        bg={ThemeTokens.surfaceContainer}
+        c={ThemeTokens.onSurface}
+        className="elevation-2"
+        shapeScale="esm"
+        w={200}
+        zIndex={3}
+        to={{
+            maxW: !currentPoint || !point ? 0: 200,
+            oc: !currentPoint || !point ? 0: 1,
+        }}
+        pointerEvents={!currentPoint || !point ? 'none': 'all'}
+        userSelect="none"
+        clip={true}
+    >
+        {children}
+    </Layout>
 })

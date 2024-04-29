@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ForwardedRef} from "react";
 import {LayoutProps, Center} from "../../Basic";
 import {StateLayer} from "../../Layouts";
 import {IconWrapper} from "../IconWrapper/IconWrapper";
@@ -23,7 +23,7 @@ export interface ContainedIconButtonProps extends LayoutProps {
  * @param props
  * @constructor
  */
-export const ContainedIconButton = (props: ContainedIconButtonProps) => {
+export const ContainedIconButton = React.forwardRef((props: ContainedIconButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
     const {
         children,
         mode = 'primary',
@@ -35,18 +35,19 @@ export const ContainedIconButton = (props: ContainedIconButtonProps) => {
     return <Center
         as="button"
         shapeScale="full"
+        ref={ref}
         border={mode==='outline'?'1px solid var(--znui-outline)': undefined}
         bg={
             mode==='primary' ? 'var(--znui-primary)':
-            mode==='tonal'? 'var(--znui-secondary-container)':
-            undefined
+                mode==='tonal'? 'var(--znui-secondary-container)':
+                    undefined
         }
 
         c={
             mode==='primary' ? 'var(--znui-on-primary)':
-            mode==='tonal'? 'var(--znui-on-secondary-container)':
-            mode==='outline'? 'var(--znui-on-surface-variant)':
-            undefined
+                mode==='tonal'? 'var(--znui-on-secondary-container)':
+                    mode==='outline'? 'var(--znui-on-surface-variant)':
+                        undefined
         }
 
         {...otherProps}
@@ -61,4 +62,4 @@ export const ContainedIconButton = (props: ContainedIconButtonProps) => {
         <StateLayer ripple={true}/>
         <IconWrapper size={24}>{children}</IconWrapper>
     </Center>
-}
+})
