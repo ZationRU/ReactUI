@@ -4,7 +4,7 @@ import React from "react";
 import {Label} from "../../Typography";
 import classNames from "classnames";
 import {StateLayer} from "../../Layouts";
-import {IconWrapper} from "../IconWrapper/IconWrapper";
+import {IconWrapper} from "../../Utils";
 import {ThemeTokens} from "../../../theme";
 import {BadgeProps} from "../Badge/Badge";
 

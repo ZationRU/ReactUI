@@ -1,7 +1,7 @@
 import React, {ForwardedRef} from "react";
 import {LayoutProps, Center} from "../../Basic";
 import {StateLayer} from "../../Layouts";
-import {IconWrapper} from "../IconWrapper/IconWrapper";
+import {IconWrapper} from "../../Utils";
 import classNames from "classnames";
 import "./ContainedIconButton.css";
 

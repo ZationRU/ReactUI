@@ -4,7 +4,7 @@ import classNames from "classnames";
 import {Layout, LayoutProps, VStack} from "../../Basic";
 import {StateLayer} from "../../Layouts";
 import {Label} from "../../Typography";
-import {IconWrapper} from "../IconWrapper/IconWrapper";
+import {IconWrapper} from "../../Utils";
 import {ThemeTokens} from "../../../theme";
 import {BadgeProps} from "../Badge/Badge";
 

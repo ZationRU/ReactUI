@@ -14,7 +14,7 @@ import {ThemeTokens} from "../../../theme";
 import {Body} from "../../Typography";
 import {mergeRefs} from "../../../utils";
 import {Tappable} from "../../Layouts";
-import {IconWrapper} from "../IconWrapper/IconWrapper";
+import {IconWrapper} from "../../Utils";
 
 const MenuContext = React.createContext<MenuContextProps>({
     density: 0,

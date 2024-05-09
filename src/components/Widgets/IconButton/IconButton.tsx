@@ -1,7 +1,7 @@
 import React, {ReactNode} from "react";
 import {Center, Layout, LayoutProps} from "../../Basic";
 import {StateLayer} from "../../Layouts";
-import {IconWrapper} from "../IconWrapper/IconWrapper";
+import {IconWrapper} from "../../Utils";
 import classNames from "classnames";
 import "./IconButton.css";
 

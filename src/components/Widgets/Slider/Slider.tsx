@@ -1,7 +1,7 @@
 import React, {useRef, useState} from "react";
 import {Layout, FlexLayout} from "../../Basic";
 import {mergeRefs} from "../../../utils";
-import {FormWidgetBase, FormWidgetBaseProps} from "../FormWidgetBase";
+import {FormWidgetBase, FormWidgetBaseProps} from "../../Utils";
 import {ThemeTokens} from "../../../theme";
 
 export interface SliderProps extends FormWidgetBaseProps {

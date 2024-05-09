@@ -4,7 +4,7 @@ import {StateLayer} from "../../Layouts";
 import {Label, Title} from "../../Typography";
 import React, {ReactNode} from "react";
 import "./NavigationMenu.css";
-import {IconWrapper} from "../IconWrapper/IconWrapper";
+import {IconWrapper} from "../../Utils";
 import {ThemeTokens} from "../../../theme";
 
 export interface NavigationDrawerProps extends LayoutProps {

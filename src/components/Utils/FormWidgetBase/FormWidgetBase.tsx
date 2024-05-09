@@ -1,5 +1,5 @@
-import {HTMLZnUIProps} from "../../styled";
-import {znui} from "../Basic";
+import {HTMLZnUIProps} from "../../../styled";
+import {znui} from "../../Basic";
 import React, {ForwardedRef} from "react";
 
 export interface FormWidgetBaseProps extends HTMLZnUIProps<'input'> {}

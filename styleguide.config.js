@@ -206,6 +206,12 @@ module.exports = {
             components: [
                 'src/components/Typography/**/*.{jsx,tsx}',
             ]
+        },
+        {
+            name: 'Utils',
+            components: [
+                'src/components/Utils/**/*.{jsx,tsx}',
+            ]
         }
     ]
 };

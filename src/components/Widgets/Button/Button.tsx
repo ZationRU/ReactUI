@@ -1,11 +1,11 @@
 import React, {ReactNode} from 'react';
 import classNames from 'classnames';
 import {Tappable} from "../../Layouts";
-import {IconWrapper} from "../IconWrapper/IconWrapper";
+import {IconWrapper} from "../../Utils";
 import {HTMLZnUIProps, ZnUIStyleObject} from "../../../styled";
 import {Label} from "../../Typography";
 import {ThemeTokens} from "../../../theme";
-import {AbsoluteCenter, HStack, Layout} from "../../Basic";
+import {AbsoluteCenter, HStack} from "../../Basic";
 import {CircularProgressIndicator} from "../CircularProgressIndicator/CircularProgressIndicator";
 
 const modeStyles: {
@@ -100,7 +100,7 @@ export function Button(props: ButtonProps) {
         className={
             classNames({
                 'elevation-1': mode==='elevated'
-            })
+            }, className)
         }
         pseudos={{
             '&:enabled:focus-visible > .state-layer': {

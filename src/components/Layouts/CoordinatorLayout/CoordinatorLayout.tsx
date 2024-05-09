@@ -195,6 +195,9 @@ export const CoordinatorLayout = React.forwardRef((props: CoordinatorLayoutProps
             <Layout
                 clip={true}
                 {...otherProps}
+                onScroll={(e) => {
+                    e.currentTarget.scrollTop = 0
+                }}
                 pos="relative"
                 ref={measureRef}
             >{clones}</Layout>

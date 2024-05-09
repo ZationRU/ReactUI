@@ -1,8 +1,8 @@
 import React, {useRef, useCallback, ReactNode, ForwardedRef} from "react";
 import "./Switch.css";
 import classNames from "classnames";
-import {IconWrapper} from "../IconWrapper/IconWrapper";
-import {FormWidgetBase} from "../FormWidgetBase";
+import {IconWrapper} from "../../Utils";
+import {FormWidgetBase} from "../../Utils";
 import {mergeRefs} from "../../../utils";
 import {HTMLZnUIProps} from "../../../styled";
 

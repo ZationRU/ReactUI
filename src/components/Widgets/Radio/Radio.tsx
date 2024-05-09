@@ -1,7 +1,7 @@
 import React from "react";
 import {znui, Center} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
-import {FormWidgetBase, FormWidgetBaseProps} from "../FormWidgetBase";
+import {FormWidgetBase, FormWidgetBaseProps} from "../../Utils/FormWidgetBase/FormWidgetBase";
 export interface RadioProps extends FormWidgetBaseProps {}
 
 /**

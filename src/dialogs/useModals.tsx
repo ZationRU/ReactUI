@@ -20,7 +20,7 @@ export type ModalContextData = {
 }
 
 export type ModalOptions = {
-    fullscreen?: boolean|'auto'
+    fullscreen?: boolean | 'auto'
     cancelable?: boolean
 }
 

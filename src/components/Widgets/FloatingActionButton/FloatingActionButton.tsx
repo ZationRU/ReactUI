@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from "classnames";
 import "./FloatingActionButton.css";
 import {StateLayer} from "../../Layouts";
-import {IconWrapper} from "../IconWrapper/IconWrapper";
+import {IconWrapper} from "../../Utils";
 import {useAdaptiveValue} from "../../../adaptive";
 import {Adaptive} from "../../../adaptive";
 import {HTMLZnUIProps} from "../../../styled";
