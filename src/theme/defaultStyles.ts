@@ -16,6 +16,12 @@ export const defaultStyles = `
     height: 0;
 }
 
+@keyframes ripple {
+    to {
+        transform: scale(4);
+    }
+}
+
 font-family: 'Roboto';
 -webkit-tap-highlight-color: transparent;
 caret-color: var(--znui-primary);

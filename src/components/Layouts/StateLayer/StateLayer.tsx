@@ -1,7 +1,7 @@
 import React, {PointerEvent, MutableRefObject, useRef, useMemo} from 'react';
-import "./StateLayer.css";
 import {Layout, LayoutProps} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
+import {keyframes} from "@emotion/react";
 
 export interface StateLayerProps extends LayoutProps {
     ripple?: boolean
@@ -62,6 +62,12 @@ export interface StateLayerStateData {
     performUp: () => void
 }
 
+const rippleAnimation = keyframes`
+    to {
+        transform: scale(4);
+    }
+`
+
 export const useStateLayer = () => {
     const rippleTriggerRef = useRef<HTMLDivElement | null>(null)
 
@@ -83,8 +89,13 @@ export const useStateLayer = () => {
             if (rippleTriggerRef.current === null) return;
 
             const rippleSpan = document.createElement('span')
-
-            rippleSpan.className = "Ripple Ripple-Animation"
+            rippleSpan.style.position = 'absolute'
+            rippleSpan.style.transition = 'opacity 300ms ' + ThemeTokens.motion.emphasized
+            rippleSpan.style.opacity = '0.12'
+            rippleSpan.style.backgroundColor = 'currentColor'
+            rippleSpan.style.transform = 'none'
+            rippleSpan.style.borderRadius = '50%'
+            rippleSpan.style.animation = 'ripple ' + msOfRipple + 'ms ' + ThemeTokens.motion.emphasized + ' forwards'
             rippleSpan.style.width = rippleSpan.style.height = `${diameter}px`;
             rippleSpan.style.left = `${event.clientX - rect.left - radius}px`;
             rippleSpan.style.top = `${event.clientY - rect.top - radius}px`;
@@ -106,13 +117,15 @@ export const useStateLayer = () => {
                 const delayTime = -(now - startTime)
 
                 setTimeout(() => {
-                    element.className = "Ripple Ripple-Hidden"
+                    element.style.transform = 'scale(4)'
+                    element.style.opacity = '0'
 
                     setTimeout(() => {
                         element.style.width = element.style.height =
                             element.style.left = element.style.top = "";
 
-                        element.className = "Ripple"
+                        element.style.transform = 'none'
+                        element.style.opacity = '0.12'
 
                         setTimeout(() => {
                             element.remove()
