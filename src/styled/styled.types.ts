@@ -46,7 +46,7 @@ type PseudoProps = {
 
 export interface ZnUIProps extends StyleProps, PseudoProps {
     pseudos?: {
-        [key: string]: CSSProps
+        [key: string]: StyleProps
     }
 }
 

@@ -1,15 +1,14 @@
 import classNames from "classnames";
-import './Toolbar.css';
-import React, {ReactNode, MouseEventHandler, useState, useEffect} from "react";
+import React, {ReactNode, MouseEventHandler, useState, useEffect, ForwardedRef} from "react";
 import {Title} from "../../Typography";
-import {IconButton} from "../IconButton/IconButton";
-import {Layout, LayoutProps, FlexLayout, Spacer} from "../../Basic";
+import {ToolbarIconButton} from "../ToolbarIconButton/ToolbarIconButton";
+import {LayoutProps, FlexLayout, Spacer, HStack} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
 
 export interface ToolbarProps extends LayoutProps {
     centered?: boolean
     navigationIcon?: ReactNode
-    onClickNavigationIcon?: MouseEventHandler<HTMLDivElement>
+    onClickNavigationIcon?: MouseEventHandler<HTMLButtonElement>
     menu?: ReactNode
 }
 
@@ -18,7 +17,7 @@ export interface ToolbarProps extends LayoutProps {
  * @param props
  * @constructor
  */
-export const Toolbar = React.forwardRef((props: ToolbarProps, ref) => {
+export const Toolbar = React.forwardRef((props: ToolbarProps, ref: ForwardedRef<HTMLDivElement>) => {
     const {
         className,
         children,
@@ -36,39 +35,62 @@ export const Toolbar = React.forwardRef((props: ToolbarProps, ref) => {
         }
     }, [navigationIcon])
 
-    return <Layout
+    return <HStack
         c={ThemeTokens.onSurface}
+        h={64}
+        userSelect='none'
+        pos='relative'
         transition={"background-color 150ms var(--znui-emphasized-motion)"}
         className={classNames(
             className,
             'Toolbar'
         )}
+        align='center'
         clip={true}
         ref={ref}
         {...otherProps}
     >
-        <div className="inner">
-            <IconButton className={classNames({
-                "Toolbar-NavigationIconContainer": true,
-                "Toolbar-NavigationIconContainer--Hidden": !navigationIcon
-            })} onClick={onClickNavigationIcon}>
+        <HStack
+            className="inner"
+            w='100%'
+            gap={6}
+            pv={8}
+            ph={4}
+            align='center'
+            h='max-content'
+        >
+            <ToolbarIconButton
+                c={ThemeTokens.onSurfaceVariant}
+                to={{
+                    transform: navigationIcon ? "translateX(0px)" : "translateX(-40px)",
+                    oc: navigationIcon ? 1 : 0
+                }}
+                onClick={onClickNavigationIcon}
+            >
                 {navigationIcon||savedNavigationIcon}
-            </IconButton>
+            </ToolbarIconButton>
 
-            <Title size="large" className={classNames(
-                "Toolbar-Title",
-                {
-                    "Toolbar-Title-Centered": centered,
-                    "Toolbar-Title-Icon--Hidden": !navigationIcon&&!centered
-                },
-            )} whiteSpace="nowrap" textOverflow="ellipsis" flex={1}>{children}</Title>
+            <Title
+                flex={1}
+                size="large"
+                left={centered ? '50%': '0%'}
+                pos={centered ? 'absolute': 'relative'}
+                whiteSpace="nowrap"
+                textOverflow="ellipsis"
+                to={{
+                    transform: centered ? 'translateX(-50%)': (!navigationIcon?
+                        'translateX(calc(-28px))': 'translateX(0px)')
+                }}
+            >{children}</Title>
 
             {menu&&<>
                 {centered&&<Spacer/>}
-                <FlexLayout className="Toolbar-Menu">
+                <FlexLayout
+                    c={ThemeTokens.onSurfaceVariant}
+                >
                     {menu}
                 </FlexLayout>
             </>}
-        </div>
-    </Layout>
+        </HStack>
+    </HStack>
 })

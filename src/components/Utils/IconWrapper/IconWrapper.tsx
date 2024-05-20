@@ -1,12 +1,13 @@
 import React, {CSSProperties} from "react"
-import {Layout, LayoutProps} from "../../Basic";
-import classNames from "classnames";
-import "./IconWrapper.css";
+import {Center, LayoutProps} from "../../Basic";
 import {Adaptive, useAdaptiveValue} from "../../../adaptive";
-import {Console} from "inspector";
+import {ThemeTokens} from "../../../theme";
+import {ToAnimatedProp} from "../../../styled/configs/znui/animation";
 
 export interface IconWrapperProps extends LayoutProps {
     size?: Adaptive<number>
+    sizeTransition?: ToAnimatedProp['baseTransition']
+    sizeTransitionDuration?: ToAnimatedProp['baseDuration']
 }
 
 /**
@@ -17,16 +18,35 @@ export interface IconWrapperProps extends LayoutProps {
  */
 export const IconWrapper = (props: IconWrapperProps) => {
     const {
-        className,
         size,
+        sizeTransition = ThemeTokens.motion.emphasized,
+        sizeTransitionDuration = ThemeTokens.motion.duration.medium2,
         ...otherProps
     } = props
 
-    return <Layout
-        className={classNames("IconWrapper", className)}
+    return <Center
         style={{
             '--icon-size': (useAdaptiveValue(size) || 24) + "px"
         } as CSSProperties}
+        overflow='visible'
+        to={{
+            baseTransition: sizeTransition,
+            baseDuration: sizeTransitionDuration,
+            layoutSize: 'var(--icon-size)',
+            fontSize: 'var(--icon-size)',
+            lineHeight: 'var(--icon-size)',
+        }}
+        pseudos={{
+            '& > svg': {
+                color: 'currentColor',
+                overflow: 'visible',
+                to: {
+                    baseTransition: sizeTransition,
+                    baseDuration: sizeTransitionDuration,
+                    layoutSize: 'var(--icon-size)',
+                }
+            }
+        }}
         {...otherProps}
     />
 }

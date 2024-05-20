@@ -4,14 +4,13 @@ import {Layout, LayoutProps} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
 
 export interface StateLayerProps extends LayoutProps {
-    state?: StateLayerStateData,
     ripple?: boolean
 }
 
 /**
  * Used for state layer for hover/focus effects. Also have function of ripple effect.
  * Always have absolute position and can create multiple elements in your component.
- * 
+ *
  * @param props
  * @constructor
  */
@@ -25,23 +24,36 @@ export function StateLayer(props: StateLayerProps) {
 
     return <>
         <Layout
-            className="state-layer"
+            className='state-layer'
+            pos='absolute'
+            posA={0}
+            to={{
+                baseDuration: ThemeTokens.motion.duration.medium2,
+                baseTransition: ThemeTokens.motion.emphasized,
+                background: 'transparent',
+                oc: 0
+            }}
             onPointerLeave={state.performUp}
             {...rest}
         />
+
         {ripple &&
             <>
-                <div className="ripple-trigger"
-                     ref={state.rippleTriggerRef}
-                     onPointerUp={state.performUp}
-                     onPointerCancel={state.performUp}
-                     onPointerLeave={state.performUp}
-                     onMouseOver={state.performUp}
-                     onPointerDown={ripple ? state.performDown : undefined}
+                <Layout
+                    className="ripple-trigger"
+                    pos='absolute'
+                    zIndex={2}
+                    posA={0}
+                    ref={state.rippleTriggerRef}
+                    onPointerUp={state.performUp}
+                    onPointerCancel={state.performUp}
+                    onPointerLeave={state.performUp}
+                    onMouseOver={state.performUp}
+                    onPointerDown={ripple ? state.performDown : undefined}
                 />
             </>
         }
-        </>
+    </>
 }
 
 export interface StateLayerStateData {
@@ -90,7 +102,7 @@ export const useStateLayer = () => {
 
         const performUp = () => {
             const now = new Date().getMilliseconds();
-            ripples.forEach(({ startTime, element}, index) => {
+            ripples.forEach(({startTime, element}, index) => {
                 const delayTime = -(now - startTime)
 
                 setTimeout(() => {
@@ -107,7 +119,7 @@ export const useStateLayer = () => {
                             ripples.slice(index, 1)
                         }, 20)
                     }, 300)
-                }, delayTime < 0 ?  msOfRipple - delayTime: 0)
+                }, delayTime < 0 ? msOfRipple - delayTime : 0)
             })
         }
 

@@ -1,11 +1,10 @@
 import {Adaptive} from "../../../adaptive/";
 import {asTransformProp} from "../../config";
-
-type ShapeScale = 'none'|'esm'|'sm'|'md'|'lg'|'elg'|'full'
+import {ThemeTokens, ZnUIShapes} from "../../../theme";
 
 export const shapes = {
-    shapeScale: asTransformProp((value: ShapeScale) => ({
-        borderRadius: 'var(--znui-shape-'+value+'-radius)',
+    shapeScale: asTransformProp((value: keyof ZnUIShapes) => ({
+        borderRadius: ThemeTokens.shapes[value],
     })),
     clip: asTransformProp((value: boolean) => (value ? {
         overflow: 'hidden',
@@ -16,7 +15,7 @@ export interface ShapesProps {
     /**
      * @default none
      */
-    shapeScale?: Adaptive<ShapeScale>
+    shapeScale?: Adaptive<keyof ZnUIShapes>
 
     /**
      * @default false

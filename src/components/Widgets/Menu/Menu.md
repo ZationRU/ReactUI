@@ -1,6 +1,6 @@
 ```tsx
 import {ZnUIIconMoreFilled} from "@znui/icons";
-import {ContainedIconButton, Divider} from "@znui/react";
+import {IconButton, Divider} from "@znui/react";
 
 <Menu>
     <Menu.Items>
@@ -61,9 +61,9 @@ import {ContainedIconButton, Divider} from "@znui/react";
     </Menu.Items>
 
     <Menu.Trigger>
-        <ContainedIconButton>
+        <IconButton>
             <ZnUIIconMoreFilled/>
-        </ContainedIconButton>
+        </IconButton>
     </Menu.Trigger>
 </Menu>
 ```
