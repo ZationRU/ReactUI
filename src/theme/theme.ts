@@ -5,8 +5,9 @@ import {defaultShapes} from "./shapes";
 import {defaultStyles} from "./defaultStyles";
 import {ZnUITheme} from "./theme.types";
 import {defaultMotion} from "./motion";
-import {durationProp, elevationProp, motionProp, paletteProp, shapeProp, styleProp} from "./names";
+import {durationProp, elevationProp, motionProp, paletteProp, shapeProp, styleProp, typeScaleProp} from "./names";
 import {defaultElevation} from "./elevation";
+import {defaultTypeScale} from "./typescale";
 
 export const useThemeDiv = (theme: ZnUITheme) => {
     return useMemo(() => {
@@ -14,6 +15,7 @@ export const useThemeDiv = (theme: ZnUITheme) => {
             shapes = defaultShapes,
             motion = defaultMotion,
             elevation = defaultElevation,
+            typeScale = defaultTypeScale,
             palettes,
             schemes
         } = theme
@@ -28,6 +30,17 @@ export const useThemeDiv = (theme: ZnUITheme) => {
             const palette = palettes[paletteName]
             for (const paletteNum in palette) {
                 styles += paletteProp(palette, paletteNum) + ': ' + palette[paletteNum] + ';'
+            }
+        }
+
+        for (const type in typeScale) {
+            const typeScales = typeScale[type]
+            for (const scale in typeScales) {
+                const props = typeScales[scale]
+                for (const prop in props) {
+                    const value = typeof props[prop] == 'number' ? props[prop] + 'px': props[prop]
+                    styles += typeScaleProp(type, scale, prop) + ': ' + value + ';'
+                }
             }
         }
 

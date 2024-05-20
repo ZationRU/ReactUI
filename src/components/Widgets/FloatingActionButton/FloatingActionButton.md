@@ -43,28 +43,28 @@ const Icon = <ZnUIIconAddFilled/>;
         <FloatingActionButton
             appearance="surface"
             size={isExpanded ? "expanded" : "small"}
-            text="Text"
+            text="Typography"
             onClick={onExpandClick}>
             {Icon}
         </FloatingActionButton>
         <FloatingActionButton
             appearance="primary"
             size={isExpanded ? "expanded" : "default"}
-            text="Text"
+            text="Typography"
             onClick={onExpandClick}>
             {Icon}
         </FloatingActionButton>
         <FloatingActionButton
             appearance="secondary"
             size={isExpanded ? "expanded" : "large"}
-            text="Text"
+            text="Typography"
             onClick={onExpandClick}>
             {Icon}
         </FloatingActionButton>
         <FloatingActionButton
             appearance="tertiary"
             size="expanded"
-            text="Text"
+            text="Typography"
             onClick={onExpandClick}>
             {Icon}
         </FloatingActionButton>

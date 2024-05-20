@@ -1,6 +1,7 @@
 import {ZnUIShapes} from "./shapes";
 import {ZnUIMotion} from "./motion";
 import {ZnUIElevation} from "./elevation";
+import {ZnUITextTypeScale} from "./typescale";
 
 export type ZnUISchemeData = {
     primary: string
@@ -97,4 +98,5 @@ export type ZnUITheme = {
     shapes?: ZnUIShapes
     motion?: ZnUIMotion
     elevation?: ZnUIElevation
+    typeScale?: ZnUITextTypeScale
 }

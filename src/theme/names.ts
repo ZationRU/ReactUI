@@ -24,4 +24,8 @@ export const elevationProp = (name: string) => {
     return '--znui-elevation-' + name;
 }
 
+export const typeScaleProp = (type: string, scale: string, prop: string) => {
+    return '--znui-typescale-' + type + '-' + scale + '-' + kebabize(prop);
+}
+
 export const propAsCSSVar = (prop: string) => 'var('+prop+')';

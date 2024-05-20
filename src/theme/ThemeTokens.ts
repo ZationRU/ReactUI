@@ -1,8 +1,18 @@
 import {ZnUISchemeData, ZnUITheme} from "./theme.types";
-import {durationProp, elevationProp, motionProp, paletteProp, propAsCSSVar, shapeProp, styleProp} from "./names";
+import {
+    durationProp,
+    elevationProp,
+    motionProp,
+    paletteProp,
+    propAsCSSVar,
+    shapeProp,
+    styleProp,
+    typeScaleProp
+} from "./names";
 import {ZnUIMotion} from "./motion";
 import {ZnUIElevation} from "./elevation";
 import {ZnUIShapes} from "./shapes";
+import {ZnUITypeScales} from "./typescale";
 
 const NestedThemeTokens = {
     shapes: new Proxy({}, {
@@ -28,6 +38,19 @@ const NestedThemeTokens = {
             return propAsCSSVar(motionProp(prop.toString()));
         },
     }) as ZnUIMotion,
+    typeScales: new Proxy({}, {
+        get(_, type) {
+            return new Proxy({}, {
+                get(_, scale) {
+                    return new Proxy({}, {
+                        get(_, prop) {
+                            return propAsCSSVar(typeScaleProp(type.toString(), scale.toString(), prop.toString()));
+                        },
+                    })
+                },
+            })
+        },
+    }) as ZnUITypeScales,
     palettes: new Proxy({}, {
         get(_, palette) {
             return new Proxy({}, {

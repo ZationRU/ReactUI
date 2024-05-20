@@ -1,11 +1,8 @@
-import './Label.css';
 import React from "react";
-import classNames from "classnames";
-import {useAdaptiveValue, Adaptive} from "../../../adaptive";
 import {HTMLZnUIProps} from "../../../styled";
-import {znui} from "../../Basic";
+import {Typescale, TypescaleProps} from "../Typescale/Typescale";
 export interface LabelProps extends HTMLZnUIProps<'h4'> {
-    size?: Adaptive<'small'|'medium'|'large'>;
+    size?: TypescaleProps['scale'];
     prominent?: boolean;
 }
 
@@ -17,20 +14,19 @@ export interface LabelProps extends HTMLZnUIProps<'h4'> {
 export const Label = (props: LabelProps) => {
     const {
         size,
-        className,
         prominent = false,
         ...otherProps
     } = props
 
 
-    return <znui.h4
-        ms={0}
-        me={0}
-        overflow="unset"
-        className={classNames(
-            className,
-            'znui-label-'+(useAdaptiveValue(size) || 'medium')+(prominent?'--prominent':'')
-        )}
+
+    return <Typescale
+        as='h4'
+        scale={size}
+        type='label'
+        {...prominent&&{
+            fontWeight: 600
+        }}
         {...otherProps}
     />
 }
