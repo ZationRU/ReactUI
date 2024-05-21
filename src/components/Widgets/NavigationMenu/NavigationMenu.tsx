@@ -108,10 +108,10 @@ NavigationMenu.Item = (props: NavigationDrawerItemProps) => {
             gap={12}
             zIndex={1}
             align='center'
-            pv={8}
-            ph={16}
+            pl={16}
+            pr={24}
+            pv={16}
             flex={1}
-            maxW='calc(100% - 32px)'
         >
             {
                 icon && <IconWrapper size={24}>{icon}</IconWrapper>
