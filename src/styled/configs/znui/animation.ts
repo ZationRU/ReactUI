@@ -27,7 +27,7 @@ export const animation = {
 
             transitions.push(kebabize(cssObjectKey) + " " + transition + " " + (typeof duration === 'number' ? duration + 'ms' : duration))
             const value = cssValue?.value ?? cssValue
-            if(value) {
+            if(value !== undefined) {
                 values[cssObjectKey] = value
             }
         }
