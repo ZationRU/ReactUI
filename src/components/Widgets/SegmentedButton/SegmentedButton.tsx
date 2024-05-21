@@ -3,6 +3,7 @@ import {LayoutProps, FlexLayout, HStack} from "../../Basic";
 import {Label} from "../../Typography";
 import {StateLayer} from "../../Layouts";
 import {IconWrapper} from "../../Utils";
+import {ThemeTokens} from "../../../theme";
 
 export type SelectEventHandler = (id: string|string[]) => void
 
@@ -132,7 +133,7 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
             return <FlexLayout
                 {...layoutRest}
                 flex={1}
-                c="var(--znui-on-secondary-container)"
+                c={isSelected ? ThemeTokens.onSecondaryContainer: ThemeTokens.onSurface}
                 justify="center"
                 align="center"
                 borderRight="1px var(--znui-outline) solid"
