@@ -1,5 +1,4 @@
 import React, {useRef, useCallback, ReactNode, ForwardedRef, useMemo} from "react";
-import "./Switch.css";
 import {IconWrapper} from "../../Utils";
 import {FormWidgetBase} from "../../Utils";
 import {mergeRefs} from "../../../utils";
