@@ -92,7 +92,7 @@ NavigationRail.Item = (props: NavigationRailItemProps) => {
         justifyContent='space-between'
         alignItems='center'
         alignSelf='stretch'
-        color={ThemeTokens.onSurfaceVariant}
+        color={selected ? ThemeTokens.onSecondaryContainer: ThemeTokens.onSurfaceVariant}
         maxH={80}
         userSelect='none'
         {...layoutProps}

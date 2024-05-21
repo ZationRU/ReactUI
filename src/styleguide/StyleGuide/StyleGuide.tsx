@@ -22,7 +22,9 @@ export default function StyleGuide(props: StyleGuideProps) {
                 cssRevision,
             }}
         >
-            <ZnUIProvider initialScheme='system'>
+            <ZnUIProvider
+                initialScheme='system'
+            >
                 <ZnUIPortalDestination/>
 
                 <StyleGuideRenderer
