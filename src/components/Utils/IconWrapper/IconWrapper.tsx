@@ -21,6 +21,8 @@ export const IconWrapper = (props: IconWrapperProps) => {
         size,
         sizeTransition = ThemeTokens.motion.emphasized,
         sizeTransitionDuration = ThemeTokens.motion.duration.medium2,
+        to,
+        pseudos,
         ...otherProps
     } = props
 
@@ -35,6 +37,7 @@ export const IconWrapper = (props: IconWrapperProps) => {
             layoutSize: 'var(--icon-size)',
             fontSize: 'var(--icon-size)',
             lineHeight: 'var(--icon-size)',
+            ...to,
         }}
         pseudos={{
             '& > svg': {
@@ -45,7 +48,8 @@ export const IconWrapper = (props: IconWrapperProps) => {
                     baseDuration: sizeTransitionDuration,
                     layoutSize: 'var(--icon-size)',
                 }
-            }
+            },
+            ...pseudos
         }}
         {...otherProps}
     />
