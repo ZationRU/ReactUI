@@ -61,7 +61,7 @@ export const useThemeDiv = (theme: ZnUITheme) => {
 
         for (const schemesKey in schemes) {
             const schemeData = schemes[schemesKey]
-            styles += `&[data-scheme='${schemesKey}']{`
+            styles += `&[data-scheme='${kebabize(schemesKey)}']{`
             styles += `color-scheme: ` + (schemesKey.startsWith('dark') ? 'dark': 'light') + ';'
             for (const schemeDataKey in schemeData) {
                 styles += styleProp(schemeDataKey) + ': ' + schemeData[schemeDataKey] + ';'
