@@ -1,4 +1,4 @@
-import {Layout, LayoutProps, FlexLayout, HStack} from "../../Basic";
+import {Layout, LayoutProps, FlexLayout, HStack, VStack} from "../../Basic";
 import {StateLayer} from "../../Layouts";
 import {Label, Title} from "../../Typography";
 import React, {ReactNode} from "react";
@@ -35,17 +35,17 @@ export function NavigationMenu(props: NavigationMenuProps) {
         {...layoutRest}
         clip={true}
     >
-        <Layout
+        <VStack
             p={12}
             pseudos={{
-                '& > .NavigationDrawerItem': {
+                '& button[data-type="navigation-menu-item"]': {
                     h: compat ? 48 : undefined
                 },
                 ...pseudos
             }}
         >
             {children}
-        </Layout>
+        </VStack>
     </Layout>
 }
 
@@ -68,8 +68,14 @@ NavigationMenu.Item = (props: NavigationDrawerItemProps) => {
     } = props
 
     return <HStack
+        as='button'
+        data-type='navigation-menu-item'
+        outline='none'
+        border='none'
+        bg='none'
         cursor='pointer'
         pos='relative'
+        textAlign='left'
         userSelect='none'
         align='center'
         h={56}
@@ -110,7 +116,6 @@ NavigationMenu.Item = (props: NavigationDrawerItemProps) => {
             align='center'
             pl={16}
             pr={24}
-            pv={16}
             flex={1}
         >
             {

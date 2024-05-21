@@ -23,7 +23,9 @@ export function ComponentsPage(props: ComponentsPageProps) {
             <NavigationMenu p={0} compat={true} minW={200}>
                 <Layout overflow="auto" maxH="100vh" minH="100vh">
                     <Layout ph={10} overflow="auto" maxH="100vh" minH="100vh">
-                        {props.toc}
+                        <VStack>
+                            {props.toc}
+                        </VStack>
                     </Layout>
                 </Layout>
             </NavigationMenu>
