@@ -2,7 +2,6 @@ import React, {useEffect, useMemo, useRef, useState} from "react";
 import {useForceUpdate, useZnUIProviderPortalCreator, ZnUIProviderPortalContext} from "../portals";
 import {ZnUITheme, ThemeContext, ZnUIScheme, useThemeDiv, defaultTheme} from "../../../theme";
 import {AdaptiveData, buildAdaptiveData, buildCurrentAdaptiveData, LayoutBreakpoint, AdaptiveContext} from "../../../adaptive";
-import './based.css';
 
 export interface ZnUIProviderProps {
     children: React.ReactNode
@@ -59,7 +58,7 @@ export const ZnUIProvider = (props: ZnUIProviderProps) => {
         return(() => {
             window.removeEventListener('resize', resizeListener);
         })
-    }, [data.currentBreakpoint, setData, props.currentBreakpoint])
+    }, [data.currentBreakpoint, setData, props.currentBreakpoint, fixedBreakpoint])
 
 
     useEffect(() => {
