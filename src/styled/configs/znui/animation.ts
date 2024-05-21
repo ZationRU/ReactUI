@@ -26,7 +26,10 @@ export const animation = {
             const duration = cssValue?.duration ?? baseDuration
 
             transitions.push(kebabize(cssObjectKey) + " " + transition + " " + (typeof duration === 'number' ? duration + 'ms' : duration))
-            values[cssObjectKey] = cssValue?.value ?? cssValue
+            const value = cssValue?.value ?? cssValue
+            if(value) {
+                values[cssObjectKey] = value
+            }
         }
 
         return {
@@ -38,7 +41,7 @@ export const animation = {
 
 export type ToAnimatedProp = {
     [K in keyof StyleProps]: StyleProps[K] | {
-    value: StyleProps[K],
+    value?: StyleProps[K],
     transition?: TransitionProps["transitionTimingFunction"],
     duration?: TransitionProps["transitionDuration"] | number
 }
