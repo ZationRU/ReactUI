@@ -1,6 +1,6 @@
 import {createContext, useContext} from "react";
 
-export type ZnUIScheme = 'light'|'dark'|'system'
+export type ZnUIScheme = 'light' | 'dark' | 'system'
 
 export type ThemeContextData = {
     /**

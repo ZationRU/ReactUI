@@ -1,12 +1,13 @@
-import React, {JSXElementConstructor, ReactNode, useEffect, useMemo, useRef, useState} from "react";
+import React, {useEffect, useMemo, useRef, useState} from "react";
 import {useForceUpdate, useZnUIProviderPortalCreator, ZnUIProviderPortalContext} from "../portals";
-import {ThemeContext, ZnUIScheme} from "../../../theme";
+import {ZnUITheme, ThemeContext, ZnUIScheme, useThemeDiv, defaultTheme} from "../../../theme";
 import {AdaptiveData, buildAdaptiveData, buildCurrentAdaptiveData, LayoutBreakpoint, AdaptiveContext} from "../../../adaptive";
 import './based.css';
-import './default-tokens.css';
 
 export interface ZnUIProviderProps {
     children: React.ReactNode
+    theme?: ZnUITheme
+
 
     /**
      * @default 'system'
@@ -17,8 +18,6 @@ export interface ZnUIProviderProps {
      * @default undefined
      */
     currentBreakpoint?: LayoutBreakpoint
-
-
     onSchemeChanged?: (currentScheme: ZnUIScheme) => void
 }
 
@@ -26,11 +25,13 @@ export interface ZnUIProviderProps {
 export const ZnUIProvider = (props: ZnUIProviderProps) => {
     const {
         children,
+        theme: themeRaw = defaultTheme,
         initialScheme,
         currentBreakpoint: fixedBreakpoint,
         onSchemeChanged
     } = props
 
+    const ThemeDiv = useThemeDiv(themeRaw)
     const ref = useRef<HTMLDivElement | null>(null)
     const [currentScheme, setCurrentScheme] = useState<ZnUIScheme>(initialScheme || 'system')
     const [currentSystemScheme, setCurrentSystemScheme] = useState(
@@ -82,8 +83,7 @@ export const ZnUIProvider = (props: ZnUIProviderProps) => {
 
     const portalData = useZnUIProviderPortalCreator(useForceUpdate())
 
-    return <div
-        className="ThemeProvider"
+    return <ThemeDiv
         data-scheme={resolvedScheme}
         ref={ref}
     >
@@ -101,5 +101,5 @@ export const ZnUIProvider = (props: ZnUIProviderProps) => {
                 </ZnUIProviderPortalContext.Provider>
             </AdaptiveContext.Provider>
         </ThemeContext.Provider>
-    </div>
+    </ThemeDiv>
 }

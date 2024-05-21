@@ -1,17 +1,16 @@
 import React, {PointerEvent, MutableRefObject, useRef, useMemo} from 'react';
-import "./StateLayer.css";
 import {Layout, LayoutProps} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
+import {keyframes} from "@emotion/react";
 
 export interface StateLayerProps extends LayoutProps {
-    state?: StateLayerStateData,
     ripple?: boolean
 }
 
 /**
  * Used for state layer for hover/focus effects. Also have function of ripple effect.
  * Always have absolute position and can create multiple elements in your component.
- * 
+ *
  * @param props
  * @constructor
  */
@@ -25,23 +24,36 @@ export function StateLayer(props: StateLayerProps) {
 
     return <>
         <Layout
-            className="state-layer"
+            className='state-layer'
+            pos='absolute'
+            posA={0}
+            to={{
+                baseDuration: ThemeTokens.motion.duration.medium2,
+                baseTransition: ThemeTokens.motion.emphasized,
+                background: 'transparent',
+                oc: 0
+            }}
             onPointerLeave={state.performUp}
             {...rest}
         />
+
         {ripple &&
             <>
-                <div className="ripple-trigger"
-                     ref={state.rippleTriggerRef}
-                     onPointerUp={state.performUp}
-                     onPointerCancel={state.performUp}
-                     onPointerLeave={state.performUp}
-                     onMouseOver={state.performUp}
-                     onPointerDown={ripple ? state.performDown : undefined}
+                <Layout
+                    className="ripple-trigger"
+                    pos='absolute'
+                    zIndex={2}
+                    posA={0}
+                    ref={state.rippleTriggerRef}
+                    onPointerUp={state.performUp}
+                    onPointerCancel={state.performUp}
+                    onPointerLeave={state.performUp}
+                    onMouseOver={state.performUp}
+                    onPointerDown={ripple ? state.performDown : undefined}
                 />
             </>
         }
-        </>
+    </>
 }
 
 export interface StateLayerStateData {
@@ -49,6 +61,12 @@ export interface StateLayerStateData {
     performDown: (event: PointerEvent<HTMLDivElement>) => void
     performUp: () => void
 }
+
+const rippleAnimation = keyframes`
+    to {
+        transform: scale(4);
+    }
+`
 
 export const useStateLayer = () => {
     const rippleTriggerRef = useRef<HTMLDivElement | null>(null)
@@ -71,8 +89,13 @@ export const useStateLayer = () => {
             if (rippleTriggerRef.current === null) return;
 
             const rippleSpan = document.createElement('span')
-
-            rippleSpan.className = "Ripple Ripple-Animation"
+            rippleSpan.style.position = 'absolute'
+            rippleSpan.style.transition = 'opacity 300ms ' + ThemeTokens.motion.emphasized
+            rippleSpan.style.opacity = '0.12'
+            rippleSpan.style.backgroundColor = 'currentColor'
+            rippleSpan.style.transform = 'none'
+            rippleSpan.style.borderRadius = '50%'
+            rippleSpan.style.animation = 'ripple ' + msOfRipple + 'ms ' + ThemeTokens.motion.emphasized + ' forwards'
             rippleSpan.style.width = rippleSpan.style.height = `${diameter}px`;
             rippleSpan.style.left = `${event.clientX - rect.left - radius}px`;
             rippleSpan.style.top = `${event.clientY - rect.top - radius}px`;
@@ -90,24 +113,26 @@ export const useStateLayer = () => {
 
         const performUp = () => {
             const now = new Date().getMilliseconds();
-            ripples.forEach(({ startTime, element}, index) => {
+            ripples.forEach(({startTime, element}, index) => {
                 const delayTime = -(now - startTime)
 
                 setTimeout(() => {
-                    element.className = "Ripple Ripple-Hidden"
+                    element.style.transform = 'scale(4)'
+                    element.style.opacity = '0'
 
                     setTimeout(() => {
                         element.style.width = element.style.height =
                             element.style.left = element.style.top = "";
 
-                        element.className = "Ripple"
+                        element.style.transform = 'none'
+                        element.style.opacity = '0.12'
 
                         setTimeout(() => {
                             element.remove()
                             ripples.slice(index, 1)
                         }, 20)
                     }, 300)
-                }, delayTime < 0 ?  msOfRipple - delayTime: 0)
+                }, delayTime < 0 ? msOfRipple - delayTime : 0)
             })
         }
 

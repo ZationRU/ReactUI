@@ -1,8 +1,10 @@
 import {HTMLZnUIProps} from "../../../styled";
-import {znui} from "../../Basic";
-import React, {ForwardedRef} from "react";
+import {LayoutProps, znui} from "../../Basic";
+import React, {ForwardedRef, JSXElementConstructor} from "react";
 
-export interface FormWidgetBaseProps extends HTMLZnUIProps<'input'> {}
+export interface FormWidgetBaseProps extends HTMLZnUIProps<'input'> {
+    BaseLayout?: JSXElementConstructor<LayoutProps>
+}
 
 const FormWidgetBaseInput = znui('input', {
     baseStyle: {
@@ -45,10 +47,15 @@ const inputPropsKeys = [
  */
 export const FormWidgetBase = React.forwardRef(
     (props: FormWidgetBaseProps, inputRef: ForwardedRef<HTMLInputElement>) => {
+        const {
+            BaseLayout = znui.span,
+            ...rest
+        } = props
+
         const inputProps: HTMLZnUIProps<'input'> = {}
         const layoutProps: HTMLZnUIProps<'input'>  = {}
 
-        for(const [key, value] of Object.entries(props)) {
+        for(const [key, value] of Object.entries(rest)) {
             if(inputPropsKeys.includes(key)) {
                 inputProps[key] = value
             }else{
@@ -61,7 +68,7 @@ export const FormWidgetBase = React.forwardRef(
             ...otherProps
         } = layoutProps
 
-        return <znui.span
+        return <BaseLayout
             position='relative'
             {...otherProps}
         >
@@ -70,6 +77,6 @@ export const FormWidgetBase = React.forwardRef(
                 ref={inputRef}
                 {...inputProps}
             />
-        </znui.span>
+        </BaseLayout>
     }
 )

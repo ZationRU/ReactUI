@@ -21,6 +21,7 @@ export const ImageView = React.forwardRef(
         } = props
 
         return <Layout
+            userSelect='none'
             {...rest}
         >
             <znui.img

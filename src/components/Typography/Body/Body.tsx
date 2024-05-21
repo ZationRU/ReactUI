@@ -1,12 +1,9 @@
-import './Body.css';
 import React from "react";
-import classNames from "classnames";
-import {useAdaptiveValue, Adaptive} from "../../../adaptive";
 import {HTMLZnUIProps} from "../../../styled";
-import {znui} from "../../Basic";
+import {Typescale, TypescaleProps} from "../Typescale/Typescale";
 
 export interface BodyProps extends HTMLZnUIProps<'h4'> {
-    size?: Adaptive<'small'|'medium'|'large'>;
+    size?: TypescaleProps['scale'];
 }
 
 /**
@@ -17,18 +14,14 @@ export interface BodyProps extends HTMLZnUIProps<'h4'> {
 export const Body = (props: BodyProps) => {
     const {
         size,
-        className,
         ...otherProps
     } = props
 
 
-    return <znui.h4
-        ms={0}
-        me={0}
-        overflow="unset"
-        className={classNames(
-            className,
-            'znui-body-'+(useAdaptiveValue(size) || 'medium')
-        )}
-        {...otherProps}/>
+    return <Typescale
+        as='h4'
+        scale={size}
+        type='body'
+        {...otherProps}
+    />
 }

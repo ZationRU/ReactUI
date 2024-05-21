@@ -32,7 +32,7 @@ const Icon = <ZnUIIconAddFilled/>;
         <Button mode="outline" icon={Icon} disabled>Disabled</Button>
     </HStack>
 
-    <Title>Text buttons</Title>
+    <Title>Typography buttons</Title>
     <HStack spacing={5}>
         <Button mode="text">Enabled</Button>
         <Button mode="text" disabled>Disabled</Button>

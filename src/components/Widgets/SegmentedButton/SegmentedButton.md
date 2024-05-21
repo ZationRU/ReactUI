@@ -41,7 +41,7 @@ const [iconSelectedId, setIconSelectedId] = useState(null);
     >
         <SegmentedButton.Segment id="1" icon={<ZnUIIconAddFilled/>}/>
         <SegmentedButton.Segment id="2" icon={<ZnUIIconAddFilled/>}/>
-        <SegmentedButton.Segment id="3" icon={<ZnUIIconAddFilled/>}>Text</SegmentedButton.Segment>
+        <SegmentedButton.Segment id="3" icon={<ZnUIIconAddFilled/>}>Typography</SegmentedButton.Segment>
     </SegmentedButton>
 </VStack>
 ```

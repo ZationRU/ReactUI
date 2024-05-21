@@ -1,6 +1,4 @@
-import "./NavigationRail.css";
 import React, {ReactNode} from "react";
-import classNames from "classnames";
 import {Layout, LayoutProps, VStack} from "../../Basic";
 import {StateLayer} from "../../Layouts";
 import {Label} from "../../Typography";
@@ -98,12 +96,6 @@ NavigationRail.Item = (props: NavigationRailItemProps) => {
         maxH={80}
         userSelect='none'
         {...layoutProps}
-        className={
-            classNames({
-                "NavigationRailItem": true,
-                "NavigationRailItem--selected": selected
-            })
-        }
     >
         <Layout
             pos='relative'
@@ -111,8 +103,21 @@ NavigationRail.Item = (props: NavigationRailItemProps) => {
             paddingVertical={4}
             shapeScale='lg'
             clip={true}
-            className="IconContainer">
-            <div className="background-state"/>
+        >
+
+            <Layout
+                pos='absolute'
+                top={0}
+                bottom={0}
+                shapeScale='lg'
+                bg={ThemeTokens.secondaryContainer}
+                to={{
+                    right: selected ? 0: '50%',
+                    left: selected ? 0: '50%',
+                    oc: selected ? 1: 0,
+                }}
+            />
+
             <StateLayer/>
 
             <IconWrapper

@@ -10,6 +10,8 @@ export const margin = {
     marginRight: asCSSProp("marginRight"),
     marginEnd: asCSSProp("marginBlockEnd"),
     marginStart: asCSSProp("marginBlockStart"),
+    marginInlineEnd: asCSSProp("marginInlineEnd"),
+    marginInlineStart: asCSSProp("marginInlineStart"),
     marginHorizontal: asCSSProp(["marginLeft", "marginRight"]),
     marginVertical: asCSSProp(["marginTop", "marginBottom"]),
 }
@@ -22,6 +24,8 @@ Object.assign(margin, {
     mr: margin.marginRight,
     me: margin.marginEnd,
     ms: margin.marginStart,
+    mie: margin.marginInlineEnd,
+    mis: margin.marginInlineStart,
     mh: margin.marginHorizontal,
     mv: margin.marginVertical,
 })
@@ -75,6 +79,20 @@ export interface MarginProps {
      */
     ms?: Adaptive<CSS.Property.MarginBlockStart|number>
     marginStart?: Adaptive<CSS.Property.MarginBlockStart|number>
+
+    /**
+     * Margin inline end
+     * @default undefined
+     */
+    mie?: Adaptive<CSS.Property.MarginInlineEnd|number>
+    marginInlineEnd?: Adaptive<CSS.Property.MarginInlineEnd|number>
+
+    /**
+     * Margin inline start
+     * @default undefined
+     */
+    mis?: Adaptive<CSS.Property.MarginInlineStart|number>
+    marginInlineStart?: Adaptive<CSS.Property.MarginBlockStart|number>
 
     /**
      * Margin horizontal (mh = margin left = margin right)

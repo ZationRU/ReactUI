@@ -13,7 +13,7 @@ const [mode, setMode] = React.useState([]);
 const [selected, setSelected] = React.useState('hub');
 
 <VStack spacing={15}>
-    <SegmentedButton selectedIds={mode} onSelect={setMode} multiselect={true}>
+    <SegmentedButton minSelected={0} selectedIds={mode} onSelect={setMode} multiselect={true}>
         <SegmentedButton.Segment id="compat">Compat</SegmentedButton.Segment>
         <SegmentedButton.Segment id="divider">Divider</SegmentedButton.Segment>
         <SegmentedButton.Segment id="headline">Headline</SegmentedButton.Segment>
