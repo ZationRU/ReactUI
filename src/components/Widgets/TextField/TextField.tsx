@@ -1,9 +1,7 @@
 import React from "react";
-import "./TextField.css";
 import {Layout, znui} from "../../Basic";
 import {HTMLZnUIProps, StyleProps} from "../../../styled";
 import {Body} from "../../Typography";
-import classNames from "classnames";
 import {ThemeTokens} from "../../../theme";
 import {ZnUITextTypeScale} from "../../../theme/typescale";
 
@@ -15,6 +13,11 @@ const FieldStyles: { [key: string]: TextFieldStyle } = {
                 borderBottom: '3px solid',
                 borderBottomColor: ThemeTokens.primary,
                 color: ThemeTokens.primary
+            },
+            error: {
+                borderBottom: '3px solid!important',
+                borderBottomColor: ThemeTokens.error+ '!important',
+                color: ThemeTokens.error + '!important',
             },
             bg: ThemeTokens.surfaceContainerHighest,
             borderLeft: 'none!important',
@@ -80,6 +83,11 @@ const FieldStyles: { [key: string]: TextFieldStyle } = {
                 borderWidth: 3,
                 borderColor: ThemeTokens.primary,
                 color: ThemeTokens.primary,
+            },
+            error: {
+                borderWidth: '3px!important',
+                borderColor: ThemeTokens.error + '!important',
+                color: ThemeTokens.error + '!important',
             },
             boxSizing: 'border-box',
             shapeScale: 'esm',
@@ -161,7 +169,8 @@ export interface TextFieldProps extends HTMLZnUIProps<"div"> {
 export type TextFieldStyle = {
     font: ZnUITextTypeScale
     root: StyleProps  & {
-        focused: StyleProps
+        focused: StyleProps,
+        error: StyleProps,
     }
     input: StyleProps & {
         focused: StyleProps
@@ -220,6 +229,7 @@ export const TextField = (props: TextFieldProps) => {
         font,
         root: {
             focused: rootFocused,
+            error: rootError,
             ...root
         },
         input: {
@@ -253,9 +263,9 @@ export const TextField = (props: TextFieldProps) => {
     return <Layout
         minW={210}
         pt={6}
-        className={classNames({
-            "TextField-Container--error": error,
-        }, className)}
+        {...error && {
+            color: ThemeTokens.error
+        }}
         userSelect='none'
         {...layoutProps}
     >
@@ -266,6 +276,10 @@ export const TextField = (props: TextFieldProps) => {
             mie={0} mis={0}
             pis={12} pie={0}
             ps={0} pe={0}
+            to={{
+                oc: disabled ? 0.34: 1,
+                pointerEvents: disabled ? 'none': 'all',
+            }}
             overflow="visible"
             pseudos={{
                 '& > input::-ms-reveal, & > input::-ms-clear': {
@@ -292,6 +306,12 @@ export const TextField = (props: TextFieldProps) => {
                     ...fontStyles,
                     ...textarea,
                 },
+                '&:hover > input::placeholder, &:hover > textarea::placeholder': {
+                    color: ThemeTokens.onSurfaceVariant
+                },
+                '&:hover': {
+                    color: ThemeTokens.onSurface
+                },
                 '&:focus-within > input': inputFocused,
                 '&:focus-within > textarea': textareaFocused,
                 '&:focus-within': {
@@ -313,14 +333,7 @@ export const TextField = (props: TextFieldProps) => {
                 }
             }}
             {...root}
-            // className={classNames(
-            //     "TextField",
-            //     {
-            //         "FilledTextView": mode === 'filled',
-            //         "TextField--labeled": label,
-            //         "TextField--disabled": disabled,
-            //     }
-            // )}
+            {...error && rootError}
         >
 
             {children}
