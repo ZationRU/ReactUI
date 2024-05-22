@@ -78,6 +78,7 @@ const useMenuContext = () => useContext(MenuContext)
 
 export interface MenuItemProps extends LayoutProps {
     icon?: React.ReactNode
+    trailingIcon?: React.ReactNode
     children: React.ReactNode
     supportingText?: React.ReactNode
 }
@@ -87,6 +88,7 @@ Menu.Item = React.forwardRef((props: MenuItemProps, ref: ForwardedRef<HTMLDivEle
 
     const {
         icon,
+        trailingIcon,
         children,
         supportingText,
         ...layoutRest
@@ -107,7 +109,7 @@ Menu.Item = React.forwardRef((props: MenuItemProps, ref: ForwardedRef<HTMLDivEle
             align="center"
         >
             {icon && <Center minLayoutSize={24}>
-                <IconWrapper size={20}>
+                <IconWrapper size={24}>
                     {icon}
                 </IconWrapper>
             </Center>}
@@ -124,6 +126,12 @@ Menu.Item = React.forwardRef((props: MenuItemProps, ref: ForwardedRef<HTMLDivEle
                     </Body>
                 }
             </VStack>
+
+            {trailingIcon && <Center minLayoutSize={24}>
+                <IconWrapper size={24}>
+                    {trailingIcon}
+                </IconWrapper>
+            </Center>}
         </HStack>
     </Layout>
 })

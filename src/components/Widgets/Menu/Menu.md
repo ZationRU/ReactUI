@@ -42,7 +42,7 @@ import {IconButton, Divider, VStack, TextField} from "@znui/react";
             <Divider/>
             <Menu>
                 <Menu.Trigger>
-                    <Menu.Item>
+                    <Menu.Item trailingIcon={<ZnUIIconMoreFilled/>}>
                         Submenu Click Item
                     </Menu.Item>
                 </Menu.Trigger>
