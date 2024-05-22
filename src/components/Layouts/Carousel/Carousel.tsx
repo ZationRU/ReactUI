@@ -47,14 +47,12 @@ export const Carousel = (props: CarouselProps) => {
 
 export interface CarouselItemProps extends LayoutProps {
     imageBackground?: string
-    size: LayoutProps['height']
 }
 
 export const CarouselItem = (props: CarouselItemProps) => {
     const {
         imageBackground,
         children,
-        size,
         ...rest
     } = props
 
@@ -62,8 +60,6 @@ export const CarouselItem = (props: CarouselItemProps) => {
         pos="relative"
         shapeScale='lg'
         clip={true}
-        h={size}
-        w={size}
         userSelect='none'
         {...rest}
     >

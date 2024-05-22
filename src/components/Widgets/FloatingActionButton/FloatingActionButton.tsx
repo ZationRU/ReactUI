@@ -34,6 +34,7 @@ export function FloatingActionButton(
         text,
         elevation = "1",
         children,
+        to,
         ...otherProps
     } = props
 
@@ -68,7 +69,8 @@ export function FloatingActionButton(
                 'expanded': 16,
                 'small': 8,
                 'large': 30,
-            }[s]
+            }[s],
+            ...to
         }}
         {...otherProps}
         aria-label={text}

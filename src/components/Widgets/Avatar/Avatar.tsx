@@ -47,10 +47,10 @@ export function Avatar(props: AvatarProps) {
             bg: isTextAvatar ?
                 ThemeTokens.primaryContainer:
                 ThemeTokens.surfaceContainerHigh,
+            minLayoutSize: size,
+            layoutSize: size
         }}
         c={ThemeTokens.onPrimaryContainer}
-        minLayoutSize={size}
-        layoutSize={size}
         pos='relative'
         {...otherProps}
     >
