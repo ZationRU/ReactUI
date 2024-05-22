@@ -29,7 +29,7 @@ export const useThemeDiv = (theme: ZnUITheme) => {
         for (const paletteName in palettes) {
             const palette = palettes[paletteName]
             for (const paletteNum in palette) {
-                styles += paletteProp(palette, paletteNum) + ': ' + palette[paletteNum] + ';'
+                styles += paletteProp(paletteName, paletteNum) + ': ' + palette[paletteNum] + ';'
             }
         }
 
