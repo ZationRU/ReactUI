@@ -1,6 +1,7 @@
 ```tsx
-import {Layout, FloatingActionButton, Button, NavigationRail, Badge} from "@znui/react";
+import {HStack, VStack, SegmentedButton, FloatingActionButton, Button, NavigationRail, Badge} from "@znui/react";
 import {
+    ZnUIIconAddFilled,
     ZnUIIconHomeFilled,
     ZnUIIconCommentsFilled,
     ZnUIIconNotificationsFilled,
@@ -8,12 +9,10 @@ import {
 } from "@znui/icons"
 
 
+const [label, setLabel] = React.useState('always');
+const [alignment, setAlignment] = React.useState('start');
 const [selected, setSelected] = React.useState('hub');
 const [menu, setMenu] = React.useState(true);
-
-const Icon = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <circle cx="30" cy="30" r="30" stroke="currentColor" fill="currentColor" />
-</svg>;
     
 const Menu = menu &&
     <FloatingActionButton 
@@ -21,55 +20,76 @@ const Menu = menu &&
         elevation={false}
         size="default"
     >
-        <Icon/>
-    </FloatingActionButton>
-    
-const Items = <>
-    <NavigationRail.Item
-        selected={selected==='hub'}
-        onClick={() => setSelected('hub')}
-        badge={<Badge/>}
-        title="Hub"
-    >
-        <ZnUIIconHomeFilled/>
-    </NavigationRail.Item>
+        <ZnUIIconAddFilled/>
+    </FloatingActionButton>;
 
-    <NavigationRail.Item
-        selected={selected==='messages'}
-        onClick={() => setSelected('messages')}
-        badge={<Badge size="single">5</Badge>}
-        title="Messages"
-    >
-        <ZnUIIconCommentsFilled/>
-    </NavigationRail.Item>
+<HStack gap={18}>
+    <NavigationRail menu={Menu} h="50vh" alignment={alignment} shapeScale='md'>
+        <NavigationRail.Item
+            label={label}
+            selected={selected==='hub'}
+            onClick={() => setSelected('hub')}
+            badge={<Badge/>}
+            title="Hub"
+        >
+            <ZnUIIconHomeFilled/>
+        </NavigationRail.Item>
 
-    <NavigationRail.Item
-        selected={selected==='notifications'}
-        onClick={() => setSelected('notifications')}
-        badge={<Badge size="multiple">32</Badge>}
-        title="Notifications"
-    >
-        <ZnUIIconNotificationsFilled/>
-    </NavigationRail.Item>
+        <NavigationRail.Item
+            label={label}
+            selected={selected==='messages'}
+            onClick={() => setSelected('messages')}
+            badge={<Badge size="single">5</Badge>}
+            title="Messages"
+        >
+            <ZnUIIconCommentsFilled/>
+        </NavigationRail.Item>
 
-    <NavigationRail.Item
-        selected={selected==='settings'}
-        onClick={() => setSelected('settings')}
-        title="Settings"
-    >
-        <ZnUIIconSettingsFilled/>
-    </NavigationRail.Item>
-</>;
-    
-<div>
-    <Button onClick={() => setMenu(!menu)}>
-        Menu
-    </Button>
+        <NavigationRail.Item
+            label={label}
+            selected={selected==='notifications'}
+            onClick={() => setSelected('notifications')}
+            badge={<Badge size="multiple">32</Badge>}
+            title="Notifications"
+        >
+            <ZnUIIconNotificationsFilled/>
+        </NavigationRail.Item>
 
-    <Layout display="flex" gap={12}>
-        <NavigationRail menu={Menu} h="80vh">{Items}</NavigationRail>
-        <NavigationRail menu={Menu} h="80vh" alignment="center">{Items}</NavigationRail>
-        <NavigationRail menu={Menu} h="80vh" alignment="end">{Items}</NavigationRail>
-    </Layout>
-</div>
+        <NavigationRail.Item
+            label={label}
+            selected={selected==='settings'}
+            onClick={() => setSelected('settings')}
+            title="Settings"
+        >
+            <ZnUIIconSettingsFilled/>
+        </NavigationRail.Item>
+    </NavigationRail>
+
+    <VStack gap={14}>
+        <VStack gap={4}>
+            Label behavior:
+            <SegmentedButton selectedIds={label} onSelect={setLabel} w={412}>
+                <SegmentedButton.Segment id="always">Always</SegmentedButton.Segment>
+                <SegmentedButton.Segment id="hidden">Hidden</SegmentedButton.Segment>
+                <SegmentedButton.Segment id="on-selected">On select</SegmentedButton.Segment>
+            </SegmentedButton>
+        </VStack>
+
+        <VStack gap={4}>
+            Alignment:
+            <SegmentedButton selectedIds={alignment} onSelect={setAlignment} w={412}>
+                <SegmentedButton.Segment id="start">Start</SegmentedButton.Segment>
+                <SegmentedButton.Segment id="center">Center</SegmentedButton.Segment>
+                <SegmentedButton.Segment id="end">End</SegmentedButton.Segment>
+            </SegmentedButton>
+        </VStack>
+
+        <HStack>
+            <Button onClick={() => setMenu(!menu)}>
+                Toggle Menu
+            </Button>
+        </HStack>
+    </VStack>
+</HStack>
+
 ```

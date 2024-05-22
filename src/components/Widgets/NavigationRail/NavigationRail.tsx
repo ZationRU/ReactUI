@@ -69,6 +69,7 @@ export function NavigationRail(props: NavigationRailProps) {
 export interface NavigationRailItemProps extends LayoutProps {
     title?: string,
     selected?: boolean
+    label?: 'always' | 'hidden' | 'on-selected'
     badge?: React.ReactElement
 }
 
@@ -78,10 +79,12 @@ NavigationRail.Item = (props: NavigationRailItemProps) => {
         title,
         selected = false,
         badge,
+        label = "always",
         ...layoutProps
     } = props
 
     const badgeSize: BadgeProps['size'] = badge?.props?.size || 'small'
+    const labelShowed = label === "always" || (label === 'on-selected' && selected)
 
     return <VStack
         pos='relative'
@@ -143,7 +146,7 @@ NavigationRail.Item = (props: NavigationRailItemProps) => {
             <Label
                 color={ThemeTokens.onSurface}
                 to={{
-                    opacity: selected ? 1 : 0
+                    opacity: labelShowed ? 1 : 0
                 }}
                 size="medium"
                 prominent={true}
