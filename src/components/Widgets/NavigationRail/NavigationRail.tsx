@@ -1,5 +1,5 @@
 import React, {ReactNode} from "react";
-import {Layout, LayoutProps, VStack} from "../../Basic";
+import {Center, Layout, LayoutProps, VStack} from "../../Basic";
 import {StateLayer} from "../../Layouts";
 import {Label} from "../../Typography";
 import {IconWrapper} from "../../Utils";
@@ -92,61 +92,68 @@ NavigationRail.Item = (props: NavigationRailItemProps) => {
         w='inherit'
         cursor='pointer'
         gap={4}
-        justifyContent='space-between'
+        justifyContent='center'
         alignItems='center'
         alignSelf='stretch'
         color={selected ? ThemeTokens.onSecondaryContainer: ThemeTokens.onSurfaceVariant}
-        maxH={80}
+        maxH={56}
         userSelect='none'
         {...layoutProps}
     >
-        <Layout
-            pos='relative'
-            paddingHorizontal={16}
-            paddingVertical={4}
-            shapeScale='lg'
-            clip={true}
-        >
-
+        <VStack align='center'>
             <Layout
-                pos='absolute'
-                top={0}
-                bottom={0}
-                shapeScale='lg'
-                bg={ThemeTokens.secondaryContainer}
-                to={{
-                    right: selected ? 0: '50%',
-                    left: selected ? 0: '50%',
-                    oc: selected ? 1: 0,
-                }}
-            />
-
-            <StateLayer/>
-
-            <IconWrapper
-                size={24}
-                zIndex={1}
                 pos='relative'
-                c='currentcolor'
+                to={{
+                    pv: labelShowed ? 4: 16,
+                    shapeScale: labelShowed ? 'lg': 'full',
+                }}
+                paddingHorizontal={16}
+                clip={true}
             >
-                {children}
-            </IconWrapper>
+                <Layout
+                    pos='absolute'
+                    top={0}
+                    bottom={0}
+                    shapeScale='lg'
+                    bg={ThemeTokens.secondaryContainer}
+                    to={{
+                        right: selected ? 0: '50%',
+                        left: selected ? 0: '50%',
+                        oc: selected ? 1: 0,
+                    }}
+                />
 
-            {badge && <Layout
-                pos="absolute"
-                top={badgeSize === 'small' ? 4 : 2}
-                left={badgeSize === 'small' ? 38 : 28}
-                zIndex={1}
-            >
-                {badge}
-            </Layout>}
-        </Layout>
+                <StateLayer/>
+
+                <IconWrapper
+                    size={24}
+                    zIndex={1}
+                    pos='relative'
+                    c='currentcolor'
+                >
+                    {children}
+                </IconWrapper>
+
+                {badge && <Layout
+                    pos="absolute"
+                    to={{
+                        top: (badgeSize === 'small' ? 4 : 2) + (labelShowed ? 0: 12),
+                        left: badgeSize === 'small' ? 38 : 28
+                    }}
+                    zIndex={1}
+                >
+                    {badge}
+                </Layout>}
+            </Layout>
+
+        </VStack>
 
         {title &&
             <Label
                 color={ThemeTokens.onSurface}
                 to={{
-                    opacity: labelShowed ? 1 : 0
+                    opacity: labelShowed ? 1 : 0,
+                    maxH: labelShowed ? 100 : 0
                 }}
                 size="medium"
                 prominent={true}
