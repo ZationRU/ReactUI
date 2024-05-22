@@ -1,7 +1,7 @@
 import * as CSS from "csstype"
 
 type CSSProp = keyof CSS.Properties | (string & {})
-type TransformProp<T> = (value: T) => Record<string, any>
+type TransformProp<T> = (value: T, prevValues: Record<string, any>) => Record<string, any>
 
 export interface PropConfig {
     property: CSSProp | CSSProp[] | TransformProp<any>

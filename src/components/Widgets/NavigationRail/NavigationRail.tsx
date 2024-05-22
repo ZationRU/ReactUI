@@ -1,10 +1,8 @@
-import "./NavigationRail.css";
 import React, {ReactNode} from "react";
-import classNames from "classnames";
-import {Layout, LayoutProps, VStack} from "../../Basic";
+import {Center, Layout, LayoutProps, VStack} from "../../Basic";
 import {StateLayer} from "../../Layouts";
 import {Label} from "../../Typography";
-import {IconWrapper} from "../IconWrapper/IconWrapper";
+import {IconWrapper} from "../../Utils";
 import {ThemeTokens} from "../../../theme";
 import {BadgeProps} from "../Badge/Badge";
 
@@ -71,6 +69,7 @@ export function NavigationRail(props: NavigationRailProps) {
 export interface NavigationRailItemProps extends LayoutProps {
     title?: string,
     selected?: boolean
+    label?: 'always' | 'hidden' | 'on-selected'
     badge?: React.ReactElement
 }
 
@@ -80,10 +79,12 @@ NavigationRail.Item = (props: NavigationRailItemProps) => {
         title,
         selected = false,
         badge,
+        label = "always",
         ...layoutProps
     } = props
 
     const badgeSize: BadgeProps['size'] = badge?.props?.size || 'small'
+    const labelShowed = label === "always" || (label === 'on-selected' && selected)
 
     return <VStack
         pos='relative'
@@ -91,54 +92,68 @@ NavigationRail.Item = (props: NavigationRailItemProps) => {
         w='inherit'
         cursor='pointer'
         gap={4}
-        justifyContent='space-between'
+        justifyContent='center'
         alignItems='center'
         alignSelf='stretch'
-        color={ThemeTokens.onSurfaceVariant}
-        maxH={80}
+        color={selected ? ThemeTokens.onSecondaryContainer: ThemeTokens.onSurfaceVariant}
+        maxH={56}
         userSelect='none'
         {...layoutProps}
-        className={
-            classNames({
-                "NavigationRailItem": true,
-                "NavigationRailItem--selected": selected
-            })
-        }
     >
-        <Layout
-            pos='relative'
-            paddingHorizontal={16}
-            paddingVertical={4}
-            shapeScale='lg'
-            clip={true}
-            className="IconContainer">
-            <div className="background-state"/>
-            <StateLayer/>
-
-            <IconWrapper
-                size={24}
-                zIndex={1}
+        <VStack align='center'>
+            <Layout
                 pos='relative'
-                c='currentcolor'
+                to={{
+                    pv: labelShowed ? 4: 16,
+                    shapeScale: labelShowed ? 'lg': 'full',
+                }}
+                paddingHorizontal={16}
+                clip={true}
             >
-                {children}
-            </IconWrapper>
+                <Layout
+                    pos='absolute'
+                    top={0}
+                    bottom={0}
+                    shapeScale='lg'
+                    bg={ThemeTokens.secondaryContainer}
+                    to={{
+                        right: selected ? 0: '50%',
+                        left: selected ? 0: '50%',
+                        oc: selected ? 1: 0,
+                    }}
+                />
 
-            {badge && <Layout
-                pos="absolute"
-                top={badgeSize === 'small' ? 4 : 2}
-                left={badgeSize === 'small' ? 38 : 28}
-                zIndex={1}
-            >
-                {badge}
-            </Layout>}
-        </Layout>
+                <StateLayer/>
+
+                <IconWrapper
+                    size={24}
+                    zIndex={1}
+                    pos='relative'
+                    c='currentcolor'
+                >
+                    {children}
+                </IconWrapper>
+
+                {badge && <Layout
+                    pos="absolute"
+                    to={{
+                        top: (badgeSize === 'small' ? 4 : 2) + (labelShowed ? 0: 12),
+                        left: badgeSize === 'small' ? 38 : 28
+                    }}
+                    zIndex={1}
+                >
+                    {badge}
+                </Layout>}
+            </Layout>
+
+        </VStack>
 
         {title &&
             <Label
                 color={ThemeTokens.onSurface}
                 to={{
-                    opacity: selected ? 1 : 0
+                    opacity: labelShowed ? 1 : 0,
+                    maxH: labelShowed ? 100 : 0
                 }}
                 size="medium"
                 prominent={true}

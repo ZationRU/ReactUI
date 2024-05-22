@@ -10,7 +10,7 @@ import {
     ZnUIIconMoreFilled
 } from "@znui/icons";
 
-<CoordinatorLayout bg={ThemeTokens.surface} h={600} maxW={400} border="black solid 1px">
+<CoordinatorLayout bg={ThemeTokens.surface} h={600} maxW={400}>
     <AppBarLayout>
         <Toolbar>Title</Toolbar>
     </AppBarLayout>

@@ -1,6 +1,6 @@
 import React from "react";
 import {Layout, LayoutProps} from "../../Basic";
-import {StateLayer} from "../StateLayer/StateLayer";
+import {StateLayer, StateLayerProps} from "../StateLayer/StateLayer";
 
 export interface TappableProps extends LayoutProps {
     /**
@@ -9,6 +9,8 @@ export interface TappableProps extends LayoutProps {
      * @default true
      */
     ripple?: boolean
+
+    stateLayerProps?: StateLayerProps
 }
 
 export const Tappable = React.forwardRef(
@@ -16,6 +18,7 @@ export const Tappable = React.forwardRef(
         const {
             children,
             ripple = true,
+            stateLayerProps,
             ...otherProps
         } = props
 
@@ -26,7 +29,7 @@ export const Tappable = React.forwardRef(
             pos='relative'
             clip={true}
         >
-            <StateLayer ripple={ripple}/>
+            <StateLayer ripple={ripple} {...stateLayerProps}/>
             {children}
         </Layout>
     }

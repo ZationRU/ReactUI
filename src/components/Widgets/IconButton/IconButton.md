@@ -1,18 +1,34 @@
 ```tsx
-import {ZnUIIconLikeFilled, ZnUIIconMoreFilled} from "@znui/icons";
-import {HStack, IconButton, Badge} from "@znui/react";
+import {ZnUIIconLikeFilled} from "@znui/icons";
+import {GridLayout, IconButton} from "@znui/react";
 
-<HStack>
-    <IconButton disabled={true}>
+<GridLayout columns={2} spacing={5} gap={4}>
+    <IconButton mode="standard">
+        <ZnUIIconLikeFilled/>
+    </IconButton>
+    <IconButton mode="standard" disabled={true}>
+        <ZnUIIconLikeFilled/>
+    </IconButton>
+    
+    <IconButton mode="filled">
+        <ZnUIIconLikeFilled/>
+    </IconButton>
+    <IconButton mode="filled" disabled={true}>
         <ZnUIIconLikeFilled/>
     </IconButton>
 
-    <IconButton>
-        <ZnUIIconMoreFilled/>
+    <IconButton mode="tonal">
+        <ZnUIIconLikeFilled/>
+    </IconButton>
+    <IconButton mode="tonal" disabled={true}>
+        <ZnUIIconLikeFilled/>
     </IconButton>
 
-    <IconButton badge={<Badge size="single">1</Badge>}>
-        <ZnUIIconMoreFilled/>
+    <IconButton mode="outlined">
+        <ZnUIIconLikeFilled/>
     </IconButton>
-</HStack>
+    <IconButton mode="outlined" disabled={true}>
+        <ZnUIIconLikeFilled/>
+    </IconButton>
+</GridLayout>
 ```

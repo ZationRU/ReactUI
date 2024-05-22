@@ -1,5 +1,13 @@
 import React, {useCallback, useEffect, useState} from "react";
-import { Layout, useAdaptive, LayoutBreakpointsValues, NavigationBar, NavigationRail, Headline} from "../../";
+import {
+    Layout,
+    useAdaptive,
+    LayoutBreakpointsValues,
+    NavigationBar,
+    NavigationRail,
+    Headline,
+    ThemeTokens
+} from "../../";
 import {HomeInfoPage} from "./pages/HomeInfoPage";
 import {
     ZnUIIconHomeFilled,
@@ -25,7 +33,7 @@ interface StyleGuideRendererProps {
 const Pages = {
     home: HomeInfoPage,
     adaptive: MDXFactory(AdaptivePage),
-    'get-started': MDXFactory(GetStarted)
+    'get-started': MDXFactory(GetStarted),
 }
 
 const NavigationPagesLinks = [
@@ -103,8 +111,8 @@ export function StyleGuideRenderer(props: StyleGuideRendererProps) {
 
     const evalInContext = allSections[0].components[0].props.examples[0].evalInContext
     return <Layout
-        bg="var(--znui-background)"
-        color="var(--znui-on-background)"
+        bg={ThemeTokens.background}
+        color={ThemeTokens.onBackground}
         display='flex'
         direction={['column-reverse','row']}
         pos="absolute"

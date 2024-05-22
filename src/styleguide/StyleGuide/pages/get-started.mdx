@@ -39,20 +39,21 @@ export const PackageInstall = () => {
 
 <PackageInstall/>
 
-After installing ZnUI, you need to set up the <code>ThemeProvider</code> and <code>AdaptiveProvider</code> at the root of your application.
+After installing ZnUI, you need to set up the <code>ZnUIProvider</code> and <code>ZnUIPortal</code> at the root of your application.
+<code>ZnUIPortal</code> is util for dialogs and modals and must be one.
 
 ```tsx
 import * as React from 'react';
 
-import { ThemeProvider, AdaptiveProvider, Button } from '@znui/react'
+import { ZnUIProvider, Button } from '@znui/react'
 
 function App() {
   return (
-    <ThemeProvider scheme='system'>
-      <AdaptiveProvider>
+    <ZnUIProvider initialScheme='system'>
+        <ZnUIPortal/>
+
         <YourApplication />
-      </AdaptiveProvider>
-    </ThemeProvider>
+    </ZnUIProvider>
   )
 }
 function YourApplication() {

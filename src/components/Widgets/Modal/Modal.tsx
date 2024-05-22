@@ -1,7 +1,7 @@
 import React, {MouseEventHandler, ReactNode, useContext} from "react";
 import {Layout, Spacer, HStack, VStack, FlexLayoutProps} from "../../Basic";
 import {Toolbar} from "../Toolbar/Toolbar";
-import {IconButton} from "../IconButton/IconButton";
+import {ToolbarIconButton} from "../ToolbarIconButton/ToolbarIconButton";
 import {CoordinatorLayout, AppBarLayout, ScrollLayout} from "../../Layouts";
 import {ModalContext} from "../../../dialogs";
 
@@ -12,7 +12,7 @@ export interface ModalWrapperProps {
     bottomActionJustify?: FlexLayoutProps['justify']
     title?: string
     navigationIcon?: ReactNode
-    onClickNavigationIcon?: MouseEventHandler<HTMLDivElement>
+    onClickNavigationIcon?: MouseEventHandler<HTMLButtonElement>
     children?: ReactNode,
     innerChildren?: ReactNode
 }
@@ -45,7 +45,7 @@ export function Modal(props: ModalWrapperProps) {
 
     return <VStack
         maxH={isFullscreen? '100%': '80vh'}
-        minH={isFullscreen? '100vh': 'inherit'}
+        flex={1}
         pos='relative'
     >
         {innerChildren}
@@ -62,9 +62,9 @@ export function Modal(props: ModalWrapperProps) {
                     {toolbarAction}
 
                     {
-                        isFullscreen? action : <IconButton onClick={onClickNavigationIcon}>
+                        isFullscreen? action : <ToolbarIconButton onClick={onClickNavigationIcon}>
                             {navigationIcon}
-                        </IconButton>
+                        </ToolbarIconButton>
                     }
                 </>}
             >{title}</Toolbar>

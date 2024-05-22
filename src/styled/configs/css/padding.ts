@@ -10,6 +10,8 @@ export const padding = {
     paddingRight: asCSSProp("paddingRight"),
     paddingEnd: asCSSProp("paddingBlockEnd"),
     paddingStart: asCSSProp("paddingBlockStart"),
+    paddingInlineEnd: asCSSProp("paddingInlineEnd"),
+    paddingInlineStart: asCSSProp("paddingInlineStart"),
     paddingHorizontal: asCSSProp(["paddingLeft", "paddingRight"]),
     paddingVertical: asCSSProp(["paddingTop", "paddingBottom"]),
 }
@@ -22,6 +24,8 @@ Object.assign(padding, {
     pr: padding.paddingRight,
     pe: padding.paddingEnd,
     ps: padding.paddingStart,
+    pie: padding.paddingInlineEnd,
+    pis: padding.paddingInlineStart,
     ph: padding.paddingHorizontal,
     pv: padding.paddingVertical,
 })
@@ -75,6 +79,20 @@ export interface PaddingProps {
      */
     ps?: Adaptive<CSS.Property.PaddingBlockStart|number>
     paddingStart?: Adaptive<CSS.Property.PaddingBlockStart|number>
+
+    /**
+     * Padding end
+     * @default undefined
+     */
+    pie?: Adaptive<CSS.Property.PaddingInlineEnd|number>
+    paddingInlineEnd?: Adaptive<CSS.Property.PaddingInlineEnd|number>
+
+    /**
+     * Padding start
+     * @default undefined
+     */
+    pis?: Adaptive<CSS.Property.PaddingInlineStart|number>
+    paddingInlineStart?: Adaptive<CSS.Property.PaddingInlineStart|number>
 
     /**
      * Padding horizontal (ph = padding left = padding right)

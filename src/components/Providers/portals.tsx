@@ -1,15 +1,15 @@
 import React, {createContext, ReactNode, useContext, useMemo, useState} from "react";
 
-export const ZnUIProviderPortalContext = createContext<ZnUIPortalRegistrar>(() => {
-    throw new Error("Portal registration site not found. Please use <ThemeProvider/> or <AdaptiveProvider/> before using portals.")
-})
 
 export function useForceUpdate(){
     const setValue = useState(0)[1];
     return () => setValue(value => value + 1);
 }
 
-export type ZnUIPortalRegistrar = () => ZnUIPortal
+export type ZnUIPortalContext = {
+    register: () => ZnUIPortal
+    portals: ZnUIPortals
+}
 
 export interface ZnUIPortal {
     id: number
@@ -19,6 +19,13 @@ export interface ZnUIPortal {
 }
 
 export type ZnUIPortals = ZnUIPortal[]
+
+export const ZnUIProviderPortalContext = createContext<ZnUIPortalContext>({
+    register: () => {
+        throw new Error("Portal registration site not found. Please use <ThemeProvider/> or <AdaptiveProvider/> before using portals.")
+    },
+    portals: []
+})
 
 class ZnUIPortalImpl implements ZnUIPortal {
     id: number;
@@ -55,19 +62,19 @@ class ZnUIPortalImpl implements ZnUIPortal {
 export const usePortals = () => useContext(ZnUIProviderPortalContext)
 
 export const useZnUIProviderPortalCreator = (forceUpdate: () => void) => {
-    const mainPortal: ZnUIPortals = useMemo(() => [], [])
+    const portals: ZnUIPortals = useMemo(() => [], [])
 
-    const registerPortal = useMemo(() => (): ZnUIPortal => {
-        const portal = new ZnUIPortalImpl(mainPortal.length)
+    const register = useMemo(() => (): ZnUIPortal => {
+        const portal = new ZnUIPortalImpl(portals.length)
         portal.forceUpdate = forceUpdate
-        portal.mainPortal = mainPortal
-        mainPortal.push(portal)
+        portal.mainPortal = portals
+        portals.push(portal)
 
         return portal
-    }, [forceUpdate, mainPortal])
+    }, [forceUpdate, portals])
 
     return {
-        mainPortal,
-        registerPortal
+        portals,
+        register
     }
 }

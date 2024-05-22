@@ -1,6 +1,7 @@
 import {createContext, useContext} from "react";
 
-export type ZnUIScheme = 'light'|'dark'
+export type ZnUIScheme = 'light' | 'dark' | 'system'
+export type ZnUISchemeContrast = 'standard' | 'medium' | 'high'
 
 export type ThemeContextData = {
     /**
@@ -9,16 +10,26 @@ export type ThemeContextData = {
     currentScheme: ZnUIScheme
 
     /**
-     * Value is true if ThemeProvider uses system theme
+     * Current resolved scheme of theme
      */
-    isSystemScheme: boolean
+    resolvedScheme: Omit<ZnUIScheme, 'system'>
+
+    /**
+     * Current resolved scheme of theme
+     */
+    resolvedSchemeContrast: ZnUISchemeContrast
 
     /**
      * Changes scheme of theme.
-     * If scheme is system, call be ignored
      * @param theme
      */
     changeScheme: (theme: ZnUIScheme) => void
+
+    /**
+     * Changes contrast scheme of theme.
+     * @param theme
+     */
+    changeSchemeContrast: (theme: ZnUISchemeContrast) => void
 }
 
 export const ThemeContext = createContext<ThemeContextData|null>(null)

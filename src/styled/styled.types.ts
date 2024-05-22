@@ -44,7 +44,11 @@ type PseudoProps = {
     [K in keyof Pseudos]?: ZnUIStyleObject
 }
 
-export interface ZnUIProps extends StyleProps, PseudoProps {}
+export interface ZnUIProps extends StyleProps, PseudoProps {
+    pseudos?: {
+        [key: string]: StyleProps
+    }
+}
 
 export type OmitCommonProps<
     Target,

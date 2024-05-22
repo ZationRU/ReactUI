@@ -1,8 +1,9 @@
 import classNames from "classnames";
-import React, {useState} from "react";
-import {Center, Layout, LayoutProps, znui} from "../../Basic";
+import React from "react";
+import {Center, Layout, LayoutProps} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
 import {Title} from "../../Typography";
+import {ImageView} from "../ImageView/ImageView";
 
 export interface AvatarProps extends LayoutProps {
     image?: string
@@ -17,7 +18,6 @@ export interface AvatarProps extends LayoutProps {
  * @constructor
  */
 export function Avatar(props: AvatarProps) {
-    const [isLoaded, setIsLoaded] = useState(false)
     const {
         image,
         text,
@@ -29,7 +29,7 @@ export function Avatar(props: AvatarProps) {
         ...otherProps
     } = props
 
-    const isTextAvatar = text && (!image||!isLoaded)
+    const isTextAvatar = text && (!image)
 
     return <Layout
         className={classNames(
@@ -47,29 +47,26 @@ export function Avatar(props: AvatarProps) {
             bg: isTextAvatar ?
                 ThemeTokens.primaryContainer:
                 ThemeTokens.surfaceContainerHigh,
+            minLayoutSize: size,
+            layoutSize: size
         }}
         c={ThemeTokens.onPrimaryContainer}
-        minLayoutSize={size}
-        layoutSize={size}
         pos='relative'
         {...otherProps}
     >
         {
-            image && <znui.img
+            image && <ImageView
                 src={image}
-                alt={contentDescription}
-                to={{ oc: isLoaded? 1: 0 }}
+                alt={contentDescription || text}
                 layoutSize='100%'
                 verticalAlign='middle'
                 objectFit='cover'
                 pointerEvents='none'
-                fontWeight={500}
-                onLoad={() => setIsLoaded(true)}
             />
         }
 
         <Center as={Title} size='medium' fontSize={22/60*size} pos='absolute' posA={0}>
-            {isTextAvatar && text}
+            {isTextAvatar && text?.at(0)?.toUpperCase()}
         </Center>
     </Layout>
 }

@@ -1,7 +1,8 @@
-import React, {useRef} from "react";
+import React, {useRef, useState} from "react";
 import {Layout, FlexLayout} from "../../Basic";
 import {mergeRefs} from "../../../utils";
-import {FormWidgetBase, FormWidgetBaseProps} from "../FormWidgetBase";
+import {FormWidgetBase, FormWidgetBaseProps} from "../../Utils";
+import {ThemeTokens} from "../../../theme";
 
 export interface SliderProps extends FormWidgetBaseProps {
     /**
@@ -55,6 +56,7 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
     const activeTrackRef = useRef<HTMLDivElement|null>(null)
     const handleRef = useRef<HTMLDivElement|null>(null)
     const inputRef = useRef<HTMLInputElement|null>(null)
+    const [selected, setSelected] = useState(false)
 
     const {
         max = 100,
@@ -77,11 +79,18 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
 
     return <FormWidgetBase
         {...layoutRest}
-        h={20}
+        display='block'
+        h={44}
         p={3}
         type='range'
         max={max}
         min={min}
+        onFocus={() => {
+            setSelected(true)
+        }}
+        onBlur={() => {
+            setSelected(false)
+        }}
         value={_currentValue}
         step={step}
         ref={mergeRefs(ref, inputRef)}
@@ -93,36 +102,63 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
 
         <Layout
             pos="absolute"
-            left={10}
+            left={0}
             right={20}
-            h={4}
+            h={16}
+            top="calc(50% - 14px)"
             overflow="visible"
-            top="calc(50% - 2px)"
         >
+
 
             <Layout
                 as="span"
                 pos="absolute"
-                h={4}
+                h={16}
+                top={6}
+                borderRadius={4}
+                right={0}
+                left={'calc('+trackWidth+'%  + 14px)'}
+                maxW={"calc("+(100 - trackWidth)+"% - 14px)"}
+                bg={ThemeTokens.primaryContainer}
+            />
+
+            <Layout
+                as="span"
+                pos="absolute"
+                h={16}
                 borderRadius={4}
                 left={0}
+                top={6}
                 right={0}
-                bg="var(--znui-surface-variant)"
+                ref={activeTrackRef}
+                maxW={"calc("+trackWidth+"% - 6px)"}
+                bg={ThemeTokens.primary}
+                clip={true}
+            />
+
+            <Layout
+                as="span"
+                pos="absolute"
+                h={16}
+                top={11}
+                borderRadius={4}
+                right={4}
+                left={4}
             >
                 <FlexLayout
-                    w="calc(100% - 3px)"
+                    w="100%"
                     justify="space-between"
-                    ml={1}
                     mt={1}
                     clip={true}
                 >
                     {
-                        Array.from({ length: step<=1 ? 0: stepCount+1 }).map((it, i) =>
+                        Array.from({ length: stepCount + 1  }).map((_, i) =>
                             <Layout
                                 key={"step-"+i}
-                                layoutSize={2}
+                                layoutSize={4}
                                 shapeScale="full"
-                                bg="var(--znui-on-surface-variant)"
+                                oc={(step <= 1 ? (i === 0 || i === stepCount ? 1: 0): 1)*(i * step === currentValue ? 0: 1)}
+                                bg={i * step < currentValue ? ThemeTokens.onPrimary: ThemeTokens.onPrimaryContainer}
                             />
                         )
                     }
@@ -130,39 +166,20 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
             </Layout>
 
             <Layout
-                as="span"
-                pos="absolute"
-                h={4}
-                borderRadius={4}
-                left={0}
-                right={0}
-                ref={activeTrackRef}
-                maxW={trackWidth+"%"}
-                bg="var(--znui-primary)"
-                clip={true}
-            >
-                {
-                    Array.from({ length: step<=1 ? 0: stepCount+1 }).map((it, i) =>
-                        <Layout
-                            key={"step-"+i}
-                            layoutSize={2}
-                            shapeScale="full"
-                            bg="var(--znui-on-surface-variant)"
-                        />
-                    )
-                }
-            </Layout>
-
-            <Layout
                 pos="absolute"
                 shapeScale="full"
                 overflow="visible"
-                className="elevation-1"
-                left={"calc("+trackWidth+"% - 10px)"}
-                bg="var(--znui-primary)"
+                left={"calc("+trackWidth+"%)"}
+                bg={ThemeTokens.primary}
                 ref={handleRef}
                 top={-8}
-                layoutSize={20}/>
+                borderRadius={2}
+                h={44}
+                to={{
+                    ml: selected ? 4: 2,
+                    w: selected ? 2: 4
+                }}
+            />
         </Layout>
     </FormWidgetBase>
 })

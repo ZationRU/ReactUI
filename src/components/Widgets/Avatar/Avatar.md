@@ -1,17 +1,21 @@
 ```js
-import {Avatar} from "@znui/react";
+import {Avatar, HStack, VStack} from "@znui/react";
 
-<>
-    <Avatar size={24} text='L'/>
-    <Avatar size={48} text='L'/>
-    <Avatar size={96} text='L'/>
-
-    <Avatar size={24} image='https://static.zation.ru/photo/?f=46a6c52dbc4624dbd95164dd465b84ae65ee803ac74d8e07d1cf6294dcfed5b9&size=200'/>
-    <Avatar size={48} image='https://static.zation.ru/photo/?f=46a6c52dbc4624dbd95164dd465b84ae65ee803ac74d8e07d1cf6294dcfed5b9&size=200'/>
-    <Avatar size={96} image='https://static.zation.ru/photo/?f=46a6c52dbc4624dbd95164dd465b84ae65ee803ac74d8e07d1cf6294dcfed5b9&size=200'/>
-
-    <Avatar size={24} text='L' image='https://static.zation.ru/photo/?f=46a6c52dbc4624dbd95164dd465b84ae65ee803ac74d8e07d1cf6294dcfed5b9&size=200'/>
-    <Avatar size={48} text='L' image='https://static.zation.ru/photo/?f=46a6c52dbc4624dbd95164dd465b84ae65ee803ac74d8e07d1cf6294dcfed5b9&size=200'/>
-    <Avatar size={96} text='L' image='https://static.zation.ru/photo/?f=46a6c52dbc4624dbd95164dd465b84ae65ee803ac74d8e07d1cf6294dcfed5b9&size=200'/>
-</>
+<HStack gap={4} justify='space-between' w='100%'>
+    <VStack gap={12} align='center'>
+        <Avatar size={24} text='cat'/>
+        <Avatar size={48} text='cat'/>
+        <Avatar size={96} text='cat'/>
+    </VStack>
+    <VStack gap={12} align='center'>
+        <Avatar size={24} image='https://cataas.com/cat'/>
+        <Avatar size={48} image='https://cataas.com/cat'/>
+        <Avatar size={96} image='https://cataas.com/cat'/>
+    </VStack>
+    <VStack gap={12} align='center'>
+        <Avatar size={24} text='cat' image='https://cataas.com/cat?1'/>
+        <Avatar size={48} text='cat' image='https://cataas.com/cat?1'/>
+        <Avatar size={96} text='cat' image='https://cataas.com/cat?1'/>
+    </VStack>
+</HStack>
 ```

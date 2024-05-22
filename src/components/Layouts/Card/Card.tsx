@@ -2,7 +2,6 @@ import React from "react";
 import {Layout, LayoutProps} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
 import {StateLayer} from "../StateLayer/StateLayer";
-import classNames from "classnames";
 
 export interface CardProps extends LayoutProps {
     mode?: 'outlined'|'elevated'|'filled'
@@ -45,6 +44,8 @@ export function Card(props: CardProps) {
         onClick,
         children,
         className,
+        elevation = '1',
+        to,
         ...otherProps
     } = props
 
@@ -55,12 +56,10 @@ export function Card(props: CardProps) {
         cursor={onClick?"pointer":undefined}
         clip={true}
         {...otherProps}
-        className={classNames(
-            className,
-            {
-                "elevation-1": mode==='elevated'
-            }
-        )}
+        to={{
+            elevation: mode==='elevated' ? elevation: '0',
+            ...to
+        }}
         shapeScale={shapeScale}
     >
         <StateLayer ripple={!!onClick}/>

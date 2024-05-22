@@ -1,8 +1,9 @@
-import React, {createContext, CSSProperties, useMemo} from "react";
+import React, {createContext, useMemo} from "react";
 import {LayoutProps, FlexLayout, HStack} from "../../Basic";
 import {Label} from "../../Typography";
 import {StateLayer} from "../../Layouts";
-import {IconWrapper} from "../IconWrapper/IconWrapper";
+import {IconWrapper} from "../../Utils";
+import {ThemeTokens} from "../../../theme";
 
 export type SelectEventHandler = (id: string|string[]) => void
 
@@ -132,7 +133,7 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
             return <FlexLayout
                 {...layoutRest}
                 flex={1}
-                c="var(--znui-on-secondary-container)"
+                c={isSelected ? ThemeTokens.onSecondaryContainer: ThemeTokens.onSurface}
                 justify="center"
                 align="center"
                 borderRight="1px var(--znui-outline) solid"
@@ -161,7 +162,7 @@ SegmentedButton.Segment = (props: SegmentedButtonSegmentProps) => {
                 bg={isSelected?"var(--znui-secondary-container)":'none'}
             >
                 <StateLayer/>
-                <HStack ph={12} pv={10} clip>
+                <HStack ph={12} pv={10} clip={true}>
                     <IconWrapper
                         clip={true}
                         size={18}

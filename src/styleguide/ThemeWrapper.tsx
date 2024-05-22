@@ -1,28 +1,15 @@
 import * as React from 'react';
-import {ThemeProvider, AdaptiveProvider} from '../components';
-import {useEffect, useState} from "react";
-import {ZnUIScheme} from "../theme";
+import {ZnUIProvider} from "../components";
+import {ZnUIPortalDestination} from "../components";
+import {useProps} from "./ThemeSetupProps";
 
 const ThemeWrapper = ({children}: React.HTMLAttributes<HTMLDivElement>) => {
-    const [scheme, setScheme] = useState<ZnUIScheme>(
-        window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
-    )
+    const {scheme, schemeContrast} = useProps()
 
-    useEffect(() => {
-        const currentScheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
-        setScheme(currentScheme)
-
-        window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', function (e) {
-            const newTheme = e.matches ? "dark" : "light"
-            setScheme(newTheme)
-        });
-    }, [])
-
-    return <AdaptiveProvider>
-        <ThemeProvider scheme={scheme}>
-            {children}
-        </ThemeProvider>
-    </AdaptiveProvider>;
+    return <ZnUIProvider fixedSchema={scheme} fixedSchemeContrast={schemeContrast}>
+        <ZnUIPortalDestination/>
+        {children}
+    </ZnUIProvider>;
 };
 
 export default ThemeWrapper;

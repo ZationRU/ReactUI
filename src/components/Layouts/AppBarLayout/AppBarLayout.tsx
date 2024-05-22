@@ -9,7 +9,7 @@ import {mergeRefs} from "../../../utils";
 export type ScrollFlag = 'scroll'|'enterAlways'
 
 export class AppBarLayoutBehavior extends CoordinatorLayoutBehavior {
-    private defaultBackground: string | null = null
+    private defaultBackground: string = ThemeTokens.surface
 
     updateLiftedState(appBarLayout: HTMLElement, lift: boolean) {
         if (!this.defaultBackground && lift) {
@@ -36,16 +36,17 @@ export class AppBarLayoutBehavior extends CoordinatorLayoutBehavior {
 
             const scrollElements = (child.elementInstance as AppBarLayoutRefProps).getScrollElements()
             for (const scrollElement of scrollElements) {
-                // if(!scrollElement.ref.style.transition.includes('margin-top')) {
-                    scrollElement.ref.style.transition += ', margin-top 200ms '+ThemeTokens.motion.emphasized
-                // }
-
                 const height = scrollElement.ref.getBoundingClientRect().height
 
-                scrollElement.ref.style.marginTop = '-'+(y<height? y: height)+'px'
-                if(scrollElement.scrollFlags.includes('enterAlways')&&y!==0&&dy<0) {
-                    scrollElement.ref.style.marginTop = '0px'
-                    scrollElement.ref.style.transition += 'margin-top 200ms '+ThemeTokens.motion.emphasized
+                if(scrollElement.scrollFlags.includes('scroll')) {
+                    scrollElement.ref.style.transition += ', margin-top 200ms '+ThemeTokens.motion.emphasized
+                    scrollElement.ref.style.marginTop = '-'+(y<height? y: height)+'px'
+
+
+                    if(scrollElement.scrollFlags.includes('enterAlways')&&y!==0&&dy<0) {
+                        scrollElement.ref.style.marginTop = '0px'
+                        scrollElement.ref.style.transition += 'margin-top 200ms '+ThemeTokens.motion.emphasized
+                    }
                 }
             }
         }
@@ -136,11 +137,12 @@ export const AppBarLayout = React.forwardRef<AppBarLayoutRefProps>((
 
     return <Layout
         {...layoutRest}
+        bg={ThemeTokens.surface}
         transition={[
             'background 300ms var(--znui-emphasized-motion)',
             transition
         ].join(',')}
-        zIndex={1}
+        zIndex={2}
         top={0}
         posH={0}
         ref={mergeRefs((rawRef) => {
@@ -162,6 +164,7 @@ AppBarLayout.ScrollBehavior = () => new AppBarLayoutScrollBehavior()
 AppBarLayout.defaultBehavior = AppBarLayout.Behavior
 
 declare module 'react' {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     interface HTMLAttributes<T> {
         scrollFlags?: ScrollFlag[]
     }

@@ -4,6 +4,7 @@ import {asCSSProp} from "../../config";
 
 export const colors = {
     color: asCSSProp("color"),
+    caretColor: asCSSProp("caretColor"),
     fill: asCSSProp("fill"),
     stroke: asCSSProp("stroke"),
 }
@@ -37,6 +38,14 @@ export interface ColorsProps {
      * @link https://developer.mozilla.org/en-US/docs/Web/CSS/color
      */
     c?: Adaptive<CSS.Property.Color|string>
+
+    /**
+     * The CSS `color` property
+     *
+     * @default undefined
+     * @link https://developer.mozilla.org/en-US/docs/Web/CSS/color
+     */
+    caretColor?: Adaptive<CSS.Property.CaretColor|string>
 
     /**
      * The CSS `fill` property for icon svgs and paths

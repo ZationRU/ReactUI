@@ -71,14 +71,23 @@ export const CircularProgressIndicator = React.forwardRef(
         const rootStyles: HTMLZnUIProps<'div'> = {}
         const svgStyles: HTMLZnUIProps<'svg'> = {}
         const circleStyles: HTMLZnUIProps<'circle'> = {}
+        const subcircleStyles: HTMLZnUIProps<'circle'> = {}
 
         if(variant==='determinate') {
             rootStyles.transform = 'rotate(-90deg)'
+            const currentValue = value > 100 ? 100: value
 
             const circumference =  2 * Math.PI * ((CIRCLE_SIZE - thicknessResolved) / 2);
+            const circleCalculated = (((100 - currentValue) / 100) * circumference)
+
             circleStyles.strokeDasharray = circumference.toFixed(3);
-            circleStyles.strokeDashoffset = (((100 - value) / 100) * circumference).toFixed(3)+'px';
+            circleStyles.strokeDashoffset = circleCalculated.toFixed(3)+'px';
             circleStyles.transition = 'stroke-dashoffset '+(motionDuration||'300ms')+' '+motionFunction;
+
+            subcircleStyles.strokeDasharray = circumference.toFixed(3);
+            subcircleStyles.strokeDashoffset = currentValue === 0 || currentValue === 100 ?
+                '0px' : (circumference - circleCalculated + (circumference * 0.15))+'px';
+            subcircleStyles.transition = 'stroke-dashoffset '+(motionDuration||'300ms')+' '+motionFunction;
         }
 
 
@@ -91,8 +100,29 @@ export const CircularProgressIndicator = React.forwardRef(
                 animation={variant === 'indeterminate' ? rotateKeyframe+' infinite '+(motionDuration||'2.5s')+' linear' : ''}
                 {...rootStyles}
             >
+                { variant==='determinate' && <znui.svg
+                    display="block"
+                    pos='absolute'
+                    zIndex={-1}
+                    transform={'scale(-1, 1) rotate('+(180 + (2 * Math.PI * ((CIRCLE_SIZE - thicknessResolved) / 2))*0.27)+'deg)'}
+                    viewBox={`${CIRCLE_SIZE / 2} ${CIRCLE_SIZE / 2} ${CIRCLE_SIZE} ${CIRCLE_SIZE}`}
+                >
+                    <znui.circle
+                        cx={CIRCLE_SIZE}
+                        cy={CIRCLE_SIZE}
+                        r={(CIRCLE_SIZE - thicknessResolved) / 2}
+                        fill="none"
+                        strokeLinecap='round'
+                        strokeWidth={thicknessResolved}
+                        stroke={ThemeTokens.primaryContainer}
+                        {...subcircleStyles}
+                    />
+                </znui.svg>}
+
                 <znui.svg
                     display="block"
+                    pos='relative'
+                    zIndex={0}
                     viewBox={`${CIRCLE_SIZE / 2} ${CIRCLE_SIZE / 2} ${CIRCLE_SIZE} ${CIRCLE_SIZE}`}
                     animation={variant === 'indeterminate' ? dashKeyframe+' infinite '+
                         (motionDuration||'2.5s')+' '+motionFunction : ''}
@@ -104,6 +134,7 @@ export const CircularProgressIndicator = React.forwardRef(
                         cy={CIRCLE_SIZE}
                         r={(CIRCLE_SIZE - thicknessResolved) / 2}
                         fill="none"
+                        strokeLinecap='round'
                         strokeWidth={thicknessResolved}
                         stroke="currentColor"
                         {...circleStyles}

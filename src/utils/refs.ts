@@ -10,7 +10,6 @@ export const mergeRefs = <T extends HTMLElement>(...refs: React.ForwardedRef<T>[
                     ref.current = node
                 }
             }
-
         }
     }
 }
