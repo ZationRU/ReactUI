@@ -1,11 +1,11 @@
 ```tsx
-import {useDialogs, Button, Modal, useModalInterface, TextField} from "@znui/react";
+import {useDialogs, Button, Modal, useModalInterface, TextField, useModals} from "@znui/react";
 import {ZnUIIconCloseFilled} from "@znui/icons";
 
-const dialogs = useDialogs();
+const modal = useModals();
 
 <Button onClick={(e) => {
-    dialogs.showModal(({dialogInterface}) => {
+    modal(({dialogInterface}) => {
         return <Modal
             title="Edit example"
             action={
