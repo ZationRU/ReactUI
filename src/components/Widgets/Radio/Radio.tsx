@@ -1,11 +1,11 @@
 import React from "react";
 import {znui, Center} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
-import {FormWidgetBase, FormWidgetBaseProps} from "../../Utils/FormWidgetBase/FormWidgetBase";
+import {FormWidgetBase, FormWidgetBaseProps} from "../../Utils";
 export interface RadioProps extends FormWidgetBaseProps {}
 
 /**
- * Radio buttons let people select one option from a set of options
+ * Checkbox buttons let people select one option from a set of options
  */
 export const Radio = React.forwardRef(
     (props: RadioProps, inputRef: React.ForwardedRef<HTMLInputElement>) => {
