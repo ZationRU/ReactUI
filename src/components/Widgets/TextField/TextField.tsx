@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ForwardedRef} from "react";
 import {Layout, znui} from "../../Basic";
 import {HTMLZnUIProps, StyleProps} from "../../../styled";
 import {Body} from "../../Typography";
@@ -193,7 +193,7 @@ export type TextFieldStyle = {
  * @param props
  * @constructor
  */
-export const TextField = (props: TextFieldProps) => {
+export const TextField = React.forwardRef((props: TextFieldProps, forwardedRef: ForwardedRef<HTMLDivElement>) => {
     const {
         mode = 'outline',
         label,
@@ -263,6 +263,7 @@ export const TextField = (props: TextFieldProps) => {
     return <Layout
         minW={210}
         pt={6}
+        ref={forwardedRef}
         {...error && {
             color: ThemeTokens.error
         }}
@@ -367,4 +368,4 @@ export const TextField = (props: TextFieldProps) => {
             <Body size="small">{error || supportingText}</Body>
         </Layout>
     </Layout>
-}
+})
