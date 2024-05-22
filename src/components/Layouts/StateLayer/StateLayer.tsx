@@ -1,10 +1,21 @@
-import React, {PointerEvent, MutableRefObject, useRef, useMemo} from 'react';
+import React, {
+    PointerEvent,
+    MutableRefObject,
+    useRef,
+    useMemo,
+    JSXElementConstructor,
+    ForwardedRef,
+    ReactNode
+} from 'react';
 import {Layout, LayoutProps} from "../../Basic";
 import {ThemeTokens} from "../../../theme";
 import {keyframes} from "@emotion/react";
+import {HTMLZnUIProps} from "../../../styled";
 
 export interface StateLayerProps extends LayoutProps {
     ripple?: boolean
+    rippleProps?: HTMLZnUIProps<any>
+    rippleTrigger?: (props: HTMLZnUIProps<any>) => ReactNode
 }
 
 /**
@@ -14,16 +25,32 @@ export interface StateLayerProps extends LayoutProps {
  * @param props
  * @constructor
  */
-export function StateLayer(props: StateLayerProps) {
+export const StateLayer = React.forwardRef((props: StateLayerProps, ref: ForwardedRef<HTMLElement>) => {
     const {
         ripple = true,
+        rippleProps: outRippleProps,
+        rippleTrigger,
         ...rest
     } = props
 
     const state = useStateLayer()
 
+    const rippleProps: HTMLZnUIProps<any> = {
+        ...outRippleProps,
+        pos: 'absolute',
+        zIndex: 2,
+        posA: 0,
+        ref: state.rippleTriggerRef,
+        onPointerUp: state.performUp,
+        onPointerCancel: state.performUp,
+        onPointerLeave: state.performUp,
+        onMouseOver: state.performUp,
+        onPointerDown: ripple ? state.performDown : undefined,
+    }
+
     return <>
         <Layout
+            ref={ref}
             className='state-layer'
             pos='absolute'
             posA={0}
@@ -38,23 +65,12 @@ export function StateLayer(props: StateLayerProps) {
         />
 
         {ripple &&
-            <>
-                <Layout
-                    className="ripple-trigger"
-                    pos='absolute'
-                    zIndex={2}
-                    posA={0}
-                    ref={state.rippleTriggerRef}
-                    onPointerUp={state.performUp}
-                    onPointerCancel={state.performUp}
-                    onPointerLeave={state.performUp}
-                    onMouseOver={state.performUp}
-                    onPointerDown={ripple ? state.performDown : undefined}
-                />
-            </>
+            (rippleTrigger ? rippleTrigger(rippleProps): <Layout
+                {...rippleProps}
+            />)
         }
     </>
-}
+})
 
 export interface StateLayerStateData {
     rippleTriggerRef: MutableRefObject<HTMLDivElement | null>
