@@ -6,7 +6,7 @@ export interface FormWidgetBaseProps extends HTMLZnUIProps<'input'> {
     BaseLayout?: JSXElementConstructor<LayoutProps>
 }
 
-const FormWidgetBaseInput = znui('input', {
+export const FormWidgetBaseInput = znui('input', {
     baseStyle: {
         cursor: 'pointer',
         position: 'absolute',
@@ -42,6 +42,24 @@ const inputPropsKeys = [
     'step',
 ]
 
+export const resolveFormWidgetBaseProps = (props: HTMLZnUIProps<'input'>) => {
+    const inputProps: HTMLZnUIProps<'input'> = {}
+    const layoutProps: HTMLZnUIProps<'input'>  = {}
+
+    for(const [key, value] of Object.entries(props)) {
+        if(inputPropsKeys.includes(key)) {
+            inputProps[key] = value
+        }else{
+            layoutProps[key] = value
+        }
+    }
+
+    return {
+        inputProps,
+        layoutProps
+    }
+}
+
 /**
  * @internal
  */
@@ -52,16 +70,7 @@ export const FormWidgetBase = React.forwardRef(
             ...rest
         } = props
 
-        const inputProps: HTMLZnUIProps<'input'> = {}
-        const layoutProps: HTMLZnUIProps<'input'>  = {}
-
-        for(const [key, value] of Object.entries(rest)) {
-            if(inputPropsKeys.includes(key)) {
-                inputProps[key] = value
-            }else{
-                layoutProps[key] = value
-            }
-        }
+        const { inputProps, layoutProps} = resolveFormWidgetBaseProps(rest)
 
         const {
             children,
