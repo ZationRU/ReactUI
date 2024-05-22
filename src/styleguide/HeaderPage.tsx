@@ -45,7 +45,7 @@ export const HeaderPage = ({ title, description, palette, preview, action }: Hea
             shapeScale='elg'
             minH={[210, 312, 312, 512]}
             maxH={[210, 312, 312, 512]}
-            bg={ThemeTokens.palettes[palette]["10"]}
+            bg={ThemeTokens.palettes[palette]["50"]}
             pos='relative'
             clip={true}
         >

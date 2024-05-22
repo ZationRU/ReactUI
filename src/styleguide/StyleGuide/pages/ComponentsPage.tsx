@@ -276,7 +276,7 @@ export function ComponentsPage(props: ComponentsPageProps) {
                             description='Components are interactive building blocks for creating a user interface.
                                     They can be organized into categories based on their purpose:
                                     Action, containment, communication, navigation, selection, and text input.'
-                            palette='secondary'
+                            palette='primary'
                             preview={<PageHeaderPreview/>}
                         />
                         {props.allSections.map(it => {
