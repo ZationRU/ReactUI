@@ -166,9 +166,10 @@ Menu.Trigger = React.forwardRef((
             return {}
         }
 
-        const props = Object.create(children.props)
+        const props = { ...children.props }
         if (mode === 'click') {
             props.onClick = (e: SyntheticEvent<HTMLElement>) => {
+                e.stopPropagation()
                 e.preventDefault()
                 if (point === null) {
                     openByRef()
@@ -180,12 +181,14 @@ Menu.Trigger = React.forwardRef((
             }
         } else if (mode === 'context') {
             props.onContextMenu = (e: SyntheticEvent<HTMLElement>) => {
+                e.stopPropagation()
                 e.preventDefault()
                 openByRef()
                 children.props.onContextMenu?.call(this, e)
             }
         } else if (mode === 'input') {
             props.onInput = (e: SyntheticEvent<HTMLElement>) => {
+                e.stopPropagation()
                 e.preventDefault()
                 openByRef()
                 children.props.onInput?.call(this, e)
