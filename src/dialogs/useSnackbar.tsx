@@ -26,7 +26,7 @@ export type SnackbarInterface = {
 
 export type SnackbarHook = (
     (config: SnackbarConfig) => SnackbarInterface
-) | (
+) & (
     (text: string) => SnackbarInterface
 )
 
