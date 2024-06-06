@@ -2,6 +2,7 @@ import {createContext, useContext, useMemo} from "react";
 import {AdaptiveData} from "./AdaptiveData";
 import {resolveAdaptive} from "./AdaptiveResolver";
 import {Adaptive, getAdaptiveValue} from "./Adaptive";
+import {string} from "prop-types";
 
 export const AdaptiveContext = createContext<AdaptiveData|null>(null)
 
@@ -15,8 +16,8 @@ export const useAdaptive = (): AdaptiveData => {
 }
 
 
-export function useAdaptiveValue<T>(value: Adaptive<T>): T {
-    return getAdaptiveValue(useAdaptive().currentBreakpoint, value)
+export function useAdaptiveValue<T>(value: Adaptive<T>, defaultValue: T): T {
+    return getAdaptiveValue(useAdaptive().currentBreakpoint, value) || defaultValue
 }
 
 /**
