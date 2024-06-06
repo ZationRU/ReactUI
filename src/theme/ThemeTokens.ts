@@ -32,12 +32,14 @@ const NestedThemeTokens = {
                     get(_, type) {
                         return propAsCSSVar(durationProp(type.toString()));
                     },
-                }) as ZnUIMotion['duration']
+                })
             }
 
             return propAsCSSVar(motionProp(prop.toString()));
         },
-    }) as ZnUIMotion,
+    }) as Omit<ZnUIMotion, 'duration'> & {
+        duration: Record<keyof ZnUIMotion['duration'], string>
+    },
     typeScales: new Proxy({}, {
         get(_, type) {
             return new Proxy({}, {

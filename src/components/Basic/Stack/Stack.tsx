@@ -30,7 +30,7 @@ export const Stack = React.forwardRef(
             gap={useAdaptiveValue(spacing)}
             direction={(
                 (
-                    (useAdaptiveValue(orientation)||"vertical")==="vertical" ? "column": "row"
+                    (useAdaptiveValue(orientation, "vertical")) === "vertical" ? "column": "row"
                 ) + (useAdaptiveValue(reverse) ? '-reverse': '')
             ) as LayoutProps['direction']}
             {...layoutProps}

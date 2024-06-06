@@ -38,7 +38,7 @@ export function FloatingActionButton(
         ...otherProps
     } = props
 
-    const s = useAdaptiveValue(size) || 'default'
+    const s = useAdaptiveValue(size, 'default')
     const isExpanded = s === 'expanded'
 
     return <znui.button

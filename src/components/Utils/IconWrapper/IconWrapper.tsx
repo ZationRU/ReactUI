@@ -28,7 +28,7 @@ export const IconWrapper = (props: IconWrapperProps) => {
 
     return <Center
         style={{
-            '--icon-size': (useAdaptiveValue(size) || 24) + "px"
+            '--icon-size': (useAdaptiveValue(size, 24)) + "px"
         } as CSSProperties}
         overflow='visible'
         to={{

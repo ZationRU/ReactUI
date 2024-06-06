@@ -29,11 +29,11 @@ export const SwipeRefreshLayout = React.forwardRef((
     const {
         onRefresh,
         children,
-        enabled: enabledRaw = true,
+        enabled: enabledRaw,
         ...otherProps
     } = props
 
-    const enabled = useAdaptiveValue(enabledRaw)
+    const enabled = useAdaptiveValue(enabledRaw, true)
 
     const refresh = useCallback((event: UIEvent<HTMLDivElement>) => {
         if(!isRefreshing) {

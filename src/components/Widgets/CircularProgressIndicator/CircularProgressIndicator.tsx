@@ -1,5 +1,5 @@
 import React, {ForwardedRef} from "react";
-import { Adaptive, useAdaptiveValue} from "../../../adaptive";
+import {Adaptive, useAdaptiveValue} from "../../../adaptive";
 import {Layout, LayoutProps, znui} from "../../Basic";
 import {HTMLZnUIProps} from "../../../styled";
 import {ThemeTokens} from "../../../theme";
@@ -59,14 +59,14 @@ export const CircularProgressIndicator = React.forwardRef(
         const {
             variant = 'indeterminate',
             value = 0,
-            thickness = 4,
+            thickness,
             size = 36,
             motionFunction = 'var(--znui-emphasized-motion)',
             motionDuration,
             ...layoutRest
         } = props
 
-        const thicknessResolved = useAdaptiveValue(thickness)
+        const thicknessResolved = useAdaptiveValue(thickness, 4)
 
         const rootStyles: HTMLZnUIProps<'div'> = {}
         const svgStyles: HTMLZnUIProps<'svg'> = {}

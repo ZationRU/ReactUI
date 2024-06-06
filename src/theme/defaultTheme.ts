@@ -4,7 +4,6 @@ export const defaultTheme: ZnUITheme = {
     schemes: {
         light: {
             primary: "#68548E",
-            surfaceTint: "#68548E",
             onPrimary: "#FFFFFF",
             primaryContainer: "#EBDDFF",
             onPrimaryContainer: "#230F46",
@@ -23,6 +22,7 @@ export const defaultTheme: ZnUITheme = {
             background: "#FEF7FF",
             onBackground: "#1D1B20",
             surface: "#FEF7FF",
+            surfaceTint: "#68548E",
             onSurface: "#1D1B20",
             surfaceVariant: "#E7E0EB",
             onSurfaceVariant: "#49454E",

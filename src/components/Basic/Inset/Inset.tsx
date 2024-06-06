@@ -1,6 +1,5 @@
 import {Layout, LayoutProps} from "../Layout/Layout";
 import React from "react";
-import {znui} from "../znui";
 import {Adaptive, useAdaptiveValue} from "../../../adaptive";
 
 export interface InsetProps extends LayoutProps {
@@ -15,7 +14,7 @@ export const Inset = React.forwardRef(
             visible = true
         } = props
 
-        const isVisible = useAdaptiveValue(visible) || true
+        const isVisible = useAdaptiveValue(visible, true)
 
         return <Layout
             ref={ref}

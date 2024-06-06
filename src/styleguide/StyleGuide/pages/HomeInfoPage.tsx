@@ -89,6 +89,10 @@ export function HomeInfoPage(props: HomeInfoPageProps) {
                     <Title size="large">Adaptive</Title>
                     <Body size="large">View how works adaptive layouts in ZnUI</Body>
                 </SectionCard>
+                <SectionCard onClick={() => props.go("tokens")}>
+                    <Title size="large">Theme tokens</Title>
+                    <Body size="large">VSee what theme tokens exist in ZnUI</Body>
+                </SectionCard>
                 <SectionCard onClick={() => window.open("https://m3.material.io/")}>
                     <Title size="large">Material Design 3</Title>
                     <Body size="large">Material 3 is the latest version of Google’s open-source design system</Body>

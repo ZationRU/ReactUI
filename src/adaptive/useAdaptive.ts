@@ -9,22 +9,17 @@ export const AdaptiveContext = createContext<AdaptiveData|null>(null)
 export const useAdaptive = (): AdaptiveData => {
     const adaptive = useContext(AdaptiveContext)
     if(adaptive==null) {
-        throw new Error("AdaptiveProvider ")
+        throw new Error("Adaptive context information was not found. Check if you are using <ZnUIProvider>. If not used, please add it.")
     }
 
     return adaptive;
 }
 
+export function useAdaptiveValue<T>(value: Adaptive<T>): T
+export function useAdaptiveValue<T>(value: Adaptive<T> | undefined): T | undefined
+export function useAdaptiveValue<T>(value: Adaptive<T> | undefined, defaultValue: T): T
 
-export function useAdaptiveValue<T>(value: Adaptive<T>, defaultValue: T): T {
-    return getAdaptiveValue(useAdaptive().currentBreakpoint, value) || defaultValue
-}
-
-/**
- * @deprecated
- * @param props
- */
-export function useAdaptiveProps<T>(props: Object): { [key: string]: T } {
-    const adaptive = useAdaptive()
-    return useMemo(() => resolveAdaptive(adaptive.currentBreakpoint, props), [props, adaptive])
+export function useAdaptiveValue<T, V extends Adaptive<T> | undefined>(value: V, defaultValue?: T) {
+    const currentBreakpoint = useAdaptive().currentBreakpoint
+    return (getAdaptiveValue(currentBreakpoint, value)|| defaultValue) as V extends undefined ? T | undefined: T
 }

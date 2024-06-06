@@ -6,7 +6,7 @@ import {ThemeTokens} from "../../../theme";
 import {Adaptive, useAdaptiveValue} from "../../../adaptive";
 
 export interface TypescaleProps extends HTMLZnUIProps<'p'> {
-    scale: Adaptive<keyof ZnUITextType>
+    scale?: Adaptive<keyof ZnUITextType>
     type: Adaptive<keyof ZnUITypeScales>
 }
 
@@ -24,7 +24,7 @@ export const Typescale = (props: TypescaleProps) => {
         fontFamilyStyle,
         letterSpacing,
         lineHeight
-    } = ThemeTokens.typeScales[useAdaptiveValue(type)][useAdaptiveValue(scale)]
+    } = ThemeTokens.typeScales[useAdaptiveValue(type, 'body')][useAdaptiveValue(scale, 'medium')]
 
     return <znui.p
         fontSize={fontSize}

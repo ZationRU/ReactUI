@@ -37,7 +37,7 @@ export const ThemeContext = createContext<ThemeContextData|null>(null)
 export const useTheme = (): ThemeContextData => {
     const themeContext = useContext(ThemeContext)
     if(themeContext===null) {
-        throw new Error("useTheme can work only in <ThemeProvider/>, don't outside")
+        throw new Error("useTheme can work only in <ZnUIProvider/>, don't outside")
     }
 
     return themeContext
