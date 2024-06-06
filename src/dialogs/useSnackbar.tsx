@@ -24,6 +24,12 @@ export type SnackbarInterface = {
     hide: () => void;
 }
 
+export type SnackbarHook = (
+    (config: SnackbarConfig) => SnackbarInterface
+) | (
+    (text: string) => SnackbarInterface
+)
+
 const InverseButton = (props: ButtonProps) => {
     return <Button c={ThemeTokens.inversePrimary} mode="text" {...props}/>
 }
@@ -44,10 +50,11 @@ const showAnimation = keyframes`
   }
 `
 
-export const useSnackbar = () => {
+export const useSnackbar = (): SnackbarHook => {
     const portalRegister = usePortals()
 
-    return (config: SnackbarConfig): SnackbarInterface => {
+    return (data: SnackbarConfig | string) => {
+        const config = typeof data === "string" ? { text: data }: data
         const horizontal = config.horizontal || 'right'
         const portal = portalRegister.register()
 
