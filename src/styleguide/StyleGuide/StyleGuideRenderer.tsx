@@ -20,6 +20,7 @@ import AdaptivePage from './pages/adaptive.mdx';
 import GetStarted from './pages/get-started.mdx';
 import {MDXFactory} from "./pages/MDXFactory";
 import {HooksPage} from "./pages/hooks/HooksPage";
+import {TokensPage} from "./pages/TokensPage";
 
 interface StyleGuideRendererProps {
     title: string;
@@ -32,6 +33,7 @@ interface StyleGuideRendererProps {
 
 const Pages = {
     home: HomeInfoPage,
+    tokens: TokensPage,
     adaptive: MDXFactory(AdaptivePage),
     'get-started': MDXFactory(GetStarted),
 }
