@@ -45,19 +45,20 @@ After installing ZnUI, you need to set up the <code>ZnUIProvider</code> and <cod
 ```tsx
 import * as React from 'react';
 
-import { ZnUIProvider, Button } from '@znui/react'
+import { ZnUIProvider, useSnackbar, ZnUIPortalDestination, Button } from '@znui/react'
 
 function App() {
   return (
     <ZnUIProvider initialScheme='system'>
-        <ZnUIPortal/>
+        <ZnUIPortalDestination/>
 
         <YourApplication />
     </ZnUIProvider>
   )
 }
 function YourApplication() {
-  return <Button>My Cool Button in My Application</Button>
+  const snackbar = useSnackbar()
+  return <Button onClick={() => snackbar({ text: "Hello, world!" })}>My Cool Button in My Application</Button>
 }
 
 <App/>
