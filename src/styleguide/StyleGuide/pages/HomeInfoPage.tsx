@@ -19,7 +19,7 @@ export function HomeInfoPage(props: HomeInfoPageProps) {
         return () => clearInterval(interval)
     }, [setCurrentTick]);
 
-    return <VStack>
+    return <VStack ph={6}>
         <HeaderPage
             title='Zation UI'
             description="Zation UI is a React framework of Material 3 components. Design and build beautiful, usable Material 3 products on React using Zation UI"
@@ -89,9 +89,9 @@ export function HomeInfoPage(props: HomeInfoPageProps) {
                     <Title size="large">Adaptive</Title>
                     <Body size="large">View how works adaptive layouts in ZnUI</Body>
                 </SectionCard>
-                <SectionCard onClick={() => window.open("https://figma.com/file/q4HiSO6j1hz5bgcVOGWtd3/Zation-UI?type=design&node-id=972%3A1306&mode=design&t=d8Aw8raqm8X6SwCL-1")}>
+                <SectionCard onClick={() => window.open("https://m3.material.io/")}>
                     <Title size="large">Material Design 3</Title>
-                    <Body size="large">Material 3 is the latest version of Google’s open-source design system. Design and build beautiful, usable products with Material 3.</Body>
+                    <Body size="large">Material 3 is the latest version of Google’s open-source design system</Body>
                 </SectionCard>
                 <SectionCard onClick={() => window.open("https://github.com/ZationRU/ReactUI")}>
                     <Title size="large">GitHub</Title>
