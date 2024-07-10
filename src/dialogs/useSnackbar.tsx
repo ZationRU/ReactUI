@@ -53,7 +53,7 @@ const showAnimation = keyframes`
 export const useSnackbar = (): SnackbarHook => {
     const portalRegister = usePortals()
 
-    return (data: SnackbarConfig | string) => {
+    return (data: SnackbarConfig | string, duration: Adaptive<'long' | 'short' | number> = undefined) => {
         const config = typeof data === "string" ? { text: data }: data
         const horizontal = config.horizontal || 'right'
         const portal = portalRegister.register()
@@ -65,7 +65,7 @@ export const useSnackbar = (): SnackbarHook => {
                 const [isTouched, setIsTouched]
                     = useState<|boolean>(false)
 
-                const durationValue = useAdaptiveValue(config.duration) || 'short'
+                const durationValue = useAdaptiveValue(duration ?? config.duration) || 'short'
                 const bottomOffset = (useAdaptiveValue(config.bottom) || 0) + 15
                 const hideType = useAdaptiveValue(['y', 'x'])
 
