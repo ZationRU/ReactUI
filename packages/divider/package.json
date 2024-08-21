@@ -1,0 +1,56 @@
+{
+  "name": "@znui/divider",
+  "version": "1.3.0-alpha.0",
+  "main": "./dist/Divider.js",
+  "module": "./dist/Divider.es.js",
+  "types": "./dist/Divider.d.ts",
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@znui/base": "^1.3.0-alpha",
+    "@znui/md3-themes": "^1.3.0-alpha"
+  },
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "ui",
+    "zation"
+  ],
+  "author": "levkopo",
+  "bugs": {
+    "url": "https://github.com/ZationRU/ReactUI/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZationRU/ReactUI.git",
+    "directory": "packages/styled"
+  }
+}

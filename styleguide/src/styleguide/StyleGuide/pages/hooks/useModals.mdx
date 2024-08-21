@@ -1,0 +1,108 @@
+## Modal
+```tsx
+import {useModals, Button, Modal, TextField, VStack, SegmentedButton} from "@znui/react";
+import {useState} from "react";
+
+const [mode, setMode] = useState('auto')
+const modal = useModals();
+
+<VStack spacing={5}>
+    <SegmentedButton w={{
+                esm: 'auto',
+                emd: 300
+    }} selectedIds={mode} onSelect={setMode}>
+        <SegmentedButton.Segment id='auto'>
+            Auto
+        </SegmentedButton.Segment>
+        <SegmentedButton.Segment id='fullscreen'>
+            Fullscreen
+        </SegmentedButton.Segment>
+        <SegmentedButton.Segment id='dialog'>
+            Dialog
+        </SegmentedButton.Segment>
+    </SegmentedButton>
+
+    <Button onClick={(e) => {
+        modal(({dialogInterface}) => {
+            return <Modal
+                title="Edit example"
+                action={
+                    <Button
+                        mode="text"
+                        onClick={() => {
+                            dialogInterface.close()
+                        }}>
+                        Save
+                    </Button>
+                }
+                navigationIcon={<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.28655 19.3249L19.3299 3.28646C19.7119 2.90451 20.3314 2.90451 20.7134 3.28646C21.0955 3.66841 21.0955 4.28768 20.7134 4.66963L4.67014 20.708C4.28807 21.09 3.66862 21.09 3.28655 20.708C2.90448 20.3261 2.90448 19.7068 3.28655 19.3249Z"
+                        fill="currentColor"/>
+                    <path d="M19.2995 20.7135L3.31321 4.73215C2.93114 4.3502 2.93114 3.73093 3.31321 3.34898C3.69528 2.96703 4.31474 2.96703 4.6968 3.34898L20.6831 19.3304C21.0652 19.7123 21.0652 20.3316 20.6831 20.7135C20.301 21.0955 19.6816 21.0955 19.2995 20.7135Z"
+                        fill="currentColor"/>
+                </svg>}
+                onClickNavigationIcon={() => {
+                    dialogInterface.close()
+                }}
+            >
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+                <TextField label="Example" placeholder="xD">
+                    <input/>
+                </TextField>
+
+                End reached
+            </Modal>
+        }, e, {
+            fullscreen: mode==='auto'? 'auto': mode==='fullscreen',
+            cancelable: false
+        });
+    }}>Show Modal non-cancelable</Button>
+</VStack>
+```

@@ -1,0 +1,93 @@
+code,
+code[class*='language-'],
+pre[class*='language-'] {
+    color: var(--znui-on-surface-variant);
+    text-shadow: 0 1px 1px var(--znui-surface);
+    font-family: 'Google Sans Mono', Menlo, Monaco, 'Courier New', monospace;
+    direction: ltr;
+    text-align: left;
+    word-spacing: normal;
+    white-space: pre;
+    word-wrap: normal;
+    line-height: 1.5;
+    font-size: 14px;
+    background: none;
+    border: 0;
+    tab-size: 2;
+    hyphens: none;
+}
+
+pre[class*='language-'],
+:not(pre) > code[class*='language-'] {
+    background: var(--znui-surface-container);
+    border: 1px solid var(--znui-outline);
+}
+
+/* Code blocks */
+pre[class*='language-'] {
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+/* Inline code */
+:not(pre) > code[class*='language-'] {
+    padding: 5px 10px;
+    line-height: 1;
+    border-radius: 3px;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: var(--znui-on-surface-dim);
+}
+
+.token.selector,
+.token.operator,
+.token.punctuation {
+    color: var(--znui-on-surface-bright);
+}
+
+.token.namespace {
+    opacity: 0.7;
+}
+
+.token.tag,
+.token.boolean,
+.token.number {
+    color: var(--znui-primary);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.hex,
+.token.string {
+    color: var(--znui-secondary);
+}
+
+.token.property,
+.token.entity,
+.token.url,
+.token.attr-name,
+.token.keyword {
+    color: var(--znui-tertiary);
+}
+
+.token.regex {
+    color: var(--znui-on-tertiary-container);
+}
+
+.token.entity {
+    cursor: help;
+}
+
+.token.function,
+.token.constant {
+    color: var(--znui-error);
+}
+
+.token.important,
+.token.deliminator {
+    color: var(--znui-error);
+}
