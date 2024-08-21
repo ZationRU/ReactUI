@@ -43,8 +43,14 @@
     "access": "public"
   },
   "keywords": [
-    "ui",
-    "zation"
+    "react",
+    "react-component",
+    "znui",
+    "unstyled",
+    "material",
+    "material design",
+    "design system",
+    "components"
   ],
   "author": "levkopo",
   "bugs": {
@@ -53,6 +59,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ZationRU/ReactUI.git",
-    "directory": "packages/styled"
+    "directory": "packages/badge"
   }
 }

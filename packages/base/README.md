@@ -1,5 +1,5 @@
 # ZnUI Base package
-[![npm version](https://badge.fury.io/js/@znui%2Fbadgesvg)](https://badge.fury.io/js/@znui%2Fbadge)
+[![npm version](https://badge.fury.io/js/@znui%2Fbadge.svg)](https://badge.fury.io/js/@znui%2Fbadge)
 
 The package contains the component factory on which the main znui components operate. 
 This package also contains functions to ensure adaptability.

@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "yarn workspaces foreach -Apt run build"
+    "build": "yarn workspaces foreach -Apt --exclude styleguide run build",
+    "publish": "yarn workspaces foreach -A --exclude styleguide npm publish --tolerate-republish"
   },
   "workspaces": {
     "packages": [

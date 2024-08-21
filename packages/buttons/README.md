@@ -1,5 +1,5 @@
-# buttons
-[![npm version](https://buttons.fury.io/js/@znui%2Fbuttonssvg)](https://buttons.fury.io/js/@znui%2Fbuttons)
+# ZnUI button components
+[![npm version](https://buttons.fury.io/js/@znui%2Fbuttons.svg)](https://buttons.fury.io/js/@znui%2Fbuttons)
 
 ## Documentation
 [API Documentation and examples](https://ui.zation.ru/)

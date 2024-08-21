@@ -5,7 +5,8 @@
   "module": "./dist/NavigationMenu.es.js",
   "types": "./dist/NavigationMenu.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "license": "MIT",
   "dependencies": {
@@ -44,8 +45,14 @@
     "access": "public"
   },
   "keywords": [
-    "ui",
-    "zation"
+    "react",
+    "react-component",
+    "znui",
+    "unstyled",
+    "material",
+    "material design",
+    "design system",
+    "components"
   ],
   "author": "levkopo",
   "bugs": {
@@ -54,6 +61,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ZationRU/ReactUI.git",
-    "directory": "packages/styled"
+    "directory": "packages/navigation-menu"
   }
 }

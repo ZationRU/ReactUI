@@ -42,8 +42,14 @@
     "access": "public"
   },
   "keywords": [
-    "ui",
-    "zation"
+    "react",
+    "react-component",
+    "znui",
+    "unstyled",
+    "material",
+    "material design",
+    "design system",
+    "components"
   ],
   "author": "levkopo",
   "bugs": {
