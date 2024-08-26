@@ -1,10 +1,10 @@
 import {arrayToObjectNotation, getClosestValue} from "./utils";
-import {LayoutBreakpoint, LayoutBreakpointsKeys} from "./LayoutBreakpoint";
+import {LayoutBreakpointKey, LayoutBreakpointsKeys} from "./LayoutBreakpointKey";
 
 export type NonSetValues = undefined | null | false
 
 export type AdaptiveArray<T> = Array<T | null>;
-export type AdaptiveObject<T> = Partial<Record<LayoutBreakpoint, T>>;
+export type AdaptiveObject<T> = Partial<Record<LayoutBreakpointKey, T>>;
 export type AdaptiveValue<T> =
     T
     | AdaptiveArray<T | NonSetValues>
@@ -27,7 +27,7 @@ export function isAdaptiveValue(object: any): object is AdaptiveValue<any> {
 }
 
 export function getBreakpointValue<T>(
-    breakpoint: LayoutBreakpoint,
+    breakpoint: LayoutBreakpointKey,
     value: AdaptiveValue<T>
 ): T | undefined {
     return getClosestValue(resolveAdaptiveToAdaptiveObject(value), breakpoint)
@@ -42,7 +42,7 @@ export function resolveAdaptiveToAdaptiveObject<T>(value: AdaptiveValue<T>): Ada
 }
 
 export function getAdaptiveValue<T>(
-    breakpoint: LayoutBreakpoint,
+    breakpoint: LayoutBreakpointKey,
     value: Adaptive<T>
 ): T | undefined {
     if (isAdaptiveValue(value)) {

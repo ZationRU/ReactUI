@@ -1,4 +1,3 @@
-import {Navigate} from "../StyleGuideRenderer";
 import {Section, SectionCard, SectionTitle} from "../../../components/SectionsUI";
 import {Title, Card, znui, Body, VStack, ThemeTokens} from "@znui/react";
 import {Code} from "../CodePlaygroundDocs";
@@ -8,7 +7,7 @@ export const MDXFactory = (
     Component: (props: any) => JSX.Element
 ) => {
     return ({ evalInContext, go }: {
-        go: Navigate
+        go: any
         evalInContext: (code: string) => any
     }) => {
         return <VStack spacing={10} mh={30} mv={10}>

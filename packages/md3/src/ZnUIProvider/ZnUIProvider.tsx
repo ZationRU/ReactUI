@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo, useRef, useState} from "react";
-import {AdaptiveData, buildAdaptiveData, buildCurrentAdaptiveData, LayoutBreakpoint, AdaptiveContext} from "@znui/base";
+import {AdaptiveData, buildAdaptiveData, buildCurrentAdaptiveData, LayoutBreakpointKey, AdaptiveContext} from "@znui/base";
 import {defaultTheme, ThemeContext, useThemeDiv, ZnUIScheme, ZnUISchemeContrast, ZnUITheme} from "@znui/md3-themes";
 import {useZnUIProviderPortalCreator, ZnUIProviderPortalContext} from "@znui/portals";
 
@@ -31,7 +31,7 @@ export interface ZnUIProviderProps {
     /**
      * @default undefined
      */
-    currentBreakpoint?: LayoutBreakpoint
+    currentBreakpoint?: LayoutBreakpointKey
     onSchemeChanged?: (currentScheme: ZnUIScheme, contrastScheme: ZnUISchemeContrast) => void
 }
 

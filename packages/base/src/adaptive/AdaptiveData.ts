@@ -1,6 +1,6 @@
-import {LayoutBreakpoint} from "./LayoutBreakpoint";
+import {LayoutBreakpointKey} from "./LayoutBreakpointKey";
 
 export type AdaptiveData = {
-    currentBreakpoint: LayoutBreakpoint
+    currentBreakpoint: LayoutBreakpointKey
     breakpointWidth: number
 }

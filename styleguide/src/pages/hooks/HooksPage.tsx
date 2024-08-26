@@ -8,9 +8,8 @@ import {
     CoordinatorLayout,
     AppBarLayout, TopAppBar, VStack, HTMLZnUIProps, znui, ThemeTokens
 } from "@znui/react";
-import {Section, SectionCard} from "../../../../components/SectionsUI";
-import React, {RefAttributes, useEffect, useState} from "react";
-import {MDXFactory} from "../MDXFactory";
+import {Section, SectionCard} from "../../components/SectionsUI";
+import React, {useEffect, useState} from "react";
 import UseAdaptiveHook from "./useAdaptiveHook.mdx";
 import UseAlertsHook from "./useAlerts.mdx";
 import UseModalsHook from "./useModals.mdx";
@@ -18,37 +17,35 @@ import UseAdaptiveValueHook from "./useAdaptiveValueHook.mdx";
 import UseSnackbarHook from "./useSnackbarHook.mdx";
 import UseThemeHook from "./useTheme.mdx";
 import { MdArrowBack } from "react-icons/md";
-import {HeaderPage} from "../../../HeaderPage";
-import {useAppNavigate} from "../../../../router";
-
-interface HooksPageProps extends RefAttributes<HTMLDivElement> {
-    evalInContext: (code: string) => any
-}
+import {HeaderPage} from "../../styleguide/HeaderPage";
+import {useAppNavigate} from "../../router";
+import {BaseMDXPage} from "../BaseMDXPage";
+import {useParams} from "react-router-dom";
 
 export const Hooks = {
     useAdaptive: {
         description: 'Hook to get current page size to ensure responsive state',
-        component: MDXFactory(UseAdaptiveHook)
+        component: UseAdaptiveHook
     },
     useTheme: {
         description: 'Hook to get theme data: current scheme and other',
-        component: MDXFactory(UseThemeHook)
+        component: UseThemeHook
     },
     useAdaptiveValue: {
         description: 'Hook to get value from adaptive value',
-        component: MDXFactory(UseAdaptiveValueHook)
+        component: UseAdaptiveValueHook
     },
     useAlerts: {
         description: 'Hook for creating alerts dialogs',
-        component: MDXFactory(UseAlertsHook)
+        component: UseAlertsHook
     },
     useModals: {
         description: 'Hook for creating modal windows',
-        component: MDXFactory(UseModalsHook)
+        component: UseModalsHook
     },
     useSnackbar: {
         description: 'Hook for creating Snackbars',
-        component: MDXFactory(UseSnackbarHook)
+        component: UseSnackbarHook
     },
 }
 
@@ -105,11 +102,10 @@ const HooksPreview = () => {
     </Layout>
 }
 
-export function HooksPage({ref, evalInContext}: HooksPageProps) {
+export function HooksPage() {
     const navigate = useAppNavigate()
     const {currentBreakpoint} = useAdaptive()
-    const [, currentHook] = window.location.hash.split('/')
-
+    const {hook} = useParams()
 
     return <Layout
         display='flex'
@@ -125,9 +121,9 @@ export function HooksPage({ref, evalInContext}: HooksPageProps) {
                             <NavigationMenu.Item
                                 ml={10}
                                 onClick={() => {
-                                    window.location.href = '#components'
+                                    navigate("/hooks")
                                 }}
-                                selected={window.location.hash === '#components'}
+                                selected={window.location.hash === '#/hooks'}
                             >
                                 Hools overview
                             </NavigationMenu.Item>
@@ -135,8 +131,8 @@ export function HooksPage({ref, evalInContext}: HooksPageProps) {
                             {
                                 Object.keys(Hooks).map(hookName =>
                                     <NavigationMenu.Item key={hookName} onClick={() => {
-                                        navigate("hooks/" + hookName)
-                                    }} selected={currentHook === hookName}>
+                                        navigate("/hooks/" + hookName)
+                                    }} selected={hook === hookName}>
                                         {hookName}
                                     </NavigationMenu.Item>
                                 )
@@ -147,23 +143,21 @@ export function HooksPage({ref, evalInContext}: HooksPageProps) {
             </NavigationMenu>
         </>}
 
-        <Layout flex={1} ref={ref} clip={true}>
+        <Layout flex={1} clip={true}>
             {
-                Hooks[currentHook] ? <CoordinatorLayout h="100%">
+                Hooks[hook || ''] ? <CoordinatorLayout h="100%">
                     <AppBarLayout>
                         <TopAppBar
                             navigationIcon={<MdArrowBack/>}
                             onClickNavigationIcon={() => {
-                                navigate("hooks")
+                                navigate("/hooks")
                             }}
-                        >{currentHook}</TopAppBar>
+                        >{hook}</TopAppBar>
                     </AppBarLayout>
 
                     <ScrollLayout behavior={AppBarLayout.ScrollBehavior} orientation="vertical" h="100%">
                         <VStack>
-                            {React.createElement(Hooks[currentHook].component, {
-                                navigate, evalInContext
-                            })}
+                            <BaseMDXPage Component={Hooks[hook || ''].component}/>
                         </VStack>
                     </ScrollLayout>
                 </CoordinatorLayout> : <ScrollLayout orientation="vertical" h="100%">
@@ -175,7 +169,7 @@ export function HooksPage({ref, evalInContext}: HooksPageProps) {
                             preview={<HooksPreview/>}
                         />
 
-                        <VStack mh='auto' maxW={1200}>
+                        <VStack mh='auto' maxW={1200}>s
                             <Section m={10}>
                                 {Object.keys(Hooks).map(hookName => {
                                     const hookPageInfo = Hooks[hookName]

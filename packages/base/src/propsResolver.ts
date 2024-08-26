@@ -2,7 +2,7 @@ import {
     cssConfig
 } from "./configs";
 import {GetStyleObject, ZnUIStyleObject} from "./znui.types";
-import {resolveAdaptiveProps, resolveAdaptivePropsToCss, useAdaptive} from "./adaptive";
+import {resolveAdaptiveProps} from "./adaptive";
 import {isFunction, runIfFn} from "@znui/utils";
 import {pseudoSelectors} from "./configs";
 
@@ -49,9 +49,7 @@ export const css = (styles: Record<string, any>) => () => {
         ...rest
     } = styles
 
-    const adaptive = useAdaptive()
-    const resolvedStyles = resolveAdaptiveProps(adaptive.currentBreakpoint, rest)
-    // const resolvedStyles = resolveAdaptivePropsToCss(rest)
+    const resolvedStyles = resolveAdaptiveProps(rest)
     let computedStyles: Record<string, any> = {}
     for (const pseudo in pseudos) {
         let key = pseudoSelectors[pseudo] ?? pseudo
@@ -66,13 +64,12 @@ export const css = (styles: Record<string, any>) => () => {
     for (let key in resolvedStyles) {
         let currentValue = resolvedStyles[key]
 
-        if(key.startsWith("@media") && typeof currentValue === 'object') {
+        if(key.startsWith("@") && typeof currentValue === 'object') {
             computedStyles[key] = computedStyles[key] ?? {}
             computedStyles[key] = {
                 ...computedStyles[key],
                 ...css(currentValue)()
             }
-
 
             continue
         }

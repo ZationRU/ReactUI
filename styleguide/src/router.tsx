@@ -11,6 +11,7 @@ import {NotFoundPage} from "./pages/NotFoundPage";
 import {ComponentsPage} from "./pages/ComponentsPage/ComponentsPage";
 import {ComponentsOverviewPage} from "./pages/ComponentsPage/ComponentsOverviewPage";
 import {ComponentPage} from "./pages/ComponentPage/ComponentPage";
+import {HooksPage} from "./pages/hooks/HooksPage";
 
 export const router = createHashRouter([
     {
@@ -34,6 +35,20 @@ export const router = createHashRouter([
             {
                 path: "adaptive",
                 element: <AdaptivePage/>
+            },
+            {
+                path: "hooks",
+                element: <HooksPage/>,
+                children: [
+                    {
+                        index: true,
+                        element: <HooksPage/>
+                    },
+                    {
+                        path: ':hook',
+                        element: <HooksPage/>
+                    }
+                ]
             },
             {
                 path: "components",

@@ -1,4 +1,4 @@
-export * from "./LayoutBreakpoint"
+export * from "./LayoutBreakpointKey"
 export * from "./useAdaptive"
 export * from "./Adaptive"
 export * from "./AdaptiveData"

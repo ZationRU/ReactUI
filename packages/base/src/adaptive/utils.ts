@@ -1,4 +1,4 @@
-import {LayoutBreakpointsKeys} from "./LayoutBreakpoint";
+import {LayoutBreakpointsKeys} from "./LayoutBreakpointKey";
 
 export function arrayToObjectNotation(values: any[]) {
     const result = {} as Record<string, any>
