@@ -31,7 +31,7 @@ export const useZnUIProviderPortalCreator = (): ZnUIPortalContext => {
         const uniqueId = new Date().getTime()
         setPortals((prevState) => ({
             ...prevState,
-            uniqueId: <Component/>
+            [uniqueId]: <Component/>
         }))
 
         return {
