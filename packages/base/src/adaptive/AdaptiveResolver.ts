@@ -1,4 +1,5 @@
 import {
+    getAdaptiveValue,
     isAdaptiveValue,
     resolveAdaptiveToAdaptiveObject
 } from "./Adaptive";
@@ -15,7 +16,7 @@ export function getCurrentDimensionBreakpoint(): LayoutBreakpointKey {
         return "emd"
     }
 
-    return Object.keys(LayoutBreakpointsValues).find((key) =>
+    return LayoutBreakpointsKeys.find((key) =>
         window.innerWidth <= LayoutBreakpointsValues[key]) as LayoutBreakpointKey
 }
 
@@ -38,8 +39,9 @@ export function resolveAdaptiveProps(
         const value = object[key]
         if (isAdaptiveValue(value)) {
             const adaptiveData = resolveAdaptiveToAdaptiveObject(value)
-            for (const breakpoint in adaptiveData) {
-                adaptiveValues[breakpoint][key] = adaptiveData[breakpoint]
+            for (const breakpointKey in adaptiveData) {
+                const value = adaptiveData[breakpointKey]
+                adaptiveValues[breakpointKey][key] = value === '' ? 'none': value
             }
         } else {
             result[key] = object[key]
@@ -48,7 +50,7 @@ export function resolveAdaptiveProps(
 
     const adaptiveValuesSorted = Object.entries(adaptiveValues)
         .map(([key, value]) => [LayoutBreakpoints[key], value])
-        .sort(([a], [b]) => (a.min || 0) - (b.min || 0))
+        .sort(([a], [b]) => (b.min || 0) - (a.min || 0))
 
     for (const [breakpoint, object] of adaptiveValuesSorted) {
         if(Object.keys(object).length == 0) {
@@ -61,6 +63,8 @@ export function resolveAdaptiveProps(
             result = Object.assign(result, object)
         }
     }
+
+    console.log(object, result)
 
     return result
 }

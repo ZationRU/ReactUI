@@ -40,10 +40,12 @@ export type AlertDialogInterface = {
     setValue: (key: string, value: any) => void
 }
 
-export const useAlerts = (): (config: AlertDialogConfig, clickEvent?: MouseEvent) => AlertDialogInterface => {
+export const useAlerts = (defaultConfig: Partial<AlertDialogConfig> = {}): (config: AlertDialogConfig, clickEvent?: MouseEvent) => AlertDialogInterface => {
     const { createPortal } = usePortals()
 
     return (config: AlertDialogConfig, clickEvent?: MouseEvent): AlertDialogInterface => {
+        config = Object.assign(defaultConfig, config)
+
         let portal: ZnUIPortal
         const cancelable = config.cancelable === undefined ? true : config.cancelable
 
@@ -188,7 +190,7 @@ export const useAlerts = (): (config: AlertDialogConfig, clickEvent?: MouseEvent
                         pos="absolute"
                         top={['50%', yPosition + yOffset]}
                         left={['50%', xPosition + xOffset]}
-                        transform={['translate(-50%, -50%)', '']}
+                        transform={['translate(-50%, -50%)', 'unset']}
                         ref={measureRef}
                     >
 

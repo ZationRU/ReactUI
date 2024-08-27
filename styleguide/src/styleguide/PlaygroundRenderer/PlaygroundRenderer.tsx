@@ -33,6 +33,7 @@ const PlaygroundRenderer = ({name, preview, tabBody}: PlaygroundRendererProps) =
                         <ZnUIProvider fixedSchema={props.scheme} fixedSchemeContrast={props.schemeContrast}>
                             <VStack
                                 minW={[300, 360]}
+                                bg={ThemeTokens.surface}
                                 borderColor={ThemeTokens.outlineVariant}
                                 borderWidth={6}
                                 borderStyle='solid'

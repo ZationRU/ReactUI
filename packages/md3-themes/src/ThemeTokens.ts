@@ -1,4 +1,4 @@
-import {ZnUISchemeData, ZnUITheme} from "./theme.types";
+import {ZnUISchemeData, ZnUITheme, ZnUIMotion, ZnUIElevation, ZnUIShapes, ZnUITypeScales} from "./types";
 import {
     durationProp,
     elevationProp,
@@ -9,10 +9,6 @@ import {
     styleProp,
     typeScaleProp
 } from "./names";
-import {ZnUIMotion} from "./motion";
-import {ZnUIElevation} from "./elevation";
-import {ZnUIShapes} from "./shapes";
-import {ZnUITypeScales} from "./typescale";
 
 const NestedThemeTokens = {
     shapes: new Proxy({}, {

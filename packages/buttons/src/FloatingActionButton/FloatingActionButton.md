@@ -1,3 +1,13 @@
+```
+{
+    "category": "actions",
+    "type": "Buttons",
+    "description": "Floating action buttons (FABs) help people take primary actions",
+    "background": "https://lh3.googleusercontent.com/zOLqvD_A2H1zg-15Z7YraIDRm0LsbGh_qKxYf-fstm6scXckY4-bpNkir0VqH26Xte8D1c0c_Z0OPiEZD2WgL1HP2yr0GCGEsv0L9OPUqhddwJ1n0Q=w1200-rj",
+    "foreground": "https://lh3.googleusercontent.com/aQzsQu4r6LqUw4E0Yr7r7Fny9VcF-zdfHmVVRoS85ZzKX5H_lCaJPMwT2oKKRMplmIbLqlYXNmg6dkBnwX7D7esoctbBc7ByP8JWIe77vZB9NqXDPg=w2400"
+}
+```
+
 ```jsx
 import React from 'react';
 import {Title, Layout, FloatingActionButton} from "@znui/react";

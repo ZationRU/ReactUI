@@ -11,10 +11,7 @@ import {
 import {Section, SectionCard} from "../../components/SectionsUI";
 import React, {useEffect, useState} from "react";
 import UseAdaptiveHook from "./useAdaptiveHook.mdx";
-import UseAlertsHook from "./useAlerts.mdx";
-import UseModalsHook from "./useModals.mdx";
 import UseAdaptiveValueHook from "./useAdaptiveValueHook.mdx";
-import UseSnackbarHook from "./useSnackbarHook.mdx";
 import UseThemeHook from "./useTheme.mdx";
 import { MdArrowBack } from "react-icons/md";
 import {HeaderPage} from "../../styleguide/HeaderPage";
@@ -34,19 +31,7 @@ export const Hooks = {
     useAdaptiveValue: {
         description: 'Hook to get value from adaptive value',
         component: UseAdaptiveValueHook
-    },
-    useAlerts: {
-        description: 'Hook for creating alerts dialogs',
-        component: UseAlertsHook
-    },
-    useModals: {
-        description: 'Hook for creating modal windows',
-        component: UseModalsHook
-    },
-    useSnackbar: {
-        description: 'Hook for creating Snackbars',
-        component: UseSnackbarHook
-    },
+    }
 }
 
 const HookIcon = (props: HTMLZnUIProps<'svg'>) => <znui.svg xmlns="http://www.w3.org/2000/svg" {...props}

@@ -10,6 +10,7 @@ export type ComponentData = ComponentExtraData &{
 export type ComponentExtraData = {
     category: string,
     type?: string,
+    title?: string,
     description: string
     background: string
     foreground: string
@@ -30,15 +31,20 @@ export const normalizeExamples = (examples: any[]): [ComponentExtraData, any[]] 
 }
 
 export const styleguidistComponentToNormal = (component: any): ComponentData => {
-    const [additionData, examples] = normalizeExamples(component.props.examples)
+    try {
+        const [additionData, examples] = normalizeExamples(component.props.examples)
 
-    return {
-        name: component.name,
-        visibleName: component.visibleName,
-        pathLine: component.pathLine,
-        package: component.pathLine,
-        props: component.props.props,
-        examples,
-        ...additionData,
+        return {
+            name: additionData.title ?? component.name,
+            visibleName: additionData.title ?? component.visibleName,
+            pathLine: component.pathLine,
+            package: component.pathLine,
+            props: component.props.props,
+            examples,
+            ...additionData,
+        }
+    }catch (e) {
+        console.error(e)
+        throw new Error(`Can't transform component ${component.name} to normal. `)
     }
 }

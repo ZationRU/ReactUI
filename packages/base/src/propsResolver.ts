@@ -11,7 +11,6 @@ export let styledProps= {
     ...pseudoSelectors
 }
 
-
 export const addStyledProps = (props: { [key: string]: any }) => {
     styledProps = {
         ...styledProps,
@@ -63,17 +62,6 @@ export const css = (styles: Record<string, any>) => () => {
 
     for (let key in resolvedStyles) {
         let currentValue = resolvedStyles[key]
-
-        if(key.startsWith("@") && typeof currentValue === 'object') {
-            computedStyles[key] = computedStyles[key] ?? {}
-            computedStyles[key] = {
-                ...computedStyles[key],
-                ...css(currentValue)()
-            }
-
-            continue
-        }
-
         if(key in pseudoSelectors) {
             key = pseudoSelectors[key]
 
@@ -87,6 +75,16 @@ export const css = (styles: Record<string, any>) => () => {
 
                 continue
             }
+        }
+
+        if(key.startsWith("@media") && typeof currentValue === 'object') {
+            computedStyles[key] = computedStyles[key] ?? {}
+            computedStyles[key] = {
+                ...computedStyles[key],
+                ...css(currentValue)()
+            }
+
+            continue
         }
 
         const config = styledProps[key]

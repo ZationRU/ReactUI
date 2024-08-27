@@ -2,6 +2,7 @@ import React, {useMemo} from "react";
 import {JSXElements, ZnUIComponent, ZnUIFactory} from "./znui.types";
 import {toCSSObject, ZnUIStyledOptions} from "./propsResolver";
 import createStyled from "@emotion/styled";
+import {shouldForwardProp} from "./shouldForwardProp";
 
 const cache = new Map<JSXElements, ZnUIComponent<JSXElements>>()
 
@@ -19,6 +20,9 @@ export function styled<T extends React.ElementType, P extends object = {}>(
 
     const Component = emotion(
         component as React.ComponentType<any>,
+        {
+            shouldForwardProp
+        }
     )(styleObject)
 
     const znComponent = React.forwardRef(function ZnUIComponent(

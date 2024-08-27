@@ -1,3 +1,13 @@
+```
+{
+    "category": "actions",
+    "type": "Buttons",
+    "description": "Segmented buttons help people select options, switch views, or sort elements",
+    "background": "https://lh3.googleusercontent.com/zOLqvD_A2H1zg-15Z7YraIDRm0LsbGh_qKxYf-fstm6scXckY4-bpNkir0VqH26Xte8D1c0c_Z0OPiEZD2WgL1HP2yr0GCGEsv0L9OPUqhddwJ1n0Q=w1200-rj",
+    "foreground": "https://lh3.googleusercontent.com/Yb05ZbN6MrSFuaSxqkVtTsnENqUFri48W2sfYNsf1q7tEoGF50c9BJjK3TTxlqFsVNSgjLX8LwKVuraVIeAA_TL-xBTrBOP0tLpvQTho_CkeyG_oRsi4=w2400"
+}
+```
+
 ```tsx
 import {SegmentedButton, VStack} from "@znui/react";
 import {useState} from "react";

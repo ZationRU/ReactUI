@@ -1,5 +1,7 @@
 import {Adaptive, asTransformProp} from "@znui/base";
-import {ThemeTokens, ZnUIShapes} from "../index";
+import {ZnUIShapes} from "../types";
+import {ThemeTokens} from "../ThemeTokens";
+
 
 export const shapes = {
     shapeScale: asTransformProp((value: keyof ZnUIShapes) => ({

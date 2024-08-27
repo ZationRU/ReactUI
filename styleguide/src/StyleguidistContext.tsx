@@ -6,7 +6,6 @@ import Context from 'react-styleguidist/lib/client/rsg-components/Context';
 export type StyleguidistContextData = {
     evalInContext: (code: string) => any
     components: ComponentData[]
-    hookComponents: ComponentData[]
 }
 
 export const StyleguidistContext = createContext<StyleguidistContextData | null>(null)
@@ -21,7 +20,6 @@ export const useStyleguidist = (): StyleguidistContextData => {
 
 export const useStyleGuideProps = (props: StyleGuideProps): StyleguidistContextData => useMemo(() => {
     const components: ComponentData[] = []
-    const hookComponents: ComponentData[] = []
     const names: string[] = []
     let evalInContext: StyleguidistContextData['evalInContext'] | undefined
 
@@ -39,17 +37,11 @@ export const useStyleGuideProps = (props: StyleGuideProps): StyleguidistContextD
             continue
         }
 
-        if(component.name.startsWith("use")) {
-            hookComponents.push(component)
-        }else{
-            components.push(component)
-        }
-
+        components.push(component)
         names.push(component.name)
     }
 
     return {
-        hookComponents,
         components,
         evalInContext: evalInContext!!
     }

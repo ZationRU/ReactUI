@@ -1,5 +1,6 @@
 import {Adaptive, asTransformProp} from "@znui/base";
-import {ThemeTokens, ZnUIElevation} from "../index";
+import {ThemeTokens} from "../ThemeTokens";
+import {ZnUIElevation} from "../types";
 
 export const elevation = {
     elevation: asTransformProp((value: keyof ZnUIElevation | false) => ({

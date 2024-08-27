@@ -30,5 +30,5 @@ export type ZnUICSSProps =
 // Define additional md3 props
 addStyledProps(znuiPropsConfig)
 declare module "@znui/base" {
-    interface StyleProps extends CSSProps, ZnUICSSProps {}
+    export interface StyleProps extends CSSProps, ZnUICSSProps {}
 }

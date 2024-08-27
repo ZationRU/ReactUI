@@ -1,21 +1,17 @@
 import styled from '@emotion/styled'
 import {useMemo} from "react";
 import {kebabize} from "@znui/utils";
-import {defaultShapes} from "./shapes";
-import {defaultStyles} from "./defaultStyles";
-import {ZnUITheme} from "./theme.types";
-import {defaultMotion} from "./motion";
+import {defaultStyles} from "./defaults";
+import {ZnUITheme} from "./types";
 import {durationProp, elevationProp, motionProp, paletteProp, shapeProp, styleProp, typeScaleProp} from "./names";
-import {defaultElevation} from "./elevation";
-import {defaultTypeScale} from "./typescale";
 
 export const useThemeDiv = (theme: ZnUITheme) => {
     return useMemo(() => {
         const {
-            shapes = defaultShapes,
-            motion = defaultMotion,
-            elevation = defaultElevation,
-            typeScale = defaultTypeScale,
+            shapes,
+            motion,
+            elevation,
+            typeScale,
             palettes,
             schemes
         } = theme
@@ -69,6 +65,16 @@ export const useThemeDiv = (theme: ZnUITheme) => {
 
             styles += `}`
         }
+
+        const defaultTextTypeScale = typeScale.body.medium
+        styles += `
+             font-size: ${defaultTextTypeScale.fontSize}px;
+             font-weight: ${defaultTextTypeScale.fontWeight};
+             font-family: ${defaultTextTypeScale.fontFamilyName};
+             font-style: ${defaultTextTypeScale.fontFamilyStyle};
+             letter-spacing: ${defaultTextTypeScale.letterSpacing}px;
+             line-height: ${defaultTextTypeScale.lineHeight}px;
+        `
 
         return styled.div`${styles}`
     }, [theme])

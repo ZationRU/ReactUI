@@ -1761,6 +1761,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@emotion/react@npm:^11.13.3":
+  version: 11.13.3
+  resolution: "@emotion/react@npm:11.13.3"
+  dependencies:
+    "@babel/runtime": "npm:^7.18.3"
+    "@emotion/babel-plugin": "npm:^11.12.0"
+    "@emotion/cache": "npm:^11.13.0"
+    "@emotion/serialize": "npm:^1.3.1"
+    "@emotion/use-insertion-effect-with-fallbacks": "npm:^1.1.0"
+    "@emotion/utils": "npm:^1.4.0"
+    "@emotion/weak-memoize": "npm:^0.4.0"
+    hoist-non-react-statics: "npm:^3.3.1"
+  peerDependencies:
+    react: ">=16.8.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 10c0/a55e770b9ea35de5d35db05a7ad40a4a3f442809fa8e4fabaf56da63ac9444f09aaf691c4e75a1455dc388991ab0c0ab4e253ce67c5836f27513e45ebd01b673
+  languageName: node
+  linkType: hard
+
 "@emotion/serialize@npm:^1.2.0, @emotion/serialize@npm:^1.3.0":
   version: 1.3.0
   resolution: "@emotion/serialize@npm:1.3.0"
@@ -1774,6 +1795,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@emotion/serialize@npm:^1.3.1":
+  version: 1.3.1
+  resolution: "@emotion/serialize@npm:1.3.1"
+  dependencies:
+    "@emotion/hash": "npm:^0.9.2"
+    "@emotion/memoize": "npm:^0.9.0"
+    "@emotion/unitless": "npm:^0.10.0"
+    "@emotion/utils": "npm:^1.4.0"
+    csstype: "npm:^3.0.2"
+  checksum: 10c0/ac7158e2881b5f3f9ca1e4d865186d38623f997de888675297e0928b202d16273e43b0a19aa021c0b706edefae31118bc97c5fab095820109d09d502dbcf2092
+  languageName: node
+  linkType: hard
+
 "@emotion/sheet@npm:^1.4.0":
   version: 1.4.0
   resolution: "@emotion/sheet@npm:1.4.0"
@@ -1781,7 +1815,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/styled@npm:^11.11.0":
+"@emotion/styled@npm:^11.11.0, @emotion/styled@npm:^11.13.0":
   version: 11.13.0
   resolution: "@emotion/styled@npm:11.13.0"
   dependencies:
@@ -1798,6 +1832,13 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 10c0/5e2cc85c8a2f6e7bd012731cf0b6da3aef5906225e87e8d4a5c19da50572e24d9aaf92615aa36aa863f0fe6b62a121033356e1cad62617c48bfdaa2c3cf0d8a4
+  languageName: node
+  linkType: hard
+
+"@emotion/unitless@npm:^0.10.0":
+  version: 0.10.0
+  resolution: "@emotion/unitless@npm:0.10.0"
+  checksum: 10c0/150943192727b7650eb9a6851a98034ddb58a8b6958b37546080f794696141c3760966ac695ab9af97efe10178690987aee4791f9f0ad1ff76783cdca83c1d49
   languageName: node
   linkType: hard
 
@@ -3059,8 +3100,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@znui/base@workspace:packages/base"
   dependencies:
-    "@emotion/react": "npm:^11.11.1"
-    "@emotion/styled": "npm:^11.11.0"
+    "@emotion/react": "npm:^11.13.3"
+    "@emotion/styled": "npm:^11.13.0"
     "@znui/utils": "npm:^1.3.0-alpha"
   peerDependencies:
     react: ^18.2.0
@@ -3398,6 +3439,7 @@ __metadata:
     "@znui/radio": "npm:^1.3.0-alpha"
     "@znui/ripple": "npm:^1.3.0-alpha"
     "@znui/scroll-layout": "npm:^1.3.0-alpha"
+    "@znui/side-sheets": "npm:^1.3.0-alpha"
     "@znui/skeletons": "npm:^1.3.0-alpha"
     "@znui/slider": "npm:^1.3.0-alpha"
     "@znui/snackbar": "npm:^1.3.0-alpha"
@@ -3432,6 +3474,19 @@ __metadata:
     "@znui/layouts": "npm:^1.3.0-alpha"
     "@znui/md3-themes": "npm:^1.3.0-alpha"
     "@znui/progress-indicators": "npm:^1.3.0-alpha"
+  peerDependencies:
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  languageName: unknown
+  linkType: soft
+
+"@znui/side-sheets@npm:^1.3.0-alpha, @znui/side-sheets@workspace:packages/side-sheets":
+  version: 0.0.0-use.local
+  resolution: "@znui/side-sheets@workspace:packages/side-sheets"
+  dependencies:
+    "@znui/layouts": "npm:^1.3.0-alpha"
+    "@znui/md3-themes": "npm:^1.3.0-alpha"
+    "@znui/portals": "npm:^1.3.0-alpha"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0

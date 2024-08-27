@@ -1,3 +1,13 @@
+```
+{
+    "category": "containment",
+    "type": "Cards",
+    "description": "Cards display content and actions about a single subject",
+    "background": "https://lh3.googleusercontent.com/0pK5lkLNpl15BO0_d8vPIpo3wcKbSSFk5yJsvwtvbw0KEFxu1nKSWi4CpkdoqsaqmkxZdUU-KNuc62vFDv-4dSBQtOLAitAiCA2woYhaxETumWaBIzk=w1200-rj",
+    "foreground": "https://lh3.googleusercontent.com/5ILgY8HzUYW3n-4nfqNxrfSZfzH0bfdMfd0qtoS7sFotOFyRhOLaotWvWvbdHW-TLll9TGA503l6uH5pfUYH4gBTCv8-6ToJhg2nnQobP_4bwxcALqt_=s0"
+}
+```
+
 ```tsx
 import {useState} from "react";
 import {ThemeTokens, IconButton, Button, Layout, HStack, Body, Card, VStack, Title, SegmentedButton, Avatar} from "@znui/react";

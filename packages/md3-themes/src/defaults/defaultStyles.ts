@@ -22,7 +22,6 @@ export const defaultStyles = `
     }
 }
 
-font-family: 'Roboto';
 -webkit-tap-highlight-color: transparent;
 caret-color: var(--znui-primary);
 

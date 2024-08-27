@@ -1,4 +1,13 @@
-## Alert Dialogs
+```
+{
+    "category": "containment",
+    "type": "Dialogs",
+    "title": "Alert dialog",
+    "description": "Dialogs provide important prompts in a user flow",
+    "background": "https://lh3.googleusercontent.com/0pK5lkLNpl15BO0_d8vPIpo3wcKbSSFk5yJsvwtvbw0KEFxu1nKSWi4CpkdoqsaqmkxZdUU-KNuc62vFDv-4dSBQtOLAitAiCA2woYhaxETumWaBIzk=w1200-rj",
+    "foreground": "https://lh3.googleusercontent.com/AVf6Xyv8hPBViSL9yVDAF2MqZN64OztnxwRCVutFqDfgrW-2rDwlo7Gz-K7Lil0Y1T5bXfPyT12_nQh7ODNEfc-zOQxCKsqLMBYkAkdiA6brR703_eI=w2400"
+}
+```
 
 Simple Alert Dialog without icon:
 ```tsx

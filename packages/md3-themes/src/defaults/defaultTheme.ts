@@ -1,4 +1,8 @@
-import {ZnUITheme} from "./index";
+import {ZnUITheme} from "../types";
+import {defaultShapes} from "./defaultShapes";
+import {defaultMotion} from "./defaultMotion";
+import {defaultElevation} from "./defaultElevation";
+import {defaultTypeScale} from "./defaultTypeScale";
 
 export const defaultTheme: ZnUITheme = {
     schemes: {
@@ -411,5 +415,9 @@ export const defaultTheme: ZnUITheme = {
             "99": "#FFFBFF",
             "100": "#FFFFFF"
         }
-    }
+    },
+    shapes: defaultShapes,
+    motion: defaultMotion,
+    elevation: defaultElevation,
+    typeScale: defaultTypeScale,
 }

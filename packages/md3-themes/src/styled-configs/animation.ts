@@ -1,6 +1,6 @@
 import {StyleProps, asTransformProp, css, TransitionProps} from "@znui/base";
 import {kebabize} from "@znui/utils";
-import {ThemeTokens} from "../index";
+import {ThemeTokens} from "../ThemeTokens";
 
 const DEFAULT_TRANSITION = ThemeTokens.motion.emphasized
 const DEFAULT_DURATION = 200

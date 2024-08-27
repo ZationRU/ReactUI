@@ -10,15 +10,16 @@
 
 ```js
 import {Layout, Button, AppBarButton, TopAppBar} from "@znui/react";
-import { MdHome, MdPerson, MdMoreVert, MdArrowBack } from "react-icons/md";
+import { MdHome, MdNotifications, MdMoreVert, MdArrowBack } from "react-icons/md";
 
 const [navigationIcon, setNavigationIcon] = React.useState(true);
 const [enableMenu, updateMenu] = React.useState(true);
 
 const Icon = <MdArrowBack/>;
 const Menu = <>
-    <AppBarButton><MdHome/></AppBarButton>
-    <AppBarButton><MdPerson/></AppBarButton>
+    <AppBarButton badge={<Badge size="single">1</Badge>}>
+        <MdNotifications/>
+    </AppBarButton>
     <AppBarButton><MdMoreVert/></AppBarButton>
 </>;
 

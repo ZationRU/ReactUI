@@ -1,3 +1,13 @@
+```
+{
+    "category": "textInputs",
+    "type": "Text inputs",
+    "description": "Text fields let users enter text into a UI",
+    "background": "https://lh3.googleusercontent.com/3YP3GkqI5rmuRlxPQyob9EAeDtJjeNG-unOEx_WLljVwVk9ECMG0xsWgcN_fRP_sgGeWlOy9tHYdls_h8Qj7y2ygm1zdHnqSEUwqRuQq_yPHzOC8B-4=w1200-rj",
+    "foreground": "https://lh3.googleusercontent.com/ndX6ayECBWZB-KJ8EosWaTpOoEh0GKGOOCuZDcL4DPwKFnalIzYQw8h3rCxIn_8djFBWlYr2IK4R1fdBKe0o_LHPnHXo07d3obTOJcmBrZZvRISANnc=w2400"
+}
+```
+
 ```tsx
 import {TextField, GridLayout, VStack, znui} from "@znui/react";
 

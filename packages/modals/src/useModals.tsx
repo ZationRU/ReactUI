@@ -28,7 +28,7 @@ export type ModalOptions<Props = {}> = {
 export const ModalContext
     = React.createContext<ModalContextData|null>(null)
 
-export const useModals = <Props = {}> (): (
+export const useModals = <Props = {}> (defaultOptions: ModalOptions<Props> = {}): (
     component: JSXElementConstructor<ModalProps & Props>,
     clickEvent?: UIEvent,
     options?: ModalOptions<Props>
@@ -44,7 +44,7 @@ export const useModals = <Props = {}> (): (
             fullscreen = 'auto',
             cancelable = true,
             props = {}
-        } = options || {}
+        } = Object.assign(defaultOptions, options || {})
 
         let portal: ZnUIPortal;
 
@@ -53,12 +53,10 @@ export const useModals = <Props = {}> (): (
 
         let targetRect = target ? target.getBoundingClientRect() : null;
 
-        let close = () => {
-            portal.remove()
-        }
-
         const modalDialogInterface: ModalDialogInterface = {
-            close: () => close(),
+            close: () => {
+                portal.remove()
+            },
         }
 
         portal = createPortal(() => {
@@ -76,7 +74,7 @@ export const useModals = <Props = {}> (): (
                 }, 10)
             }, [scrimRef])
 
-            close = useCallback(() => {
+            modalDialogInterface.close = useCallback(() => {
                 setTimeout(() => {
                     const scrim = scrimRef.current
                     const modalContainer = modalContainerRef.current

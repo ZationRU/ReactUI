@@ -1,7 +1,7 @@
 import React, {CSSProperties, ForwardedRef} from "react"
 import {ThemeTokens} from "@znui/md3-themes";
 import {Center, LayoutProps} from "@znui/layouts";
-import {Adaptive, useAdaptiveValue, znui} from "@znui/base";
+import {Adaptive, useAdaptiveValue} from "@znui/base";
 import {ToAnimatedProp} from "@znui/md3-themes";
 import {unsafeRefCast} from "@znui/utils";
 
@@ -28,19 +28,9 @@ export const IconWrapper = React.forwardRef(
             sizeTransitionDuration = ThemeTokens.motion.duration.medium2,
             to,
             pseudos,
-            children
+            children,
+            ...rest
         } = props
-
-        const hasSvgAsChild = React.isValidElement(children) && children.type === 'svg';
-        const currentSize = useAdaptiveValue(size, 24)
-        if(hasSvgAsChild) {
-            return <znui.svg
-                layoutSize={currentSize}
-            >
-
-            </znui.svg>
-        }
-
 
         return <Center
             ref={unsafeRefCast(ref)}
@@ -56,6 +46,7 @@ export const IconWrapper = React.forwardRef(
                 lineHeight: 'var(--icon-size)',
                 ...to,
             }}
+            pos='relative'
             pseudos={{
                 '& > svg': {
                     color: 'currentColor',
@@ -69,6 +60,7 @@ export const IconWrapper = React.forwardRef(
                 ...pseudos
             }}
             children={children}
+            {...rest}
         />
     }
 )
