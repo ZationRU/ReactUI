@@ -30,6 +30,7 @@ jobs:
         run: |
           yarn set version berry
           yarn
+          yarn run build
           yarn run build:styleguide
 
       - name: Deploy preview
