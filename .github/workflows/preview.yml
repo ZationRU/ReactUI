@@ -23,6 +23,9 @@ jobs:
         with:
           node-version: '20.x'
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Install and Build
         run: |
           yarn set version berry
