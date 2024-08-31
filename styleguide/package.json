@@ -1,0 +1,31 @@
+{
+  "name": "@project-docs/styleguide",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run": "styleguidist server",
+    "build": "styleguidist build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ZationRU/ReactUI.git"
+  },
+  "private": true,
+  "dependencies": {
+    "@znui/react": "^1.3.0-alpha",
+    "react": "*",
+    "react-dom": "*",
+    "react-icons": "^5.2.1",
+    "react-router-dom": "^6.15.0"
+  },
+  "devDependencies": {
+    "prop-types": "^15.8.1",
+    "react-docgen-typescript": "^2.2.2",
+    "react-frame-component": "^5.2.6",
+    "react-styleguidist": "13.1.1",
+    "styles-loader": "^4.0.1",
+    "typescript": "*",
+    "webpack": "^5.91.0"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "name": "@znui/react",
+  "version": "1.3.0-alpha.1",
+  "main": "./dist/index.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "dependencies": {
+    "@znui/alerts": "^1.3.0-alpha",
+    "@znui/appbars": "^1.3.0-alpha",
+    "@znui/badge": "^1.3.0-alpha",
+    "@znui/base": "^1.3.0-alpha",
+    "@znui/buttons": "^1.3.0-alpha",
+    "@znui/card": "^1.3.0-alpha",
+    "@znui/carousel": "^1.3.0-alpha",
+    "@znui/checkbox": "^1.3.0-alpha",
+    "@znui/coordinator-layout": "^1.3.0-alpha",
+    "@znui/divider": "^1.3.0-alpha",
+    "@znui/layouts": "^1.3.0-alpha",
+    "@znui/lists": "^1.3.0-alpha",
+    "@znui/md3-themes": "^1.3.0-alpha",
+    "@znui/md3-utils": "^1.3.0-alpha",
+    "@znui/media": "^1.3.0-alpha",
+    "@znui/menu": "^1.3.0-alpha",
+    "@znui/modals": "^1.3.0-alpha",
+    "@znui/navigation-bar": "^1.3.0-alpha",
+    "@znui/navigation-menu": "^1.3.0-alpha",
+    "@znui/navigation-rail": "^1.3.0-alpha",
+    "@znui/portals": "^1.3.0-alpha",
+    "@znui/progress-indicators": "^1.3.0-alpha",
+    "@znui/radio": "^1.3.0-alpha",
+    "@znui/ripple": "^1.3.0-alpha",
+    "@znui/scroll-layout": "^1.3.0-alpha",
+    "@znui/side-sheets": "^1.3.0-alpha",
+    "@znui/skeletons": "^1.3.0-alpha",
+    "@znui/slider": "^1.3.0-alpha",
+    "@znui/snackbar": "^1.3.0-alpha",
+    "@znui/switch": "^1.3.0-alpha",
+    "@znui/text-fields": "^1.3.0-alpha",
+    "@znui/tooltip": "^1.3.0-alpha",
+    "@znui/typography": "^1.3.0-alpha",
+    "@znui/utils": "^1.3.0-alpha"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "znui",
+    "unstyled",
+    "material",
+    "material design",
+    "design system",
+    "components"
+  ],
+  "author": "levkopo",
+  "bugs": {
+    "url": "https://github.com/ZationRU/ReactUI/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZationRU/ReactUI.git",
+    "directory": "packages/md3"
+  }
+}
