@@ -11,6 +11,8 @@ node_modules
 
 # production
 build
+styleguide/styleguide
+styleguide/lib
 
 # misc
 .DS_Store

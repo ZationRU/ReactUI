@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "yarn workspaces foreach -Apt --exclude styleguide run build",
+    "build:styleguide": "yarn workspace @project-docs/styleguide run build",
     "publish": "yarn workspaces foreach -A --exclude styleguide npm publish --tolerate-republish"
   },
   "workspaces": {
@@ -42,5 +43,8 @@
     "typescript": "^4.9.5",
     "typescript-plugin-styled-components": "^2.0.0"
   },
-  "packageManager": "yarn@4.3.1"
+  "packageManager": "yarn@4.3.1",
+  "dependencies": {
+    "@emotion/css": "^11.13.0"
+  }
 }

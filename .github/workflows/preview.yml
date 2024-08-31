@@ -25,10 +25,10 @@ jobs:
 
       - name: Install and Build
         run: |
-          npm ci
-          npm run build
+          yarn
+          yarn run build:styleguide
 
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1
         with:
-          source-dir: ./styleguide/
+          source-dir: ./styleguide/styleguide

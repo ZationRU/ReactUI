@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "run": "styleguidist server",
+    "build": "styleguidist build"
   },
   "repository": {
     "type": "git",
