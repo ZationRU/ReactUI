@@ -25,6 +25,7 @@ jobs:
 
       - name: Install and Build
         run: |
+          yarn set version berry
           yarn
           yarn run build:styleguide
 
