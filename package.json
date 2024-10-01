@@ -35,7 +35,7 @@
     "prismjs": "^1.29.0",
     "remark-gfm": "^3.0.1",
     "rimraf": "^4.4.1",
-    "rollup": "^3.26.3",
+    "rollup": "^3.29.5",
     "rollup-plugin-auto-external": "^2.0.0",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
