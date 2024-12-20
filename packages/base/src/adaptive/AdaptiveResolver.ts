@@ -64,7 +64,5 @@ export function resolveAdaptiveProps(
         }
     }
 
-    console.log(object, result)
-
     return result
 }

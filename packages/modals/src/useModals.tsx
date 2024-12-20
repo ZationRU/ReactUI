@@ -130,7 +130,7 @@ export const useModals = <Props = {}> (defaultOptions: ModalOptions<Props> = {})
                     ref={scrimRef}
                     posA={0}
                     overflow="visible"
-                    onClick={cancelable ? close: undefined}
+                    onClick={cancelable ? modalDialogInterface.close: undefined}
                 />
 
                 <Layout
