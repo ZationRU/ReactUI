@@ -6,10 +6,10 @@ import {znui} from "@znui/base";
 import {Body} from "@znui/typography";
 
 export interface CheckboxProps extends FormWidgetBaseProps {
-    uncheckedColor: FormWidgetBaseProps['color']
-    checkedColor: FormWidgetBaseProps['color']
-    error: boolean
-    indeterminate: boolean
+    uncheckedColor?: FormWidgetBaseProps['color']
+    checkedColor?: FormWidgetBaseProps['color']
+    error?: boolean
+    indeterminate?: boolean
 }
 
 const checkedPath = "M 7.4 11 L 10 13.6 L 16.6 7 L 18 8.4 L 10 16.4 L 10 16.4 L 6 12.4 L 7.4 11"
@@ -22,12 +22,13 @@ export const Checkbox = React.forwardRef(
     (props: CheckboxProps, inputRef: React.ForwardedRef<HTMLInputElement>) => {
         const {
             checked,
-            indeterminate,
+            indeterminate = false,
             uncheckedColor = ThemeTokens.onSurfaceVariant,
             checkedColor = ThemeTokens.primary,
             shapeScale = 'esm',
-            error,
+            error = false,
             children,
+            disabled,
             ...otherProps
         } = props
 
@@ -36,6 +37,7 @@ export const Checkbox = React.forwardRef(
         return <FormWidgetBase
             type='checkbox'
             checked={checked}
+            disabled={disabled}
             ref={inputRef}
             {...otherProps}
         >
@@ -49,8 +51,8 @@ export const Checkbox = React.forwardRef(
                     boxSizing='border-box'
                     borderWidth={2}
                     to={{
-                        borderColor: error ? ThemeTokens.error : (oneOfChecked ? checkedColor : uncheckedColor),
-                        background: oneOfChecked ? (error ? ThemeTokens.error: checkedColor) : 'transparent'
+                        borderColor: disabled ? ThemeTokens.onSurface : error ? ThemeTokens.error : (oneOfChecked ? checkedColor : uncheckedColor),
+                        background: oneOfChecked ? (disabled ? ThemeTokens.onSurface : error ? ThemeTokens.error : checkedColor) : 'transparent'
                     }}
                 >
                     <znui.svg
@@ -66,7 +68,7 @@ export const Checkbox = React.forwardRef(
                     >
                         <path id='state'
                               d={checked ? checkedPath: (indeterminate ? indeterminatePath: '')}
-                              fill={ThemeTokens.onPrimary}/>
+                              fill={disabled ? ThemeTokens.surface : ThemeTokens.onPrimary}/>
                     </znui.svg>
                 </Layout>
 

@@ -41,7 +41,7 @@ export const ComponentPage = () => {
                     flex={1}
                     bg={`url("${foreground}") no-repeat`}
                     bgSize='cover'
-                    backgroundPosition="50% 100%"
+                    backgroundPosition="50% 50%"
                 />
             </VStack>}
         />

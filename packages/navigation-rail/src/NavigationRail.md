@@ -1,3 +1,13 @@
+```
+{
+    "category": "navigation",
+    "type": "Navigation rail",
+    "description": "Navigation rails let people switch between UI views on mid-sized devices",
+    "background": "https://lh3.googleusercontent.com/cxzXBa301YGBTmRHZNUj6E3CI5iV-JU7FghrMvgiI-qmackVdnhZziGXA8SQtW0FXi41uwATvq96BJPB-YEBM-JgyA9VtqH04E59xGQtlgyy_6Gl8Q=w1200-rj",
+    "foreground": "https://lh3.googleusercontent.com/muYuyGZXVw-Iw9r8EDVBtfyru7D1Nloj-SbM1HncS6jMiUCzwOX6LClbmWVMJVHhs52PUVzT09NUVOoGa1sM7dRxitpUErmjwoBPilraLHtphuasVQ=w2400"
+}
+```
+
 ```tsx
 import {HStack, VStack, SegmentedButton, FloatingActionButton, Button, NavigationRail, Badge} from "@znui/react";
 import { MdAdd, MdHome, MdMessage, MdNotifications, MdSettings } from "react-icons/md";
