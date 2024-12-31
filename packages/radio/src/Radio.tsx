@@ -7,7 +7,7 @@ import {znui} from "@znui/base";
 export interface RadioProps extends FormWidgetBaseProps {}
 
 /**
- * Checkbox buttons let people select one option from a set of options
+ * Radio buttons let people select one option from a set of options
  */
 export const Radio = React.forwardRef(
     (props: RadioProps, inputRef: React.ForwardedRef<HTMLInputElement>) => {

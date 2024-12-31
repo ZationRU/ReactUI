@@ -10,6 +10,13 @@ export interface TappableProps extends LayoutProps {
      */
     ripple?: boolean
 
+    /**
+     * Need to disable clicking
+     *
+     * @default false
+     */
+    disabled?: boolean
+
     stateLayerProps?: StateLayerProps
 }
 
@@ -18,18 +25,19 @@ export const Tappable = React.forwardRef(
         const {
             children,
             ripple = true,
+            disabled = false,
             stateLayerProps,
             ...otherProps
         } = props
 
         return <Layout
             ref={ref}
-            cursor={ripple ? 'pointer': undefined}
+            cursor={ripple && !disabled ? 'pointer': undefined}
             {...otherProps}
             pos='relative'
             clip={true}
         >
-            <StateLayer ripple={ripple} {...stateLayerProps}/>
+            {!disabled && <StateLayer ripple={ripple} {...stateLayerProps}/>}
             {children}
         </Layout>
     }
