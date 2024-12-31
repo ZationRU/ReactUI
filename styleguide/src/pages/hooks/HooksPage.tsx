@@ -154,7 +154,7 @@ export function HooksPage() {
                             preview={<HooksPreview/>}
                         />
 
-                        <VStack mh='auto' maxW={1200}>s
+                        <VStack mh='auto' maxW={1200}>
                             <Section m={10}>
                                 {Object.keys(Hooks).map(hookName => {
                                     const hookPageInfo = Hooks[hookName]

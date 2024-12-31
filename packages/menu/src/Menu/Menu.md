@@ -1,6 +1,17 @@
+```
+{
+    "category": "selection",
+    "type": "Menus",
+    "visibleName": "Menu",
+    "description": "Menus display a list of choices on a temporary surface",
+    "background": "https://lh3.googleusercontent.com/JWsutJ9nyTn8uCFqN2o8CNBi58WDqGUljTFpb1mWap6hIbiF6bCKF_zvnACwiCmVjwDvVyWsJiUv2qFzDxYX5LBlvbgIVajDDvDZMklC0CP0whgilQ=w1200-rj",
+    "foreground": "https://lh3.googleusercontent.com/5quicMbc7u7KV8PRmVEqEXEN6Gyg_iqHmxaqf6_mhWUpPdEFNls6CQh80PAPibXQ5H_z2haw90zA6ZfITtF4pDT6ausRdPx1FD4aA4gEY2JyV34EjauX=w2400"
+}
+```
+
 ```tsx
 import { MdMoreVert } from "react-icons/md";
-import {IconButton, Divider, VStack, TextField} from "@znui/react";
+import {IconButton, Divider, VStack, TextField, Menu} from "@znui/react";
 
 <VStack>
     <Menu placement='vertical' width='by-object' height={150}>

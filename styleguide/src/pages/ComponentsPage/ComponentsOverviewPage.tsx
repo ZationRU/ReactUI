@@ -26,7 +26,7 @@ const categories = {
         title: "Navigation",
         description: "Navigation components help people move through the UI.",
     },
-    Selection: {
+    selection: {
         title: "Selection",
         description: "Selection components let people specify choices.",
     },
@@ -43,6 +43,7 @@ export const ComponentsOverviewPage = () => {
     const sections = components.reduce(function (r, a) {
         r[a.category] = r[a.category] || [];
         r[a.category].push(a);
+
         return r;
     }, Object.create(null))
 
@@ -60,6 +61,7 @@ export const ComponentsOverviewPage = () => {
             <VStack maxW={1200} mh='auto'>
                 {Object.entries(categories).map(([key, {title, description}]) => {
                     const components: ComponentData[] = sections[key] || []
+
                     return <VStack>
                         <SectionTitle mt={15} mb={8}>{title}</SectionTitle>
                         <SectionDescription mb={15}>{description}</SectionDescription>
@@ -98,7 +100,7 @@ export const ComponentsOverviewPage = () => {
                                                     posA={0}
                                                     bg={`url("${component.foreground}") no-repeat`}
                                                     bgSize='cover'
-                                                    backgroundPosition="50% 100%"
+                                                    backgroundPosition="50% 50%"
                                                 />
                                             </VStack>
                                         }

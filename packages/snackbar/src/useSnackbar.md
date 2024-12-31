@@ -12,6 +12,7 @@
 ```tsx
 import {useSnackbar, VStack, Button, SegmentedButton} from "@znui/react";
 import {useState} from "react";
+import {MdClose} from "react-icons/md"
 
 const [horizontal, setHorizontal] = useState('right')
 
@@ -50,12 +51,43 @@ const snackbar = useSnackbar();
         snackbar({
             text: 'Single-line snackbar with action',
             action: {
-                title: 'Action'
+                title: 'Action',
+                onClick: () => alert("Action")
             },
             horizontal
         })
     }}>
         Show Snackbar with action
+    </Button>
+
+    <Button onClick={() => {
+        snackbar({
+            text: 'Single-line snackbar with action',
+            action: {
+                title: 'Action',
+                onClick: () => alert("Action")
+            },
+            horizontal,
+            closeButton: {
+                icon: <MdClose size={24} />,
+                onClick: () => alert("Close")
+            }
+        })
+    }}>
+        Show Snackbar with action & close
+    </Button>
+
+    <Button onClick={() => {
+        snackbar({
+            text: 'Single-line snackbar with action',
+            horizontal,
+            closeButton: {
+                icon: <MdClose size={24} />,
+                onClick: () => alert("Close")
+            }
+        })
+    }}>
+        Show Snackbar with close button
     </Button>
 </VStack>
 ```

@@ -15,7 +15,7 @@ export const PackageInstall = () => {
     return <VStack spacing={15}>
         <SegmentedButton w={{
             esm: 'auto',
-            emd: 300
+            emd: 400
         }} selectedIds={selectedPackageManager} onSelect={setPackageManager}>
             <SegmentedButton.Segment id='npm'>
                 npm
@@ -26,12 +26,16 @@ export const PackageInstall = () => {
             <SegmentedButton.Segment id='pnpm'>
                 pnpm
             </SegmentedButton.Segment>
+            <SegmentedButton.Segment id='bun'>
+                bun
+            </SegmentedButton.Segment>
         </SegmentedButton>
 
         <CodeFragment>
             {selectedPackageManager==='npm'&&"npm install @znui/react"}
             {selectedPackageManager==='yarn'&&"yarn add @znui/react"}
             {selectedPackageManager==='pnpm'&&"pnpm add @znui/react"}
+            {selectedPackageManager==='bun'&&"bun add @znui/react"}
         </CodeFragment>
     </VStack>
 }

@@ -64,6 +64,7 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
         value,
         defaultValue = 0,
         step = 1,
+        disabled,
         ...layoutRest
     } = props
 
@@ -80,6 +81,7 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
     return <FormWidgetBase
         {...layoutRest}
         display='block'
+        disabled={disabled}
         h={44}
         p={3}
         type='range'
@@ -108,6 +110,7 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
             top="calc(50% - 14px)"
             overflow="visible"
         >
+            {/* Inactive Track */}
             <Layout
                 as="span"
                 pos="absolute"
@@ -117,9 +120,11 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
                 right={0}
                 left={'calc('+trackWidth+'%  + 14px)'}
                 maxW={"calc("+(100 - trackWidth)+"% - 14px)"}
-                bg={ThemeTokens.primaryContainer}
+                oc={disabled ? 0.12 : 1}
+                bg={disabled ? ThemeTokens.onSurface : ThemeTokens.primaryContainer}
             />
 
+            {/* Active Track */}
             <Layout
                 as="span"
                 pos="absolute"
@@ -130,7 +135,8 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
                 right={0}
                 ref={activeTrackRef}
                 maxW={"calc("+trackWidth+"% - 6px)"}
-                bg={ThemeTokens.primary}
+                bg={disabled ? ThemeTokens.onSurface : ThemeTokens.primary}
+                oc={disabled ? 0.38 : 1}
                 clip={true}
             />
 
@@ -155,20 +161,24 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
                                 key={"step-"+i}
                                 layoutSize={4}
                                 shapeScale="full"
-                                oc={(step <= 1 ? (i === 0 || i === stepCount ? 1: 0): 1)*(i * step === currentValue ? 0: 1)}
-                                bg={i * step < currentValue ? ThemeTokens.onPrimary: ThemeTokens.onPrimaryContainer}
+                                oc={(step <= 1 ? (i === 0 || i === stepCount ? 1 : 0) : 1) * (i * step === currentValue ? 0: 1) * (disabled ? i * step < currentValue ? 0.66 : 0.38 : 1)}
+                                bg={i * step < currentValue ?
+                                    (disabled ? ThemeTokens.inverseOnSurface : ThemeTokens.onPrimary)
+                                    : (disabled ? ThemeTokens.onSurface : ThemeTokens.onPrimaryContainer)}
                             />
                         )
                     }
                 </FlexLayout>
             </Layout>
 
+            {/* Handle */}
             <Layout
                 pos="absolute"
                 shapeScale="full"
                 overflow="visible"
                 left={"calc("+trackWidth+"%)"}
-                bg={ThemeTokens.primary}
+                bg={disabled ? ThemeTokens.onSurface : ThemeTokens.primary}
+                oc={disabled ? 0.38 : 1}
                 ref={handleRef}
                 top={-8}
                 borderRadius={2}

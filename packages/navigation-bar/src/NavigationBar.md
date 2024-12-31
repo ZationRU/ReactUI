@@ -1,3 +1,13 @@
+```
+{
+    "category": "navigation",
+    "type": "Navigation bar",
+    "description": "Navigation bars let people switch between UI views on smaller devices",
+    "background": "https://lh3.googleusercontent.com/289kyr53cPXdkUI3wS0O1qQg5YH6e5L9gRJXlnlpBuMwaMF8eDvDfctFAChVaEOTf9Ktfw3nwIDFpyQpInEmwvfoRsKBTzgX04JXeAclIMZeo9TJbqI-=w1200-rj",
+    "foreground": "https://lh3.googleusercontent.com/zw4SDpLpHGc2dFGb_FnrhEEQfKtXg_3UEnwHXke-iLlKA_M1MKLRlINLVEbwb5NlcOwyzjhgJoHyaVhXcilNgwt9EhBaSxi-w5EVf1mpRvEIgN-E-IQ=w2400"
+}
+```
+
 ```tsx
 import {NavigationBar, VStack, Badge, Button, SegmentedButton} from "@znui/react";
 import { MdHome, MdMessage, MdNotifications, MdMenu } from "react-icons/md";

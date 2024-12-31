@@ -59,6 +59,7 @@ export const Switch = React.forwardRef((
         borderWidth = 3,
         icon,
         switchStyles = defaultSwitchStyles,
+        disabled,
         ...otherProps
     } = props
 
@@ -117,26 +118,14 @@ export const Switch = React.forwardRef((
             checkbox.current.checked = !checked
         }}
         checked={checked}
-        _disabled={{
-            pointerEvents: 'none'
-        }}
+        disabled={disabled}
+        pointerEvents={disabled ? 'none' : undefined}
         pseudos={{
             '&:hover > .thumb': {
                 bg: checked ? ThemeTokens.primaryContainer : ThemeTokens.onSecondaryContainer
             },
             '&:focus-within > .thumb': {
                 bg: checked ? ThemeTokens.primaryContainer : ThemeTokens.onSurfaceVariant
-            },
-            '&:disabled > .truck': {
-                bg: ThemeTokens.onSurface,
-                borderColor: ThemeTokens.onSurface,
-                oc: 0.12
-            },
-            '&:disabled > .thumb': {
-                bg: checked ? ThemeTokens.surface: ThemeTokens.onSurface,
-                c: checked ? ThemeTokens.onSurface: undefined,
-                borderColor: ThemeTokens.onSurfaceVariant,
-                oc: 0.12
             }
         }}
         clip={true}
@@ -154,23 +143,25 @@ export const Switch = React.forwardRef((
         onPointerMove={onClearDown}
         onPointerCancel={onClearDown}
     >
+        {/* Track */}
         <Layout
-            className="truck"
             pos='absolute'
             posA={0}
             shapeScale={shapeScale}
             borderStyle='solid'
             borderWidth={borderWidth}
+
             to={{
                 baseDuration: checkedTransitionDuration,
                 baseTransition: checkedTransition,
-                background: checked ? truckBackgroundChecked : truckBackground,
-                borderColor: checked ? truckBorderColorChecked : truckBorderColor,
+                bg: disabled ? (checked ? ThemeTokens.onSurface : ThemeTokens.surfaceContainerHighest) : (checked ? truckBackgroundChecked : truckBackground),
+                borderColor: disabled ? ThemeTokens.onSurface : (checked ? truckBorderColorChecked : truckBorderColor),
+                oc: disabled ? 0.12 : 1
             }}
         />
 
+        {/* Handle */}
         <Center
-            className="thumb"
             ref={thumb}
             pos='absolute'
             shapeScale={shapeScale}
@@ -178,8 +169,10 @@ export const Switch = React.forwardRef((
                 baseDuration: checkedTransitionDuration,
                 baseTransition: checkedTransition,
 
-                background: checked ? thumbBackgroundChecked : thumbBackground,
-                color: checked ? thumbColorChecked : thumbColor,
+                bg: disabled ? (checked ? ThemeTokens.surface: ThemeTokens.onSurface) : (checked ? thumbBackgroundChecked : thumbBackground),
+                c: disabled ? (checked ? ThemeTokens.onSurface: undefined) : (checked ? thumbColorChecked : thumbColor),
+                borderColor: disabled ? ThemeTokens.onSurfaceVariant : undefined,
+                oc: disabled && !checked ? 0.38 : 1,
                 layoutSize: {},
                 transform: {}
             }}

@@ -7,12 +7,13 @@ import {znui} from "@znui/base";
 export interface RadioProps extends FormWidgetBaseProps {}
 
 /**
- * Checkbox buttons let people select one option from a set of options
+ * Radio buttons let people select one option from a set of options
  */
 export const Radio = React.forwardRef(
     (props: RadioProps, inputRef: React.ForwardedRef<HTMLInputElement>) => {
         const {
             checked: isChecked,
+            disabled,
             ...otherProps
         } = props
 
@@ -21,13 +22,15 @@ export const Radio = React.forwardRef(
             checked={isChecked}
             ref={inputRef}
             layoutSize={24}
+            disabled={disabled}
             {...otherProps}
         >
             <Center
                 shapeScale='full'
                 position='relative'
                 layoutSize={24}
-                color={isChecked? ThemeTokens.primary: ThemeTokens.onSurfaceVariant}
+                color={disabled ? ThemeTokens.onSurface : (isChecked ? ThemeTokens.primary : ThemeTokens.onSurfaceVariant)}
+                oc={disabled ? 0.38 : 1}
             >
                 <Center
                     layoutSize={20}
@@ -39,10 +42,10 @@ export const Radio = React.forwardRef(
                 >
 
                     <znui.div
-                        bg='currentColor'
+                        bg={disabled ? ThemeTokens.onSurface : 'currentColor'}
                         shapeScale='full'
                         to={{
-                            layoutSize: isChecked? 10: 0
+                            layoutSize: isChecked ? 10: 0,
                         }}
                     />
                 </Center>
