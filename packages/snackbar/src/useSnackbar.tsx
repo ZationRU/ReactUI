@@ -3,12 +3,12 @@ import {ThemeTokens} from "@znui/md3-themes";
 import {keyframes} from "@emotion/react";
 import {usePortals, ZnUIPortal} from "@znui/portals";
 import {Adaptive, useAdaptiveValue} from "@znui/base";
-import {Button, ButtonProps} from "@znui/buttons";
+import {Button, ButtonProps, IconButton} from "@znui/buttons";
 import {HStack, Layout} from "@znui/layouts";
 import {Body} from "@znui/typography";
 
 export type SnackbarConfig = {
-    icon?: ReactNode
+    closeButton?: SnackbarCloseButton
     text: ReactNode | string
     action?: SnackbarAction
     horizontal?: 'left' | 'right'
@@ -19,6 +19,11 @@ export type SnackbarConfig = {
 export type SnackbarAction = {
     title: ReactNode | string,
     cancel?: boolean,
+    onClick?: MouseEventHandler<HTMLButtonElement>
+}
+
+export type SnackbarCloseButton = {
+    icon: ReactNode
     onClick?: MouseEventHandler<HTMLButtonElement>
 }
 
@@ -184,9 +189,10 @@ export const useSnackbar = (): SnackbarHook => {
                     bottom={bottomOffset}
                     zIndex={5000}
                 >
-                    <HStack align="center" pl={16} pr={config.action ? 8 : 16} pv={config.action ? 4 : 14}>
+                    <HStack align="center" pl={16} pr={config.action || config.closeButton ? 8 : 16} pv={config.action || config.closeButton ? 4 : 14}>
                         <Body size='medium' flex={1}>{config.text}</Body>
-                        {config.action && <InverseButton>{config.action.title}</InverseButton>}
+                        {config.action && <InverseButton onClick={config.action.onClick}>{config.action.title}</InverseButton>}
+                        {config.closeButton && <IconButton layoutSize={48} c={ThemeTokens.inverseOnSurface} onClick={config.closeButton.onClick}>{config.closeButton.icon}</IconButton>}
                     </HStack>
                 </Layout>
             })
