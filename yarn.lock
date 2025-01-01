@@ -3097,7 +3097,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@znui/chip@workspace:packages/chip":
+"@znui/chip@npm:^1.3.0-alpha, @znui/chip@workspace:packages/chip":
   version: 0.0.0-use.local
   resolution: "@znui/chip@workspace:packages/chip"
   dependencies:
@@ -3365,6 +3365,7 @@ __metadata:
     "@znui/card": "npm:^1.3.0-alpha"
     "@znui/carousel": "npm:^1.3.0-alpha"
     "@znui/checkbox": "npm:^1.3.0-alpha"
+    "@znui/chip": "npm:^1.3.0-alpha"
     "@znui/coordinator-layout": "npm:^1.3.0-alpha"
     "@znui/divider": "npm:^1.3.0-alpha"
     "@znui/layouts": "npm:^1.3.0-alpha"

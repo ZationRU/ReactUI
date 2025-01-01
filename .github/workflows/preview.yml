@@ -29,6 +29,7 @@ jobs:
       - name: Install and Build
         run: |
           yarn set version berry
+          yarn config set -H enableImmutableInstalls false
           yarn
           yarn run build
           yarn run build:styleguide
