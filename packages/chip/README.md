@@ -1,4 +1,4 @@
-# ZnUI Radio component
+# ZnUI Chip component
 [![npm version](https://buttons.fury.io/js/@znui%2Fchip.svg)](https://buttons.fury.io/js/@znui%2Fchip)
 
 ## Documentation

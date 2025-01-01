@@ -7,7 +7,6 @@ import {StateLayer, Tappable} from "@znui/ripple";
 import {znui, ZnUIStyleObject} from "@znui/base";
 
 export interface ChipProps extends LayoutProps {
-    mode?: 'outlined' | 'elevated' | 'filled'
     leading?: ReactElement
     avatar?: ReactElement
     trailingIcon?: ReactElement
@@ -29,16 +28,10 @@ export interface ChipProps extends LayoutProps {
     disabled?: boolean
 }
 
-const variantStyles: Record<keyof ChipProps['variant'], ZnUIStyleObject> = {
-    'outline': {},
-    'filled': {
-        bg: ThemeTokens.secondaryContainer,
-        borderColor: undefined,
-        border: undefined
-    },
-    'tonal': {
-        bg: ThemeTokens.onSurfaceVariant
-    }
+const variantBackgrounds: Record<keyof ChipProps['variant'], string> = {
+    'outline': 'transparent',
+    'filled': ThemeTokens.secondaryContainer,
+    'tonal':  ThemeTokens.onSurfaceVariant
 }
 
 /**
@@ -60,13 +53,19 @@ export const Chip = React.forwardRef(
             ...otherProps
         } = props
 
-        const finalVariant = useMemo(() => selected ? 'filled' : variant, [selected])
-        const finalLeading = useMemo(() => selected ? <znui.svg
-            xmlns="http://www.w3.org/2000/svg"
-            width={24} height={24} viewBox="0 0 24 24" fill="none"
-        >
-            <path d="M 7.4 11 L 10 13.6 L 16.6 7 L 18 8.4 L 10 16.4 L 10 16.4 L 6 12.4 L 7.4 11" fill={disabled ? ThemeTokens.onSurface : ThemeTokens.primary} />
-        </znui.svg> : leading, [selected, disabled])
+        const finalVariant = useMemo(() => selected ? 'filled' : variant, [selected, variant]);
+        const finalLeading = selected ? (
+            <znui.svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={24}
+                height={24}
+                viewBox="0 0 24 24"
+                fill="none"
+            >
+                <path d="M 7.4 11 L 10 13.6 L 16.6 7 L 18 8.4 L 10 16.4 L 10 16.4 L 6 12.4 L 7.4 11" fill={disabled ? ThemeTokens.onSurface : ThemeTokens.primary} />
+            </znui.svg>
+        ) : leading
+
 
         return <HStack
             pos='relative'
@@ -79,7 +78,7 @@ export const Chip = React.forwardRef(
             pr={trailingIcon ? 8 : 16}
             boxSizing='border-box'
             h='32px'
-            border='solid 1px'
+            border={variant != 'filled' ? 'solid 1px' : undefined}
             alignItems='center'
             borderColor={disabled && variant != 'outline' ? 'transparent' : ThemeTokens.outlineVariant}
             spacing={8}
@@ -93,11 +92,9 @@ export const Chip = React.forwardRef(
                     bg: 'currentColor'
                 },
             }}
-            {...variantStyles[finalVariant]}
-            bg='transparent'
             {...otherProps}
         >
-            <Layout pos='absolute' top={0} left={0} bg={disabled && finalVariant != 'outline' ? ThemeTokens.onSurfaceVariant : variantStyles[finalVariant]['bg']} oc={finalVariant == 'tonal' || disabled ? 0.12 : 1}
+            <Layout pos='absolute' top={0} left={0} bg={disabled && finalVariant != 'outline' ? ThemeTokens.onSurfaceVariant : variantBackgrounds[finalVariant]} oc={finalVariant == 'tonal' || disabled ? 0.12 : 1}
                     layoutSize='100%'/>
             {onClick && <StateLayer/>}
             {finalLeading && !avatar && <IconWrapper oc={disabled ? 0.38 : 1} zIndex={1} c={selected ? ThemeTokens.onSecondaryContainer : (disabled ? ThemeTokens.onSurface : ThemeTokens.primary)} size={18}>
