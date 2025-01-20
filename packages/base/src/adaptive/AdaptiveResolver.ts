@@ -1,9 +1,9 @@
 import {
-    getAdaptiveValue,
     isAdaptiveValue,
     resolveAdaptiveToAdaptiveObject
 } from "./Adaptive";
 import {
+    LayoutBreakpoint,
     LayoutBreakpointKey, LayoutBreakpoints,
     LayoutBreakpointsBase,
     LayoutBreakpointsKeys,
@@ -29,38 +29,38 @@ export function buildAdaptiveData(breakpoint: LayoutBreakpointKey): AdaptiveData
 
 export const buildCurrentAdaptiveData = (): AdaptiveData => buildAdaptiveData(getCurrentDimensionBreakpoint())
 
+const sortedBreakpoints = Object.entries(LayoutBreakpoints)
+    .map(([key, value]) => [value, key] as [LayoutBreakpoint, string])
+    .sort(([a], [b]) => (b.min || 0) - (a.min || 0));
+
 export function resolveAdaptiveProps(
     object: { [key: string]: any; }
 ): { [key: string]: any } {
-    const adaptiveValues = Object.fromEntries(LayoutBreakpointsKeys.map(it => [it, {}])) as LayoutBreakpointsBase<{}>
+    const adaptiveValues = Object.fromEntries(LayoutBreakpointsKeys.map(it => [it, {}])) as LayoutBreakpointsBase<{}>;
 
-    let result = {}
+    const result = {}
     for (const key in object) {
         const value = object[key]
         if (isAdaptiveValue(value)) {
             const adaptiveData = resolveAdaptiveToAdaptiveObject(value)
-            for (const breakpointKey in adaptiveData) {
-                const value = adaptiveData[breakpointKey]
-                adaptiveValues[breakpointKey][key] = value === '' ? 'none': value
+            for (const breakpointKey of Object.keys(adaptiveData)) {
+                const adaptiveValue = adaptiveData[breakpointKey]
+                adaptiveValues[breakpointKey][key] = adaptiveValue === '' ? 'none' : adaptiveValue
             }
         } else {
-            result[key] = object[key]
+            result[key] = value
         }
     }
 
-    const adaptiveValuesSorted = Object.entries(adaptiveValues)
-        .map(([key, value]) => [LayoutBreakpoints[key], value])
-        .sort(([a], [b]) => (b.min || 0) - (a.min || 0))
-
-    for (const [breakpoint, object] of adaptiveValuesSorted) {
-        if(Object.keys(object).length == 0) {
-            continue
-        }
+    for (const [breakpoint, breakpointKey] of sortedBreakpoints) {
+        const breakpointValues = adaptiveValues[breakpointKey]
+        if (!Object.keys(breakpointValues).length) continue
 
         if(breakpoint.min) {
-            result[breakpoint.toMediaQuery()] = object
-        }else{
-            result = Object.assign(result, object)
+            result[breakpoint.toMediaQuery()] = breakpointValues
+        }else {
+            for (const key of Object.keys(breakpointValues))
+                result[key] = breakpointValues[key]
         }
     }
 
