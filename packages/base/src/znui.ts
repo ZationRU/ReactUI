@@ -25,26 +25,28 @@ export function styled<T extends React.ElementType, P extends object = {}>(
         }
     )(styleObject)
 
-    const znComponent = React.forwardRef(function ZnUIComponent(
-        instanceProps,
-        ref: React.ForwardedRef<T>,
-    ) {
-        const props = useMemo(() => ({
-            ...initialProps,
-            ...instanceProps,
-        }), [instanceProps])
+    const znComponent = React.memo(
+        React.forwardRef(function ZnUIComponent(
+            instanceProps,
+            ref: React.ForwardedRef<T>,
+        ) {
+            const props = useMemo(() => ({
+                ...initialProps,
+                ...instanceProps,
+            }), [instanceProps]) as P
 
-        const resolvedStyles = useMemo(() =>
-            styles?.call(undefined, props as P),
-            [props]
-        )
+            const resolvedStyles = useMemo(() =>
+                    styles?.(props),
+                [styles, props]
+            )
 
-        return React.createElement(Component, {
-            ref,
-            ...props,
-            ...resolvedStyles
+            return React.createElement(Component, {
+                ref,
+                ...props,
+                ...resolvedStyles
+            })
         })
-    })
+    )
 
     return znComponent as ZnUIComponent<T, P>
 }
