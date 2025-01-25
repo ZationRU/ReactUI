@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     Layout,
     ThemeTokens,
@@ -19,32 +19,36 @@ interface PlaygroundRendererProps {
 
 const PlaygroundRenderer = ({name, preview, tabBody}: PlaygroundRendererProps) => {
     const props = useProps()
+    const [isCode, setIsCode] = useState(false)
 
     return (
         <Layout clip={true}>
-            <VStack>
-                <VStack
+            <VStack spacing={8}>
+                <SegmentedButton maxH='36px' selectedIds={isCode ? 'code' : 'preview'} onSelect={e => setIsCode(e == 'code')}>
+                    <SegmentedButton.Segment id='preview'>Preview</SegmentedButton.Segment>
+                    <SegmentedButton.Segment id='code'>Code</SegmentedButton.Segment>
+                </SegmentedButton>
+                {!isCode && <VStack
                     data-preview={name}
                     flex={1}
                     overflow="visible"
-                    align='center'
                 >
-                    <Center flex={1}>
+                    <Layout flex={1}>
                         <ZnUIProvider fixedSchema={props.scheme} fixedSchemeContrast={props.schemeContrast}>
                             <VStack
-                                minW={[300, 360]}
                                 bg={ThemeTokens.surface}
                                 borderColor={ThemeTokens.outlineVariant}
-                                borderWidth={6}
+                                borderWidth={1}
                                 borderStyle='solid'
                                 clip={true}
                                 c={ThemeTokens.onSurface}
                                 shapeScale='lg'
+                                p={8}
                             >
                                 {preview}
                             </VStack>
                         </ZnUIProvider>
-                    </Center>
+                    </Layout>
 
                     <VStack w='100%'>
                         <VStack
@@ -97,21 +101,23 @@ const PlaygroundRenderer = ({name, preview, tabBody}: PlaygroundRendererProps) =
                             </HStack>
                         </VStack>
                     </VStack>
-                </VStack>
+                </VStack> }
 
-                <ScrollLayout
-                    shapeScale="lg"
-                    bg={ThemeTokens.surfaceContainer}
-                    borderWidth={1}
-                    borderStyle="solid"
-                    borderColor={ThemeTokens.outline}
-                    c={ThemeTokens.onSurface}
-                    maxH={600}
-                    minH={600}
-                    flex={1}
-                >
-                    {tabBody}
-                </ScrollLayout>
+                {isCode &&
+                    <ScrollLayout
+                        shapeScale="lg"
+                        bg={ThemeTokens.surfaceContainer}
+                        borderWidth={1}
+                        borderStyle="solid"
+                        borderColor={ThemeTokens.outline}
+                        c={ThemeTokens.onSurface}
+                        maxH={600}
+                        minH={600}
+                        flex={1}
+                    >
+                        {tabBody}
+                    </ScrollLayout>
+                }
             </VStack>
         </Layout>
     );

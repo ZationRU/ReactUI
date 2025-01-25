@@ -9,7 +9,7 @@
 ```
 
 ```js
-import {Layout, Button, AppBarButton, TopAppBar} from "@znui/react";
+import {Layout, Button, AppBarButton, TopAppBar, Badge} from "@znui/react";
 import { MdHome, MdNotifications, MdMoreVert, MdArrowBack } from "react-icons/md";
 
 const [navigationIcon, setNavigationIcon] = React.useState(true);

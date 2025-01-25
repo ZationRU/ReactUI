@@ -32,8 +32,6 @@ export default function ReactComponent({component}: {
         foreground
     } = component
 
-    console.log(component)
-
     return <ScrollLayout ph={8} height="100%">
         <HeaderPage
             title={visibleName}

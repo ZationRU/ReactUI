@@ -7,7 +7,7 @@ interface ParaProps {
 }
 
 const ParaRenderer = (props: ParaProps) => {
-    return <Body as={props.semantic}>{props.children}</Body>;
+    return <Body lineHeight={1.75} as={props.semantic} size='large'>{props.children}</Body>;
 }
 
 export default ParaRenderer

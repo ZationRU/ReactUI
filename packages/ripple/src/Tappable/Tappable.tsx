@@ -36,6 +36,7 @@ export const Tappable = React.forwardRef(
             {...otherProps}
             pos='relative'
             clip={true}
+            disabled={disabled}
         >
             {!disabled && <StateLayer ripple={ripple} {...stateLayerProps}/>}
             {children}

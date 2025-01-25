@@ -19,14 +19,16 @@ import {
     HStack,
     Card,
     IconButton,
-    CarouselContent, CarouselItem, Carousel
+    CarouselContent, CarouselItem, Carousel, Tappable
 } from "@znui/react";
 import { MdHome, MdMessage, MdNotifications, MdMenu, MdAdd, MdMoreVert } from "react-icons/md";
 import {Outlet} from "react-router-dom";
+import {useStyleguidist} from "../../StyleguidistContext";
 
 
 export function ComponentsPage() {
     const {currentBreakpoint} = useAdaptive()
+    const {components} = useStyleguidist()
 
     return <Layout
         display='flex'
@@ -40,16 +42,22 @@ export function ComponentsPage() {
                     <Layout ph={10} overflow="auto" maxH="100vh" minH="100vh">
                         <VStack>
                             <NavigationMenu.Item
-                                ml={10}
                                 onClick={() => {
-                                    window.location.href = '#components'
+                                    window.location.href = '#/components'
                                 }}
-                                selected={window.location.hash==='#components'}
+                                selected={window.location.hash == '#/components'}
                             >
                                 Components overview
                             </NavigationMenu.Item>
 
-                            {/*TODO{props.toc}*/}
+                            {components.map(it => <NavigationMenu.Item p={8} key={it.name}
+                               onClick={() => {
+                                   window.location.href = '#/components/' + it.name
+                               }}
+                               selected={decodeURI(window.location.hash) == ('#/components/' + it.name)}
+                            >
+                                {it.title ?? it.name}
+                            </NavigationMenu.Item>)}
                         </VStack>
                     </Layout>
                 </Layout>

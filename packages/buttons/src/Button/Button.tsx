@@ -37,6 +37,18 @@ const modeStyles: {
     }
 }
 
+const modeDisabledStyles: {
+    [key: string]: ZnUIStyleObject
+} = {
+    text: {
+        background: undefined,
+    },
+    outline: {
+        background: undefined,
+        borderColor: `color-mix(in srgb, ${ThemeTokens.onSurface} 12%, transparent)`,
+    }
+}
+
 export interface ButtonProps extends HTMLZnUIProps<'button'>{
     mode?: 'filled'|'text'|'outline'|'tonal'|'elevated',
     icon?: ReactNode
@@ -91,12 +103,13 @@ export const Button = React.forwardRef((props: ButtonProps, ref: ForwardedRef<HT
         _focusVisible={mode === 'text' ? {
             borderColor: ThemeTokens.primary
         } : {}}
-        _disabled={{
-            oc: 0.38,
-            cursor: 'unset',
-            pointerEvents: 'none'
-        }}
         {...modeStyles[mode]}
+        _disabled={{
+            pointerEvents: 'none',
+            color: ThemeTokens.onSurface,
+            bg: `color-mix(in srgb, ${ThemeTokens.onSurface} 12%, transparent)`,
+            ...modeDisabledStyles[mode]
+        }}
         elevation={mode==='elevated' ? 1: 0}
         pseudos={{
             '&:enabled:focus-visible > .state-layer': {
@@ -122,7 +135,7 @@ export const Button = React.forwardRef((props: ButtonProps, ref: ForwardedRef<HT
                     duration: 600,
                     value: '100%'
                 },
-                oc: loading ? 0: 1
+                oc: loading ? 0 : (otherProps.disabled ? 0.38 : 1)
             }}
         >
             {icon&&<IconWrapper size={18}>{icon}</IconWrapper>}

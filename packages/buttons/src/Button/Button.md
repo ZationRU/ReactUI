@@ -72,6 +72,8 @@ const [isLoading, setIsLoading] = useState(false);
         <Button mode="tonal" icon={<MdAdd/>} disabled>Disabled</Button>
     </HStack>
 
+    <Title>Loading Button</Title>
+    
     <HStack>
         <Button
             mode={!state ? 'filled': 'tonal'}
@@ -84,6 +86,7 @@ const [isLoading, setIsLoading] = useState(false);
                 }, 5000)
             }}
             loading={isLoading}
+            disabled={isLoading}
         >
             {!state ? 'Download': 'Delete application'}
         </Button>

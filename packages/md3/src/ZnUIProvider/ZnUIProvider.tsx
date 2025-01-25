@@ -121,6 +121,7 @@ export const ZnUIProvider = (props: ZnUIProviderProps) => {
         }}>
             <AdaptiveContext.Provider value={data}>
                 <ZnUIProviderPortalContext.Provider value={portalData}>
+                    <div id='znui-portal'></div>
                     {children}
                 </ZnUIProviderPortalContext.Provider>
             </AdaptiveContext.Provider>

@@ -27,6 +27,8 @@ export const ComponentPage = () => {
         props
     } = component
 
+    console.log(component, props)
+
     return <ScrollLayout ph={8} height="100%">
         <HeaderPage
             title={visibleName}

@@ -5,19 +5,19 @@ const HeadingRenderer = ({ level, children, className }: any) => {
     switch (level) {
         case 1:
             return (
-                <Title size="large" className={className}>
+                <Title mt={30} mb={6} size="large" className={className}>
                     {children}
                 </Title>
             );
         case 2:
             return (
-                <Title size="medium" className={className}>
+                <Title mt={30} mb={6} size="medium" className={className}>
                     {children}
                 </Title>
             );
         default:
             return (
-                <Headline size="large" className={className}>
+                <Headline mt={30} mb={6} size="large" className={className}>
                     {children}
                 </Headline>
             );
