@@ -9,10 +9,35 @@
 ```
 
 ```tsx
-import {Divider, VerticalDivider} from "@znui/react";
+import {Divider, VerticalDivider, ListItem, HStack, VStack, Avatar} from "@znui/react";
 
-<>
-    <Divider/>
-    <VerticalDivider/>
-</>
+const DummyItem = () => (<ListItem heading='Cat' supportText='A cool image of cat' leading={<Avatar image='https://cataas.com/cat' size={40}/>} />);
+
+<HStack justify='space-between'>
+    <VStack>
+        <DummyItem />
+        <Divider />
+        <DummyItem />
+        <Divider />
+        <DummyItem />
+        <Divider />
+        <DummyItem />
+        <Divider />
+        <DummyItem />
+    </VStack>
+    
+    <VerticalDivider />
+
+    <VStack>
+        <DummyItem />
+        <Divider />
+        <DummyItem />
+        <Divider />
+        <DummyItem />
+        <Divider />
+        <DummyItem />
+        <Divider />
+        <DummyItem />
+    </VStack>
+</HStack>
 ```

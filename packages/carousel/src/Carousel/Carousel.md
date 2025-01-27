@@ -9,9 +9,7 @@
 ```
 
 ```tsx
-import {Carousel, Stack, VStack, SegmentedButton, CarouselItem} from "@znui/react";
-import {CarouselContent} from "./Carousel";
-
+import {Carousel, Stack, VStack, SegmentedButton, CarouselItem, CarouselContent} from "@znui/react";
 
 <Stack orientation={['vertical', null, 'horizontal']} spacing={16} align='center'>
     <Carousel

@@ -9,152 +9,99 @@
 }
 ```
 
-Simple Alert Dialog without icon:
-```tsx
-import {useAlerts, useSnackbar, Button, VStack, TextField} from "@znui/react";
-
-const alert = useAlerts();
-const snackbar = useSnackbar();
-
-<VStack spacing={10}>
-    <Button
-        onClick={() => {
-            alert({
-                title: "I'm Alert Dialog",
-                description: "A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.",
-                actions: [
-                    {
-                        title: "Cancel",
-                        cancel: true
-                    },
-                    {
-                        title: "Done",
-                        cancel: true,
-                        onClick: () => {
-                            // Do your staff
-                        }
-                    }
-                ]
-            })
-        }}
-    >Show dialog</Button>
-
-    <Button
-        onClick={() => {
-            alert({
-                title: "I'm Alert Dialog",
-                description: "A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.",
-                component: ({dialogInterface}) => {
-                    return <TextField mh={24} label="Example" placeholder="xD">
-                        <input
-                            value={dialogInterface.values['name']}
-                            onChange={(e) => dialogInterface.setValue('name', e.currentTarget.value)}/>
-                    </TextField>
-                },
-                actions: [
-                    {
-                        title: "Cancel",
-                        cancel: true
-                    },
-                    {
-                        title: "Done",
-                        cancel: true,
-                        onClick: ({dialogInterface}) => {
-                            snackbar({
-                                text: 'You name is: '+dialogInterface.values.name
-                            })
-                        }
-                    }
-                ]
-            })
-        }}
-    >Show dialog with component</Button>
-</VStack>
-```
-
-A simple Alert Dialog with an icon. She will always be in the center:
-```tsx
-import {useAlerts, Button} from "@znui/react";
-
-const Icon = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M11.1 3.9C11.1 3.40294 11.5029 3 12 3C12.4971 3 12.9 3.40294 12.9 3.9V20.1C12.9 20.5971 12.4971 21 12 21C11.5029 21 11.1 20.5971 11.1 20.1V3.9Z" fill="currentColor"/>
-    <path d="M3.9 12.9C3.40294 12.9 3 12.4971 3 12C3 11.5029 3.40294 11.1 3.9 11.1H20.1C20.5971 11.1 21 11.5029 21 12C21 12.4971 20.5971 12.9 20.1 12.9H3.9Z" fill="currentColor"/>
-</svg>
-
-const alert = useAlerts();
-
-<Button
-    onClick={() => {
-        alert({
-            icon: <Icon/>,
-            title: "I'm Alert Dialog with Icon",
-            description: "A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.",
-            actions: [
-                {
-                    title: "Cancel",
-                    cancel: true
-                },
-                {
-                    title: "Done",
-                    cancel: true,
-                    onClick: () => {
-                        // Do your staff
-                    }
-                }
-            ]
-        })
-    }}
->Show dialog with icon</Button>
-```
-
-An example of an Alert Dialog that appears close to an action (like a button click):
+# Title and Description
+In this example, a simple alert with a `text` and `description` is opened.
 
 ```tsx
 import {useAlerts, Button, VStack} from "@znui/react";
 
-const Icon = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M11.1 3.9C11.1 3.40294 11.5029 3 12 3C12.4971 3 12.9 3.40294 12.9 3.9V20.1C12.9 20.5971 12.4971 21 12 21C11.5029 21 11.1 20.5971 11.1 20.1V3.9Z" fill="currentColor"/>
-    <path d="M3.9 12.9C3.40294 12.9 3 12.4971 3 12C3 11.5029 3.40294 11.1 3.9 11.1H20.1C20.5971 11.1 21 11.5029 21 12C21 12.4971 20.5971 12.9 20.1 12.9H3.9Z" fill="currentColor"/>
-</svg>
+const { openAlert, alerts } = useAlerts();
 
-const alert = useAlerts();
+const open = () => openAlert({title: 'Hello', description: 'Hello from alert dialog!'});
 
-const dialogInfo = {
-    title: "I'm Alert Dialog with Icon",
-    description: "A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.",
+<VStack>
+    <Button onClick={open}>Open alert</Button>
+    {alerts}
+</VStack>
+```
+
+# With Icon and Actions
+In this example, an alert with an `icon` and `actions` is opened.
+
+```tsx
+import {useAlerts, Button, VStack} from "@znui/react";
+import {MdCloudDownload} from "react-icons/md";
+import {useState} from "react";
+import {Body} from "@znui/typography";
+
+const {openAlert, alerts} = useAlerts();
+const [isSynchronized, setIsSynchronized] = useState(false)
+
+const open = () => openAlert({
+    title: 'Cloud Sync',
+    description: 'The data will be synchronized with the cloud. Are you sure you want to synchronize with the cloud?',
+    icon: <MdCloudDownload/>,
     actions: [
         {
-            title: "Cancel",
-            cancel: true
+            title: 'Cancel',
+            close: true
         },
         {
-            title: "Done",
-            cancel: true,
+            title: 'Accept',
             onClick: () => {
-                // Do your staff
+                setIsSynchronized(true)
+                return true // Close alert
             }
         }
     ]
-};
+});
 
-<VStack spacing={10}>
-    <Button
-        onClick={(e) => {
-            alert(dialogInfo, e)
-        }}
-    >
-        Show dialog without icon
-    </Button>
+<VStack spacing={8}>
+    <Button onClick={open}>Open alert</Button>
+    <Body>isSynchronized: {isSynchronized ? "Yes" : "No"}</Body>
+    {alerts}
+</VStack>
+```
 
-    <Button
-        onClick={(e) => {
-            alert({
-                ...dialogInfo,
-                icon: <Icon/>,
-            }, e)
-        }}
-    >
-        Show dialog with icon
-    </Button>
+# Custom Component and Values
+In this example, an alert with a custom component (a text field) is opened. It also utilizes `values` and `setValue` to manage the state.
+
+```tsx
+import {useAlerts, Button, VStack} from "@znui/react";
+import {useState} from "react";
+import {Body} from "@znui/typography";
+import {TextField} from "@znui/text-fields";
+
+const {openAlert, alerts} = useAlerts();
+const [name, setName] = useState('')
+
+const open = () => openAlert({
+    title: 'Welcome!',
+    description: 'Welcome! Before you log in, please enter your name.',
+    component: ({name, setValue}) => <VStack p={8}>
+        <TextField label='Name' error={!name}>
+            <input value={name} onChange={e => setValue('name', e.target.value)} />
+        </TextField>
+    </VStack>,
+    defaultValues: {name},
+    actions: [
+        {
+            title: 'Cancel',
+            close: true
+        },
+        {
+            title: 'Accept',
+            onClick: (_, values) => {
+                if(!!values.name) setName(values.name)
+                return !!values.name
+            }
+        }
+    ]
+});
+
+<VStack spacing={8}>
+    <Button onClick={open}>Open alert</Button>
+    <Body>Your name: {name}</Body>
+    {alerts}
 </VStack>
 ```

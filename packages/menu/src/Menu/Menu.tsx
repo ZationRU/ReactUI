@@ -1,56 +1,143 @@
-import React, {
-    useCallback,
-    useState,
-    SyntheticEvent,
-    useContext,
-    ForwardedRef,
-    ReactNode,
-    useMemo,
-    useEffect,
-    useRef, ExoticComponent,
-} from 'react';
-import {Center, HStack, Layout, LayoutProps, VStack} from "@znui/layouts";
-import {Tappable} from "@znui/ripple";
-import {IconWrapper} from "@znui/md3-utils";
-import {Body} from "@znui/typography";
-import {ThemeTokens} from "@znui/md3-themes";
-import {componentWithProps, mergeRefs} from "@znui/utils";
+import React, {ReactNode, RefObject, useCallback, useContext, useRef, useState,} from 'react';
+import {LayoutProps} from "@znui/layouts";
+import {componentWithProps} from "@znui/utils";
+import MenuItem from "./MenuItem";
+import MenuItems from "./MenuItems";
+import MenuTrigger from "./MenuTrigger";
+
+type Point = { x: number, y: number } | undefined
 
 interface MenuContextProps {
-    density: number
-    open: (element: HTMLElement) => void
+    /**
+     * Opens the menu.
+     * @param point Coordinates relative to the top-left corner of the element
+     */
+    open: (point?: Point) => void
+
+    /**
+     * Closes the menu.
+     */
     close: () => void
-    placement: 'horizontal' | 'vertical'
+
+    density: number
     width: number | 'by-object'
     height: number | 'by-content'
-    point: DOMRect | null
-    isRoot?: boolean
+
+    /**
+     * A React ref to the trigger element.
+     */
+    triggerElement?: RefObject<HTMLElement | null>
+    /**
+     * Indicates whether this menu is a root menu or a child menu.
+     *
+     * True if this is a top-level menu, false otherwise.
+     */
+    isRoot?: boolean,
+
+    /**
+     * Indicates whether the menu is currently open.
+     */
+    isOpened: boolean
+
+    /**
+     * The relative coordinates of the menu's position from the top-left corner of the trigger element.
+     */
+    point: Point
 }
 
 export interface MenuProps {
-    menu?: React.ReactNode
+    /**
+     * Determines the compactness level of the menu.
+     * Higher values result in a more compact menu.
+     */
     density?: 0 | 1 | 2
-    placement?: MenuContextProps['placement']
+
+    /**
+     * The width of the menu.
+     * 'by-object' sets the menu width to match the width of the trigger element.
+     * @default 200
+     */
     width?: MenuContextProps['width']
+
+    /**
+     * The height of the menu.
+     * 'by-content' sets the height to fit the content within the menu.
+     * @default by-content
+     */
     height?: MenuContextProps['height']
+
+    /**
+     * The children components of the menu.
+     * These should be `Menu.Trigger` and `Menu.Items` component.
+     */
     children: React.ReactNode
 }
 
 export interface MenuItemProps extends LayoutProps {
+    /**
+     * The icon displayed to the left of the menu item.
+     */
     icon?: React.ReactNode
+
+    /**
+     * The icon displayed to the right of the menu item.
+     */
     trailingIcon?: React.ReactNode
+
+    /**
+     * The children component.
+     */
     children: React.ReactNode
+
+    /**
+     * A supporting text description for the menu item.
+     */
     supportingText?: React.ReactNode
+
+    /**
+     * Whether the menu item is currently selected.
+     * Affects background color.
+     * @default false
+     */
+    selected?: boolean
+
+    /**
+     * Whether the menu item is disabled.
+     * @default false
+     */
+    disabled?: boolean
+
+    /**
+     * Whether the menu should close when this item is clicked.
+     * @default true
+     */
+    closeOnClick?: boolean
 }
 
 export interface MenuTriggerProps {
+    /**
+     * The content to be rendered.
+     *
+     * This can be a React element or a function that receives the ref, the open and a close function.
+     * @example <Button>Example</Button>
+     * @example {(ref, open) => <Button ref={ref} onClick={() => open()}>Example</Button>}
+     */
     children: React.ReactElement | (
         (
             ref: React.Ref<HTMLElement>,
-            open: () => void,
-            close: () => void
+            open: MenuContextProps['open'],
+            close: MenuContextProps['close'],
         ) => React.ReactElement
         )
+
+    /**
+     * The mode in which the menu opens.
+     *
+     * Options are 'click', 'context' (right-click), and 'input' (triggered by text input).
+     *
+     * This property only works when `children` is a React component, not a function.
+     * @default click
+     */
     mode?: 'click' | 'context' | 'input'
 }
 
@@ -60,252 +147,46 @@ export interface MenuItemsProps {
 
 const MenuContext = React.createContext<MenuContextProps>({
     density: 0,
-    open: () => {
-    },
-    close: () => {
-    },
-    placement: 'horizontal',
+    open: () => {},
+    close: () => {},
     width: 200,
     height: 'by-content',
-    point: null,
-    isRoot: undefined
+    triggerElement: undefined,
+    isRoot: undefined,
+    isOpened: false,
+    point: undefined
 })
 
-const useMenuContext = () => useContext(MenuContext)
+export const useMenuContext = () => useContext(MenuContext)
 
-export const Menu = componentWithProps(
-    (props: MenuProps) => {
-        const [point, setPoint] = useState<DOMRect | null>(null)
-        const prevContext = useMenuContext()
+export const Menu = componentWithProps((props: MenuProps) => {
+    const [isOpened, setIsOpened] = useState(false)
+    const [point, setPoint] = useState<Point>(undefined)
+    const prevContext = useMenuContext()
+    const triggerElement = useRef<HTMLElement>(null)
 
-        const open = useCallback((element: HTMLElement) => {
-            setPoint(element.getBoundingClientRect())
-        }, [setPoint])
+    const open = useCallback((point?: Point) => {
+        setIsOpened(true)
+        setPoint(point)
+    },[setIsOpened, setPoint])
+    const close = useCallback(() => setIsOpened(false), [setIsOpened])
 
-        const close = useCallback(() => setPoint(null), [setPoint])
-
-        return <MenuContext.Provider value={{
-            density: props.density || prevContext.density,
-            placement: props.placement || prevContext.placement,
-            width: props.width || prevContext.width,
-            height: props.height || prevContext.height,
-            open,
-            close,
-            point,
-            isRoot: prevContext.isRoot === undefined
-        }}>
-            {props.children}
-        </MenuContext.Provider>
-    },
-    {
-        Item: React.forwardRef((props: MenuItemProps, ref: ForwardedRef<HTMLDivElement>) => {
-            const menuContext = useMenuContext()
-
-            const {
-                icon,
-                trailingIcon,
-                children,
-                supportingText,
-                ...layoutRest
-            } = props
-
-            const height = 56 + (menuContext.density * -8)
-            return <Layout
-                as={layoutRest.onClick && Tappable}
-                h={height}
-                ref={ref}
-                maxH={height}
-                {...layoutRest}
-            >
-                <HStack
-                    ph={12}
-                    spacing={12}
-                    h="100%"
-                    align="center"
-                >
-                    {icon && <Center minLayoutSize={24}>
-                        <IconWrapper size={24}>
-                            {icon}
-                        </IconWrapper>
-                    </Center>}
-
-                    <VStack flex={1}>
-                        <Body size="large" maxLines={1}>{children}</Body>
-                        {supportingText && menuContext.density === 0 &&
-                            <Body
-                                size="medium"
-                                c={ThemeTokens.onSurfaceVariant}
-                                maxLines={1}
-                            >
-                                {supportingText}
-                            </Body>
-                        }
-                    </VStack>
-
-                    {trailingIcon && <Center minLayoutSize={24}>
-                        <IconWrapper size={24}>
-                            {trailingIcon}
-                        </IconWrapper>
-                    </Center>}
-                </HStack>
-            </Layout>
-        }),
-        Items: React.forwardRef((
-            {
-                children,
-            }: MenuItemsProps,
-            ref: ForwardedRef<HTMLDivElement>
-        ) => {
-            const itemRef = useRef<HTMLDivElement | null>(null)
-            const {point, close, isRoot, width, placement, height} = useMenuContext()
-            const [currentPoint, setCurrentPoint] = useState<{
-                x: number, y: number, byRight: boolean, byBottom: boolean
-            }>()
-
-            const finalWidth = width === 'by-object' ? point?.width || 0 : width
-            const finalHeight = height === 'by-content' ?  itemRef.current?.scrollHeight: height
-
-            useEffect(() => {
-                if (!itemRef || !point) {
-                    return
-                }
-
-                const padding = isRoot ? 4 : 0
-
-                let x = point.left
-                let y = point.bottom
-                let byRight = false
-                let byBottom = false
-                if(placement === 'horizontal') {
-                    y = point.top
-                    x +=  point.width + padding
-
-                    if (x + finalWidth + 12 > window.innerWidth) {
-                        x = window.innerWidth - (point.right - point.width - padding)
-                        byRight = true
-                    }
-                }
-
-                const prevHeight = finalHeight || 200
-                if (y + prevHeight + 200 >= window.innerHeight) {
-                    byBottom = true
-                    y = window.innerHeight - point.top
-                }
-
-                setCurrentPoint({
-                    x, y, byRight, byBottom
-                })
-            }, [isRoot, point, finalWidth, placement, finalHeight])
-
-            useEffect(() => {
-                function handleClickOutside(e: MouseEvent) {
-                    if (itemRef.current && !itemRef.current?.contains(e.target as Node)) {
-                        close();
-                    }
-                }
-
-                document.addEventListener("mousedown", handleClickOutside);
-                document.addEventListener("pointerdown", handleClickOutside);
-                document.addEventListener("wheel", handleClickOutside);
-                return () => {
-                    document.removeEventListener("mousedown", handleClickOutside);
-                    document.removeEventListener("pointerdown", handleClickOutside);
-                    document.removeEventListener("wheel", handleClickOutside);
-                };
-            }, [close, itemRef]);
-
-            const animation = placement === 'horizontal' ? {
-                maxW: !currentPoint || !point ? 0 : finalWidth,
-            }: {
-                maxH: !currentPoint || !point ? 0 : finalHeight,
-            }
-
-            return <Layout
-                ref={mergeRefs(ref, itemRef)}
-                position="fixed"
-                left={!currentPoint?.byRight ? currentPoint?.x : undefined}
-                right={currentPoint?.byRight ? currentPoint?.x : undefined}
-                top={!currentPoint?.byBottom ? currentPoint?.y: undefined}
-                bottom={currentPoint?.byBottom ? currentPoint?.y: undefined}
-                bg={ThemeTokens.surfaceContainer}
-                c={ThemeTokens.onSurface}
-                className="elevation-2"
-                shapeScale="esm"
-                w={finalWidth}
-                zIndex={3}
-                to={{
-                    ...animation,
-                    oc: !currentPoint || !point ? 0 : 1,
-                }}
-                pointerEvents={!currentPoint || !point ? 'none' : 'all'}
-                userSelect="none"
-                overflow={height === 'by-content' ? 'hidden': 'auto'}
-            >
-                {children}
-            </Layout>
-        }),
-        Trigger: React.forwardRef((
-            {
-                children,
-                mode = 'click',
-            }: MenuTriggerProps,
-            ref: ForwardedRef<HTMLElement>
-        ) => {
-            const {open, point, close} = useMenuContext()
-            const itemRef = useRef<HTMLElement>(null)
-
-            const openByRef = useCallback(() => {
-                itemRef.current && open(itemRef.current)
-            }, [open])
-
-            const props = useMemo(() => {
-                if (typeof children === 'function') {
-                    return {}
-                }
-
-                const props = { ...children.props }
-                if (mode === 'click') {
-                    props.onClick = (e: SyntheticEvent<HTMLElement>) => {
-                        e.stopPropagation()
-                        e.preventDefault()
-                        if (point === null) {
-                            openByRef()
-                        } else {
-                            close()
-                        }
-
-                        children.props.onClick?.call(undefined, e)
-                    }
-                } else if (mode === 'context') {
-                    props.onContextMenu = (e: SyntheticEvent<HTMLElement>) => {
-                        e.stopPropagation()
-                        e.preventDefault()
-                        openByRef()
-                        children.props.onContextMenu?.call(undefined, e)
-                    }
-                } else if (mode === 'input') {
-                    props.onInput = (e: SyntheticEvent<HTMLElement>) => {
-                        e.stopPropagation()
-                        e.preventDefault()
-                        openByRef()
-                        children.props.onInput?.call(undefined, e)
-                    }
-                }
-
-                return props
-            }, [children, mode, point, open, close])
-
-            const mergedRef = mergeRefs(itemRef, ref, props.ref)
-            return useMemo(() => typeof children === 'function' ?
-                children(mergedRef, openByRef, close) : React.cloneElement(children, {
-                    ...props,
-                    ref: mergedRef
-                }), [children, close, openByRef, props, mergedRef])
-        }),
-        displayName: 'Menu'
-    },
-)
-
-Menu.Item.displayName = 'Menu.Item'
-Menu.Items.displayName = 'Menu.Items'
-Menu.Trigger.displayName = 'Menu.Trigger'
+    return <MenuContext.Provider value={{
+        density: props.density || prevContext.density,
+        width: props.width || prevContext.width,
+        height: props.height || prevContext.height,
+        open,
+        close,
+        isOpened,
+        triggerElement,
+        point,
+        isRoot: prevContext.isRoot === undefined
+    }}>
+        {props.children}
+    </MenuContext.Provider>
+}, {
+    Item: MenuItem,
+    Items: MenuItems,
+    Trigger: MenuTrigger,
+    displayName: 'Menu'
+})

@@ -22,6 +22,7 @@ export interface ModalWrapperProps {
 
     /**
      * Justification for the bottom action element. Uses justify values.
+     * @default end
      */
     bottomActionJustify?: FlexLayoutProps['justify']
 
