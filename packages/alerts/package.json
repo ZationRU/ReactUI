@@ -14,7 +14,6 @@
     "@znui/layouts": "^1.3.0-alpha",
     "@znui/md3-themes": "^1.3.0-alpha",
     "@znui/md3-utils": "^1.3.0-alpha",
-    "@znui/portals": "^1.3.0-alpha",
     "@znui/typography": "^1.3.0-alpha"
   },
   "scripts": {

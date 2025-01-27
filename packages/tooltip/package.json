@@ -11,7 +11,8 @@
   "dependencies": {
     "@znui/layouts": "^1.3.0-alpha",
     "@znui/md3-themes": "^1.3.0-alpha",
-    "@znui/typography": "^1.3.0-alpha"
+    "@znui/typography": "^1.3.0-alpha",
+    "@znui/utils": "^1.3.0-alpha"
   },
   "scripts": {
     "build": "rollup -c"

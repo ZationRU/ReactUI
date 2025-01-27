@@ -16,7 +16,7 @@ import {MdClose} from "react-icons/md"
 
 const [horizontal, setHorizontal] = useState('right')
 
-const snackbar = useSnackbar();
+const { snackbar, showSnackbar, hideSnackbar } = useSnackbar();
 
 <VStack spacing={10}>
     <SegmentedButton selectedIds={horizontal} onSelect={setHorizontal}>
@@ -29,7 +29,7 @@ const snackbar = useSnackbar();
     </SegmentedButton>
 
     <Button onClick={() => {
-        snackbar({
+        showSnackbar({
             text: 'Single-line snackbar',
             horizontal
         })
@@ -38,7 +38,7 @@ const snackbar = useSnackbar();
     </Button>
 
     <Button onClick={() => {
-        snackbar({
+        showSnackbar({
             text: 'Single-line snackbar',
             bottom: [80, 0],
             horizontal,
@@ -48,7 +48,7 @@ const snackbar = useSnackbar();
     </Button>
 
     <Button onClick={() => {
-        snackbar({
+        showSnackbar({
             text: 'Single-line snackbar with action',
             action: {
                 title: 'Action',
@@ -61,7 +61,7 @@ const snackbar = useSnackbar();
     </Button>
 
     <Button onClick={() => {
-        snackbar({
+        showSnackbar({
             text: 'Single-line snackbar with action',
             action: {
                 title: 'Action',
@@ -69,8 +69,7 @@ const snackbar = useSnackbar();
             },
             horizontal,
             closeButton: {
-                icon: <MdClose size={24} />,
-                onClick: () => alert("Close")
+                icon: <MdClose size={24} />
             }
         })
     }}>
@@ -78,16 +77,23 @@ const snackbar = useSnackbar();
     </Button>
 
     <Button onClick={() => {
-        snackbar({
+        showSnackbar({
             text: 'Single-line snackbar with action',
             horizontal,
             closeButton: {
-                icon: <MdClose size={24} />,
-                onClick: () => alert("Close")
+                icon: <MdClose size={24} />
             }
         })
     }}>
         Show Snackbar with close button
     </Button>
+    
+    <Button onClick={() => {
+        hideSnackbar()
+    }}>
+        Hide snackbar
+    </Button>
+
+    {snackbar}
 </VStack>
 ```

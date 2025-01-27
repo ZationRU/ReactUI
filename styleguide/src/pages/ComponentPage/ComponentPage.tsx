@@ -34,7 +34,7 @@ export const ComponentPage = () => {
             title={visibleName}
             description={description}
             palette="tertiary"
-            preview={<VStack
+            preview={background && <VStack
                 h="100%"
                 bg={`url("${background}") no-repeat`}
                 bgSize='cover'

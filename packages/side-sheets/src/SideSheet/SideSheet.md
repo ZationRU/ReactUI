@@ -8,70 +8,35 @@
 }
 ```
 
+# Simple example
+In this example, a Modal Side Sheet is opened.
 ```tsx
-import {VStack, useModalSideSheet, Button, TextField, Layout} from "@znui/react";
+import {VStack, useModalSideSheet, Button, TextField, Layout, SideSheet} from "@znui/react";
+import {MdClose, MdArrowBack} from 'react-icons/md'
 
-const modalSideSheet = useModalSideSheet();
+function Example({ close }) {
+    return (
+        <SideSheet title='Registration'
+                   navigationIcon={<MdArrowBack />}
+                   closeIcon={<MdClose />}
+                   action={<Button onClick={close}>Register</Button>}>
+            <VStack>
+                <TextField label='First Name'>
+                    <input />
+                </TextField>
+
+                <TextField label='Last Name'>
+                    <input />
+                </TextField>
+            </VStack>
+        </SideSheet>
+    )
+}
+
+const { modalSideSheet, open } = useModalSideSheet(Example);
 
 <Layout>
-    <Button onClick={(e) => {
-            modalSideSheet(({close}) => {
-                return <VStack>
-                    <TextField label="Example" placeholder="xD">
-                        <input/>
-                    </TextField>
-                    <TextField label="Example" placeholder="xD">
-                        <input/>
-                    </TextField>
-                    <TextField label="Example" placeholder="xD">
-                        <input/>
-                    </TextField>
-                    <TextField label="Example" placeholder="xD">
-                        <input/>
-                    </TextField>
-                    <TextField label="Example" placeholder="xD">
-                        <input/>
-                    </TextField>
-                    <TextField label="Example" placeholder="xD">
-                        <input/>
-                    </TextField>
-                    <TextField label="Example" placeholder="xD">
-                        <input/>
-                    </TextField>
-                    <TextField label="Example" placeholder="xD">
-                        <input/>
-                    </TextField>
-                    <TextField label="Example" placeholder="xD">
-                        <input/>
-                    </TextField>
-                    <TextField label="Example" placeholder="xD">
-                        <input/>
-                    </TextField>
-                    <TextField label="Example" placeholder="xD">
-                        <input/>
-                    </TextField>
-                    <TextField label="Example" placeholder="xD">
-                        <input/>
-                    </TextField>
-                    <TextField label="Example" placeholder="xD">
-                        <input/>
-                    </TextField>
-                    <TextField label="Example" placeholder="xD">
-                        <input/>
-                    </TextField>
-                    <TextField label="Example" placeholder="xD">
-                        <input/>
-                    </TextField>
-                    <TextField label="Example" placeholder="xD">
-                        <input/>
-                    </TextField>
-                    <TextField label="Example" placeholder="xD">
-                        <input/>
-                    </TextField>
-
-                    End reached
-                </VStack>
-            });
-        }}>Show Modal non-cancelable</Button>
+    <Button onClick={() => open()}>Show</Button>
+    {modalSideSheet}
 </Layout>
 ```

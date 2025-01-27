@@ -1,4 +1,4 @@
-import React, {ReactNode, MouseEventHandler, useState, useEffect, ForwardedRef} from "react";
+import React, {ForwardedRef, MouseEventHandler, ReactNode, useEffect, useState} from "react";
 import {FlexLayout, HStack, LayoutProps, Spacer} from "@znui/layouts";
 import {ThemeTokens} from "@znui/md3-themes";
 import {Title} from "@znui/typography";
@@ -81,9 +81,7 @@ export const TopAppBar = React.forwardRef((props: ToolbarProps, ref: ForwardedRe
 
             {menu && <>
                 {centered && <Spacer/>}
-                <FlexLayout
-                    c={ThemeTokens.onSurfaceVariant}
-                >
+                <FlexLayout c={ThemeTokens.onSurfaceVariant}>
                     {menu}
                 </FlexLayout>
             </>}

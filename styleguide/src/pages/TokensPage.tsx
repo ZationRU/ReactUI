@@ -91,12 +91,12 @@ export type PreviewMotionProps = {
 }
 
 export const PreviewMotion = (props: PreviewMotionProps) => {
-    const snackbar = useSnackbar()
+    const { snackbar, showSnackbar } = useSnackbar()
     const copy = useCallback(() => {
         navigator.clipboard.writeText(props.tokenString)
-            .then(() => snackbar("Успешно скопировано"))
-            .catch(() => snackbar("Не удалось скопировать"))
-    }, [props.tokenString, snackbar])
+            .then(() => showSnackbar("Успешно скопировано"))
+            .catch(() => showSnackbar("Не удалось скопировать"))
+    }, [props.tokenString, showSnackbar])
 
     return <Card mode='filled' onClick={copy}>
         <VStack gap={6} pv={12}>
@@ -122,16 +122,18 @@ export const PreviewMotion = (props: PreviewMotionProps) => {
                 Click to copy
             </Label>
         </VStack>
+
+        {snackbar}
     </Card>
 }
 
 export const PreviewSchemeColor = (props: PreviewColorProp) => {
-    const snackbar = useSnackbar()
+    const { snackbar, showSnackbar } = useSnackbar()
     const copy = useCallback(() => {
         navigator.clipboard.writeText(props.tokenString)
-            .then(() => snackbar("Успешно скопировано"))
-            .catch(() => snackbar("Не удалось скопировать"))
-    }, [props.tokenString, snackbar])
+            .then(() => showSnackbar("Успешно скопировано"))
+            .catch(() => showSnackbar("Не удалось скопировать"))
+    }, [props.tokenString, showSnackbar])
 
     return <VStack
         h={60}
@@ -147,18 +149,17 @@ export const PreviewSchemeColor = (props: PreviewColorProp) => {
         <Title size='small' filter='invert() grayscale(100%) hue-rotate(90deg) contrast(4000%)'>
             {props.name}
         </Title>
-
-
+        {snackbar}
     </VStack>
 }
 
 export const PreviewPalette = (props: PreviewColorProp) => {
-    const snackbar = useSnackbar()
+    const { snackbar, showSnackbar} = useSnackbar()
     const copy = useCallback(() => {
         navigator.clipboard.writeText(props.tokenString)
-            .then(() => snackbar("Успешно скопировано"))
-            .catch(() => snackbar("Не удалось скопировать"))
-    }, [props.tokenString, snackbar])
+            .then(() => showSnackbar("Успешно скопировано"))
+            .catch(() => showSnackbar("Не удалось скопировать"))
+    }, [props.tokenString, showSnackbar])
 
     return <Center
         h={60}
@@ -173,5 +174,6 @@ export const PreviewPalette = (props: PreviewColorProp) => {
         <Title size='large' filter='invert() grayscale(100%) hue-rotate(90deg) contrast(4000%)'>
             {props.name}
         </Title>
+        {snackbar}
     </Center>
 }

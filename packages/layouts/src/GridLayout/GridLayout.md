@@ -1,3 +1,12 @@
+```
+{
+    "type": "GridLayout",
+    "title": "GridLayout",
+    "category": "layout",
+    "description": "A layout component that arranges its children in a two-dimensional grid."
+}
+```
+
 ```tsx
 import {GridLayout, Center} from "@znui/react";
 

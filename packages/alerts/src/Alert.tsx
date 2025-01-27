@@ -115,7 +115,7 @@ export default function Alert({config, remove}: {config: AlertDialogConfig, remo
                     )}
                 >
                     {
-                        config.component && React.createElement(config.component, {...stateValues, setValue})
+                        config.component && React.createElement(config.component, {...stateValues, setValue, close})
                     }
                 </BaseDialog>
             </Layout>

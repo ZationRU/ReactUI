@@ -1,7 +1,21 @@
 import React, {useEffect, useMemo, useRef, useState} from "react";
-import {AdaptiveData, buildAdaptiveData, buildCurrentAdaptiveData, LayoutBreakpointKey, AdaptiveContext} from "@znui/base";
-import {defaultTheme, ThemeContext, useThemeDiv, ZnUIScheme, ZnUISchemeContrast, ZnUITheme} from "@znui/md3-themes";
-import {useZnUIProviderPortalCreator, ZnUIProviderPortalContext} from "@znui/portals";
+import {
+    AdaptiveContext,
+    AdaptiveData,
+    buildAdaptiveData,
+    buildCurrentAdaptiveData,
+    LayoutBreakpointKey
+} from "@znui/base";
+import {
+    defaultTheme,
+    ThemeContext,
+    ThemeTokens,
+    useThemeDiv,
+    ZnUIScheme,
+    ZnUISchemeContrast,
+    ZnUITheme
+} from "@znui/md3-themes";
+import {Layout} from "@znui/layouts";
 
 export interface ZnUIProviderProps {
     children: React.ReactNode
@@ -106,8 +120,6 @@ export const ZnUIProvider = (props: ZnUIProviderProps) => {
     }, [currentScheme, resolvedSchemeContrast, onSchemeChanged, resolvedScheme]);
 
 
-    const portalData = useZnUIProviderPortalCreator()
-
     return <ThemeDiv
         data-scheme={resolvedScheme + (resolvedSchemeContrast === 'standard'? '': '-'+resolvedSchemeContrast+'-contrast')}
         ref={ref}
@@ -120,10 +132,8 @@ export const ZnUIProvider = (props: ZnUIProviderProps) => {
             changeSchemeContrast: setCurrentSystemScheme
         }}>
             <AdaptiveContext.Provider value={data}>
-                <ZnUIProviderPortalContext.Provider value={portalData}>
-                    <div id='znui-portal'></div>
-                    {children}
-                </ZnUIProviderPortalContext.Provider>
+                <Layout color={ThemeTokens.onBackground} id='znui-portal'></Layout>
+                {children}
             </AdaptiveContext.Provider>
         </ThemeContext.Provider>
     </ThemeDiv>

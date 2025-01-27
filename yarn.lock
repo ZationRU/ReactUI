@@ -2990,7 +2990,6 @@ __metadata:
     "@znui/layouts": "npm:^1.3.0-alpha"
     "@znui/md3-themes": "npm:^1.3.0-alpha"
     "@znui/md3-utils": "npm:^1.3.0-alpha"
-    "@znui/portals": "npm:^1.3.0-alpha"
     "@znui/typography": "npm:^1.3.0-alpha"
   peerDependencies:
     react: ^18.2.0
@@ -3226,7 +3225,6 @@ __metadata:
     "@znui/buttons": "npm:^1.3.0-alpha"
     "@znui/layouts": "npm:^1.3.0-alpha"
     "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/portals": "npm:^1.3.0-alpha"
     "@znui/typography": "npm:^1.3.0-alpha"
   peerDependencies:
     react: ^18.2.0
@@ -3314,9 +3312,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@znui/portals@npm:^1.3.0-alpha, @znui/portals@workspace:packages/portals":
-  version: 0.0.0-use.local
-  resolution: "@znui/portals@workspace:packages/portals"
+"@znui/portals@npm:^1.3.0-alpha":
+  version: 1.3.0-alpha.1
+  resolution: "@znui/portals@npm:1.3.0-alpha.1"
   dependencies:
     "@znui/layouts": "npm:^1.3.0-alpha"
     "@znui/md3-themes": "npm:^1.3.0-alpha"
@@ -3326,8 +3324,9 @@ __metadata:
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
-  languageName: unknown
-  linkType: soft
+  checksum: 10c0/dd31c126eef66c03c4bbd7c7ac85835427de8816c4f4bae61f29d7e9cf9cfd116a0e1ed9c4177fd5beead5ec0c046bbd07115eed60ade2d8a23771955da64afe
+  languageName: node
+  linkType: hard
 
 "@znui/progress-indicators@npm:^1.3.0-alpha, @znui/progress-indicators@workspace:packages/progress-indicators":
   version: 0.0.0-use.local
@@ -3378,7 +3377,6 @@ __metadata:
     "@znui/navigation-bar": "npm:^1.3.0-alpha"
     "@znui/navigation-menu": "npm:^1.3.0-alpha"
     "@znui/navigation-rail": "npm:^1.3.0-alpha"
-    "@znui/portals": "npm:^1.3.0-alpha"
     "@znui/progress-indicators": "npm:^1.3.0-alpha"
     "@znui/radio": "npm:^1.3.0-alpha"
     "@znui/ripple": "npm:^1.3.0-alpha"
@@ -3510,6 +3508,7 @@ __metadata:
     "@znui/layouts": "npm:^1.3.0-alpha"
     "@znui/md3-themes": "npm:^1.3.0-alpha"
     "@znui/typography": "npm:^1.3.0-alpha"
+    "@znui/utils": "npm:^1.3.0-alpha"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0

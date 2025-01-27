@@ -1,4 +1,4 @@
-import React, {JSXElementConstructor, useRef, useState, useMemo} from "react";
+import React, {JSXElementConstructor, useMemo, useRef, useState} from "react";
 import {ThemeTokens} from "@znui/md3-themes";
 import {useAdaptiveValue} from "@znui/base";
 import {Layout} from "@znui/layouts";
@@ -6,10 +6,6 @@ import {createPortal} from "react-dom"
 
 export type ModalDialogInterface = {
     close: () => void
-}
-
-export type ModalProps = {
-    dialog: ModalDialogInterface
 }
 
 export type ModalContextData = {
@@ -23,10 +19,9 @@ export type ModalOptions = {
     cancelable?: boolean
 }
 
-export const ModalContext
-    = React.createContext<ModalContextData|null>(null)
+export const ModalContext = React.createContext<ModalContextData | null>(null)
 
-export const useModal = <Props = {}>(component: JSXElementConstructor<ModalProps & Props>, defaultOptions: ModalOptions = {}) => {
+export const useModal = <Props = {}>(component: JSXElementConstructor<ModalDialogInterface & Props>, defaultOptions: ModalOptions = {}) => {
     const [isExpanded, setIsExpanded] = useState(false)
     const [isOpened, setIsOpened] = useState(false)
     const scrimRef = useRef<HTMLDivElement | null>(null)
@@ -57,9 +52,9 @@ export const useModal = <Props = {}>(component: JSXElementConstructor<ModalProps
     const Component = useMemo(() => React.createElement(
         component,
         {
-            dialog: modalDialogInterface,
-            ...props
-        } as ModalProps & Props
+            ...props,
+            ...modalDialogInterface
+        } as ModalDialogInterface & Props
     ), [props])
 
     const Portal = isOpened && createPortal(<Layout

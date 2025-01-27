@@ -1,3 +1,12 @@
+```
+{
+    "type": "FlexLayout",
+    "title": "FlexLayout",
+    "category": "layout",
+    "description": "A layout component that uses Flexbox to arrange its children."
+}
+```
+
 ```tsx
 import {Center, Spacer, FlexLayout} from "@znui/react";
 

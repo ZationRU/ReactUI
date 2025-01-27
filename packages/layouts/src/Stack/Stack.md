@@ -1,3 +1,12 @@
+```
+{
+    "type": "Stack",
+    "title": "Stack",
+    "category": "layout",
+    "description": "A layout component that arranges its children either horizontally or vertically."
+}
+```
+
 ```tsx
 
 import {Switch, Title, HStack, VStack, Stack, Center} from "@znui/react";

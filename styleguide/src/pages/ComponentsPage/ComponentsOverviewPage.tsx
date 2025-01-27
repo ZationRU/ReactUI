@@ -1,5 +1,5 @@
 import React from "react";
-import {Layout, VStack} from "@znui/layouts";
+import {AbsoluteCenter, Layout, VStack} from "@znui/layouts";
 import {Body, Title} from "@znui/typography";
 import {ScrollLayout} from "@znui/scroll-layout";
 import {HeaderPage} from "../../styleguide/HeaderPage";
@@ -8,8 +8,13 @@ import {Section, SectionCard, SectionDescription, SectionTitle} from "../../comp
 import {useStyleguidist} from "../../StyleguidistContext";
 import {ComponentData} from "../../models/ComponentData";
 import {useAppNavigate} from "../../router";
+import {ThemeTokens} from "@znui/md3-themes";
 
 const categories = {
+    layout: {
+        title: "Layout",
+        description: "A collection of components for structuring and arranging the UI elements of your application."
+    },
     actions: {
         title: "Actions",
         description: "Action components help people achieve an aim.",
@@ -34,6 +39,10 @@ const categories = {
         title: "Text inputs",
         description: "Text input components let people enter and edit text.",
     },
+    utils: {
+        title: "Utils",
+        description: "Functional utility components for common tasks and helper functions."
+    }
 }
 
 export const ComponentsOverviewPage = () => {
@@ -80,28 +89,32 @@ export const ComponentsOverviewPage = () => {
                                         }}
                                         image={
                                             <VStack
+                                                bg={ThemeTokens.palettes.secondary['20']}
                                                 h={200}
                                                 pos='relative'
                                             >
-                                                <Layout
-                                                    data-type='background'
-                                                    pos='absolute'
-                                                    posA={0}
-                                                    bg={`url("${component.background}") no-repeat`}
-                                                    bgSize='cover'
-                                                    to={{
-                                                        oc: 1
-                                                    }}
-                                                >
+                                                {component.foreground ? <>
+                                                        <Layout
+                                                            data-type='background'
+                                                            pos='absolute'
+                                                            posA={0}
+                                                            bg={`url("${component.background}") no-repeat`}
+                                                            bgSize='cover'
+                                                            to={{
+                                                                oc: 1
+                                                            }}
+                                                        />
 
-                                                </Layout>
-                                                <Layout
-                                                    pos='absolute'
-                                                    posA={0}
-                                                    bg={`url("${component.foreground}") no-repeat`}
-                                                    bgSize='cover'
-                                                    backgroundPosition="50% 50%"
-                                                />
+                                                        <Layout
+                                                            pos='absolute'
+                                                            posA={0}
+                                                            bg={`url("${component.foreground}") no-repeat`}
+                                                            bgSize='cover'
+                                                            backgroundPosition="50% 50%"
+                                                        />
+                                                    </> :
+                                                    <AbsoluteCenter><Title size='large'>{component.visibleName}</Title></AbsoluteCenter>
+                                                }
                                             </VStack>
                                         }
                                     >

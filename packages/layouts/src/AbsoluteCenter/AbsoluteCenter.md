@@ -1,3 +1,12 @@
+```
+{
+    "type": "AbsoluteCenter",
+    "title": "AbsoluteCenter",
+    "category": "layout",
+    "description": "A layout component that centers its content both horizontally and vertically using absolute positioning."
+}
+```
+
 ```tsx
 import {Layout, AbsoluteCenter} from "@znui/react";
 

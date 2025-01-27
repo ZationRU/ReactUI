@@ -1,90 +1,76 @@
-import React, {useCallback, useEffect, useState} from "react";
-import {usePortals, ZnUIPortal} from "@znui/portals";
-import {JSXElementConstructor} from "react";
+import React, {createContext, JSXElementConstructor, useState} from "react";
 import {Layout} from "@znui/layouts";
 import "@znui/md3-themes"
 import {ThemeTokens} from "@znui/md3-themes";
+import {createPortal} from "react-dom";
 
 export interface ModalSideSheetProps {
     close: () => void
 }
 
-export interface ModalSideSheetOptions<Props> {
-    props?: Props
+type ModalSideSheetContextData = {
+    close: () => void
 }
 
-type State = "start" | "open" | "closing"
+export const ModalSideSheetContext = createContext<ModalSideSheetContextData | undefined>(undefined)
 
-export const useModalSideSheet = <Props = {}> (defaultOptions: ModalSideSheetOptions<Props> = {}) => {
-    const {createPortal} = usePortals()
-    return (component: JSXElementConstructor<ModalSideSheetProps & Props>, options: ModalSideSheetOptions<Props> = {}) => {
-        const {
-            props: componentProps = {}
-        } = Object.assign(defaultOptions, options || {})
+export const useModalSideSheet = <Props = {}> (component: JSXElementConstructor<ModalSideSheetProps & Props>) => {
+    const [isOpened, setIsOpened] = useState(false)
+    const [isMounted, setIsMounted] = useState(false)
+    const [props, setProps] = useState<Props>({} as Props)
 
-        let portal: ZnUIPortal
+    const close = () => {
+        setIsOpened(false)
+        setTimeout(() => setIsMounted(false), 300)
+    }
 
-        let props: ModalSideSheetProps = {
-            close: () => {
-                portal?.remove()
-            }
-        }
+    const Component = (<ModalSideSheetContext.Provider value={{close}}>
+            <Layout
+                pos='absolute'
+                posA={0}
+                zIndex={1}
+                pointerEvents='none'
+            />
 
-        portal = createPortal(() => {
-            const [state, setState] = useState<State>("start")
+            <Layout
+                pos='absolute'
+                posA={0}
+                zIndex={1}
+                bg={ThemeTokens.background}
+                onClick={() => {
+                    close()
+                }}
+                to={{
+                    baseDuration: ThemeTokens.motion.duration.medium2,
+                    oc: isOpened ? 0.4 : 0
+                }}
+            />
 
-            useEffect(() => {
-                if(state === 'start') {
-                    setTimeout(() => setState("open"), 0)
-                }
-            }, [state, setState]);
+            <Layout
+                pos='fixed'
+                posV={0}
+                zIndex={1100}
+                elevation='1'
+                bg={ThemeTokens.background}
+                to={{
+                    baseDuration: ThemeTokens.motion.duration.medium2,
+                    right: isOpened ? 0 : '-100%'
+                }}
+                borderTopLeftRadius={16}
+                borderBottomLeftRadius={16}
+            >
+                {React.createElement(component, {...props, close} as ModalSideSheetProps & Props)}
+            </Layout>
+        </ModalSideSheetContext.Provider>
+    )
 
-            props.close = useCallback(() => {
-                setState("closing")
-                setTimeout(() => portal.remove(), 400)
-            }, [setState])
-
-            return <>
-                <Layout
-                    pos='absolute'
-                    posA={0}
-                    zIndex={1}
-                    pointerEvents='none'
-                />
-
-                <Layout
-                    pos='absolute'
-                    posA={0}
-                    zIndex={1}
-                    bg="black"
-                    onClick={() => {
-                        props.close()
-                    }}
-                    to={{
-                        baseDuration: ThemeTokens.motion.duration.medium2,
-                        oc: state === 'open'? 0.4: 0
-                    }}
-                />
-
-                <Layout
-                    pos='absolute'
-                    posV={0}
-                    zIndex={1}
-                    elevation='1'
-                    bg={ThemeTokens.background}
-                    to={{
-                        baseDuration: ThemeTokens.motion.duration.medium2,
-                        right: state === 'open'? 0: '-100%'
-                    }}
-                >
-                    {React.createElement(component, {
-                        ...props,
-                        ...componentProps
-                    } as ModalSideSheetProps & Props)}
-                </Layout>
-            </>
-        })
-
-        return props
+    return {
+        modalSideSheet: isMounted && createPortal(Component, document.getElementById('znui-portal')!),
+        open: (props: Props) => {
+            setProps(props)
+            setIsMounted(true)
+            setTimeout(() => setIsOpened(true), 0)
+        },
+        close
     }
 }

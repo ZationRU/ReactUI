@@ -1,3 +1,12 @@
+```
+{
+    "type": "Layout",
+    "title": "Layout",
+    "category": "layout",
+    "description": "A fundamental component, equivalent to a basic div element."
+}
+```
+
 ```js
 import {Layout} from "@znui/react";
 

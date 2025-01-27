@@ -2,6 +2,11 @@ import React, {JSXElementConstructor, MouseEvent, ReactNode, ReactPortal, useSta
 import {createPortal} from "react-dom";
 import Alert from "./Alert";
 
+export type AlertDialogInterface = {
+    setValue: (key: string, value: any) => void
+    close: () => void
+}
+
 export type AlertDialogConfig = {
     /**
      * An optional icon to display in the alert.
@@ -26,7 +31,7 @@ export type AlertDialogConfig = {
     /**
      * An optional component to render in the dialog body.
      */
-    component?: JSXElementConstructor<object & {setValue: (key: string, value: any) => void}>
+    component?: JSXElementConstructor<object & AlertDialogInterface>
 
     /**
      * Default values for the alert's internal state.
@@ -63,7 +68,6 @@ export type AlertDialogConfigActions = {
 
 /**
  * ZnUI useAlerts hook
- * @example const { openAlert, alerts } = useAlerts()
  */
 export const useAlerts = (): {openAlert: (config: AlertDialogConfig) => void, alerts: ReactPortal[]} => {
     const [alerts, setAlerts] = useState<Record<string, ReactPortal>>({})

@@ -50,7 +50,7 @@ In this example, we can pass additional props to our modal window. We can also u
 import {useModal, Modal, Body, Button, VStack} from "@znui/react";
 import {MdClose} from 'react-icons/md'
 
-const {open, modal} = useModal(({dialog, value}) => <Modal title="Your value"><Button onClick={() => dialog.close()}>Your value: {value}</Button></Modal>);
+const {open, modal} = useModal(({close, value}) => <Modal title="Your value"><Button onClick={() => close()}>Your value: {value}</Button></Modal>);
 
 <VStack spacing={8}>
     <Button onClick={() => open({value: Math.random()})}>Open modal with random value</Button>
@@ -79,7 +79,7 @@ function SecondModal({first, second}) {
     </Modal>
 }
 
-function EditModal({dialog, openSecondModal}) {
+function EditModal({openSecondModal}) {
     const [first, setFirst] = useState('')
     const [second, setSecond] = useState('')
     

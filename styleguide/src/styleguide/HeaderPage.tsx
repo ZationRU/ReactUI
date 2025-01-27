@@ -11,16 +11,19 @@ export interface HeaderPageProps {
 
 export const HeaderPage = ({ title, description, palette, preview, action }: HeaderPageProps) => {
     return <GridLayout
-        columns={[1, null, null, null, 2]}
+        columns={preview ? [1, null, null, null, 2] : 1}
         gap={8}
         pt={8}
         pb={56}
+        ph={preview ? undefined : [null, null, null, 56]}
         maxW={1760}
         mh='auto'
         fontFamily='Google Sans, sans-serif'>
         <VStack
             shapeScale='elg'
-            minH='30vh'
+            minH={[210, 312, 312, 512]}
+            maxH={[210, 312, 312, 512]}
+            boxSizing='border-box'
             p={[32, null, 56]}
             justify='center'
             bg={ThemeTokens.surfaceContainer}
@@ -40,7 +43,7 @@ export const HeaderPage = ({ title, description, palette, preview, action }: Hea
             {action}
         </VStack>
 
-        <Layout
+        {preview && <Layout
             shapeScale='elg'
             minH={[210, 312, 312, 512]}
             maxH={[210, 312, 312, 512]}
@@ -49,6 +52,6 @@ export const HeaderPage = ({ title, description, palette, preview, action }: Hea
             clip={true}
         >
             {preview}
-        </Layout>
+        </Layout>}
     </GridLayout>
 }

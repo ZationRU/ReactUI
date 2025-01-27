@@ -8,10 +8,75 @@
 }
 ```
 
-```tsx
-import {Tooltip, Button} from "@znui/react";
+# Plain Tooltips
+This example demonstrates a simple usage of tooltips.
 
-<Tooltip text='I help you :3'>
-    <Button>Hover me!</Button>
+```tsx
+import {Tooltip, ToggleableIconButton, HStack} from "@znui/react";
+import {MdMicNone, MdVideocam, MdPresentToAll} from 'react-icons/md';
+
+<HStack spacing={8}>
+    <Tooltip text='Turn off microphone'>
+        <ToggleableIconButton toggled mode="tonal"><MdMicNone /></ToggleableIconButton>
+    </Tooltip>
+    <Tooltip text='Turn on camera'>
+        <ToggleableIconButton mode="tonal"><MdVideocam /></ToggleableIconButton>
+    </Tooltip>
+    <Tooltip text='Present now'>
+        <ToggleableIconButton mode="tonal"><MdPresentToAll /></ToggleableIconButton>
+    </Tooltip>
+</HStack>
+```
+
+# Placement
+In this example, the tooltip's position is controlled by `placement`.
+
+```tsx
+import {Tooltip, IconButton, HStack} from "@znui/react";
+import {MdMicNone, MdVideocam, MdPresentToAll} from 'react-icons/md';
+<HStack spacing={8}>
+    <Tooltip text='Auto'>
+        <IconButton mode="tonal"><MdMicNone/></IconButton>
+    </Tooltip>
+    <Tooltip text='Bottom' placement='bottom'>
+        <IconButton mode="tonal"><MdVideocam/></IconButton>
+    </Tooltip>
+    <Tooltip text='Top' placement='top'>
+        <IconButton mode="tonal"><MdPresentToAll/></IconButton>
+    </Tooltip>
+</HStack>
+```
+
+# Modal
+In this example, the tooltip is inside a modal window.
+
+```tsx
+import {Tooltip, IconButton, useModal, Modal, Button} from "@znui/react";
+import {MdPresentToAll} from 'react-icons/md';
+
+const { modal, open } = useModal(({ close }) => <Modal title='Tooltip'>
+    <Tooltip text='Present now'>
+        <IconButton mode="tonal" onClick={() => close()}>
+            <MdPresentToAll/>
+        </IconButton>
+    </Tooltip>
+</Modal>);
+
+<>
+    <Button onClick={() => open()}>Open</Button>
+    {modal}
+</>
+```
+
+# Rich Tooltip
+In this example, a Rich Tooltip pops up. By passing something to `subhead`, the tooltip becomes rich.
+
+```tsx
+import {Tooltip, IconButton, Button} from "@znui/react";
+import {MdBrush} from 'react-icons/md';
+<Tooltip text='Add annotations and highlights with the paint tool.' subhead='Paint Tool' action={<Button mode='text'>Learn more</Button>}>
+    <IconButton mode="tonal">
+        <MdBrush/>
+    </IconButton>
 </Tooltip>
 ```

@@ -1,8 +1,17 @@
+```
+{
+    "type": "SwipeRefreshLayout",
+    "title": "SwipeRefreshLayout",
+    "category": "layout",
+    "description": "A layout component that enables pull-to-refresh functionality on its content."
+}
+```
+
 ```tsx
 import {
     CoordinatorLayout, TopAppBar, VStack, HStack, Avatar, Body,
     IconButton, Button, Card, Title, Layout, ThemeTokens, AppBarLayout,
-    ScrollLayout
+    ScrollLayout, SwipeRefreshLayout
 } from "@znui/react";
 
 import { MdMoreVert } from "react-icons/md";

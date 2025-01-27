@@ -1,3 +1,12 @@
+```
+{
+    "type": "Skeleton",
+    "title": "Skeleton",
+    "category": "utils",
+    "description": "A component for displaying a placeholder UI while content is loading."
+}
+```
+
 ```tsx
 import {Skeleton, VStack, Button} from "@znui/react";
 
