@@ -1,5 +1,4 @@
-import React from "react";
-import {Children, ReactElement, RefObject, useEffect, useState} from "react";
+import React, {Children, ReactElement, RefObject, useEffect, useState} from "react";
 import {createPortal} from "react-dom";
 
 export type PortalProps = {

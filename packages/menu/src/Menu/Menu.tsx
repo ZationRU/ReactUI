@@ -71,6 +71,16 @@ export interface MenuProps {
      * These should be `Menu.Trigger` and `Menu.Items` component.
      */
     children: React.ReactNode
+
+    /**
+     * Event handler when the menu opens.
+     */
+    onOpen?: () => void,
+
+    /**
+     * Event handler when the menu closes.
+     */
+    onClose?: () => void
 }
 
 export interface MenuItemProps extends LayoutProps {
@@ -168,8 +178,13 @@ export const Menu = componentWithProps((props: MenuProps) => {
     const open = useCallback((point?: Point) => {
         setIsOpened(true)
         setPoint(point)
+        props.onOpen?.()
     },[setIsOpened, setPoint])
-    const close = useCallback(() => setIsOpened(false), [setIsOpened])
+
+    const close = useCallback(() => {
+        setIsOpened(false)
+        props.onClose?.()
+    }, [setIsOpened])
 
     return <MenuContext.Provider value={{
         density: props.density || prevContext.density,

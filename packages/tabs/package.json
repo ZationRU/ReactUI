@@ -1,6 +1,6 @@
 {
-  "name": "@znui/text-fields",
-  "version": "1.3.0-alpha.0",
+  "name": "@znui/tabs",
+  "version": "1.3.0-alpha.1",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
@@ -9,13 +9,6 @@
     "README.md"
   ],
   "license": "MIT",
-  "dependencies": {
-    "@znui/layouts": "^1.3.0-alpha",
-    "@znui/md3-themes": "^1.3.0-alpha",
-    "@znui/menu": "^1.3.0-alpha",
-    "@znui/typography": "^1.3.0-alpha",
-    "@znui/utils": "^1.3.0-alpha"
-  },
   "scripts": {
     "build": "rollup -c"
   },
@@ -54,13 +47,13 @@
     "design system",
     "components"
   ],
-  "author": "levkopo",
+  "author": "vitiacat",
   "bugs": {
     "url": "https://github.com/ZationRU/ReactUI/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ZationRU/ReactUI.git",
-    "directory": "packages/text-fields"
+    "directory": "packages/tabs"
   }
 }

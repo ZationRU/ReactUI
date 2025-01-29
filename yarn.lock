@@ -3386,6 +3386,7 @@ __metadata:
     "@znui/slider": "npm:^1.3.0-alpha"
     "@znui/snackbar": "npm:^1.3.0-alpha"
     "@znui/switch": "npm:^1.3.0-alpha"
+    "@znui/tabs": "npm:^1.3.0-alpha"
     "@znui/text-fields": "npm:^1.3.0-alpha"
     "@znui/tooltip": "npm:^1.3.0-alpha"
     "@znui/typography": "npm:^1.3.0-alpha"
@@ -3488,13 +3489,24 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@znui/tabs@npm:^1.3.0-alpha, @znui/tabs@workspace:packages/tabs":
+  version: 0.0.0-use.local
+  resolution: "@znui/tabs@workspace:packages/tabs"
+  peerDependencies:
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  languageName: unknown
+  linkType: soft
+
 "@znui/text-fields@npm:^1.3.0-alpha, @znui/text-fields@workspace:packages/text-fields":
   version: 0.0.0-use.local
   resolution: "@znui/text-fields@workspace:packages/text-fields"
   dependencies:
     "@znui/layouts": "npm:^1.3.0-alpha"
     "@znui/md3-themes": "npm:^1.3.0-alpha"
+    "@znui/menu": "npm:^1.3.0-alpha"
     "@znui/typography": "npm:^1.3.0-alpha"
+    "@znui/utils": "npm:^1.3.0-alpha"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0

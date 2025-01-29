@@ -38,10 +38,10 @@ import {MdMicNone, MdVideocam, MdPresentToAll} from 'react-icons/md';
     <Tooltip text='Auto'>
         <IconButton mode="tonal"><MdMicNone/></IconButton>
     </Tooltip>
-    <Tooltip text='Bottom' placement='bottom'>
+    <Tooltip text='Bottom' placementY='bottom'>
         <IconButton mode="tonal"><MdVideocam/></IconButton>
     </Tooltip>
-    <Tooltip text='Top' placement='top'>
+    <Tooltip text='Top' placementY='top'>
         <IconButton mode="tonal"><MdPresentToAll/></IconButton>
     </Tooltip>
 </HStack>
@@ -72,11 +72,38 @@ const { modal, open } = useModal(({ close }) => <Modal title='Tooltip'>
 In this example, a Rich Tooltip pops up. By passing something to `subhead`, the tooltip becomes rich.
 
 ```tsx
-import {Tooltip, IconButton, Button} from "@znui/react";
+import {Tooltip, IconButton, Button, HStack} from "@znui/react";
 import {MdBrush} from 'react-icons/md';
-<Tooltip text='Add annotations and highlights with the paint tool.' subhead='Paint Tool' action={<Button mode='text'>Learn more</Button>}>
-    <IconButton mode="tonal">
-        <MdBrush/>
-    </IconButton>
-</Tooltip>
+
+<HStack spacing={8}>
+    <Tooltip text='Add annotations and highlights with the paint tool.' subhead='Paint Tool' action={<Button mode='text'>Learn more</Button>}>
+        <IconButton mode="tonal">
+            <MdBrush/>
+        </IconButton>
+    </Tooltip>
+    
+    <Tooltip text='Add annotations and highlights with the paint tool.' subhead='Paint Tool' action={<Button mode='text'>Learn more</Button>} placementX='left'>
+        <IconButton mode="tonal">
+            <MdBrush/>
+        </IconButton>
+    </Tooltip>
+    
+    <Tooltip text='Add annotations and highlights with the paint tool.' subhead='Paint Tool' action={<Button mode='text'>Learn more</Button>} placementX='right'>
+        <IconButton mode="tonal">
+            <MdBrush/>
+        </IconButton>
+    </Tooltip>
+
+    <Tooltip text='Add annotations and highlights with the paint tool.' subhead='Paint Tool' action={<Button mode='text'>Learn more</Button>} placementX='left' placementY='top'>
+        <IconButton mode="tonal">
+            <MdBrush/>
+        </IconButton>
+    </Tooltip>
+
+    <Tooltip text='Add annotations and highlights with the paint tool.' subhead='Paint Tool' action={<Button mode='text'>Learn more</Button>} placementX='right' placementY='top'>
+        <IconButton mode="tonal">
+            <MdBrush/>
+        </IconButton>
+    </Tooltip>
+</HStack>
 ```

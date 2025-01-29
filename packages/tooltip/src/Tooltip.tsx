@@ -2,7 +2,8 @@ import React, {ForwardedRef, ReactElement, ReactNode, useEffect, useRef, useStat
 import {ThemeTokens} from "@znui/md3-themes";
 import {HStack, Layout, LayoutProps, VStack} from "@znui/layouts";
 import {Body, Title} from "@znui/typography";
-import {mergeRefs, Portal} from "@znui/utils";
+import {mergeRefs} from "@znui/utils";
+import {Portal} from "@znui/md3-utils";
 
 export interface TooltipProps extends LayoutProps {
     /**
@@ -20,15 +21,20 @@ export interface TooltipProps extends LayoutProps {
      */
     closeDelay?: number
     /**
-     * The placement of the tooltip. If not specified, it will be automatically determined.
+     * The vertical placement of the tooltip. If not specified, it will be automatically determined.
      */
-    placement?: 'top' | 'bottom'
+    placementY?: 'top' | 'bottom'
+    /**
+     * The horizontal placement of the tooltip, only if the tooltip is a `Rich tooltip`. If not specified, it will be automatically determined.
+     *
+     */
+    placementX?: 'left' | 'right'
     /**
      * The header of the tooltip. If specified, the tooltip becomes a Rich tooltip.
      */
     subhead?: ReactNode
     /**
-     * The actions at the bottom of the tooltip, only if the tooltip is a Rich tooltip.
+     * The actions at the bottom of the tooltip, only if the tooltip is a `Rich tooltip`.
      */
     action?: ReactElement
 }
@@ -41,7 +47,8 @@ export const Tooltip = React.forwardRef(
             closeDelay= 1000,
             subhead,
             action,
-            placement,
+            placementY,
+            placementX,
             onPointerEnter,
             onPointerLeave,
             onTouchEnd,
@@ -73,19 +80,38 @@ export const Tooltip = React.forwardRef(
         const tooltipBounding = tooltipRef.current && tooltipRef.current.getBoundingClientRect()
         const isRich = subhead != null
 
-        // Default bottom
-        let top = bounding && tooltipBounding
-            ? bounding.bottom + 4
-            : 0
+        function calculateTooltipPosition() {
+            let top = 0
+            let left = 0
 
-        // Appear above if placement is top or not enough space
-        top = (placement == 'top' || (top > window.innerHeight && !placement)) && bounding && tooltipBounding
-            ? bounding.top - 4 - tooltipBounding.height
-            : top
+            if (bounding && tooltipBounding) {
+                // Default bottom
+                top = bounding.bottom + 4
 
-        const left = bounding && tooltipBounding
-            ? bounding.left - tooltipBounding.width / 2 + bounding.width / 2
-            : 0
+                // Adjust top based on placement or available space
+                if (placementY === 'top' || (top + tooltipBounding.height > window.innerHeight && !placementY))
+                    top = bounding.top - 4 - tooltipBounding.height
+
+                // Adjust left based on isRich and available space
+                if (!isRich) {
+                    left = bounding.left - tooltipBounding.width / 2 + bounding.width / 2
+                } else {
+                    // Default right
+                    left = bounding.left + bounding.width
+
+                    // Adjust left based on placement or available space
+                    if (placementX == 'left' || (left + tooltipBounding.width > window.innerWidth && !placementX))
+                        left = bounding.left - tooltipBounding.width
+
+                    if(left < 0) left = bounding.width / 2
+                }
+
+            }
+
+            return { top, left };
+        }
+
+        const { top, left } = calculateTooltipPosition()
 
         return <>
             <Layout

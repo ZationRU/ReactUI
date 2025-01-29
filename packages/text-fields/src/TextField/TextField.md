@@ -8,67 +8,117 @@
 }
 ```
 
+## Basic TextField
+
+In this example, we showcase a simple text field with both outline and filled variants, along with basic configurations like labels, placeholders and different input types.
+
 ```tsx
-import {TextField, GridLayout, VStack, znui} from "@znui/react";
+import {TextField, VStack, SegmentedButton, IconContainer, ThemeTokens} from "@znui/react";
+import {MdError} from "react-icons/md";
+import {useState} from "react";
 
-<GridLayout columns={2} gap={16}>
-    <VStack>
-        <TextField label="Labeled">
-            <input placeholder="Placeholder"/>
-        </TextField>
+const [variant, setVariant] = useState('outline');
 
-        <TextField label="Number">
-            <input type="number" placeholder="Placeholder"/>
-        </TextField>
+<VStack spacing={16}>
+  <VStack>
+    <TextField variant={variant} label="Labeled" placeholder="Placeholder" />
+    <TextField variant={variant} label="Number" type="number" placeholder="Placeholder"/>
+    <TextField variant={variant} label="Password" type='password' placeholder="Placeholder"/>
+  </VStack>
 
-        <TextField label="Password">
-            <input type="password" placeholder="Placeholder"/>
-        </TextField>
+  <SegmentedButton selectedIds={variant} onSelect={e => setVariant(e)}>
+        <SegmentedButton.Segment id='outline'>Outline</SegmentedButton.Segment>
+        <SegmentedButton.Segment id='filled'>Filled</SegmentedButton.Segment>
+    </SegmentedButton>
+</VStack>
+```
 
-        <TextField label="Multiline">
-            <znui.textarea placeholder="Placeholder"/>
-        </TextField>
+## TextField with Supporting Text
 
-        <TextField label="Multiline 2" textareaLines={2}>
-            <znui.textarea laceholder="Placeholder"/>
-        </TextField>
+In this example, a text field is displayed with a supporting text.
 
-        <TextField disabled={true} label="Disabled">
-            <input placeholder="Placeholder"/>
-        </TextField>
+```tsx
+import {TextField, VStack} from "@znui/react";
 
-        <TextField label="Label" error="Oops.. I'm error">
-            <input placeholder="Placeholder"/>
-        </TextField>
-    </VStack>
-    <VStack>
-        <TextField mode='filled' label="Labeled">
-            <input placeholder="Placeholder"/>
-        </TextField>
+<VStack>
+    <TextField variant="outline" label="Labeled" placeholder="Placeholder" supportingText='Max 20 characters'
+               maxLength={20}/>
+</VStack>
+```
 
-        <TextField mode='filled' label="Number">
-            <input type="number" placeholder="Placeholder"/>
-        </TextField>
+## TextField with Error
 
-        <TextField mode='filled' label="Password">
-            <input type="password" placeholder="Placeholder"/>
-        </TextField>
+In this example, a text field is displayed with an error message.
 
-        <TextField mode='filled' label="Multiline">
-            <znui.textarea placeholder="Placeholder"/>
-        </TextField>
+```tsx
+import {TextField, VStack} from "@znui/react";
 
-        <TextField mode='filled' label="Multiline 2" textareaLines={2}>
-            <znui.textarea placeholder="Placeholder"/>
-        </TextField>
+<VStack>
+    <TextField variant="outline" label="Label" error="Oops.. I'm error" placeholder="Placeholder"/>
+</VStack>
+```
 
-        <TextField mode='filled' disabled={true} label="Disabled">
-            <input placeholder="Placeholder"/>
-        </TextField>
+## TextField with Leading Icon and Error
 
-        <TextField mode='filled' label="Label" error="Oops.. I'm error">
-            <input placeholder="Placeholder"/>
-        </TextField>
-    </VStack>
-</GridLayout>
+In this example, a text field is displayed with leading icon and an error message with trailing error icon.
+
+```tsx
+import {TextField, VStack, IconContainer, ThemeTokens} from "@znui/react";
+import {MdOutlineSearch, MdError} from "react-icons/md";
+
+<VStack>
+  <TextField variant="outline" label="Label" error="Oops.. I'm error" placeholder="Placeholder"
+            leading={<IconContainer><MdOutlineSearch/></IconContainer>} trailing={<IconContainer><MdError color={ThemeTokens.error}/></IconContainer>}/>
+</VStack>
+```
+
+## TextField with Prefix
+
+In this example, a text field is displayed with a prefix.
+
+```tsx
+import {TextField, VStack} from "@znui/react";
+
+<VStack>
+   <TextField variant="outline" label="Prefix" leading='+1' placeholder="Placeholder"/>
+</VStack>
+```
+
+## TextField with Leading Icon
+
+In this example, a text field is displayed with a leading icon.
+
+```tsx
+import {TextField, VStack, IconContainer} from "@znui/react";
+import {MdOutlineSearch} from "react-icons/md";
+
+<VStack>
+  <TextField variant="outline" label="Leading Icon" leading={<IconContainer><MdOutlineSearch/></IconContainer>} placeholder="Placeholder"/>
+</VStack>
+```
+
+## TextField with Trailing Suffix
+
+In this example, a text field is displayed with a trailing suffix.
+
+```tsx
+import {TextField, VStack} from "@znui/react";
+
+<VStack>
+  <TextField variant="outline" dir='rtl' label="Suffix" trailing='.com' placeholder="yoursite"/>
+</VStack>
+```
+
+## TextField with Trailing Icon
+
+In this example, a text field is displayed with a trailing icon that has a click event.
+
+```tsx
+import {TextField, VStack, IconButton} from "@znui/react";
+import {MdCancel} from "react-icons/md";
+
+<VStack>
+    <TextField variant="outline" label="Trailing Icon" trailing={<IconButton onClick={() => alert("Clicked")}><MdCancel/></IconButton>}
+            placeholder="Placeholder"/>
+</VStack>
 ```
