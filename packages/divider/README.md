@@ -1,8 +1,8 @@
 # ZnUI divider component
-[![npm version](https://buttons.fury.io/js/@znui%2Fdivider.svg)](https://buttons.fury.io/js/@znui%2Fdivider)
+[![npm version](https://badge.fury.io/js/@znui%2Fdivider.svg)](https://badge.fury.io/js/@znui%2Fdivider)
 
 ## Documentation
-[API Documentation and examples](https://ui.zation.ru/)
+[Divider](https://ui.zation.ru/#/components/Divider)
 
 ## Installation
 

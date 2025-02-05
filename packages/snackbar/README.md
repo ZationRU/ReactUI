@@ -1,8 +1,8 @@
 # ZnUI Snackbar hooks
-[![npm version](https://buttons.fury.io/js/@znui%2Fsnackbar.svg)](https://buttons.fury.io/js/@znui%2Fsnackbar)
+[![npm version](https://badge.fury.io/js/@znui%2Fsnackbar.svg)](https://badge.fury.io/js/@znui%2Fsnackbar)
 
 ## Documentation
-[API Documentation and examples](https://ui.zation.ru/)
+[useSnackbar](https://ui.zation.ru/#/components/Snackbar)
 
 ## Installation
 

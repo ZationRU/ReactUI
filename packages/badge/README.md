@@ -2,7 +2,7 @@
 [![npm version](https://badge.fury.io/js/@znui%2Fbadge.svg)](https://badge.fury.io/js/@znui%2Fbadge)
 
 ## Documentation
-[API Documentation and examples](https://ui.zation.ru/)
+[Badge](https://ui.zation.ru/#/components/Badge)
 
 ## Installation
 
@@ -11,5 +11,4 @@ npm install @znui/badge
 ```
 
 ## Components
-
 - Badge

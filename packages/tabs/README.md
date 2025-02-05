@@ -1,8 +1,8 @@
 # ZnUI tabs component
-[![npm version](https://buttons.fury.io/js/@znui%2Fswitch.svg)](https://buttons.fury.io/js/@znui%2Fswitch)
+[![npm version](https://badge.fury.io/js/@znui%2Fswitch.svg)](https://badge.fury.io/js/@znui%2Fswitch)
 
 ## Documentation
-[API Documentation and examples](https://ui.zation.ru/)
+[Tabs](https://ui.zation.ru/#/components/Tabs)
 
 ## Installation
 

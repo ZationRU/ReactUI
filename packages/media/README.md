@@ -1,8 +1,9 @@
 # ZnUI Media components
-[![npm version](https://buttons.fury.io/js/@znui%2Fmedia.svg)](https://buttons.fury.io/js/@znui%2Fmedia)
+[![npm version](https://badge.fury.io/js/@znui%2Fmedia.svg)](https://badge.fury.io/js/@znui%2Fmedia)
 
 ## Documentation
-[API Documentation and examples](https://ui.zation.ru/)
+[Avatar](https://ui.zation.ru/#/components/Avatar)
+[ImageView](https://ui.zation.ru/#/components/ImageView)
 
 ## Installation
 

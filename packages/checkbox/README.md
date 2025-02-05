@@ -1,8 +1,8 @@
 # ZnUI checkbox component
-[![npm version](https://buttons.fury.io/js/@znui%2Fcheckbox.svg)](https://buttons.fury.io/js/@znui%2Fcheckbox)
+[![npm version](https://badge.fury.io/js/@znui%2Fcheckbox.svg)](https://badge.fury.io/js/@znui%2Fcheckbox)
 
 ## Documentation
-[API Documentation and examples](https://ui.zation.ru/)
+[Checkbox](https://ui.zation.ru/#/components/Checkbox)
 
 ## Installation
 
@@ -11,5 +11,4 @@ npm install @znui/checkbox
 ```
 
 ## Components
-
 - Checkbox

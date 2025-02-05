@@ -2,7 +2,7 @@
 [![npm version](https://buttons.fury.io/js/@znui%2Fbuttons.svg)](https://buttons.fury.io/js/@znui%2Fcard)
 
 ## Documentation
-[API Documentation and examples](https://ui.zation.ru/)
+[Card](https://ui.zation.ru/#/components/Card)
 
 ## Installation
 
@@ -11,5 +11,4 @@ npm install @znui/card
 ```
 
 ## Components
-
 - Card

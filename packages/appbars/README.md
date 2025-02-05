@@ -2,7 +2,8 @@
 [![npm version](https://badge.fury.io/js/@znui%2Fappbars.svg)](https://badge.fury.io/js/@znui%2Fappbars)
 
 ## Documentation
-[API Documentation and examples](https://ui.zation.ru/)
+[TopAppBar](https://ui.zation.ru/#/components/TopAppBar)
+[BottomAppBar](https://ui.zation.ru/#/components/BottomAppBar)
 
 ## Installation
 
@@ -11,6 +12,5 @@ npm install @znui/appbars
 ```
 
 ## Components
-
 - BottomAppBar
 - TopAppBar

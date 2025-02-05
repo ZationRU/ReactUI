@@ -10,7 +10,7 @@
 
 ```tsx
 import {
-    IconButton, IconButton, FloatingActionButton, BottomAppBar, CoordinatorLayout, TopAppBar, VStack, HStack, Avatar, Body,
+    IconButton, FloatingActionButton, BottomAppBar, CoordinatorLayout, TopAppBar, VStack, HStack, Avatar, Body,
     Button, Card, Title, Layout, ThemeTokens, ScrollLayout
 } from "@znui/react";
 import { MdOutlineAdd, MdOutlineSearch, MdDeleteOutline, MdOutlineArchive, MdMoreVert, MdReply } from "react-icons/md";

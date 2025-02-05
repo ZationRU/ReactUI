@@ -1,8 +1,8 @@
 # ZnUI Navigation rail component
-[![npm version](https://buttons.fury.io/js/@znui%2Fnavigation-rail.svg)](https://buttons.fury.io/js/@znui%2Fnavigation-rail)
+[![npm version](https://badge.fury.io/js/@znui%2Fnavigation-rail.svg)](https://badge.fury.io/js/@znui%2Fnavigation-rail)
 
 ## Documentation
-[API Documentation and examples](https://ui.zation.ru/)
+[NavigationRail](https://ui.zation.ru/#/components/NavigationRail)
 
 ## Installation
 
@@ -11,6 +11,5 @@ npm install @znui/navigation-rail
 ```
 
 ## Components
-
 - NavigationRail
 

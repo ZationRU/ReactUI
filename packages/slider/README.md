@@ -1,8 +1,8 @@
 # ZnUI Slider components
-[![npm version](https://buttons.fury.io/js/@znui%2Fslider.svg)](https://buttons.fury.io/js/@znui%2Fslider)
+[![npm version](https://badge.fury.io/js/@znui%2Fslider.svg)](https://badge.fury.io/js/@znui%2Fslider)
 
 ## Documentation
-[API Documentation and examples](https://ui.zation.ru/)
+[Slider](https://ui.zation.ru/#/components/Slider)
 
 ## Installation
 
@@ -11,5 +11,4 @@ npm install @znui/slider
 ```
 
 ## Components
-
 - Slider

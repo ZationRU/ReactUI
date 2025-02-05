@@ -1,8 +1,8 @@
 # ZnUI Side sheets
-[![npm version](https://buttons.fury.io/js/@znui%2Fside-sheets.svg)](https://buttons.fury.io/js/@znui%2Fside-sheets)
+[![npm version](https://badge.fury.io/js/@znui%2Fside-sheets.svg)](https://badge.fury.io/js/@znui%2Fside-sheets)
 
 ## Documentation
-[API Documentation and examples](https://ui.zation.ru/)
+[SideSheet](https://ui.zation.ru/#/components/SideSheet)
 
 ## Installation
 
@@ -11,5 +11,4 @@ npm install @znui/side-sheets
 ```
 
 ## Components
-
 - SideSheet

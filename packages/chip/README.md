@@ -1,8 +1,8 @@
 # ZnUI Chip component
-[![npm version](https://buttons.fury.io/js/@znui%2Fchip.svg)](https://buttons.fury.io/js/@znui%2Fchip)
+[![npm version](https://badge.fury.io/js/@znui%2Fchip.svg)](https://badge.fury.io/js/@znui%2Fchip)
 
 ## Documentation
-[API Documentation and examples](https://ui.zation.ru/)
+[Chip](https://ui.zation.ru/#/components/Chip)
 
 ## Installation
 
@@ -11,5 +11,4 @@ npm install @znui/chip
 ```
 
 ## Components
-
 - Chip

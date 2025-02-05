@@ -1,8 +1,8 @@
 # ZnUI Radio component
-[![npm version](https://buttons.fury.io/js/@znui%2Fradio.svg)](https://buttons.fury.io/js/@znui%2Fradio)
+[![npm version](https://badge.fury.io/js/@znui%2Fradio.svg)](https://badge.fury.io/js/@znui%2Fradio)
 
 ## Documentation
-[API Documentation and examples](https://ui.zation.ru/)
+[Radio](https://ui.zation.ru/#/components/Radio)
 
 ## Installation
 
@@ -11,5 +11,4 @@ npm install @znui/radio
 ```
 
 ## Components
-
 - Radio

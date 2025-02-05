@@ -1,8 +1,9 @@
 # ZnUI Progress indicators
-[![npm version](https://buttons.fury.io/js/@znui%2Fprogress-indicators.svg)](https://buttons.fury.io/js/@znui%2Fprogress-indicators)
+[![npm version](https://badge.fury.io/js/@znui%2Fprogress-indicators.svg)](https://badge.fury.io/js/@znui%2Fprogress-indicators)
 
 ## Documentation
-[API Documentation and examples](https://ui.zation.ru/)
+[CircularProgressIndicator](https://ui.zation.ru/#/components/CircularProgressIndicator)
+[LinearProgressIndicator](https://ui.zation.ru/#/components/LinearProgressIndicator)
 
 ## Installation
 

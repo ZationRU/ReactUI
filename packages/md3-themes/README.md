@@ -1,8 +1,8 @@
 # ZnUI Material3 theme and props
-[![npm version](https://buttons.fury.io/js/@znui%2Fmd3-themes.svg)](https://buttons.fury.io/js/@znui%2Fmd3-themes)
+[![npm version](https://badge.fury.io/js/@znui%2Fmd3-themes.svg)](https://badge.fury.io/js/@znui%2Fmd3-themes)
 
 ## Documentation
-[API Documentation and examples](https://ui.zation.ru/)
+[useTheme](https://ui.zation.ru/#/hooks/useTheme)
 
 ## Installation
 

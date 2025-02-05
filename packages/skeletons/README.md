@@ -1,8 +1,8 @@
 # ZnUI Skeleton components
-[![npm version](https://buttons.fury.io/js/@znui%2Fskeletons.svg)](https://buttons.fury.io/js/@znui%2Fskeletons)
+[![npm version](https://badge.fury.io/js/@znui%2Fskeletons.svg)](https://badge.fury.io/js/@znui%2Fskeletons)
 
 ## Documentation
-[API Documentation and examples](https://ui.zation.ru/)
+[Skeleton](https://ui.zation.ru/#/components/Skeleton)
 
 ## Installation
 
@@ -11,5 +11,4 @@ npm install @znui/skeletons
 ```
 
 ## Components
-
 - Skeleton

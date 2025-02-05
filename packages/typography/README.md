@@ -1,8 +1,13 @@
 # ZnUI Typography components
-[![npm version](https://buttons.fury.io/js/@znui%2Ftypography.svg)](https://buttons.fury.io/js/@znui%2Ftypography)
+[![npm version](https://badge.fury.io/js/@znui%2Ftypography.svg)](https://badge.fury.io/js/@znui%2Ftypography)
 
 ## Documentation
-[API Documentation and examples](https://ui.zation.ru/)
+[Body](https://ui.zation.ru/#/components/Body)
+[Display](https://ui.zation.ru/#/components/Display)
+[Headline](https://ui.zation.ru/#/components/Headline)
+[Label](https://ui.zation.ru/#/components/Label)
+[Title](https://ui.zation.ru/#/components/Title)
+[Typescale](https://ui.zation.ru/#/components/Typescale)
 
 ## Installation
 

@@ -1,8 +1,8 @@
 # ZnUI carousel component
-[![npm version](https://buttons.fury.io/js/@znui%2Fcarousel.svg)](https://buttons.fury.io/js/@znui%2Fcarousel)
+[![npm version](https://badge.fury.io/js/@znui%2Fcarousel.svg)](https://badge.fury.io/js/@znui%2Fcarousel)
 
 ## Documentation
-[API Documentation and examples](https://ui.zation.ru/)
+[Carousel](https://ui.zation.ru/#/components/Carousel)
 
 ## Installation
 
@@ -11,7 +11,6 @@ npm install @znui/carousel
 ```
 
 ## Components
-
 - Carousel
 - CarouselContent
 - CarouselItem

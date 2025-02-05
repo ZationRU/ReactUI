@@ -1,8 +1,13 @@
-# ZnUI Base layout components
-[![npm version](https://buttons.fury.io/js/@znui%2Flayouts.svg)](https://buttons.fury.io/js/@znui%2Flayouts)
+# ZnUI layouts components
+[![npm version](https://badge.fury.io/js/@znui%2Flayouts.svg)](https://badge.fury.io/js/@znui%2Flayouts)
 
 ## Documentation
-[API Documentation and examples](https://ui.zation.ru/)
+[AbsoluteCenter](https://ui.zation.ru/#/components/AbsoluteCenter)
+[Center](https://ui.zation.ru/#/components/Center)
+[FlexLayout](https://ui.zation.ru/#/components/FlexLayout)
+[GridLayout](https://ui.zation.ru/#/components/GridLayout)
+[Layout](https://ui.zation.ru/#/components/Layout)
+[Stack](https://ui.zation.ru/#/components/Stack)
 
 ## Installation
 
@@ -11,7 +16,6 @@ npm install @znui/layouts
 ```
 
 ## Components
-
 - AbsoluteCenter
 - Center
 - FlexLayout

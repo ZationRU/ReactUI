@@ -1,8 +1,5 @@
 # ZnUI utils
-[![npm version](https://buttons.fury.io/js/@znui%2Futils.svg)](https://buttons.fury.io/js/@znui%2Futils)
-
-## Documentation
-[API Documentation and examples](https://ui.zation.ru/)
+[![npm version](https://badge.fury.io/js/@znui%2Futils.svg)](https://badge.fury.io/js/@znui%2Futils)
 
 ## Installation
 
