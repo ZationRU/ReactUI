@@ -36,10 +36,14 @@ export const defaultSwitchStyles: SwitchStyles = {
     thumbColorChecked: ThemeTokens.onPrimaryContainer
 }
 
-
-
 export interface SwitchProps extends HTMLZnUIProps<'input'> {
+    /**
+     * The icon to display in the switch.
+     */
     icon?: ReactNode
+    /**
+     * Custom styles for the switch.
+     */
     switchStyles?: Partial<SwitchStyles>
 }
 

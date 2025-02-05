@@ -10,13 +10,13 @@
 
 ```tsx
 import {
-    IconButton, AppBarButton, FloatingActionButton, BottomAppBar, CoordinatorLayout, TopAppBar, VStack, HStack, Avatar, Body,
+    IconButton, IconButton, FloatingActionButton, BottomAppBar, CoordinatorLayout, TopAppBar, VStack, HStack, Avatar, Body,
     Button, Card, Title, Layout, ThemeTokens, ScrollLayout
 } from "@znui/react";
 import { MdOutlineAdd, MdOutlineSearch, MdDeleteOutline, MdOutlineArchive, MdMoreVert, MdReply } from "react-icons/md";
 
 const Item = () =>
-    <Card mode='elevated'>
+    <Card variant='elevated'>
         <HStack pl={16} pr={4} pv={12} align="center">
             <HStack flex={1} spacing={16} align="center">
                 <Avatar size={40} text="A"/>
@@ -44,7 +44,7 @@ const Item = () =>
             </Body>
 
             <HStack justify="end" spacing={8}>
-                <Button mode="outline">Enabled</Button>
+                <Button variant="outline">Enabled</Button>
                 <Button>Enabled</Button>
             </HStack>
         </VStack>
@@ -60,18 +60,18 @@ const Item = () =>
             <MdOutlineAdd/>
         </FloatingActionButton>
     }>
-        <AppBarButton>
+        <IconButton>
             <MdOutlineSearch/>
-        </AppBarButton>
-        <AppBarButton>
+        </IconButton>
+        <IconButton>
             <MdDeleteOutline/>
-        </AppBarButton>
-        <AppBarButton>
+        </IconButton>
+        <IconButton>
             <MdOutlineArchive/>
-        </AppBarButton>
-        <AppBarButton>
+        </IconButton>
+        <IconButton>
             <MdReply/>
-        </AppBarButton>
+        </IconButton>
     </BottomAppBar>
     
     <ScrollLayout height="100%">

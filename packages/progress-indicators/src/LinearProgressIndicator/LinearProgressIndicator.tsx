@@ -4,8 +4,14 @@ import {ThemeTokens} from "@znui/md3-themes";
 import { keyframes } from '@emotion/react'
 
 export interface LinearProgressIndicatorProps extends LayoutProps {
-    variant?: 'determinate'|'indeterminate',
+    /**
+     * The current value (between 0 and 100) of the progress
+     * If undefined, the progress bar will be indeterminate.
+     */
     value?: number
+    /**
+     * A flag to indicate if the progress is linear.
+     */
     linear?: boolean
 }
 
@@ -28,13 +34,12 @@ const progressBarIntermediate = keyframes`
 export const LinearProgressIndicator = React.forwardRef(
     (props: LinearProgressIndicatorProps, forwardRef: ForwardedRef<HTMLDivElement>) => {
         const {
-            variant = 'indeterminate',
-            value = 0,
+            value,
             linear,
             ...layoutRest
         } = props
 
-        const currentValue = value > 100 ? 100: (value < 0 ? 0: value)
+        const currentValue = value != undefined ? (value > 100 ? 100 : (value < 0 ? 0 : value)) : undefined
         const motionFunction = linear ? 'linear': ThemeTokens.motion.emphasized
 
         return <Layout
@@ -49,16 +54,17 @@ export const LinearProgressIndicator = React.forwardRef(
             clip={true}
         >
 
+            {/* TODO: Make the intermediate animation like the one shown in the MD3 guidelines. */}
             <Layout
                 h={4}
                 w="100%"
                 to={{
                     baseTransition: motionFunction,
-                    maxW: variant==='determinate'? currentValue+"%": '0%',
+                    maxW: currentValue + "%",
                     ml: 0,
                 }}
-                animation={variant==='indeterminate' ?
-                    progressBarIntermediate+" infinite 2s "+motionFunction
+                animation={currentValue == null ?
+                    progressBarIntermediate + " infinite 2s " + motionFunction
                 : ''}
                 bg="currentColor"
                 shapeScale='full'
@@ -66,7 +72,7 @@ export const LinearProgressIndicator = React.forwardRef(
 
             <Layout
                 to={{
-                    layoutSize: variant==='determinate' ? 4: 0
+                    layoutSize: currentValue != null ? 4 : 0
                 }}
                 top={0}
                 bottom={0}

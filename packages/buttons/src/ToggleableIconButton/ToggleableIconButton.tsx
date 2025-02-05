@@ -7,11 +7,10 @@ import {Center} from "@znui/layouts";
 
 export interface ToggleableIconButtonProps extends FormWidgetBaseProps {
     /**
-     * Style mode of button
+     * Variant of button
      * @default primary
      */
-    mode?: 'standard' | 'filled' | 'tonal' | 'outlined'
-
+    variant?: 'standard' | 'filled' | 'tonal' | 'outlined'
     /**
      * Current state of toggle
      * @default false
@@ -28,7 +27,7 @@ export const ToggleableIconButton = React.forwardRef((props: ToggleableIconButto
     const {
         toggled,
         children,
-        mode = 'standard',
+        variant = 'standard',
         disabled,
         ...rest
     } = props
@@ -45,7 +44,7 @@ export const ToggleableIconButton = React.forwardRef((props: ToggleableIconButto
         clip={true}
         disabled={disabled}
         to={{
-            border: mode === 'outlined' && !toggled?
+            border: variant === 'outlined' && !toggled?
                 `1px solid ${ThemeTokens.onSurfaceVariant}`:
                 'none',
             bg: {
@@ -53,13 +52,13 @@ export const ToggleableIconButton = React.forwardRef((props: ToggleableIconButto
                 'tonal': toggled ? ThemeTokens.secondaryContainer: ThemeTokens.surfaceContainerHighest,
                 'standard': 'transparent',
                 'outlined': toggled ? ThemeTokens.inverseSurface: 'transparent',
-            }[mode],
+            }[variant],
             c: {
                 'filled': toggled ? ThemeTokens.onPrimary: ThemeTokens.primary,
                 'tonal': toggled ? ThemeTokens.onSecondaryContainer: ThemeTokens.onSurfaceVariant,
                 'standard': toggled ? ThemeTokens.primary: ThemeTokens.onSurfaceVariant,
                 'outlined': toggled ? ThemeTokens.inverseOnSurface: ThemeTokens.onSurfaceVariant,
-            }[mode],
+            }[variant],
         }}
 
         _disabled={{

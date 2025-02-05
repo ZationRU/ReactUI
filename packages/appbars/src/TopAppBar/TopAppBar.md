@@ -9,7 +9,7 @@
 ```
 
 ```js
-import {Layout, Button, AppBarButton, TopAppBar, Badge} from "@znui/react";
+import {Layout, Button, IconButton, Badge} from "@znui/react";
 import { MdHome, MdNotifications, MdMoreVert, MdArrowBack } from "react-icons/md";
 
 const [navigationIcon, setNavigationIcon] = React.useState(true);
@@ -17,10 +17,10 @@ const [enableMenu, updateMenu] = React.useState(true);
 
 const Icon = <MdArrowBack/>;
 const Menu = <>
-    <AppBarButton badge={<Badge size="single">1</Badge>}>
+    <IconButton badge={<Badge size="single">1</Badge>}>
         <MdNotifications/>
-    </AppBarButton>
-    <AppBarButton><MdMoreVert/></AppBarButton>
+    </IconButton>
+    <IconButton><MdMoreVert/></IconButton>
 </>;
 
 <Layout display="flex" direction="column" gap={15}>
@@ -29,12 +29,12 @@ const Menu = <>
     
     <Layout display="flex" direction="column" gap={5}>
         <TopAppBar
-            navigationIcon={navigationIcon&&Icon}
-            menu={enableMenu&&Menu}
+            trailing={navigationIcon && Icon}
+            menu={enableMenu && Menu}
         >Title</TopAppBar>
         <TopAppBar
-            navigationIcon={navigationIcon&&Icon} 
-            menu={enableMenu&&Menu}
+            navigationIcon={navigationIcon && Icon} 
+            trailing={enableMenu && Menu}
             centered={true}
         >Centered</TopAppBar>
     </Layout>

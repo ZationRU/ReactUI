@@ -3,8 +3,14 @@ import {HTMLZnUIProps, znui} from "@znui/base";
 import {propsFromRequiredTypeScale, TypescaleProps} from "../Typescale/Typescale";
 
 export interface LabelProps extends HTMLZnUIProps<'h4'> {
-    size?: TypescaleProps['scale'];
-    prominent?: boolean;
+    /**
+     * The size of the text.
+     */
+    size?: TypescaleProps['scale']
+    /**
+     * Whether the label is prominent.
+     */
+    prominent?: boolean
 }
 
 /**

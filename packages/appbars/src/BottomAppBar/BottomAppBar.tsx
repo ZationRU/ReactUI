@@ -3,7 +3,13 @@ import {Layout, LayoutProps, Center, FlexLayout} from "@znui/layouts";
 import {ThemeTokens} from "@znui/md3-themes";
 
 export interface BottomAppBarProps extends LayoutProps {
+    /**
+     * The floating action button to display.
+     */
     fab?: ReactNode,
+    /**
+     * Whether the app bar should hide on scroll.
+     */
     hideOnScroll?: boolean
 }
 

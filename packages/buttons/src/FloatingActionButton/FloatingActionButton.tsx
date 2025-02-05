@@ -7,11 +7,28 @@ import {Label} from "@znui/typography";
 import {StateLayer} from "@znui/ripple";
 
 export interface FloatingActionButtonProps extends Omit<HTMLZnUIProps<'button'>, 'appearance'> {
-    size?: Adaptive<'small' | 'default' | 'expanded' | 'large'>,
+    /**
+     * The size of the floating action button.
+     * @default default
+     */
+    size?: Adaptive<'small' | 'default' | 'expanded' | 'large'>
+    /**
+     * The transition to use when the size changes.
+     */
     sizeTransition?: ToAnimatedProp['baseTransition']
+    /**
+     * The duration of the size transition.
+     */
     sizeTransitionDuration?: ToAnimatedProp['baseDuration']
-    appearance?: 'surface' | 'primary' | 'secondary' | 'tertiary',
-    text?: string,
+    /**
+     * The visual appearance of the floating action button.
+     * @default primary
+     */
+    variant?: 'surface' | 'primary' | 'secondary' | 'tertiary'
+    /**
+     * The text to display in the floating action button.
+     */
+    text?: string
 }
 
 /**
@@ -26,7 +43,7 @@ export const FloatingActionButton = React.forwardRef(
     ) => {
         const {
             size,
-            appearance = 'primary',
+            variant = 'primary',
             sizeTransition = ThemeTokens.motion.emphasized,
             sizeTransitionDuration = ThemeTokens.motion.duration.medium1,
             shapeScale = 'md',
@@ -57,13 +74,13 @@ export const FloatingActionButton = React.forwardRef(
                     'surface': ThemeTokens.surfaceContainerHigh,
                     'secondary': ThemeTokens.secondaryContainer,
                     'tertiary': ThemeTokens.tertiaryContainer,
-                }[appearance],
+                }[variant],
                 c: {
                     'primary': ThemeTokens.onPrimaryContainer,
                     'surface': ThemeTokens.primary,
                     'secondary': ThemeTokens.onSecondaryContainer,
                     'tertiary': ThemeTokens.onTertiaryContainer,
-                }[appearance],
+                }[variant],
                 padding: {
                     'default': 16,
                     'expanded': 16,

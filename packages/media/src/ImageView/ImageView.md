@@ -1,3 +1,11 @@
+```
+{
+    "type": "ImageView",
+    "category": "media",
+    "description": "A component for displaying images."
+}
+```
+
 ```jsx
 import {ImageView, ThemeTokens} from '@znui/react';
 

@@ -5,46 +5,32 @@ import {FlexLayout, HStack, LayoutProps} from "@znui/layouts";
 import {StateLayer} from "@znui/ripple";
 import {Label} from "@znui/typography";
 
-export type SelectEventHandler = (id: string|string[]) => void
-
 export interface SegmentedButtonProps extends Omit<LayoutProps, "onSelect"> {
     /**
-     * Height density
-     *
+     * The density of the segmented button.
      * @default 0
      */
     density?: number
-
     /**
-     * Support of multiselect
-     *
+     * Whether multiple segments can be selected.
      * @default false
      */
     multiselect?: boolean
-
     /**
-     * Current selected Segment id's
+     * The ID or IDs of the selected segments.
      */
-    selectedIds: string|string[]
-
+    selectedIds: string | string[]
     /**
-     * Minimal count of selected elements.
-     * Works only in multiselect mode
-     *
+     * The minimum number of segments that must be selected.
      * @default 1
      */
     minSelected?: number
-
     /**
-     * Select of Segment handler
-     *
-     * @default undefined
+     * The handler to be called when a segment is selected.
      */
-    onSelect?: SelectEventHandler
-
+    onSelect?: (id: string | string[]) => void
     /**
-     * Enable select Segment icon on select
-     *
+     * Whether to show a selection icon.
      * @default true
      */
     selectIcon?: boolean
@@ -52,7 +38,7 @@ export interface SegmentedButtonProps extends Omit<LayoutProps, "onSelect"> {
 
 interface SegmentedButtonContextInterface {
     selectedIds: string[]
-    onSelect?: SelectEventHandler
+    onSelect?: SegmentedButtonProps['onSelect']
     multiselect: boolean
     minSelected: number
     selectIcon: boolean

@@ -3,6 +3,9 @@ import React, {ForwardedRef, useContext} from "react";
 import {SelectFieldContext} from "../SelectField";
 
 export type SelectFieldItemProps = Omit<MenuItemProps, 'closeOnClick'> & {
+    /**
+     * The value (or ID) of the item, used to determine if the item is selected.
+     */
     value: string
 }
 
@@ -19,7 +22,7 @@ export const SelectFieldItem = React.forwardRef((props: SelectFieldItemProps, re
         ...menuItemProps
     } = props
 
-    return <Menu.Item trailingIcon={context.selected.includes(value) && Check}
+    return <Menu.Item trailing={context.selected.includes(value) && Check}
                       {...menuItemProps} ref={ref}
                       closeOnClick={!context.multiple} children={menuItemProps.children}
                       onClick={() => context.select(value)} selected={context.selected.includes(value)}

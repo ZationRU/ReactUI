@@ -7,16 +7,33 @@ import {StateLayer, Tappable} from "@znui/ripple";
 import {znui, ZnUIStyleObject} from "@znui/base";
 
 export interface ChipProps extends LayoutProps {
+    /**
+     * The component to display on the left.
+     */
     leading?: ReactElement
+    /**
+     * The component to display on the left as avatar.
+     */
     avatar?: ReactElement
-    trailingIcon?: ReactElement
+    /**
+     * The component to display on the right.
+     */
+    trailing?: ReactElement
+    /**
+     * The handler to be called when the trailing component is clicked.
+     */
     trailingOnClick?: React.MouseEventHandler<HTMLDivElement>
+    /**
+     * The content of the chip.
+     */
     children: ReactNode
     /**
+     * Whether the chip is an assist chip.
      * @default false
      */
     assist?: boolean
     /**
+     * Variant of Chip
      * @default outline
      */
     variant?: 'outline' | 'tonal' | 'filled'
@@ -25,6 +42,9 @@ export interface ChipProps extends LayoutProps {
      * @default false
      */
     selected?: boolean
+    /**
+     * Whether the chip is disabled.
+     */
     disabled?: boolean
 }
 
@@ -43,7 +63,7 @@ export const Chip = React.forwardRef(
             onClick,
             children,
             leading,
-            trailingIcon,
+            trailing,
             trailingOnClick,
             avatar,
             assist = false,
@@ -75,13 +95,14 @@ export const Chip = React.forwardRef(
             clip={true}
             rounded={avatar ? 30 : 8}
             pl={avatar ? 4 : finalLeading ? 8 : 16}
-            pr={trailingIcon ? 8 : 16}
+            pr={trailing ? 8 : 16}
             boxSizing='border-box'
             h='32px'
             border={variant != 'filled' ? 'solid 1px' : undefined}
             alignItems='center'
             borderColor={disabled && variant != 'outline' ? 'transparent' : ThemeTokens.outlineVariant}
             spacing={8}
+            bg={`color-mix(in srgb, ${disabled && finalVariant != 'outline' ? ThemeTokens.onSurfaceVariant : variantBackgrounds[finalVariant]} ${finalVariant == 'tonal' || disabled ? 12 : 100}%, transparent)`}
             pseudos={{
                 '&:focus-visible > .state-layer': {
                     oc: 0.12,
@@ -94,8 +115,6 @@ export const Chip = React.forwardRef(
             }}
             {...otherProps}
         >
-            <Layout pos='absolute' top={0} left={0} bg={disabled && finalVariant != 'outline' ? ThemeTokens.onSurfaceVariant : variantBackgrounds[finalVariant]} oc={finalVariant == 'tonal' || disabled ? 0.12 : 1}
-                    layoutSize='100%'/>
             {onClick && <StateLayer/>}
             {finalLeading && !avatar && <IconWrapper oc={disabled ? 0.38 : 1} zIndex={1} c={selected ? ThemeTokens.onSecondaryContainer : (disabled ? ThemeTokens.onSurface : ThemeTokens.primary)} size={18}>
                 {finalLeading}
@@ -109,10 +128,10 @@ export const Chip = React.forwardRef(
                 {children}
             </Label>
 
-            {trailingIcon &&
+            {trailing &&
                 <Tappable zIndex={1} disabled={trailingOnClick == null} onClick={trailingOnClick} layoutSize={18}>
                     <IconWrapper oc={disabled ? 0.38 : 1} c={disabled ? ThemeTokens.onSurface : (variant == 'filled' ? ThemeTokens.onSecondaryContainer : ThemeTokens.onSurfaceVariant)} size={18}>
-                        {trailingIcon}
+                        {trailing}
                     </IconWrapper>
                 </Tappable>}
         </HStack>

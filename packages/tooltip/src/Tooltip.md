@@ -17,13 +17,13 @@ import {MdMicNone, MdVideocam, MdPresentToAll} from 'react-icons/md';
 
 <HStack spacing={8}>
     <Tooltip text='Turn off microphone'>
-        <ToggleableIconButton toggled mode="tonal"><MdMicNone /></ToggleableIconButton>
+        <ToggleableIconButton toggled variant="tonal"><MdMicNone /></ToggleableIconButton>
     </Tooltip>
     <Tooltip text='Turn on camera'>
-        <ToggleableIconButton mode="tonal"><MdVideocam /></ToggleableIconButton>
+        <ToggleableIconButton variant="tonal"><MdVideocam /></ToggleableIconButton>
     </Tooltip>
     <Tooltip text='Present now'>
-        <ToggleableIconButton mode="tonal"><MdPresentToAll /></ToggleableIconButton>
+        <ToggleableIconButton variant="tonal"><MdPresentToAll /></ToggleableIconButton>
     </Tooltip>
 </HStack>
 ```
@@ -36,13 +36,13 @@ import {Tooltip, IconButton, HStack} from "@znui/react";
 import {MdMicNone, MdVideocam, MdPresentToAll} from 'react-icons/md';
 <HStack spacing={8}>
     <Tooltip text='Auto'>
-        <IconButton mode="tonal"><MdMicNone/></IconButton>
+        <IconButton variant="tonal"><MdMicNone/></IconButton>
     </Tooltip>
     <Tooltip text='Bottom' placementY='bottom'>
-        <IconButton mode="tonal"><MdVideocam/></IconButton>
+        <IconButton variant="tonal"><MdVideocam/></IconButton>
     </Tooltip>
     <Tooltip text='Top' placementY='top'>
-        <IconButton mode="tonal"><MdPresentToAll/></IconButton>
+        <IconButton variant="tonal"><MdPresentToAll/></IconButton>
     </Tooltip>
 </HStack>
 ```
@@ -56,7 +56,7 @@ import {MdPresentToAll} from 'react-icons/md';
 
 const { modal, open } = useModal(({ close }) => <Modal title='Tooltip'>
     <Tooltip text='Present now'>
-        <IconButton mode="tonal" onClick={() => close()}>
+        <IconButton variant="tonal" onClick={() => close()}>
             <MdPresentToAll/>
         </IconButton>
     </Tooltip>
@@ -76,32 +76,32 @@ import {Tooltip, IconButton, Button, HStack} from "@znui/react";
 import {MdBrush} from 'react-icons/md';
 
 <HStack spacing={8}>
-    <Tooltip text='Add annotations and highlights with the paint tool.' subhead='Paint Tool' action={<Button mode='text'>Learn more</Button>}>
-        <IconButton mode="tonal">
+    <Tooltip text='Add annotations and highlights with the paint tool.' subhead='Paint Tool' action={<Button variant='text'>Learn more</Button>}>
+        <IconButton variant="tonal">
             <MdBrush/>
         </IconButton>
     </Tooltip>
     
-    <Tooltip text='Add annotations and highlights with the paint tool.' subhead='Paint Tool' action={<Button mode='text'>Learn more</Button>} placementX='left'>
-        <IconButton mode="tonal">
+    <Tooltip text='Add annotations and highlights with the paint tool.' subhead='Paint Tool' action={<Button variant='text'>Learn more</Button>} placementX='left'>
+        <IconButton variant="tonal">
             <MdBrush/>
         </IconButton>
     </Tooltip>
     
-    <Tooltip text='Add annotations and highlights with the paint tool.' subhead='Paint Tool' action={<Button mode='text'>Learn more</Button>} placementX='right'>
-        <IconButton mode="tonal">
+    <Tooltip text='Add annotations and highlights with the paint tool.' subhead='Paint Tool' action={<Button variant='text'>Learn more</Button>} placementX='right'>
+        <IconButton variant="tonal">
             <MdBrush/>
         </IconButton>
     </Tooltip>
 
-    <Tooltip text='Add annotations and highlights with the paint tool.' subhead='Paint Tool' action={<Button mode='text'>Learn more</Button>} placementX='left' placementY='top'>
-        <IconButton mode="tonal">
+    <Tooltip text='Add annotations and highlights with the paint tool.' subhead='Paint Tool' action={<Button variant='text'>Learn more</Button>} placementX='left' placementY='top'>
+        <IconButton variant="tonal">
             <MdBrush/>
         </IconButton>
     </Tooltip>
 
-    <Tooltip text='Add annotations and highlights with the paint tool.' subhead='Paint Tool' action={<Button mode='text'>Learn more</Button>} placementX='right' placementY='top'>
-        <IconButton mode="tonal">
+    <Tooltip text='Add annotations and highlights with the paint tool.' subhead='Paint Tool' action={<Button variant='text'>Learn more</Button>} placementX='right' placementY='top'>
+        <IconButton variant="tonal">
             <MdBrush/>
         </IconButton>
     </Tooltip>

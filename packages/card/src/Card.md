@@ -13,16 +13,16 @@ import {useState} from "react";
 import {ThemeTokens, IconButton, Button, Layout, HStack, Body, Card, VStack, Title, SegmentedButton, Avatar} from "@znui/react";
 import { MdMoreVert } from "react-icons/md";
 
-const [mode, setMode] = useState("outlined");
+const [variant, setVariant] = useState("outlined");
 
 <VStack spacing={10} pb={15}>
-    <SegmentedButton selectedIds={mode} onSelect={setMode}>
+    <SegmentedButton selectedIds={variant} onSelect={setVariant}>
         <SegmentedButton.Segment id="outlined">Outlined</SegmentedButton.Segment>
         <SegmentedButton.Segment id="elevated">Elevated</SegmentedButton.Segment>
         <SegmentedButton.Segment id="filled">Filled</SegmentedButton.Segment>
     </SegmentedButton>
 
-    <Card mode={mode}>
+    <Card variant={variant}>
         <HStack pl={16} pr={4} pv={12} align="center">
             <HStack flex={1} spacing={16} align="center">
                 <Avatar size={40} text="A"/>
@@ -50,7 +50,7 @@ const [mode, setMode] = useState("outlined");
             </Body>
 
             <HStack justify="end" spacing={8}>
-                <Button mode="outline">Enabled</Button>
+                <Button variant="outline">Enabled</Button>
                 <Button>Enabled</Button>
             </HStack>
         </VStack>

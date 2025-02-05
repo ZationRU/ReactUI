@@ -108,7 +108,7 @@ export default function Alert({config, remove}: {config: AlertDialogConfig, remo
                     description={config.description}
                     transition="max-height 300ms var(--znui-emphasized-decelerate-motion)"
                     actions={config.actions?.map((action, index) =>
-                        <Button mode="text" key={index} onClick={e => {
+                        <Button variant="text" key={index} onClick={e => {
                             if (action.close) close()
                             if (action.onClick?.(e, stateValues)) close()
                         }}>{action.title}</Button>

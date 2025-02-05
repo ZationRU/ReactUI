@@ -1,4 +1,12 @@
-```js
+```
+{
+    "type": "Avatar",
+    "category": "media",
+    "description": "Displays a user's avatar. Supports changing the size and displaying a text as a fallback."
+}
+```
+
+```tsx
 import {Avatar, HStack, VStack} from "@znui/react";
 
 <HStack gap={4} justify='space-between' w='100%'>

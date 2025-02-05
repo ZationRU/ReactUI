@@ -9,7 +9,7 @@ export const SectionDescription = (props: LayoutProps) =>
 
 export const SectionCard = ({ image, onClick, ...rest }: LayoutProps & { image?: ReactNode }) =>
     <Card
-        mode="filled"
+        variant="filled"
         bg={ThemeTokens.surfaceContainerLow}
         borderColor="transparent"
         shapeScale="elg"

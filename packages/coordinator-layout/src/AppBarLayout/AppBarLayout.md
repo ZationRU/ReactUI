@@ -48,7 +48,7 @@ import {MdMoreVert} from "react-icons/md";
                             </Body>
 
                             <HStack justify="end" spacing={8}>
-                                <Button mode="outline">Enabled</Button>
+                                <Button variant="outline">Enabled</Button>
                                 <Button>Enabled</Button>
                             </HStack>
                         </VStack>

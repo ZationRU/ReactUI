@@ -6,9 +6,12 @@ import {Center, LayoutProps} from "@znui/layouts";
 import {CircularProgressIndicator} from "@znui/progress-indicators";
 
 export interface SwipeRefreshLayoutProps extends LayoutProps {
-    onRefresh: (event: RefreshEvent) => void
-
     /**
+     * Event handler for the refresh event.
+     */
+    onRefresh: (event: RefreshEvent) => void
+    /**
+     * Whether the swipe refresh layout is enabled.
      * @default true
      */
     enabled?: Adaptive<boolean>
@@ -109,11 +112,10 @@ export const SwipeRefreshLayout = React.forwardRef((
             zIndex={1}
         >
             <CircularProgressIndicator
-                variant={isRefreshing ? 'indeterminate' : 'determinate'}
                 size={24}
                 transform={'rotate(' + (currentPercentage * 180) + "deg)"}
                 motionDuration={isRefreshing || transition !== undefined ? undefined : '0ms'}
-                value={currentPercentage * 100}
+                value={isRefreshing ? undefined : currentPercentage * 100}
             />
         </Center>}
         {children}

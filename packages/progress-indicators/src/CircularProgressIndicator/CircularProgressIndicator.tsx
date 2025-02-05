@@ -5,11 +5,29 @@ import {ThemeTokens} from "@znui/md3-themes";
 import {keyframes} from "@emotion/react";
 
 export interface CircularProgressIndicatorProps extends LayoutProps {
-    variant?: 'determinate'|'indeterminate',
+    /**
+     * The current value (between 0 and 100) of the progress
+     * If undefined, the progress bar will be indeterminate.
+     */
     value?: number
+    /**
+     * The size of the circular progress indicator.
+     * @default 36
+     */
     size?: Adaptive<number>
+    /**
+     * The thickness of the circular progress indicator.
+     * @default 4
+     */
     thickness?: Adaptive<number>
+    /**
+     * The motion function for the animation.
+     * @default ThemeTokens.motion.emphasized
+     */
     motionFunction?: string
+    /**
+     * The motion duration for the animation.
+     */
     motionDuration?: string
 }
 
@@ -56,11 +74,10 @@ const CIRCLE_SIZE = 36
 export const CircularProgressIndicator = React.forwardRef(
     (props: CircularProgressIndicatorProps, forwardRef: ForwardedRef<HTMLDivElement>) => {
         const {
-            variant = 'indeterminate',
-            value = 0,
+            value,
             thickness,
             size = 36,
-            motionFunction = 'var(--znui-emphasized-motion)',
+            motionFunction = ThemeTokens.motion.emphasized,
             motionDuration,
             ...layoutRest
         } = props
@@ -72,7 +89,7 @@ export const CircularProgressIndicator = React.forwardRef(
         const circleStyles: HTMLZnUIProps<'circle'> = {}
         const subcircleStyles: HTMLZnUIProps<'circle'> = {}
 
-        if(variant==='determinate') {
+        if(value) {
             rootStyles.transform = 'rotate(-90deg)'
             const currentValue = value > 100 ? 100: value
 
@@ -96,10 +113,10 @@ export const CircularProgressIndicator = React.forwardRef(
                 {...layoutRest}
                 ref={forwardRef}
                 layoutSize={size}
-                animation={variant === 'indeterminate' ? rotateKeyframe+' infinite '+(motionDuration||'2.5s')+' linear' : ''}
+                animation={value == undefined ? rotateKeyframe+' infinite '+ (motionDuration || '2.5s') + ' linear' : ''}
                 {...rootStyles}
             >
-                { variant==='determinate' && <znui.svg
+                { value != null && <znui.svg
                     display="block"
                     pos='absolute'
                     zIndex={-1}
@@ -123,9 +140,7 @@ export const CircularProgressIndicator = React.forwardRef(
                     pos='relative'
                     zIndex={0}
                     viewBox={`${CIRCLE_SIZE / 2} ${CIRCLE_SIZE / 2} ${CIRCLE_SIZE} ${CIRCLE_SIZE}`}
-                    animation={variant === 'indeterminate' ? dashKeyframe+' infinite '+
-                        (motionDuration||'2.5s')+' '+motionFunction : ''}
-
+                    animation={value == undefined ? dashKeyframe + ' infinite ' + (motionDuration || '2.5s') + ' ' + motionFunction : ''}
                     {...svgStyles}
                 >
                     <znui.circle

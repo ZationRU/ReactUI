@@ -39,10 +39,14 @@ const categories = {
         title: "Text inputs",
         description: "Text input components let people enter and edit text.",
     },
+    media: {
+        title: "Media",
+        description: "Components for displaying various media types."
+    },
     utils: {
         title: "Utils",
         description: "Functional utility components for common tasks and helper functions."
-    }
+    },
 }
 
 export const ComponentsOverviewPage = () => {

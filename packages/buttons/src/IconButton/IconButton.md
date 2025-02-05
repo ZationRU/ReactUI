@@ -10,45 +10,40 @@
 
 ```tsx
 import {MdThumbUp} from "react-icons/md";
-import {ThemeTokens, VStack, Label, Badge, AppBarButton, IconButton, ToggleableIconButton} from "@znui/react";
+import {ThemeTokens, VStack, Label, Badge, IconButton, ToggleableIconButton} from "@znui/react";
 import {HStack} from "@znui/layouts";
 
 const [value, setValue] = React.useState(false);
 
 <VStack m={16} gap={12}>
-    <Label>App bar buttons</Label>
-    <AppBarButton>
-        <MdThumbUp/>
-    </AppBarButton>
-
     <Label>Common icon buttons</Label>
     <HStack gap={6}>
-        <IconButton mode="standard">
+        <IconButton variant="standard">
             <MdThumbUp/>
         </IconButton>
-        <IconButton mode="filled">
+        <IconButton variant="filled">
             <MdThumbUp/>
         </IconButton>
-        <IconButton mode="tonal">
+        <IconButton variant="tonal">
             <MdThumbUp/>
         </IconButton>
-        <IconButton mode="outlined">
+        <IconButton variant="outlined">
             <MdThumbUp/>
         </IconButton>
     </HStack>
 
     <Label>Toggable icon buttons</Label>
     <HStack gap={6}>
-        <ToggleableIconButton mode="standard" toggled={value} onChange={() => setValue(!value)}>
+        <ToggleableIconButton variant="standard" toggled={value} onChange={() => setValue(!value)}>
             <MdThumbUp/>
         </ToggleableIconButton>
-        <ToggleableIconButton mode="filled" toggled={value} onChange={() => setValue(!value)}>
+        <ToggleableIconButton variant="filled" toggled={value} onChange={() => setValue(!value)}>
             <MdThumbUp/>
         </ToggleableIconButton>
-        <ToggleableIconButton mode="tonal" toggled={value} onChange={() => setValue(!value)}>
+        <ToggleableIconButton variant="tonal" toggled={value} onChange={() => setValue(!value)}>
             <MdThumbUp/>
         </ToggleableIconButton>
-        <ToggleableIconButton mode="outlined" toggled={value} onChange={() => setValue(!value)}>
+        <ToggleableIconButton variant="outlined" toggled={value} onChange={() => setValue(!value)}>
             <MdThumbUp/>
         </ToggleableIconButton>
     </HStack>

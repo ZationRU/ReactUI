@@ -4,19 +4,18 @@ import {StateLayer, StateLayerProps} from "../StateLayer/StateLayer";
 
 export interface TappableProps extends LayoutProps {
     /**
-     * Need to enable ripple
-     *
+     * Whether to display a ripple effect on tap.
      * @default true
      */
     ripple?: boolean
-
     /**
-     * Need to disable clicking
-     *
+     * Whether the component is disabled.
      * @default false
      */
     disabled?: boolean
-
+    /**
+     * Props for the state layer.
+     */
     stateLayerProps?: StateLayerProps
 }
 

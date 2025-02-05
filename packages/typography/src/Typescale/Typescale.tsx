@@ -3,7 +3,13 @@ import {Adaptive, CSSProps, HTMLZnUIProps, useAdaptiveValue, znui} from "@znui/b
 import {ThemeTokens, ZnUITextType, ZnUITypeScales} from "@znui/md3-themes";
 
 export interface TypescaleProps extends HTMLZnUIProps<'p'> {
+    /**
+     * The size of the text.
+     */
     scale?: Adaptive<keyof ZnUITextType>
+    /**
+     * The type scale to use for the text.
+     */
     type?: Adaptive<keyof ZnUITypeScales>
 }
 

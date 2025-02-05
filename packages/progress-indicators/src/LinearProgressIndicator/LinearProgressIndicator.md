@@ -30,7 +30,7 @@ useEffect(() => {
 useEffect(() => {
     let i = 0
     const interval = setInterval(() => {
-        if(responsiveStateValue==='loading') {
+        if(responsiveStateValue == 'loading') {
             if(i++>5) {
                 setResponsiveStateValue(0)
             }
@@ -47,12 +47,9 @@ useEffect(() => {
 }, [responsiveStateValue, setResponsiveStateValue]);
 
 <VStack spacing={20}>
-    <LinearProgressIndicator/>
-    <LinearProgressIndicator variant="determinate" value={value}/>
-    <LinearProgressIndicator variant="determinate" value={value} linear={true}/>
-    <LinearProgressIndicator variant={responsiveStateValue==='loading'?
-        "indeterminate":
-        "determinate"
-    } value={responsiveStateValue}/>
+    <LinearProgressIndicator />
+    <LinearProgressIndicator value={value}/>
+    <LinearProgressIndicator value={value} linear={true}/>
+    <LinearProgressIndicator value={responsiveStateValue == 'loading' ? undefined : responsiveStateValue}/>
 </VStack>
 ```

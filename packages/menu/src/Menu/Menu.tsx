@@ -1,9 +1,9 @@
 import React, {ReactNode, RefObject, useCallback, useContext, useRef, useState,} from 'react';
 import {LayoutProps} from "@znui/layouts";
 import {componentWithProps} from "@znui/utils";
-import MenuItem from "./MenuItem";
-import MenuItems from "./MenuItems";
-import MenuTrigger from "./MenuTrigger";
+import MenuItem from "./MenuItem/MenuItem";
+import MenuItems from "./MenuItems/MenuItems";
+import MenuTrigger from "./MenuTrigger/MenuTrigger";
 
 type Point = { x: number, y: number } | undefined
 
@@ -13,16 +13,13 @@ interface MenuContextProps {
      * @param point Coordinates relative to the top-left corner of the element
      */
     open: (point?: Point) => void
-
     /**
      * Closes the menu.
      */
     close: () => void
-
     density: number
     width: number | 'by-object'
     height: number | 'by-content'
-
     /**
      * A React ref to the trigger element.
      */
@@ -33,12 +30,10 @@ interface MenuContextProps {
      * True if this is a top-level menu, false otherwise.
      */
     isRoot?: boolean,
-
     /**
      * Indicates whether the menu is currently open.
      */
     isOpened: boolean
-
     /**
      * The relative coordinates of the menu's position from the top-left corner of the trigger element.
      */
@@ -51,32 +46,27 @@ export interface MenuProps {
      * Higher values result in a more compact menu.
      */
     density?: 0 | 1 | 2
-
     /**
      * The width of the menu.
      * 'by-object' sets the menu width to match the width of the trigger element.
      * @default 200
      */
     width?: MenuContextProps['width']
-
     /**
      * The height of the menu.
      * 'by-content' sets the height to fit the content within the menu.
      * @default by-content
      */
     height?: MenuContextProps['height']
-
     /**
      * The children components of the menu.
      * These should be `Menu.Trigger` and `Menu.Items` component.
      */
     children: React.ReactNode
-
     /**
      * Event handler when the menu opens.
      */
     onOpen?: () => void,
-
     /**
      * Event handler when the menu closes.
      */
@@ -88,35 +78,29 @@ export interface MenuItemProps extends LayoutProps {
      * The icon displayed to the left of the menu item.
      */
     icon?: React.ReactNode
-
     /**
      * The icon displayed to the right of the menu item.
      */
-    trailingIcon?: React.ReactNode
-
+    trailing?: React.ReactNode
     /**
      * The children component.
      */
     children: React.ReactNode
-
     /**
      * A supporting text description for the menu item.
      */
     supportingText?: React.ReactNode
-
     /**
      * Whether the menu item is currently selected.
      * Affects background color.
      * @default false
      */
     selected?: boolean
-
     /**
      * Whether the menu item is disabled.
      * @default false
      */
     disabled?: boolean
-
     /**
      * Whether the menu should close when this item is clicked.
      * @default true

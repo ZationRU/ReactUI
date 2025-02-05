@@ -12,33 +12,27 @@ export type AlertDialogConfig = {
      * An optional icon to display in the alert.
      */
     icon?: ReactNode
-
     /**
      * The title of the alert.
      */
     title: ReactNode | string
-
     /**
      * An optional description to display in the alert.
      */
     description?: ReactNode | string
-
     /**
      * An array of actions to display in the alert.
      */
     actions?: AlertDialogConfigActions[]
-
     /**
      * An optional component to render in the dialog body.
      */
     component?: JSXElementConstructor<object & AlertDialogInterface>
-
     /**
      * Default values for the alert's internal state.
      * Used by the `component` prop if provided.
      */
     defaultValues?: { [key: string]: any }
-
     /**
      * Whether the dialog can be closed by clicking outside of it.
      * @default true

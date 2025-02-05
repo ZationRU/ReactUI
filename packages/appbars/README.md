@@ -12,6 +12,5 @@ npm install @znui/appbars
 
 ## Components
 
-- AppBarButton
 - BottomAppBar
 - TopAppBar

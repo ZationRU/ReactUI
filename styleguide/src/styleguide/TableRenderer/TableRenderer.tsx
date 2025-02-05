@@ -56,7 +56,7 @@ const TableRenderer = ({rows}: TableProps) => {
     });
 
     return (
-        <Card mv={15} width="100%" border="none" shapeScale="lg" mode='filled'>
+        <Card mv={15} width="100%" border="none" shapeScale="lg" variant='filled'>
             {
                 window.location.hash==="#/Basic/Layout" ?
                     Object.keys(baseLayoutProps).map((it, i) => <>
@@ -68,7 +68,7 @@ const TableRenderer = ({rows}: TableProps) => {
                     : <Layout bg={ThemeTokens.surfaceContainerHigh}>
                         <TableRows rows={componentProps}/>
                         {Object.keys(baseLayoutProps).length!==0&&<Button
-                            mode="text"
+                            variant="text"
                             width="100%"
                             shapeScale="none"
                             onClick={() => {

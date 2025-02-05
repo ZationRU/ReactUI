@@ -3,7 +3,10 @@ import {HTMLZnUIProps, useAdaptiveValue, znui} from "@znui/base";
 import {propsFromRequiredTypeScale, Typescale, TypescaleProps} from "../Typescale/Typescale";
 
 export interface DisplayProps extends HTMLZnUIProps<'h4'> {
-    size?: TypescaleProps['scale'];
+    /**
+     * The size of the text.
+     */
+    size?: TypescaleProps['scale']
 }
 
 /**

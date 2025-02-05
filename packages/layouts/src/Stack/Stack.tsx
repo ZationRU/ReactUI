@@ -4,9 +4,18 @@ import * as CSS from "csstype";
 import {Adaptive, useAdaptiveValue} from "@znui/base";
 
 export interface StackProps extends LayoutProps {
-    orientation?: Adaptive<'vertical'|'horizontal'>
+    /**
+     * The orientation of the stack.
+     */
+    orientation?: Adaptive<'vertical' | 'horizontal'>
+    /**
+     * Whether to reverse the order of the items in the stack.
+     */
     reverse?: Adaptive<boolean>
-    spacing?: Adaptive<CSS.Property.Gap|number>
+    /**
+     * The spacing between items in the stack.
+     */
+    spacing?: Adaptive<CSS.Property.Gap | number>
 }
 
 /**

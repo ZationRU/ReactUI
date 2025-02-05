@@ -4,6 +4,9 @@ import {keyframes} from "@emotion/react";
 import {ThemeTokens} from "@znui/md3-themes";
 
 export interface SkeletonProps extends LayoutProps {
+    /**
+     * Whether the content is loaded.
+     */
     isLoaded?: boolean
 }
 

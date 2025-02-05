@@ -61,7 +61,7 @@ import { MdFormatBold, MdOutlineAdd, MdMoreVert, MdFormatItalic } from "react-ic
                             </Body>
 
                             <HStack justify="end" spacing={8}>
-                                <Button mode="outline">Enabled</Button>
+                                <Button variant="outline">Enabled</Button>
                                 <Button>Enabled</Button>
                             </HStack>
                         </VStack>

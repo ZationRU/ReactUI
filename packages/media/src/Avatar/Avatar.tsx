@@ -5,10 +5,26 @@ import {ImageView} from "../ImageView/ImageView";
 import {Title} from "@znui/typography";
 
 export interface AvatarProps extends LayoutProps {
+    /**
+     * The URL of the image to display in the avatar.
+     */
     image?: string
+    /**
+     * The text to display in the avatar (if no image is provided).
+     */
     text?: string
+    /**
+     * The size of the avatar.
+     * @default 60
+     */
     size?: number
+    /**
+     * The content description for accessibility purposes.
+     */
     contentDescription?: string
+    /**
+     * A ref to the HTML image element.
+     */
     imageRef?: Ref<HTMLImageElement>
 }
 

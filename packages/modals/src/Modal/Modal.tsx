@@ -1,54 +1,47 @@
 import React, {MouseEventHandler, ReactNode, useContext} from "react";
 import {FlexLayoutProps, HStack, Layout, VStack} from "@znui/layouts";
 import {ModalContext} from "../useModal";
-import {TopAppBar, AppBarButton} from "@znui/appbars";
+import {TopAppBar} from "@znui/appbars";
 import {ScrollLayout} from "@znui/scroll-layout";
+import {IconButton} from "@znui/buttons";
 
 export interface ModalWrapperProps {
     /**
      * Action element to be rendered in the modal.
      */
     action?: ReactNode
-
     /**
      * Action element to be rendered in the toolbar of the modal.
      */
     toolbarAction?: ReactNode
-
     /**
      * Action element to be rendered at the bottom of the modal.
      */
     bottomAction?: ReactNode
-
     /**
      * Justification for the bottom action element. Uses justify values.
      * @default end
      */
     bottomActionJustify?: FlexLayoutProps['justify']
-
     /**
      * Title of the modal.
      */
     title?: string
-
     /**
      * Navigation icon to be rendered in the modal.
      * @example <MdClose />
      */
     navigationIcon?: ReactNode
-
     /**
      * Event handler for clicks on the navigation icon.
      * If no handler is provided, the modal will close.
      * @default undefined
      */
-    onClickNavigationIcon?: MouseEventHandler<HTMLButtonElement>
-
+    navigationIconOnClick?: MouseEventHandler<HTMLButtonElement>
     /**
      * Children to be rendered in the modal.
      */
     children?: ReactNode,
-
     /**
      * Children to be rendered in the modal, without scroll and padding applied.
      */
@@ -75,7 +68,7 @@ export function Modal(props: ModalWrapperProps) {
         bottomAction,
         title,
         navigationIcon,
-        onClickNavigationIcon,
+        navigationIconOnClick,
         children,
         innerChildren,
         bottomActionJustify = 'end'
@@ -94,15 +87,15 @@ export function Modal(props: ModalWrapperProps) {
         >
             <TopAppBar
                 minH={64}
-                navigationIcon={isFullscreen ? navigationIcon: undefined}
-                onClickNavigationIcon={onClickNavigationIcon || dialogInterface.close}
-                menu={<>
+                leading={isFullscreen ? navigationIcon : undefined}
+                leadingOnClick={navigationIconOnClick || dialogInterface.close}
+                trailing={<>
                     {toolbarAction}
 
                     {
-                        isFullscreen ? action : <AppBarButton onClick={onClickNavigationIcon || dialogInterface.close}>
+                        isFullscreen ? action : <IconButton onClick={navigationIconOnClick || dialogInterface.close}>
                             {navigationIcon}
-                        </AppBarButton>
+                        </IconButton>
                     }
                 </>}
             >{title}</TopAppBar>

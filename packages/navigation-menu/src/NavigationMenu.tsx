@@ -9,18 +9,25 @@ import {componentWithProps, unsafeRefCast} from "@znui/utils";
 export interface NavigationMenuProps extends LayoutProps {
     /**
      * Items size style
-     *
      * @default false
      */
     compat?: boolean
 }
 
 export interface NavigationMenuItemProps extends LayoutProps {
+    /**
+     * Whether the navigation menu item is selected.
+     */
     selected?: boolean
+    /**
+     * The badge to display on the navigation menu item.
+     */
     badge?: string
+    /**
+     * The icon to display on the navigation menu item.
+     */
     icon?: ReactNode
 }
-
 
 export interface NavigationDrawerHeadingProps extends LayoutProps {}
 export interface NavigationDrawerSectionHeaderProps extends LayoutProps {}

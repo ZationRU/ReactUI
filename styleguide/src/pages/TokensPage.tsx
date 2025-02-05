@@ -98,7 +98,7 @@ export const PreviewMotion = (props: PreviewMotionProps) => {
             .catch(() => showSnackbar("Не удалось скопировать"))
     }, [props.tokenString, showSnackbar])
 
-    return <Card mode='filled' onClick={copy}>
+    return <Card variant='filled' onClick={copy}>
         <VStack gap={6} pv={12}>
             <Title size='large' ph={16}>
                 {props.name}

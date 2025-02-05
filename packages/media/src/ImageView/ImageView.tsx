@@ -3,8 +3,14 @@ import {znui} from "@znui/base";
 import {Layout, LayoutProps} from "@znui/layouts";
 
 export interface ImageViewProps extends LayoutProps {
-    alt?: string | undefined;
-    src?: string | undefined;
+    /**
+     * The alternative text for the image.
+     */
+    alt?: string | undefined
+    /**
+     * The source URL of the image.
+     */
+    src?: string | undefined
 }
 
 export const ImageView = React.forwardRef(

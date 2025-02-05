@@ -6,8 +6,20 @@ import {ToAnimatedProp} from "@znui/md3-themes";
 import {unsafeRefCast} from "@znui/utils";
 
 export interface IconWrapperProps extends LayoutProps {
+    /**
+     * The size of the icon wrapper.
+     * @default 24
+     */
     size?: Adaptive<number>
+    /**
+     * The transition to use when the size changes.
+     * @default ThemeTokens.motion.emphasized
+     */
     sizeTransition?: ToAnimatedProp['baseTransition']
+    /**
+     * The duration of the size transition.
+     * @default ThemeTokens.motion.duration.medium2
+     */
     sizeTransitionDuration?: ToAnimatedProp['baseDuration']
 }
 

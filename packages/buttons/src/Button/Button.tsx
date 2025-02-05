@@ -7,7 +7,7 @@ import {Label} from "@znui/typography";
 import {Tappable} from "@znui/ripple";
 import {CircularProgressIndicator} from "@znui/progress-indicators";
 
-const modeStyles: {
+const variantStyles: {
     [key: string]: ZnUIStyleObject
 } = {
     filled: {
@@ -37,7 +37,7 @@ const modeStyles: {
     }
 }
 
-const modeDisabledStyles: {
+const variantDisabledStyles: {
     [key: string]: ZnUIStyleObject
 } = {
     text: {
@@ -49,9 +49,19 @@ const modeDisabledStyles: {
     }
 }
 
-export interface ButtonProps extends HTMLZnUIProps<'button'>{
-    mode?: 'filled'|'text'|'outline'|'tonal'|'elevated',
+export interface ButtonProps extends HTMLZnUIProps<'button'> {
+    /**
+     * The visual appearance of the button.
+     * @default filled
+     */
+    variant?: 'filled' | 'text' | 'outline' | 'tonal' | 'elevated'
+    /**
+     * The icon to display in the button.
+     */
     icon?: ReactNode
+    /**
+     * Whether the button is in a loading state.
+     */
     loading?: boolean
 }
 
@@ -62,7 +72,7 @@ export interface ButtonProps extends HTMLZnUIProps<'button'>{
  */
 export const Button = React.forwardRef((props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
     const {
-        mode = 'filled',
+        variant = 'filled',
         children,
         icon,
         className,
@@ -94,23 +104,23 @@ export const Button = React.forwardRef((props: ButtonProps, ref: ForwardedRef<HT
         pr={24}
         m={0}
         _hover={{
-            ...['filled', 'elevated'].includes(mode) ? {
+            ...['filled', 'elevated'].includes(variant) ? {
                 boxShadow: '0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15)'
-            }: (mode === 'text' ? {
+            }: (variant === 'text' ? {
                 borderColor: ThemeTokens.primary
             } : {})
         }}
-        _focusVisible={mode === 'text' ? {
+        _focusVisible={variant === 'text' ? {
             borderColor: ThemeTokens.primary
         } : {}}
-        {...modeStyles[mode]}
+        {...variantStyles[variant]}
         _disabled={{
             pointerEvents: 'none',
             color: ThemeTokens.onSurface,
             bg: `color-mix(in srgb, ${ThemeTokens.onSurface} 12%, transparent)`,
-            ...modeDisabledStyles[mode]
+            ...variantDisabledStyles[variant]
         }}
-        elevation={mode==='elevated' ? 1: 0}
+        elevation={variant==='elevated' ? 1: 0}
         pseudos={{
             '&:enabled:focus-visible > .state-layer': {
                 oc: 0.12,

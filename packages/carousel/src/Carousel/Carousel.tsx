@@ -4,11 +4,12 @@ import {ScrollLayout, ScrollLayoutProps} from "@znui/scroll-layout";
 
 export interface CarouselProps extends ScrollLayoutProps {
     /**
+     * The orientation of the carousel.
      * @default horizontal
      */
     orientation?: 'vertical' | 'horizontal'
-
     /**
+     * The spacing between items in the carousel.
      * @default 0
      */
     spacing?: StackProps['spacing']

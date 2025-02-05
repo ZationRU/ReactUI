@@ -4,10 +4,15 @@ import {Layout, LayoutProps, VStack} from "@znui/layouts";
 import {Label, Title} from "@znui/typography";
 
 export interface CarouselContentProps extends LayoutProps {
+    /**
+     * The label for the carousel content.
+     */
     label?: string
+    /**
+     * The supporting text for the carousel content.
+     */
     supportingText?: string
 }
-
 
 export const CarouselContent = (props: CarouselContentProps) => {
     const {

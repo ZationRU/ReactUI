@@ -18,37 +18,44 @@ import {
 import {Layout} from "@znui/layouts";
 
 export interface ZnUIProviderProps {
-    children: React.ReactNode
-    theme?: ZnUITheme
-
-
     /**
+     * The children to render within the provider.
+     */
+    children: React.ReactNode
+    /**
+     * The theme to use for the provider.
+     */
+    theme?: ZnUITheme
+    /**
+     * The initial color scheme to use.
      * @default 'system'
      */
     initialScheme?: ZnUIScheme
-
     /**
+     * The initial contrast scheme to use.
      * @default 'standard'
      */
     initialSchemeContrast?: ZnUISchemeContrast
-
     /**
+     * A fixed color scheme to use, overriding user preferences.
      * @default none
      */
     fixedSchema?: ZnUIScheme
-
     /**
+     * A fixed contrast scheme to use, overriding user preferences.
      * @default none
      */
     fixedSchemeContrast?: ZnUISchemeContrast
-
     /**
+     * The current layout breakpoint.
      * @default undefined
      */
     currentBreakpoint?: LayoutBreakpointKey
+    /**
+     * Callback function that is called when the color scheme changes.
+     */
     onSchemeChanged?: (currentScheme: ZnUIScheme, contrastScheme: ZnUISchemeContrast) => void
 }
-
 
 export const ZnUIProvider = (props: ZnUIProviderProps) => {
     const {

@@ -4,7 +4,7 @@ import {Tappable} from "@znui/ripple";
 import {IconWrapper} from "@znui/md3-utils";
 import {Body} from "@znui/typography";
 import {ThemeTokens} from "@znui/md3-themes";
-import {MenuItemProps, useMenuContext} from "./Menu";
+import {MenuItemProps, useMenuContext} from "../Menu";
 
 const MenuItem = React.forwardRef((props: MenuItemProps, ref: ForwardedRef<HTMLDivElement>) => {
     const menuContext = useMenuContext()
@@ -12,7 +12,7 @@ const MenuItem = React.forwardRef((props: MenuItemProps, ref: ForwardedRef<HTMLD
 
     const {
         icon,
-        trailingIcon,
+        trailing,
         children,
         supportingText,
         selected,
@@ -64,9 +64,9 @@ const MenuItem = React.forwardRef((props: MenuItemProps, ref: ForwardedRef<HTMLD
                 }
             </VStack>
 
-            {trailingIcon && <Center minLayoutSize={24}>
+            {trailing && <Center minLayoutSize={24}>
                 <IconWrapper size={24}>
-                    {trailingIcon}
+                    {trailing}
                 </IconWrapper>
             </Center>}
         </HStack>

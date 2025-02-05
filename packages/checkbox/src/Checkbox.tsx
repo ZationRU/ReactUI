@@ -6,9 +6,25 @@ import {znui} from "@znui/base";
 import {Body} from "@znui/typography";
 
 export interface CheckboxProps extends FormWidgetBaseProps {
+    /**
+     * The color of the checkbox when unchecked.
+     * @default ThemeTokens.onSurfaceVariant
+     */
     uncheckedColor?: FormWidgetBaseProps['color']
+    /**
+     * The color of the checkbox when checked.
+     * @default ThemeTokens.primary
+     */
     checkedColor?: FormWidgetBaseProps['color']
+    /**
+     * Whether the checkbox is in an error state.
+     * @default false
+     */
     error?: boolean
+    /**
+     * Whether the checkbox is in an indeterminate state.
+     * @default false
+     */
     indeterminate?: boolean
 }
 

@@ -7,16 +7,35 @@ import {StateLayer} from "@znui/ripple";
 import {Label} from "@znui/typography";
 import {componentWithProps, unsafeRefCast} from "@znui/utils";
 
-
 export interface NavigationRailProps extends LayoutProps {
+    /**
+     * The menu content for the navigation rail.
+     */
     menu?: ReactNode
+    /**
+     * The alignment of the navigation rail items.
+     * @default start
+     */
     alignment?: 'start' | 'center' | 'end' | undefined
 }
 
 export interface NavigationRailItemProps extends LayoutProps {
-    title?: string,
+    /**
+     * The title of the navigation rail item.
+     */
+    title?: string
+    /**
+     * Whether the navigation rail item is selected.
+     */
     selected?: boolean
+    /**
+     * When to display the label.
+     * @default always
+     */
     label?: 'always' | 'hidden' | 'on-selected'
+    /**
+     * The badge to display on the navigation rail item.
+     */
     badge?: React.ReactElement
 }
 

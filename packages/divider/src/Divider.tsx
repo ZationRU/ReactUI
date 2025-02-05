@@ -3,9 +3,6 @@ import {HTMLZnUIProps, znui} from "@znui/base";
 
 export type DividerProps = HTMLZnUIProps<"div">
 
-/**
- * Component for divide your contents
- */
 export const Divider = znui("div", {
     baseStyle: {
         h: "1px",

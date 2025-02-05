@@ -5,11 +5,29 @@ import {Tappable} from "@znui/ripple";
 import {Body, Label} from "@znui/typography";
 
 export interface ListItem extends LayoutProps {
+    /**
+     * The overline text for the list item.
+     */
     overline?: ReactNode
+    /**
+     * The heading text for the list item.
+     */
     heading?: ReactNode
+    /**
+     * The supporting text for the list item.
+     */
     supportText?: ReactNode
+    /**
+     * The component to display on the left.
+     */
     leading?: ReactNode
+    /**
+     * The component to display on the right.
+     */
     trailing?: ReactNode
+    /**
+     * The trailing support text for the list item.
+     */
     trailingSupportText?: ReactNode
 }
 

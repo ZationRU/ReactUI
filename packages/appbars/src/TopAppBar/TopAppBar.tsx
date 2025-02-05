@@ -2,13 +2,26 @@ import React, {ForwardedRef, MouseEventHandler, ReactNode, useEffect, useState} 
 import {FlexLayout, HStack, LayoutProps, Spacer} from "@znui/layouts";
 import {ThemeTokens} from "@znui/md3-themes";
 import {Title} from "@znui/typography";
-import {AppBarButton} from "../AppBarButton/AppBarButton";
+import {IconButton} from "@znui/buttons";
 
-export interface ToolbarProps extends LayoutProps {
+export interface TopAppBarProps extends LayoutProps {
+    /**
+     * Whether the content should be centered.
+     * @default false
+     */
     centered?: boolean
-    navigationIcon?: ReactNode
-    onClickNavigationIcon?: MouseEventHandler<HTMLButtonElement>
-    menu?: ReactNode
+    /**
+     * The component to display on the left.
+     */
+    leading?: ReactNode
+    /**
+     * The handler to be called when the leading component is clicked.
+     */
+    leadingOnClick?: MouseEventHandler<HTMLButtonElement>
+    /**
+     * The component to display on the right.
+     */
+    trailing?: ReactNode
 }
 
 /**
@@ -16,22 +29,22 @@ export interface ToolbarProps extends LayoutProps {
  * @param props
  * @constructor
  */
-export const TopAppBar = React.forwardRef((props: ToolbarProps, ref: ForwardedRef<HTMLDivElement>) => {
+export const TopAppBar = React.forwardRef((props: TopAppBarProps, ref: ForwardedRef<HTMLDivElement>) => {
     const {
         children,
         centered,
-        navigationIcon,
-        onClickNavigationIcon,
-        menu,
+        leading,
+        leadingOnClick,
+        trailing,
         ...otherProps
     } = props
 
-    const [savedNavigationIcon, saveNavigationIcon] = useState(navigationIcon)
+    const [savedNavigationIcon, saveNavigationIcon] = useState(leading)
     useEffect(() => {
-        if (!!navigationIcon) {
-            saveNavigationIcon(navigationIcon)
+        if (!!leading) {
+            saveNavigationIcon(leading)
         }
-    }, [navigationIcon])
+    }, [leading])
 
     return <HStack
         c={ThemeTokens.onSurface}
@@ -53,16 +66,16 @@ export const TopAppBar = React.forwardRef((props: ToolbarProps, ref: ForwardedRe
             align='center'
             h='max-content'
         >
-            <AppBarButton
-                c={ThemeTokens.onSurfaceVariant}
+            <IconButton
+                c={ThemeTokens.onSurface}
                 to={{
-                    transform: navigationIcon ? "translateX(0px)" : "translateX(-40px)",
-                    oc: navigationIcon ? 1 : 0
+                    transform: leading ? "translateX(0px)" : "translateX(-40px)",
+                    oc: leading ? 1 : 0
                 }}
-                onClick={onClickNavigationIcon}
+                onClick={leadingOnClick}
             >
-                {navigationIcon || savedNavigationIcon}
-            </AppBarButton>
+                {leading || savedNavigationIcon}
+            </IconButton>
 
             <Title
                 flex={1}
@@ -72,17 +85,17 @@ export const TopAppBar = React.forwardRef((props: ToolbarProps, ref: ForwardedRe
                 whiteSpace="nowrap"
                 textOverflow="ellipsis"
                 to={{
-                    transform: centered ? 'translateX(-50%)' : (!navigationIcon ?
+                    transform: centered ? 'translateX(-50%)' : (!leading ?
                         'translateX(calc(-28px))' : 'translateX(0px)')
                 }}
             >
                 {children}
             </Title>
 
-            {menu && <>
+            {trailing && <>
                 {centered && <Spacer/>}
                 <FlexLayout c={ThemeTokens.onSurfaceVariant}>
-                    {menu}
+                    {trailing}
                 </FlexLayout>
             </>}
         </HStack>

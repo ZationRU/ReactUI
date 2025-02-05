@@ -74,7 +74,7 @@ const Part = ({n}: { n: number }) => {
                 </Body>
 
                 <HStack justify="end" spacing={8}>
-                    <Button mode="outline">Enabled</Button>
+                    <Button variant="outline">Enabled</Button>
                     <Button>Enabled</Button>
                 </HStack>
             </VStack>
@@ -181,7 +181,7 @@ const Part = ({n}: { n: number }) => {
             to={{
                 transform: 'rotate(' + (Math.random() * 180) + 'deg)'
             }}
-            appearance={currentTick && Math.random() * 4 ? 'secondary' : 'primary'}
+            variant={currentTick && Math.random() * 4 ? 'secondary' : 'primary'}
             size={Math.random() * 512 < 256 ? "expanded" : "default"}
             text="Add">
             <MdAdd/>
@@ -189,7 +189,7 @@ const Part = ({n}: { n: number }) => {
 
         <Button
             pos='absolute'
-            mode={['filled', 'tonal', 'elevated'][currentTick % 3] as ButtonProps['mode']}
+            variant={['filled', 'tonal', 'elevated'][currentTick % 3] as ButtonProps['variant']}
             to={{
                 transform: Math.random() * 512 < 256 ? 'rotate(20deg)' : 'rotate(-30deg)'
             }}

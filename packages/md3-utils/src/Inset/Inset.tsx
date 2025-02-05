@@ -3,7 +3,14 @@ import React from "react";
 import {Adaptive, useAdaptiveValue, znui} from "@znui/base";
 
 export interface InsetProps extends LayoutProps {
-    insetType?: 'top'|'bottom'|'right'|'left'
+    /**
+     * The type of inset.
+     * @defaut top
+     */
+    insetType?: 'top' | 'bottom' | 'right' | 'left'
+    /**
+     * Whether the inset is visible.
+     */
     visible?: Adaptive<boolean>
 }
 
@@ -38,7 +45,6 @@ Inset.displayName = 'Inset'
 
 
 type P = React.ComponentPropsWithoutRef<typeof Inset>
-
 
 export const TopInset = znui(Inset, {
     initialProps: {

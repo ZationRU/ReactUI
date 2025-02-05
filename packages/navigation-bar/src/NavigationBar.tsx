@@ -10,9 +10,22 @@ import {componentWithProps, unsafeRefCast} from "@znui/utils";
 export interface NavigationBarProps extends LayoutProps {}
 
 export interface NavigationBarItemProps extends LayoutProps {
-    title?: string,
+    /**
+     * The title of the navigation bar item.
+     */
+    title?: string
+    /**
+     * Whether the navigation bar item is selected.
+     */
     selected?: boolean
+    /**
+     * When to display the label.
+     * @default always
+     */
     label?: 'always' | 'hidden' | 'on-selected'
+    /**
+     * The badge to display on the navigation bar item.
+     */
     badge?: React.ReactElement
 }
 

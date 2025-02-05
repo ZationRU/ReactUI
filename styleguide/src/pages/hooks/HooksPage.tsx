@@ -133,8 +133,8 @@ export function HooksPage() {
                 Hooks[hook || ''] ? <CoordinatorLayout h="100%">
                     <AppBarLayout>
                         <TopAppBar
-                            navigationIcon={<MdArrowBack/>}
-                            onClickNavigationIcon={() => {
+                            leading={<MdArrowBack/>}
+                            leadingOnClick={() => {
                                 navigate("/hooks")
                             }}
                         >{hook}</TopAppBar>

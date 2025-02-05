@@ -4,7 +4,11 @@ import {Layout, LayoutProps} from "@znui/layouts";
 import {StateLayer} from "@znui/ripple";
 
 export interface CardProps extends LayoutProps {
-    mode?: 'outlined' | 'elevated' | 'filled'
+    /**
+     * Variant of Card
+     * @default outlined
+     */
+    variant?: 'outlined' | 'elevated' | 'filled'
 }
 
 const outlinedStyles: LayoutProps = {
@@ -43,7 +47,7 @@ export const Card = React.forwardRef(
         ref: ForwardedRef<HTMLDivElement>
     ) => {
         const {
-            mode = 'outlined',
+            variant = 'outlined',
             shapeScale = 'md',
             onClick,
             children,
@@ -56,13 +60,13 @@ export const Card = React.forwardRef(
         return <Layout
             pos="relative"
             ref={ref}
-            {...styles[mode]}
+            {...styles[variant]}
             onClick={onClick}
             cursor={onClick ? "pointer" : undefined}
             clip={true}
             {...otherProps}
             to={{
-                elevation: mode === 'elevated' ? elevation : '0',
+                elevation: variant === 'elevated' ? elevation : '0',
                 ...to
             }}
             shapeScale={shapeScale}

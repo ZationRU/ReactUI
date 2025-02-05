@@ -1,6 +1,6 @@
 import React, {ForwardedRef, MouseEvent, SyntheticEvent, useMemo, useRef} from "react";
 import {mergeRefs} from "@znui/utils";
-import {MenuTriggerProps, useMenuContext} from "./Menu";
+import {MenuTriggerProps, useMenuContext} from "../Menu";
 
 const MenuTrigger = React.forwardRef(({children, mode = 'click'}: MenuTriggerProps, ref: ForwardedRef<HTMLElement>) => {
     const {open, triggerElement, close, isOpened} = useMenuContext()

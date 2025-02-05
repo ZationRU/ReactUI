@@ -6,41 +6,33 @@ import {FlexLayout, Layout} from "@znui/layouts";
 
 export interface SliderProps extends FormWidgetBaseProps {
     /**
-     * Maximal value
+     * The maximum value of the slider.
      * @default 100
      */
     max: number
-
     /**
-     * Minimal value
+     * The minimum value of the slider.
      * @default 0
      */
     min: number
-
     /**
-     * Current value
-     * @default defaultValue prop
+     * The current value of the slider.
      */
     value?: number
-
     /**
-     * Default value
+     * The default value of the slider.
      * @default 0
      */
     defaultValue?: number
-
     /**
-     * Step of value change
+     * The step value of the slider.
      * @default 1
      */
     step?: number
-
     /**
-     * Changed value listener
-     * @param value
-     * @default undefined
+     * Event handler for when the slider value changes.
      */
-    onChange?: React.ChangeEventHandler<HTMLInputElement>;
+    onChange?: React.ChangeEventHandler<HTMLInputElement>
 }
 
 /**

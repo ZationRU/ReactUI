@@ -58,7 +58,7 @@ export type SnackbarCloseButton = {
      * Whether clicking the close button should automatically close the Snackbar.
      * @default true
      */
-    close?: boolean,
+    close?: boolean
     /**
      * Event handler for clicks on the close button.
      */
@@ -83,7 +83,7 @@ export type SnackbarHook = {
 }
 
 const InverseButton = (props: ButtonProps) => {
-    return <Button c={ThemeTokens.inversePrimary} mode="text" {...props}/>
+    return <Button c={ThemeTokens.inversePrimary} variant="text" {...props}/>
 }
 
 const defaultTransitions = [

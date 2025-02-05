@@ -1,28 +1,33 @@
-import React, {ForwardedRef} from "react";
+import React, {ForwardedRef, ReactElement} from "react";
 import {IconWrapper} from "@znui/md3-utils";
 import {ThemeTokens} from "@znui/md3-themes";
 import {HTMLZnUIProps} from "@znui/base";
-import {Center} from "@znui/layouts";
+import {Center, Layout} from "@znui/layouts";
 import {StateLayer} from "@znui/ripple";
 
 export interface IconButtonProps extends HTMLZnUIProps<'button'> {
     /**
-     * Style mode of button
+     * Variant of button
      * @default primary
      */
-    mode?: 'standard' | 'filled' | 'tonal' | 'outlined'
+    variant?: 'standard' | 'filled' | 'tonal' | 'outlined'
+    /**
+     * The badge to display.
+     */
+    badge?: ReactElement
 }
 
 /**
- * Icon Buttom with Simple Button style. Default size 40px/dp
+ * Icon Buttom with Simple Button style. Default size 48px/dp
  * @param props
  * @constructor
  */
 export const IconButton = React.forwardRef((props: IconButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
     const {
         children,
-        mode = 'standard',
+        variant = 'standard',
         disabled,
+        badge,
         ...otherProps
     } = props
 
@@ -33,10 +38,11 @@ export const IconButton = React.forwardRef((props: IconButtonProps, ref: Forward
         pos='relative'
         outline='none'
         layoutSize={40}
+        p={8}
         clip={true}
         disabled={disabled}
         to={{
-            border: mode === 'outlined'?
+            border: variant === 'outlined'?
                 `1px solid ${ThemeTokens.outline}`:
                 'none',
             bg: {
@@ -44,13 +50,13 @@ export const IconButton = React.forwardRef((props: IconButtonProps, ref: Forward
                 'tonal': ThemeTokens.secondaryContainer,
                 'standard': 'transparent',
                 'outlined': 'transparent',
-            }[mode],
+            }[variant],
             c: {
                 'filled': ThemeTokens.onPrimary,
                 'tonal': ThemeTokens.onSecondaryContainer,
                 'standard': ThemeTokens.onSurfaceVariant,
                 'outlined': ThemeTokens.onSurfaceVariant,
-            }[mode],
+            }[variant],
         }}
 
         {...otherProps}
@@ -71,6 +77,12 @@ export const IconButton = React.forwardRef((props: IconButtonProps, ref: Forward
     >
         <StateLayer ripple={true}/>
         <IconWrapper size={24}>{children}</IconWrapper>
+
+        {badge && <Layout
+            pos={'absolute'}
+            right={0}
+            top={0}
+        >{badge}</Layout>}
     </Center>
 })
 

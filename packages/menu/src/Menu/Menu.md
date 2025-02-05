@@ -88,7 +88,7 @@ import {IconButton, Divider, VStack, Menu} from "@znui/react";
             <Divider />
             <Menu>
                 <Menu.Trigger>
-                    <Menu.Item trailingIcon={<MdArrowRight />}>
+                    <Menu.Item trailing={<MdArrowRight />}>
                         Save As
                     </Menu.Item>
                 </Menu.Trigger>
@@ -153,7 +153,7 @@ const [density, setDensity] = useState(0);
         </Menu.Trigger>
     </Menu>
 
-    <Button mode='outline' onClick={() => setDensity(prev => prev == 2 ? 0 : prev + 1)}>Density: {density}</Button>
+    <Button variant='outline' onClick={() => setDensity(prev => prev == 2 ? 0 : prev + 1)}>Density: {density}</Button>
 </VStack>
 ```
 

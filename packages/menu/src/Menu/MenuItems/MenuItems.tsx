@@ -2,7 +2,7 @@ import React, {ForwardedRef, useEffect, useRef} from "react";
 import {Layout} from "@znui/layouts";
 import {mergeRefs} from "@znui/utils";
 import {ThemeTokens} from "@znui/md3-themes";
-import {MenuItemsProps, useMenuContext} from "./Menu";
+import {MenuItemsProps, useMenuContext} from "../Menu";
 import {createPortal} from "react-dom";
 
 const MenuItems = React.forwardRef(({children}: MenuItemsProps, ref: ForwardedRef<HTMLDivElement>) => {

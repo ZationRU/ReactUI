@@ -26,7 +26,6 @@ export interface TooltipProps extends LayoutProps {
     placementY?: 'top' | 'bottom'
     /**
      * The horizontal placement of the tooltip, only if the tooltip is a `Rich tooltip`. If not specified, it will be automatically determined.
-     *
      */
     placementX?: 'left' | 'right'
     /**

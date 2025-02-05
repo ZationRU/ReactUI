@@ -5,17 +5,37 @@ import {Layout} from "@znui/layouts";
 import {createPortal} from "react-dom"
 
 export type ModalDialogInterface = {
+    /**
+     * Function to close the modal.
+     */
     close: () => void
 }
 
 export type ModalContextData = {
+    /**
+     * Interface for controlling the modal dialog.
+     */
     dialogInterface: ModalDialogInterface
+    /**
+     * Whether the modal is in fullscreen mode.
+     */
     isFullscreen: boolean
+    /**
+     * Whether the modal is in expanded mode.
+     */
     isExpanded: boolean
 }
 
 export type ModalOptions = {
+    /**
+     * Whether the modal should be displayed in fullscreen mode.
+     * @default auto
+     */
     fullscreen?: boolean | 'auto'
+    /**
+     * Whether the modal can be canceled.
+     * @default true
+     */
     cancelable?: boolean
 }
 

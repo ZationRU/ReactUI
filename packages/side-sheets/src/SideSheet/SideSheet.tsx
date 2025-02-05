@@ -1,44 +1,43 @@
 import React, {MouseEventHandler, ReactNode, useContext} from "react";
 import {HStack, Layout, VStack} from "@znui/layouts";
-import {AppBarButton, TopAppBar} from "@znui/appbars";
+import {TopAppBar} from "@znui/appbars";
 import {ScrollLayout} from "@znui/scroll-layout";
 import {Divider} from "@znui/divider";
 import {ThemeTokens} from "@znui/md3-themes";
 import {ModalSideSheetContext} from "../useModalSideSheet";
+import {IconButton} from "@znui/buttons";
 
 export type SideSheetProps = {
+    /**
+     * The title of the side sheet.
+     */
     title: ReactNode
     children: ReactNode
-
     /**
      * Action element to be rendered in the modal.
      */
     action?: ReactNode
-
     /**
      * Action element to be rendered in the toolbar of the modal.
      */
     closeIcon?: ReactNode
-
     /**
      * Event handler for clicks on the close icon.
      * If no handler is provided, the modal will close.
      * @default undefined
      */
     onClickCloseIcon?: MouseEventHandler<HTMLButtonElement>
-
     /**
      * Navigation icon to be rendered in the modal.
      * @example <MdClose />
      */
     navigationIcon?: ReactNode
-
     /**
      * Event handler for clicks on the navigation icon.
      * If no handler is provided, the modal will close.
      * @default undefined
      */
-    onClickNavigationIcon?: MouseEventHandler<HTMLButtonElement>
+    navigationIconOnClick?: MouseEventHandler<HTMLButtonElement>
 }
 
 export const SideSheet = (props: SideSheetProps) => {
@@ -50,7 +49,7 @@ export const SideSheet = (props: SideSheetProps) => {
         title,
         children,
         navigationIcon,
-        onClickNavigationIcon,
+        navigationIconOnClick,
         closeIcon,
         onClickCloseIcon,
         action
@@ -59,10 +58,10 @@ export const SideSheet = (props: SideSheetProps) => {
     return <VStack minW={320} flex={1} clip={true} h='100%'>
         <TopAppBar
             minH={64}
-            navigationIcon={navigationIcon}
-            onClickNavigationIcon={onClickNavigationIcon ?? context.close}
-            menu={
-                <AppBarButton
+            leading={navigationIcon}
+            leadingOnClick={navigationIconOnClick ?? context.close}
+            trailing={
+                <IconButton
                     c={ThemeTokens.onSurfaceVariant}
                     to={{
                         transform: closeIcon ? "translateX(0px)" : "translateX(-40px)",
@@ -71,7 +70,7 @@ export const SideSheet = (props: SideSheetProps) => {
                     onClick={onClickCloseIcon ?? context.close}
                 >
                     {closeIcon}
-                </AppBarButton>
+                </IconButton>
             }
         >
             {title}

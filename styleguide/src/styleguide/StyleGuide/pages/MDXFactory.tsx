@@ -24,7 +24,7 @@ export const MDXFactory = (
                 table: (props: any) => {
                     return <Card
                         as="table"
-                        mode="filled"
+                        variant="filled"
                         m={0}
                         mb={15}
                         width="100%"

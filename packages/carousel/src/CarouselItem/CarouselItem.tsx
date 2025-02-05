@@ -3,6 +3,9 @@ import {Layout, LayoutProps} from "@znui/layouts";
 import {ImageView} from "@znui/media";
 
 export interface CarouselItemProps extends LayoutProps {
+    /**
+     * The background image for the carousel item.
+     */
     imageBackground?: string
 }
 

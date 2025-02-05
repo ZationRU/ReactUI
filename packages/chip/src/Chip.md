@@ -38,11 +38,11 @@ const selectChip = (id) => {
             Label
         </Chip>
         
-        <Chip trailingIcon={<MdClose/>} trailingOnClick={() => alert("Click")}>
+        <Chip trailing={<MdClose/>} trailingOnClick={() => alert("Click")}>
             Label
         </Chip>
 
-        <Chip trailingIcon={<MdClose/>} trailingOnClick={() => alert("Click")} leading={<MdCamera/>}>
+        <Chip trailing={<MdClose/>} trailingOnClick={() => alert("Click")} leading={<MdCamera/>}>
             Label
         </Chip>
 
@@ -50,11 +50,11 @@ const selectChip = (id) => {
             levkopo
         </Chip>
 
-        <Chip avatar={<Avatar size={24} image='https://avatars.githubusercontent.com/u/40952805?v=4' />} trailingIcon={<MdNightlight />}>
+        <Chip avatar={<Avatar size={24} image='https://avatars.githubusercontent.com/u/40952805?v=4' />} trailing={<MdNightlight />}>
             levkopo
         </Chip>
 
-        <Chip trailingIcon={<MdClose/>} disabled={true} leading={<MdCamera/>}>
+        <Chip trailing={<MdClose/>} disabled={true} leading={<MdCamera/>}>
             Label
         </Chip>
     </HStack>
@@ -70,11 +70,11 @@ const selectChip = (id) => {
             Label
         </Chip>
 
-        <Chip variant='tonal' trailingIcon={<MdClose/>} trailingOnClick={() => alert("Click")}>
+        <Chip variant='tonal' trailing={<MdClose/>} trailingOnClick={() => alert("Click")}>
             Label
         </Chip>
 
-        <Chip variant='tonal' trailingIcon={<MdClose/>} trailingOnClick={() => alert("Click")} leading={<MdCamera/>}>
+        <Chip variant='tonal' trailing={<MdClose/>} trailingOnClick={() => alert("Click")} leading={<MdCamera/>}>
             Label
         </Chip>
 
@@ -82,11 +82,11 @@ const selectChip = (id) => {
             levkopo
         </Chip>
 
-        <Chip variant='tonal' avatar={<Avatar size={24} image='https://avatars.githubusercontent.com/u/40952805?v=4' />} trailingIcon={<MdNightlight />}>
+        <Chip variant='tonal' avatar={<Avatar size={24} image='https://avatars.githubusercontent.com/u/40952805?v=4' />} trailing={<MdNightlight />}>
             levkopo
         </Chip>
 
-        <Chip variant='tonal' trailingIcon={<MdClose/>} disabled={true} leading={<MdCamera/>}>
+        <Chip variant='tonal' trailing={<MdClose/>} disabled={true} leading={<MdCamera/>}>
             Label
         </Chip>
     </HStack>
@@ -102,11 +102,11 @@ const selectChip = (id) => {
             Label
         </Chip>
 
-        <Chip variant='filled' trailingIcon={<MdClose/>} trailingOnClick={() => alert("Click")}>
+        <Chip variant='filled' trailing={<MdClose/>} trailingOnClick={() => alert("Click")}>
             Label
         </Chip>
 
-        <Chip variant='filled' trailingIcon={<MdClose/>} trailingOnClick={() => alert("Click")} leading={<MdCamera/>}>
+        <Chip variant='filled' trailing={<MdClose/>} trailingOnClick={() => alert("Click")} leading={<MdCamera/>}>
             Label
         </Chip>
 
@@ -114,11 +114,11 @@ const selectChip = (id) => {
             levkopo
         </Chip>
 
-        <Chip variant='filled' avatar={<Avatar size={24} image='https://avatars.githubusercontent.com/u/40952805?v=4' />} trailingIcon={<MdNightlight />}>
+        <Chip variant='filled' avatar={<Avatar size={24} image='https://avatars.githubusercontent.com/u/40952805?v=4' />} trailing={<MdNightlight />}>
             levkopo
         </Chip>
 
-        <Chip variant='filled' trailingIcon={<MdClose/>} disabled={true} leading={<MdCamera/>}>
+        <Chip variant='filled' trailing={<MdClose/>} disabled={true} leading={<MdCamera/>}>
             Label
         </Chip>
     </HStack>

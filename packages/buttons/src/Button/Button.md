@@ -30,53 +30,53 @@ const [isLoading, setIsLoading] = useState(false);
 
     <Title>Outlined buttons</Title>
     <HStack spacing={5}>
-        <Button mode="outline">Enabled</Button>
-        <Button mode="outline" disabled>Disabled</Button>
+        <Button variant="outline">Enabled</Button>
+        <Button variant="outline" disabled>Disabled</Button>
     </HStack>
 
     <HStack spacing={5}>
-        <Button mode="outline" icon={<MdAdd/>}>Enabled</Button>
-        <Button mode="outline" icon={<MdAdd/>} disabled>Disabled</Button>
+        <Button variant="outline" icon={<MdAdd/>}>Enabled</Button>
+        <Button variant="outline" icon={<MdAdd/>} disabled>Disabled</Button>
     </HStack>
 
     <Title>Typography buttons</Title>
     <HStack spacing={5}>
-        <Button mode="text">Enabled</Button>
-        <Button mode="text" disabled>Disabled</Button>
+        <Button variant="text">Enabled</Button>
+        <Button variant="text" disabled>Disabled</Button>
     </HStack>
 
     <HStack spacing={5}>
-        <Button mode="text" icon={<MdAdd/>}>Enabled</Button>
-        <Button mode="text" icon={<MdAdd/>} disabled>Disabled</Button>
+        <Button variant="text" icon={<MdAdd/>}>Enabled</Button>
+        <Button variant="text" icon={<MdAdd/>} disabled>Disabled</Button>
     </HStack>
 
     <Title>Elevated buttons</Title>
     <HStack spacing={5}>
-        <Button mode="elevated">Enabled</Button>
-        <Button mode="elevated" disabled>Disabled</Button>
+        <Button variant="elevated">Enabled</Button>
+        <Button variant="elevated" disabled>Disabled</Button>
     </HStack>
 
     <HStack spacing={5}>
-        <Button mode="elevated" icon={<MdAdd/>}>Enabled</Button>
-        <Button mode="elevated" icon={<MdAdd/>} disabled>Disabled</Button>
+        <Button variant="elevated" icon={<MdAdd/>}>Enabled</Button>
+        <Button variant="elevated" icon={<MdAdd/>} disabled>Disabled</Button>
     </HStack>
 
     <Title>Tonal buttons</Title>
     <HStack spacing={5}>
-        <Button mode="tonal">Enabled</Button>
-        <Button mode="tonal" disabled>Disabled</Button>
+        <Button variant="tonal">Enabled</Button>
+        <Button variant="tonal" disabled>Disabled</Button>
     </HStack>
 
     <HStack spacing={5}>
-        <Button mode="tonal" icon={<MdAdd/>}>Enabled</Button>
-        <Button mode="tonal" icon={<MdAdd/>} disabled>Disabled</Button>
+        <Button variant="tonal" icon={<MdAdd/>}>Enabled</Button>
+        <Button variant="tonal" icon={<MdAdd/>} disabled>Disabled</Button>
     </HStack>
 
     <Title>Loading Button</Title>
     
     <HStack>
         <Button
-            mode={!state ? 'filled': 'tonal'}
+            variant={!state ? 'filled': 'tonal'}
             icon={<MdAdd/>}
             onClick={() => {
                 setIsLoading(true)

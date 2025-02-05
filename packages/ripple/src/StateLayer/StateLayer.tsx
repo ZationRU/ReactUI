@@ -12,8 +12,18 @@ import {Layout, LayoutProps} from "@znui/layouts";
 import {HTMLZnUIProps} from "@znui/base";
 
 export interface StateLayerProps extends LayoutProps {
+    /**
+     * Whether to display a ripple effect.
+     * @default true
+     */
     ripple?: boolean
+    /**
+     * Props for the ripple element.
+     */
     rippleProps?: HTMLZnUIProps<any>
+    /**
+     * A function that returns the element that triggers the ripple.
+     */
     rippleTrigger?: (props: HTMLZnUIProps<any>) => ReactNode
 }
 
