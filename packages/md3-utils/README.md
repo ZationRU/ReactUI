@@ -1,4 +1,4 @@
-# ZnUI Material3 additional components
+# ZnUI Material3 utilities components
 [![npm version](https://badge.fury.io/js/@znui%2Fmd3-utils.svg)](https://badge.fury.io/js/@znui%2Fmd3-utils)
 
 ## Documentation
@@ -14,8 +14,7 @@ npm install @znui/md3-utils
 
 ## Components
 - FormWidgetBase
-- Fullscreen
 - IconWrapper
-- Inset
 - IconContainer
+- Inset
 - Portal

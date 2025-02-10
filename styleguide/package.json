@@ -13,7 +13,7 @@
   },
   "private": true,
   "dependencies": {
-    "@znui/react": "^1.3.0-alpha",
+    "@znui/react": "^2.0.0-beta",
     "react": "*",
     "react-dom": "*",
     "react-icons": "^5.2.1",

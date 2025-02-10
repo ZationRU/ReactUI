@@ -1,6 +1,6 @@
 {
   "name": "@znui/card",
-  "version": "1.3.0-alpha.0",
+  "version": "2.0.0-beta.0",
   "main": "./dist/Card.js",
   "module": "./dist/Card.es.js",
   "types": "./dist/Card.d.ts",
@@ -10,9 +10,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@znui/layouts": "^1.3.0-alpha",
-    "@znui/md3-themes": "^1.3.0-alpha",
-    "@znui/ripple": "^1.3.0-alpha"
+    "@znui/layouts": "^2.0.0-beta",
+    "@znui/md3-themes": "^2.0.0-beta",
+    "@znui/ripple": "^2.0.0-beta"
   },
   "scripts": {
     "build": "rollup -c"

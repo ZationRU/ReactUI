@@ -1622,6 +1622,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@emotion/babel-plugin@npm:^11.13.5":
+  version: 11.13.5
+  resolution: "@emotion/babel-plugin@npm:11.13.5"
+  dependencies:
+    "@babel/helper-module-imports": "npm:^7.16.7"
+    "@babel/runtime": "npm:^7.18.3"
+    "@emotion/hash": "npm:^0.9.2"
+    "@emotion/memoize": "npm:^0.9.0"
+    "@emotion/serialize": "npm:^1.3.3"
+    babel-plugin-macros: "npm:^3.1.0"
+    convert-source-map: "npm:^1.5.0"
+    escape-string-regexp: "npm:^4.0.0"
+    find-root: "npm:^1.1.0"
+    source-map: "npm:^0.5.7"
+    stylis: "npm:4.2.0"
+  checksum: 10c0/8ccbfec7defd0e513cb8a1568fa179eac1e20c35fda18aed767f6c59ea7314363ebf2de3e9d2df66c8ad78928dc3dceeded84e6fa8059087cae5c280090aeeeb
+  languageName: node
+  linkType: hard
+
 "@emotion/cache@npm:^11.13.0":
   version: 11.13.1
   resolution: "@emotion/cache@npm:11.13.1"
@@ -1632,6 +1651,19 @@ __metadata:
     "@emotion/weak-memoize": "npm:^0.4.0"
     stylis: "npm:4.2.0"
   checksum: 10c0/321e97d8980885737de13b47e41fd4febfbd83086f10c620f865fcbddb29b8fe198adec7e1c69cc7b137638ea9242d7c475c57f954f7ca229157fa92e368f473
+  languageName: node
+  linkType: hard
+
+"@emotion/cache@npm:^11.14.0":
+  version: 11.14.0
+  resolution: "@emotion/cache@npm:11.14.0"
+  dependencies:
+    "@emotion/memoize": "npm:^0.9.0"
+    "@emotion/sheet": "npm:^1.4.0"
+    "@emotion/utils": "npm:^1.4.2"
+    "@emotion/weak-memoize": "npm:^0.4.0"
+    stylis: "npm:4.2.0"
+  checksum: 10c0/3fa3e7a431ab6f8a47c67132a00ac8358f428c1b6c8421d4b20de9df7c18e95eec04a5a6ff5a68908f98d3280044f247b4965ac63df8302d2c94dba718769724
   languageName: node
   linkType: hard
 
@@ -1692,6 +1724,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@emotion/react@npm:^11.14.0":
+  version: 11.14.0
+  resolution: "@emotion/react@npm:11.14.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.18.3"
+    "@emotion/babel-plugin": "npm:^11.13.5"
+    "@emotion/cache": "npm:^11.14.0"
+    "@emotion/serialize": "npm:^1.3.3"
+    "@emotion/use-insertion-effect-with-fallbacks": "npm:^1.2.0"
+    "@emotion/utils": "npm:^1.4.2"
+    "@emotion/weak-memoize": "npm:^0.4.0"
+    hoist-non-react-statics: "npm:^3.3.1"
+  peerDependencies:
+    react: ">=16.8.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 10c0/d0864f571a9f99ec643420ef31fde09e2006d3943a6aba079980e4d5f6e9f9fecbcc54b8f617fe003c00092ff9d5241179149ffff2810cb05cf72b4620cfc031
+  languageName: node
+  linkType: hard
+
 "@emotion/serialize@npm:^1.2.0, @emotion/serialize@npm:^1.3.0, @emotion/serialize@npm:^1.3.1":
   version: 1.3.1
   resolution: "@emotion/serialize@npm:1.3.1"
@@ -1702,6 +1755,19 @@ __metadata:
     "@emotion/utils": "npm:^1.4.0"
     csstype: "npm:^3.0.2"
   checksum: 10c0/ac7158e2881b5f3f9ca1e4d865186d38623f997de888675297e0928b202d16273e43b0a19aa021c0b706edefae31118bc97c5fab095820109d09d502dbcf2092
+  languageName: node
+  linkType: hard
+
+"@emotion/serialize@npm:^1.3.3":
+  version: 1.3.3
+  resolution: "@emotion/serialize@npm:1.3.3"
+  dependencies:
+    "@emotion/hash": "npm:^0.9.2"
+    "@emotion/memoize": "npm:^0.9.0"
+    "@emotion/unitless": "npm:^0.10.0"
+    "@emotion/utils": "npm:^1.4.2"
+    csstype: "npm:^3.0.2"
+  checksum: 10c0/b28cb7de59de382021de2b26c0c94ebbfb16967a1b969a56fdb6408465a8993df243bfbd66430badaa6800e1834724e84895f5a6a9d97d0d224de3d77852acb4
   languageName: node
   linkType: hard
 
@@ -1748,10 +1814,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@emotion/use-insertion-effect-with-fallbacks@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@emotion/use-insertion-effect-with-fallbacks@npm:1.2.0"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 10c0/074dbc92b96bdc09209871070076e3b0351b6b47efefa849a7d9c37ab142130767609ca1831da0055988974e3b895c1de7606e4c421fecaa27c3e56a2afd3b08
+  languageName: node
+  linkType: hard
+
 "@emotion/utils@npm:^1.4.0":
   version: 1.4.0
   resolution: "@emotion/utils@npm:1.4.0"
   checksum: 10c0/b2ae698d6e935f4961a8349286b5b0a6117a16e179459cbf9c8d97d5daa7d96c99876b950f09b1a793d6b295713b2c8f89544bd8c3f26b8e4db60a218a0d4c42
+  languageName: node
+  linkType: hard
+
+"@emotion/utils@npm:^1.4.2":
+  version: 1.4.2
+  resolution: "@emotion/utils@npm:1.4.2"
+  checksum: 10c0/7d0010bf60a2a8c1a033b6431469de4c80e47aeb8fd856a17c1d1f76bbc3a03161a34aeaa78803566e29681ca551e7bf9994b68e9c5f5c796159923e44f78d9a
   languageName: node
   linkType: hard
 
@@ -2005,7 +2087,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@project-docs/styleguide@workspace:styleguide"
   dependencies:
-    "@znui/react": "npm:^1.3.0-alpha"
+    "@znui/react": "npm:^2.0.0-beta"
     prop-types: "npm:^15.8.1"
     react: "npm:*"
     react-docgen-typescript: "npm:^2.2.2"
@@ -2982,141 +3064,149 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@znui/alerts@npm:^1.3.0-alpha, @znui/alerts@workspace:packages/alerts":
+"@znui/alerts@npm:^2.0.0-beta, @znui/alerts@workspace:packages/alerts":
   version: 0.0.0-use.local
   resolution: "@znui/alerts@workspace:packages/alerts"
   dependencies:
-    "@znui/buttons": "npm:^1.3.0-alpha"
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/md3-utils": "npm:^1.3.0-alpha"
-    "@znui/typography": "npm:^1.3.0-alpha"
+    "@znui/buttons": "npm:^2.0.0-beta"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/md3-utils": "npm:^2.0.0-beta"
+    "@znui/typography": "npm:^2.0.0-beta"
+    react-measure: "npm:^2.5.2"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/appbars@npm:^1.3.0-alpha, @znui/appbars@workspace:packages/appbars":
+"@znui/appbars@npm:^2.0.0-beta, @znui/appbars@workspace:packages/appbars":
   version: 0.0.0-use.local
   resolution: "@znui/appbars@workspace:packages/appbars"
   dependencies:
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-utils": "npm:^1.3.0-alpha"
-    "@znui/ripple": "npm:^1.3.0-alpha"
-    "@znui/typography": "npm:^1.3.0-alpha"
+    "@znui/buttons": "npm:^2.0.0-beta"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/typography": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/badge@npm:^1.3.0-alpha, @znui/badge@workspace:packages/badge":
+"@znui/badge@npm:^2.0.0-beta, @znui/badge@workspace:packages/badge":
   version: 0.0.0-use.local
   resolution: "@znui/badge@workspace:packages/badge"
   dependencies:
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/typography": "npm:^1.3.0-alpha"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/typography": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/base@npm:^1.3.0-alpha, @znui/base@workspace:packages/base":
+"@znui/base@npm:^2.0.0-beta, @znui/base@workspace:packages/base":
   version: 0.0.0-use.local
   resolution: "@znui/base@workspace:packages/base"
   dependencies:
     "@emotion/react": "npm:^11.13.3"
     "@emotion/styled": "npm:^11.13.0"
-    "@znui/utils": "npm:^1.3.0-alpha"
+    "@znui/utils": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/buttons@npm:^1.3.0-alpha, @znui/buttons@workspace:packages/buttons":
+"@znui/buttons@npm:^2.0.0-beta, @znui/buttons@workspace:packages/buttons":
   version: 0.0.0-use.local
   resolution: "@znui/buttons@workspace:packages/buttons"
   dependencies:
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/md3-utils": "npm:^1.3.0-alpha"
-    "@znui/progress-indicators": "npm:^1.3.0-alpha"
-    "@znui/ripple": "npm:^1.3.0-alpha"
-    "@znui/typography": "npm:^1.3.0-alpha"
+    "@znui/base": "npm:^2.0.0-beta"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/md3-utils": "npm:^2.0.0-beta"
+    "@znui/progress-indicators": "npm:^2.0.0-beta"
+    "@znui/ripple": "npm:^2.0.0-beta"
+    "@znui/typography": "npm:^2.0.0-beta"
+    "@znui/utils": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/card@npm:^1.3.0-alpha, @znui/card@workspace:packages/card":
+"@znui/card@npm:^2.0.0-beta, @znui/card@workspace:packages/card":
   version: 0.0.0-use.local
   resolution: "@znui/card@workspace:packages/card"
   dependencies:
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/ripple": "npm:^1.3.0-alpha"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/ripple": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/carousel@npm:^1.3.0-alpha, @znui/carousel@workspace:packages/carousel":
+"@znui/carousel@npm:^2.0.0-beta, @znui/carousel@workspace:packages/carousel":
   version: 0.0.0-use.local
   resolution: "@znui/carousel@workspace:packages/carousel"
   dependencies:
     "@types/react-measure": "npm:^2.0.8"
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/media": "npm:^1.3.0-alpha"
-    "@znui/scroll-layout": "npm:^1.3.0-alpha"
-    react-measure: "npm:^2.5.2"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/media": "npm:^2.0.0-beta"
+    "@znui/scroll-layout": "npm:^2.0.0-beta"
+    "@znui/typography": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/checkbox@npm:^1.3.0-alpha, @znui/checkbox@workspace:packages/checkbox":
+"@znui/checkbox@npm:^2.0.0-beta, @znui/checkbox@workspace:packages/checkbox":
   version: 0.0.0-use.local
   resolution: "@znui/checkbox@workspace:packages/checkbox"
   dependencies:
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/md3-utils": "npm:^1.3.0-alpha"
-    "@znui/typography": "npm:^1.3.0-alpha"
+    "@znui/base": "npm:^2.0.0-beta"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/md3-utils": "npm:^2.0.0-beta"
+    "@znui/typography": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/chip@npm:^1.3.0-alpha, @znui/chip@workspace:packages/chip":
+"@znui/chip@npm:^2.0.0-beta, @znui/chip@workspace:packages/chip":
   version: 0.0.0-use.local
   resolution: "@znui/chip@workspace:packages/chip"
   dependencies:
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/md3-utils": "npm:^1.3.0-alpha"
+    "@znui/base": "npm:^2.0.0-beta"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/md3-utils": "npm:^2.0.0-beta"
+    "@znui/ripple": "npm:^2.0.0-beta"
+    "@znui/typography": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/coordinator-layout@npm:^1.3.0-alpha, @znui/coordinator-layout@workspace:packages/coordinator-layout":
+"@znui/coordinator-layout@npm:^2.0.0-beta, @znui/coordinator-layout@workspace:packages/coordinator-layout":
   version: 0.0.0-use.local
   resolution: "@znui/coordinator-layout@workspace:packages/coordinator-layout"
   dependencies:
     "@types/react-measure": "npm:^2.0.8"
-    "@znui/appbars": "npm:^1.3.0-alpha"
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
+    "@znui/appbars": "npm:^2.0.0-beta"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/utils": "npm:^2.0.0-beta"
     react-measure: "npm:^2.5.2"
   peerDependencies:
     react: ^18.2.0
@@ -3124,108 +3214,124 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@znui/divider@npm:^1.3.0-alpha, @znui/divider@workspace:packages/divider":
+"@znui/divider@npm:^2.0.0-beta, @znui/divider@workspace:packages/divider":
   version: 0.0.0-use.local
   resolution: "@znui/divider@workspace:packages/divider"
   dependencies:
-    "@znui/base": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
+    "@znui/base": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/layouts@npm:^1.3.0-alpha, @znui/layouts@workspace:packages/layouts":
+"@znui/layouts@npm:^2.0.0-beta, @znui/layouts@workspace:packages/layouts":
   version: 0.0.0-use.local
   resolution: "@znui/layouts@workspace:packages/layouts"
   dependencies:
-    "@znui/base": "npm:^1.3.0-alpha"
-    "@znui/utils": "npm:^1.3.0-alpha"
+    "@znui/base": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/lists@npm:^1.3.0-alpha, @znui/lists@workspace:packages/lists":
+"@znui/lists@npm:^2.0.0-beta, @znui/lists@workspace:packages/lists":
   version: 0.0.0-use.local
   resolution: "@znui/lists@workspace:packages/lists"
   dependencies:
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/ripple": "npm:^1.3.0-alpha"
-    "@znui/typography": "npm:^1.3.0-alpha"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/ripple": "npm:^2.0.0-beta"
+    "@znui/typography": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/md3-themes@npm:^1.3.0-alpha, @znui/md3-themes@workspace:packages/md3-themes":
+"@znui/md3-additionals@npm:^2.0.0-beta, @znui/md3-additionals@workspace:packages/md3-additionals":
+  version: 0.0.0-use.local
+  resolution: "@znui/md3-additionals@workspace:packages/md3-additionals"
+  dependencies:
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/md3-utils": "npm:^2.0.0-beta"
+    "@znui/typography": "npm:^2.0.0-beta"
+  peerDependencies:
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  languageName: unknown
+  linkType: soft
+
+"@znui/md3-themes@npm:^2.0.0-beta, @znui/md3-themes@workspace:packages/md3-themes":
   version: 0.0.0-use.local
   resolution: "@znui/md3-themes@workspace:packages/md3-themes"
   dependencies:
-    "@emotion/react": "npm:^11.11.1"
     "@emotion/styled": "npm:^11.11.0"
-    "@znui/base": "npm:^1.3.0-alpha"
+    "@znui/base": "npm:^2.0.0-beta"
+    "@znui/utils": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/md3-utils@npm:^1.3.0-alpha, @znui/md3-utils@workspace:packages/md3-utils":
+"@znui/md3-utils@npm:^2.0.0-beta, @znui/md3-utils@workspace:packages/md3-utils":
   version: 0.0.0-use.local
   resolution: "@znui/md3-utils@workspace:packages/md3-utils"
   dependencies:
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
+    "@znui/base": "npm:^2.0.0-beta"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/utils": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/media@npm:^1.3.0-alpha, @znui/media@workspace:packages/media":
+"@znui/media@npm:^2.0.0-beta, @znui/media@workspace:packages/media":
   version: 0.0.0-use.local
   resolution: "@znui/media@workspace:packages/media"
   dependencies:
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/md3-utils": "npm:^1.3.0-alpha"
-    "@znui/ripple": "npm:^1.3.0-alpha"
-    "@znui/typography": "npm:^1.3.0-alpha"
+    "@znui/base": "npm:^2.0.0-beta"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/typography": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/menu@npm:^1.3.0-alpha, @znui/menu@workspace:packages/menu":
+"@znui/menu@npm:^2.0.0-beta, @znui/menu@workspace:packages/menu":
   version: 0.0.0-use.local
   resolution: "@znui/menu@workspace:packages/menu"
   dependencies:
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/md3-utils": "npm:^1.3.0-alpha"
-    "@znui/ripple": "npm:^1.3.0-alpha"
-    "@znui/typography": "npm:^1.3.0-alpha"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/md3-utils": "npm:^2.0.0-beta"
+    "@znui/ripple": "npm:^2.0.0-beta"
+    "@znui/typography": "npm:^2.0.0-beta"
+    "@znui/utils": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/modals@npm:^1.3.0-alpha, @znui/modals@workspace:packages/modals":
+"@znui/modals@npm:^2.0.0-beta, @znui/modals@workspace:packages/modals":
   version: 0.0.0-use.local
   resolution: "@znui/modals@workspace:packages/modals"
   dependencies:
-    "@znui/appbars": "npm:^1.3.0-alpha"
-    "@znui/buttons": "npm:^1.3.0-alpha"
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/typography": "npm:^1.3.0-alpha"
+    "@znui/appbars": "npm:^2.0.0-beta"
+    "@znui/base": "npm:^2.0.0-beta"
+    "@znui/buttons": "npm:^2.0.0-beta"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/scroll-layout": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -3267,279 +3373,297 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@znui/navigation-bar@npm:^1.3.0-alpha, @znui/navigation-bar@workspace:packages/navigation-bar":
+"@znui/navigation-bar@npm:^2.0.0-beta, @znui/navigation-bar@workspace:packages/navigation-bar":
   version: 0.0.0-use.local
   resolution: "@znui/navigation-bar@workspace:packages/navigation-bar"
   dependencies:
-    "@znui/badge": "npm:^1.3.0-alpha"
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/md3-utils": "npm:^1.3.0-alpha"
-    "@znui/ripple": "npm:^1.3.0-alpha"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/md3-utils": "npm:^2.0.0-beta"
+    "@znui/ripple": "npm:^2.0.0-beta"
+    "@znui/typography": "npm:^2.0.0-beta"
+    "@znui/utils": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/navigation-menu@npm:^1.3.0-alpha, @znui/navigation-menu@workspace:packages/navigation-menu":
+"@znui/navigation-menu@npm:^2.0.0-beta, @znui/navigation-menu@workspace:packages/navigation-menu":
   version: 0.0.0-use.local
   resolution: "@znui/navigation-menu@workspace:packages/navigation-menu"
   dependencies:
-    "@znui/badge": "npm:^1.3.0-alpha"
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/md3-utils": "npm:^1.3.0-alpha"
-    "@znui/ripple": "npm:^1.3.0-alpha"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/md3-utils": "npm:^2.0.0-beta"
+    "@znui/ripple": "npm:^2.0.0-beta"
+    "@znui/typography": "npm:^2.0.0-beta"
+    "@znui/utils": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/navigation-rail@npm:^1.3.0-alpha, @znui/navigation-rail@workspace:packages/navigation-rail":
+"@znui/navigation-rail@npm:^2.0.0-beta, @znui/navigation-rail@workspace:packages/navigation-rail":
   version: 0.0.0-use.local
   resolution: "@znui/navigation-rail@workspace:packages/navigation-rail"
   dependencies:
-    "@znui/badge": "npm:^1.3.0-alpha"
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/md3-utils": "npm:^1.3.0-alpha"
-    "@znui/ripple": "npm:^1.3.0-alpha"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/md3-utils": "npm:^2.0.0-beta"
+    "@znui/ripple": "npm:^2.0.0-beta"
+    "@znui/typography": "npm:^2.0.0-beta"
+    "@znui/utils": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/portals@npm:^1.3.0-alpha":
-  version: 1.3.0-alpha.1
-  resolution: "@znui/portals@npm:1.3.0-alpha.1"
-  dependencies:
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/md3-utils": "npm:^1.3.0-alpha"
-    "@znui/ripple": "npm:^1.3.0-alpha"
-    "@znui/typography": "npm:^1.3.0-alpha"
+"@znui/popover@npm:^2.0.0-beta, @znui/popover@workspace:packages/popover":
+  version: 0.0.0-use.local
+  resolution: "@znui/popover@workspace:packages/popover"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
-  checksum: 10c0/dd31c126eef66c03c4bbd7c7ac85835427de8816c4f4bae61f29d7e9cf9cfd116a0e1ed9c4177fd5beead5ec0c046bbd07115eed60ade2d8a23771955da64afe
-  languageName: node
-  linkType: hard
+  languageName: unknown
+  linkType: soft
 
-"@znui/progress-indicators@npm:^1.3.0-alpha, @znui/progress-indicators@workspace:packages/progress-indicators":
+"@znui/progress-indicators@npm:^2.0.0-beta, @znui/progress-indicators@workspace:packages/progress-indicators":
   version: 0.0.0-use.local
   resolution: "@znui/progress-indicators@workspace:packages/progress-indicators"
   dependencies:
-    "@znui/layouts": "npm:^1.3.0-alpha"
+    "@emotion/react": "npm:^11.14.0"
+    "@znui/base": "npm:^2.0.0-beta"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/radio@npm:^1.3.0-alpha, @znui/radio@workspace:packages/radio":
+"@znui/radio@npm:^2.0.0-beta, @znui/radio@workspace:packages/radio":
   version: 0.0.0-use.local
   resolution: "@znui/radio@workspace:packages/radio"
   dependencies:
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/md3-utils": "npm:^1.3.0-alpha"
+    "@znui/base": "npm:^2.0.0-beta"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/md3-utils": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/react@npm:^1.3.0-alpha, @znui/react@workspace:packages/md3":
+"@znui/react@npm:^2.0.0-beta, @znui/react@workspace:packages/md3":
   version: 0.0.0-use.local
   resolution: "@znui/react@workspace:packages/md3"
   dependencies:
-    "@znui/alerts": "npm:^1.3.0-alpha"
-    "@znui/appbars": "npm:^1.3.0-alpha"
-    "@znui/badge": "npm:^1.3.0-alpha"
-    "@znui/base": "npm:^1.3.0-alpha"
-    "@znui/buttons": "npm:^1.3.0-alpha"
-    "@znui/card": "npm:^1.3.0-alpha"
-    "@znui/carousel": "npm:^1.3.0-alpha"
-    "@znui/checkbox": "npm:^1.3.0-alpha"
-    "@znui/chip": "npm:^1.3.0-alpha"
-    "@znui/coordinator-layout": "npm:^1.3.0-alpha"
-    "@znui/divider": "npm:^1.3.0-alpha"
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/lists": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/md3-utils": "npm:^1.3.0-alpha"
-    "@znui/media": "npm:^1.3.0-alpha"
-    "@znui/menu": "npm:^1.3.0-alpha"
-    "@znui/modals": "npm:^1.3.0-alpha"
-    "@znui/navigation-bar": "npm:^1.3.0-alpha"
-    "@znui/navigation-menu": "npm:^1.3.0-alpha"
-    "@znui/navigation-rail": "npm:^1.3.0-alpha"
-    "@znui/progress-indicators": "npm:^1.3.0-alpha"
-    "@znui/radio": "npm:^1.3.0-alpha"
-    "@znui/ripple": "npm:^1.3.0-alpha"
-    "@znui/scroll-layout": "npm:^1.3.0-alpha"
-    "@znui/side-sheets": "npm:^1.3.0-alpha"
-    "@znui/skeletons": "npm:^1.3.0-alpha"
-    "@znui/slider": "npm:^1.3.0-alpha"
-    "@znui/snackbar": "npm:^1.3.0-alpha"
-    "@znui/switch": "npm:^1.3.0-alpha"
-    "@znui/tabs": "npm:^1.3.0-alpha"
-    "@znui/text-fields": "npm:^1.3.0-alpha"
-    "@znui/tooltip": "npm:^1.3.0-alpha"
-    "@znui/typography": "npm:^1.3.0-alpha"
-    "@znui/utils": "npm:^1.3.0-alpha"
+    "@znui/alerts": "npm:^2.0.0-beta"
+    "@znui/appbars": "npm:^2.0.0-beta"
+    "@znui/badge": "npm:^2.0.0-beta"
+    "@znui/base": "npm:^2.0.0-beta"
+    "@znui/buttons": "npm:^2.0.0-beta"
+    "@znui/card": "npm:^2.0.0-beta"
+    "@znui/carousel": "npm:^2.0.0-beta"
+    "@znui/checkbox": "npm:^2.0.0-beta"
+    "@znui/chip": "npm:^2.0.0-beta"
+    "@znui/coordinator-layout": "npm:^2.0.0-beta"
+    "@znui/divider": "npm:^2.0.0-beta"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/lists": "npm:^2.0.0-beta"
+    "@znui/md3-additionals": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/md3-utils": "npm:^2.0.0-beta"
+    "@znui/media": "npm:^2.0.0-beta"
+    "@znui/menu": "npm:^2.0.0-beta"
+    "@znui/modals": "npm:^2.0.0-beta"
+    "@znui/navigation-bar": "npm:^2.0.0-beta"
+    "@znui/navigation-menu": "npm:^2.0.0-beta"
+    "@znui/navigation-rail": "npm:^2.0.0-beta"
+    "@znui/popover": "npm:^2.0.0-beta"
+    "@znui/progress-indicators": "npm:^2.0.0-beta"
+    "@znui/radio": "npm:^2.0.0-beta"
+    "@znui/ripple": "npm:^2.0.0-beta"
+    "@znui/scroll-layout": "npm:^2.0.0-beta"
+    "@znui/side-sheets": "npm:^2.0.0-beta"
+    "@znui/skeletons": "npm:^2.0.0-beta"
+    "@znui/slider": "npm:^2.0.0-beta"
+    "@znui/snackbar": "npm:^2.0.0-beta"
+    "@znui/switch": "npm:^2.0.0-beta"
+    "@znui/tabs": "npm:^2.0.0-beta"
+    "@znui/text-fields": "npm:^2.0.0-beta"
+    "@znui/tooltip": "npm:^2.0.0-beta"
+    "@znui/typography": "npm:^2.0.0-beta"
+    "@znui/utils": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/ripple@npm:^1.3.0-alpha, @znui/ripple@workspace:packages/ripple":
+"@znui/ripple@npm:^2.0.0-beta, @znui/ripple@workspace:packages/ripple":
   version: 0.0.0-use.local
   resolution: "@znui/ripple@workspace:packages/ripple"
   dependencies:
     "@emotion/react": "npm:^11.11.1"
-    "@emotion/styled": "npm:^11.11.0"
-    "@znui/base": "npm:^1.3.0-alpha"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/scroll-layout@npm:^1.3.0-alpha, @znui/scroll-layout@workspace:packages/scroll-layout":
+"@znui/scroll-layout@npm:^2.0.0-beta, @znui/scroll-layout@workspace:packages/scroll-layout":
   version: 0.0.0-use.local
   resolution: "@znui/scroll-layout@workspace:packages/scroll-layout"
   dependencies:
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/progress-indicators": "npm:^1.3.0-alpha"
+    "@znui/base": "npm:^2.0.0-beta"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/progress-indicators": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/side-sheets@npm:^1.3.0-alpha, @znui/side-sheets@workspace:packages/side-sheets":
+"@znui/side-sheets@npm:^2.0.0-beta, @znui/side-sheets@workspace:packages/side-sheets":
   version: 0.0.0-use.local
   resolution: "@znui/side-sheets@workspace:packages/side-sheets"
   dependencies:
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/portals": "npm:^1.3.0-alpha"
+    "@znui/appbars": "npm:^2.0.0-beta"
+    "@znui/buttons": "npm:^2.0.0-beta"
+    "@znui/divider": "npm:^2.0.0-beta"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/scroll-layout": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/skeletons@npm:^1.3.0-alpha, @znui/skeletons@workspace:packages/skeletons":
+"@znui/skeletons@npm:^2.0.0-beta, @znui/skeletons@workspace:packages/skeletons":
   version: 0.0.0-use.local
   resolution: "@znui/skeletons@workspace:packages/skeletons"
   dependencies:
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
+    "@emotion/react": "npm:^11.14.0"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/slider@npm:^1.3.0-alpha, @znui/slider@workspace:packages/slider":
+"@znui/slider@npm:^2.0.0-beta, @znui/slider@workspace:packages/slider":
   version: 0.0.0-use.local
   resolution: "@znui/slider@workspace:packages/slider"
   dependencies:
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/md3-utils": "npm:^1.3.0-alpha"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/md3-utils": "npm:^2.0.0-beta"
+    "@znui/utils": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/snackbar@npm:^1.3.0-alpha, @znui/snackbar@workspace:packages/snackbar":
+"@znui/snackbar@npm:^2.0.0-beta, @znui/snackbar@workspace:packages/snackbar":
   version: 0.0.0-use.local
   resolution: "@znui/snackbar@workspace:packages/snackbar"
   dependencies:
-    "@znui/buttons": "npm:^1.3.0-alpha"
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/portals": "npm:^1.3.0-alpha"
-    "@znui/typography": "npm:^1.3.0-alpha"
+    "@znui/base": "npm:^2.0.0-beta"
+    "@znui/buttons": "npm:^2.0.0-beta"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/typography": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/switch@npm:^1.3.0-alpha, @znui/switch@workspace:packages/switch":
+"@znui/switch@npm:^2.0.0-beta, @znui/switch@workspace:packages/switch":
   version: 0.0.0-use.local
   resolution: "@znui/switch@workspace:packages/switch"
   dependencies:
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/md3-utils": "npm:^1.3.0-alpha"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/md3-utils": "npm:^2.0.0-beta"
+    "@znui/utils": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/tabs@npm:^1.3.0-alpha, @znui/tabs@workspace:packages/tabs":
+"@znui/tabs@npm:^2.0.0-beta, @znui/tabs@workspace:packages/tabs":
   version: 0.0.0-use.local
   resolution: "@znui/tabs@workspace:packages/tabs"
+  dependencies:
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/md3-utils": "npm:^2.0.0-beta"
+    "@znui/ripple": "npm:^2.0.0-beta"
+    "@znui/typography": "npm:^2.0.0-beta"
+    "@znui/utils": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/text-fields@npm:^1.3.0-alpha, @znui/text-fields@workspace:packages/text-fields":
+"@znui/text-fields@npm:^2.0.0-beta, @znui/text-fields@workspace:packages/text-fields":
   version: 0.0.0-use.local
   resolution: "@znui/text-fields@workspace:packages/text-fields"
   dependencies:
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/menu": "npm:^1.3.0-alpha"
-    "@znui/typography": "npm:^1.3.0-alpha"
-    "@znui/utils": "npm:^1.3.0-alpha"
+    "@znui/base": "npm:^2.0.0-beta"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/menu": "npm:^2.0.0-beta"
+    "@znui/typography": "npm:^2.0.0-beta"
+    "@znui/utils": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/tooltip@npm:^1.3.0-alpha, @znui/tooltip@workspace:packages/tooltip":
+"@znui/tooltip@npm:^2.0.0-beta, @znui/tooltip@workspace:packages/tooltip":
   version: 0.0.0-use.local
   resolution: "@znui/tooltip@workspace:packages/tooltip"
   dependencies:
-    "@znui/layouts": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
-    "@znui/typography": "npm:^1.3.0-alpha"
-    "@znui/utils": "npm:^1.3.0-alpha"
+    "@znui/layouts": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
+    "@znui/md3-utils": "npm:^2.0.0-beta"
+    "@znui/typography": "npm:^2.0.0-beta"
+    "@znui/utils": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/typography@npm:^1.3.0-alpha, @znui/typography@workspace:packages/typography":
+"@znui/typography@npm:^2.0.0-beta, @znui/typography@workspace:packages/typography":
   version: 0.0.0-use.local
   resolution: "@znui/typography@workspace:packages/typography"
   dependencies:
-    "@znui/base": "npm:^1.3.0-alpha"
-    "@znui/md3-themes": "npm:^1.3.0-alpha"
+    "@znui/base": "npm:^2.0.0-beta"
+    "@znui/md3-themes": "npm:^2.0.0-beta"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
   languageName: unknown
   linkType: soft
 
-"@znui/utils@npm:^1.3.0-alpha, @znui/utils@workspace:packages/utils":
+"@znui/utils@npm:^2.0.0-beta, @znui/utils@workspace:packages/utils":
   version: 0.0.0-use.local
   resolution: "@znui/utils@workspace:packages/utils"
   peerDependencies:

@@ -1,0 +1,65 @@
+{
+  "name": "@znui/md3-additionals",
+  "version": "2.0.0-beta.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@znui/layouts": "^2.0.0-beta",
+    "@znui/md3-themes": "^2.0.0-beta",
+    "@znui/md3-utils": "^2.0.0-beta",
+    "@znui/typography": "^2.0.0-beta"
+  },
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "znui",
+    "unstyled",
+    "material",
+    "material design",
+    "design system",
+    "components"
+  ],
+  "author": "levkopo",
+  "bugs": {
+    "url": "https://github.com/ZationRU/ReactUI/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZationRU/ReactUI.git",
+    "directory": "packages/md3-additionals"
+  }
+}

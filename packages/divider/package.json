@@ -1,6 +1,6 @@
 {
   "name": "@znui/divider",
-  "version": "1.3.0-alpha.0",
+  "version": "2.0.0-beta.0",
   "main": "./dist/Divider.js",
   "module": "./dist/Divider.es.js",
   "types": "./dist/Divider.d.ts",
@@ -10,8 +10,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@znui/base": "^1.3.0-alpha",
-    "@znui/md3-themes": "^1.3.0-alpha"
+    "@znui/base": "^2.0.0-beta",
+    "@znui/md3-themes": "^2.0.0-beta"
   },
   "scripts": {
     "build": "rollup -c"

@@ -1,7 +1,7 @@
-import React, {CSSProperties, ForwardedRef, ReactElement, useMemo, useState} from "react";
+import React, {ChangeEventHandler, CSSProperties, ForwardedRef, ReactElement, useMemo, useState} from "react";
 import {ThemeTokens, ZnUITextTypeScale} from "@znui/md3-themes";
 import {HTMLZnUIProps, StyleProps, znui} from "@znui/base";
-import {FlexLayout, Layout} from "@znui/layouts";
+import {FlexLayout, Layout, LayoutProps} from "@znui/layouts";
 import {Body} from "@znui/typography";
 import {DefaultFilledStyle} from "./FieldStyles/DefaultFilledStyle";
 import {DefaultOutlineStyle} from "./FieldStyles/DefaultOutlineStyle";
@@ -40,20 +40,81 @@ export interface BaseTextFieldProps {
      * Whether the text field is disabled.
      */
     disabled?: boolean
+    /**
+     * The placeholder text for the input.
+     */
+    placeholder?: string
+    /**
+     * The value of the input.
+     */
+    value?: string | readonly string[] | number
+    /**
+     * The default value of the input.
+     */
+    defaultValue?: string | readonly string[] | number
+    /**
+     * Whether the input is read-only.
+     */
+    readOnly?: boolean
+    /**
+     * The name of the input.
+     */
+    name?: string
+    /**
+     * The minimum length of the input value.
+     */
+    minLength?: number
+    /**
+     * The maximum length of the input value.
+     */
+    maxLength?: number
+    /**
+     * The auto-complete attribute of the input.
+     */
+    autoComplete?: string
 }
 
-interface InputTextFieldProps extends BaseTextFieldProps, React.InputHTMLAttributes<HTMLInputElement> {
+type PropsOmitted = 'value' | 'placeholder' | 'defaultValue' | 'disabled' | 'readOnly' | 'autoComplete' | 'maxLength' | 'minLength' | 'name' | 'onChange'
+type InputPropsOmitted = PropsOmitted | 'type'
+type TextareaPropsOmitted = PropsOmitted | 'rows'
+
+interface InputTextFieldProps extends BaseTextFieldProps, Omit<LayoutProps, PropsOmitted> {
     /**
      * How the text field is represented, either as 'input' or 'textarea'.
      */
     as?: 'input'
+    /**
+     * The type of the input element.
+     */
+    type?: React.InputHTMLAttributes<HTMLInputElement>['type']
+    /**
+     * The handler to be called when the input value changes.
+     */
+    onChange?: React.InputHTMLAttributes<HTMLInputElement>['onChange']
+    /**
+     * Props to pass to the input element.
+     */
+    inputProps?: Omit<React.InputHTMLAttributes<HTMLInputElement>, InputPropsOmitted>
 }
 
-interface TextareaTextFieldProps extends BaseTextFieldProps, React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface TextareaTextFieldProps extends BaseTextFieldProps, Omit<LayoutProps, PropsOmitted> {
     /**
      * How the text field is represented, either as 'input' or 'textarea'.
      */
     as: 'textarea'
+    /**
+     * The number of visible text lines.
+     * @default 2
+     */
+    rows?: number
+    /**
+     * The handler to be called when the textarea value changes.
+     */
+    onChange?: React.TextareaHTMLAttributes<HTMLTextAreaElement>['onChange']
+    /**
+     * Props to pass to the textarea element.
+     */
+    textareaProps?: Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, TextareaPropsOmitted>
 }
 
 export type TextFieldProps = InputTextFieldProps | TextareaTextFieldProps
@@ -97,7 +158,15 @@ export const TextField = React.forwardRef((props: TextFieldProps, forwardedRef: 
         trailing,
         disabled,
         placeholder,
-        ...inputProps
+        value,
+        defaultValue,
+        onChange,
+        readOnly,
+        name,
+        minLength,
+        maxLength,
+        autoComplete,
+        ...layoutProps
     } = props
 
     const [labelRef, setLabelRef] = useState<HTMLParagraphElement | null>(null)
@@ -127,7 +196,7 @@ export const TextField = React.forwardRef((props: TextFieldProps, forwardedRef: 
         },
     } = typeof variant === 'string' ? FieldStyles[variant] : variant as TextFieldStyle
 
-    const textAreaMaxHeight = useMemo(() => `calc(${font.lineHeight} * ${as === 'textarea' ? (inputProps as TextareaTextFieldProps).rows : 1})`, [font, as, inputProps])
+    const textAreaMaxHeight = useMemo(() => `calc(${font.lineHeight} * ${as === 'textarea' ? (layoutProps as TextareaTextFieldProps).rows : 2})`, [font, as, layoutProps])
     const fontStyles: StyleProps = useMemo(() => ({
         fontFamily: font.fontFamilyName,
         fontWeight: font.fontWeight,
@@ -227,6 +296,7 @@ export const TextField = React.forwardRef((props: TextFieldProps, forwardedRef: 
                     oc: 1
                 }
             }}
+            {...layoutProps}
             {...root}
             {...error && rootError}
         >
@@ -235,8 +305,16 @@ export const TextField = React.forwardRef((props: TextFieldProps, forwardedRef: 
 
                 <Layout w='100%'>
                     {as == 'textarea'
-                        ? <znui.textarea placeholder={placeholder || ' '} {...inputProps as HTMLZnUIProps<"textarea">} children={undefined} />
-                        : <znui.input placeholder={placeholder || ' '} {...inputProps as HTMLZnUIProps<"input">} children={undefined} />}
+                        ? <znui.textarea value={value} defaultValue={defaultValue} onChange={onChange as ChangeEventHandler<HTMLTextAreaElement> | undefined}
+                                         minLength={minLength} maxLength={maxLength} name={name} autoComplete={autoComplete}
+                                         placeholder={placeholder || ' '} rows={(layoutProps as TextareaTextFieldProps).rows} readOnly={readOnly}
+                                         {...(layoutProps as TextareaTextFieldProps).textareaProps}
+                                         children={undefined} />
+                        : <znui.input value={value} defaultValue={defaultValue} onChange={onChange as ChangeEventHandler<HTMLInputElement> | undefined}
+                                      minLength={minLength} maxLength={maxLength} name={name} autoComplete={autoComplete}
+                                      type={(layoutProps as InputTextFieldProps).type} readOnly={readOnly}
+                                      placeholder={placeholder || ' '} {...(layoutProps as InputTextFieldProps).inputProps}
+                                      children={undefined} />}
 
                     <Body
                         ref={setLabelRef}

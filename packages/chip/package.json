@@ -1,6 +1,6 @@
 {
   "name": "@znui/chip",
-  "version": "1.3.0-alpha.1",
+  "version": "2.0.0-beta.0",
   "main": "./dist/Chip.js",
   "module": "./dist/Chip.es.js",
   "types": "./dist/Chip.d.ts",
@@ -10,9 +10,12 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@znui/layouts": "^1.3.0-alpha",
-    "@znui/md3-themes": "^1.3.0-alpha",
-    "@znui/md3-utils": "^1.3.0-alpha"
+    "@znui/base": "^2.0.0-beta",
+    "@znui/layouts": "^2.0.0-beta",
+    "@znui/md3-themes": "^2.0.0-beta",
+    "@znui/md3-utils": "^2.0.0-beta",
+    "@znui/ripple": "^2.0.0-beta",
+    "@znui/typography": "^2.0.0-beta"
   },
   "scripts": {
     "build": "rollup -c"

@@ -1,6 +1,6 @@
 {
   "name": "@znui/md3-themes",
-  "version": "1.3.0-alpha.1",
+  "version": "2.0.0-beta.0",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
@@ -10,9 +10,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@znui/base": "^1.3.0-alpha"
+    "@znui/base": "^2.0.0-beta",
+    "@znui/utils": "^2.0.0-beta"
   },
   "scripts": {
     "build": "rollup -c"

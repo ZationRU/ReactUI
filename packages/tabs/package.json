@@ -1,6 +1,6 @@
 {
   "name": "@znui/tabs",
-  "version": "1.3.0-alpha.1",
+  "version": "2.0.0-beta.0",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
@@ -9,6 +9,14 @@
     "README.md"
   ],
   "license": "MIT",
+  "dependencies": {
+    "@znui/layouts": "^2.0.0-beta",
+    "@znui/md3-themes": "^2.0.0-beta",
+    "@znui/md3-utils": "^2.0.0-beta",
+    "@znui/ripple": "^2.0.0-beta",
+    "@znui/typography": "^2.0.0-beta",
+    "@znui/utils": "^2.0.0-beta"
+  },
   "scripts": {
     "build": "rollup -c"
   },

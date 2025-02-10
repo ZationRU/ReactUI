@@ -15,7 +15,7 @@ export interface LinearProgressIndicatorProps extends LayoutProps {
     linear?: boolean
 }
 
-const progressBarIntermediate = keyframes`
+const progressBarIntermediate = keyframes(`
     % {
       max-width: 0;
     }
@@ -29,7 +29,7 @@ const progressBarIntermediate = keyframes`
       max-width: 100%;
       margin-left: 100%;
     }
-`;
+`)
 
 export const LinearProgressIndicator = React.forwardRef(
     (props: LinearProgressIndicatorProps, forwardRef: ForwardedRef<HTMLDivElement>) => {

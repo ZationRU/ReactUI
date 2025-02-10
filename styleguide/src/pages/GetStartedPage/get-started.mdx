@@ -59,10 +59,10 @@ function App() {
   )
 }
 function YourApplication() {
-  const { snackbar, showSnackbar } = useSnackbar()
+  const { showSnackbar } = useSnackbar()
   return <>
     <Button onClick={() => showSnackbar("Hello, world!")}>My Cool Button in My Application</Button>
-    {snackbar}
+
   </>
 }
 

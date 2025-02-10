@@ -16,6 +16,7 @@ import {
     ZnUITheme
 } from "@znui/md3-themes";
 import {Layout} from "@znui/layouts";
+import {SnackbarProvider} from "@znui/snackbar";
 
 export interface ZnUIProviderProps {
     /**
@@ -140,7 +141,9 @@ export const ZnUIProvider = (props: ZnUIProviderProps) => {
         }}>
             <AdaptiveContext.Provider value={data}>
                 <Layout color={ThemeTokens.onBackground} id='znui-portal'></Layout>
-                {children}
+                <SnackbarProvider>
+                    {children}
+                </SnackbarProvider>
             </AdaptiveContext.Provider>
         </ThemeContext.Provider>
     </ThemeDiv>

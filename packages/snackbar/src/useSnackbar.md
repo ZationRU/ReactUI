@@ -16,7 +16,7 @@ import {MdClose} from "react-icons/md"
 
 const [horizontal, setHorizontal] = useState('right')
 
-const { snackbar, showSnackbar, hideSnackbar } = useSnackbar();
+const { show, hide } = useSnackbar();
 
 <VStack spacing={10}>
     <SegmentedButton selectedIds={horizontal} onSelect={setHorizontal}>
@@ -29,7 +29,7 @@ const { snackbar, showSnackbar, hideSnackbar } = useSnackbar();
     </SegmentedButton>
 
     <Button onClick={() => {
-        showSnackbar({
+        show({
             text: 'Single-line snackbar',
             horizontal
         })
@@ -38,7 +38,7 @@ const { snackbar, showSnackbar, hideSnackbar } = useSnackbar();
     </Button>
 
     <Button onClick={() => {
-        showSnackbar({
+        show({
             text: 'Single-line snackbar',
             bottom: [80, 0],
             horizontal,
@@ -48,7 +48,7 @@ const { snackbar, showSnackbar, hideSnackbar } = useSnackbar();
     </Button>
 
     <Button onClick={() => {
-        showSnackbar({
+        show({
             text: 'Single-line snackbar with action',
             action: {
                 title: 'Action',
@@ -61,7 +61,7 @@ const { snackbar, showSnackbar, hideSnackbar } = useSnackbar();
     </Button>
 
     <Button onClick={() => {
-        showSnackbar({
+        show({
             text: 'Single-line snackbar with action',
             action: {
                 title: 'Action',
@@ -77,7 +77,7 @@ const { snackbar, showSnackbar, hideSnackbar } = useSnackbar();
     </Button>
 
     <Button onClick={() => {
-        showSnackbar({
+        show({
             text: 'Single-line snackbar with action',
             horizontal,
             closeButton: {
@@ -89,11 +89,9 @@ const { snackbar, showSnackbar, hideSnackbar } = useSnackbar();
     </Button>
     
     <Button onClick={() => {
-        hideSnackbar()
+        hide()
     }}>
         Hide snackbar
     </Button>
-
-    {snackbar}
 </VStack>
 ```

@@ -1,10 +1,20 @@
-import React, {MouseEvent, MouseEventHandler, ReactNode, ReactPortal, useEffect, useRef, useState} from "react";
+import React, {
+    createContext,
+    MouseEvent,
+    MouseEventHandler,
+    ReactNode,
+    ReactPortal, useContext,
+    useEffect, useMemo,
+    useRef,
+    useState
+} from "react";
 import {ThemeTokens} from "@znui/md3-themes";
 import {Adaptive, useAdaptiveValue} from "@znui/base";
 import {Button, ButtonProps, IconButton} from "@znui/buttons";
 import {HStack, Layout} from "@znui/layouts";
 import {Body} from "@znui/typography";
 import {createPortal} from "react-dom";
+import {SnackbarContext} from "./SnackbarContext/SnackbarContext";
 
 export type SnackbarConfig = {
     /**
@@ -67,19 +77,14 @@ export type SnackbarCloseButton = {
 
 export type SnackbarHook = {
     /**
-     * The Snackbar component, rendered as a ReactPortal.
-     */
-    snackbar?: ReactPortal
-
-    /**
      * Shows the Snackbar with the given configuration.
      */
-    showSnackbar: (data: SnackbarConfig | string, duration?: Adaptive<'long' | 'short' | number>) => void
+    show: (data: SnackbarConfig | string, duration?: Adaptive<'long' | 'short' | number>) => void
 
     /**
      * Hides the currently displayed Snackbar.
      */
-    hideSnackbar: (onHide?: () => void) => void
+    hide: (onHide?: () => void) => void
 }
 
 const InverseButton = (props: ButtonProps) => {
@@ -104,6 +109,10 @@ export const useSnackbar = (): SnackbarHook => {
     const hideType = useAdaptiveValue(['y', 'x'])
     const horizontal = config?.horizontal || 'right'
 
+    const context = useContext(SnackbarContext)
+    if(context == null)
+        throw new Error('Snackbar context is missing. Wrap your code with <SnackbarProvider>')
+
     const onClick = (ev: MouseEvent<HTMLButtonElement>, func?: MouseEventHandler<HTMLButtonElement>, close?: boolean) => {
         func?.(ev)
         if((close ?? true)) hide()
@@ -113,6 +122,7 @@ export const useSnackbar = (): SnackbarHook => {
         setIsHide(true)
         timeout.current = setTimeout(() => {
             onHide?.call(undefined)
+            context.setSnackbar(undefined)
             setConfig(undefined)
         }, 200)
     }
@@ -132,7 +142,7 @@ export const useSnackbar = (): SnackbarHook => {
         }
     }, [durationValue, isTouched, isHide])
 
-    const Snackbar = config && (
+    const Snackbar = useMemo(() => config && (
         <Layout
             shapeScale='esm'
             bg={ThemeTokens.inverseSurface}
@@ -236,7 +246,8 @@ export const useSnackbar = (): SnackbarHook => {
                 }
             </HStack>
         </Layout>
-    )
+    ), [config, isHide, horizontal, bottomOffset])
+
     const show = (data: SnackbarConfig | string, duration: Adaptive<'long' | 'short' | number> = undefined) =>
     {
         const config = typeof data === "string" ? {text: data} : data
@@ -246,9 +257,12 @@ export const useSnackbar = (): SnackbarHook => {
         if(timeout.current) clearTimeout(timeout.current)
     }
 
+    useEffect(() => {
+        if(Snackbar) context.setSnackbar(createPortal(Snackbar, document.getElementById('znui-portal')!))
+    }, [Snackbar])
+
     return {
-        snackbar: config && createPortal(Snackbar, document.getElementById('znui-portal')!),
-        showSnackbar: show,
-        hideSnackbar: hide,
+        show: show,
+        hide: hide,
     }
 }

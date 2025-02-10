@@ -1,0 +1,65 @@
+{
+  "name": "@znui/popover",
+  "version": "2.0.0-beta.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@znui/utils": "^2.0.0-beta",
+    "@znui/layouts": "^2.0.0-beta",
+    "@znui/md3-utils": "^2.0.0-beta",
+    "@znui/md3-themes": "^2.0.0-beta",
+    "react-measure": "^2.5.2"
+  },
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "znui",
+    "unstyled",
+    "material",
+    "material design",
+    "design system",
+    "components"
+  ],
+  "author": "vitiacat",
+  "bugs": {
+    "url": "https://github.com/ZationRU/ReactUI/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZationRU/ReactUI.git",
+    "directory": "packages/popover"
+  }
+}
