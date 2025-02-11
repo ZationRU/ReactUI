@@ -35,7 +35,7 @@ export interface PopoverProps {
      * The children components of the popover.
      * These should be `Popover.Trigger` and `Popover.Content` component.
      */
-    children: ReactElement
+    children: ReactNode
 }
 
 export const usePopoverContext = () => useContext(PopoverContext)

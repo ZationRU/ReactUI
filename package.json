@@ -5,7 +5,7 @@
   "scripts": {
     "build": "yarn workspaces foreach -Apt --exclude styleguide run build",
     "build:styleguide": "yarn workspace @project-docs/styleguide run build",
-    "publish": "yarn workspaces foreach -A --exclude styleguide npm publish --tolerate-republish"
+    "publish": "yarn workspaces foreach -A --exclude styleguide --exclude @znui/monorepo npm publish --tolerate-republish"
   },
   "workspaces": {
     "packages": [

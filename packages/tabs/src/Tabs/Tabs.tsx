@@ -1,4 +1,4 @@
-import React, {createContext, ReactElement, useCallback, useEffect, useState} from "react";
+import React, {createContext, ReactNode, useCallback, useEffect, useState} from "react";
 import {componentWithProps} from "@znui/utils";
 import {TabsTab} from "./TabsTab/TabsTab";
 import {TabsGroup} from "./TabsGroup/TabsGroup";
@@ -16,7 +16,7 @@ export type TabsProps = {
     /**
      * The Tabs.Group and Tabs.Content components.
      */
-    children: ReactElement
+    children: ReactNode
     /**
      * Whether the tabs are scrollable.
      * @default false

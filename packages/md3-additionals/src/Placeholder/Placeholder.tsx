@@ -1,4 +1,4 @@
-import React, {ForwardedRef, ReactElement} from "react";
+import React, {ForwardedRef, ReactNode} from "react";
 import {VStack} from "@znui/layouts";
 import {Body, Display, Title} from "@znui/typography";
 import {IconWrapper} from "@znui/md3-utils";
@@ -8,15 +8,15 @@ export interface PlaceholderProps {
     /**
      * The title element.
      */
-    title?: ReactElement
+    title?: ReactNode
     /**
      * The description element.
      */
-    description?: ReactElement
+    description?: ReactNode
     /**
      * The icon element.
      */
-    icon?: ReactElement
+    icon?: ReactNode
     /**
      * The size of icon element.
      * @default 32
@@ -29,7 +29,7 @@ export interface PlaceholderProps {
     /**
      * The actions element.
      */
-    actions?: ReactElement
+    actions?: ReactNode
 }
 
 export const Placeholder = React.forwardRef((props: PlaceholderProps, ref: ForwardedRef<HTMLDivElement>) => {
