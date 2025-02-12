@@ -10,7 +10,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@emotion/react": "^11.11.1",
+    "@emotion/react": "^11.14.0",
     "@znui/layouts": "^2.0.0-beta",
     "@znui/md3-themes": "^2.0.0-beta"
   },

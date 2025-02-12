@@ -9,10 +9,10 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@znui/utils": "^2.0.0-beta",
     "@znui/layouts": "^2.0.0-beta",
-    "@znui/md3-utils": "^2.0.0-beta",
     "@znui/md3-themes": "^2.0.0-beta",
+    "@znui/md3-utils": "^2.0.0-beta",
+    "@znui/utils": "^2.0.0-beta",
     "react-measure": "^2.5.2"
   },
   "scripts": {
