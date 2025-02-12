@@ -1,4 +1,4 @@
-import React, {ForwardedRef} from "react";
+import React, {ForwardedRef, useMemo} from "react";
 import {HTMLZnUIProps, znui} from "@znui/base";
 import {propsFromRequiredTypeScale, TypescaleProps} from "../Typescale/Typescale";
 
@@ -29,11 +29,13 @@ export const Label = React.forwardRef(
             ...otherProps
         } = props
 
+        const styles = useMemo(() => propsFromRequiredTypeScale('label', size), [size])
+
         return <znui.label
             ref={ref}
             display='block'
-            {...propsFromRequiredTypeScale('label', size)}
-            {...prominent&&{
+            {...styles}
+            {...prominent && {
                 fontWeight: 600
             }}
             {...otherProps}

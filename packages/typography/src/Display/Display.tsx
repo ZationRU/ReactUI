@@ -1,4 +1,4 @@
-import React, {ForwardedRef} from "react";
+import React, {ForwardedRef, useMemo} from "react";
 import {HTMLZnUIProps, useAdaptiveValue, znui} from "@znui/base";
 import {propsFromRequiredTypeScale, Typescale, TypescaleProps} from "../Typescale/Typescale";
 
@@ -25,15 +25,17 @@ export const Display = React.forwardRef(
             ...otherProps
         } = props
 
-        const BaseElement = {
+        const BaseElement = useMemo(() => ({
             'small': znui.h3,
             'medium': znui.h2,
             'large': znui.h1
-        }[useAdaptiveValue(size, 'medium')]
+        }[useAdaptiveValue(size, 'medium')]), [size])
+
+        const styles = useMemo(() => propsFromRequiredTypeScale('display', size), [size])
 
         return <BaseElement
             ref={ref}
-            {...propsFromRequiredTypeScale('display', size)}
+            {...styles}
             {...otherProps}
         />
     }

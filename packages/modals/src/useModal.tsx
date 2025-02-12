@@ -143,7 +143,7 @@ export const useModal = <Props = {}>(component: JSXElementConstructor<ModalDialo
             setIsOpened(true)
             setTimeout(() => {
                 setIsExpanded(true)
-            }, 20)
+            })
             setOptions({...defaultOptions, ...options})
             setProps(props)
         },

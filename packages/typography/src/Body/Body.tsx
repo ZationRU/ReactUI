@@ -24,7 +24,6 @@ export const Body = React.forwardRef(
             ...otherProps
         } = props
 
-
         return <Typescale
             ref={ref}
             scale={size}

@@ -54,12 +54,13 @@ export function resolveAdaptiveProps(
 
     for (const [breakpoint, breakpointKey] of sortedBreakpoints) {
         const breakpointValues = adaptiveValues[breakpointKey]
-        if (!Object.keys(breakpointValues).length) continue
+        let breakpointValuesKeys = Object.keys(breakpointValues);
+        if (!breakpointValuesKeys.length) continue
 
         if(breakpoint.min) {
             result[breakpoint.toMediaQuery()] = breakpointValues
         }else {
-            for (const key of Object.keys(breakpointValues))
+            for (const key of breakpointValuesKeys)
                 result[key] = breakpointValues[key]
         }
     }

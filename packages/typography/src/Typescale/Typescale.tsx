@@ -1,4 +1,4 @@
-import React, {ForwardedRef} from "react";
+import React, {ForwardedRef, useMemo} from "react";
 import {Adaptive, CSSProps, HTMLZnUIProps, useAdaptiveValue, znui} from "@znui/base";
 import {ThemeTokens, ZnUITextType, ZnUITypeScales} from "@znui/md3-themes";
 
@@ -52,9 +52,11 @@ export const Typescale = React.forwardRef((
         ...rest
     } = props
 
+    const styles = useMemo(() => propsFromRequiredTypeScale(type, scale), [type, scale])
+
     return <znui.p
-        {...propsFromRequiredTypeScale(type, scale)}
         ref={ref}
+        {...styles}
         {...rest}
     />
 })
