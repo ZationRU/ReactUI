@@ -29,11 +29,11 @@ const Menu = <>
     
     <Layout display="flex" direction="column" gap={5}>
         <TopAppBar
-            trailing={navigationIcon && Icon}
-            menu={enableMenu && Menu}
+            leading={navigationIcon && Icon}
+            trailing={enableMenu && Menu}
         >Title</TopAppBar>
         <TopAppBar
-            navigationIcon={navigationIcon && Icon} 
+            leading={navigationIcon && Icon}
             trailing={enableMenu && Menu}
             centered={true}
         >Centered</TopAppBar>
