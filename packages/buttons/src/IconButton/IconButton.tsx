@@ -1,7 +1,7 @@
 import React, {ForwardedRef, ReactElement} from "react";
 import {IconWrapper} from "@znui/md3-utils";
 import {ThemeTokens} from "@znui/md3-themes";
-import {HTMLZnUIProps} from "@znui/base";
+import {znui, HTMLZnUIProps} from "@znui/base";
 import {Center, Layout} from "@znui/layouts";
 import {StateLayer} from "@znui/ripple";
 
@@ -31,59 +31,65 @@ export const IconButton = React.forwardRef((props: IconButtonProps, ref: Forward
         ...otherProps
     } = props
 
-    return <Center
-        as="button"
-        shapeScale="full"
+    return <znui.button
         ref={ref}
+        p={4}
+        clip={true}
         pos='relative'
         outline='none'
-        layoutSize={40}
-        p={8}
-        clip={true}
+        bg='none'
+        border='none'
         disabled={disabled}
-        to={{
-            border: variant === 'outlined'?
-                `1px solid ${ThemeTokens.outline}`:
-                'none',
-            bg: {
-                'filled': ThemeTokens.primary,
-                'tonal': ThemeTokens.secondaryContainer,
-                'standard': 'transparent',
-                'outlined': 'transparent',
-            }[variant],
-            c: {
-                'filled': ThemeTokens.onPrimary,
-                'tonal': ThemeTokens.onSecondaryContainer,
-                'standard': ThemeTokens.onSurfaceVariant,
-                'outlined': ThemeTokens.onSurfaceVariant,
-            }[variant],
-        }}
-
         {...otherProps}
         _disabled={{
             oc: 0.38,
             pointerEvents: 'none'
         }}
-        pseudos={{
-            '&:enabled:hover > .state-layer': {
-                bg: 'currentColor',
-                oc: 0.08
-            },
-            ':enabled:focus-visible > .state-layer': {
-                bg: 'currentColor',
-                oc: 0.12
-            }
-        }}
     >
-        <StateLayer ripple={true}/>
-        <IconWrapper size={24}>{children}</IconWrapper>
+        <Center
+            layoutSize={40}
+            shapeScale='full'
+            pos='relative'
+            clip={true}
+            to={{
+                border: otherProps.border || variant === 'outlined'?
+                    `1px solid ${ThemeTokens.outline}`:
+                    'none',
+                bg: otherProps.c || {
+                    'filled': ThemeTokens.primary,
+                    'tonal': ThemeTokens.secondaryContainer,
+                    'standard': 'transparent',
+                    'outlined': 'transparent',
+                }[variant],
+                c: otherProps.c || {
+                    'filled': ThemeTokens.onPrimary,
+                    'tonal': ThemeTokens.onSecondaryContainer,
+                    'standard': ThemeTokens.onSurfaceVariant,
+                    'outlined': ThemeTokens.onSurfaceVariant,
+                }[variant],
+            }}
+
+            pseudos={{
+                '&:enabled:hover > .state-layer': {
+                    bg: 'currentColor',
+                    oc: 0.08
+                },
+                ':enabled:focus-visible > .state-layer': {
+                    bg: 'currentColor',
+                    oc: 0.12
+                }
+            }}
+        >
+            <StateLayer ripple={true}/>
+            <IconWrapper size={24}>{children}</IconWrapper>
+        </Center>
 
         {badge && <Layout
-            pos={'absolute'}
+            pos="absolute"
             right={0}
             top={0}
         >{badge}</Layout>}
-    </Center>
+    </znui.button>
 })
 
 IconButton.displayName = 'IconButton'
