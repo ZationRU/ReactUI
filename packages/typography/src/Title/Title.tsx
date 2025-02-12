@@ -1,5 +1,5 @@
 import React, {ForwardedRef, useMemo} from "react";
-import {Adaptive, HTMLZnUIProps, znui} from "@znui/base";
+import {Adaptive, HTMLZnUIProps, useAdaptiveValue, znui} from "@znui/base";
 import {propsFromRequiredTypeScale, TypescaleProps} from "../Typescale/Typescale";
 
 export interface TitleProps extends HTMLZnUIProps<'h4'> {
@@ -24,7 +24,8 @@ export const Title = React.forwardRef(
             ...rest
         } = props
 
-        const styles = useMemo(() => propsFromRequiredTypeScale('title', size), [size])
+        const adaptiveSize = useAdaptiveValue(size, 'medium')
+        const styles = useMemo(() => propsFromRequiredTypeScale('title', adaptiveSize), [adaptiveSize])
 
         return <znui.h6
             {...styles}

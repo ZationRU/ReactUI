@@ -1,5 +1,5 @@
 import React, {ForwardedRef, useMemo} from "react";
-import {HTMLZnUIProps, znui} from "@znui/base";
+import {HTMLZnUIProps, useAdaptiveValue, znui} from "@znui/base";
 import {propsFromRequiredTypeScale, TypescaleProps} from "../Typescale/Typescale";
 
 export interface LabelProps extends HTMLZnUIProps<'h4'> {
@@ -29,7 +29,8 @@ export const Label = React.forwardRef(
             ...otherProps
         } = props
 
-        const styles = useMemo(() => propsFromRequiredTypeScale('label', size), [size])
+        const adaptiveSize = useAdaptiveValue(size, 'medium')
+        const styles = useMemo(() => propsFromRequiredTypeScale('label', adaptiveSize), [adaptiveSize])
 
         return <znui.label
             ref={ref}

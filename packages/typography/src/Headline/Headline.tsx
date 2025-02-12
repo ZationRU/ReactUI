@@ -24,13 +24,15 @@ export const Headline = React.forwardRef(
             ...otherProps
         } = props
 
+        const adaptiveSize = useAdaptiveValue(size, 'medium')
+
         const BaseElement = useMemo(() => ({
             'small': znui.h6,
             'medium': znui.h5,
             'large': znui.h4
-        }[useAdaptiveValue(size, 'medium')]), [size])
+        }[adaptiveSize]), [adaptiveSize])
 
-        const styles = useMemo(() => propsFromRequiredTypeScale('headline', size), [size])
+        const styles = useMemo(() => propsFromRequiredTypeScale('headline', adaptiveSize), [adaptiveSize])
 
         return <BaseElement
             ref={ref}

@@ -14,8 +14,8 @@ export interface TypescaleProps extends HTMLZnUIProps<'p'> {
 }
 
 export const propsFromRequiredTypeScale = (
-    type: Adaptive<keyof ZnUITypeScales>,
-    scale: Adaptive<keyof ZnUITextType>
+    type: keyof ZnUITypeScales,
+    scale: keyof ZnUITextType
 ): CSSProps => {
     const {
         fontSize,
@@ -24,7 +24,7 @@ export const propsFromRequiredTypeScale = (
         fontFamilyStyle,
         letterSpacing,
         lineHeight
-    } = ThemeTokens.typeScales[useAdaptiveValue(type, 'body')][useAdaptiveValue(scale, 'medium')]
+    } = ThemeTokens.typeScales[type][scale]
 
     return {
         fontSize: fontSize,
@@ -52,7 +52,10 @@ export const Typescale = React.forwardRef((
         ...rest
     } = props
 
-    const styles = useMemo(() => propsFromRequiredTypeScale(type, scale), [type, scale])
+    const adaptiveType = useAdaptiveValue(type, 'body')
+    const adaptiveScale = useAdaptiveValue(scale, 'medium')
+
+    const styles = useMemo(() => propsFromRequiredTypeScale(adaptiveType, adaptiveScale), [adaptiveType, adaptiveScale])
 
     return <znui.p
         ref={ref}

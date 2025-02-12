@@ -25,13 +25,15 @@ export const Display = React.forwardRef(
             ...otherProps
         } = props
 
+        const adaptiveSize = useAdaptiveValue(size, 'medium')
+
         const BaseElement = useMemo(() => ({
             'small': znui.h3,
             'medium': znui.h2,
             'large': znui.h1
-        }[useAdaptiveValue(size, 'medium')]), [size])
+        }[adaptiveSize]), [adaptiveSize])
 
-        const styles = useMemo(() => propsFromRequiredTypeScale('display', size), [size])
+        const styles = useMemo(() => propsFromRequiredTypeScale('display', adaptiveSize), [adaptiveSize])
 
         return <BaseElement
             ref={ref}
