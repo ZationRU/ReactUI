@@ -41,6 +41,7 @@ export const ToggleableIconButton = React.forwardRef((props: ToggleableIconButto
         pos='relative'
         outline='none'
         layoutSize={40}
+        m={4}
         clip={true}
         disabled={disabled}
         to={{
