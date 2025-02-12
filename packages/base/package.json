@@ -10,8 +10,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@emotion/react": "^11.13.3",
-    "@emotion/styled": "^11.13.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "@znui/utils": "^2.0.0-beta"
   },
   "scripts": {

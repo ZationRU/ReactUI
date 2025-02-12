@@ -10,7 +10,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@emotion/styled": "^11.11.0",
+    "@emotion/styled": "^11.14.0",
     "@znui/base": "^2.0.0-beta",
     "@znui/utils": "^2.0.0-beta"
   },
