@@ -13,7 +13,7 @@ export const animation = {
             ...restValue
         } = value
 
-        const cssObject = css(restValue)()
+        const cssObject = css(restValue)
 
         const values = {}
         const transitions: string[] = []

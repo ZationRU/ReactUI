@@ -72,9 +72,13 @@ export interface BaseTextFieldProps {
      * The auto-complete attribute of the input.
      */
     autoComplete?: string
+    /**
+     * The dir attribute of the input.
+     */
+    dir?: 'rtl' | 'ltr' | 'auto'
 }
 
-type PropsOmitted = 'value' | 'placeholder' | 'defaultValue' | 'disabled' | 'readOnly' | 'autoComplete' | 'maxLength' | 'minLength' | 'name' | 'onChange'
+type PropsOmitted = 'value' | 'placeholder' | 'defaultValue' | 'disabled' | 'readOnly' | 'autoComplete' | 'maxLength' | 'minLength' | 'name' | 'onChange' | 'dir'
 type InputPropsOmitted = PropsOmitted | 'type'
 type TextareaPropsOmitted = PropsOmitted | 'rows'
 
@@ -166,6 +170,7 @@ export const TextField = React.forwardRef((props: TextFieldProps, forwardedRef: 
         minLength,
         maxLength,
         autoComplete,
+        dir = 'auto',
         ...layoutProps
     } = props
 
@@ -305,12 +310,12 @@ export const TextField = React.forwardRef((props: TextFieldProps, forwardedRef: 
 
                 <Layout w='100%'>
                     {as == 'textarea'
-                        ? <znui.textarea value={value} defaultValue={defaultValue} onChange={onChange as ChangeEventHandler<HTMLTextAreaElement> | undefined}
+                        ? <znui.textarea dir={dir} value={value} defaultValue={defaultValue} onChange={onChange as ChangeEventHandler<HTMLTextAreaElement> | undefined}
                                          minLength={minLength} maxLength={maxLength} name={name} autoComplete={autoComplete}
                                          placeholder={placeholder || ' '} rows={(layoutProps as TextareaTextFieldProps).rows} readOnly={readOnly}
                                          {...(layoutProps as TextareaTextFieldProps).textareaProps}
                                          children={undefined} />
-                        : <znui.input value={value} defaultValue={defaultValue} onChange={onChange as ChangeEventHandler<HTMLInputElement> | undefined}
+                        : <znui.input dir={dir} value={value} defaultValue={defaultValue} onChange={onChange as ChangeEventHandler<HTMLInputElement> | undefined}
                                       minLength={minLength} maxLength={maxLength} name={name} autoComplete={autoComplete}
                                       type={(layoutProps as InputTextFieldProps).type} readOnly={readOnly}
                                       placeholder={placeholder || ' '} {...(layoutProps as InputTextFieldProps).inputProps}

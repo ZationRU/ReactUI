@@ -30,7 +30,7 @@ export const toCSSObject: GetStyleObject =
 
             const baseStyles = runIfFn(baseStyle, rest) || {}
 
-            return css({
+            return () => css({
                 ...baseStyles,
                 ...styleProps
             })
@@ -42,74 +42,60 @@ export interface ZnUIStyledOptions<P> {
     styles?: (props: P) => ZnUIStyleObject,
 }
 
-export const css = (styles: Record<string, any>) => () => {
-    const {
-        pseudos,
-        ...rest
-    } = styles
-
-    const resolvedStyles = resolveAdaptiveProps(rest)
+export const css = (initialStyles: Record<string, any>) => {
+    let stack: { styles: Record<string, any>; path: string[] }[] = [{ styles: initialStyles, path: [] }]
     let computedStyles: Record<string, any> = {}
-    for (const pseudo in pseudos) {
-        let key = pseudoSelectors[pseudo] ?? pseudo
 
-        computedStyles[key] = computedStyles[key] ?? {}
-        computedStyles[key] = {
-            ...computedStyles[key],
-            ...css(pseudos[pseudo])()
-        }
-    }
+    const styledPropsKeys = new Set(Object.keys(styledProps))
 
-    for (let key in resolvedStyles) {
-        let currentValue = resolvedStyles[key]
-        if(key in pseudoSelectors) {
-            key = pseudoSelectors[key]
+    while(stack.length > 0) {
+        const { styles, path} = stack.pop()!
+        const { pseudos, ...rest } = styles
+        const resolvedStyles = resolveAdaptiveProps(rest)
 
-            if (typeof currentValue === 'object') {
-                computedStyles[key] = computedStyles[key] ?? {}
-                computedStyles[key] = {
-                    ...computedStyles[key],
-                    ...css(currentValue)()
-                }
+        for (let key in resolvedStyles) {
+            let currentValue = resolvedStyles[key]
+            let currentPath = [...path]
+            if(key in pseudoSelectors)
+                key = pseudoSelectors[key]
 
-
+            if((key.startsWith("&") || key.startsWith("@media")) && typeof currentValue === 'object') {
+                currentPath.push(key)
+                stack.push({styles: currentValue, path: currentPath})
                 continue
             }
-        }
 
-        if(key.startsWith("@media") && typeof currentValue === 'object') {
-            computedStyles[key] = computedStyles[key] ?? {}
-            computedStyles[key] = {
-                ...computedStyles[key],
-                ...css(currentValue)()
+            const config = styledPropsKeys.has(key) ? styledProps[key] : null
+            if (!config) continue
+
+            if(!config.adaptive) {
+                currentValue = styles[key] ?? currentValue
             }
 
-            continue
-        }
+            let target = computedStyles
 
-        const config = styledProps[key]
-        if(!config.adaptive) {
-            currentValue = styles[key] ?? currentValue
-        }
-
-        if(isFunction(config.property)) {
-            computedStyles = {
-                ...computedStyles,
-                ...config.property(currentValue, computedStyles),
+            for (const segment of currentPath) {
+                target[segment] = target[segment] || {}
+                target = target[segment]
             }
 
-            continue
-        }
-
-        if(Array.isArray(config.property)) {
-            for (const property of config.property) {
-                computedStyles[property] = currentValue
+            if (isFunction(config.property)) {
+                Object.assign(target, config.property(currentValue, computedStyles))
+            } else if (Array.isArray(config.property)) {
+                for (const property of config.property) {
+                    target[property] = currentValue
+                }
+            } else {
+                target[config.property] = currentValue
             }
-
-            continue
         }
 
-        computedStyles[config.property] = currentValue
+        if (pseudos) {
+            for (const pseudo in pseudos) {
+                const pseudoKey = pseudoSelectors[pseudo] ?? pseudo
+                stack.push({styles: pseudos[pseudo], path: [pseudoKey] })
+            }
+        }
     }
 
     return computedStyles
