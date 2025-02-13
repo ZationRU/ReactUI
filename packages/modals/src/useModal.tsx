@@ -1,8 +1,8 @@
-import React, {JSXElementConstructor, useMemo, useRef, useState} from "react";
+import React, {JSXElementConstructor, useCallback, useMemo, useRef, useState} from "react";
 import {ThemeTokens} from "@znui/md3-themes";
 import {useAdaptiveValue} from "@znui/base";
 import {Layout} from "@znui/layouts";
-import {createPortal} from "react-dom"
+import {Portal} from "@znui/md3-utils";
 
 export type ModalDialogInterface = {
     /**
@@ -60,14 +60,16 @@ export const useModal = <Props = {}>(component: JSXElementConstructor<ModalDialo
     })
     const isFullscreen = fullscreen == 'auto' || fullscreen == undefined ? autoFullscreen : fullscreen
 
-    const modalDialogInterface: ModalDialogInterface = {
-        close: () => {
-            setIsExpanded(false)
-            setTimeout(() => {
-                setIsOpened(false)
-            }, 300)
-        },
-    }
+    const close = useCallback(() => {
+        setIsExpanded(false)
+        setTimeout(() => {
+            setIsOpened(false)
+        }, 300)
+    }, [setIsOpened, setIsExpanded])
+
+    const modalDialogInterface: ModalDialogInterface = useMemo(() => ({
+        close
+    }), [close])
 
     const Component = useMemo(() => React.createElement(
         component,
@@ -75,68 +77,71 @@ export const useModal = <Props = {}>(component: JSXElementConstructor<ModalDialo
             ...props,
             ...modalDialogInterface
         } as ModalDialogInterface & Props
-    ), [props])
+    ), [props, modalDialogInterface.close])
 
-    const Portal = isOpened && createPortal(<Layout
-        pos="fixed"
-        posA={0}
-        overflow="visible"
-        zIndex={1000}
-    >
-        {/* Backdrop */}
+    const contextValue = useMemo(() => (
+        {
+            dialogInterface: modalDialogInterface,
+            isFullscreen,
+            isExpanded
+        }
+    ), [modalDialogInterface, isFullscreen, isExpanded])
+
+    const ModalComponent = useMemo(() => isOpened && <Portal>
         <Layout
-            bg="black"
             pos="fixed"
-            to={{
-                baseDuration: 300,
-                baseTransition: isExpanded ? ThemeTokens.motion.emphasized : ThemeTokens.motion.emphasizedDecelerate,
-                oc: isExpanded ? 0.4 : 0
-            }}
-            ref={scrimRef}
             posA={0}
             overflow="visible"
-            onClick={cancelable ? modalDialogInterface.close : undefined}
-        />
-
-        <Layout
-            ref={modalContainerRef}
-            position="fixed"
-            clip={true}
-            transform={"translate(-50%, -50%)"}
-            to={{
-                baseDuration: isExpanded ? 200 : 120,
-                borderColor: 'none',
-                oc: isExpanded ? 1 : 0,
-                bg: {
-                    duration: isExpanded ? 100 : 50,
-                    value: isExpanded ? (isFullscreen ? ThemeTokens.surface : ThemeTokens.surfaceContainerHigh) : undefined
-                }
-            }}
-            borderRadius={isExpanded ? (isFullscreen ? 0 : 28) : 0}
-            left='50%'
-            top='50%'
-            maxH={isExpanded ? '100%' : 0}
-            maxW={isExpanded && !isFullscreen ? 'calc(100% - 50px)' : '100%'}
-            h={isExpanded && isFullscreen ? '100%' : undefined}
-            w={isExpanded ? (isFullscreen ? '100%' : ['100vw', null, 800]) : 0}
+            zIndex={1000}
         >
+            {/* Backdrop */}
             <Layout
+                bg="black"
+                pos="fixed"
+                to={{
+                    baseDuration: 300,
+                    baseTransition: isExpanded ? ThemeTokens.motion.emphasized : ThemeTokens.motion.emphasizedDecelerate,
+                    oc: isExpanded ? 0.4 : 0
+                }}
+                ref={scrimRef}
+                posA={0}
+                overflow="visible"
+                onClick={cancelable ? modalDialogInterface.close : undefined}
+            />
+
+            <Layout
+                ref={modalContainerRef}
+                position="fixed"
                 clip={true}
-                display='flex'
-                c={ThemeTokens.onSurface}
-                h={isExpanded && isFullscreen ? '100%' : undefined}
-                w={isExpanded ? (isFullscreen ? '100%' : [undefined, null, 800]) : 0}
+                transform={"translate(-50%, -50%)"}
+                to={{
+                    baseDuration: isExpanded ? 200 : 120,
+                    oc: isExpanded ? 1 : 0,
+                }}
+                borderColor='none'
+                bg={isFullscreen ? ThemeTokens.surface : ThemeTokens.surfaceContainerHigh}
+                borderRadius={isFullscreen ? 0 : 28}
+                left='50%'
+                top='50%'
+                maxH={'100%'}
+                maxW={!isFullscreen ? 'calc(100% - 50px)' : '100%'}
+                h={isFullscreen ? '100%' : undefined}
+                w={isFullscreen ? '100%' : ['100vw', null, 800]}
             >
-                <ModalContext.Provider value={{
-                    dialogInterface: modalDialogInterface,
-                    isFullscreen,
-                    isExpanded
-                }}>
-                    {Component}
-                </ModalContext.Provider>
+                <Layout
+                    clip={true}
+                    display='flex'
+                    c={ThemeTokens.onSurface}
+                    h={isFullscreen ? '100%' : undefined}
+                    w={isFullscreen ? '100%' : [undefined, null, 800]}
+                >
+                    <ModalContext.Provider value={contextValue}>
+                        {Component}
+                    </ModalContext.Provider>
+                </Layout>
             </Layout>
         </Layout>
-    </Layout>, document.getElementById('znui-portal')!)
+    </Portal>, [isOpened, isExpanded, isFullscreen, cancelable, Component, contextValue, scrimRef, modalContainerRef])
 
     return {
         open: (props: Props = {} as Props, options: ModalOptions = {}) => {
@@ -144,11 +149,12 @@ export const useModal = <Props = {}>(component: JSXElementConstructor<ModalDialo
             setTimeout(() => {
                 setIsExpanded(true)
             })
+
             setOptions({...defaultOptions, ...options})
             setProps(props)
         },
         close: modalDialogInterface.close,
-        modal: Portal,
+        modal: ModalComponent || undefined,
         isOpened: isOpened
     }
 }

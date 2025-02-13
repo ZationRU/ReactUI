@@ -103,10 +103,9 @@ export function Modal(props: ModalWrapperProps) {
             <ScrollLayout
                 orientation="vertical"
                 flex={1}
+                ph={24} pb={24}
             >
-                <Layout ph={24} pb={24}>
-                    {children}
-                </Layout>
+                {children}
             </ScrollLayout>
 
             {((!isFullscreen && action) || bottomAction) &&

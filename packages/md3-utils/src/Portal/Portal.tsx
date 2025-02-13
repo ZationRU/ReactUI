@@ -18,13 +18,15 @@ export type PortalProps = {
     children: ReactElement
 }
 
+const znuiPortal = document.getElementById('znui-portal')!
+
 export const Portal = ({ disabled, container, children }: PortalProps) => {
-    const [target, setTarget] = useState(container?.current)
+    const [target, setTarget] = useState(document.body)
 
     useEffect(() => {
-        setTarget(container?.current)
+        setTarget(container?.current ?? znuiPortal)
     }, [container])
 
     if(disabled) return children
-    return <>{Children.map(children, it => createPortal(it, target ?? document.getElementById('znui-portal')!))}</>
+    return <>{Children.map(children, it => createPortal(it, target))}</>
 }

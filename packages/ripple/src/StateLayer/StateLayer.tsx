@@ -53,7 +53,7 @@ export const StateLayer = React.forwardRef((props: StateLayerProps, ref: Forward
         onPointerUp: state.performUp,
         onPointerCancel: state.performUp,
         onPointerLeave: state.performUp,
-        onMouseOver: state.performUp,
+        onMouseEnter: state.performUp,
         onPointerDown: ripple ? state.performDown : undefined,
     }
 
@@ -89,12 +89,6 @@ export interface StateLayerStateData {
     performDown: (event: PointerEvent<HTMLDivElement>) => void
     performUp: () => void
 }
-
-const rippleAnimation = keyframes`
-    to {
-        transform: scale(4);
-    }
-`
 
 export const useStateLayer = () => {
     const rippleTriggerRef = useRef<HTMLDivElement | null>(null)
@@ -141,7 +135,9 @@ export const useStateLayer = () => {
 
         const performUp = () => {
             const now = new Date().getMilliseconds();
-            ripples.forEach(({startTime, element}, index) => {
+            for (let i = ripples.length - 1; i >= 0; i--) {
+                const { startTime, element } = ripples[i]
+
                 const delayTime = -(now - startTime)
 
                 setTimeout(() => {
@@ -157,11 +153,11 @@ export const useStateLayer = () => {
 
                         setTimeout(() => {
                             element.remove()
-                            ripples.slice(index, 1)
+                            ripples.splice(i, 1)
                         }, 20)
                     }, 300)
                 }, delayTime < 0 ? msOfRipple - delayTime : 0)
-            })
+            }
         }
 
         return {
