@@ -105,7 +105,9 @@ export function Modal(props: ModalWrapperProps) {
                 flex={1}
                 ph={24} pb={24}
             >
-                {children}
+                <Layout>
+                    {children}
+                </Layout>
             </ScrollLayout>
 
             {((!isFullscreen && action) || bottomAction) &&
