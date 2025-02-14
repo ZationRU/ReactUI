@@ -13,17 +13,23 @@ This example demonstrates a simple Placeholder component with an icon, title, an
 ```tsx
 import {Placeholder} from "@znui/md3-additionals";
 import {MdInbox} from "react-icons/md";
+import {VStack} from "@znui/layouts";
 
 <Placeholder title="You're all caught up" description="You'll be notified here for @mentions" icon={<MdInbox />} />
 ```
 
 # Variant
-In this example, a `variant` prop is used to make the placeholder larger.
+In this example, a `variant` prop is used to make the placeholder larger or smaller.
 
 ```tsx
 import {Placeholder} from "@znui/md3-additionals";
+import {MdInbox} from "react-icons/md";
+import {VStack} from "@znui/layouts";
 
-<Placeholder variant='large' title='(ノ_<、)' description='Something went wrong' />
+<VStack spacing='2em'>
+    <Placeholder variant='small' title="You're all caught up" description="You'll be notified here for @mentions" icon={<MdInbox />} />
+    <Placeholder variant='large' title='(ノ_<、)' description='Something went wrong'/>
+</VStack>
 ```
 
 # Actions

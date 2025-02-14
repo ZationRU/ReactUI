@@ -1,10 +1,10 @@
 import React, {ForwardedRef, ReactNode} from "react";
-import {VStack} from "@znui/layouts";
+import {LayoutProps, VStack} from "@znui/layouts";
 import {Body, Display, Title} from "@znui/typography";
 import {IconWrapper} from "@znui/md3-utils";
 import {ThemeTokens} from "@znui/md3-themes";
 
-export interface PlaceholderProps {
+export interface PlaceholderProps extends Omit<LayoutProps, 'title'> {
     /**
      * The title element.
      */
@@ -25,11 +25,47 @@ export interface PlaceholderProps {
     /**
      * The variant of the component.
      */
-    variant?: 'medium' | 'large'
+    variant?: 'small' | 'medium' | 'large'
     /**
      * The actions element.
      */
     actions?: ReactNode
+}
+
+const SmallSize = ({title, description}: Pick<PlaceholderProps, 'description' | 'title'>) => {
+    return <>
+        <Title size='medium'>
+            {title}
+        </Title>
+
+        <Body size='medium' c={ThemeTokens.onSurfaceVariant}>
+            {description}
+        </Body>
+    </>
+}
+
+const MediumSize = ({title, description}: Pick<PlaceholderProps, 'description' | 'title'>) => {
+    return <>
+        <Title size='large'>
+            {title}
+        </Title>
+
+        <Body size='medium' c={ThemeTokens.onSurfaceVariant}>
+            {description}
+        </Body>
+    </>
+}
+
+const LargeSize = ({title, description}: Pick<PlaceholderProps, 'description' | 'title'>) => {
+    return <>
+        <Display size='medium'>
+            {title}
+        </Display>
+
+        <Title size='medium'>
+            {description}
+        </Title>
+    </>
 }
 
 export const Placeholder = React.forwardRef((props: PlaceholderProps, ref: ForwardedRef<HTMLDivElement>) => {
@@ -39,25 +75,19 @@ export const Placeholder = React.forwardRef((props: PlaceholderProps, ref: Forwa
         icon,
         actions,
         size = 32,
-        variant = 'medium'
+        variant = 'medium',
+        ...rest
     } = props
 
-    return <VStack ref={ref} alignItems='center' spacing='1rem'>
+    return <VStack ref={ref} alignItems='center' spacing='1rem' {...rest}>
         {icon && <IconWrapper size={size}>
             {icon}
         </IconWrapper>}
 
-        <VStack spacing={variant == 'medium' ? '0.5rem' : '1.25rem'} alignItems='center'>
-            {variant == 'medium' ? <Title size='large'>
-                {title}
-            </Title> : <Display size='medium'>
-                {title}
-            </Display>}
-            {variant == 'medium' ? <Body size='medium' c={ThemeTokens.palettes.neutral['80']}>
-                {description}
-            </Body> : <Title size='medium'>
-                {description}
-            </Title>}
+        <VStack spacing={variant != 'large' ? '0.5rem' : '1.25rem'} alignItems='center'>
+            {variant == 'small' && <SmallSize title={title} description={description} />}
+            {variant == 'medium' && <MediumSize title={title} description={description} />}
+            {variant == 'large' && <LargeSize title={title} description={description} />}
         </VStack>
 
         {actions}
