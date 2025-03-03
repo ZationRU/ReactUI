@@ -7,7 +7,7 @@ export type AlertDialogInterface = {
     close: () => void
 }
 
-type ValuesType = Record<string, any> | undefined
+export type ValuesType = Record<string, any> | undefined
 
 export type AlertDialogConfig<T extends ValuesType> = {
     /**
@@ -81,7 +81,7 @@ export const useAlerts = (): {openAlert: <T extends ValuesType>(config: AlertDia
             })
         }
 
-        const portal = createPortal(<Alert remove={remove} config={config} />, document.getElementById('znui-portal')!)
+        const portal = createPortal(<Alert remove={remove} config={config as AlertDialogConfig<ValuesType>} />, document.getElementById('znui-portal')!)
         setAlerts(prev => {
             return {...prev, [id]: portal}
         })

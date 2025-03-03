@@ -3,9 +3,9 @@ import Measure, {BoundingRect} from "react-measure";
 import {Layout} from "@znui/layouts";
 import {BaseDialog} from "./BaseDialog/BaseDialog";
 import {Button} from "@znui/buttons";
-import {AlertDialogConfig} from "./useAlerts";
+import {AlertDialogConfig, ValuesType} from "./useAlerts";
 
-export default function Alert({config, remove}: {config: AlertDialogConfig, remove: () => void}) {
+export default function Alert({config, remove}: {config: AlertDialogConfig<ValuesType>, remove: () => void}) {
     const scrimRef = useRef<HTMLDivElement | null>(null)
     const baseDialogWrapperRef = useRef<HTMLDivElement | null>(null)
     const [dialogSizes, setDialogSizes] = useState<Partial<BoundingRect>>({
@@ -59,7 +59,7 @@ export default function Alert({config, remove}: {config: AlertDialogConfig, remo
                 remove()
             }, 500)
         })
-    }, [])
+    }, [remove])
 
     return <Layout
         pos="fixed"
