@@ -9,6 +9,7 @@ export interface BaseDialogProps extends Omit<LayoutProps, "title"> {
     description?: ReactNode | string
     actions?: ReactNode
     icon?: ReactNode
+    iconSize?: number
 }
 
 /**
@@ -24,6 +25,7 @@ export function BaseDialog(props: BaseDialogProps) {
         actions,
         icon,
         children,
+        iconSize,
         ...layoutRest
     } = props
 
@@ -39,7 +41,7 @@ export function BaseDialog(props: BaseDialogProps) {
     >
         <VStack>
             <VStack spacing={16} ph={24} pt={24}>
-                {icon && <IconWrapper display="flex" c="var(--znui-secondary)" size={24} w="100%"
+                {icon && <IconWrapper display="flex" c="var(--znui-secondary)" size={iconSize ?? 24} w="100%"
                                       justify="center">{icon}</IconWrapper>}
 
                 <Headline size="small" textAlign={icon ? "center" : "start"}>{title}</Headline>

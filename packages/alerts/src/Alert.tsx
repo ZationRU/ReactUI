@@ -104,6 +104,7 @@ export default function Alert({config, remove}: {config: AlertDialogConfig, remo
                 <BaseDialog
                     maxH={dialogSizes.height !== 0 ? 0 : undefined}
                     icon={config.icon}
+                    iconSize={config.iconSize}
                     title={config.title}
                     description={config.description}
                     transition="max-height 300ms var(--znui-emphasized-decelerate-motion)"

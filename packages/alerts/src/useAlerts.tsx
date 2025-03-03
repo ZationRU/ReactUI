@@ -13,6 +13,10 @@ export type AlertDialogConfig = {
      */
     icon?: ReactNode
     /**
+     * An icon size.
+     */
+    iconSize?: number
+    /**
      * The title of the alert.
      */
     title: ReactNode | string
