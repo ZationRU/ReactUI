@@ -12,12 +12,6 @@ export type AdaptiveValue<T> =
     | Exclude<NonSetValues, undefined>;
 export type Adaptive<T> = AdaptiveValue<T> | NonSetValues;
 
-const breakpointData = LayoutBreakpointsKeys.map(key => ({
-    name: key,
-    min: LayoutBreakpoints[key].min,
-    max: LayoutBreakpoints[key].max,
-})).sort((a, b) => (a.min ?? -Infinity) - (b.min ?? -Infinity))
-
 function isAdaptiveObject<T>(adaptive: Adaptive<T>): adaptive is AdaptiveObject<T> {
     const obj = (adaptive as AdaptiveObject<T>)
 
@@ -37,34 +31,30 @@ export function getBreakpointValue<T>(
     value: AdaptiveValue<T>
 ): T | undefined {
     if(isAdaptiveObject(value)) {
-        let left = 0
-        let right = breakpointData.length - 1
-        let closestBreakpoint: LayoutBreakpointKey | undefined
+        let index = Object.keys(value).indexOf(breakpoint)
 
-        while (left <= right) {
-            const mid = Math.floor((left + right) / 2)
-            const breakpointName: LayoutBreakpointKey = breakpointData[mid].name as LayoutBreakpointKey
-
-            if (breakpointName === breakpoint) {
-                return value[breakpoint]
-            } else if (breakpointData[mid].min !== null && LayoutBreakpoints[breakpoint].min !== null && LayoutBreakpoints[breakpoint].min! < breakpointData[mid].min!) {
-                right = mid - 1
-            } else {
-                left = mid + 1
-            }
-
-            if (closestBreakpoint === undefined ||
-                (LayoutBreakpoints[breakpoint].min !== null &&
-                    breakpointData[mid].min !== null &&
-                    Math.abs(LayoutBreakpoints[breakpoint].min! - breakpointData[mid].min!) < Math.abs(LayoutBreakpoints[breakpoint].min! - (LayoutBreakpoints[closestBreakpoint]?.min ?? Infinity)))
-            ) {
-                closestBreakpoint = breakpointName
-            }
+        if (index !== -1) {
+            return value[breakpoint]
         }
 
-        if(closestBreakpoint) {
-            return value[closestBreakpoint]
+        let stopIndex = LayoutBreakpointsKeys.indexOf(breakpoint)
+
+        while (stopIndex >= 0) {
+            const key = LayoutBreakpointsKeys[stopIndex]
+
+            if (value.hasOwnProperty(key)) {
+                index = stopIndex
+                break
+            }
+            stopIndex -= 1
         }
+
+        if (index !== -1) {
+            const key = LayoutBreakpointsKeys[index]
+            return value[key]
+        }
+
+        return undefined
     }
 
     if(isAdaptiveArray(value)) {
