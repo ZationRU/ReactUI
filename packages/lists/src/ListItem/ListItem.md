@@ -10,49 +10,49 @@
 ```
 
 ```tsx
-import {VStack, Avatar, Radio, ListItem, Divider} from "@znui/react";
-
-const [selectedValue, setSelectedValue] = React.useState('a');
-
-const handleChange = (event) => {
-    setSelectedValue(event.target.value);
-};
+import {ImageView, VStack, ListItem} from "@znui/react";
 
 <VStack>
-    <ListItem 
-        onClick={alert}
-        heading='List item'
-    />
-    <ListItem
-        onClick={alert}
-        heading='List item'
-        supportText='Supporting line text lorem ipsum dolor sit amet, consectetur.'
-    />
-    <ListItem
-        leading={<Avatar text='A' size={40}/>}
-        onClick={alert}
-        heading='List item'
-        supportText='Supporting line text lorem ipsum dolor sit amet, consectetur.'
-    />
-    
-    <Divider/>
+    <ListItem>
+        <ImageView w={56} h={56} borderRadius={6} src='https://cataas.com/cat' />
+        <ListItem.Content>
+            <ListItem.Heading>
+                Cats
+            </ListItem.Heading>
+            
+            <ListItem.SupportText>
+                The fluffy cat, with emerald eyes and a tail like a question mark, pounced playfully on the unsuspecting yarn ball, batting it across the sun-drenched rug, a purrfect picture of feline contentment amidst scattered catnip and half-eaten treats.
+            </ListItem.SupportText>
+        </ListItem.Content>
+        
+        <ListItem.Trailing>
+            <ListItem.TrailingSupportText>
+                May 8
+            </ListItem.TrailingSupportText>
+        </ListItem.Trailing>
+    </ListItem>
+</VStack>
+```
 
-    <ListItem
-        leading={<Avatar text='A' size={40}/>}
-        heading='List item'
-        onClick={alert}
-        supportText='Supporting line text lorem ipsum dolor sit amet, consectetur.'
-        trailing={<Radio value={'a'} checked={selectedValue === 'a'} onChange={handleChange}/>}
-    />
-    
-    <ListItem
-        overline="Overline"
-        leading={<Avatar text='A' size={40}/>}
-        heading='List item'
-        onClick={alert}
-        supportText='Supporting line text lorem ipsum dolor sit amet, consectetur.'
-        trailing={<Radio value={'b'} checked={selectedValue === 'b'} onChange={handleChange}/>}
-        trailingSupportText='100+'
-    />
+```tsx
+import {ImageView, VStack, ListItem, Checkbox} from "@znui/react";
+import {useState} from "react";
+
+const [selectedIndexes, setSelectedIndexes] = useState([]);
+
+<VStack>
+    {Array.from({length: 10}).fill(0).map((_, index) =>
+        <ListItem key={index} onClick={e => setSelectedIndexes(prev => prev.includes(index) ? prev.filter(it => it != index) : [...prev, index])}>
+            <ListItem.Content>
+                <ListItem.Heading>
+                    Option {index}
+                </ListItem.Heading>
+            </ListItem.Content>
+
+            <ListItem.Trailing>
+                <Checkbox checked={selectedIndexes.includes(index)} />
+            </ListItem.Trailing>
+        </ListItem>
+    )}
 </VStack>
 ```

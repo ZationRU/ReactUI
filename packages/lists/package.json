@@ -1,6 +1,6 @@
 {
   "name": "@znui/lists",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0-beta.1",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
@@ -12,7 +12,8 @@
     "@znui/layouts": "^2.0.0-beta",
     "@znui/md3-themes": "^2.0.0-beta",
     "@znui/ripple": "^2.0.0-beta",
-    "@znui/typography": "^2.0.0-beta"
+    "@znui/typography": "^2.0.0-beta",
+    "@znui/utils": "^2.0.0-beta.0"
   },
   "scripts": {
     "build": "rollup -c"

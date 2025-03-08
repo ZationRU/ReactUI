@@ -1,55 +1,35 @@
 import React, {ForwardedRef, useState} from "react";
-import {znui} from "@znui/base";
-import {Layout, LayoutProps} from "@znui/layouts";
+import {HTMLZnUIProps, znui} from "@znui/base";
 
-export interface ImageViewProps extends LayoutProps {
-    /**
-     * The alternative text for the image.
-     */
-    alt?: string | undefined
-    /**
-     * The source URL of the image.
-     */
-    src?: string | undefined
-}
+export interface ImageViewProps extends HTMLZnUIProps<"img"> {}
 
 export const ImageView = React.forwardRef(
     (props: ImageViewProps, ref: ForwardedRef<HTMLImageElement>) => {
         const [isLoaded, setIsLoaded] = useState(false)
 
         const {
-            onLoad,
-            alt,
-            src,
             to,
             objectFit,
             objectPosition,
+            onLoad,
             ...rest
         } = props
 
-        return <Layout
+        return <znui.img
+            ref={ref}
+            to={{
+                ...to,
+                oc: isLoaded ? 1: 0
+            }}
             userSelect='none'
+            layoutSize='inherit'
+            pointerEvents='none'
+            onLoad={(e) => {
+                onLoad?.call(undefined, e)
+                setIsLoaded(true)
+            }}
             {...rest}
-        >
-            <znui.img
-                ref={ref}
-                to={{
-                    ...to,
-                    oc: isLoaded ? 1: 0
-                }}
-                alt={alt}
-                src={src}
-                objectFit={objectFit}
-                objectPosition={objectPosition}
-                layoutSize='inherit'
-                pointerEvents='none'
-                onLoad={(e) => {
-                    onLoad?.call(undefined, e)
-                    setIsLoaded(true)
-                }}
-
-            />
-        </Layout>
+        />
     }
 )
 

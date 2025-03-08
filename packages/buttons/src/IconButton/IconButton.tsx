@@ -1,7 +1,7 @@
 import React, {ForwardedRef, ReactElement} from "react";
 import {IconWrapper} from "@znui/md3-utils";
 import {ThemeTokens} from "@znui/md3-themes";
-import {znui, HTMLZnUIProps} from "@znui/base";
+import {HTMLZnUIProps, znui} from "@znui/base";
 import {Center, Layout} from "@znui/layouts";
 import {StateLayer} from "@znui/ripple";
 
@@ -18,7 +18,7 @@ export interface IconButtonProps extends HTMLZnUIProps<'button'> {
 }
 
 /**
- * Icon Buttom with Simple Button style. Default size 48px/dp
+ * Icon Button with Simple Button style. Default size 48px/dp
  * @param props
  * @constructor
  */
@@ -52,10 +52,10 @@ export const IconButton = React.forwardRef((props: IconButtonProps, ref: Forward
             pos='relative'
             clip={true}
             to={{
-                border: otherProps.border || variant === 'outlined'?
+                border: otherProps.border || variant === 'outlined' ?
                     `1px solid ${ThemeTokens.outline}`:
                     'none',
-                bg: otherProps.c || {
+                bg: otherProps.bg || {
                     'filled': ThemeTokens.primary,
                     'tonal': ThemeTokens.secondaryContainer,
                     'standard': 'transparent',

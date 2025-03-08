@@ -1,13 +1,13 @@
 import {ThemeTokens} from "@znui/md3-themes";
 import {HStack} from "@znui/layouts";
-import React, {ReactElement, useContext} from "react";
+import React, {ReactNode, useContext} from "react";
 import {TabsContext} from "../Tabs";
 
 export type TabsGroupProps = {
     /**
      * The content of the tabs group.
      */
-    children: ReactElement
+    children: ReactNode
 }
 
 export const TabsGroup = ({ children }: TabsGroupProps) => {
