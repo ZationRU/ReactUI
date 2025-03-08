@@ -1,1 +1,7 @@
 export * from "./ListItem/ListItem"
+export type {ListItemHeadingProps} from "./ListItem/ListItemHeading"
+export type {ListItemContentProps} from "./ListItem/ListItemContent"
+export type {ListItemOverlineProps} from "./ListItem/ListItemOverline"
+export type {ListItemSupportTextProps} from "./ListItem/ListItemSupportText"
+export type {ListItemTrailingProps} from "./ListItem/ListItemTrailing"
+export type {ListItemTrailingSupportTextProps} from "./ListItem/ListItemTrailingSupportText"

@@ -1,4 +1,4 @@
-import React, {ForwardedRef, ReactElement, ReactNode, useMemo, useState} from "react";
+import React, {ForwardedRef, ReactNode, useMemo, useState} from "react";
 import {Layout, LayoutProps, VStack} from "@znui/layouts";
 import {mergeRefs} from "@znui/utils";
 import {Portal} from "@znui/md3-utils";
@@ -49,7 +49,7 @@ export const PopoverContent = React.forwardRef((props: PopoverContentProps, forw
         }
 
         return { top, left }
-    }, [point, size])
+    }, [placement, point, size])
 
     return point ? <>
         <Layout

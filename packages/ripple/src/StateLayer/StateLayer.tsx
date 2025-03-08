@@ -7,7 +7,6 @@ import React, {
     ReactNode
 } from 'react';
 import {ThemeTokens} from "@znui/md3-themes";
-import {keyframes} from "@emotion/react";
 import {Layout, LayoutProps} from "@znui/layouts";
 import {HTMLZnUIProps} from "@znui/base";
 
@@ -50,10 +49,9 @@ export const StateLayer = React.forwardRef((props: StateLayerProps, ref: Forward
         zIndex: 2,
         posA: 0,
         ref: state.rippleTriggerRef,
-        onPointerUp: state.performUp,
         onPointerCancel: state.performUp,
         onPointerLeave: state.performUp,
-        onMouseEnter: state.performUp,
+        onPointerUp: state.performUp,
         onPointerDown: ripple ? state.performDown : undefined,
     }
 
@@ -95,11 +93,8 @@ export const useStateLayer = () => {
 
     return useMemo((): StateLayerStateData => {
         const msOfRipple = 400
-        const ripples: {
-            startTime: number,
-            element: HTMLSpanElement
-        }[] = []
-
+        let lastRipple: HTMLSpanElement | undefined
+        let rippleActivatedAt: number | undefined
 
         const performDown = (event: PointerEvent<HTMLDivElement>) => {
             const rippleTarget = event.currentTarget
@@ -121,43 +116,32 @@ export const useStateLayer = () => {
             rippleSpan.style.width = rippleSpan.style.height = `${diameter}px`;
             rippleSpan.style.left = `${event.clientX - rect.left - radius}px`;
             rippleSpan.style.top = `${event.clientY - rect.top - radius}px`;
-            rippleSpan.onmouseout = performUp;
-            rippleSpan.onpointercancel = performUp;
             rippleTriggerRef.current.parentNode!!.insertBefore(rippleSpan, rippleTriggerRef.current)
-
-            ripples.push(
-                {
-                    startTime: new Date().getMilliseconds(),
-                    element: rippleSpan
-                }
-            )
+            lastRipple = rippleSpan
+            rippleActivatedAt = Date.now()
         }
 
         const performUp = () => {
-            const now = new Date().getMilliseconds();
-            for (let i = ripples.length - 1; i >= 0; i--) {
-                const { startTime, element } = ripples[i]
+            const rippleSpan = lastRipple
+            if(!rippleSpan || rippleActivatedAt === undefined) return
+            const now = Date.now()
 
-                const delayTime = -(now - startTime)
+            setTimeout(() => {
+                rippleSpan.style.transform = 'scale(4)'
+                rippleSpan.style.opacity = '0'
 
                 setTimeout(() => {
-                    element.style.transform = 'scale(4)'
-                    element.style.opacity = '0'
+                    rippleSpan.style.width = rippleSpan.style.height =
+                        rippleSpan.style.left = rippleSpan.style.top = "";
+
+                    rippleSpan.style.transform = 'none'
+                    rippleSpan.style.opacity = '0.12'
 
                     setTimeout(() => {
-                        element.style.width = element.style.height =
-                            element.style.left = element.style.top = "";
-
-                        element.style.transform = 'none'
-                        element.style.opacity = '0.12'
-
-                        setTimeout(() => {
-                            element.remove()
-                            ripples.splice(i, 1)
-                        }, 20)
-                    }, 300)
-                }, delayTime < 0 ? msOfRipple - delayTime : 0)
-            }
+                        rippleSpan.remove()
+                    }, 20)
+                }, 300)
+            }, (now - rippleActivatedAt) > msOfRipple ? 0 : msOfRipple)
         }
 
         return {

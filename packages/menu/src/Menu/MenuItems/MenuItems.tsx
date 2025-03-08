@@ -1,4 +1,4 @@
-import React, {ForwardedRef, useEffect, useRef} from "react";
+import React, {ForwardedRef, useCallback, useEffect, useRef} from "react";
 import {Layout} from "@znui/layouts";
 import {mergeRefs} from "@znui/utils";
 import {ThemeTokens} from "@znui/md3-themes";
@@ -20,15 +20,20 @@ const MenuItems = React.forwardRef(({children}: MenuItemsProps, ref: ForwardedRe
     const finalWidth =  width === 'by-object' ? (triggerElement?.current?.getBoundingClientRect()?.width ?? 0) : width
     const finalHeight = height === 'by-content' ?  (itemRef.current?.scrollHeight ?? 0) : height
 
-    const setXY = (point?: DOMRect) => {
+    const setXY = useCallback((point?: DOMRect) => {
         if (!itemRef || !point) return
 
         // Default positioning under element
         let x = point.x, y = isRoot && !mousePoint ? point.bottom : point.top
 
-        // If not enough space, positioning over element
+        // If insufficient space below, position above
         if((y + finalHeight) > window.innerHeight)
             y = point.y - finalHeight
+
+        // If insufficient space on the right, position left
+        if((x + finalWidth) > window.innerWidth) {
+            x = point.x - finalWidth
+        }
 
         if(!isRoot)
             x += finalWidth
@@ -41,11 +46,11 @@ const MenuItems = React.forwardRef(({children}: MenuItemsProps, ref: ForwardedRe
         itemRef.current?.style.setProperty('--x', x.toString() + 'px')
         itemRef.current?.style.setProperty('--y', y.toString() + 'px')
 
-    }
+    }, [finalHeight, finalWidth, isRoot, mousePoint])
 
     useEffect(() => {
         isOpened && setXY(triggerElement?.current?.getBoundingClientRect())
-    }, [isOpened])
+    }, [isOpened, setXY, triggerElement])
 
     useEffect(() => {
         if(!isOpened) return
@@ -68,7 +73,7 @@ const MenuItems = React.forwardRef(({children}: MenuItemsProps, ref: ForwardedRe
             document.removeEventListener("pointerdown", handleClickOutside);
             document.body.removeEventListener("scroll", scroll, true);
         };
-    }, [close, itemRef, triggerElement, isOpened]);
+    }, [close, itemRef, triggerElement, isOpened, setXY]);
 
     return createPortal(<Layout
         ref={mergeRefs(ref, itemRef)}

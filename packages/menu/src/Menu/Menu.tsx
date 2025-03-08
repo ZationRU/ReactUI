@@ -163,12 +163,12 @@ export const Menu = componentWithProps((props: MenuProps) => {
         setIsOpened(true)
         setPoint(point)
         props.onOpen?.()
-    },[setIsOpened, setPoint])
+    },[props])
 
     const close = useCallback(() => {
         setIsOpened(false)
         props.onClose?.()
-    }, [setIsOpened])
+    }, [props])
 
     return <MenuContext.Provider value={{
         density: props.density || prevContext.density,

@@ -33,7 +33,6 @@ export const IconButton = React.forwardRef((props: IconButtonProps, ref: Forward
 
     return <znui.button
         ref={ref}
-        p={4}
         clip={true}
         pos='relative'
         outline='none'
