@@ -37,6 +37,7 @@ export const IconButton = React.forwardRef((props: IconButtonProps, ref: Forward
         pos='relative'
         outline='none'
         bg='none'
+        cursor='pointer'
         border='none'
         disabled={disabled}
         {...otherProps}

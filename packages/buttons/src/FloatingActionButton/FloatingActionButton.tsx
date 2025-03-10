@@ -62,6 +62,7 @@ export const FloatingActionButton = React.forwardRef(
             outline='none'
             border='none'
             userSelect='none'
+            cursor='pointer'
             clip={true}
             ref={ref}
             to={{

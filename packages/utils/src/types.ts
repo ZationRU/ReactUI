@@ -8,3 +8,5 @@ export type Assign<T, U> = DistributiveOmit<T, keyof U> & U
 
 export type BasicForwardedRefComponent<Props, Ref> =
     React.ForwardRefExoticComponent<React.PropsWithoutRef<Props> & React.RefAttributes<Ref>>
+
+export type Point = { x: number, y: number }

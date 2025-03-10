@@ -1,18 +1,15 @@
-import React, {ReactNode, RefObject, useCallback, useContext, useRef, useState,} from 'react';
+import React, {ReactNode, useCallback, useContext, useState,} from 'react';
 import {LayoutProps} from "@znui/layouts";
-import {componentWithProps} from "@znui/utils";
+import {componentWithProps, Point} from "@znui/utils";
 import MenuItem from "./MenuItem/MenuItem";
 import MenuItems from "./MenuItems/MenuItems";
 import MenuTrigger from "./MenuTrigger/MenuTrigger";
 
-type Point = { x: number, y: number } | undefined
-
 interface MenuContextProps {
     /**
-     * Opens the menu.
-     * @param point Coordinates relative to the top-left corner of the element
+     * Opens the menu at point
      */
-    open: (point?: Point) => void
+    open: (point: DOMRect, element?: Element, offset?: Point) => void
     /**
      * Closes the menu.
      */
@@ -20,10 +17,6 @@ interface MenuContextProps {
     density: number
     width: number | 'by-object'
     height: number | 'by-content'
-    /**
-     * A React ref to the trigger element.
-     */
-    triggerElement?: RefObject<HTMLElement | null>
     /**
      * Indicates whether this menu is a root menu or a child menu.
      *
@@ -35,9 +28,17 @@ interface MenuContextProps {
      */
     isOpened: boolean
     /**
-     * The relative coordinates of the menu's position from the top-left corner of the trigger element.
+     * The bounding rectangle of the anchor element.
      */
-    point: Point
+    point?: DOMRect
+    /**
+     * The anchor element.
+     */
+    node?: Element
+    /**
+     * The offset from the anchor element.
+     */
+    offset?: Point
 }
 
 export interface MenuProps {
@@ -66,7 +67,7 @@ export interface MenuProps {
     /**
      * Event handler when the menu opens.
      */
-    onOpen?: () => void,
+    onOpen?: (point: DOMRect) => void,
     /**
      * Event handler when the menu closes.
      */
@@ -116,13 +117,7 @@ export interface MenuTriggerProps {
      * @example <Button>Example</Button>
      * @example {(ref, open) => <Button ref={ref} onClick={() => open()}>Example</Button>}
      */
-    children: React.ReactElement | (
-        (
-            ref: React.Ref<HTMLElement>,
-            open: MenuContextProps['open'],
-            close: MenuContextProps['close'],
-        ) => React.ReactElement
-        )
+    children: React.ReactElement | ((open: MenuContextProps['open'], close: MenuContextProps['close']) => React.ReactElement)
 
     /**
      * The mode in which the menu opens.
@@ -145,24 +140,24 @@ const MenuContext = React.createContext<MenuContextProps>({
     close: () => {},
     width: 200,
     height: 'by-content',
-    triggerElement: undefined,
-    isRoot: undefined,
     isOpened: false,
-    point: undefined
 })
 
 export const useMenuContext = () => useContext(MenuContext)
 
 export const Menu = componentWithProps((props: MenuProps) => {
     const [isOpened, setIsOpened] = useState(false)
-    const [point, setPoint] = useState<Point>(undefined)
+    const [point, setPoint] = useState<DOMRect | undefined>(undefined)
+    const [node, setNode] = useState<Element | undefined>(undefined)
+    const [offset, setOffset] = useState<Point | undefined>(undefined)
     const prevContext = useMenuContext()
-    const triggerElement = useRef<HTMLElement>(null)
 
-    const open = useCallback((point?: Point) => {
+    const open = useCallback((point: DOMRect, node?: Element, offset?: Point) => {
         setIsOpened(true)
         setPoint(point)
-        props.onOpen?.()
+        setNode(node)
+        setOffset(offset)
+        props.onOpen?.(point)
     },[props])
 
     const close = useCallback(() => {
@@ -177,8 +172,9 @@ export const Menu = componentWithProps((props: MenuProps) => {
         open,
         close,
         isOpened,
-        triggerElement,
         point,
+        node,
+        offset,
         isRoot: prevContext.isRoot === undefined
     }}>
         {props.children}

@@ -229,7 +229,7 @@ import {VStack, Center, Menu} from "@znui/react";
 ```
 
 # Control
-In this example, instead of a component, a function with `ref`, `open`, and `close` arguments is passed to the `Menu.Trigger`.
+In this example, instead of a component, a function with `open`, and `close` arguments is passed to the `Menu.Trigger`.
 
 ```tsx
 import {MdMoreVert} from "react-icons/md";
@@ -250,11 +250,11 @@ import {Button, HStack, VStack, Menu} from "@znui/react";
         </Menu.Items>
 
         <Menu.Trigger>
-            {(ref, open, close) => (
-                <HStack ref={ref} spacing={8}>
-                    <Button onClick={() => open()}>Open</Button>
+            {(open, close) => (
+                <HStack spacing={8}>
+                    <Button onClick={e => open(e.currentTarget.getBoundingClientRect(), e.currentTarget)}>Open</Button>
+                    <Button onClick={e => open(e.currentTarget.getBoundingClientRect(), e.currentTarget, {x: 100, y: 100})}>Open at (100, 100)</Button>
                     <Button onClick={() => close()}>Close</Button>
-                    <Button onClick={() => open({x: 100, y: 100})}>Open relative at (100, 100)</Button>
                 </HStack>
             )}
         </Menu.Trigger>

@@ -1,10 +1,9 @@
-import React, {ForwardedRef, MouseEvent, SyntheticEvent, useMemo, useRef} from "react";
+import React, {ForwardedRef, MouseEvent, SyntheticEvent, useMemo} from "react";
 import {mergeRefs} from "@znui/utils";
 import {MenuTriggerProps, useMenuContext} from "../Menu";
 
 const MenuTrigger = React.forwardRef(({children, mode = 'click'}: MenuTriggerProps, ref: ForwardedRef<HTMLElement>) => {
-    const {open, triggerElement, close, isOpened} = useMenuContext()
-    const itemRef = useRef<HTMLElement>(null)
+    const {open, close, isOpened} = useMenuContext()
 
     const props = useMemo(() => {
         if (typeof children === 'function') {
@@ -16,7 +15,7 @@ const MenuTrigger = React.forwardRef(({children, mode = 'click'}: MenuTriggerPro
             props.onClick = (e: SyntheticEvent<HTMLElement>) => {
                 e.stopPropagation()
                 e.preventDefault()
-                if (!isOpened) open()
+                if (!isOpened) open(e.currentTarget.getBoundingClientRect(), e.currentTarget)
                 else close()
 
                 children.props.onClick?.call(undefined, e)
@@ -25,7 +24,7 @@ const MenuTrigger = React.forwardRef(({children, mode = 'click'}: MenuTriggerPro
             props.onContextMenu = (e: MouseEvent<HTMLElement>) => {
                 e.stopPropagation()
                 e.preventDefault()
-                if (!isOpened) open({x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY})
+                if (!isOpened) open(e.currentTarget.getBoundingClientRect(), e.currentTarget, {x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY})
                 else close()
 
                 children.props.onContextMenu?.call(undefined, e)
@@ -42,7 +41,7 @@ const MenuTrigger = React.forwardRef(({children, mode = 'click'}: MenuTriggerPro
             props.onInput = (e: SyntheticEvent<HTMLElement>) => {
                 e.stopPropagation()
                 e.preventDefault()
-                open()
+                open(e.currentTarget.getBoundingClientRect(), e.currentTarget)
                 children.props.onInput?.call(undefined, e)
             }
         }
@@ -50,9 +49,9 @@ const MenuTrigger = React.forwardRef(({children, mode = 'click'}: MenuTriggerPro
         return props
     }, [children, mode, open, close, isOpened])
 
-    const mergedRef = mergeRefs(itemRef, ref, props.ref, triggerElement!)
+    const mergedRef = mergeRefs(ref, props.ref)
     return useMemo(() => typeof children === 'function' ?
-        children(mergedRef, open, close) : React.cloneElement(children, {
+        children(open, close) : React.cloneElement(children, {
             ...props,
             ref: mergedRef,
         }), [children, close, open, props, mergedRef])

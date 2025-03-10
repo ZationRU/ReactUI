@@ -8,6 +8,7 @@
     "foreground": "https://lh3.googleusercontent.com/F5XuBcW18pP9gE187pWvdljLlY1UK34WQXK2m28o0E9Kr9rJ4VL8Ov5XtvG9T61h6CJkDIgatQr4IFEq9-dTuG7JcS__OKwjqQPeGfsPcZspneiMCZg=w2400"
 }
 ```
+# Basic List Item
 
 ```tsx
 import {ImageView, VStack, ListItem} from "@znui/react";
@@ -33,6 +34,9 @@ import {ImageView, VStack, ListItem} from "@znui/react";
     </ListItem>
 </VStack>
 ```
+
+# List Item with Trailing
+List Item with Checkbox and Selection Handling
 
 ```tsx
 import {ImageView, VStack, ListItem, Checkbox} from "@znui/react";

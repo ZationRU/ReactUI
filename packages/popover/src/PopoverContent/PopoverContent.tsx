@@ -51,44 +51,46 @@ export const PopoverContent = React.forwardRef((props: PopoverContentProps, forw
         return { top, left }
     }, [placement, point, size])
 
-    return point ? <>
-        <Layout
-            pos="fixed"
-            top={0}
-            left={0}
-            right={0}
-            bottom={0}
-            zIndex={1700}
-            height='100vh'
-            overflow="visible"
-            onClick={close}
-        />
-
+    return point ?
         <Portal>
-            <Measure bounds onResize={e => {
-                if(size?.width != e.bounds?.width || size?.height != e.bounds?.height)
-                    setSize(e.bounds!!)
-            }}>
-                {({measureRef}) =>
-                    <VStack
-                        to={{
-                            oc: isOpened ? 1 : 0
-                        }}
-                        top={top}
-                        left={left}
-                        bg={ThemeTokens.surfaceContainerHighest}
-                        c={ThemeTokens.onSurfaceVariant}
-                        pos='fixed'
-                        shapeScale={'md'}
-                        p={12}
-                        zIndex={1800}
-                        ref={mergeRefs(measureRef, forwardRef)}
-                        {...rest}
-                    >
-                        {children}
-                    </VStack>
-                }
-            </Measure>
+            <>
+                <Layout
+                    pos="fixed"
+                    top={0}
+                    left={0}
+                    right={0}
+                    bottom={0}
+                    zIndex={1700}
+                    height='100vh'
+                    overflow="visible"
+                    onClick={close}
+                />
+
+                <Measure bounds onResize={e => {
+                    if(size?.width != e.bounds?.width || size?.height != e.bounds?.height)
+                        setSize(e.bounds!!)
+                }}>
+                    {({measureRef}) =>
+                        <VStack
+                            to={{
+                                oc: isOpened ? 1 : 0
+                            }}
+                            top={top}
+                            left={left}
+                            bg={ThemeTokens.surfaceContainerHighest}
+                            c={ThemeTokens.onSurfaceVariant}
+                            pos='fixed'
+                            shapeScale={'md'}
+                            p={12}
+                            zIndex={1800}
+                            ref={mergeRefs(measureRef, forwardRef)}
+                            {...rest}
+                        >
+                            {children}
+                        </VStack>
+                    }
+                </Measure>
+            </>
         </Portal>
-    </> : null
+    : null
 })

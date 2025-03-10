@@ -3,101 +3,100 @@ import {Layout} from "@znui/layouts";
 import {mergeRefs} from "@znui/utils";
 import {ThemeTokens} from "@znui/md3-themes";
 import {MenuItemsProps, useMenuContext} from "../Menu";
-import {createPortal} from "react-dom";
+import {Portal} from "@znui/md3-utils";
 
 const MenuItems = React.forwardRef(({children}: MenuItemsProps, ref: ForwardedRef<HTMLDivElement>) => {
     const itemRef = useRef<HTMLDivElement | null>(null)
     const {
         isOpened,
-        triggerElement,
         close,
         width,
         height,
         isRoot,
-        point: mousePoint,
+        point,
+        node,
+        offset
     } = useMenuContext()
 
-    const finalWidth =  width === 'by-object' ? (triggerElement?.current?.getBoundingClientRect()?.width ?? 0) : width
+    const finalWidth =  width === 'by-object' ? (point?.width ?? 0) : width
     const finalHeight = height === 'by-content' ?  (itemRef.current?.scrollHeight ?? 0) : height
 
-    const setXY = useCallback((point?: DOMRect) => {
-        if (!itemRef || !point) return
+    const setXY = useCallback((pointOverwrite?: DOMRect) => {
+        const _point = pointOverwrite ?? point
+        if (!itemRef || !_point) return
 
         // Default positioning under element
-        let x = point.x, y = isRoot && !mousePoint ? point.bottom : point.top
+        let x = _point.x, y = isRoot && !offset ? _point.bottom : _point.top
 
         // If insufficient space below, position above
-        if((y + finalHeight) > window.innerHeight)
-            y = point.y - finalHeight
+        if ((y + finalHeight) > window.innerHeight)
+            y = _point.y - finalHeight
 
         // If insufficient space on the right, position left
-        if((x + finalWidth) > window.innerWidth) {
-            x = point.x - finalWidth
+        if ((x + finalWidth) > window.innerWidth) {
+            x = _point.x - finalWidth
         }
 
         if(!isRoot)
             x += finalWidth
 
-        if(mousePoint) {
-            x += mousePoint.x
-            y += mousePoint.y
+        if(offset) {
+            x += offset.x
+            y += offset.y
         }
 
         itemRef.current?.style.setProperty('--x', x.toString() + 'px')
         itemRef.current?.style.setProperty('--y', y.toString() + 'px')
-
-    }, [finalHeight, finalWidth, isRoot, mousePoint])
+    }, [finalHeight, finalWidth, isRoot, point])
 
     useEffect(() => {
-        isOpened && setXY(triggerElement?.current?.getBoundingClientRect())
-    }, [isOpened, setXY, triggerElement])
+        isOpened && setXY()
+    }, [isOpened, setXY])
 
     useEffect(() => {
         if(!isOpened) return
 
-        function handleClickOutside(e: MouseEvent) {
-            if(triggerElement?.current?.contains(e.target as HTMLElement)) return
-
+        function handleClickOutside(e: PointerEvent) {
             if (!(e.target as HTMLElement).closest('.znui-menu')) close()
         }
 
         function scroll() {
-            setXY(triggerElement?.current?.getBoundingClientRect())
+            if(node) setXY(node.getBoundingClientRect())
         }
 
-        document.addEventListener("mousedown", handleClickOutside);
-        document.addEventListener("pointerdown", handleClickOutside);
-        document.body.addEventListener('scroll', scroll, true);
+        document.addEventListener("pointerdown", handleClickOutside)
+        document.body.addEventListener('scroll', scroll, true)
         return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-            document.removeEventListener("pointerdown", handleClickOutside);
-            document.body.removeEventListener("scroll", scroll, true);
-        };
-    }, [close, itemRef, triggerElement, isOpened, setXY]);
+            document.removeEventListener("pointerdown", handleClickOutside)
+            document.body.removeEventListener("scroll", scroll, true)
+        }
+    }, [close, itemRef, isOpened, setXY, node]);
 
-    return createPortal(<Layout
-        ref={mergeRefs(ref, itemRef)}
-        position="fixed"
-        transform='translate3d(var(--x), var(--y), 0)'
-        transition='transform 20ms ease-in-out'
-        top={0}
-        left={0}
-        bg={ThemeTokens.surfaceContainer}
-        c={ThemeTokens.onSurface}
-        className="znui-menu"
-        shapeScale="esm"
-        w={finalWidth}
-        zIndex={1600}
-        to={{
-            maxH: !isOpened ? 0 : finalHeight,
-            oc: !isOpened ? 0 : 1,
-        }}
-        pointerEvents={!isOpened ? 'none' : 'all'}
-        userSelect="none"
-        overflow={height === 'by-content' ? 'hidden': 'auto'}
-    >
-        {children}
-    </Layout>, document.getElementById('znui-portal')!)
+    return <Portal>
+        <Layout
+            ref={mergeRefs(ref, itemRef)}
+            position="fixed"
+            transform='translate3d(var(--x), var(--y), 0)'
+            transition='transform 20ms ease-in-out'
+            top={0}
+            left={0}
+            bg={ThemeTokens.surfaceContainer}
+            c={ThemeTokens.onSurface}
+            className="znui-menu"
+            shapeScale="esm"
+            w={finalWidth}
+            zIndex={1600}
+            to={{
+                maxH: !isOpened ? 0 : finalHeight,
+                oc: !isOpened ? 0 : 1,
+            }}
+            pointerEvents={!isOpened ? 'none' : 'all'}
+            userSelect="none"
+            overflow={height === 'by-content' ? 'hidden': 'auto'}
+        >
+            {children}
+        </Layout>
+    </Portal>
 })
 
 MenuItems.displayName = 'Menu.Items'
