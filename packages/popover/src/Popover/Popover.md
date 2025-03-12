@@ -63,3 +63,24 @@ const [count, setCount] = useState(0);
     </Popover.Content>
 </Popover>
 ```
+
+# Simple Usage
+This example is simply a Popover.
+
+```tsx
+import {Popover} from "@znui/popover";
+import {Button} from "@znui/buttons";
+import {Layout} from "@znui/layouts";
+import {TextField} from "@znui/text-fields";
+import {Title} from "@znui/typography";
+
+<Popover>
+    <Popover.Trigger>
+        <Button>Box</Button>
+    </Popover.Trigger>
+
+    <Popover.Content>
+        <Layout bg='red' w={400} h={40} />
+    </Popover.Content>
+</Popover>
+```

@@ -39,7 +39,7 @@ export interface PopoverProps {
      *
      * When the Popover is closed, the point should be set to `null` by controlling component.
      */
-    point?: DOMRect
+    point?: DOMRect | null
     /**
      * Event handler when the popover is opened.
      *

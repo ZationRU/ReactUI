@@ -294,3 +294,45 @@ const { open, modal } = useModal(() => <Modal title='Menu Example'>
     {modal}
 </>
 ```
+
+# Context
+This example uses menu context.
+
+```tsx
+import {MdMoreVert} from "react-icons/md";
+import {Button, HStack, VStack, Menu, ListItem, useMenuContext} from "@znui/react";
+
+function Component() {
+    const {open, isOpened} = useMenuContext()
+
+    return <ListItem>
+        <ListItem.Content>
+            <ListItem.Heading>
+                Menu {isOpened ? 'opened' : 'closed'}
+            </ListItem.Heading>
+        </ListItem.Content>
+
+        <ListItem.Trailing>
+            <Button onClick={e => open(e.currentTarget.getBoundingClientRect(), e.currentTarget)}>Click</Button>
+        </ListItem.Trailing>
+    </ListItem>
+};
+
+<VStack>
+    <Menu>
+        <Menu.Items>
+            <Menu.Item>
+                Add Contact
+            </Menu.Item>
+            <Menu.Item>
+                Import Contacts
+            </Menu.Item>
+            <Menu.Item>
+                Export Contacts
+            </Menu.Item>
+        </Menu.Items>
+        
+        <Component />
+    </Menu>
+</VStack>
+```

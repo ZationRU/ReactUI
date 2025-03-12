@@ -13,9 +13,16 @@ Example with leading icon, trailing icon, and avatar
 import {Search, IconButton, IconContainer, Avatar} from "@znui/react";
 import {MdSearch, MdKeyboardVoice} from "react-icons/md";
 
-<Search placeholder='Search your library'
-        leading={<IconContainer><MdSearch/></IconContainer>} 
-        trailing={<IconButton onClick={() => alert("Recording?")}><MdKeyboardVoice/></IconButton>}
-        avatar={<Avatar text="A" size={40} />}
-        />
+<Search>
+    <IconContainer>
+        <MdSearch/>
+    </IconContainer>
+    
+    <Search.Input placeholder='Search your library' />
+    
+    <Search.Trailing>
+        <IconButton onClick={() => alert("Recording?")}><MdKeyboardVoice/></IconButton>
+        <Avatar text="A" size={40} />
+    </Search.Trailing>
+</Search>
 ```
