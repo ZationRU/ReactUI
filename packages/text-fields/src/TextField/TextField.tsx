@@ -5,6 +5,7 @@ import {FlexLayout, Layout, LayoutProps} from "@znui/layouts";
 import {Body} from "@znui/typography";
 import {DefaultFilledStyle} from "./FieldStyles/DefaultFilledStyle";
 import {DefaultOutlineStyle} from "./FieldStyles/DefaultOutlineStyle";
+import {TextFieldStyle} from "./types";
 
 export const FieldStyles: { [key: string]: TextFieldStyle } = {
     filled: DefaultFilledStyle,
@@ -123,26 +124,6 @@ interface TextareaTextFieldProps extends BaseTextFieldProps, Omit<LayoutProps, P
 
 export type TextFieldProps = InputTextFieldProps | TextareaTextFieldProps
 
-export type TextFieldStyle = {
-    font: ZnUITextTypeScale
-    root: StyleProps  & {
-        focused: StyleProps,
-        error: StyleProps,
-    }
-    input: StyleProps & {
-        focused: StyleProps
-    }
-    textarea: StyleProps& {
-        focused: StyleProps
-    }
-    legend: StyleProps & {
-        focused: StyleProps
-    }
-    label: StyleProps & {
-        focused: StyleProps
-    }
-}
-
 /**
  * TextField Wrapper for input.
  * Support all types of text input html component
@@ -183,6 +164,7 @@ export const TextField = React.forwardRef((props: TextFieldProps, forwardedRef: 
             error: rootError,
             ...root
         },
+        inputContainer,
         input: {
             focused: inputFocused,
             ...input
@@ -213,38 +195,41 @@ export const TextField = React.forwardRef((props: TextFieldProps, forwardedRef: 
 
     const Leading = useMemo(() => {
         return !leading ? undefined :
-            typeof leading == 'string' ? <Body ml={12} c={disabled ? ThemeTokens.onSurface : ThemeTokens.onSurfaceVariant}
-                                               size='medium' h={24} lineHeight='24px' children={leading} />
+            typeof leading == 'string' ? <Body pt={inputContainer.pt} ml={12} c={disabled ? ThemeTokens.onSurface : ThemeTokens.onSurfaceVariant}
+                                               size='large' h={24} children={leading} />
                 : <Layout c={disabled ? ThemeTokens.onSurface : ThemeTokens.onSurfaceVariant}>{leading}</Layout>
     }, [leading, disabled])
 
     const Trailing = useMemo(() => {
         return !trailing ? undefined :
-            typeof trailing == 'string' ? <Body pr={12} c={disabled ? ThemeTokens.onSurface : ThemeTokens.onSurfaceVariant}
-                                                size='medium' h={24} lineHeight='24px' children={trailing} />
+            typeof trailing == 'string' ? <Body pt={inputContainer.pt} pr={12} c={disabled ? ThemeTokens.onSurface : ThemeTokens.onSurfaceVariant}
+                                                size='large' h={24} children={trailing} />
                 : <Layout c={disabled ? ThemeTokens.onSurface : ThemeTokens.onSurfaceVariant}>{trailing}</Layout>
     }, [trailing, disabled])
 
     return <Layout
-        minW={210}
         pt={6}
         ref={forwardedRef}
         {...error && {
             color: ThemeTokens.error
         }}
         userSelect='none'
+
     >
         <Layout
             as="fieldset"
             pos='relative'
-            minH={56}
-            maxH={as == 'input' ? 56 : 'textarea'}
-            mie={0} mis={0}
+            minH={65}
+            maxH={as == 'input' ? 65 : 'textarea'}
+            marginTop={-9}
+            mie={0}
+            mis={0}
             pl={0}
             pr={0}
             pis={leading == null ? 12 : undefined}
             pie={trailing == null ? 12 : undefined}
-            ps={0} pe={0}
+            ps={0}
+            pe={0}
             to={{
                 oc: disabled ? 0.34 : 1,
                 pointerEvents: disabled ? 'none' : 'all',
@@ -308,7 +293,18 @@ export const TextField = React.forwardRef((props: TextFieldProps, forwardedRef: 
             <FlexLayout alignItems='center' h='100%' w='100%'>
                 {Leading}
 
-                <Layout w='100%'>
+                <Layout w='100%' {...inputContainer}>
+                    <Body
+                        ref={setLabelRef}
+                        pos='absolute'
+                        pointerEvents='none'
+                        className="label"
+                        size="large"
+                        {...labelStyles}
+                    >
+                        {label}
+                    </Body>
+
                     {as == 'textarea'
                         ? <znui.textarea dir={dir} value={value} defaultValue={defaultValue} onChange={onChange as ChangeEventHandler<HTMLTextAreaElement> | undefined}
                                          minLength={minLength} maxLength={maxLength} name={name} autoComplete={autoComplete}
@@ -320,17 +316,6 @@ export const TextField = React.forwardRef((props: TextFieldProps, forwardedRef: 
                                       type={(layoutProps as InputTextFieldProps).type} readOnly={readOnly}
                                       placeholder={placeholder || ' '} {...(layoutProps as InputTextFieldProps).inputProps}
                                       children={undefined} />}
-
-                    <Body
-                        ref={setLabelRef}
-                        pos='absolute'
-                        pointerEvents='none'
-                        className="label"
-                        size="large"
-                        {...labelStyles}
-                    >
-                        {label}
-                    </Body>
                 </Layout>
 
                 {Trailing}

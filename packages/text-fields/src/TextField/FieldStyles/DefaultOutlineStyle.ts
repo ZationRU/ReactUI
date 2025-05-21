@@ -1,4 +1,4 @@
-import {TextFieldStyle} from "../TextField";
+import {TextFieldStyle} from "../types";
 import {ThemeTokens} from "@znui/md3-themes";
 
 export const DefaultOutlineStyle: TextFieldStyle = {
@@ -20,6 +20,9 @@ export const DefaultOutlineStyle: TextFieldStyle = {
         borderWidth: 1,
         borderColor: ThemeTokens.outline,
         pb: 6
+    },
+    inputContainer: {
+        pt: 8
     },
     input: {
         focused: {
@@ -65,7 +68,7 @@ export const DefaultOutlineStyle: TextFieldStyle = {
     label: {
         to: {
             baseDuration: ThemeTokens.motion.duration.short1,
-            top: 4,
+            top: 8,
             fontSize: {}
         },
         focused: {

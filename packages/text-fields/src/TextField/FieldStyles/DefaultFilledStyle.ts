@@ -1,4 +1,4 @@
-import {TextFieldStyle} from "../TextField";
+import {TextFieldStyle} from "../types";
 import {ThemeTokens} from "@znui/md3-themes";
 
 export const DefaultFilledStyle: TextFieldStyle = {
@@ -22,6 +22,9 @@ export const DefaultFilledStyle: TextFieldStyle = {
         boxSizing: 'border-box',
         borderBottomColor: ThemeTokens.outline,
         shapeScaleTop: 'esm'
+    },
+    inputContainer: {
+        pt: 0,
     },
     input: {
         focused: {},
@@ -55,7 +58,8 @@ export const DefaultFilledStyle: TextFieldStyle = {
     label: {
         to: {
             fontSize: {},
-            top: 4
+            lineHeight: {},
+            top: 8
         },
         focused: {
             to: {
