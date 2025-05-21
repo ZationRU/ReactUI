@@ -16,7 +16,10 @@ export interface BottomAppBarProps extends LayoutProps {
 /**
  * Bottom AppBar navigation component
  *
+ * Deprecated by Google new Metarial Expressive Design
+ *
  * @param props
+ * @deprecated
  * @constructor
  */
 export const BottomAppBar = React.forwardRef((props: BottomAppBarProps, innerRef) => {
