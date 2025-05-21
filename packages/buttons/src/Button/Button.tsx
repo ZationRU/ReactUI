@@ -1,9 +1,9 @@
 import React, {ForwardedRef, ReactNode} from 'react';
 import {IconWrapper} from "@znui/md3-utils";
 import {ThemeTokens} from "@znui/md3-themes";
-import {HTMLZnUIProps, ZnUIStyleObject} from "@znui/base";
+import {HTMLZnUIProps, StyleProps, ZnUIStyleObject} from "@znui/base";
 import {AbsoluteCenter, HStack} from "@znui/layouts";
-import {Label} from "@znui/typography";
+import {Label, Typescale, TypescaleProps} from "@znui/typography";
 import {Tappable} from "@znui/ripple";
 import {CircularProgressIndicator} from "@znui/progress-indicators";
 
@@ -49,12 +49,89 @@ const variantDisabledStyles: {
     }
 }
 
+export type ButtonSize = {
+    gap: number,
+    paddingHorizontal: number,
+    paddingVertical: number,
+    iconSize: number,
+    typescale: TypescaleProps
+}
+
+export const ButtonSizes: {
+    [key: string]: ButtonSize
+} = {
+    'xsmall': {
+        gap: 4,
+        paddingHorizontal: 12,
+        paddingVertical: 6,
+        iconSize: 20,
+        typescale: {
+            type: 'label',
+            scale: 'large',
+        },
+    },
+    'small': {
+        gap: 8,
+        paddingHorizontal: 16,
+        paddingVertical: 10,
+        iconSize: 20,
+        typescale: {
+            type: 'label',
+            scale: 'large',
+        },
+    },
+    'medium': {
+        gap: 8,
+        paddingHorizontal: 24,
+        paddingVertical: 16,
+        iconSize: 24,
+        typescale: {
+            type: 'title',
+            scale: 'medium',
+        },
+    },
+    'large': {
+        gap: 12,
+        paddingHorizontal: 48,
+        paddingVertical: 32,
+        iconSize: 32,
+        typescale: {
+            type: 'headline',
+            scale: 'small',
+        },
+    },
+    'xlarge': {
+        gap: 16,
+        paddingHorizontal: 64,
+        paddingVertical: 48,
+        iconSize: 40,
+        typescale: {
+            type: 'headline',
+            scale: 'large',
+        },
+    },
+}
+
+
 export interface ButtonProps extends HTMLZnUIProps<'button'> {
     /**
      * The visual appearance of the button.
      * @default filled
      */
     variant?: 'filled' | 'text' | 'outline' | 'tonal' | 'elevated'
+
+    /**
+     * The visual shape of the button.
+     * @default round
+     */
+    shape?: 'round' | 'square'
+
+    /**
+     * The size of the button.
+     * @default 'xsmall'
+     */
+    size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge'
+
     /**
      * The icon to display in the button.
      */
@@ -73,6 +150,8 @@ export interface ButtonProps extends HTMLZnUIProps<'button'> {
 export const Button = React.forwardRef((props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
     const {
         variant = 'filled',
+        shape = "round",
+        size = 'xsmall',
         children,
         icon,
         className,
@@ -80,6 +159,8 @@ export const Button = React.forwardRef((props: ButtonProps, ref: ForwardedRef<HT
         type = 'button',
         ...otherProps
     } = props
+
+    const sizeProps = ButtonSizes[size]
 
     return <Tappable
         as='button'
@@ -97,11 +178,11 @@ export const Button = React.forwardRef((props: ButtonProps, ref: ForwardedRef<HT
         boxSizing='content-box'
         border='none'
         outline='none'
-        shapeScale='full'
+        shapeScale={shape === 'round' ? 'full': 'sm'}
         userSelect='none'
-        pv={10}
-        pl={16}
-        pr={24}
+        pv={sizeProps.paddingVertical}
+        pl={sizeProps.paddingHorizontal - sizeProps.gap}
+        pr={sizeProps.paddingHorizontal}
         m={0}
         _hover={{
             ...['filled', 'elevated'].includes(variant) ? {
@@ -148,18 +229,19 @@ export const Button = React.forwardRef((props: ButtonProps, ref: ForwardedRef<HT
                 oc: loading ? 0 : (otherProps.disabled ? 0.38 : 1)
             }}
         >
-            {icon&&<IconWrapper size={18}>{icon}</IconWrapper>}
-            <Label
-                ml={8}
-                size='large'
+            {icon&&<IconWrapper size={sizeProps.iconSize}>{icon}</IconWrapper>}
+
+            <Typescale
+                ml={sizeProps.gap}
+                {...sizeProps.typescale}
             >
                 {children}
-            </Label>
+            </Typescale>
         </HStack>
 
         <AbsoluteCenter>
             <CircularProgressIndicator
-                size={20}
+                size={sizeProps.iconSize}
                 color='currentColor'
                 to={{
                     oc: loading ? 1: 0

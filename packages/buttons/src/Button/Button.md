@@ -18,15 +18,29 @@ const [isLoading, setIsLoading] = useState(false);
 
 <VStack spacing={10}>
     <Title>Filled buttons</Title>
-    <HStack spacing={5}>
-        <Button>Enabled</Button>
-        <Button disabled>Disabled</Button>
-    </HStack>
+    <VStack spacing={5}>
+        <HStack spacing={5}>
+            <Button icon={<MdAdd/>}>Enabled</Button>
+            <Button icon={<MdAdd/>} shape="square">Disabled</Button>
+        </HStack>
+        <HStack spacing={5}>
+            <Button icon={<MdAdd/>} size="small">Enabled</Button>
+            <Button icon={<MdAdd/>} shape="square" size="small">Disabled</Button>
+        </HStack>
+        <HStack spacing={5}>
+            <Button icon={<MdAdd/>} size="medium">Enabled</Button>
+            <Button icon={<MdAdd/>} shape="square" size="medium">Disabled</Button>
+        </HStack>
+        <HStack spacing={5}>
+            <Button icon={<MdAdd/>} size="large">Enabled</Button>
+            <Button icon={<MdAdd/>} shape="square" size="large">Disabled</Button>
+        </HStack>
+        <HStack spacing={5}>
+            <Button icon={<MdAdd/>} size="xlarge">Enabled</Button>
+            <Button icon={<MdAdd/>} shape="square" size="xlarge">Disabled</Button>
+        </HStack>
+    </VStack>
 
-    <HStack spacing={5}>
-        <Button icon={<MdAdd/>}>Enabled</Button>
-        <Button icon={<MdAdd/>} disabled>Disabled</Button>
-    </HStack>
 
     <Title>Outlined buttons</Title>
     <HStack spacing={5}>
