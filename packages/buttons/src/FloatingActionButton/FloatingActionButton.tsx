@@ -1,6 +1,6 @@
 import React, {ForwardedRef} from 'react';
 import {IconWrapper} from "@znui/md3-utils";
-import {ThemeTokens, ToAnimatedProp} from "@znui/md3-themes";
+import {ThemeTokens, ToAnimatedProp, ZnUITransition, ZnUITransitionDuration} from "@znui/md3-themes";
 import {Adaptive, HTMLZnUIProps, useAdaptiveValue, znui} from "@znui/base";
 import {HStack} from "@znui/layouts";
 import {Label} from "@znui/typography";
@@ -15,11 +15,11 @@ export interface FloatingActionButtonProps extends Omit<HTMLZnUIProps<'button'>,
     /**
      * The transition to use when the size changes.
      */
-    sizeTransition?: ToAnimatedProp['baseTransition']
+    sizeTransition?: ZnUITransition
     /**
      * The duration of the size transition.
      */
-    sizeTransitionDuration?: ToAnimatedProp['baseDuration']
+    sizeTransitionDuration?: ZnUITransitionDuration
     /**
      * The visual appearance of the floating action button.
      * @default primary
@@ -44,8 +44,8 @@ export const FloatingActionButton = React.forwardRef(
         const {
             size,
             variant = 'primary',
-            sizeTransition = ThemeTokens.motion.emphasized,
-            sizeTransitionDuration = ThemeTokens.motion.duration.medium1,
+            sizeTransition = ThemeTokens.motion.physics.expressive.spatial.fast,
+            sizeTransitionDuration = undefined,
             shapeScale = 'md',
             text,
             elevation = "1",
