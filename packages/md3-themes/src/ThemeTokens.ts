@@ -1,7 +1,15 @@
-import {ZnUISchemeData, ZnUITheme, ZnUIMotion, ZnUIElevation, ZnUIShapes, ZnUITypeScales} from "./types";
+import {
+    ZnUISchemeData,
+    ZnUITheme,
+    ZnUIMotion,
+    ZnUIElevation,
+    ZnUIShapes,
+    ZnUITypeScales,
+    ZnUITransitionPack
+} from "./types";
 import {
     durationProp,
-    elevationProp,
+    elevationProp, motionPhysicsDurationProp, motionPhysicsProp,
     motionProp,
     paletteProp,
     propAsCSSVar,
@@ -27,6 +35,23 @@ const NestedThemeTokens = {
                 return new Proxy({}, {
                     get(_, type) {
                         return propAsCSSVar(durationProp(type.toString()));
+                    },
+                })
+            }else if(prop === 'physics') {
+                return new Proxy({}, {
+                    get(_, physicsType) {
+                        return new Proxy({}, {
+                            get(_, transitionType) {
+                                return new Proxy({}, {
+                                    get(_, durationType) {
+                                        return {
+                                            timingFunction: propAsCSSVar(motionPhysicsProp(physicsType.toString(), transitionType.toString(), durationType.toString())),
+                                            duration: propAsCSSVar(motionPhysicsDurationProp(physicsType.toString(), transitionType.toString(), durationType.toString())),
+                                        } satisfies ZnUITransitionPack;
+                                    },
+                                })
+                            },
+                        })
                     },
                 })
             }

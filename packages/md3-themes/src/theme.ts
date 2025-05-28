@@ -2,8 +2,17 @@ import styled from '@emotion/styled'
 import {useMemo} from "react";
 import {kebabize} from "@znui/utils";
 import {defaultStyles} from "./defaults";
-import {ZnUITheme} from "./types";
-import {durationProp, elevationProp, motionProp, paletteProp, shapeProp, styleProp, typeScaleProp} from "./names";
+import {ZnUITheme, ZnUITransitionPack} from "./types";
+import {
+    durationProp,
+    elevationProp, motionPhysicsDurationProp,
+    motionPhysicsProp,
+    motionProp,
+    paletteProp,
+    shapeProp,
+    styleProp,
+    typeScaleProp
+} from "./names";
 
 export const useThemeDiv = (theme: ZnUITheme) => {
     return useMemo(() => {
@@ -49,6 +58,18 @@ export const useThemeDiv = (theme: ZnUITheme) => {
             if(motionKey === 'duration') {
                 for (const durationName in motionData) {
                     styles += durationProp(durationName) + ': ' + motionData[durationName] + 'ms;'
+                }
+            }else if(motionKey === 'physics') {
+                for (const physicsTransitionsType in motionData) {
+                    const physicsTransitions = motionData[physicsTransitionsType]
+                    for (const transitionDurationName in physicsTransitions) {
+                        const packDurations = physicsTransitions[transitionDurationName]
+                        for (const packDurationsName in packDurations) {
+                            const pack = packDurations[packDurationsName] as ZnUITransitionPack
+                            styles += motionPhysicsProp(physicsTransitionsType, transitionDurationName, packDurationsName) + ': ' + pack.timingFunction+ ";"
+                            styles += motionPhysicsDurationProp(physicsTransitionsType, transitionDurationName, packDurationsName) + ': ' + pack.duration + 'ms;'
+                        }
+                    }
                 }
             }else{
                 styles += motionProp(motionKey) + ': ' + motionData + ';'

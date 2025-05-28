@@ -17,7 +17,15 @@ export const motionProp = (name: string) => {
 }
 
 export const durationProp = (name: string) => {
-    return '--znui-' + name + '-motion';
+    return '--znui-' + name + '-motion-duration';
+}
+
+export const motionPhysicsProp = (physicsType: string, name: string, durationName: string) => {
+    return '--znui-' + physicsType + "-" + name + "-" + durationName + '-physics';
+}
+
+export const motionPhysicsDurationProp = (physicsType: string, name: string, durationName: string) => {
+    return '--znui-' + physicsType + "-" + name + "-" + durationName + '-physics-duration';
 }
 
 export const elevationProp = (name: string) => {

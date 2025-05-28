@@ -1,3 +1,16 @@
+import {TransitionProps} from "@znui/base";
+
+export interface ZnUITransitionPack {
+    timingFunction: TransitionProps["transitionTimingFunction"],
+    duration: TransitionProps["transitionDuration"] | number
+}
+
+export interface PhysicsTransitions {
+    fast: ZnUITransitionPack
+    default: ZnUITransitionPack
+    slow: ZnUITransitionPack
+}
+
 export type ZnUIMotion = {
     duration: {
         short1: number
@@ -25,4 +38,16 @@ export type ZnUIMotion = {
     emphasized: string
     emphasizedAccelerate: string
     emphasizedDecelerate: string
+
+    physics: {
+        expressive: {
+            spatial: PhysicsTransitions
+            effects: PhysicsTransitions
+        }
+
+        standard: {
+            spatial: PhysicsTransitions
+            effects: PhysicsTransitions
+        }
+    }
 }
