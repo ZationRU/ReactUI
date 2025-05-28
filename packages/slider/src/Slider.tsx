@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, {useMemo, useRef, useState} from "react";
 import {FormWidgetBase, FormWidgetBaseProps} from "@znui/md3-utils";
 import {ThemeTokens} from "@znui/md3-themes";
 import {mergeRefs} from "@znui/utils";
@@ -33,6 +33,12 @@ export interface SliderProps extends FormWidgetBaseProps {
      * Event handler for when the slider value changes.
      */
     onChange?: React.ChangeEventHandler<HTMLInputElement>
+    /**
+     * Maximum number of tick marks to display.
+     * If the total number of steps exceeds this, ticks will be shown sparsely.
+     * @default 100
+     */
+    maxVisibleTicks?: number;
 }
 
 /**
@@ -45,9 +51,9 @@ export interface SliderProps extends FormWidgetBaseProps {
  * @constructor
  */
 export const Slider = React.forwardRef((props: SliderProps, ref: React.ForwardedRef<HTMLInputElement>) => {
-    const activeTrackRef = useRef<HTMLDivElement|null>(null)
-    const handleRef = useRef<HTMLDivElement|null>(null)
-    const inputRef = useRef<HTMLInputElement|null>(null)
+    const activeTrackRef = useRef<HTMLDivElement | null>(null)
+    const handleRef = useRef<HTMLDivElement | null>(null)
+    const inputRef = useRef<HTMLInputElement | null>(null)
     const [selected, setSelected] = useState(false)
 
     const {
@@ -57,18 +63,52 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
         defaultValue = 0,
         step = 1,
         disabled,
+        maxVisibleTicks = 100,
         ...layoutRest
     } = props
 
-    let _currentValue = (value || defaultValue)
-    _currentValue = _currentValue < min ? min: (_currentValue > max ? max: _currentValue)
+    const currentValue = useMemo(() => {
+        const val = value !== undefined ? value : defaultValue;
+        const numSteps = Math.round((val - min) / step);
+        return Math.min(max, Math.max(min, min + numSteps * step));
+    }, [value, defaultValue, min, max, step]);
 
-    const stepCount = (max-min) / step
+    const trackWidth = useMemo(() => {
+        if (max === min) return 0; // Avoid division by zero
+        return ((currentValue - min) / (max - min)) * 100;
+    }, [currentValue, min, max]);
 
-    let currentValue = _currentValue - (step===1? 0: (_currentValue % stepCount))
-    if(currentValue>max) currentValue = max;
+    const stepCount = useMemo(() => {
+        if (step === 0) return 0;
+        return (max - min) / step;
+    }, [max, min, step]);
 
-    const trackWidth = (currentValue - min) / (max-min) * 100;
+    const visibleTickInfo = useMemo(() => {
+        const totalPossibleTicks = stepCount + 1;
+        if (totalPossibleTicks <= 0 || step === 0) {
+            return [];
+        }
+
+        if (totalPossibleTicks <= maxVisibleTicks) {
+            return Array.from({ length: Math.floor(totalPossibleTicks) }).map((_, i) => min + i * step);
+        }
+
+        const ticks = [];
+        const tickIntervalValue = Math.max(step, Math.ceil(totalPossibleTicks / maxVisibleTicks) * step);
+
+        for (let tickVal = min; tickVal <= max; tickVal += tickIntervalValue) {
+            ticks.push(tickVal);
+        }
+
+        if (ticks[ticks.length - 1] < max && max - ticks[ticks.length-1] >= step/2) {
+            ticks.push(max);
+        } else if (ticks.length > 0 && max - ticks[ticks.length-1] < step/2 && ticks[ticks.length-1] !== max) {
+            ticks[ticks.length-1] = max;
+        }
+
+
+        return ticks;
+    }, [min, max, step, stepCount, maxVisibleTicks]);
 
     return <FormWidgetBase
         {...layoutRest}
@@ -85,7 +125,7 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
         onBlur={() => {
             setSelected(false)
         }}
-        value={_currentValue}
+        value={currentValue}
         step={step}
         ref={mergeRefs(ref, inputRef)}
         pos="relative"
@@ -93,7 +133,6 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
         userSelect="none"
         cursor="pointer"
     >
-
         <Layout
             pos="absolute"
             left={0}
@@ -110,8 +149,8 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
                 top={6}
                 borderRadius={4}
                 right={0}
-                left={'calc('+trackWidth+'%  + 14px)'}
-                maxW={"calc("+(100 - trackWidth)+"% - 14px)"}
+                left={'calc(' + trackWidth + '%  + 14px)'}
+                maxW={"calc(" + (100 - trackWidth) + "% - 14px)"}
                 oc={disabled ? 0.12 : 1}
                 bg={disabled ? ThemeTokens.onSurface : ThemeTokens.primaryContainer}
             />
@@ -126,7 +165,7 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
                 top={6}
                 right={0}
                 ref={activeTrackRef}
-                maxW={"calc("+trackWidth+"% - 6px)"}
+                maxW={"calc(" + trackWidth + "% - 6px)"}
                 bg={disabled ? ThemeTokens.onSurface : ThemeTokens.primary}
                 oc={disabled ? 0.38 : 1}
                 clip={true}
@@ -148,17 +187,28 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
                     clip={true}
                 >
                     {
-                        Array.from({ length: stepCount + 1  }).map((_, i) =>
-                            <Layout
-                                key={"step-"+i}
+                        visibleTickInfo.map((tickValue) => {
+                            const isTickBeforeOrAtCurrent = tickValue <= currentValue;
+
+                            let tickOpacity = 1;
+                            if ((tickValue === currentValue && !disabled) || step == 1) {
+                                tickOpacity = 0;
+                            }
+
+                            if (disabled) {
+                                tickOpacity *= (isTickBeforeOrAtCurrent ? 0.66 : 0.38);
+                            }
+
+                            return <Layout
+                                key={"step-tick-" + tickValue}
                                 layoutSize={4}
                                 shapeScale="full"
-                                oc={(step <= 1 ? (i === 0 || i === stepCount ? 1 : 0) : 1) * (i * step === currentValue ? 0: 1) * (disabled ? i * step < currentValue ? 0.66 : 0.38 : 1)}
-                                bg={i * step < currentValue ?
+                                oc={tickOpacity}
+                                bg={isTickBeforeOrAtCurrent ?
                                     (disabled ? ThemeTokens.inverseOnSurface : ThemeTokens.onPrimary)
                                     : (disabled ? ThemeTokens.onSurface : ThemeTokens.onPrimaryContainer)}
                             />
-                        )
+                        })
                     }
                 </FlexLayout>
             </Layout>
@@ -168,7 +218,7 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
                 pos="absolute"
                 shapeScale="full"
                 overflow="visible"
-                left={"calc("+trackWidth+"%)"}
+                left={"calc(" + trackWidth + "%)"}
                 bg={disabled ? ThemeTokens.onSurface : ThemeTokens.primary}
                 oc={disabled ? 0.38 : 1}
                 ref={handleRef}
@@ -176,8 +226,8 @@ export const Slider = React.forwardRef((props: SliderProps, ref: React.Forwarded
                 borderRadius={2}
                 h={44}
                 to={{
-                    ml: selected ? 4: 2,
-                    w: selected ? 2: 4
+                    ml: selected ? 4 : 2,
+                    w: selected ? 2 : 4
                 }}
             />
         </Layout>
