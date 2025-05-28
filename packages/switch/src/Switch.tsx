@@ -24,15 +24,15 @@ export type SwitchStyles = {
 
 
 export const defaultSwitchStyles: SwitchStyles = {
-    checkedTransition: ThemeTokens.motion.standard,
-    checkedTransitionDuration: ThemeTokens.motion.duration.medium1,
+    checkedTransition: ThemeTokens.motion.physics.expressive.spatial.fast,
+    checkedTransitionDuration: undefined,
     truckBackground: ThemeTokens.surfaceVariant,
     truckBackgroundChecked: ThemeTokens.primary,
     truckBorderColor: ThemeTokens.outline,
     truckBorderColorChecked: ThemeTokens.primary,
     thumbBackground: ThemeTokens.outline,
     thumbBackgroundChecked: ThemeTokens.onPrimary,
-    thumbColor:  ThemeTokens.onPrimary,
+    thumbColor: ThemeTokens.onPrimary,
     thumbColorChecked: ThemeTokens.onPrimaryContainer
 }
 
@@ -87,14 +87,14 @@ export const Switch = React.forwardRef((
     const checkbox = useRef<HTMLInputElement>(null)
 
     const thumbStyles = {
-        ...(checked||icon? {
+        ...(checked || icon ? {
             height: 24,
             width: 24,
-        }: {
+        } : {
             height: 16,
             width: 16,
         }),
-        marginLeft: !checked&&!icon ? 8 : 4,
+        marginLeft: !checked && !icon ? 8 : 4,
         marginRight: 4,
         transform: checked ? "translateX(calc(100% - 4px))" : "translateX(0)"
     }
@@ -158,6 +158,7 @@ export const Switch = React.forwardRef((
             to={{
                 baseDuration: checkedTransitionDuration,
                 baseTransition: checkedTransition,
+
                 bg: disabled ? (checked ? ThemeTokens.onSurface : ThemeTokens.surfaceContainerHighest) : (checked ? truckBackgroundChecked : truckBackground),
                 borderColor: disabled ? ThemeTokens.onSurface : (checked ? truckBorderColorChecked : truckBorderColor),
                 oc: disabled ? 0.12 : 1
@@ -173,16 +174,16 @@ export const Switch = React.forwardRef((
                 baseDuration: checkedTransitionDuration,
                 baseTransition: checkedTransition,
 
-                bg: disabled ? (checked ? ThemeTokens.surface: ThemeTokens.onSurface) : (checked ? thumbBackgroundChecked : thumbBackground),
-                c: disabled ? (checked ? ThemeTokens.onSurface: undefined) : (checked ? thumbColorChecked : thumbColor),
+                bg: disabled ? (checked ? ThemeTokens.surface : ThemeTokens.onSurface) : (checked ? thumbBackgroundChecked : thumbBackground),
+                c: disabled ? (checked ? ThemeTokens.onSurface : undefined) : (checked ? thumbColorChecked : thumbColor),
                 borderColor: disabled ? ThemeTokens.onSurfaceVariant : undefined,
                 oc: disabled && !checked ? 0.38 : 1,
-                layoutSize: {},
-                transform: {}
+                ...thumbStyles
             }}
             style={thumbStyles}
         >
-            <IconWrapper size={16}>
+            <IconWrapper size={16} sizeTransition={checkedTransition}
+                         sizeTransitionDuration={checkedTransitionDuration}>
                 {icon}
             </IconWrapper>
         </Center>

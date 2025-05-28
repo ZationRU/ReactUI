@@ -1,6 +1,6 @@
 {
   "name": "@znui/switch",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0-beta.1",
   "main": "./dist/Switch.js",
   "module": "./dist/Switch.es.js",
   "types": "./dist/Switch.d.ts",
