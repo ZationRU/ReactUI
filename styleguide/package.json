@@ -26,6 +26,6 @@
     "react-styleguidist": "13.1.1",
     "styles-loader": "^4.0.1",
     "typescript": "*",
-    "webpack": "^5.91.0"
+    "webpack": "^5.104.1"
   }
 }
